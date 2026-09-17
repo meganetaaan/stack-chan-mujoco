@@ -1,0 +1,59 @@
+{
+  "scope": "software unit tests; not a learned-policy success report",
+  "discovered": 49,
+  "passed_executed": 40,
+  "skipped": [
+    {
+      "test": "test_runtime.RuntimeTests.test_SB3_env_contract",
+      "reason": "MuJoCo / Gymnasium / SB3 missing: real runtime NOT EXECUTED"
+    },
+    {
+      "test": "test_runtime.RuntimeTests.test_actual_A_compiles_and_steps",
+      "reason": "MuJoCo / Gymnasium / SB3 missing: real runtime NOT EXECUTED"
+    },
+    {
+      "test": "test_runtime.RuntimeTests.test_domain_randomization_is_not_cumulative",
+      "reason": "MuJoCo / Gymnasium / SB3 missing: real runtime NOT EXECUTED"
+    },
+    {
+      "test": "test_runtime.RuntimeTests.test_fall_is_termination",
+      "reason": "MuJoCo / Gymnasium / SB3 missing: real runtime NOT EXECUTED"
+    },
+    {
+      "test": "test_runtime.RuntimeTests.test_headless_visual_physics_agree",
+      "reason": "MuJoCo / Gymnasium / SB3 missing: real runtime NOT EXECUTED"
+    },
+    {
+      "test": "test_runtime.RuntimeTests.test_real_PPO_update_save_and_reload",
+      "reason": "MuJoCo / Gymnasium / SB3 missing: real runtime NOT EXECUTED"
+    },
+    {
+      "test": "test_runtime.RuntimeTests.test_seeded_reset_and_step",
+      "reason": "MuJoCo / Gymnasium / SB3 missing: real runtime NOT EXECUTED"
+    },
+    {
+      "test": "test_runtime.RuntimeTests.test_time_limit_is_truncation",
+      "reason": "MuJoCo / Gymnasium / SB3 missing: real runtime NOT EXECUTED"
+    },
+    {
+      "test": "test_runtime.RuntimeTests.test_torque_interface_and_no_root_assist",
+      "reason": "MuJoCo / Gymnasium / SB3 missing: real runtime NOT EXECUTED"
+    }
+  ],
+  "errors": [],
+  "failures": [],
+  "versions": {
+    "python": "3.13.5",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "mujoco": "NOT_INSTALLED",
+    "gymnasium": "NOT_INSTALLED",
+    "stable-baselines3": "NOT_INSTALLED",
+    "numpy": "2.3.5",
+    "torch": "2.10.0+cpu"
+  },
+  "model_name": "Tab5_R5_A_landscape_cube_X330_10DOF",
+  "model_mass_kg": 0.8260386995994602,
+  "model_fingerprint": "fd52c6f9a48c468ff049caf0392a1d855c6d3566c5ebf81e93e58a9e5a97f27c",
+  "runtime_tests_all_executed_without_error": false,
+  "standing_or_walking_success_claimed": false
+}

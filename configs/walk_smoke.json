@@ -1,0 +1,12 @@
+{
+  "extends": "walk.json",
+  "env": {"episode_seconds": 2.0},
+  "ppo": {"n_steps": 64, "batch_size": 64, "n_epochs": 2, "net_arch": [64, 64]},
+  "train": {
+    "num_envs": 1,
+    "total_timesteps": 128,
+    "eval_every_timesteps": 128,
+    "checkpoint_every_timesteps": 128,
+    "eval_episodes": 1
+  }
+}

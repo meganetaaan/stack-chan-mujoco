@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="Tab5_R5_A_landscape_cube_X330_10DOF">
+  <!--UNVALIDATED PHYSICS MODEL. Floating base; no weld, no root-force assistance.-->
+  <!--Reduced separated collision proxies: not exact CAD shell surfaces. See collision_proxies.py. No boot is represented as a solid convex hull.-->
+  <compiler angle="radian" meshdir="meshes" inertiafromgeom="false" autolimits="true" />
+  <option timestep="0.001" gravity="0 0 -9.81" integrator="implicitfast" solver="Newton" iterations="50" cone="elliptic">
+    <flag filterparent="enable" />
+  </option>
+  <visual>
+    <global offwidth="1280" offheight="960" />
+    <headlight diffuse=".7 .7 .7" ambient=".3 .3 .3" />
+  </visual>
+  <statistic center="0 0 .15" extent=".55" />
+  <default>
+    <default class="joint_defaults">
+      <joint type="hinge" limited="true" damping="0.0015" frictionloss="0.006" armature="2e-06" />
+    </default>
+    <default class="collision">
+      <geom contype="1" conaffinity="1" condim="3" group="3" rgba=".8 .3 .1 .35" friction="0.8 .003 .0001" solref=".004 1" solimp=".95 .99 .001" margin="0" mass="0" />
+    </default>
+  </default>
+  <asset>
+    <mesh name="body_shroud_mesh" file="body_shroud.stl" scale=".001 .001 .001" />
+    <mesh name="rear_cover_mesh" file="rear_cover.stl" scale=".001 .001 .001" />
+    <mesh name="Tab5_mesh" file="Tab5.stl" scale=".001 .001 .001" />
+    <mesh name="face_0_mesh" file="face_0.stl" scale=".001 .001 .001" />
+    <mesh name="face_1_mesh" file="face_1.stl" scale=".001 .001 .001" />
+    <mesh name="face_2_mesh" file="face_2.stl" scale=".001 .001 .001" />
+    <mesh name="screen_mesh" file="screen.stl" scale=".001 .001 .001" />
+    <mesh name="camera_mesh" file="camera.stl" scale=".001 .001 .001" />
+    <mesh name="battery_2S_reservation_mesh" file="battery_2S_reservation.stl" scale=".001 .001 .001" />
+    <mesh name="dedicated_5V_converter_mesh" file="dedicated_5V_converter.stl" scale=".001 .001 .001" />
+    <mesh name="TTL_interface_mesh" file="TTL_interface.stl" scale=".001 .001 .001" />
+    <mesh name="cables_and_fasteners_mesh" file="cables_and_fasteners.stl" scale=".001 .001 .001" />
+    <mesh name="left_hip_roll_motor_mesh" file="left_hip_roll_motor.stl" scale=".001 .001 .001" />
+    <mesh name="left_fixed_roll_cradle_mesh" file="left_fixed_roll_cradle.stl" scale=".001 .001 .001" />
+    <mesh name="left_roll_to_pitch_carrier_mesh" file="left_roll_to_pitch_carrier.stl" scale=".001 .001 .001" />
+    <mesh name="left_hip_pitch_motor_mesh" file="left_hip_pitch_motor.stl" scale=".001 .001 .001" />
+    <mesh name="left_thigh_yoke_mesh" file="left_thigh_yoke.stl" scale=".001 .001 .001" />
+    <mesh name="left_knee_motor_mesh" file="left_knee_motor.stl" scale=".001 .001 .001" />
+    <mesh name="left_shin_yoke_mesh" file="left_shin_yoke.stl" scale=".001 .001 .001" />
+    <mesh name="left_ankle_pitch_motor_mesh" file="left_ankle_pitch_motor.stl" scale=".001 .001 .001" />
+    <mesh name="left_ankle_roll_motor_mesh" file="left_ankle_roll_motor.stl" scale=".001 .001 .001" />
+    <mesh name="left_ankle_gimbal_mesh" file="left_ankle_gimbal.stl" scale=".001 .001 .001" />
+    <mesh name="left_foot_yoke_mesh" file="left_foot_yoke.stl" scale=".001 .001 .001" />
+    <mesh name="left_boot_shell_mesh" file="left_boot_shell.stl" scale=".001 .001 .001" />
+    <mesh name="left_sole_TPU_mesh" file="left_sole_TPU.stl" scale=".001 .001 .001" />
+    <mesh name="right_hip_roll_motor_mesh" file="right_hip_roll_motor.stl" scale=".001 .001 .001" />
+    <mesh name="right_fixed_roll_cradle_mesh" file="right_fixed_roll_cradle.stl" scale=".001 .001 .001" />
+    <mesh name="right_roll_to_pitch_carrier_mesh" file="right_roll_to_pitch_carrier.stl" scale=".001 .001 .001" />
+    <mesh name="right_hip_pitch_motor_mesh" file="right_hip_pitch_motor.stl" scale=".001 .001 .001" />
+    <mesh name="right_thigh_yoke_mesh" file="right_thigh_yoke.stl" scale=".001 .001 .001" />
+    <mesh name="right_knee_motor_mesh" file="right_knee_motor.stl" scale=".001 .001 .001" />
+    <mesh name="right_shin_yoke_mesh" file="right_shin_yoke.stl" scale=".001 .001 .001" />
+    <mesh name="right_ankle_pitch_motor_mesh" file="right_ankle_pitch_motor.stl" scale=".001 .001 .001" />
+    <mesh name="right_ankle_roll_motor_mesh" file="right_ankle_roll_motor.stl" scale=".001 .001 .001" />
+    <mesh name="right_ankle_gimbal_mesh" file="right_ankle_gimbal.stl" scale=".001 .001 .001" />
+    <mesh name="right_foot_yoke_mesh" file="right_foot_yoke.stl" scale=".001 .001 .001" />
+    <mesh name="right_boot_shell_mesh" file="right_boot_shell.stl" scale=".001 .001 .001" />
+    <mesh name="right_sole_TPU_mesh" file="right_sole_TPU.stl" scale=".001 .001 .001" />
+  </asset>
+  <worldbody>
+    <light pos=".3 -.4 1" dir="-.2 .2 -1" directional="true" />
+    <geom name="floor" type="plane" size="2 2 .05" rgba=".89 .91 .92 1" friction="0.8 .003 .0001" condim="3" />
+    <body name="base" pos="-0.011816583187 -9.18385893789e-06 0.0845815478015">
+      <freejoint name="floating_base" />
+      <body name="left_hip_roll" pos="-0.006 0.019 0.025">
+        <joint name="left_hip_roll" axis="1 0 0" range="-0.28 0.28" class="joint_defaults" />
+        <body name="left_hip_pitch" pos="0.02 0 0">
+          <joint name="left_hip_pitch" axis="0 1 0" range="0.1 1.35" class="joint_defaults" />
+          <body name="left_knee" pos="0 0 -0.05">
+            <joint name="left_knee" axis="0 1 0" range="-1.95 -0.35" class="joint_defaults" />
+            <body name="left_ankle_pitch" pos="0 0.006 -0.044">
+              <joint name="left_ankle_pitch" axis="0 1 0" range="0.05 1.35" class="joint_defaults" />
+              <body name="left_ankle_roll" pos="-0.026 0 -0.01">
+                <joint name="left_ankle_roll" axis="1 0 0" range="-0.28 0.28" class="joint_defaults" />
+                <site name="left_sole" type="box" pos="0.008 0.004 -0.022" size="0.047 0.026 0.0005" rgba="0 .7 .5 .25" group="4" />
+                <inertial mass="0.06710168920947454" pos="0.00604340071633 0.00671422678767 -0.00744313920121" fullinertia="3.77056467254e-05 8.12863322653e-05 8.39357306847e-05 -1.83837919617e-07 3.21016254085e-06 -4.95972189723e-06" />
+                <geom name="vis_left_foot_yoke" type="mesh" mesh="left_foot_yoke_mesh" rgba="0.28 0.34 0.36 1" contype="0" conaffinity="0" group="2" mass="0" />
+                <geom name="col_left_foot_yoke_0" type="box" pos="0.008 0.004 -0.0175" size="0.047 0.026 0.0015" class="collision" />
+                <geom name="vis_left_boot_shell" type="mesh" mesh="left_boot_shell_mesh" rgba="0.77 0.81 0.8 1" contype="0" conaffinity="0" group="2" mass="0" />
+                <geom name="col_left_boot_shell_0" type="box" pos="0.002 0.029 0.0005" size="0.035 0.00075 0.0115" class="collision" />
+                <geom name="col_left_boot_shell_1" type="box" pos="0.002 0.029 0.022" size="0.029 0.00075 0.006" class="collision" />
+                <geom name="col_left_boot_shell_2" type="box" pos="0.002 -0.021 -0.008" size="0.035 0.00075 0.0045" class="collision" />
+                <geom name="col_left_boot_shell_3" type="box" pos="0.054 0.004 -0.006" size="0.0007 0.023 0.005" class="collision" />
+                <geom name="col_left_boot_shell_4" type="box" pos="-0.038 0.004 0.005" size="0.0007 0.023 0.0145" class="collision" />
+                <geom name="vis_left_sole_TPU" type="mesh" mesh="left_sole_TPU_mesh" rgba="0.12 0.16 0.17 1" contype="0" conaffinity="0" group="2" mass="0" />
+                <geom name="col_left_sole_TPU_0" type="box" pos="0.008 0.004 -0.0205" size="0.047 0.026 0.0015" class="collision" />
+              </body>
+              <inertial mass="0.023056416624148608" pos="-0.0366859618139 0.000427647217598 -0.00147546830583" fullinertia="4.27500089639e-06 6.41586851312e-06 5.73084345969e-06 -8.12227403335e-08 -2.22909751159e-07 -5.61061082591e-08" />
+              <geom name="vis_left_ankle_roll_motor" type="mesh" mesh="left_ankle_roll_motor_mesh" rgba="0.11 0.16 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+              <geom name="col_left_ankle_roll_motor_0" type="box" pos="-0.039 0 -0.003" size="0.013 0.01 0.017" class="collision" />
+              <geom name="vis_left_ankle_gimbal" type="mesh" mesh="left_ankle_gimbal_mesh" rgba="0.28 0.34 0.36 1" contype="0" conaffinity="0" group="2" mass="0" />
+            </body>
+            <inertial mass="0.023410050940515598" pos="0.000313662993956 0.00543197786853 -0.033360828316" fullinertia="7.08475817807e-06 5.35809447257e-06 3.38258281263e-06 2.11649184842e-08 -1.49501336436e-07 2.47803892639e-07" />
+            <geom name="vis_left_shin_yoke" type="mesh" mesh="left_shin_yoke_mesh" rgba="0.28 0.34 0.36 1" contype="0" conaffinity="0" group="2" mass="0" />
+            <geom name="col_left_shin_yoke_0" type="box" pos="0 -0.0145 -0.007" size="0.008 0.0008 0.0065" class="collision" />
+            <geom name="col_left_shin_yoke_1" type="box" pos="0 0.0196 -0.007" size="0.008 0.0008 0.0065" class="collision" />
+            <geom name="col_left_shin_yoke_2" type="box" pos="0 -0.0125 -0.0325" size="0.008 0.0008 0.0115" class="collision" />
+            <geom name="col_left_shin_yoke_3" type="box" pos="0 0.0216 -0.0325" size="0.008 0.0008 0.0115" class="collision" />
+            <geom name="vis_left_ankle_pitch_motor" type="mesh" mesh="left_ankle_pitch_motor_mesh" rgba="0.11 0.16 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+            <geom name="col_left_ankle_pitch_motor_0" type="box" pos="0 0.006 -0.037" size="0.01 0.013 0.017" class="collision" />
+          </body>
+          <inertial mass="0.029755038566515592" pos="0.000250241719007 -2.15668886457e-16 -0.0390217669833" fullinertia="9.6777213965e-06 7.55996851597e-06 4.19232559917e-06 2.64808768259e-21 -8.57905239126e-08 8.27971672693e-20" />
+          <geom name="vis_left_thigh_yoke" type="mesh" mesh="left_thigh_yoke_mesh" rgba="0.28 0.34 0.36 1" contype="0" conaffinity="0" group="2" mass="0" />
+          <geom name="col_left_thigh_yoke_0" type="box" pos="0 -0.0168 -0.025" size="0.0085 0.0012 0.025" class="collision" />
+          <geom name="col_left_thigh_yoke_1" type="box" pos="0 0.0168 -0.025" size="0.0085 0.0012 0.025" class="collision" />
+          <geom name="vis_left_knee_motor" type="mesh" mesh="left_knee_motor_mesh" rgba="0.11 0.16 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+          <geom name="col_left_knee_motor_0" type="box" pos="0 0 -0.043" size="0.01 0.013 0.017" class="collision" />
+        </body>
+        <inertial mass="0.02730210605957944" pos="0.0183199416856 1.26877268507e-19 0.00809677501526" fullinertia="5.2871922005e-06 4.51797586763e-06 3.49775984664e-06 -5.81654734088e-23 -1.00122336864e-07 -4.94891423789e-23" />
+        <geom name="vis_left_roll_to_pitch_carrier" type="mesh" mesh="left_roll_to_pitch_carrier_mesh" rgba="0.28 0.34 0.36 1" contype="0" conaffinity="0" group="2" mass="0" />
+        <geom name="col_left_roll_to_pitch_carrier_0" type="box" pos="0.0085 0 0.0075" size="0.001 0.0145 0.0185" class="collision" />
+        <geom name="col_left_roll_to_pitch_carrier_1" type="box" pos="0.02 -0.0142 0.007" size="0.0125 0.0007 0.017" class="collision" />
+        <geom name="col_left_roll_to_pitch_carrier_2" type="box" pos="0.02 0.0142 0.007" size="0.0125 0.0007 0.017" class="collision" />
+        <geom name="col_left_roll_to_pitch_carrier_3" type="box" pos="0.02 0 0.0252" size="0.0095 0.0145 0.001" class="collision" />
+        <geom name="vis_left_hip_pitch_motor" type="mesh" mesh="left_hip_pitch_motor_mesh" rgba="0.11 0.16 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+        <geom name="col_left_hip_pitch_motor_0" type="box" pos="0.02 0 0.007" size="0.01 0.013 0.017" class="collision" />
+      </body>
+      <body name="right_hip_roll" pos="-0.006 -0.019 0.025">
+        <joint name="right_hip_roll" axis="1 0 0" range="-0.28 0.28" class="joint_defaults" />
+        <body name="right_hip_pitch" pos="0.02 0 0">
+          <joint name="right_hip_pitch" axis="0 1 0" range="0.1 1.35" class="joint_defaults" />
+          <body name="right_knee" pos="0 0 -0.05">
+            <joint name="right_knee" axis="0 1 0" range="-1.95 -0.35" class="joint_defaults" />
+            <body name="right_ankle_pitch" pos="0 -0.006 -0.044">
+              <joint name="right_ankle_pitch" axis="0 1 0" range="0.05 1.35" class="joint_defaults" />
+              <body name="right_ankle_roll" pos="-0.026 0 -0.01">
+                <joint name="right_ankle_roll" axis="1 0 0" range="-0.28 0.28" class="joint_defaults" />
+                <site name="right_sole" type="box" pos="0.008 -0.004 -0.022" size="0.047 0.026 0.0005" rgba="0 .7 .5 .25" group="4" />
+                <inertial mass="0.06710168920947443" pos="0.00604340071633 -0.00671422678767 -0.00744313920121" fullinertia="3.77056467254e-05 8.12863322653e-05 8.39357306847e-05 1.83837919617e-07 3.21016254085e-06 4.95972189723e-06" />
+                <geom name="vis_right_foot_yoke" type="mesh" mesh="right_foot_yoke_mesh" rgba="0.28 0.34 0.36 1" contype="0" conaffinity="0" group="2" mass="0" />
+                <geom name="col_right_foot_yoke_0" type="box" pos="0.008 -0.004 -0.0175" size="0.047 0.026 0.0015" class="collision" />
+                <geom name="vis_right_boot_shell" type="mesh" mesh="right_boot_shell_mesh" rgba="0.77 0.81 0.8 1" contype="0" conaffinity="0" group="2" mass="0" />
+                <geom name="col_right_boot_shell_0" type="box" pos="0.002 -0.029 0.0005" size="0.035 0.00075 0.0115" class="collision" />
+                <geom name="col_right_boot_shell_1" type="box" pos="0.002 -0.029 0.022" size="0.029 0.00075 0.006" class="collision" />
+                <geom name="col_right_boot_shell_2" type="box" pos="0.002 0.021 -0.008" size="0.035 0.00075 0.0045" class="collision" />
+                <geom name="col_right_boot_shell_3" type="box" pos="0.054 -0.004 -0.006" size="0.0007 0.023 0.005" class="collision" />
+                <geom name="col_right_boot_shell_4" type="box" pos="-0.038 -0.004 0.005" size="0.0007 0.023 0.0145" class="collision" />
+                <geom name="vis_right_sole_TPU" type="mesh" mesh="right_sole_TPU_mesh" rgba="0.12 0.16 0.17 1" contype="0" conaffinity="0" group="2" mass="0" />
+                <geom name="col_right_sole_TPU_0" type="box" pos="0.008 -0.004 -0.0205" size="0.047 0.026 0.0015" class="collision" />
+              </body>
+              <inertial mass="0.023056416624148608" pos="-0.0366859618139 -0.000427647217598 -0.00147546830583" fullinertia="4.27500089639e-06 6.41586851312e-06 5.73084345969e-06 8.12227403335e-08 -2.22909751159e-07 5.61061082591e-08" />
+              <geom name="vis_right_ankle_roll_motor" type="mesh" mesh="right_ankle_roll_motor_mesh" rgba="0.11 0.16 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+              <geom name="col_right_ankle_roll_motor_0" type="box" pos="-0.039 0 -0.003" size="0.013 0.01 0.017" class="collision" />
+              <geom name="vis_right_ankle_gimbal" type="mesh" mesh="right_ankle_gimbal_mesh" rgba="0.28 0.34 0.36 1" contype="0" conaffinity="0" group="2" mass="0" />
+            </body>
+            <inertial mass="0.023410050940515598" pos="0.000313662993956 -0.00543197786853 -0.033360828316" fullinertia="7.08475817807e-06 5.35809447257e-06 3.38258281263e-06 -2.11649184842e-08 -1.49501336436e-07 -2.47803892639e-07" />
+            <geom name="vis_right_shin_yoke" type="mesh" mesh="right_shin_yoke_mesh" rgba="0.28 0.34 0.36 1" contype="0" conaffinity="0" group="2" mass="0" />
+            <geom name="col_right_shin_yoke_0" type="box" pos="0 0.0145 -0.007" size="0.008 0.0008 0.0065" class="collision" />
+            <geom name="col_right_shin_yoke_1" type="box" pos="0 -0.0196 -0.007" size="0.008 0.0008 0.0065" class="collision" />
+            <geom name="col_right_shin_yoke_2" type="box" pos="0 0.0125 -0.0325" size="0.008 0.0008 0.0115" class="collision" />
+            <geom name="col_right_shin_yoke_3" type="box" pos="0 -0.0216 -0.0325" size="0.008 0.0008 0.0115" class="collision" />
+            <geom name="vis_right_ankle_pitch_motor" type="mesh" mesh="right_ankle_pitch_motor_mesh" rgba="0.11 0.16 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+            <geom name="col_right_ankle_pitch_motor_0" type="box" pos="0 -0.006 -0.037" size="0.01 0.013 0.017" class="collision" />
+          </body>
+          <inertial mass="0.029755038566515592" pos="0.000250241719007 -2.15668886457e-16 -0.0390217669833" fullinertia="9.6777213965e-06 7.55996851597e-06 4.19232559917e-06 2.64808768259e-21 -8.57905239126e-08 8.27971672693e-20" />
+          <geom name="vis_right_thigh_yoke" type="mesh" mesh="right_thigh_yoke_mesh" rgba="0.28 0.34 0.36 1" contype="0" conaffinity="0" group="2" mass="0" />
+          <geom name="col_right_thigh_yoke_0" type="box" pos="0 -0.0168 -0.025" size="0.0085 0.0012 0.025" class="collision" />
+          <geom name="col_right_thigh_yoke_1" type="box" pos="0 0.0168 -0.025" size="0.0085 0.0012 0.025" class="collision" />
+          <geom name="vis_right_knee_motor" type="mesh" mesh="right_knee_motor_mesh" rgba="0.11 0.16 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+          <geom name="col_right_knee_motor_0" type="box" pos="0 0 -0.043" size="0.01 0.013 0.017" class="collision" />
+        </body>
+        <inertial mass="0.02730210605957944" pos="0.0183199416856 1.26877268507e-19 0.00809677501526" fullinertia="5.2871922005e-06 4.51797586763e-06 3.49775984664e-06 -5.81654734088e-23 -1.00122336864e-07 -4.94891423789e-23" />
+        <geom name="vis_right_roll_to_pitch_carrier" type="mesh" mesh="right_roll_to_pitch_carrier_mesh" rgba="0.28 0.34 0.36 1" contype="0" conaffinity="0" group="2" mass="0" />
+        <geom name="col_right_roll_to_pitch_carrier_0" type="box" pos="0.0085 0 0.0075" size="0.001 0.0145 0.0185" class="collision" />
+        <geom name="col_right_roll_to_pitch_carrier_1" type="box" pos="0.02 -0.0142 0.007" size="0.0125 0.0007 0.017" class="collision" />
+        <geom name="col_right_roll_to_pitch_carrier_2" type="box" pos="0.02 0.0142 0.007" size="0.0125 0.0007 0.017" class="collision" />
+        <geom name="col_right_roll_to_pitch_carrier_3" type="box" pos="0.02 0 0.0252" size="0.0095 0.0145 0.001" class="collision" />
+        <geom name="vis_right_hip_pitch_motor" type="mesh" mesh="right_hip_pitch_motor_mesh" rgba="0.11 0.16 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+        <geom name="col_right_hip_pitch_motor_0" type="box" pos="0.02 0 0.007" size="0.01 0.013 0.017" class="collision" />
+      </body>
+      <inertial mass="0.48478809679899276" pos="0.00563838516092 1.12535396743e-05 0.0710967095222" fullinertia="0.00132572323055 0.00150615974706 0.00145746422445 -3.17598234472e-07 -0.000127948984863 -9.22375093862e-08" />
+      <geom name="vis_body_shroud" type="mesh" mesh="body_shroud_mesh" rgba="0.77 0.81 0.8 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="col_body_shroud_0" type="box" pos="-0.0062 -0.0631 0.064" size="0.0578 0.0009 0.064" class="collision" />
+      <geom name="col_body_shroud_1" type="box" pos="-0.0062 0.0631 0.064" size="0.0578 0.0009 0.064" class="collision" />
+      <geom name="col_body_shroud_2" type="box" pos="-0.0062 0 0.1271" size="0.0578 0.064 0.0009" class="collision" />
+      <geom name="col_body_shroud_3" type="box" pos="0.0631 0 0.0238" size="0.0009 0.064 0.0238" class="collision" />
+      <geom name="col_body_shroud_4" type="box" pos="-0.0062 -0.0575 0.0009" size="0.0578 0.0065 0.0009" class="collision" />
+      <geom name="col_body_shroud_5" type="box" pos="-0.0062 0.0575 0.0009" size="0.0578 0.0065 0.0009" class="collision" />
+      <geom name="vis_rear_cover" type="mesh" mesh="rear_cover_mesh" rgba="0.77 0.81 0.8 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="col_rear_cover_0" type="box" pos="-0.0631 0 0.064" size="0.0009 0.064 0.064" class="collision" />
+      <geom name="vis_Tab5" type="mesh" mesh="Tab5_mesh" rgba="0.77 0.81 0.8 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="col_Tab5_0" type="box" pos="0.058 0 0.088" size="0.006 0.064 0.04" class="collision" />
+      <geom name="vis_face_0" type="mesh" mesh="face_0_mesh" rgba="0.94 0.98 0.96 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="vis_face_1" type="mesh" mesh="face_1_mesh" rgba="0.94 0.98 0.96 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="vis_face_2" type="mesh" mesh="face_2_mesh" rgba="0.94 0.98 0.96 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="vis_screen" type="mesh" mesh="screen_mesh" rgba="0.012 0.022 0.025 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="vis_camera" type="mesh" mesh="camera_mesh" rgba="0.012 0.022 0.025 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="vis_battery_2S_reservation" type="mesh" mesh="battery_2S_reservation_mesh" rgba="0.18 0.22 0.25 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="vis_dedicated_5V_converter" type="mesh" mesh="dedicated_5V_converter_mesh" rgba="0.08 0.35 0.26 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="vis_TTL_interface" type="mesh" mesh="TTL_interface_mesh" rgba="0.08 0.35 0.26 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="vis_cables_and_fasteners" type="mesh" mesh="cables_and_fasteners_mesh" rgba="0.08 0.35 0.26 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="vis_left_hip_roll_motor" type="mesh" mesh="left_hip_roll_motor_mesh" rgba="0.11 0.16 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="col_left_hip_roll_motor_0" type="box" pos="-0.019 0.019 0.032" size="0.013 0.01 0.017" class="collision" />
+      <geom name="vis_left_fixed_roll_cradle" type="mesh" mesh="left_fixed_roll_cradle_mesh" rgba="0.28 0.34 0.36 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="vis_right_hip_roll_motor" type="mesh" mesh="right_hip_roll_motor_mesh" rgba="0.11 0.16 0.18 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <geom name="col_right_hip_roll_motor_0" type="box" pos="-0.019 -0.019 0.032" size="0.013 0.01 0.017" class="collision" />
+      <geom name="vis_right_fixed_roll_cradle" type="mesh" mesh="right_fixed_roll_cradle_mesh" rgba="0.28 0.34 0.36 1" contype="0" conaffinity="0" group="2" mass="0" />
+      <site name="imu" pos="0 0 .055" size=".003" rgba="0 1 1 1" group="4" />
+    </body>
+  </worldbody>
+  <sensor>
+    <gyro name="imu_gyro" site="imu" />
+    <accelerometer name="imu_accel" site="imu" />
+    <framequat name="base_quat" objtype="body" objname="base" />
+    <jointpos name="left_hip_roll_pos" joint="left_hip_roll" />
+    <jointvel name="left_hip_roll_vel" joint="left_hip_roll" />
+    <jointpos name="left_hip_pitch_pos" joint="left_hip_pitch" />
+    <jointvel name="left_hip_pitch_vel" joint="left_hip_pitch" />
+    <jointpos name="left_knee_pos" joint="left_knee" />
+    <jointvel name="left_knee_vel" joint="left_knee" />
+    <jointpos name="left_ankle_pitch_pos" joint="left_ankle_pitch" />
+    <jointvel name="left_ankle_pitch_vel" joint="left_ankle_pitch" />
+    <jointpos name="left_ankle_roll_pos" joint="left_ankle_roll" />
+    <jointvel name="left_ankle_roll_vel" joint="left_ankle_roll" />
+    <jointpos name="right_hip_roll_pos" joint="right_hip_roll" />
+    <jointvel name="right_hip_roll_vel" joint="right_hip_roll" />
+    <jointpos name="right_hip_pitch_pos" joint="right_hip_pitch" />
+    <jointvel name="right_hip_pitch_vel" joint="right_hip_pitch" />
+    <jointpos name="right_knee_pos" joint="right_knee" />
+    <jointvel name="right_knee_vel" joint="right_knee" />
+    <jointpos name="right_ankle_pitch_pos" joint="right_ankle_pitch" />
+    <jointvel name="right_ankle_pitch_vel" joint="right_ankle_pitch" />
+    <jointpos name="right_ankle_roll_pos" joint="right_ankle_roll" />
+    <jointvel name="right_ankle_roll_vel" joint="right_ankle_roll" />
+  </sensor>
+  <actuator>
+    <motor name="left_hip_roll_motor" joint="left_hip_roll" gear="1" ctrllimited="true" ctrlrange="-0.45 0.45" forcelimited="true" forcerange="-0.45 0.45" />
+    <motor name="left_hip_pitch_motor" joint="left_hip_pitch" gear="1" ctrllimited="true" ctrlrange="-0.26 0.26" forcelimited="true" forcerange="-0.26 0.26" />
+    <motor name="left_knee_motor" joint="left_knee" gear="1" ctrllimited="true" ctrlrange="-0.45 0.45" forcelimited="true" forcerange="-0.45 0.45" />
+    <motor name="left_ankle_pitch_motor" joint="left_ankle_pitch" gear="1" ctrllimited="true" ctrlrange="-0.26 0.26" forcelimited="true" forcerange="-0.26 0.26" />
+    <motor name="left_ankle_roll_motor" joint="left_ankle_roll" gear="1" ctrllimited="true" ctrlrange="-0.26 0.26" forcelimited="true" forcerange="-0.26 0.26" />
+    <motor name="right_hip_roll_motor" joint="right_hip_roll" gear="1" ctrllimited="true" ctrlrange="-0.45 0.45" forcelimited="true" forcerange="-0.45 0.45" />
+    <motor name="right_hip_pitch_motor" joint="right_hip_pitch" gear="1" ctrllimited="true" ctrlrange="-0.26 0.26" forcelimited="true" forcerange="-0.26 0.26" />
+    <motor name="right_knee_motor" joint="right_knee" gear="1" ctrllimited="true" ctrlrange="-0.45 0.45" forcelimited="true" forcerange="-0.45 0.45" />
+    <motor name="right_ankle_pitch_motor" joint="right_ankle_pitch" gear="1" ctrllimited="true" ctrlrange="-0.26 0.26" forcelimited="true" forcerange="-0.26 0.26" />
+    <motor name="right_ankle_roll_motor" joint="right_ankle_roll" gear="1" ctrllimited="true" ctrlrange="-0.26 0.26" forcelimited="true" forcerange="-0.26 0.26" />
+  </actuator>
+  <keyframe>
+    <key name="home" qpos="-0.011816583187 -9.18385893789e-06 0.0845815478015 1 0 0 0 0.000104860283333 0.441524946578 -1.18540945229 0.743884505711 -0.000104860283333 0.000104861036626 0.441544930579 -1.18545733825 0.74391240767 -0.000104861036626" />
+  </keyframe>
+</mujoco>
