@@ -236,7 +236,7 @@ class CompatibilityAndSelectionTests(unittest.TestCase):
     def test_invalid_objective_and_transfer_rejected(self):
         c=load_config();c['transfer']['reset_log_std']=10
         with self.assertRaises(ValueError):validate(c)
-        c=load_config();c['env']['walk_objective_version']=3
+        c=load_config();c['env']['walk_objective_version']=999
         with self.assertRaises(ValueError):validate(c)
 
     @staticmethod

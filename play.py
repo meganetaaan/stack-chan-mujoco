@@ -65,7 +65,8 @@ def main():
                     print(f"episode={episode} success={s['is_success']} duration={s['duration_s']:.2f}s "
                           f"forward={s['forward_m']:.3f}m landings={s['valid_landings']} "
                           f"forward_landings={s.get('forward_landings', 'legacy')} "
-                          f"behavior={s.get('behavior','legacy')} reason={s['failure_reason']}")
+                          f"behavior={s.get('behavior','legacy')} reason={s['failure_reason']} "
+                          f"failed={s.get('failed_checks', [])} pitch_rms={s.get('pitch_rate_rms_rad_s', 'not_measured')}")
                     break
     finally:
         env.close()

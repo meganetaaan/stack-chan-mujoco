@@ -55,12 +55,25 @@ def reward_terms(s: dict, w: dict, task: str, dt: float, terminated: bool) -> di
     progress is new body high-water distance, not abs(displacement).
     """
     result = _legacy_reward_terms(s, w, task, dt, terminated)
-    if terminated or task != "walk" or s.get("walk_objective_version", 1) != 2:
+    if terminated or task != "walk" or s.get("walk_objective_version", 1) not in (2, 3):
         return result
     for k in ("forward_progress", "unload", "liftoff_event", "forward_landing_event",
               "alternating_event", "no_step", "overspeed"):
         result[k] = 0.0
     moving = s["command"][0] > 0.003
+    if s.get("walk_objective_version") == 3:
+        quality = s.get("gait_quality", {})
+        # Preserve v2 stepping rewards. Do not synthesize forces or change PD.
+        result.update({
+            "pitch_rate": -w["pitch_rate"]*min(100., float(quality.get("pitch_rate_sq", 0.)))*dt,
+            "pitch_excursion": -w["pitch_excursion"]*float(quality.get("pitch_excursion_cost", 0.))*dt,
+            "action_acceleration": -w["action_acceleration"]*float(np.mean(np.asarray(s.get("action_second_delta", np.zeros(10)))**2))*dt,
+            "impact_load": -w["impact_load"]*float(quality.get("impact_load_cost", 0.))*dt,
+            # Event sums: no dt factor. All events below are zero at stop.
+            "touchdown_speed": -w["touchdown_speed"]*float(quality.get("touchdown_speed_cost", 0.)) if moving else 0.,
+            "step_imbalance": -w["step_imbalance"]*float(quality.get("recent_step_imbalance_cost", 0.))*dt if moving else 0.,
+            "repeated_step": -w["repeated_step"]*float(quality.get("repeated_landing_events", 0.)) if moving else 0.,
+        })
     if not moving:
         return result
     cmd = float(s["command"][0])

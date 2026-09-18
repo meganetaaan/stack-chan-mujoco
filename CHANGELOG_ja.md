@@ -1,3 +1,23 @@
+# v3.0.0 変更一覧
+
+- Stage 1.5設定 `configs/walk_refine.json` を追加。既存の `walk` / Stage 1〜3設定は変更しません。
+- `quality.py`：1 kHzのpitch/load/touchdown計測、50 Hzのaction/target error、4秒の前進着地バランス。
+- `env.py`：読み取り専用のsubstep telemetryを追加。観測/サーボ/物理設定は維持。
+- `rewards.py`：v3専用にpitch、二階差分、着地荷重、接近速度、偏り、連打のコスト。
+- `walk_events.py`：既存判定を維持し、イベントの左右識別を追加。
+- `evaluation.py`：独立したquality gate、失敗条件、歩行を前提とするquality選択。
+- `training.py`：actor/log_std保持・critic再初期化、開始時評価とinitial/best保存、品質ログ。
+- `evaluate.py`：同一interfaceでの明示config評価、1epごとのログ/部分保存、seed記録。
+- `diagnose_gait.py`：JSONの失敗条件診断と、同一条件による前後比較。
+- `play.py`：閉じたviewerの同期回避とlock。GLXドライバー修正ではありません。
+- `benchmark.py --config`、品質条件を確認するcheck_stage、refineまでのsmoke経路を追加。
+- Stage 2/3用に整形目的を保持する `walk_step2_smooth.json` / `walk_step3_smooth.json` を別名で追加。
+- v3 unit tests、実MuJoCo/SB3用テスト、実行記録と日本語手順。
+
+モデル・PD・出力のスケールを変えるパッチではありません。新規学習にはv2のwalk_step1/bestを `--init-from` で指定します。v2の `--resume` はv2の報酬を維持します。
+
+---
+
 # v2.0.0 変更一覧
 
 ## 変更したもの

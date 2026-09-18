@@ -5,6 +5,7 @@ from copy import deepcopy
 import csv
 from pathlib import Path
 import numpy as np
+from .quality import quality_score
 
 
 def classify_behavior(s: dict) -> str:
@@ -19,11 +20,14 @@ def classify_behavior(s: dict) -> str:
         return "one_sided_stepping"
     if s["forward_m"] < 0.025:
         return "stepping_in_place"
+    if s.get("locomotion_pass") and not s.get("is_success"):
+        return "walking_needs_refinement"
     return "walk_success" if s.get("is_success") else "walking_candidate_failed_checks"
 
 
 def evaluate_agent(agent, config: dict, episodes: int, seed: int, command: float | None = None,
-                   trajectory_dir: str | Path | None = None, no_noise: bool = False) -> dict:
+                   trajectory_dir: str | Path | None = None, no_noise: bool = False,
+                   on_episode=None) -> dict:
     from .env import StackChanEnv
     if episodes <= 0:
         raise ValueError("episodes must be positive")
@@ -56,7 +60,10 @@ def evaluate_agent(agent, config: dict, episodes: int, seed: int, command: float
                         summary = info["episode_summary"]
                         summary["seed"] = seed+ep
                         summary["episode_limit_s"] = cfg["env"]["episode_seconds"]
+                        summary["no_noise"] = bool(no_noise)
                         summaries.append(summary)
+                        if on_episode is not None:
+                            on_episode(summary)
                         break
             finally:
                 if handle:
@@ -106,7 +113,31 @@ def aggregate(summaries: list[dict], selection_version: int = 1, *, physics_exec
         key = [min(per_command), float(np.mean(per_command)), motion_score,
                float(np.mean([min(s.get("forward_landings",[0,0])) for s in moving])) if moving else 0.,
                duration, reward]
+    if selection_version == 3:
+        per_command = [v["success_rate"] for v in by_command.values()]
+        # Quality is allowed to rank a candidate only AFTER genuine walking.
+        # This prevents selecting a motionless but extremely smooth policy.
+        def gate(s):
+            return bool(s.get("locomotion_pass", False) and s.get("quality_samples", 0) > 0)
+        eligible = [s for s in moving if gate(s)]
+        eligible_rate = len(eligible)/max(1, len(moving))
+        qscore = float(np.mean([quality_score(s) for s in eligible])) if eligible else 0.
+        key = [eligible_rate, min(per_command), float(np.mean(per_command)),
+               qscore if eligible else motion_score,
+               motion_score if eligible else 0., reward]
+    measured = [s for s in summaries if s.get("quality_samples", 0) > 0]
+    quality_fields = ("pitch_rate_rms_rad_s", "roll_rate_rms_rad_s", "body_pitch_peak_to_peak_deg",
+                      "action_delta_rms", "action_second_difference_rms", "mean_excess_load_cost",
+                      "mean_recent_step_imbalance_cost", "repeated_valid_landings")
+    mean_quality = {k: float(np.mean([s[k] for s in measured])) for k in quality_fields} if measured else {}
+    if measured:
+        mean_quality["mean_peak_sole_load_bw"] = float(np.mean([max(s["peak_sole_load_bw"]) for s in measured]))
+        mean_quality["max_peak_sole_load_bw"] = float(max(max(s["peak_sole_load_bw"]) for s in measured))
     return {
+        "mean_quality": mean_quality,
+        "quality_measured_episodes": len(measured),
+        "locomotion_pass_rate": float(np.mean([s.get("locomotion_pass", False) for s in summaries])),
+        "failed_check_counts": dict(Counter(k for s in summaries for k in s.get("failed_checks", []))),
         "physics_executed": bool(physics_executed),
         "episodes": len(summaries), "success_rate": success,
         "successful_episodes": sum(s["is_success"] for s in summaries),

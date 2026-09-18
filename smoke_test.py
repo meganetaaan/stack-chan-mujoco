@@ -28,6 +28,12 @@ def main():
         ["evaluate.py", "--checkpoint", str(out / "stand/final"), "--episodes", "2", "--out", str(out / "evaluation.json")],
         ["train.py", "--resume", str(out / "stand/final"), "--run-dir", str(out / "resume"), "--total-timesteps", "128", "--no-tensorboard"],
         ["train.py", "--config", "configs/walk_smoke.json", "--init-from", str(out / "stand/final"), "--run-dir", str(out / "walk"), "--num-envs", n, "--no-tensorboard"],
+        ["train.py", "--config", "configs/refine_smoke.json", "--init-from", str(out / "walk/final"),
+         "--run-dir", str(out / "refine"), "--num-envs", n, "--no-tensorboard"],
+        ["evaluate.py", "--checkpoint", str(out / "refine/final"), "--episodes", "1", "--commands", "0.02",
+         "--out", str(out / "refine_eval.json"), "--trajectories", str(out / "refine_csv")],
+        ["train.py", "--resume", str(out / "refine/final"), "--run-dir", str(out / "refine_resume"),
+         "--total-timesteps", "128", "--no-tensorboard"],
     ]
     records = []
     for i, command in enumerate(commands):

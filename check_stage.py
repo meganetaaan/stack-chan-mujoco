@@ -25,6 +25,8 @@ def check_report(report: dict, minimum_success: float) -> tuple[bool, list[dict]
         def accepted(s):
             checks=s.get('success_checks',{})
             if not s.get('is_success') or not checks or not all(checks.values()):return False
+            quality = s.get('quality_checks', {})
+            if s.get('walk_objective_version') == 3 and (not quality or not all(quality.values())):return False
             if abs(s.get('requested_forward_m_s',-1.)-command)>1e-8:return False
             if s.get('terminated') or not s.get('time_limit_reached'):return False
             if command > .003:

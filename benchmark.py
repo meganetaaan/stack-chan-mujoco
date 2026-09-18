@@ -17,6 +17,7 @@ def worker(cfg):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--config", type=Path, help="Benchmark the same config used for learning")
     p.add_argument("--num-envs", type=int, nargs="+", default=[1, 4, 6])
     p.add_argument("--vector-steps", type=int, default=300)
     args = p.parse_args()
@@ -25,7 +26,7 @@ def main():
     import numpy as np
     from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv
     from stackchan_rl.config import ROOT, load_config
-    cfg = load_config(ROOT / "configs/stand.json")
+    cfg = load_config(args.config or ROOT / "configs/stand.json")
     for n in args.num_envs:
         fns = [partial(worker, cfg) for _ in range(n)]
         env = DummyVecEnv(fns) if n == 1 else SubprocVecEnv(fns, start_method="spawn")

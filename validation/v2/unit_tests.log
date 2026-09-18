@@ -38,66 +38,6 @@ test_ten_ms_delay (test_offline.ServoTests.test_ten_ms_delay) ... ok
 test_torque_cap (test_offline.ServoTests.test_torque_cap) ... ok
 test_torque_speed_envelope (test_offline.ServoTests.test_torque_speed_envelope) ... ok
 test_zero_action_is_home (test_offline.ServoTests.test_zero_action_is_home) ... ok
-test_action_and_tracking_error_statistics (test_refine.QualityMeasurementTests.test_action_and_tracking_error_statistics) ... ok
-test_body_axes_roll_pitch (test_refine.QualityMeasurementTests.test_body_axes_roll_pitch) ... ok
-test_finite_telemetry_validation (test_refine.QualityMeasurementTests.test_finite_telemetry_validation) ... ok
-test_first_extra_step_not_punished (test_refine.QualityMeasurementTests.test_first_extra_step_not_punished) ... ok
-test_fresh_episode_resets_metrics (test_refine.QualityMeasurementTests.test_fresh_episode_resets_metrics) ... ok
-test_initial_drop_is_not_touchdown_event (test_refine.QualityMeasurementTests.test_initial_drop_is_not_touchdown_event) ... ok
-test_initial_settling_excluded (test_refine.QualityMeasurementTests.test_initial_settling_excluded) ... ok
-test_interval_reset_retains_episode_metrics (test_refine.QualityMeasurementTests.test_interval_reset_retains_episode_metrics) ... ok
-test_large_load_penalized_and_normalized_by_bodyweight (test_refine.QualityMeasurementTests.test_large_load_penalized_and_normalized_by_bodyweight) ... ok
-test_pitch_and_roll_rates_separated (test_refine.QualityMeasurementTests.test_pitch_and_roll_rates_separated) ... ok
-test_pitch_deadband (test_refine.QualityMeasurementTests.test_pitch_deadband) ... ok
-test_recent_window_forgives_past_bias (test_refine.QualityMeasurementTests.test_recent_window_forgives_past_bias) ... ok
-test_repeated_steps_and_recent_imbalance (test_refine.QualityMeasurementTests.test_repeated_steps_and_recent_imbalance) ... ok
-test_short_contact_chatter_not_touchdown_event (test_refine.QualityMeasurementTests.test_short_contact_chatter_not_touchdown_event) ... ok
-test_static_bodyweight_load_not_penalized (test_refine.QualityMeasurementTests.test_static_bodyweight_load_not_penalized) ... ok
-test_stop_clears_sequence_penalty (test_refine.QualityMeasurementTests.test_stop_clears_sequence_penalty) ... ok
-test_substep_oscillation_does_not_cancel (test_refine.QualityMeasurementTests.test_substep_oscillation_does_not_cancel) ... ok
-test_valid_raw_touchdown_speed_cost (test_refine.QualityMeasurementTests.test_valid_raw_touchdown_speed_cost) ... ok
-test_actor_distribution_preserved_and_value_reinitialized (test_refine.RefineConfigTests.test_actor_distribution_preserved_and_value_reinitialized) ... ok
-test_legacy_config_does_not_silently_upgrade (test_refine.RefineConfigTests.test_legacy_config_does_not_silently_upgrade) ... ok
-test_no_new_physical_limits_or_gain (test_refine.RefineConfigTests.test_no_new_physical_limits_or_gain) ... ok
-test_no_quality_sampling_rejected_for_v3 (test_refine.RefineConfigTests.test_no_quality_sampling_rejected_for_v3) ... ok
-test_refine_interface_identical_to_v2_and_stand (test_refine.RefineConfigTests.test_refine_interface_identical_to_v2_and_stand) ... ok
-test_refine_smoke_can_transfer_from_walk_smoke (test_refine.RefineConfigTests.test_refine_smoke_can_transfer_from_walk_smoke) ... ok
-test_telemetry_can_measure_old_without_new_rewards (test_refine.RefineConfigTests.test_telemetry_can_measure_old_without_new_rewards) ... ok
-test_zero_quality_scale_rejected (test_refine.RefineConfigTests.test_zero_quality_scale_rejected) ... ok
-test_comparison_identifies_forward_regression (test_refine.RefineDiagnosticTests.test_comparison_identifies_forward_regression) ... ok
-test_comparison_identifies_improvement (test_refine.RefineDiagnosticTests.test_comparison_identifies_improvement) ... ok
-test_comparison_requires_same_seeds (test_refine.RefineDiagnosticTests.test_comparison_requires_same_seeds) ... ok
-test_old_results_have_failed_checks_but_missing_quality (test_refine.RefineDiagnosticTests.test_old_results_have_failed_checks_but_missing_quality) ... ok
-test_partial_reports_not_treated_as_complete (test_refine.RefineDiagnosticTests.test_partial_reports_not_treated_as_complete) ... ok
-test_event_cost_not_scaled_by_dt (test_refine.RefineRewardTests.test_event_cost_not_scaled_by_dt) ... ok
-test_forward_velocity_and_step_reward_preserved (test_refine.RefineRewardTests.test_forward_velocity_and_step_reward_preserved) ... ok
-test_normalized_action_second_difference_penalty (test_refine.RefineRewardTests.test_normalized_action_second_difference_penalty) ... ok
-test_pitch_oscillation_penalized_more_than_roll (test_refine.RefineRewardTests.test_pitch_oscillation_penalized_more_than_roll) ... ok
-test_rate_costs_integrate_dt (test_refine.RefineRewardTests.test_rate_costs_integrate_dt) ... ok
-test_smooth_measured_walking_scores_above_shaky_same_progress (test_refine.RefineRewardTests.test_smooth_measured_walking_scores_above_shaky_same_progress) ... ok
-test_standing_does_not_gain_velocity_reward (test_refine.RefineRewardTests.test_standing_does_not_gain_velocity_reward) ... ok
-test_static_lean_within_band_has_no_pitch_cost (test_refine.RefineRewardTests.test_static_lean_within_band_has_no_pitch_cost) ... ok
-test_stop_has_no_step_or_touchdown_cost (test_refine.RefineRewardTests.test_stop_has_no_step_or_touchdown_cost) ... ok
-test_termination_remains_penalty_only (test_refine.RefineRewardTests.test_termination_remains_penalty_only) ... ok
-test_v2_reward_unchanged_when_v3_fields_added (test_refine.RefineRewardTests.test_v2_reward_unchanged_when_v3_fields_added) ... ok
-test_failed_checks_names_exposed_by_aggregate (test_refine.RefineSelectionTests.test_failed_checks_names_exposed_by_aggregate) ... ok
-test_high_reward_not_enough (test_refine.RefineSelectionTests.test_high_reward_not_enough) ... ok
-test_missing_measurement_never_passes_quality (test_refine.RefineSelectionTests.test_missing_measurement_never_passes_quality) ... ok
-test_moving_but_uneven_counts_fail_quality_not_locomotion (test_refine.RefineSelectionTests.test_moving_but_uneven_counts_fail_quality_not_locomotion) ... ok
-test_nonmoving_failed_recovery_ranked_by_motion_not_stillness (test_refine.RefineSelectionTests.test_nonmoving_failed_recovery_ranked_by_motion_not_stillness) ... ok
-test_one_extra_step_at_end_allowed (test_refine.RefineSelectionTests.test_one_extra_step_at_end_allowed) ... ok
-test_one_sided_steps_not_eligible (test_refine.RefineSelectionTests.test_one_sided_steps_not_eligible) ... ok
-test_quality_not_applied_to_legacy_objective (test_refine.RefineSelectionTests.test_quality_not_applied_to_legacy_objective) ... ok
-test_smooth_stopping_never_outranks_real_walking (test_refine.RefineSelectionTests.test_smooth_stopping_never_outranks_real_walking) ... ok
-test_smooth_walk_preferred_over_shaky_walk (test_refine.RefineSelectionTests.test_smooth_walk_preferred_over_shaky_walk) ... ok
-test_SB3_contract (test_refine_runtime.RefineRuntimeTests.test_SB3_contract) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v3 runtime NOT EXECUTED'
-test_actual_SB3_transfer_preserves_mean_AND_exploration (test_refine_runtime.RefineRuntimeTests.test_actual_SB3_transfer_preserves_mean_AND_exploration) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v3 runtime NOT EXECUTED'
-test_object_velocity_axis_matches_existing_jacobian_measurement (test_refine_runtime.RefineRuntimeTests.test_object_velocity_axis_matches_existing_jacobian_measurement) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v3 runtime NOT EXECUTED'
-test_quality_csv_schema_fixed_across_episode (test_refine_runtime.RefineRuntimeTests.test_quality_csv_schema_fixed_across_episode) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v3 runtime NOT EXECUTED'
-test_reset_clears_all_quality_history (test_refine_runtime.RefineRuntimeTests.test_reset_clears_all_quality_history) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v3 runtime NOT EXECUTED'
-test_short_PPO_save_load_evaluate_and_selection_v3 (test_refine_runtime.RefineRuntimeTests.test_short_PPO_save_load_evaluate_and_selection_v3) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v3 runtime NOT EXECUTED'
-test_substep_sample_count_and_pitch_rate (test_refine_runtime.RefineRuntimeTests.test_substep_sample_count_and_pitch_rate) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v3 runtime NOT EXECUTED'
-test_telemetry_does_not_change_physics_or_legacy_rewards (test_refine_runtime.RefineRuntimeTests.test_telemetry_does_not_change_physics_or_legacy_rewards) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v3 runtime NOT EXECUTED'
 test_SB3_env_contract (test_runtime.RuntimeTests.test_SB3_env_contract) ... skipped 'MuJoCo / Gymnasium / SB3 missing: real runtime NOT EXECUTED'
 test_actual_A_compiles_and_steps (test_runtime.RuntimeTests.test_actual_A_compiles_and_steps) ... skipped 'MuJoCo / Gymnasium / SB3 missing: real runtime NOT EXECUTED'
 test_domain_randomization_is_not_cumulative (test_runtime.RuntimeTests.test_domain_randomization_is_not_cumulative) ... skipped 'MuJoCo / Gymnasium / SB3 missing: real runtime NOT EXECUTED'
@@ -156,6 +96,6 @@ test_short_v2_PPO_and_saved_evaluation (test_walk_v2_runtime.WalkV2RuntimeTests.
 test_v2_episode_reports_event_diagnostics (test_walk_v2_runtime.WalkV2RuntimeTests.test_v2_episode_reports_event_diagnostics) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v2 runtime NOT EXECUTED'
 
 ----------------------------------------------------------------------
-Ran 156 tests in 1.043s
+Ran 96 tests in 1.650s
 
-OK (skipped=22)
+OK (skipped=14)

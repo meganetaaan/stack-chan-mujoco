@@ -1,0 +1,1862 @@
+--- a/CHANGELOG_ja.md
++++ b/CHANGELOG_ja.md
+@@ -1,3 +1,23 @@
++# v3.0.0 変更一覧
++
++- Stage 1.5設定 `configs/walk_refine.json` を追加。既存の `walk` / Stage 1〜3設定は変更しません。
++- `quality.py`：1 kHzのpitch/load/touchdown計測、50 Hzのaction/target error、4秒の前進着地バランス。
++- `env.py`：読み取り専用のsubstep telemetryを追加。観測/サーボ/物理設定は維持。
++- `rewards.py`：v3専用にpitch、二階差分、着地荷重、接近速度、偏り、連打のコスト。
++- `walk_events.py`：既存判定を維持し、イベントの左右識別を追加。
++- `evaluation.py`：独立したquality gate、失敗条件、歩行を前提とするquality選択。
++- `training.py`：actor/log_std保持・critic再初期化、開始時評価とinitial/best保存、品質ログ。
++- `evaluate.py`：同一interfaceでの明示config評価、1epごとのログ/部分保存、seed記録。
++- `diagnose_gait.py`：JSONの失敗条件診断と、同一条件による前後比較。
++- `play.py`：閉じたviewerの同期回避とlock。GLXドライバー修正ではありません。
++- `benchmark.py --config`、品質条件を確認するcheck_stage、refineまでのsmoke経路を追加。
++- Stage 2/3用に整形目的を保持する `walk_step2_smooth.json` / `walk_step3_smooth.json` を別名で追加。
++- v3 unit tests、実MuJoCo/SB3用テスト、実行記録と日本語手順。
++
++モデル・PD・出力のスケールを変えるパッチではありません。新規学習にはv2のwalk_step1/bestを `--init-from` で指定します。v2の `--resume` はv2の報酬を維持します。
++
++---
++
+ # v2.0.0 変更一覧
+ 
+ ## 変更したもの
+--- a/README_ja.md
++++ b/README_ja.md
+@@ -1,157 +1,157 @@
+-# R5-A PPO学習キット v2 — 停止方策から、離床・前進を探索する版
++# R5-A PPO v3 — Stage 1.5「歩容整形」
+ 
+-対象はA案（横置きTab5、128 × 128 × 128 mmのボディ）です。**MJCF、形状、質量・慣性、サーボ上限、61次元の観測、10次元actionの意味・スケールは変更していません。** 同じ仮想環境で実行できます。モデルとメッシュを同梱しています。
++v2の `runs/walk_step1/best` を初期値に、0.02 m/sの前進を維持しながら、前後の揺れ・指令の急変・左右の偏り・強い着地を抑える版です。立位からやり直しません。
+ 
+-今回の変更は学習目的、接地イベントの判定・診断、重みの引き継ぎ、best選択です。**学習済み方策は同梱していません。改修版で歩けると実証したものではありません。** 作成環境で実行できたテストと未実行項目は `TEST_REPORT_ja.md` に区別して記録しています。
++**A案のMJCF・メッシュ・慣性・サーボ・PDゲイン・トルク上限・61次元観測・10次元action・指令フィルターは変更していません。** モデル一式を同梱。追加ライブラリーはありません。`--task walk` は互換性のためv2のStage 1のままです。今回の学習は必ず `--config configs/walk_refine.json` を指定します。
+ 
+-`12秒完走 / forward=-0.005 / landings=[0,0]` は「成功」ではなく、検証済みの歩数がゼロという結果です。接地判定のしきい値未満の動きなどもあり得るので、ログだけから足を全く浮かせていない、立位が完全に習得済み、報酬だけが原因、とは断定しません。
++**実行済み：134件のオフラインテスト合格。未実行：MuJoCo/SB3等を必要とする22件、学習・GUI・ユーザーの既存方策との物理比較。** この環境では依存パッケージ取得先の名前解決に失敗しています。改修による歩容改善を実証した配布物ではありません。`TEST_REPORT_ja.md` を参照。
+ 
+-## 1. 旧学習結果を残して配置
++## 1. 旧フォルダーを残して展開
+ 
+-ZIPをWSLの `~/stack-chan-mujoco` へコピーした場合です。MuJoCoとSB3が動いている仮想環境を有効にした状態で実行します。
++現在MuJoCoとSB3が動作しているWSLの仮想環境を有効にして実行します。
+ 
+ ```bash
+ cd ~/stack-chan-mujoco
+-unzip stackchan_r5a_rl_v2.zip
+-cd stackchan_r5a_rl_v2
+-
+-# 追加の学習ライブラリーはありません。未導入の場合だけ実行します。
+-python -m pip install -r requirements.txt
++unzip stackchan_r5a_rl_v3.zip
++cd stackchan_r5a_rl_v3
+ 
+ python -m unittest discover -s tests -v
+ python smoke_test.py --subproc
+ ```
+ 
+-旧フォルダー `../stackchan_r5a_rl/` と `runs/stand`, `runs/walk` は消しません。旧チェックポイントの保存フォルダーは `model.zip` だけではなく、`config.json`, `interface.json`, `metadata.json`, `READY` を含む全体が必要です。
++未導入の環境では `python -m pip install -r requirements.txt` が必要です。`smoke_test.py` は短い学習・保存・再開・歩行への転送・整形への転送・評価を通す接続試験で、歩行の習得試験ではありません。失敗しても衝突やトルク上限を無効化せず、ログを確認してください。
+ 
+-`smoke_test.py` は短い学習・保存・読込み・再開と、v2へのactor転送を確認します。歩行の習得を試す長時間学習ではありません。エラーで止まった場合は、長時間学習へ進まずそのログを確認してください。
+-
+-## 2. Stage 1：0.02 m/s固定で「足を上げて、一歩進む」
++## 2. 今回歩いた方策から整形を開始
+ 
+ ```bash
+-python train.py --config configs/walk_step1.json \
+-  --init-from ../stackchan_r5a_rl/runs/stand/best \
++python train.py --config configs/walk_refine.json \
++  --init-from ../stackchan_r5a_rl_v2/runs/walk_step1/best \
+   --num-envs 4 \
+-  --total-timesteps 1000000 \
+-  --run-dir runs/walk_step1
++  --total-timesteps 500000 \
++  --run-dir runs/walk_refine
+ ```
+ 
+-`--task walk` もStage 1の設定を指します。**旧 `runs/walk/best` の `--resume` ではなく、`--init-from` と新しいrun-dirを使います。** `--resume` は保存された旧報酬を引き継ぐため、この改修を適用する操作にはなりません。
++**旧 `stand/best` ではなく、前進0.194 mを出した `walk_step1/best` を使用します。最初の切替には `--resume` を使いません。** `--resume` は保存時の報酬設定を維持する操作です。チェックポイントは `model.zip` だけでなく `config.json`, `interface.json`, `metadata.json`, `READY` を含むフォルダー全体が必要です。
+ 
+-初期値には旧standを使う手順です。旧walkを初期値に使う場合も `--init-from ../stackchan_r5a_rl/runs/walk/best` で指定できます。どちらが有利かは未比較です。Stage 1では、actor（行動の平均値を決めるネットワーク）の重みだけを引き継ぎ、critic（価値推定）とoptimizerを新しくします。探索用の `log_std` を−1.0へ設定します。旧モデルで探索分散が実際に縮んでいたかは、ユーザーの重みがないため確認できていません。引き継ぎ前後の値は `transfer.json` に記録します。
++方策の行動平均を決めるactorと学習済みlog_stdを引き継ぎます。新報酬用のcriticとoptimizerは新規。探索幅をStage 1の−1.0に戻して歩容を大きく壊すことはしません。学習率は0.00015→0.00005、entropy係数は0.01→0.001、clipは0.2→0.15、target_klは0.03→0.015にします。これらは最初の試行値です。
+ 
+-100万ステップは初回の試行量です。成功や収束を保証する回数ではありません。5万遷移ごとの評価で、前進量・左右の着地数・前進を伴う着地数・挙動分類を表示します。途中でも `best/` を再生して確認できます。
++開始時、転送直後の方策を新しい基準で6回評価し、`initial_evaluation.json` と `initial/`、`best/` へ保存してからPPO更新を始めます。25,000遷移ごとの評価で改善を確認します。**改善がなければ `best/` が開始時の方策のまま残ります。** `final/` は最後の更新結果、`best/` は評価で選ばれた候補で、同一とは限りません。
++
++50万ステップは初回の追加予算です。収束・改善の保証や所要時間の約束ではありません。新しい品質計測は1 kHzで行うため、v2よりCPU負荷が増える可能性があります。
++
++## 3. まずGUIなしで評価
+ 
+ ```bash
+-python play.py --checkpoint runs/walk_step1/best --command 0.02
++python evaluate.py --checkpoint runs/walk_refine/best \
++  --commands 0.02 --episodes 20 \
++  --out outputs/walk_refine_eval.json \
++  --trajectories outputs/walk_refine_trajectories
+ 
+-python evaluate.py --checkpoint runs/walk_step1/best \
+-  --commands 0.02 --episodes 20 \
+-  --out outputs/walk_step1_eval.json \
+-  --trajectories outputs/walk_step1_trajectories
+-
+-python check_stage.py --evaluation outputs/walk_step1_eval.json
++python diagnose_gait.py --evaluation outputs/walk_refine_eval.json \
++  --out outputs/walk_refine_diagnosis.json
+ ```
+ 
+-Stage 1の成功には、12秒完走、姿勢・接触条件に加えて、おおむね **前進25 mm以上、左右それぞれ2回以上の有効着地、左右それぞれ1回以上の前進を伴う着地、交互の切替3回以上** が必要です。25 mmは最初の学習段階の到達目標で、0.02 m/sの速度を12秒間正確に追従したことを意味しません。Stage 2では距離条件を厳しくします。
++各エピソードの `failed=[...]` に、失敗した条件を直接表示します。`failure_reason=None` は「時間上限まで走った」という状態で、全成功条件の達成とは別です。物理的な歩行条件と整形条件はそれぞれ `success_checks`, `quality_checks` に分け、両方が合格したときだけ `is_success=true` です。
+ 
+-`check_stage.py` は保存した評価データを読むだけです。各指令で60%以上の成功をデフォルトの進級目安とし、不合格なら終了コード2を返します。これは設計した目安で、統計的な信頼性や実機安全性の認定ではありません。
++途中経過を `walk_refine_eval.partial.json` に保存し、全試行の完了後に本番JSONを書き出します。`.partial.json` は未完了で、進級・正式な比較には使いません。評価コマンドの終了コード0は処理完了を示し、歩行成功を示すものではありません。
+ 
+-### 学習を追加する場合
++再生は独立したコマンドで行います。
+ 
+ ```bash
+-python train.py --resume runs/walk_step1/latest \
+-  --num-envs 4 --total-timesteps 1000000 \
+-  --run-dir runs/walk_step1
++python play.py --checkpoint runs/walk_refine/best \
++  --command 0.02 --episodes 1 --random-reset
+ ```
+ 
+-これはv2で保存したチェックポイントを再開するので、v2の報酬のまま継続します。`--total-timesteps` は追加する遷移数です。Ctrl+C時は `interrupted/` へ保存します。そこから再開する場合は `latest` を `interrupted` に置き換えます。シミュレーターの途中状態や乱数状態までの完全復元ではありません。
++`evaluate.py` はビューアーもOpenGLコンテキストも作らず、GUIの描画経路から分離しています。`GLXBadDrawable` のドライバー側原因を特定・修復したわけではありません。画面が閉じた際の確認とビューアー属性更新時のlockを加えていますが、GLX問題の解消を保証しません。
+ 
+-## 3. Stage 2：0.02〜0.04 m/sの連続歩行
++以前の `play.py` は既定で同じhome姿勢から3回再生します。提示された `episode=0..2` はその出力形式です。20回の評価が完了したかは、評価JSONと端末の終了状態を確認してください。v3の `evaluate.py` は各回のseedを記録し、既定では初期姿勢に乱れを入れます。
+ 
+-Stage 1の別seed評価と映像を確認してから進みます。自動的に学習時間だけで次の段階へ移す処理は入れていません。
++## 4. v2の方策と同じ条件で比較する
++
++旧チェックポイントを**新しいコード・新しい計測条件**で再評価します。保存済みの重み・旧設定は変更しません。
+ 
+ ```bash
+-python train.py --config configs/walk_step2.json \
+-  --init-from runs/walk_step1/best \
+-  --num-envs 4 --total-timesteps 2000000 \
+-  --run-dir runs/walk_step2
++python evaluate.py \
++  --checkpoint ../stackchan_r5a_rl_v2/runs/walk_step1/best \
++  --config configs/walk_refine.json \
++  --commands 0.02 --episodes 20 --seed 20000 \
++  --out outputs/before_refine.json \
++  --trajectories outputs/before_refine_trajectories
+ 
+-python evaluate.py --checkpoint runs/walk_step2/best \
+-  --commands 0.02,0.04 --episodes 20 \
+-  --out outputs/walk_step2_eval.json
+-python check_stage.py --evaluation outputs/walk_step2_eval.json
++python evaluate.py --checkpoint runs/walk_refine/best \
++  --config configs/walk_refine.json \
++  --commands 0.02 --episodes 20 --seed 20000 \
++  --out outputs/after_refine.json \
++  --trajectories outputs/after_refine_trajectories
++
++python diagnose_gait.py --evaluation outputs/after_refine.json \
++  --baseline outputs/before_refine.json \
++  --out outputs/refine_comparison.json
+ ```
+ 
+-Stage 2では指令距離の50%以上、左右それぞれ2回以上の前進着地を要求します。Stage 1と報酬式が共通なので、actorとcriticを引き継ぎます。探索分散も引き継ぎ、optimizerだけ新しくします。
++比較では同じ指令・seed・初期化条件・モデル・報酬・評価条件であることを検査します。単に旧版JSONと新品JSONを並べて、未計測の1 kHzピークを推定しません。20回試行の比較は統計的有意差や実機安全性の認定ではありません。
+ 
+-## 4. Stage 3：停止と0.02〜0.06 m/s歩行の統合
++診断用の初期目安は「平均前進量を旧方策の85%以上かつ80 mm以上に維持」「左右それぞれ平均2回以上の前進着地」「ピッチ角速度RMSを10%以上低減」「指令変化・ピーク荷重が5%超悪化しない」「転倒・異常接触が増えない」です。条件ごとの成否を返し、結果だけで自動進級はしません。
++
++## 5. 何を変えたか
++
++| 項目 | v3の内容 |
++|---|---|
++| 前進・離床 | v2の速度報酬、前進記録、離床・有効着地・前進着地を保持 |
++| ピッチの揺れ | 胴体ローカルY軸の角速度二乗に係数0.20の追加罰則。ロールには追加しない |
++| ピッチ姿勢 | ±8°までは追加の角度罰則なし。越えた部分を緩やかに抑制。姿勢固定や補助力はない |
++| action変化 | 係数0.01→0.06。さらに二階差分に0.025。出力の意味・slew/PD/遅延はそのまま |
++| 左右の偏り | 直近4秒の**前進を伴う着地**の左右差を評価。差1回は許容。過去の偏りは窓から消える |
++| 連打 | 同じ足の有効着地が続くと小さな罰則。交互着地ボーナス0.15→0.25 |
++| 着地荷重 | 各足の鉛直床反力を機体全重量mgで正規化。2.5倍を越えた部分の二乗を抑制 |
++| 接近速度 | 40 ms以上の非支持後の接地で、接触点の下向き接近速度を評価。初期落下・短いチャタリングは除外 |
++| bestの選択 | 前進・両脚の有効歩数・接触・姿勢の条件を通った候補で品質を比較。動かなくなった方策を滑らかさだけで選ばない |
++
++ピッチ・荷重の**報酬用の計測は物理刻み1 ms**です。50 Hzの最終フレームだけを見て衝撃や高周波振動を見落とすことを避けるためです。初期落下を除くため最初の0.5秒は品質集計から除外します。CSVは50 Hzで、各区間のRMS/ピークを記録します。1 kHz全生波形のCSVではありません。
++
++MuJoCo `mj_step` が直前に解いた動力学段階の速度・床反力を読みます。積分後のqposとの時刻差は最大1刻み程度あり、連続時間の最大荷重・厳密な着地インパルスではありません。接近速度は接触点の剛体速度 `v + omega × r` を使った代理量です。実材質の柔らかさや実モーターを同定した結果ではありません。
++
++既存の「歩数」判定は互換性のため50 Hzのままです。1 kHz側の `raw_touchdown_counts` は別の診断量で、歩行成功や着地ボーナスの回数には使いません。サーボの最大トルクや摩擦を増やして問題を隠す変更はありません。
++
++## 6. 品質の合格条件とログ
++
++整形ステージの歩行条件は従来の高さ・傾き・自己接触・非足底接触チェックを維持し、前進量を `max(80 mm, 指令距離の50%)`、左右各2回以上の前進着地にします。速度条件も保持します。
++
++追加の品質目安は、ピッチ角速度RMS ≤1.0 rad/s、ピッチの振れ幅 ≤25°、正規化actionの1周期差分RMS ≤0.25、左右前進着地数の差から1を引いた値/総数 ≤0.20、同じ足の連続着地割合 ≤0.25、各足のピーク鉛直荷重 ≤4.0 mgです。例えば5対4は許容、5対2は偏り条件に不合格です。これらは**設計上の初期判定値であり、サーボ定格・機構強度・人に対する安全上限ではありません。**
++
++評価JSONには `pitch_rate_rms_rad_s`, `roll_rate_rms_rad_s`, `body_pitch_peak_to_peak_deg`, `peak_sole_load_bw`, `action_delta_rms`, `target_error_rms_rad`, 既存のトルク・飽和率、`failed_checks` を保存します。TensorBoardは `eval_quality/*`, `eval_failed/*`, `robot_quality/*` を追加しています。
++
++ヘッドバンギングの原因は、現時点では報酬だけとは断定できません。接触時の力、目標追従誤差、トルク飽和が大きければ、制御・機構・接触モデルも原因候補です。今回の変更は、それを計測して切り分けつつ歩容を改善する最初の試行です。
++
++## 7. 中断・再開と次段階
++
++v3の学習を中断した場合はv3の保存物から再開します。
+ 
+ ```bash
+-python train.py --config configs/walk_step3.json \
+-  --init-from runs/walk_step2/best \
+-  --num-envs 4 --total-timesteps 2000000 \
+-  --run-dir runs/walk_step3
+-
+-python play.py --checkpoint runs/walk_step3/best --command 0.04
+-python evaluate.py --checkpoint runs/walk_step3/best \
+-  --commands 0,0.02,0.04,0.06 --episodes 20 \
+-  --out outputs/walk_step3_eval.json
+-python check_stage.py --evaluation outputs/walk_step3_eval.json
++python train.py --resume runs/walk_refine/interrupted \
++  --num-envs 4 --total-timesteps 500000 --run-dir runs/walk_refine
+ ```
+ 
+-ここで初めて20%の停止指令を混ぜます。停止中には離床・前進・交互着地の報酬や「足踏みなし」の罰則は入りません。停止試験と各速度試験を分けて評価するため、停止だけ成功して歩行失敗を覆い隠さない設定です。
++`--total-timesteps` は追加の遷移数です。途中のシミュレーター/RNG/rolloutを完全復元するものではありません。
+ 
+-## 5. 主な変更
+-
+-| 項目 | v2の扱い |
+-|---|---|
+-| 速度追従 | 指令に対する相対誤差で評価。正の指令に対して速度ゼロなら速度報酬ゼロ。係数2→8 |
+-| 前進 | 胴体が新たに到達した前進距離を報酬化。同じ区間の前後揺動で繰り返し得点しない |
+-| 荷重移動 | 遊脚側の荷重を減らす連続報酬。反対足の支持が必要 |
+-| 位相と接触 | 両足接地のまま遊脚位相の部分点を取らない。期待される接触の組合せで評価 |
+-| 離床・着地 | 高さ・滞空時間・反対足支持を満たすイベントを評価。接地確認40 ms |
+-| 交互歩行 | 同じ足の連打による離床・通常着地ボーナスを抑制。前進着地も別計測 |
+-| 停滞 | 正の指令中、有効着地なし1.5秒を過ぎると罰則を徐々に加える。上限付きで、停滞だけでは強制終了しない |
+-| 過剰な抑制 | action変化、関節速度、トルク、消費仕事、home姿勢への拘束を弱める。物理的なトルク上限は変更しない |
+-| bestの選択 | 報酬よりも指令別の成功、前進、左右の実歩数を優先 |
+-| 初期化 | Stage 1だけactor転送＋critic/探索の再初期化。旧立位の価値関数を新報酬に持ち込まない |
+-
+-`audit_rewards.py` で、旧・新報酬を人工的な状態に当てはめて比較できます。
++整形が未達のまま速度だけ上げません。20回評価・映像・比較を確認してから、整形報酬を保持する `configs/walk_step2_smooth.json`（0.02〜0.04 m/s）へ移れます。旧 `walk_step2.json` はv2設定のままです。
+ 
+ ```bash
+-python audit_rewards.py
++python check_stage.py --evaluation outputs/after_refine.json
++# 上記の基準・映像を確認した後に実行する次段階
++python train.py --config configs/walk_step2_smooth.json \
++  --init-from runs/walk_refine/best --num-envs 4 \
++  --total-timesteps 2000000 --run-dir runs/walk_step2_smooth
+ ```
+ 
+-これは報酬関数だけの数値テストです。人工状態が力学的に実現できること、PPOがそこへ到達できること、歩行に成功することの証拠ではありません。
++負荷測定は `python benchmark.py --config configs/walk_refine.json --num-envs 1 4 6`。頭部形状、可動域、姿勢への補助力は一切変更しません。実機への転送や大きな蹴り出し・走行は今回の対象外です。
+ 
+-## 6. もぞもぞ状態と接地判定を切り分けるログ
++## 8. 公式API確認先
+ 
+-評価JSONとCSVには次を記録します。
++MuJoCoの速度はrot:lin順、接触力はcontact frameで返る仕様を確認して実装しています。API確認と実エンジンテストは別です。
+ 
+-- `raw_unloads`：荷重しきい値を下回った回数。ノイズや小さい揺動を含みます。
+-- `qualified_liftoffs`：高さ2 mm・滞空80 ms・反対足支持を満たした離床。
+-- `valid_landings`：上記離床後に40 ms接地が確認された着地。
+-- `forward_landings`：さらに足が離床前より4 mm以上前進し、その足の過去の前進位置も更新した着地。
+-- `event_rejections`：高さ不足、滞空時間不足、反対足支持不足、接地確認前の再離床。
+-- `behavior`：`no_verified_steps`, `one_sided_stepping`, `stepping_in_place` など。成功判定とは別の診断名です。
++- MuJoCo `mj_objectVelocity` / `mj_contactForce`: https://mujoco.readthedocs.io/en/stable/APIreference/APIfunctions.html
++- MuJoCo passive viewer: https://mujoco.readthedocs.io/en/stable/python.html
++- SB3 PPO: https://stable-baselines3.readthedocs.io/en/master/modules/ppo.html
+ 
+-`landings=[0,0]` でも `raw_unloads` が多く高さ不足なら、脚が全く動かないケースとは異なります。数値だけでなく `play.py` でも確認します。CSVは接地荷重・足底最低高さ・目標角・実角・トルク・各報酬を含みます。
+-
+-```bash
+-tensorboard --logdir runs --host 127.0.0.1 --port 6006
+-```
+-
+-`eval/left_forward_landings`, `eval/right_forward_landings`, `eval/locomotion_score`, `reward_per_second/velocity`, `reward_per_second/unload`, `reward_per_second/no_step` を追加しています。`best` が存在していても、全評価が失敗していれば成功方策ではありません。
+-
+-## 7. 互換性と残る制限
+-
+-旧チェックポイントは新フィールドを補完して読み込みますが、旧報酬はversion 1のままです。旧方策の再生・評価・同一報酬での再開は可能な設計です。`configs/walk_legacy.json` に旧歩行設定を残しています。
+-
+-新規学習のv2設定は `env.walk_objective_version=2` です。学習時間、報酬値、幾何モデルの変更とI/O互換性は別問題なので、`interface.json` のモデルハッシュ等の照合は残しています。関節やactionスケールの不一致を無視して転送する機能はありません。
+-
+-自由な胴体をトルクで駆動する経路は旧版と同じです。ルート姿勢の強制移動、架空の支持力、接触の一括無効化、強い仮想サーボへの差し替えはしません。接地イベントは50 Hzで標本化しており、全1 kHz接触を捕捉した判定ではありません。短い衝撃、実部品・配線との干渉、発熱・電圧低下、実機への転送、走行は未検証です。
+-
+-観測にはシミュレーター由来の速度・高さ・接触情報を使います。また報酬の接地履歴・前進記録は内部状態で、61次元観測に履歴全体を追加していません。これは互換性を優先した設計で、学習の容易さを保証しません。
+-
+-詳細は `docs/DESIGN_ja.md`、変更一覧は `CHANGELOG_ja.md`、旧キットの説明は `docs/legacy/` です。
++旧説明は `docs/legacy/v2/`、元設計情報は `docs/R5_source_report.md`、今回のソース差分は `validation/changes_from_v2.patch` に収録しています。
+--- a/TEST_REPORT_ja.md
++++ b/TEST_REPORT_ja.md
+@@ -1,47 +1,56 @@
+-# v2 配布前テスト結果
++# v3 配布前検査記録
+ 
+-**96件を検出し、82件を実行して合格。MuJoCo/Gymnasium/SB3を必要とする14件は未実行です。実学習・歩行成功を確認した結果ではありません。**
++**156件を検出し、134件を実行して合格、22件は依存ライブラリー不足のため未実行です。MuJoCoの物理歩行、SB3での本学習、v2方策との改善比較は実施していません。**
+ 
+-作成環境：Python 3.13.5、NumPy 2.3.5、PyTorch 2.10.0+cpu。`pip install` を試しましたが、パッケージ取得先の名前解決に失敗してMuJoCo/Gymnasium/SB3を導入できませんでした。ユーザーのWSL2でこれらが動かないという意味ではありません。
++## 環境と実施範囲
+ 
+-## 実行したテスト
++Python 3.13.5、NumPy 2.3.5、PyTorch 2.10.0+cpu。MuJoCo/Gymnasium/Stable Baselines3は未導入です。pipの取得試行が失敗し、追加のpypi.org接続確認でも名前解決失敗を記録しています。ユーザーのWSL2環境でこれらを導入できないという意味ではありません。
+ 
+ | 範囲 | 結果 |
+ |---|---|
+-| Python構文コンパイル | 合格 |
+-| 旧キットのオフライン回帰40件 | 合格 |
+-| 新しい報酬・接地イベント・選択・互換性・workflow・torch転送の42件 | 合格 |
+-| 全A案assetのSHA-256 | 旧キットと一致 |
+-| 旧/新Stage 1〜3の方策I/O契約 | 一致 |
+-| 速度0、半分の速度、指令一致、後退に対する報酬値 | 人工状態で比較済み |
+-| 初期落下・滑り・チャタリング・同時跳躍・同一足連打 | 人工接地系列で得点/カウントを検査済み |
+-| 同じ区間の足の往復、胴体の揺動 | 前進記録を繰り返し得点にしない検査に合格 |
+-| actorの出力保持、criticの非転送、log_std再設定 | PyTorchのSB3類似構造で検査。実SB3実行とは別 |
+-| 旧configの補完 | 報酬version 1と旧係数を保持 |
+-| 時間だけ完走した方策のbest選択 | 人工評価データで、実歩数・前進のある候補を優先 |
+-| 停止試験と歩行試験が混在する進級判定 | 全指令を検査し、停止成功で歩行失敗を隠さない |
++| Python構文コンパイル | 成功 |
++| 既存v2のオフライン回帰 | 82件合格 |
++| v3の新規オフライン試験 | 52件合格 |
++| 全A案assetのSHA-256 | 43ファイル、v2と全一致 |
++| 制御・観測契約 | actuation/spec等のハッシュ一致、61次元/10次元のinterface同一 |
++| ピッチ/ロール分離、デッドバンド、区間二乗平均 | 人工入力で確認 |
++| 初期落下・短い接触チャタリングの除外 | 人工接触系列で確認 |
++| 接近速度eventと荷重rateのdt扱い | 人工入力で確認 |
++| 歩数差1回の許容、過去の偏りを忘れる4秒窓 | 人工系列で確認 |
++| v1/v2の報酬・転送互換性 | オフライン試験で確認 |
++| 歩いていない候補を滑らかさだけで選ばないbest選択 | 人工評価データで確認 |
++| actorの平均出力とlog_std保持、新criticの非転送 | PyTorchの類似構造の試験で確認。実SB3では未確認 |
++| 同一指令/seed/設定による比較、欠けた指標の検出 | 人工JSONで確認 |
++| MuJoCo/SB3の旧14件＋v3の新8件 | 計22件skipped、合格ではない |
++| `check_env.py --config configs/walk_refine.json` | 依存不足で終了コード2、物理未実行 |
++| `smoke_test.py --subproc` | 最初のpreflightで終了コード2、PPOまで到達せず |
+ 
+-## 未実行
++モデル質量は元定義どおり 0.8260386996 kgです。実測重量ではありません。model fingerprintは `fd52c6f9a48c468ff049caf0392a1d855c6d3566c5ebf81e93e58a9e5a97f27c`。
+ 
+-MuJoCoによる新コードのコンパイル・接触・PD駆動、実SB3でのactor転送、PPO更新、並列プロセス・保存・再読込み、GUI/動画、長時間学習、ユーザーの既存policyでの再現、歩行成功率は未確認です。ユーザーの学習済み重みと詳細評価CSVは受け取っていません。
++## 未確認の項目
+ 
+-`check_env.py --config configs/walk_step1.json` と `smoke_test.py --subproc` を実行しましたが、依存不足を検出した段階で終了コード2となりました。シミュレーターをスタブ化して「実行済み」にする処理はありません。
++実エンジンでのsubstep計測/接触座標、計測ON/OFF時の物理同一性、実SB3のactor転送・保存・再開、並列プロセス、学習時間、GUI/動画、学習による揺れ・着地衝撃・左右偏りの改善率は未確認です。ユーザーの学習済み重みと実評価JSON/CSVも未受領です。報告された約194 mm前進・5対2着地をこの環境で再現していません。
+ 
+-## 報酬式だけの検査例
+-
+-0.02 m/s指令に対し、旧式では静止中も速度項が約1.443/秒（最大2/秒）、新式では0/秒（指令一致時8/秒）です。新式では半分の速度0.01 m/sも正の速度項になります。
+-
+-この数値は人工的な状態で関数を呼んだ結果で、力学的に到達可能な歩容を観測したものではありません。報酬の順位が改善したことと、PPOの収束・歩行成功は別です。探索や接触条件、機構の制約が原因となる可能性も残ります。
++物理テストをスタブに差し替えて通過させていません。人工系列/人工状態のunit testは、力学的に実現可能な歩容や学習の成功を意味しません。新報酬の係数と品質しきい値は最初の試行値で、実測による最適化済みパラメーターではありません。
+ 
+ ## 再実行
+ 
+-既にMuJoCoが動くWSLの仮想環境で、キットのルートから次を実行します。
++MuJoCoが動作している仮想環境で、配布フォルダーのルートから実行します。
+ 
+ ```bash
+-python -m unittest discover -s tests -v
++python validation/run_tests.py
++python check_env.py --config configs/walk_refine.json
+ python smoke_test.py --subproc
+ ```
+ 
+-依存がある環境では14件の実行テストも走ります。`OK (skipped=14)` はそれら14件の合格を意味しません。`validation/run_tests.py` で検査記録を更新できます。
++依存が揃えば22件のruntime testsも実行対象になります。出力のskippedを合格と解釈せず、失敗時は学習へ進む前に確認してください。smokeは接続試験であり、歩行習得試験ではありません。
+ 
+-詳しい実行ログは `validation/unit_tests.json`, `validation/unit_tests.log`, `validation/preflight.json`, `validation/runtime_v2/`, `validation/reward_audit.json`, `validation/dependency_install_attempt.log`、旧配布版の検査記録は `validation/v1/` に保存しています。
++## 再現情報
++
++- `validation/unit_tests.json`, `unit_tests.log`：実際の合否とskip理由。
++- `validation/source_hashes.json`：source ZIPとassetのハッシュ、方策interface照合。
++- `validation/changes_from_v2.patch`：コード/設定/文書のレビュー用差分。自動上書き処理ではありません。
++- `validation/preflight.json`, `preflight.log`：実エンジンを呼ぶ前の依存エラー。
++- `validation/runtime_v3/`, `runtime_smoke.log`：preflightで停止したsmokeログ。
++- `validation/dependency_install_attempt.log`, `network_probe.log`：パッケージ取得試行の失敗。
++- `validation/v1/`, `validation/v2/`：旧配布物の検査履歴。現在の版の実行結果とは区別。
+--- a/benchmark.py
++++ b/benchmark.py
+@@ -17,6 +17,7 @@
+ 
+ def main():
+     p = argparse.ArgumentParser(description=__doc__)
++    p.add_argument("--config", type=Path, help="Benchmark the same config used for learning")
+     p.add_argument("--num-envs", type=int, nargs="+", default=[1, 4, 6])
+     p.add_argument("--vector-steps", type=int, default=300)
+     args = p.parse_args()
+@@ -25,7 +26,7 @@
+     import numpy as np
+     from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv
+     from stackchan_rl.config import ROOT, load_config
+-    cfg = load_config(ROOT / "configs/stand.json")
++    cfg = load_config(args.config or ROOT / "configs/stand.json")
+     for n in args.num_envs:
+         fns = [partial(worker, cfg) for _ in range(n)]
+         env = DummyVecEnv(fns) if n == 1 else SubprocVecEnv(fns, start_method="spawn")
+--- a/check_stage.py
++++ b/check_stage.py
+@@ -25,6 +25,8 @@
+         def accepted(s):
+             checks=s.get('success_checks',{})
+             if not s.get('is_success') or not checks or not all(checks.values()):return False
++            quality = s.get('quality_checks', {})
++            if s.get('walk_objective_version') == 3 and (not quality or not all(quality.values())):return False
+             if abs(s.get('requested_forward_m_s',-1.)-command)>1e-8:return False
+             if s.get('terminated') or not s.get('time_limit_reached'):return False
+             if command > .003:
+--- a/configs/refine_smoke.json
++++ b/configs/refine_smoke.json
+@@ -0,0 +1,25 @@
++{
++  "extends": "walk_refine.json",
++  "env": {
++    "episode_seconds": 0.24,
++    "command_start_s": 0.02,
++    "command_ramp_s": 0.04,
++    "measurement_start_s": 0.04
++  },
++  "ppo": {
++    "n_steps": 32,
++    "batch_size": 32,
++    "n_epochs": 1,
++    "net_arch": [
++      64,
++      64
++    ]
++  },
++  "train": {
++    "total_timesteps": 128,
++    "eval_every_timesteps": 64,
++    "checkpoint_every_timesteps": 128,
++    "eval_episodes": 1,
++    "num_envs": 1
++  }
++}
+--- a/configs/walk_refine.json
++++ b/configs/walk_refine.json
+@@ -0,0 +1,41 @@
++{
++  "extends": "walk_step1.json",
++  "env": {
++    "walk_objective_version": 3,
++    "gait_quality_metrics": true
++  },
++  "reward": {
++    "pitch_rate": 0.2,
++    "pitch_excursion": 0.1,
++    "action_rate": 0.06,
++    "action_acceleration": 0.025,
++    "impact_load": 0.3,
++    "touchdown_speed": 0.08,
++    "step_imbalance": 0.15,
++    "repeated_step": 0.08,
++    "alternating_event": 0.25
++  },
++  "success": {
++    "walk_min_forward_m": 0.08,
++    "walk_min_command_distance_fraction": 0.5,
++    "walk_min_forward_landings_each": 2
++  },
++  "ppo": {
++    "learning_rate": 5e-05,
++    "n_epochs": 5,
++    "ent_coef": 0.001,
++    "clip_range": 0.15,
++    "target_kl": 0.015
++  },
++  "transfer": {
++    "actor_only": true,
++    "reset_log_std": null,
++    "evaluate_before_learning": true
++  },
++  "train": {
++    "total_timesteps": 500000,
++    "eval_every_timesteps": 25000,
++    "eval_episodes": 6,
++    "selection_version": 3
++  }
++}
+--- a/configs/walk_step2_smooth.json
++++ b/configs/walk_step2_smooth.json
+@@ -0,0 +1,23 @@
++{
++  "extends": "walk_refine.json",
++  "env": {
++    "command_forward_range_m_s": [
++      0.02,
++      0.04
++    ],
++    "command_zero_probability": 0.0
++  },
++  "ppo": {
++    "learning_rate": 8e-05
++  },
++  "transfer": {
++    "actor_only": false
++  },
++  "train": {
++    "total_timesteps": 2000000,
++    "eval_commands_m_s": [
++      0.02,
++      0.04
++    ]
++  }
++}
+--- a/configs/walk_step3_smooth.json
++++ b/configs/walk_step3_smooth.json
+@@ -0,0 +1,25 @@
++{
++  "extends": "walk_refine.json",
++  "env": {
++    "command_forward_range_m_s": [
++      0.02,
++      0.06
++    ],
++    "command_zero_probability": 0.2
++  },
++  "ppo": {
++    "learning_rate": 8e-05
++  },
++  "transfer": {
++    "actor_only": false
++  },
++  "train": {
++    "total_timesteps": 2000000,
++    "eval_commands_m_s": [
++      0.0,
++      0.02,
++      0.04,
++      0.06
++    ]
++  }
++}
+--- a/diagnose_gait.py
++++ b/diagnose_gait.py
+@@ -0,0 +1,121 @@
++#!/usr/bin/env python3
++"""Read evaluation JSON; explain failed checks and compare paired rollouts.
++
++No renderer, MuJoCo, SB3 or checkpoint modification. Missing metrics are reported
++as missing, never inferred from forward distance or a success flag.
++"""
++from __future__ import annotations
++import argparse
++from collections import Counter
++import json
++import math
++from pathlib import Path
++import numpy as np
++
++FIELDS = ('forward_m', 'mean_abs_forward_velocity_error_m_s', 'pitch_rate_rms_rad_s',
++          'roll_rate_rms_rad_s', 'body_pitch_peak_to_peak_deg', 'action_delta_rms',
++          'action_second_difference_rms', 'mean_excess_load_cost')
++
++
++def episodes(report: dict) -> list[dict]:
++    if not report.get('physics_executed') or report.get('status') == 'IN_PROGRESS':
++        raise ValueError('Expected a completed physical evaluate.py result, not a partial/synthetic report')
++    groups = report.get('results', [report])
++    result = []
++    for g in groups:
++        result.extend(g.get('episode_results', []))
++    if not result:
++        raise ValueError('No per-episode evidence')
++    return result
++
++
++def summarize(report: dict) -> dict:
++    eps = episodes(report)
++    failed = Counter()
++    for e in eps:
++        failed.update(k for k, ok in e.get('success_checks', {}).items() if not ok)
++        failed.update('quality/'+k for k, ok in e.get('quality_checks', {}).items() if not ok)
++    result = {'episodes': len(eps), 'success_rate': sum(bool(e.get('is_success')) for e in eps)/len(eps),
++              'failure_reasons': dict(Counter(e.get('failure_reason') or 'time_limit' for e in eps)),
++              'failed_checks': dict(failed), 'commands': {}, 'missing_metrics': []}
++    for v in sorted({float(e['requested_forward_m_s']) for e in eps}):
++        xs = [e for e in eps if float(e['requested_forward_m_s']) == v]
++        m = {'episodes':len(xs), 'success_rate':float(np.mean([bool(e.get('is_success')) for e in xs])),
++             'valid_landings_mean':np.mean([e['valid_landings'] for e in xs], axis=0).tolist(),
++             'forward_landings_mean':np.mean([e.get('forward_landings',[0,0]) for e in xs],axis=0).tolist()}
++        for name in FIELDS:
++            if all(name in e and isinstance(e[name],(int,float)) and math.isfinite(e[name]) for e in xs):
++                m[name] = {'mean':float(np.mean([e[name] for e in xs])), 'max':float(max(e[name] for e in xs))}
++            else:
++                result['missing_metrics'].append(name)
++        if all('peak_sole_load_bw' in e for e in xs):
++            m['peak_sole_load_bw'] = {'mean':float(np.mean([max(e['peak_sole_load_bw']) for e in xs])),
++                                     'max':float(max(max(e['peak_sole_load_bw']) for e in xs))}
++        result['commands'][f'{v:.6f}'] = m
++    result['missing_metrics'] = sorted(set(result['missing_metrics']))
++    return result
++
++
++def compare(old: dict, new: dict) -> dict:
++    """Experimental paired criteria, not a significance test or hardware rating."""
++    a, b = episodes(old), episodes(new)
++    def key(s):return (float(s['requested_forward_m_s']), s.get('seed'))
++    ka,kb=[key(s) for s in a],[key(s) for s in b]
++    if any(k[1] is None for k in ka+kb) or len(set(ka)) != len(ka) or len(set(kb)) != len(kb) or set(ka) != set(kb):
++        raise ValueError('Baseline/candidate must use the same commands and distinct episode seeds')
++    if old.get('no_noise') != new.get('no_noise'):
++        raise ValueError('Baseline and candidate use different reset noise settings')
++    if not old.get('config') or not new.get('config'):
++        raise ValueError('Re-evaluate both checkpoints with v3 --config configs/walk_refine.json before comparison')
++    for k in ('env','reward','success'):
++        if old['config'][k] != new['config'][k]:
++            raise ValueError('Different evaluation configuration: '+k)
++    if old.get('interface') != new.get('interface') or not old.get('interface'):
++        raise ValueError('Missing or mismatched model / policy I/O interface')
++    for s in a+b:
++        if s.get('quality_samples',0)<=0:
++            raise ValueError('Missing substep quality evidence; old CSV cannot reconstruct it')
++    oa,nb=summarize(old),summarize(new)
++    checks={}; changes={}
++    for cmd in oa['commands']:
++        x,y=oa['commands'][cmd],nb['commands'][cmd]
++        if float(cmd) <= .003:continue
++        prefix=cmd+'/'
++        checks[prefix+'retain_forward_85pct'] = y['forward_m']['mean'] >= max(.08,.85*x['forward_m']['mean'])
++        checks[prefix+'steps_both_feet'] = min(y['forward_landings_mean']) >= 2
++        checks[prefix+'pitch_rate_down_10pct'] = y['pitch_rate_rms_rad_s']['mean'] <= .9*x['pitch_rate_rms_rad_s']['mean']
++        checks[prefix+'action_rate_not_worse'] = y['action_delta_rms']['mean'] <= 1.05*x['action_delta_rms']['mean']+1e-9
++        checks[prefix+'peak_load_not_worse'] = y['peak_sole_load_bw']['max'] <= 1.05*x['peak_sole_load_bw']['max']+1e-9
++        for f in ('forward_m','pitch_rate_rms_rad_s','action_delta_rms','body_pitch_peak_to_peak_deg','peak_sole_load_bw'):
++            changes[prefix+f]={'baseline':x[f]['mean'],'candidate':y[f]['mean'], 'delta':y[f]['mean']-x[f]['mean']}
++    if not checks:raise ValueError('At least one positive movement command is required')
++    checks['no_more_terminations']=sum(bool(s['terminated']) for s in b)<=sum(bool(s['terminated']) for s in a)
++    checks['no_more_contact_violations']=sum(s.get('bad_contact_steps',0)+s.get('self_contact_steps',0) for s in b)<=sum(s.get('bad_contact_steps',0)+s.get('self_contact_steps',0) for s in a)
++    return {'checks':checks,'criteria_met':all(checks.values()),'changes':changes,
++            'note':'Paired-trial engineering criteria only; not statistical significance, proof of convergence or hardware safety.'}
++
++
++def main():
++    p=argparse.ArgumentParser(description=__doc__)
++    p.add_argument('--evaluation',type=Path,required=True)
++    p.add_argument('--baseline',type=Path)
++    p.add_argument('--out',type=Path)
++    args=p.parse_args()
++    report=json.loads(args.evaluation.read_text(encoding='utf-8'))
++    result={'current':summarize(report)}
++    print('不合格条件:',result['current']['failed_checks'])
++    print('終了理由:',result['current']['failure_reasons'])
++    for command,m in result['current']['commands'].items():
++        print('command=',command,json.dumps(m,ensure_ascii=False))
++    if result['current']['missing_metrics']:
++        print('未計測（推定しません）:',', '.join(result['current']['missing_metrics']))
++    if args.baseline:
++        result['comparison']=compare(json.loads(args.baseline.read_text(encoding='utf-8')),report)
++        print('比較条件:',json.dumps(result['comparison']['checks'],ensure_ascii=False))
++        print('CRITERIA_MET' if result['comparison']['criteria_met'] else 'REVIEW_FAILED_COMPARISON_CHECKS')
++    if args.out:
++        args.out.parent.mkdir(parents=True,exist_ok=True)
++        args.out.write_text(json.dumps(result,indent=2,ensure_ascii=False,allow_nan=False)+'\n',encoding='utf-8')
++    return 0
++
++if __name__=='__main__':raise SystemExit(main())
+--- a/evaluate.py
++++ b/evaluate.py
+@@ -11,6 +11,7 @@
+ def main():
+     p = argparse.ArgumentParser(description=__doc__)
+     p.add_argument("--checkpoint", type=Path, required=True)
++    p.add_argument("--config", type=Path, help="Explicit evaluation config override; same model and policy I/O required")
+     p.add_argument("--episodes", type=int, default=20, help="episodes per command")
+     p.add_argument("--commands", help="comma-separated forward m/s, e.g. 0,0.02,0.04,0.06")
+     p.add_argument("--seed", type=int, default=20000, help="different from training/eval checkpoint selection")
+@@ -22,17 +23,33 @@
+     import torch
+     from stackchan_rl.checkpoints import bundle_info, assert_interface, versions
+     from stackchan_rl.evaluation import evaluate_agent
+-    from stackchan_rl.config import save_json
++    from stackchan_rl.config import save_json, load_config
+     torch.set_num_threads(1)
+     folder, cfg, interface, _ = bundle_info(args.checkpoint)
++    if args.config is not None:
++        cfg = load_config(args.config)
+     assert_interface(interface, cfg)
+     agent = PPO.load(str(folder / "model.zip"), device="cpu")
+     commands = [float(x.strip()) for x in args.commands.split(",")] if args.commands else (cfg["train"]["eval_commands_m_s"] or [cfg["train"]["eval_forward_m_s"]])
+     results = []
+     for i, command in enumerate(commands):
+         output = args.trajectories / f"cmd_{command:.3f}" if args.trajectories else None
++        partial = []
++        def on_episode(summary):
++            partial.append(summary)
++            # Persist complete episodes immediately, even if later evaluation
++            # is interrupted. A partial file is never called a complete report.
++            save_json(args.out.with_name(args.out.stem+".partial.json"),
++                      {"status": "IN_PROGRESS", "checkpoint": str(folder), "seed": args.seed,
++                       "physics_executed": True, "command_forward_m_s": command,
++                       "config": cfg, "completed_commands": results, "episodes_current_command": partial})
++            q = summary.get("pitch_rate_rms_rad_s")
++            print(f"episode={len(partial)-1} success={summary['is_success']} "
++                  f"duration={summary['duration_s']:.2f}s forward={summary['forward_m']:.3f}m "
++                  f"landings={summary['valid_landings']} advancing={summary.get('forward_landings')} "
++                  f"failed={summary.get('failed_checks', [])} pitch_rms={q}", flush=True)
+         result = evaluate_agent(agent, cfg, args.episodes, args.seed+i*1000, command=command,
+-                                trajectory_dir=output, no_noise=args.no_noise)
++                                trajectory_dir=output, no_noise=args.no_noise, on_episode=on_episode)
+         result["command_forward_m_s"] = command
+         results.append(result)
+         print(f"vx={command:.3f}: success {result['successful_episodes']}/{result['episodes']}, "
+@@ -41,7 +58,12 @@
+               f"behavior={result['behavior_counts']}")
+     save_json(args.out, {"checkpoint": str(folder), "task": cfg["task"], "physics_executed": True,
+                          "versions": versions(), "seed": args.seed, "results": results,
++                         "config": cfg, "interface": interface, "no_noise": bool(args.no_noise),
++                         "evaluation_config_override": str(args.config) if args.config else None,
+                          "not_hardware_validation": True})
++    partial_path = args.out.with_name(args.out.stem+".partial.json")
++    if partial_path.exists():
++        partial_path.unlink()
+     print(args.out.resolve())
+     return 0
+ 
+--- a/play.py
++++ b/play.py
+@@ -65,7 +65,8 @@
+                     print(f"episode={episode} success={s['is_success']} duration={s['duration_s']:.2f}s "
+                           f"forward={s['forward_m']:.3f}m landings={s['valid_landings']} "
+                           f"forward_landings={s.get('forward_landings', 'legacy')} "
+-                          f"behavior={s.get('behavior','legacy')} reason={s['failure_reason']}")
++                          f"behavior={s.get('behavior','legacy')} reason={s['failure_reason']} "
++                          f"failed={s.get('failed_checks', [])} pitch_rms={s.get('pitch_rate_rms_rad_s', 'not_measured')}")
+                     break
+     finally:
+         env.close()
+--- a/smoke_test.py
++++ b/smoke_test.py
+@@ -28,6 +28,12 @@
+         ["evaluate.py", "--checkpoint", str(out / "stand/final"), "--episodes", "2", "--out", str(out / "evaluation.json")],
+         ["train.py", "--resume", str(out / "stand/final"), "--run-dir", str(out / "resume"), "--total-timesteps", "128", "--no-tensorboard"],
+         ["train.py", "--config", "configs/walk_smoke.json", "--init-from", str(out / "stand/final"), "--run-dir", str(out / "walk"), "--num-envs", n, "--no-tensorboard"],
++        ["train.py", "--config", "configs/refine_smoke.json", "--init-from", str(out / "walk/final"),
++         "--run-dir", str(out / "refine"), "--num-envs", n, "--no-tensorboard"],
++        ["evaluate.py", "--checkpoint", str(out / "refine/final"), "--episodes", "1", "--commands", "0.02",
++         "--out", str(out / "refine_eval.json"), "--trajectories", str(out / "refine_csv")],
++        ["train.py", "--resume", str(out / "refine/final"), "--run-dir", str(out / "refine_resume"),
++         "--total-timesteps", "128", "--no-tensorboard"],
+     ]
+     records = []
+     for i, command in enumerate(commands):
+--- a/stackchan_rl/__init__.py
++++ b/stackchan_rl/__init__.py
+@@ -1,2 +1,2 @@
+ """R5-A CPU MuJoCo PPO kit: versioned walk objective and actor transfer."""
+-__version__ = "2.0.0"
++__version__ = "3.0.0"
+--- a/stackchan_rl/checkpoints.py
++++ b/stackchan_rl/checkpoints.py
+@@ -32,7 +32,7 @@
+         save_json(staging / "interface.json", interface)
+         save_json(staging / "metadata.json", {"num_timesteps": int(agent.num_timesteps),
+                                              "versions": versions(), "metrics": metrics or {},
+-                                             "kit_version": "2.0.0", "walk_objective_version": config["env"].get("walk_objective_version", 1),
++                                             "kit_version": "3.0.0", "walk_objective_version": config["env"].get("walk_objective_version", 1),
+                                              "normalization": "fixed observation scales; no VecNormalize",
+                                              "resume_scope": "weights + optimizer; simulator/RNG rollout state is not restored"})
+         (staging / "READY").write_text("complete\n", encoding="utf-8")
+--- a/stackchan_rl/config.py
++++ b/stackchan_rl/config.py
+@@ -45,6 +45,9 @@
+         "measurement_start_s": 0.5,
+         # Added in v2; legacy bundles fill these with defaults, not new rewards.
+         "walk_objective_version": 1,
++        "gait_quality_metrics": False,
++        "quality_window_s": 4.0,
++        "touchdown_min_airtime_s": 0.04,
+         "landing_contact_confirm_s": 0.04,
+         "minimum_foot_advance_m": 0.004,
+         "event_cooldown_s": 0.25,
+@@ -91,6 +94,19 @@
+         "alternating_event": 0.0,
+         "no_step": 0.0,
+         "overspeed": 0.0,
++        # v3-only costs; legacy objectives ignore these even when measured.
++        "pitch_rate": 0.0,
++        "pitch_excursion": 0.0,
++        "action_acceleration": 0.0,
++        "impact_load": 0.0,
++        "touchdown_speed": 0.0,
++        "step_imbalance": 0.0,
++        "repeated_step": 0.0,
++        "pitch_free_deg": 8.0,
++        "pitch_scale_deg": 8.0,
++        "impact_free_bw": 2.5,
++        "touchdown_free_speed_m_s": 0.05,
++        "touchdown_speed_scale_m_s": 0.10,
+     },
+     "success": {
+         "stand_max_tilt_deg": 15.0,
+@@ -106,6 +122,12 @@
+         "walk_min_forward_landings_each": 0,
+         "walk_min_alternations": 3,
+         "walk_min_forward_m": 0.025,
++        "refine_max_pitch_rate_rms_rad_s": 1.0,
++        "refine_max_pitch_peak_to_peak_deg": 25.0,
++        "refine_max_action_delta_rms": 0.25,
++        "refine_max_step_excess_fraction": 0.20,
++        "refine_max_repeat_fraction": 0.25,
++        "refine_max_load_bw": 4.0,
+     },
+     "ppo": {
+         "learning_rate": 0.0003,
+@@ -124,6 +146,7 @@
+     },
+     "transfer": {
+         "actor_only": False,
++        "evaluate_before_learning": False,
+         "reset_log_std": None,
+     },
+     "train": {
+@@ -186,13 +209,25 @@
+     if c["task"] not in {"stand", "walk"}:
+         raise ValueError("task must be stand or walk")
+     e, p, t = c["env"], c["ppo"], c["train"]
+-    if e["walk_objective_version"] not in (1, 2) or t["selection_version"] not in (1, 2):
+-        raise ValueError("Only walk objective and selection versions 1 or 2 are supported")
++    if e["walk_objective_version"] not in (1, 2, 3) or t["selection_version"] not in (1, 2, 3):
++        raise ValueError("Only walk objective and selection versions 1, 2 or 3 are supported")
++    if not isinstance(e["gait_quality_metrics"], bool) or not isinstance(c["transfer"]["evaluate_before_learning"], bool):
++        raise ValueError("gait_quality_metrics / evaluate_before_learning must be boolean")
++    if e["walk_objective_version"] == 3 and (c["task"] != "walk" or not e["gait_quality_metrics"] or t["selection_version"] != 3):
++        raise ValueError("walk objective v3 requires walk, substep quality metrics, and selection v3")
++    if t["selection_version"] == 3 and e["walk_objective_version"] != 3:
++        raise ValueError("selection v3 requires walk objective v3")
++    for k in ("quality_window_s", "touchdown_min_airtime_s"):
++        if not isinstance(e[k], (int, float)) or not math.isfinite(e[k]) or e[k] <= 0:
++            raise ValueError(f"env.{k} must be finite and positive")
++    for k, v in c["success"].items():
++        if k.startswith("refine_") and (not isinstance(v, (int, float)) or not math.isfinite(v) or v <= 0):
++            raise ValueError(f"success.{k} must be finite and positive")
+     for k in ("landing_contact_confirm_s", "minimum_foot_advance_m", "event_cooldown_s",
+               "no_step_grace_s", "no_step_ramp_s", "minimum_airtime_s", "minimum_lift_m"):
+         if not isinstance(e[k], (int, float)) or not math.isfinite(e[k]) or e[k] <= 0:
+             raise ValueError(f"env.{k} must be finite and positive")
+-    for k in ("velocity_relative_sigma", "velocity_min_sigma_m_s", "target_clearance_m"):
++    for k in ("velocity_relative_sigma", "velocity_min_sigma_m_s", "target_clearance_m", "pitch_scale_deg", "touchdown_speed_scale_m_s"):
+         if not isinstance(c["reward"][k], (int, float)) or not math.isfinite(c["reward"][k]) or c["reward"][k] <= 0:
+             raise ValueError(f"reward.{k} must be finite and positive")
+     for k, v in c["reward"].items():
+@@ -242,7 +277,7 @@
+ 
+ 
+ def normalize_config(raw: dict) -> dict:
+-    """Fill v2's added fields for old bundles without upgrading their objective.
++    """Fill added v2/v3 fields for old bundles without upgrading their objective.
+ 
+     In particular the fallback walk_objective_version stays 1. Old PPO
+     checkpoints must not silently acquire different rewards when resumed.
+--- a/stackchan_rl/env.py
++++ b/stackchan_rl/env.py
+@@ -19,6 +19,7 @@
+ from .rewards import reward_terms, success_checks
+ from .steps import FootStepTracker
+ from .walk_events import WalkEventTracker
++from .quality import GaitQuality, body_angles, quality_checks
+ 
+ 
+ class StackChanEnv(gym.Env):
+@@ -162,7 +163,7 @@
+         self.command = np.zeros(3)
+         self.commanded_distance = 0.0
+         self.step_tracker = (WalkEventTracker(self.dt, self.e)
+-            if self.config["task"] == "walk" and self.e["walk_objective_version"] == 2
++            if self.config["task"] == "walk" and self.e["walk_objective_version"] in (2, 3)
+             else FootStepTracker(self.dt, self.e["minimum_airtime_s"], self.e["minimum_lift_m"]))
+         self.valid_landings = self.step_tracker.counts
+         self.landing_sequence = self.step_tracker.sequence
+@@ -176,6 +177,13 @@
+             "min_height_ratio": 1.0, "velocity_abs_error_sum": 0.0,
+             "peak_torque": np.zeros(10), "torque_sq_sum": np.zeros(10), "sat_sum": np.zeros(10),
+         }
++        self.previous_action_delta = np.zeros(10)
++        self.quality = (GaitQuality(self.e, self.config["reward"],
++                                   float(self.model.body_mass.sum()*np.linalg.norm(self.model.opt.gravity)))
++                        if self.e["gait_quality_metrics"] else None)
++        self._velocity6 = np.zeros(6)
++        self._site_velocity6 = np.zeros((2, 6))
++        self._quality_latest = {}
+         self._has_reset = True
+         self._done = False
+         self._warning_counts = np.array([w.number for w in self.data.warning])
+@@ -240,6 +248,7 @@
+         return {
+             "base_position": pos, "R": R, "gravity": R.T @ np.array([0., 0., -1.]),
+             "velocity": velocity, "gyro": gyro,
++            "body_roll_rad": body_angles(R)[0], "body_pitch_rad": body_angles(R)[1],
+             "tilt_rad": float(np.arccos(np.clip(R[2, 2], -1, 1))),
+             "heading_error": heading_error, "height_error": pos[2] - self.nominal_height,
+             "height_ratio": float(pos[2] / self.nominal_height), "position_error": ep_error,
+@@ -253,6 +262,43 @@
+             "slip_speed_sq": slip_sum / max(1.0, slip_count),
+             "command": self.command.copy(), "swing_mask": swing_mask(self.phase),
+         }
++
++    def _measure_substep_quality(self) -> None:
++        """Read the just-solved mj_step stage without mj_forward/reintegration.
++
++        MuJoCo keeps contact forces and cvel from its dynamics stage. These
++        samples are solver-stage measurements (within one integration timestep
++        of qpos), not a continuous-time peak/impulse guarantee.
++        """
++        mujoco.mj_objectVelocity(self.model, self.data, mujoco.mjtObj.mjOBJ_BODY,
++                                self.base_id, self._velocity6, 0)
++        # Use world angular velocity and the body's explicit frame, not an
++        # API-dependent inertial/local frame for an asymmetric composite body.
++        R = self.data.xmat[self.base_id].reshape(3, 3)
++        gyro = R.T @ self._velocity6[:3]
++        roll, pitch = body_angles(R)
++        loads, down = np.zeros(2), np.zeros(2)
++        for i, sid in enumerate(self.site_ids):
++            mujoco.mj_objectVelocity(self.model, self.data, mujoco.mjtObj.mjOBJ_SITE,
++                                    int(sid), self._site_velocity6[i], 0)
++        for k in range(self.data.ncon):
++            c = self.data.contact[k]
++            if self.floor_id not in (c.geom1, c.geom2):
++                continue
++            other = c.geom2 if c.geom1 == self.floor_id else c.geom1
++            if other == self.sole_ids[0]: i = 0
++            elif other == self.sole_ids[1]: i = 1
++            else: continue
++            mujoco.mj_contactForce(self.model, self.data, k, self._force)
++            world_force = c.frame.reshape(3, 3).T @ self._force[:3]
++            loads[i] += abs(float(world_force[2]))
++            v = self._site_velocity6[i]
++            cp_v = v[3:] + np.cross(v[:3], c.pos-self.data.site_xpos[self.site_ids[i]])
++            down[i] = max(down[i], -float(cp_v[2]), 0.)
++        if not np.isfinite(np.r_[gyro, roll, pitch, loads, down]).all():
++            raise FloatingPointError("nonfinite_substep_telemetry")
++        self.quality.observe(time_s=float(self.data.time), dt=float(self.model.opt.timestep),
++                             gyro=gyro, roll=roll, pitch=pitch, loads=loads, contact_down_speed=down)
+ 
+     def _observation(self, s: dict) -> np.ndarray:
+         moving = self.config["task"] == "walk" and self.command[0] > 0.003
+@@ -305,6 +351,7 @@
+         target = bounded_target(action, self.home_joints, self.specification.limits, self.e)
+         action = np.clip(np.asarray(action, dtype=float), -1.0, 1.0)
+         self.previous_action = self.last_action.copy()
++        previous_delta = self.previous_action_delta.copy()
+         self.last_action = action.copy()
+         self.command = command_at(self.steps*self.dt, self.requested_forward, self.e["command_start_s"], self.e["command_ramp_s"])
+         self.desired_xy += (self.heading_R @ self.command)[:2] * self.dt
+@@ -315,6 +362,8 @@
+         power, cap_fraction_sq = 0.0, 0.0
+         failure = None
+         time_before = float(self.data.time)
++        if self.quality is not None:
++            self.quality.begin_interval()
+         try:
+             for _ in range(self.substeps):
+                 qd = self.data.qvel[self.vadr]
+@@ -327,6 +376,8 @@
+                 power += float(np.sum(np.abs(tau * qd)))
+                 cap_fraction_sq += float(np.mean((tau / self.bank.cap)**2))
+                 mujoco.mj_step(self.model, self.data)
++                if self.quality is not None:
++                    self._measure_substep_quality()
+                 if not np.isfinite(self.data.qpos).all() or not np.isfinite(self.data.qvel).all():
+                     failure = "nonfinite_state"
+                     break
+@@ -361,6 +412,16 @@
+                   "requested_forward_m_s": self.requested_forward,
+                   "no_step_grace_s": self.e["no_step_grace_s"],
+                   "no_step_ramp_s": self.e["no_step_ramp_s"]})
++        action_delta = self.last_action-self.previous_action
++        s["action_second_delta"] = action_delta-previous_delta
++        self.previous_action_delta = action_delta.copy()
++        if self.quality is not None and failure is None:
++            self._quality_latest = self.quality.finish_interval(
++                time_s=self.steps*self.dt, dt=self.dt,
++                moving=self.config["task"] == "walk" and self.command[0] > .003,
++                events=s, action_delta=action_delta, action_delta2=s["action_second_delta"],
++                target_error=self.bank.filtered-s["q"])
++            s["gait_quality"] = self._quality_latest
+         terminated = failure is not None
+         # Time limits are truncations, not terminal MDP states (SB3 bootstraps).
+         truncated = self.steps >= self.max_steps and not terminated
+@@ -388,7 +449,11 @@
+             summary = self._summary(terminated, truncated, failure)
+             checks = success_checks(summary, self.config)
+             summary["success_checks"] = checks
+-            summary["is_success"] = all(checks.values())
++            summary["locomotion_pass"] = all(checks.values())
++            summary["quality_checks"] = quality_checks(summary, self.config)
++            summary["is_success"] = all(checks.values()) and all(summary["quality_checks"].values())
++            summary["failed_checks"] = ([k for k, v in checks.items() if not v] +
++                ["quality/"+k for k, v in summary["quality_checks"].items() if not v])
+             from .evaluation import classify_behavior
+             summary["behavior"] = classify_behavior(summary)
+             info["is_success"] = summary["is_success"]
+@@ -434,6 +499,7 @@
+             "saturation_fraction": dict(zip(JOINT_NAMES, (st["sat_sum"]/max(1,st["samples"])).tolist())),
+             "reward_components": dict(self.reward_sums),
+             "walk_objective_version": self.e["walk_objective_version"],
++            **(self.quality.summary() if self.quality is not None else {}),
+             **(self.step_tracker.summary() if isinstance(self.step_tracker, WalkEventTracker) else {}),
+         }
+ 
+@@ -456,9 +522,26 @@
+                 row[side+"_forward_landings"] = int(self.step_tracker.forward_counts[i])
+                 row[side+"_raw_unloads"] = int(self.step_tracker.raw_unloads[i])
+                 row[side+"_max_clearance_m"] = float(self.step_tracker.peak_episode[i])
++        row.update({"body_roll_deg": float(np.rad2deg(s["body_roll_rad"])),
++                    "body_pitch_deg": float(np.rad2deg(s["body_pitch_rad"])),
++                    "body_roll_rate_rad_s": float(s["gyro"][0]),
++                    "body_pitch_rate_rad_s": float(s["gyro"][1]),
++                    "body_yaw_rate_rad_s": float(s["gyro"][2]),
++                    "action_delta_rms": float(np.sqrt(np.mean((self.last_action-self.previous_action)**2))),
++                    "action_second_delta_rms": float(np.sqrt(np.mean(np.asarray(s.get("action_second_delta", np.zeros(10)))**2)))})
++        if self.quality is not None:
++            q = self._quality_latest
++            row["substep_pitch_rate_rms_rad_s"] = float(np.sqrt(q.get("pitch_rate_sq", 0.)))
++            row["substep_sample_count"] = int(q.get("quality_sample_count", 0))
++            row["recent_step_imbalance_cost"] = float(q.get("recent_step_imbalance_cost", 0.))
++            for i, side in enumerate(("left", "right")):
++                row[side+"_peak_load_N"] = float(q.get("peak_loads_N", [0., 0.])[i])
++                row[side+"_touchdown_down_speed_m_s"] = float(q.get("touchdown_down_speed_m_s", [0., 0.])[i])
+         # Always include every configured component, even on the initial row.
+         for name in ("velocity", "forward_progress", "unload", "clearance", "no_step", "landing_event",
+-                     "liftoff_event", "forward_landing_event", "alternating_event", "slip", "torque"):
++                     "liftoff_event", "forward_landing_event", "alternating_event", "slip", "torque",
++                     "action_rate", "pitch_rate", "pitch_excursion", "action_acceleration",
++                     "impact_load", "touchdown_speed", "step_imbalance", "repeated_step"):
+             row["reward_"+name] = float(getattr(self, "last_reward_terms", {}).get(name, 0.0))
+         for i, n in enumerate(JOINT_NAMES):
+             row[n+"_rad"] = float(s["q"][i])
+@@ -474,13 +557,15 @@
+             if self._viewer is None:
+                 from mujoco import viewer as mj_viewer
+                 self._viewer = mj_viewer.launch_passive(self.model, self.data)
+-                self._viewer.cam.distance = 0.55
+-                self._viewer.cam.azimuth = 135
+-                self._viewer.cam.elevation = -15
+-                self._viewer.opt.geomgroup[3] = 0  # Keep collision proxies available but hidden.
+-                self._viewer.opt.sitegroup[4] = 0
++                with self._viewer.lock():
++                    self._viewer.cam.distance = 0.55
++                    self._viewer.cam.azimuth = 135
++                    self._viewer.cam.elevation = -15
++                    self._viewer.opt.geomgroup[3] = 0
++                    self._viewer.opt.sitegroup[4] = 0
+             if self._viewer.is_running():
+-                self._viewer.cam.lookat[:] = self.data.xpos[self.base_id] + [0, 0, 0.055]
++                with self._viewer.lock():
++                    self._viewer.cam.lookat[:] = self.data.xpos[self.base_id] + [0, 0, 0.055]
+                 self._viewer.sync()
+             return None
+         if self._renderer is None:
+--- a/stackchan_rl/evaluation.py
++++ b/stackchan_rl/evaluation.py
+@@ -5,6 +5,7 @@
+ import csv
+ from pathlib import Path
+ import numpy as np
++from .quality import quality_score
+ 
+ 
+ def classify_behavior(s: dict) -> str:
+@@ -19,11 +20,14 @@
+         return "one_sided_stepping"
+     if s["forward_m"] < 0.025:
+         return "stepping_in_place"
++    if s.get("locomotion_pass") and not s.get("is_success"):
++        return "walking_needs_refinement"
+     return "walk_success" if s.get("is_success") else "walking_candidate_failed_checks"
+ 
+ 
+ def evaluate_agent(agent, config: dict, episodes: int, seed: int, command: float | None = None,
+-                   trajectory_dir: str | Path | None = None, no_noise: bool = False) -> dict:
++                   trajectory_dir: str | Path | None = None, no_noise: bool = False,
++                   on_episode=None) -> dict:
+     from .env import StackChanEnv
+     if episodes <= 0:
+         raise ValueError("episodes must be positive")
+@@ -56,7 +60,10 @@
+                         summary = info["episode_summary"]
+                         summary["seed"] = seed+ep
+                         summary["episode_limit_s"] = cfg["env"]["episode_seconds"]
++                        summary["no_noise"] = bool(no_noise)
+                         summaries.append(summary)
++                        if on_episode is not None:
++                            on_episode(summary)
+                         break
+             finally:
+                 if handle:
+@@ -106,7 +113,31 @@
+         key = [min(per_command), float(np.mean(per_command)), motion_score,
+                float(np.mean([min(s.get("forward_landings",[0,0])) for s in moving])) if moving else 0.,
+                duration, reward]
++    if selection_version == 3:
++        per_command = [v["success_rate"] for v in by_command.values()]
++        # Quality is allowed to rank a candidate only AFTER genuine walking.
++        # This prevents selecting a motionless but extremely smooth policy.
++        def gate(s):
++            return bool(s.get("locomotion_pass", False) and s.get("quality_samples", 0) > 0)
++        eligible = [s for s in moving if gate(s)]
++        eligible_rate = len(eligible)/max(1, len(moving))
++        qscore = float(np.mean([quality_score(s) for s in eligible])) if eligible else 0.
++        key = [eligible_rate, min(per_command), float(np.mean(per_command)),
++               qscore if eligible else motion_score,
++               motion_score if eligible else 0., reward]
++    measured = [s for s in summaries if s.get("quality_samples", 0) > 0]
++    quality_fields = ("pitch_rate_rms_rad_s", "roll_rate_rms_rad_s", "body_pitch_peak_to_peak_deg",
++                      "action_delta_rms", "action_second_difference_rms", "mean_excess_load_cost",
++                      "mean_recent_step_imbalance_cost", "repeated_valid_landings")
++    mean_quality = {k: float(np.mean([s[k] for s in measured])) for k in quality_fields} if measured else {}
++    if measured:
++        mean_quality["mean_peak_sole_load_bw"] = float(np.mean([max(s["peak_sole_load_bw"]) for s in measured]))
++        mean_quality["max_peak_sole_load_bw"] = float(max(max(s["peak_sole_load_bw"]) for s in measured))
+     return {
++        "mean_quality": mean_quality,
++        "quality_measured_episodes": len(measured),
++        "locomotion_pass_rate": float(np.mean([s.get("locomotion_pass", False) for s in summaries])),
++        "failed_check_counts": dict(Counter(k for s in summaries for k in s.get("failed_checks", []))),
+         "physics_executed": bool(physics_executed),
+         "episodes": len(summaries), "success_rate": success,
+         "successful_episodes": sum(s["is_success"] for s in summaries),
+--- a/stackchan_rl/quality.py
++++ b/stackchan_rl/quality.py
+@@ -0,0 +1,212 @@
++"""v3 gait-quality measurements; NumPy only, no simulated or fabricated forces.
++
++Input samples come from MuJoCo's solved physics stages (nominally 1 kHz), not
++from the renderer. The 50 Hz v2 foot-event tracker remains authoritative for
++qualified *steps*. A raw touchdown here is a diagnostic, NOT a rewarded step.
++Body axes follow the model: +X forward, +Y left, +Z up. gyro[1] is pitch rate.
++"""
++from __future__ import annotations
++from collections import deque
++import math
++import numpy as np
++
++
++def body_angles(R: np.ndarray) -> tuple[float, float]:
++    """ZYX roll, pitch, in radians. No Euler differentiation is used for rates."""
++    R = np.asarray(R, dtype=float)
++    return float(np.arctan2(R[2, 1], R[2, 2])), float(np.arcsin(np.clip(-R[2, 0], -1., 1.)))
++
++
++class GaitQuality:
++    """Accumulate read-only substep telemetry and bounded, moving-window events.
++
++    Initial drop is excluded from episode-quality metrics by measurement_start_s.
++    Rate costs are interval MEANS (caller integrates dt); touchdown costs are
++    interval SUMS (caller must not multiply by dt). No arbitrary equal-load
++    requirement is imposed on left/right stance, nor equality on joint angles.
++    """
++    def __init__(self, env: dict, weights: dict, body_weight_N: float):
++        if not math.isfinite(body_weight_N) or body_weight_N <= 0:
++            raise ValueError('body_weight_N must be positive')
++        self.env, self.w, self.bw = env, weights, float(body_weight_N)
++        self.start_s = env['measurement_start_s']
++        self.confirm_air = env['touchdown_min_airtime_s']
++        self.air = np.zeros(2)
++        self.seen_support = np.zeros(2, dtype=bool)
++        self.was_contact = np.zeros(2, dtype=bool)
++        self.recent_forward = deque()
++        self.last_landing = None
++        self.last_landing_time = -np.inf
++        self.n = self.action_n = 0
++        self.gyro_sq = np.zeros(3)
++        self.gyro_peak = np.zeros(3)
++        self.pitch_sum = self.pitch_sq = 0.
++        self.pitch_min, self.pitch_max = np.inf, -np.inf
++        self.roll_sq = 0.
++        self.load_peak = np.zeros(2)
++        self.load_excess_sum = 0.
++        self.touchdowns = np.zeros(2, dtype=int)
++        self.td_speed_sq = np.zeros(2)
++        self.td_speed_peak = np.zeros(2)
++        self.action_delta_sq = self.action_delta2_sq = 0.
++        self.target_error_sq = np.zeros(10)
++        self.window_balance_integral = self.window_balance_time = 0.
++        self.repeat_count = 0
++        self.begin_interval()
++
++    def begin_interval(self) -> None:
++        self.i_n = 0
++        self.i_gyro_sq = np.zeros(3)
++        self.i_pitch_excess = self.i_load_excess = self.i_touchdown_cost = 0.
++        self.i_load_peak = np.zeros(2)
++        self.i_td_speed_peak = np.zeros(2)
++        self.i_touchdowns = np.zeros(2, dtype=int)
++
++    def observe(self, *, time_s: float, dt: float, gyro, roll: float, pitch: float,
++                loads, contact_down_speed) -> None:
++        """One solved physics sample. contact_down_speed uses v + omega x r.
++
++        Loads are sums of the vertical sole-ground reaction forces per foot.
++        A touchdown needs a prior supported state and >=40 ms without support;
++        initial free fall and short contact chatter cannot generate events.
++        """
++        gyro = np.asarray(gyro, dtype=float)
++        loads = np.maximum(0., np.asarray(loads, dtype=float))
++        speed = np.maximum(0., np.asarray(contact_down_speed, dtype=float))
++        if gyro.shape != (3,) or loads.shape != (2,) or speed.shape != (2,):
++            raise ValueError('Invalid substep telemetry shapes')
++        if not np.isfinite(np.r_[gyro, loads, speed, roll, pitch, time_s, dt]).all() or dt <= 0:
++            raise ValueError('Nonfinite substep telemetry or nonpositive dt')
++        contacts = loads > self.env['contact_threshold_N']
++        touchdown = contacts & ~self.was_contact & self.seen_support & (self.air + 1e-10 >= self.confirm_air)
++        self.air = np.where(contacts, 0., self.air + dt)
++        self.seen_support |= contacts
++        self.was_contact = contacts
++        if time_s + 1e-10 < self.start_s:
++            return
++        pitch_free = np.deg2rad(self.w['pitch_free_deg'])
++        pitch_scale = np.deg2rad(self.w['pitch_scale_deg'])
++        pitch_cost = min(16., (max(0., abs(pitch)-pitch_free)/pitch_scale)**2)
++        load_cost = float(np.minimum(25., np.maximum(0., loads/self.bw-self.w['impact_free_bw'])**2).sum())
++        td = np.minimum(9., (np.maximum(0., speed-self.w['touchdown_free_speed_m_s'])/self.w['touchdown_speed_scale_m_s'])**2)
++        self.i_n += 1
++        self.i_gyro_sq += gyro**2
++        self.i_pitch_excess += pitch_cost
++        self.i_load_excess += load_cost
++        self.i_touchdown_cost += float(np.sum(td*touchdown))
++        self.i_load_peak = np.maximum(self.i_load_peak, loads)
++        self.i_td_speed_peak = np.maximum(self.i_td_speed_peak, speed*touchdown)
++        self.i_touchdowns += touchdown.astype(int)
++        self.n += 1
++        self.gyro_sq += gyro**2
++        self.gyro_peak = np.maximum(self.gyro_peak, np.abs(gyro))
++        self.pitch_sum += pitch
++        self.pitch_sq += pitch**2
++        self.pitch_min, self.pitch_max = min(self.pitch_min, pitch), max(self.pitch_max, pitch)
++        self.roll_sq += roll**2
++        self.load_peak = np.maximum(self.load_peak, loads)
++        self.load_excess_sum += load_cost
++        self.touchdowns += touchdown.astype(int)
++        self.td_speed_sq += speed**2*touchdown
++        self.td_speed_peak = np.maximum(self.td_speed_peak, speed*touchdown)
++
++    def finish_interval(self, *, time_s: float, dt: float, moving: bool, events: dict,
++                        action_delta, action_delta2, target_error) -> dict:
++        measured = time_s + 1e-10 >= self.start_s
++        if measured:
++            arrays = [np.asarray(a, dtype=float) for a in (action_delta, action_delta2, target_error)]
++            if any(a.shape != (10,) or not np.isfinite(a).all() for a in arrays):
++                raise ValueError('Expected ten finite action/target-error values')
++            self.action_n += 1
++            self.action_delta_sq += float(np.mean(arrays[0]**2))
++            self.action_delta2_sq += float(np.mean(arrays[1]**2))
++            self.target_error_sq += arrays[2]**2
++        repeat = 0
++        if moving:
++            for i in events.get('valid_landing_feet', []):
++                if self.last_landing == i and time_s-self.last_landing_time <= self.env['quality_window_s']:
++                    repeat += 1
++                self.last_landing, self.last_landing_time = i, time_s
++            for i in events.get('forward_landing_feet', []):
++                self.recent_forward.append((time_s, int(i)))
++        else:
++            self.recent_forward.clear()
++            self.last_landing, self.last_landing_time = None, -np.inf
++        while self.recent_forward and self.recent_forward[0][0] < time_s-self.env['quality_window_s']:
++            self.recent_forward.popleft()
++        counts = np.bincount([i for _, i in self.recent_forward], minlength=2)
++        # One extra step is normal in alternating walking. Only additional
++        # imbalance is charged; the window lets recovery erase an old mistake.
++        imbalance = min(1., (max(0, abs(int(counts[0])-int(counts[1]))-1)/2.)**2) if moving else 0.
++        if moving and measured:
++            self.window_balance_time += dt
++            self.window_balance_integral += imbalance*dt
++            self.repeat_count += repeat
++        n = max(1, self.i_n)
++        return {'pitch_rate_sq': float(self.i_gyro_sq[1]/n),
++                'roll_rate_sq': float(self.i_gyro_sq[0]/n),
++                'pitch_excursion_cost': float(self.i_pitch_excess/n),
++                'impact_load_cost': float(self.i_load_excess/n),
++                'touchdown_speed_cost': float(self.i_touchdown_cost),
++                'recent_step_imbalance_cost': float(imbalance),
++                'repeated_landing_events': int(repeat if moving else 0),
++                'peak_loads_N': self.i_load_peak.copy(),
++                'touchdown_down_speed_m_s': self.i_td_speed_peak.copy(),
++                'raw_touchdowns': self.i_touchdowns.copy(),
++                'quality_sample_count': int(self.i_n)}
++
++    def summary(self) -> dict:
++        n, a = max(1, self.n), max(1, self.action_n)
++        pitch_std = max(0., self.pitch_sq/n-(self.pitch_sum/n)**2)**.5
++        return {'quality_measurement': 'physics_substeps', 'quality_samples': int(self.n),
++                'body_weight_N': self.bw,
++                'pitch_rate_rms_rad_s': float((self.gyro_sq[1]/n)**.5),
++                'roll_rate_rms_rad_s': float((self.gyro_sq[0]/n)**.5),
++                'yaw_rate_rms_rad_s': float((self.gyro_sq[2]/n)**.5),
++                'pitch_rate_peak_rad_s': float(self.gyro_peak[1]),
++                'body_pitch_std_deg': float(np.rad2deg(pitch_std)),
++                'body_pitch_peak_to_peak_deg': float(np.rad2deg(self.pitch_max-self.pitch_min)) if self.n else 0.,
++                'body_pitch_abs_max_deg': float(np.rad2deg(max(abs(self.pitch_min), abs(self.pitch_max)))) if self.n else 0.,
++                'peak_sole_load_N': self.load_peak.tolist(),
++                'peak_sole_load_bw': (self.load_peak/self.bw).tolist(),
++                'mean_excess_load_cost': float(self.load_excess_sum/n),
++                'raw_touchdown_counts': self.touchdowns.tolist(),
++                'touchdown_speed_rms_m_s': np.sqrt(self.td_speed_sq/np.maximum(1, self.touchdowns)).tolist(),
++                'touchdown_speed_peak_m_s': self.td_speed_peak.tolist(),
++                'action_delta_rms': float((self.action_delta_sq/a)**.5),
++                'action_second_difference_rms': float((self.action_delta2_sq/a)**.5),
++                'target_error_rms_rad': np.sqrt(self.target_error_sq/a).tolist(),
++                'mean_recent_step_imbalance_cost': float(self.window_balance_integral/max(.02, self.window_balance_time)),
++                'repeated_valid_landings': int(self.repeat_count)}
++
++
++def quality_checks(s: dict, cfg: dict) -> dict[str, bool]:
++    """Separate experimental quality gates, not hardware safety ratings."""
++    if cfg['env']['walk_objective_version'] != 3 or s['requested_forward_m_s'] <= .003:
++        return {}
++    c = cfg['success']
++    forward = s.get('forward_landings', [0, 0])
++    # A difference of one at a time-limit boundary is not an asymmetry failure.
++    excess = max(0, abs(forward[0]-forward[1])-1)/max(1, sum(forward))
++    seq = s.get('landing_sequence', [])
++    repeats = sum(a == b for a, b in zip(seq, seq[1:]))/max(1, len(seq)-1)
++    has = bool(s.get('quality_samples', 0) > 0)
++    return {'quality_measured': has,
++            'pitch_rate': has and s.get('pitch_rate_rms_rad_s', math.inf) <= c['refine_max_pitch_rate_rms_rad_s'],
++            'pitch_excursion': has and s.get('body_pitch_peak_to_peak_deg', math.inf) <= c['refine_max_pitch_peak_to_peak_deg'],
++            'action_smoothness': has and s.get('action_delta_rms', math.inf) <= c['refine_max_action_delta_rms'],
++            'step_balance': min(forward) >= 2 and excess <= c['refine_max_step_excess_fraction'],
++            'step_alternation': len(seq) >= 4 and repeats <= c['refine_max_repeat_fraction'],
++            'load_peak': has and max(s.get('peak_sole_load_bw', [math.inf])) <= c['refine_max_load_bw']}
++
++
++def quality_score(s: dict) -> float:
++    """Bounded ranking score. Must be gated by real locomotion by the caller."""
++    if s.get('quality_samples', 0) <= 0:
++        return 0.
++    counts = s.get('forward_landings', [0, 0])
++    balance = max(0, abs(counts[0]-counts[1])-1)/max(1, sum(counts))
++    terms = [s['pitch_rate_rms_rad_s']/1., s['action_delta_rms']/.25,
++             s.get('mean_excess_load_cost', 0.)**.5,
++             s.get('body_pitch_peak_to_peak_deg', 0.)/25., balance*2.]
++    return float(np.mean(np.exp(-np.minimum(np.square(terms), 80.))))
+--- a/stackchan_rl/rewards.py
++++ b/stackchan_rl/rewards.py
+@@ -55,12 +55,25 @@
+     progress is new body high-water distance, not abs(displacement).
+     """
+     result = _legacy_reward_terms(s, w, task, dt, terminated)
+-    if terminated or task != "walk" or s.get("walk_objective_version", 1) != 2:
++    if terminated or task != "walk" or s.get("walk_objective_version", 1) not in (2, 3):
+         return result
+     for k in ("forward_progress", "unload", "liftoff_event", "forward_landing_event",
+               "alternating_event", "no_step", "overspeed"):
+         result[k] = 0.0
+     moving = s["command"][0] > 0.003
++    if s.get("walk_objective_version") == 3:
++        quality = s.get("gait_quality", {})
++        # Preserve v2 stepping rewards. Do not synthesize forces or change PD.
++        result.update({
++            "pitch_rate": -w["pitch_rate"]*min(100., float(quality.get("pitch_rate_sq", 0.)))*dt,
++            "pitch_excursion": -w["pitch_excursion"]*float(quality.get("pitch_excursion_cost", 0.))*dt,
++            "action_acceleration": -w["action_acceleration"]*float(np.mean(np.asarray(s.get("action_second_delta", np.zeros(10)))**2))*dt,
++            "impact_load": -w["impact_load"]*float(quality.get("impact_load_cost", 0.))*dt,
++            # Event sums: no dt factor. All events below are zero at stop.
++            "touchdown_speed": -w["touchdown_speed"]*float(quality.get("touchdown_speed_cost", 0.)) if moving else 0.,
++            "step_imbalance": -w["step_imbalance"]*float(quality.get("recent_step_imbalance_cost", 0.))*dt if moving else 0.,
++            "repeated_step": -w["repeated_step"]*float(quality.get("repeated_landing_events", 0.)) if moving else 0.,
++        })
+     if not moving:
+         return result
+     cmd = float(s["command"][0])
+--- a/stackchan_rl/training.py
++++ b/stackchan_rl/training.py
+@@ -99,7 +99,7 @@
+     class RunCallback(BaseCallback):
+         def __init__(self):
+             super().__init__(verbose=0)
+-            self.best_key = (-float("inf"),) * (6 if cfg["train"]["selection_version"] == 2 else 3)
++            self.best_key = (-float("inf"),) * (6 if cfg["train"]["selection_version"] in (2, 3) else 3)
+             if resume_data:
+                 self.best_key = tuple(resume_data[3].get("metrics", {}).get("selection_key", self.best_key))
+             if (run_dir / "best" / "READY").is_file():
+@@ -129,7 +129,10 @@
+                     self.recent.append(s)
+                     compact = {k: s[k] for k in ("return", "duration_s", "is_success", "failure_reason", "forward_m", "max_tilt_deg", "valid_landings")}
+                     compact.update({k: s.get(k) for k in ("requested_forward_m_s", "qualified_liftoffs", "forward_landings",
+-                             "behavior", "success_checks", "reward_components", "event_rejections", "max_sole_clearance_m")})
++                             "behavior", "success_checks", "reward_components", "event_rejections", "max_sole_clearance_m",
++                             "quality_checks", "failed_checks", "pitch_rate_rms_rad_s", "roll_rate_rms_rad_s",
++                             "body_pitch_peak_to_peak_deg", "peak_sole_load_bw", "target_error_rms_rad",
++                             "action_delta_rms", "mean_recent_step_imbalance_cost", "saturation_fraction")})
+                     compact["num_timesteps"] = int(self.num_timesteps)
+                     self.ep_file.write(json.dumps(compact) + "\n")
+             if self.num_timesteps >= self.next_eval:
+@@ -142,6 +145,10 @@
+                 self.logger.record("eval/forward_m", metrics["mean_forward_m"])
+                 self.logger.record("eval/mean_return", metrics["mean_return"])
+                 self.logger.record("eval/locomotion_score", metrics["locomotion_score"])
++                for name, value in metrics.get("mean_quality", {}).items():
++                    self.logger.record("eval_quality/"+name, value)
++                for name, value in metrics.get("failed_check_counts", {}).items():
++                    self.logger.record("eval_failed/"+name, value/metrics["episodes"])
+                 for i, side in enumerate(("left", "right")):
+                     self.logger.record("eval/"+side+"_valid_landings", metrics["mean_valid_landings"][i])
+                     self.logger.record("eval/"+side+"_forward_landings", metrics["mean_forward_landings"][i])
+@@ -154,7 +161,9 @@
+                 print(f"[eval {self.num_timesteps}] success={metrics['successful_episodes']}/{metrics['episodes']} "
+                       f"survival={metrics['mean_duration_s']:.2f}s forward={metrics['mean_forward_m']:.3f}m "
+                       f"landings={metrics['mean_valid_landings']} forward_landings={metrics['mean_forward_landings']} "
+-                      f"behavior={metrics['behavior_counts']}", flush=True)
++                      f"behavior={metrics['behavior_counts']} "
++                      f"failed={metrics.get('failed_check_counts', {})} "
++                      f"pitch_rms={metrics.get('mean_quality', {}).get('pitch_rate_rms_rad_s', 'not_measured')}", flush=True)
+             if self.num_timesteps >= self.next_save:
+                 self.next_save += cfg["train"]["checkpoint_every_timesteps"]
+                 save_bundle(self.model, run_dir / "checkpoints" / f"step_{self.num_timesteps:010d}", cfg, interface, self.last_metrics)
+@@ -172,6 +181,10 @@
+                     for field in ("valid_landings", "qualified_liftoffs", "forward_landings"):
+                         self.logger.record("robot/"+side+"_"+field,
+                             sum(float(s.get(field,[0,0])[i]) for s in self.recent)/len(self.recent))
++                for name in ("pitch_rate_rms_rad_s", "roll_rate_rms_rad_s", "body_pitch_peak_to_peak_deg", "action_delta_rms"):
++                    values = [float(s[name]) for s in self.recent if name in s]
++                    if values:
++                        self.logger.record("robot_quality/"+name, sum(values)/len(values))
+                 names = set().union(*(s["reward_components"] for s in self.recent))
+                 for name in names:
+                     self.logger.record("reward_per_second/"+name, sum(s["reward_components"].get(name, 0)/max(s["duration_s"], 0.02) for s in self.recent) / len(self.recent))
+@@ -205,6 +218,16 @@
+                 save_json(run_dir / "transfer.json", transfer)
+                 print("Transfer:", transfer, flush=True)
+                 del previous
++        if init_data and cfg["transfer"]["evaluate_before_learning"]:
++            print("Evaluating transferred policy BEFORE learning (same new criteria).", flush=True)
++            metrics = evaluate_configured(agent, cfg)
++            save_json(run_dir / "initial_evaluation.json", metrics)
++            save_bundle(agent, run_dir / "initial", cfg, interface, metrics)
++            save_bundle(agent, run_dir / "best", cfg, interface, metrics)
++            callback.best_key = tuple(metrics["selection_key"])
++            callback.last_metrics = metrics
++            print("Initial failed checks:", metrics.get("failed_check_counts", {}), flush=True)
++            print("Initial quality:", metrics.get("mean_quality", {}), flush=True)
+         print(f"Task={cfg['task']} | A-model mass={RobotSpec.load(cfg).mass:.4f}kg | "
+               f"{len(fns)} CPU envs | requested additional steps={cfg['train']['total_timesteps']}", flush=True)
+         agent.learn(total_timesteps=cfg["train"]["total_timesteps"], callback=callback,
+--- a/stackchan_rl/walk_events.py
++++ b/stackchan_rl/walk_events.py
+@@ -62,7 +62,8 @@
+         out = {"valid_landings_this_step": 0, "qualified_liftoffs_this_step": 0,
+                "rewarded_liftoffs_this_step": 0, "rewarded_landings_this_step": 0,
+                "forward_landings_this_step": 0, "alternating_landings_this_step": 0,
+-               "new_forward_distance_m": 0.0, "no_step_elapsed_s": 0.0}
++               "new_forward_distance_m": 0.0, "no_step_elapsed_s": 0.0,
++               "valid_landing_feet": [], "forward_landing_feet": []}
+         if active:
+             if not self._active:
+                 self._base_highwater = float(base_forward)
+@@ -122,6 +123,7 @@
+                         self.counts[i] += 1
+                         self.sequence.append("left" if i == 0 else "right")
+                         out["valid_landings_this_step"] += 1
++                        out["valid_landing_feet"].append(i)
+                         if active:
+                             self._last_step_at = self.active_time
+                         if (active and self.last_reward_landing != i
+@@ -138,6 +140,7 @@
+                             self.forward_counts[i] += 1
+                             self.forward_sequence.append("left" if i == 0 else "right")
+                             out["forward_landings_this_step"] += 1
++                            out["forward_landing_feet"].append(i)
+                     self.pending[i] = None
+                     self.touched[i] = True
+                     self.last_ground[i] = xy[i]
+--- a/tests/test_refine.py
++++ b/tests/test_refine.py
+@@ -0,0 +1,280 @@
++"""Synthetic/structural v3 tests. These are NOT physical walking trials."""
++from __future__ import annotations
++from copy import deepcopy
++import json
++from pathlib import Path
++import unittest
++import numpy as np
++from stackchan_rl.config import ROOT, load_config, validate, normalize_config
++from stackchan_rl.spec import RobotSpec
++from stackchan_rl.quality import GaitQuality, body_angles, quality_checks, quality_score
++from stackchan_rl.rewards import reward_terms, success_checks
++from stackchan_rl.evaluation import aggregate, classify_behavior
++from stackchan_rl.walk_events import WalkEventTracker
++from tests.test_walk_v2 import snapshot
++
++# The v2 helper may have a different test-class name; use an independent fixture.
++def episode(forward=.194, counts=(4,4)):
++    return {'task':'walk','is_success':False,'return':20.,'duration_s':12.,'episode_limit_s':12.,
++        'requested_forward_m_s':.02,'commanded_distance_m':.22,'time_limit_reached':True,
++        'terminated':False,'failure_reason':None,'forward_m':forward,'lateral_m':0.,
++        'valid_landings':list(counts),'forward_landings':list(counts),
++        'mean_abs_forward_velocity_error_m_s':.007,'bad_contact_steps':0,'self_contact_steps':0,
++        'min_height_ratio':1.,'max_tilt_deg':15.,'max_heading_deg':0.,'max_horizontal_drift_m':abs(forward),
++        'double_support_fraction':.5,'flight_fraction':0.,'landing_sequence':['left','right']*4,
++        'quality_samples':11000,'pitch_rate_rms_rad_s':.6,'roll_rate_rms_rad_s':.5,
++        'body_pitch_peak_to_peak_deg':15.,'action_delta_rms':.10,'action_second_difference_rms':.1,
++        'mean_excess_load_cost':.01,'mean_recent_step_imbalance_cost':0.,'repeated_valid_landings':0,
++        'peak_sole_load_bw':[2.5,2.5], 'seed':20000, 'no_noise':False}
++
++
++def completed(s,c):
++    s=deepcopy(s)
++    s['success_checks']=success_checks(s,c)
++    s['locomotion_pass']=all(s['success_checks'].values())
++    s['quality_checks']=quality_checks(s,c)
++    s['is_success']=s['locomotion_pass'] and all(s['quality_checks'].values())
++    s['failed_checks']=[k for k,v in s['success_checks'].items() if not v]+['quality/'+k for k,v in s['quality_checks'].items() if not v]
++    return s
++
++
++class QualityMeasurementTests(unittest.TestCase):
++    def setUp(self):
++        self.c=load_config(ROOT/'configs/walk_refine.json')
++        self.e=deepcopy(self.c['env']);self.e['measurement_start_s']=0.
++        self.q=GaitQuality(self.e,self.c['reward'],8.)
++        self.time=0.
++    def sample(self,gyro=(0,0,0),pitch=0.,loads=(4,4),speed=(0,0),dt=.001):
++        self.time+=dt
++        self.q.observe(time_s=self.time,dt=dt,gyro=gyro,roll=0.,pitch=pitch,loads=loads,contact_down_speed=speed)
++    def finish(self,events=None,time=None,moving=True):
++        return self.q.finish_interval(time_s=self.time if time is None else time,dt=.02,moving=moving,
++            events=events or {},action_delta=np.zeros(10),action_delta2=np.zeros(10),target_error=np.zeros(10))
++    def test_body_axes_roll_pitch(self):
++        from stackchan_rl.math_utils import yaw_matrix
++        pitch=.2;roll=.3
++        Ry=np.array([[np.cos(pitch),0,np.sin(pitch)],[0,1,0],[-np.sin(pitch),0,np.cos(pitch)]])
++        Rx=np.array([[1,0,0],[0,np.cos(roll),-np.sin(roll)],[0,np.sin(roll),np.cos(roll)]])
++        np.testing.assert_allclose(body_angles(yaw_matrix(.8)@Ry@Rx),[roll,pitch],atol=1e-12)
++    def test_pitch_and_roll_rates_separated(self):
++        for _ in range(20):self.sample(gyro=(2,3,4))
++        s=self.q.summary();self.assertAlmostEqual(s['pitch_rate_rms_rad_s'],3)
++        self.assertAlmostEqual(s['roll_rate_rms_rad_s'],2)
++        self.assertAlmostEqual(self.finish()['pitch_rate_sq'],9)
++    def test_substep_oscillation_does_not_cancel(self):
++        for i in range(20):self.sample(gyro=(0,10*(-1)**i,0))
++        self.assertAlmostEqual(self.finish()['pitch_rate_sq'],100.)
++        self.assertAlmostEqual(self.q.summary()['pitch_rate_rms_rad_s'],10.)
++    def test_interval_reset_retains_episode_metrics(self):
++        self.sample(gyro=(0,2,0));self.q.begin_interval();self.sample(gyro=(0,0,0))
++        self.assertEqual(self.finish()['pitch_rate_sq'],0)
++        self.assertAlmostEqual(self.q.summary()['pitch_rate_rms_rad_s'],2**.5)
++    def test_initial_drop_is_not_touchdown_event(self):
++        for _ in range(80):self.sample(loads=(0,0))
++        self.sample(loads=(20,20),speed=(.3,.3))
++        self.assertEqual(self.finish()['raw_touchdowns'].tolist(),[0,0])
++    def test_short_contact_chatter_not_touchdown_event(self):
++        self.sample()
++        for _ in range(10):self.sample(loads=(0,4))
++        self.sample(loads=(8,4),speed=(.3,0))
++        self.assertEqual(self.finish()['raw_touchdowns'].tolist(),[0,0])
++    def test_valid_raw_touchdown_speed_cost(self):
++        self.sample()
++        for _ in range(50):self.sample(loads=(0,8))
++        self.sample(loads=(16,8),speed=(.15,0))
++        v=self.finish();self.assertEqual(v['raw_touchdowns'].tolist(),[1,0])
++        self.assertAlmostEqual(v['touchdown_speed_cost'],1.)
++        self.assertAlmostEqual(self.q.summary()['touchdown_speed_rms_m_s'][0],.15)
++    def test_static_bodyweight_load_not_penalized(self):
++        self.sample(loads=(8,0));self.assertEqual(self.finish()['impact_load_cost'],0.)
++    def test_large_load_penalized_and_normalized_by_bodyweight(self):
++        self.sample(loads=(28,0));self.assertAlmostEqual(self.finish()['impact_load_cost'],1.)
++        q=GaitQuality(self.e,self.c['reward'],16.)
++        q.observe(time_s=1,dt=.001,gyro=[0,0,0],roll=0,pitch=0,loads=[56,0],contact_down_speed=[0,0])
++        self.assertAlmostEqual(q.i_load_excess,1.)
++    def test_initial_settling_excluded(self):
++        e=deepcopy(self.e);e['measurement_start_s']=.5
++        q=GaitQuality(e,self.c['reward'],8.)
++        q.observe(time_s=.1,dt=.001,gyro=[0,10,0],roll=0,pitch=.5,loads=[40,0],contact_down_speed=[0,0])
++        self.assertEqual(q.summary()['quality_samples'],0)
++    def test_pitch_deadband(self):
++        self.sample(pitch=np.deg2rad(7));self.assertEqual(self.finish()['pitch_excursion_cost'],0)
++        self.q.begin_interval();self.sample(pitch=np.deg2rad(16))
++        self.assertAlmostEqual(self.finish()['pitch_excursion_cost'],1.)
++    def test_first_extra_step_not_punished(self):
++        v=self.finish({'valid_landing_feet':[0],'forward_landing_feet':[0]},time=1.)
++        self.assertEqual(v['recent_step_imbalance_cost'],0.)
++        self.assertEqual(v['repeated_landing_events'],0)
++    def test_repeated_steps_and_recent_imbalance(self):
++        self.finish({'valid_landing_feet':[0],'forward_landing_feet':[0]},time=1.)
++        v=self.finish({'valid_landing_feet':[0],'forward_landing_feet':[0]},time=2.)
++        self.assertEqual(v['repeated_landing_events'],1)
++        self.assertEqual(v['recent_step_imbalance_cost'],.25)
++        v=self.finish({'valid_landing_feet':[1],'forward_landing_feet':[1]},time=3.)
++        self.assertEqual(v['repeated_landing_events'],0)
++        self.assertEqual(v['recent_step_imbalance_cost'],0.)
++    def test_recent_window_forgives_past_bias(self):
++        self.finish({'forward_landing_feet':[0,0,0]},time=1.)
++        self.assertEqual(self.finish(time=6.)['recent_step_imbalance_cost'],0.)
++    def test_stop_clears_sequence_penalty(self):
++        self.finish({'valid_landing_feet':[0],'forward_landing_feet':[0,0]},time=1.)
++        v=self.finish(time=2.,moving=False)
++        self.assertEqual(v['recent_step_imbalance_cost'],0.)
++        self.assertIsNone(self.q.last_landing)
++    def test_finite_telemetry_validation(self):
++        with self.assertRaises(ValueError):self.sample(gyro=[0,float('nan'),0])
++    def test_action_and_tracking_error_statistics(self):
++        self.q.finish_interval(time_s=1,dt=.02,moving=True,events={},action_delta=np.full(10,.2),
++            action_delta2=np.full(10,.4),target_error=np.full(10,.1))
++        s=self.q.summary();self.assertAlmostEqual(s['action_delta_rms'],.2)
++        np.testing.assert_allclose(s['target_error_rms_rad'],.1)
++    def test_fresh_episode_resets_metrics(self):
++        self.sample(gyro=(0,2,0));q=GaitQuality(self.e,self.c['reward'],8.)
++        self.assertEqual(q.summary()['quality_samples'],0)
++
++
++class RefineRewardTests(unittest.TestCase):
++    def setUp(self):self.c=load_config(ROOT/'configs/walk_refine.json')
++    def state(self):
++        s=snapshot(.02,.02);s['walk_objective_version']=3;s['no_step_elapsed_s']=0.
++        s['gait_quality']={};return s
++    def reward(self,s,dt=.02):return reward_terms(s,self.c['reward'],'walk',dt,False)
++    def test_v2_reward_unchanged_when_v3_fields_added(self):
++        c=load_config(ROOT/'configs/walk_step1.json');s=snapshot(.02,.02)
++        a=reward_terms(s,c['reward'],'walk',.02,False)
++        s['gait_quality']={'pitch_rate_sq':100.};s['action_second_delta']=np.ones(10)
++        self.assertEqual(a,reward_terms(s,c['reward'],'walk',.02,False))
++    def test_forward_velocity_and_step_reward_preserved(self):
++        s=self.state();a=self.reward(s);s['walk_objective_version']=2;b=self.reward(s)
++        for k in ('velocity','forward_progress','liftoff_event','landing_event','forward_landing_event','no_step'):
++            self.assertEqual(a[k],b[k])
++    def test_pitch_oscillation_penalized_more_than_roll(self):
++        p=self.state();p['gait_quality']={'pitch_rate_sq':4};p['gyro']=np.array([0,2,0])
++        r=self.state();r['gait_quality']={'pitch_rate_sq':0};r['gyro']=np.array([2,0,0])
++        self.assertLess(sum(self.reward(p).values()),sum(self.reward(r).values()))
++    def test_static_lean_within_band_has_no_pitch_cost(self):
++        self.assertEqual(self.reward(self.state())['pitch_excursion'],0)
++    def test_normalized_action_second_difference_penalty(self):
++        s=self.state();s['action_second_delta']=np.ones(10)
++        self.assertLess(self.reward(s)['action_acceleration'],0)
++    def test_event_cost_not_scaled_by_dt(self):
++        s=self.state();s['gait_quality']={'touchdown_speed_cost':2,'repeated_landing_events':1}
++        for k in ('touchdown_speed','repeated_step'):
++            self.assertAlmostEqual(self.reward(s,.02)[k],self.reward(s,.01)[k])
++    def test_rate_costs_integrate_dt(self):
++        s=self.state();s['gait_quality']={'pitch_rate_sq':2,'impact_load_cost':1,'recent_step_imbalance_cost':1}
++        for k in ('pitch_rate','impact_load','step_imbalance'):
++            self.assertAlmostEqual(self.reward(s,.02)[k],2*self.reward(s,.01)[k])
++    def test_stop_has_no_step_or_touchdown_cost(self):
++        s=self.state();s['command'][:]=0;s['gait_quality']={'touchdown_speed_cost':2,'recent_step_imbalance_cost':1,'repeated_landing_events':2}
++        for k in ('touchdown_speed','step_imbalance','repeated_step'):self.assertEqual(self.reward(s)[k],0)
++    def test_termination_remains_penalty_only(self):
++        s=self.state();self.assertEqual(reward_terms(s,self.c['reward'],'walk',.02,True),{'termination':-3.})
++    def test_standing_does_not_gain_velocity_reward(self):
++        s=self.state();s['velocity'][:]=0
++        self.assertAlmostEqual(self.reward(s)['velocity'],0)
++    def test_smooth_measured_walking_scores_above_shaky_same_progress(self):
++        s=self.state();r=deepcopy(s);r['gait_quality']={'pitch_rate_sq':9,'impact_load_cost':1,'touchdown_speed_cost':2}
++        self.assertGreater(sum(self.reward(s).values()),sum(self.reward(r).values()))
++
++
++class RefineSelectionTests(unittest.TestCase):
++    def setUp(self):self.c=load_config(ROOT/'configs/walk_refine.json')
++    def test_smooth_stopping_never_outranks_real_walking(self):
++        a=completed(episode(0,(0,0)),self.c)
++        b=episode();b['pitch_rate_rms_rad_s']=4.;b=completed(b,self.c)
++        self.assertGreater(aggregate([b],3)['selection_key'],aggregate([a],3)['selection_key'])
++    def test_smooth_walk_preferred_over_shaky_walk(self):
++        a=completed(episode(),self.c);b=episode();b['pitch_rate_rms_rad_s']=3.;b=completed(b,self.c)
++        self.assertGreater(aggregate([a],3)['selection_key'],aggregate([b],3)['selection_key'])
++    def test_nonmoving_failed_recovery_ranked_by_motion_not_stillness(self):
++        a=completed(episode(0,(0,0)),self.c)
++        b=episode(.15,(5,2));b['max_tilt_deg']=26;b['pitch_rate_rms_rad_s']=4.;b=completed(b,self.c)
++        self.assertGreater(aggregate([b],3)['selection_key'],aggregate([a],3)['selection_key'])
++    def test_moving_but_uneven_counts_fail_quality_not_locomotion(self):
++        s=completed(episode(.194,(5,2)),self.c)
++        self.assertTrue(s['locomotion_pass']);self.assertFalse(s['quality_checks']['step_balance'])
++        self.assertFalse(s['is_success']);self.assertEqual(classify_behavior(s),'walking_needs_refinement')
++    def test_one_extra_step_at_end_allowed(self):
++        self.assertTrue(quality_checks(episode(.194,(5,4)),self.c)['step_balance'])
++    def test_missing_measurement_never_passes_quality(self):
++        s=episode();s.pop('quality_samples')
++        self.assertFalse(all(quality_checks(s,self.c).values()));self.assertEqual(quality_score(s),0.)
++    def test_quality_not_applied_to_legacy_objective(self):
++        self.assertEqual(quality_checks(episode(),load_config(ROOT/'configs/walk_step1.json')), {})
++    def test_failed_checks_names_exposed_by_aggregate(self):
++        s=episode();s['pitch_rate_rms_rad_s']=4.;s=completed(s,self.c)
++        a=aggregate([s],3);self.assertEqual(a['failed_check_counts']['quality/pitch_rate'],1)
++        self.assertIn('pitch_rate_rms_rad_s',a['mean_quality'])
++    def test_high_reward_not_enough(self):
++        a=episode(0,(0,0));a['return']=10000.;a=completed(a,self.c)
++        b=completed(episode(),self.c)
++        self.assertGreater(aggregate([b],3)['selection_key'],aggregate([a],3)['selection_key'])
++    def test_one_sided_steps_not_eligible(self):
++        s=completed(episode(.20,(10,0)),self.c)
++        self.assertFalse(s['locomotion_pass']);self.assertEqual(aggregate([s],3)['selection_key'][0],0.)
++
++
++class RefineConfigTests(unittest.TestCase):
++    def test_refine_interface_identical_to_v2_and_stand(self):
++        base=load_config(ROOT/'configs/walk_step1.json');interface=RobotSpec.load(base).interface(base)
++        for path in ('walk_refine','walk_step2_smooth','walk_step3_smooth','stand'):
++            c=load_config(ROOT/f'configs/{path}.json');self.assertEqual(interface,RobotSpec.load(c).interface(c))
++    def test_actor_distribution_preserved_and_value_reinitialized(self):
++        c=load_config(ROOT/'configs/walk_refine.json')
++        self.assertTrue(c['transfer']['actor_only']);self.assertIsNone(c['transfer']['reset_log_std'])
++        self.assertTrue(c['transfer']['evaluate_before_learning'])
++        self.assertEqual(c['env']['command_forward_range_m_s'],[.02,.02])
++    def test_no_new_physical_limits_or_gain(self):
++        a=load_config(ROOT/'configs/walk_step1.json');b=load_config(ROOT/'configs/walk_refine.json')
++        for k in ('target_slew_rad_s','action_scale_rad','max_outward_hip_spread_rad','fall_tilt_deg'):
++            self.assertEqual(a['env'][k],b['env'][k])
++        self.assertEqual(RobotSpec.load(a).fingerprint,RobotSpec.load(b).fingerprint)
++    def test_legacy_config_does_not_silently_upgrade(self):
++        c=load_config(ROOT/'configs/walk_step1.json');c['env'].pop('gait_quality_metrics')
++        n=normalize_config(c);self.assertEqual(n['env']['walk_objective_version'],2)
++        self.assertFalse(n['env']['gait_quality_metrics'])
++    def test_no_quality_sampling_rejected_for_v3(self):
++        c=load_config(ROOT/'configs/walk_refine.json');c['env']['gait_quality_metrics']=False
++        with self.assertRaises(ValueError):validate(c)
++    def test_zero_quality_scale_rejected(self):
++        c=load_config(ROOT/'configs/walk_refine.json');c['reward']['pitch_scale_deg']=0
++        with self.assertRaises(ValueError):validate(c)
++    def test_refine_smoke_can_transfer_from_walk_smoke(self):
++        a=load_config(ROOT/'configs/walk_smoke.json');b=load_config(ROOT/'configs/refine_smoke.json')
++        self.assertEqual(a['ppo']['net_arch'],b['ppo']['net_arch'])
++        self.assertEqual(RobotSpec.load(a).interface(a),RobotSpec.load(b).interface(b))
++    def test_telemetry_can_measure_old_without_new_rewards(self):
++        c=load_config(ROOT/'configs/walk_step1.json');c['env']['gait_quality_metrics']=True;validate(c)
++
++
++class RefineDiagnosticTests(unittest.TestCase):
++    def setUp(self):
++        self.c=load_config(ROOT/'configs/walk_refine.json')
++        self.interface=RobotSpec.load(self.c).interface(self.c)
++    def report(self, s):
++        return {'physics_executed':True,'config':self.c,'no_noise':False,'interface':self.interface,
++                'results':[{'episode_results':[completed(s,self.c)]}]}
++    def test_old_results_have_failed_checks_but_missing_quality(self):
++        from diagnose_gait import summarize
++        s=episode();s.pop('pitch_rate_rms_rad_s');r=self.report(s)
++        a=summarize(r);self.assertIn('pitch_rate_rms_rad_s',a['missing_metrics'])
++    def test_comparison_requires_same_seeds(self):
++        from diagnose_gait import compare
++        a=episode();b=episode();b['seed']=1
++        with self.assertRaises(ValueError):compare(self.report(a),self.report(b))
++    def test_comparison_identifies_forward_regression(self):
++        from diagnose_gait import compare
++        a=episode();b=episode(.09);b['pitch_rate_rms_rad_s']=.1
++        result=compare(self.report(a),self.report(b));self.assertFalse(result['checks']['0.020000/retain_forward_85pct'])
++    def test_comparison_identifies_improvement(self):
++        from diagnose_gait import compare
++        a=episode();b=episode();b['pitch_rate_rms_rad_s']=.3
++        self.assertTrue(compare(self.report(a),self.report(b))['criteria_met'])
++    def test_partial_reports_not_treated_as_complete(self):
++        from diagnose_gait import summarize
++        r=self.report(episode());r['status']='IN_PROGRESS'
++        with self.assertRaises(ValueError):summarize(r)
++
++
++if __name__=='__main__':unittest.main()
+--- a/tests/test_refine_runtime.py
++++ b/tests/test_refine_runtime.py
+@@ -0,0 +1,101 @@
++"""Actual MuJoCo/SB3 integration tests. Skipped, not mocked, when unavailable."""
++from __future__ import annotations
++from copy import deepcopy
++import importlib.util
++from pathlib import Path
++import tempfile
++import unittest
++import numpy as np
++from stackchan_rl.config import ROOT,load_config
++
++AVAILABLE=all(importlib.util.find_spec(n) is not None for n in ('mujoco','gymnasium','stable_baselines3'))
++
++@unittest.skipUnless(AVAILABLE, 'MuJoCo/Gymnasium/SB3 missing: v3 runtime NOT EXECUTED')
++class RefineRuntimeTests(unittest.TestCase):
++    def setUp(self):
++        from stackchan_rl.env import StackChanEnv
++        self.c=load_config(ROOT/'configs/refine_smoke.json')
++        self.c['env']['measurement_start_s']=0.
++        self.env=StackChanEnv(self.c)
++    def tearDown(self):self.env.close()
++    def test_SB3_contract(self):
++        from stable_baselines3.common.env_checker import check_env
++        check_env(self.env,warn=True,skip_render_check=True)
++    def test_substep_sample_count_and_pitch_rate(self):
++        self.env.reset(seed=4,options={'no_noise':True})
++        self.env.step(np.zeros(10,dtype=np.float32))
++        q=self.env._quality_latest
++        self.assertEqual(q['quality_sample_count'],self.env.substeps)
++        self.assertTrue(np.isfinite(q['pitch_rate_sq']))
++        self.assertTrue(np.isfinite(q['impact_load_cost']))
++    def test_telemetry_does_not_change_physics_or_legacy_rewards(self):
++        from stackchan_rl.env import StackChanEnv
++        c=load_config(ROOT/'configs/walk_smoke.json')
++        a=StackChanEnv(c);c['env']['gait_quality_metrics']=True;b=StackChanEnv(c)
++        try:
++            oa,_=a.reset(seed=5,options={'no_noise':True});ob,_=b.reset(seed=5,options={'no_noise':True})
++            np.testing.assert_array_equal(oa,ob)
++            for _ in range(5):
++                oa,ra,ta,tra,_=a.step(np.zeros(10));ob,rb,tb,trb,_=b.step(np.zeros(10))
++                np.testing.assert_allclose(a.data.qpos,b.data.qpos,atol=1e-12,rtol=0)
++                np.testing.assert_allclose(a.data.qvel,b.data.qvel,atol=1e-12,rtol=0)
++                np.testing.assert_array_equal(oa,ob);self.assertEqual(ra,rb)
++                self.assertEqual((ta,tra),(tb,trb))
++                if ta or tra:break
++        finally:a.close();b.close()
++    def test_quality_csv_schema_fixed_across_episode(self):
++        self.env.reset(seed=3);keys=set(self.env.trajectory_row())
++        self.assertIn('substep_pitch_rate_rms_rad_s',keys)
++        for _ in range(self.env.max_steps):
++            _,_,term,trunc,info=self.env.step(np.zeros(10))
++            self.assertEqual(keys,set(self.env.trajectory_row()))
++            if term or trunc:
++                s=info['episode_summary'];self.assertIn('quality_checks',s)
++                self.assertIn('pitch_rate_rms_rad_s',s);self.assertIn('failed_checks',s);break
++        else:self.fail('No episode completion')
++    def test_actual_SB3_transfer_preserves_mean_AND_exploration(self):
++        from stable_baselines3 import PPO
++        from stackchan_rl.transfer import transfer_policy
++        import torch
++        torch.set_num_threads(1)
++        kw=dict(policy_kwargs={'net_arch':{'pi':[64,64],'vf':[64,64]}},n_steps=32,batch_size=32,n_epochs=1,device='cpu')
++        a=PPO('MlpPolicy',self.env,seed=10,**kw);b=PPO('MlpPolicy',self.env,seed=20,**kw)
++        with torch.no_grad():a.policy.log_std.copy_(torch.linspace(-2.,-.5,10))
++        obs,_=self.env.reset(seed=7)
++        v=b.policy.value_net.weight.detach().clone()
++        transfer_policy(a.policy,b.policy,actor_only=True,reset_log_std=None)
++        np.testing.assert_allclose(a.predict(obs,deterministic=True)[0],b.predict(obs,deterministic=True)[0],atol=1e-6)
++        torch.testing.assert_close(a.policy.log_std,b.policy.log_std)
++        torch.testing.assert_close(v,b.policy.value_net.weight)
++    def test_short_PPO_save_load_evaluate_and_selection_v3(self):
++        from stable_baselines3 import PPO
++        from stackchan_rl.checkpoints import save_bundle,bundle_info,assert_interface
++        from stackchan_rl.evaluation import evaluate_agent
++        import torch
++        torch.set_num_threads(1)
++        agent=PPO('MlpPolicy',self.env,n_steps=32,batch_size=32,n_epochs=1,device='cpu',seed=11)
++        agent.learn(64)
++        with tempfile.TemporaryDirectory() as d:
++            save_bundle(agent,Path(d)/'bundle',self.c,self.env.specification.interface(self.c))
++            p,c,iface,_=bundle_info(Path(d)/'bundle');assert_interface(iface,c)
++            loaded=PPO.load(str(p/'model.zip'),device='cpu')
++            callbacks=[]
++            r=evaluate_agent(loaded,c,1,12,command=.02,trajectory_dir=Path(d)/'csv',on_episode=callbacks.append)
++            self.assertEqual(len(r['selection_key']),6);self.assertTrue(r['physics_executed'])
++            self.assertEqual(len(callbacks),1);self.assertEqual(r['quality_measured_episodes'],1)
++    def test_reset_clears_all_quality_history(self):
++        self.env.reset(seed=1,options={'no_noise':True});self.env.step(np.zeros(10))
++        self.assertGreater(self.env.quality.n,0)
++        self.env.reset(seed=1,options={'no_noise':True});self.assertEqual(self.env.quality.n,0)
++        self.assertIsNone(self.env.quality.last_landing)
++    def test_object_velocity_axis_matches_existing_jacobian_measurement(self):
++        import mujoco
++        self.env.reset(seed=1,options={'no_noise':True})
++        from stackchan_rl.math_utils import euler_quat
++        self.env.data.qpos[self.env.root_qadr+3:self.env.root_qadr+7]=euler_quat(.1,.2,.3)
++        self.env.data.qvel[self.env.root_vadr+3:self.env.root_vadr+6]=[.2,.3,.4]
++        mujoco.mj_forward(self.env.model,self.env.data)
++        s=self.env._snapshot();v=np.zeros(6)
++        mujoco.mj_objectVelocity(self.env.model,self.env.data,mujoco.mjtObj.mjOBJ_BODY,self.env.base_id,v,0)
++        R=self.env.data.xmat[self.env.base_id].reshape(3,3)
++        np.testing.assert_allclose(R.T@v[:3],s['gyro'],atol=1e-12)
+--- a/tests/test_walk_v2.py
++++ b/tests/test_walk_v2.py
+@@ -236,7 +236,7 @@
+     def test_invalid_objective_and_transfer_rejected(self):
+         c=load_config();c['transfer']['reset_log_std']=10
+         with self.assertRaises(ValueError):validate(c)
+-        c=load_config();c['env']['walk_objective_version']=3
++        c=load_config();c['env']['walk_objective_version']=999
+         with self.assertRaises(ValueError):validate(c)
+ 
+     @staticmethod

@@ -45,6 +45,9 @@ DEFAULT: dict[str, Any] = {
         "measurement_start_s": 0.5,
         # Added in v2; legacy bundles fill these with defaults, not new rewards.
         "walk_objective_version": 1,
+        "gait_quality_metrics": False,
+        "quality_window_s": 4.0,
+        "touchdown_min_airtime_s": 0.04,
         "landing_contact_confirm_s": 0.04,
         "minimum_foot_advance_m": 0.004,
         "event_cooldown_s": 0.25,
@@ -91,6 +94,19 @@ DEFAULT: dict[str, Any] = {
         "alternating_event": 0.0,
         "no_step": 0.0,
         "overspeed": 0.0,
+        # v3-only costs; legacy objectives ignore these even when measured.
+        "pitch_rate": 0.0,
+        "pitch_excursion": 0.0,
+        "action_acceleration": 0.0,
+        "impact_load": 0.0,
+        "touchdown_speed": 0.0,
+        "step_imbalance": 0.0,
+        "repeated_step": 0.0,
+        "pitch_free_deg": 8.0,
+        "pitch_scale_deg": 8.0,
+        "impact_free_bw": 2.5,
+        "touchdown_free_speed_m_s": 0.05,
+        "touchdown_speed_scale_m_s": 0.10,
     },
     "success": {
         "stand_max_tilt_deg": 15.0,
@@ -106,6 +122,12 @@ DEFAULT: dict[str, Any] = {
         "walk_min_forward_landings_each": 0,
         "walk_min_alternations": 3,
         "walk_min_forward_m": 0.025,
+        "refine_max_pitch_rate_rms_rad_s": 1.0,
+        "refine_max_pitch_peak_to_peak_deg": 25.0,
+        "refine_max_action_delta_rms": 0.25,
+        "refine_max_step_excess_fraction": 0.20,
+        "refine_max_repeat_fraction": 0.25,
+        "refine_max_load_bw": 4.0,
     },
     "ppo": {
         "learning_rate": 0.0003,
@@ -124,6 +146,7 @@ DEFAULT: dict[str, Any] = {
     },
     "transfer": {
         "actor_only": False,
+        "evaluate_before_learning": False,
         "reset_log_std": None,
     },
     "train": {
@@ -186,13 +209,25 @@ def validate(c: dict) -> None:
     if c["task"] not in {"stand", "walk"}:
         raise ValueError("task must be stand or walk")
     e, p, t = c["env"], c["ppo"], c["train"]
-    if e["walk_objective_version"] not in (1, 2) or t["selection_version"] not in (1, 2):
-        raise ValueError("Only walk objective and selection versions 1 or 2 are supported")
+    if e["walk_objective_version"] not in (1, 2, 3) or t["selection_version"] not in (1, 2, 3):
+        raise ValueError("Only walk objective and selection versions 1, 2 or 3 are supported")
+    if not isinstance(e["gait_quality_metrics"], bool) or not isinstance(c["transfer"]["evaluate_before_learning"], bool):
+        raise ValueError("gait_quality_metrics / evaluate_before_learning must be boolean")
+    if e["walk_objective_version"] == 3 and (c["task"] != "walk" or not e["gait_quality_metrics"] or t["selection_version"] != 3):
+        raise ValueError("walk objective v3 requires walk, substep quality metrics, and selection v3")
+    if t["selection_version"] == 3 and e["walk_objective_version"] != 3:
+        raise ValueError("selection v3 requires walk objective v3")
+    for k in ("quality_window_s", "touchdown_min_airtime_s"):
+        if not isinstance(e[k], (int, float)) or not math.isfinite(e[k]) or e[k] <= 0:
+            raise ValueError(f"env.{k} must be finite and positive")
+    for k, v in c["success"].items():
+        if k.startswith("refine_") and (not isinstance(v, (int, float)) or not math.isfinite(v) or v <= 0):
+            raise ValueError(f"success.{k} must be finite and positive")
     for k in ("landing_contact_confirm_s", "minimum_foot_advance_m", "event_cooldown_s",
               "no_step_grace_s", "no_step_ramp_s", "minimum_airtime_s", "minimum_lift_m"):
         if not isinstance(e[k], (int, float)) or not math.isfinite(e[k]) or e[k] <= 0:
             raise ValueError(f"env.{k} must be finite and positive")
-    for k in ("velocity_relative_sigma", "velocity_min_sigma_m_s", "target_clearance_m"):
+    for k in ("velocity_relative_sigma", "velocity_min_sigma_m_s", "target_clearance_m", "pitch_scale_deg", "touchdown_speed_scale_m_s"):
         if not isinstance(c["reward"][k], (int, float)) or not math.isfinite(c["reward"][k]) or c["reward"][k] <= 0:
             raise ValueError(f"reward.{k} must be finite and positive")
     for k, v in c["reward"].items():
@@ -242,7 +277,7 @@ def save_json(path: str | Path, value: Any) -> None:
 
 
 def normalize_config(raw: dict) -> dict:
-    """Fill v2's added fields for old bundles without upgrading their objective.
+    """Fill added v2/v3 fields for old bundles without upgrading their objective.
 
     In particular the fallback walk_objective_version stays 1. Old PPO
     checkpoints must not silently acquire different rewards when resumed.

@@ -1,0 +1,41 @@
+{
+  "extends": "walk_step1.json",
+  "env": {
+    "walk_objective_version": 3,
+    "gait_quality_metrics": true
+  },
+  "reward": {
+    "pitch_rate": 0.2,
+    "pitch_excursion": 0.1,
+    "action_rate": 0.06,
+    "action_acceleration": 0.025,
+    "impact_load": 0.3,
+    "touchdown_speed": 0.08,
+    "step_imbalance": 0.15,
+    "repeated_step": 0.08,
+    "alternating_event": 0.25
+  },
+  "success": {
+    "walk_min_forward_m": 0.08,
+    "walk_min_command_distance_fraction": 0.5,
+    "walk_min_forward_landings_each": 2
+  },
+  "ppo": {
+    "learning_rate": 5e-05,
+    "n_epochs": 5,
+    "ent_coef": 0.001,
+    "clip_range": 0.15,
+    "target_kl": 0.015
+  },
+  "transfer": {
+    "actor_only": true,
+    "reset_log_std": null,
+    "evaluate_before_learning": true
+  },
+  "train": {
+    "total_timesteps": 500000,
+    "eval_every_timesteps": 25000,
+    "eval_episodes": 6,
+    "selection_version": 3
+  }
+}

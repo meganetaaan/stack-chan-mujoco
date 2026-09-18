@@ -1,0 +1,25 @@
+{
+  "extends": "walk_refine.json",
+  "env": {
+    "command_forward_range_m_s": [
+      0.02,
+      0.06
+    ],
+    "command_zero_probability": 0.2
+  },
+  "ppo": {
+    "learning_rate": 8e-05
+  },
+  "transfer": {
+    "actor_only": false
+  },
+  "train": {
+    "total_timesteps": 2000000,
+    "eval_commands_m_s": [
+      0.0,
+      0.02,
+      0.04,
+      0.06
+    ]
+  }
+}

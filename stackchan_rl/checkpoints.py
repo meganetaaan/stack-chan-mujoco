@@ -32,7 +32,7 @@ def save_bundle(agent, destination: str | Path, config: dict, interface: dict, m
         save_json(staging / "interface.json", interface)
         save_json(staging / "metadata.json", {"num_timesteps": int(agent.num_timesteps),
                                              "versions": versions(), "metrics": metrics or {},
-                                             "kit_version": "2.0.0", "walk_objective_version": config["env"].get("walk_objective_version", 1),
+                                             "kit_version": "3.0.0", "walk_objective_version": config["env"].get("walk_objective_version", 1),
                                              "normalization": "fixed observation scales; no VecNormalize",
                                              "resume_scope": "weights + optimizer; simulator/RNG rollout state is not restored"})
         (staging / "READY").write_text("complete\n", encoding="utf-8")

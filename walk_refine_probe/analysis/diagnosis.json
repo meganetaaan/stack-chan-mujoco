@@ -1,0 +1,252 @@
+{
+  "archive_sha256": "175586a990297ce74972cd848088c1a6031aad5ddaf85bbb1c391e18117dfa7c",
+  "source_zip_sha256": "8629ae83337136f695cd70590735bc11dcc3a988a762177b0acafd77f7b3c0de",
+  "best_num_timesteps": 475000,
+  "training_evaluation_conditions": [
+    {
+      "initial_seed": 10000,
+      "best_seed": 10000,
+      "initial_no_noise": false,
+      "best_no_noise": false
+    },
+    {
+      "initial_seed": 10001,
+      "best_seed": 10001,
+      "initial_no_noise": false,
+      "best_no_noise": false
+    },
+    {
+      "initial_seed": 10002,
+      "best_seed": 10002,
+      "initial_no_noise": false,
+      "best_no_noise": false
+    },
+    {
+      "initial_seed": 10003,
+      "best_seed": 10003,
+      "initial_no_noise": false,
+      "best_no_noise": false
+    },
+    {
+      "initial_seed": 10004,
+      "best_seed": 10004,
+      "initial_no_noise": false,
+      "best_no_noise": false
+    },
+    {
+      "initial_seed": 10005,
+      "best_seed": 10005,
+      "initial_no_noise": false,
+      "best_no_noise": false
+    }
+  ],
+  "config_equal": true,
+  "interface_equal": true,
+  "comparison": {
+    "mean_forward_m": {
+      "initial": 0.14410788327547855,
+      "best": 0.1475327254869883
+    },
+    "locomotion_pass_rate": {
+      "initial": 0.3333333333333333,
+      "best": 0.6666666666666666
+    },
+    "mean_return": {
+      "initial": 35.45469588330017,
+      "best": 42.57317029112297
+    },
+    "pitch_rate_rms_rad_s": {
+      "initial": 0.5216782788398361,
+      "best": 0.3594529904835344,
+      "change_percent": -31.096807158058336
+    },
+    "roll_rate_rms_rad_s": {
+      "initial": 0.38734280316708136,
+      "best": 0.3393177524979733,
+      "change_percent": -12.398591190138186
+    },
+    "body_pitch_peak_to_peak_deg": {
+      "initial": 24.566917283187863,
+      "best": 13.518685242189726,
+      "change_percent": -44.9719918606104
+    },
+    "action_delta_rms": {
+      "initial": 0.9009292655212512,
+      "best": 0.9115367704941327,
+      "change_percent": 1.1773959819969093
+    },
+    "action_second_difference_rms": {
+      "initial": 1.7824035896588348,
+      "best": 1.8074283430589404,
+      "change_percent": 1.4039891719975328
+    },
+    "mean_excess_load_cost": {
+      "initial": 0.0,
+      "best": 0.0,
+      "change_percent": null
+    },
+    "mean_recent_step_imbalance_cost": {
+      "initial": 0.05137900355871955,
+      "best": 0.07495551601423588,
+      "change_percent": 45.887445887445885
+    },
+    "repeated_valid_landings": {
+      "initial": 1.8333333333333333,
+      "best": 2.5,
+      "change_percent": 36.363636363636374
+    },
+    "mean_peak_sole_load_bw": {
+      "initial": 1.6113706948436395,
+      "best": 1.300200180973091,
+      "change_percent": -19.310920501799444
+    },
+    "max_peak_sole_load_bw": {
+      "initial": 2.198767757495129,
+      "best": 1.6216351064796488,
+      "change_percent": -26.24800409448239
+    }
+  },
+  "actual_runtime_here": false,
+  "heldout": {
+    "episodes": 20,
+    "success_rate": 0.0,
+    "locomotion_pass_rate": 0.55,
+    "mean_forward_m": 0.1510227641008163,
+    "mean_quality": {
+      "pitch_rate_rms_rad_s": 0.3801680307122931,
+      "roll_rate_rms_rad_s": 0.34947807796521685,
+      "body_pitch_peak_to_peak_deg": 15.063135340092265,
+      "action_delta_rms": 0.923783523923427,
+      "action_second_difference_rms": 1.831780792345031,
+      "mean_excess_load_cost": 0.0,
+      "mean_recent_step_imbalance_cost": 0.06094719115404239,
+      "repeated_valid_landings": 2.15,
+      "mean_peak_sole_load_bw": 1.3134208216504666,
+      "max_peak_sole_load_bw": 1.629636771703409
+    },
+    "failure_counts": {
+      "time_limit": 18,
+      "self_contact": 2
+    },
+    "mean_velocity_error_m_s": 0.014478378328473452
+  },
+  "event_rejections": {
+    "short_airtime": 513,
+    "low_clearance": 197,
+    "unconfirmed_touch": 147
+  },
+  "saturation_mean_per_joint": {
+    "left_hip_roll": 0.0,
+    "left_hip_pitch": 0.0,
+    "left_knee": 0.0,
+    "left_ankle_pitch": 0.003410261707988981,
+    "left_ankle_roll": 8.333333333333334e-06,
+    "right_hip_roll": 0.0,
+    "right_hip_pitch": 3.7500000000000003e-05,
+    "right_knee": 0.0,
+    "right_ankle_pitch": 0.0015725657832240906,
+    "right_ankle_roll": 3.7500000000000003e-05
+  },
+  "body_pitch_spectrum": [
+    {
+      "episode": 0,
+      "peak_hz": 0.1953125,
+      "power_above_15Hz": 0.0006639957355915449
+    },
+    {
+      "episode": 1,
+      "peak_hz": 0.1953125,
+      "power_above_15Hz": 0.0005504710677096169
+    },
+    {
+      "episode": 2,
+      "peak_hz": 0.5859375,
+      "power_above_15Hz": 0.00040883193231729885
+    },
+    {
+      "episode": 3,
+      "peak_hz": 0.1953125,
+      "power_above_15Hz": 0.0004926851872583968
+    },
+    {
+      "episode": 4,
+      "peak_hz": 0.2976190476190476,
+      "power_above_15Hz": 0.0002941906598835376
+    },
+    {
+      "episode": 5,
+      "peak_hz": 1.3671875,
+      "power_above_15Hz": 0.0005400301372593255
+    },
+    {
+      "episode": 6,
+      "peak_hz": 0.5859375,
+      "power_above_15Hz": 0.0007475361688676204
+    },
+    {
+      "episode": 7,
+      "peak_hz": 1.171875,
+      "power_above_15Hz": 0.0006920132327590001
+    },
+    {
+      "episode": 8,
+      "peak_hz": 0.1953125,
+      "power_above_15Hz": 0.0004990983239796808
+    },
+    {
+      "episode": 9,
+      "peak_hz": 0.2040816326530612,
+      "power_above_15Hz": 0.0006568633151790235
+    },
+    {
+      "episode": 10,
+      "peak_hz": 1.171875,
+      "power_above_15Hz": 0.00043716878542366473
+    },
+    {
+      "episode": 11,
+      "peak_hz": 0.1953125,
+      "power_above_15Hz": 0.0003856827898888439
+    },
+    {
+      "episode": 12,
+      "peak_hz": 1.171875,
+      "power_above_15Hz": 0.0008041873948516719
+    },
+    {
+      "episode": 13,
+      "peak_hz": 0.390625,
+      "power_above_15Hz": 0.00033269863389296094
+    },
+    {
+      "episode": 14,
+      "peak_hz": 0.1953125,
+      "power_above_15Hz": 0.0003252079880081701
+    },
+    {
+      "episode": 15,
+      "peak_hz": 0.1953125,
+      "power_above_15Hz": 0.0005987939397118565
+    },
+    {
+      "episode": 16,
+      "peak_hz": 1.171875,
+      "power_above_15Hz": 0.0010657897175101862
+    },
+    {
+      "episode": 17,
+      "peak_hz": 0.1953125,
+      "power_above_15Hz": 0.000126418653082297
+    },
+    {
+      "episode": 18,
+      "peak_hz": 0.1953125,
+      "power_above_15Hz": 0.0006037509551288495
+    },
+    {
+      "episode": 19,
+      "peak_hz": 1.171875,
+      "power_above_15Hz": 0.0011426888008547534
+    }
+  ]
+}

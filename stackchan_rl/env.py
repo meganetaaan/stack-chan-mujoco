@@ -19,6 +19,7 @@ from .math_utils import euler_quat, quat_mul, yaw_matrix, wrap_angle, command_at
 from .rewards import reward_terms, success_checks
 from .steps import FootStepTracker
 from .walk_events import WalkEventTracker
+from .quality import GaitQuality, body_angles, quality_checks
 
 
 class StackChanEnv(gym.Env):
@@ -162,7 +163,7 @@ class StackChanEnv(gym.Env):
         self.command = np.zeros(3)
         self.commanded_distance = 0.0
         self.step_tracker = (WalkEventTracker(self.dt, self.e)
-            if self.config["task"] == "walk" and self.e["walk_objective_version"] == 2
+            if self.config["task"] == "walk" and self.e["walk_objective_version"] in (2, 3)
             else FootStepTracker(self.dt, self.e["minimum_airtime_s"], self.e["minimum_lift_m"]))
         self.valid_landings = self.step_tracker.counts
         self.landing_sequence = self.step_tracker.sequence
@@ -176,6 +177,13 @@ class StackChanEnv(gym.Env):
             "min_height_ratio": 1.0, "velocity_abs_error_sum": 0.0,
             "peak_torque": np.zeros(10), "torque_sq_sum": np.zeros(10), "sat_sum": np.zeros(10),
         }
+        self.previous_action_delta = np.zeros(10)
+        self.quality = (GaitQuality(self.e, self.config["reward"],
+                                   float(self.model.body_mass.sum()*np.linalg.norm(self.model.opt.gravity)))
+                        if self.e["gait_quality_metrics"] else None)
+        self._velocity6 = np.zeros(6)
+        self._site_velocity6 = np.zeros((2, 6))
+        self._quality_latest = {}
         self._has_reset = True
         self._done = False
         self._warning_counts = np.array([w.number for w in self.data.warning])
@@ -240,6 +248,7 @@ class StackChanEnv(gym.Env):
         return {
             "base_position": pos, "R": R, "gravity": R.T @ np.array([0., 0., -1.]),
             "velocity": velocity, "gyro": gyro,
+            "body_roll_rad": body_angles(R)[0], "body_pitch_rad": body_angles(R)[1],
             "tilt_rad": float(np.arccos(np.clip(R[2, 2], -1, 1))),
             "heading_error": heading_error, "height_error": pos[2] - self.nominal_height,
             "height_ratio": float(pos[2] / self.nominal_height), "position_error": ep_error,
@@ -253,6 +262,43 @@ class StackChanEnv(gym.Env):
             "slip_speed_sq": slip_sum / max(1.0, slip_count),
             "command": self.command.copy(), "swing_mask": swing_mask(self.phase),
         }
+
+    def _measure_substep_quality(self) -> None:
+        """Read the just-solved mj_step stage without mj_forward/reintegration.
+
+        MuJoCo keeps contact forces and cvel from its dynamics stage. These
+        samples are solver-stage measurements (within one integration timestep
+        of qpos), not a continuous-time peak/impulse guarantee.
+        """
+        mujoco.mj_objectVelocity(self.model, self.data, mujoco.mjtObj.mjOBJ_BODY,
+                                self.base_id, self._velocity6, 0)
+        # Use world angular velocity and the body's explicit frame, not an
+        # API-dependent inertial/local frame for an asymmetric composite body.
+        R = self.data.xmat[self.base_id].reshape(3, 3)
+        gyro = R.T @ self._velocity6[:3]
+        roll, pitch = body_angles(R)
+        loads, down = np.zeros(2), np.zeros(2)
+        for i, sid in enumerate(self.site_ids):
+            mujoco.mj_objectVelocity(self.model, self.data, mujoco.mjtObj.mjOBJ_SITE,
+                                    int(sid), self._site_velocity6[i], 0)
+        for k in range(self.data.ncon):
+            c = self.data.contact[k]
+            if self.floor_id not in (c.geom1, c.geom2):
+                continue
+            other = c.geom2 if c.geom1 == self.floor_id else c.geom1
+            if other == self.sole_ids[0]: i = 0
+            elif other == self.sole_ids[1]: i = 1
+            else: continue
+            mujoco.mj_contactForce(self.model, self.data, k, self._force)
+            world_force = c.frame.reshape(3, 3).T @ self._force[:3]
+            loads[i] += abs(float(world_force[2]))
+            v = self._site_velocity6[i]
+            cp_v = v[3:] + np.cross(v[:3], c.pos-self.data.site_xpos[self.site_ids[i]])
+            down[i] = max(down[i], -float(cp_v[2]), 0.)
+        if not np.isfinite(np.r_[gyro, roll, pitch, loads, down]).all():
+            raise FloatingPointError("nonfinite_substep_telemetry")
+        self.quality.observe(time_s=float(self.data.time), dt=float(self.model.opt.timestep),
+                             gyro=gyro, roll=roll, pitch=pitch, loads=loads, contact_down_speed=down)
 
     def _observation(self, s: dict) -> np.ndarray:
         moving = self.config["task"] == "walk" and self.command[0] > 0.003
@@ -305,6 +351,7 @@ class StackChanEnv(gym.Env):
         target = bounded_target(action, self.home_joints, self.specification.limits, self.e)
         action = np.clip(np.asarray(action, dtype=float), -1.0, 1.0)
         self.previous_action = self.last_action.copy()
+        previous_delta = self.previous_action_delta.copy()
         self.last_action = action.copy()
         self.command = command_at(self.steps*self.dt, self.requested_forward, self.e["command_start_s"], self.e["command_ramp_s"])
         self.desired_xy += (self.heading_R @ self.command)[:2] * self.dt
@@ -315,6 +362,8 @@ class StackChanEnv(gym.Env):
         power, cap_fraction_sq = 0.0, 0.0
         failure = None
         time_before = float(self.data.time)
+        if self.quality is not None:
+            self.quality.begin_interval()
         try:
             for _ in range(self.substeps):
                 qd = self.data.qvel[self.vadr]
@@ -327,6 +376,8 @@ class StackChanEnv(gym.Env):
                 power += float(np.sum(np.abs(tau * qd)))
                 cap_fraction_sq += float(np.mean((tau / self.bank.cap)**2))
                 mujoco.mj_step(self.model, self.data)
+                if self.quality is not None:
+                    self._measure_substep_quality()
                 if not np.isfinite(self.data.qpos).all() or not np.isfinite(self.data.qvel).all():
                     failure = "nonfinite_state"
                     break
@@ -361,6 +412,16 @@ class StackChanEnv(gym.Env):
                   "requested_forward_m_s": self.requested_forward,
                   "no_step_grace_s": self.e["no_step_grace_s"],
                   "no_step_ramp_s": self.e["no_step_ramp_s"]})
+        action_delta = self.last_action-self.previous_action
+        s["action_second_delta"] = action_delta-previous_delta
+        self.previous_action_delta = action_delta.copy()
+        if self.quality is not None and failure is None:
+            self._quality_latest = self.quality.finish_interval(
+                time_s=self.steps*self.dt, dt=self.dt,
+                moving=self.config["task"] == "walk" and self.command[0] > .003,
+                events=s, action_delta=action_delta, action_delta2=s["action_second_delta"],
+                target_error=self.bank.filtered-s["q"])
+            s["gait_quality"] = self._quality_latest
         terminated = failure is not None
         # Time limits are truncations, not terminal MDP states (SB3 bootstraps).
         truncated = self.steps >= self.max_steps and not terminated
@@ -388,7 +449,11 @@ class StackChanEnv(gym.Env):
             summary = self._summary(terminated, truncated, failure)
             checks = success_checks(summary, self.config)
             summary["success_checks"] = checks
-            summary["is_success"] = all(checks.values())
+            summary["locomotion_pass"] = all(checks.values())
+            summary["quality_checks"] = quality_checks(summary, self.config)
+            summary["is_success"] = all(checks.values()) and all(summary["quality_checks"].values())
+            summary["failed_checks"] = ([k for k, v in checks.items() if not v] +
+                ["quality/"+k for k, v in summary["quality_checks"].items() if not v])
             from .evaluation import classify_behavior
             summary["behavior"] = classify_behavior(summary)
             info["is_success"] = summary["is_success"]
@@ -434,6 +499,7 @@ class StackChanEnv(gym.Env):
             "saturation_fraction": dict(zip(JOINT_NAMES, (st["sat_sum"]/max(1,st["samples"])).tolist())),
             "reward_components": dict(self.reward_sums),
             "walk_objective_version": self.e["walk_objective_version"],
+            **(self.quality.summary() if self.quality is not None else {}),
             **(self.step_tracker.summary() if isinstance(self.step_tracker, WalkEventTracker) else {}),
         }
 
@@ -456,9 +522,26 @@ class StackChanEnv(gym.Env):
                 row[side+"_forward_landings"] = int(self.step_tracker.forward_counts[i])
                 row[side+"_raw_unloads"] = int(self.step_tracker.raw_unloads[i])
                 row[side+"_max_clearance_m"] = float(self.step_tracker.peak_episode[i])
+        row.update({"body_roll_deg": float(np.rad2deg(s["body_roll_rad"])),
+                    "body_pitch_deg": float(np.rad2deg(s["body_pitch_rad"])),
+                    "body_roll_rate_rad_s": float(s["gyro"][0]),
+                    "body_pitch_rate_rad_s": float(s["gyro"][1]),
+                    "body_yaw_rate_rad_s": float(s["gyro"][2]),
+                    "action_delta_rms": float(np.sqrt(np.mean((self.last_action-self.previous_action)**2))),
+                    "action_second_delta_rms": float(np.sqrt(np.mean(np.asarray(s.get("action_second_delta", np.zeros(10)))**2)))})
+        if self.quality is not None:
+            q = self._quality_latest
+            row["substep_pitch_rate_rms_rad_s"] = float(np.sqrt(q.get("pitch_rate_sq", 0.)))
+            row["substep_sample_count"] = int(q.get("quality_sample_count", 0))
+            row["recent_step_imbalance_cost"] = float(q.get("recent_step_imbalance_cost", 0.))
+            for i, side in enumerate(("left", "right")):
+                row[side+"_peak_load_N"] = float(q.get("peak_loads_N", [0., 0.])[i])
+                row[side+"_touchdown_down_speed_m_s"] = float(q.get("touchdown_down_speed_m_s", [0., 0.])[i])
         # Always include every configured component, even on the initial row.
         for name in ("velocity", "forward_progress", "unload", "clearance", "no_step", "landing_event",
-                     "liftoff_event", "forward_landing_event", "alternating_event", "slip", "torque"):
+                     "liftoff_event", "forward_landing_event", "alternating_event", "slip", "torque",
+                     "action_rate", "pitch_rate", "pitch_excursion", "action_acceleration",
+                     "impact_load", "touchdown_speed", "step_imbalance", "repeated_step"):
             row["reward_"+name] = float(getattr(self, "last_reward_terms", {}).get(name, 0.0))
         for i, n in enumerate(JOINT_NAMES):
             row[n+"_rad"] = float(s["q"][i])
@@ -474,13 +557,15 @@ class StackChanEnv(gym.Env):
             if self._viewer is None:
                 from mujoco import viewer as mj_viewer
                 self._viewer = mj_viewer.launch_passive(self.model, self.data)
-                self._viewer.cam.distance = 0.55
-                self._viewer.cam.azimuth = 135
-                self._viewer.cam.elevation = -15
-                self._viewer.opt.geomgroup[3] = 0  # Keep collision proxies available but hidden.
-                self._viewer.opt.sitegroup[4] = 0
+                with self._viewer.lock():
+                    self._viewer.cam.distance = 0.55
+                    self._viewer.cam.azimuth = 135
+                    self._viewer.cam.elevation = -15
+                    self._viewer.opt.geomgroup[3] = 0
+                    self._viewer.opt.sitegroup[4] = 0
             if self._viewer.is_running():
-                self._viewer.cam.lookat[:] = self.data.xpos[self.base_id] + [0, 0, 0.055]
+                with self._viewer.lock():
+                    self._viewer.cam.lookat[:] = self.data.xpos[self.base_id] + [0, 0, 0.055]
                 self._viewer.sync()
             return None
         if self._renderer is None:

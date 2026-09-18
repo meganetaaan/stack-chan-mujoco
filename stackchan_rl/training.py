@@ -99,7 +99,7 @@ def main(argv: list[str] | None = None) -> int:
     class RunCallback(BaseCallback):
         def __init__(self):
             super().__init__(verbose=0)
-            self.best_key = (-float("inf"),) * (6 if cfg["train"]["selection_version"] == 2 else 3)
+            self.best_key = (-float("inf"),) * (6 if cfg["train"]["selection_version"] in (2, 3) else 3)
             if resume_data:
                 self.best_key = tuple(resume_data[3].get("metrics", {}).get("selection_key", self.best_key))
             if (run_dir / "best" / "READY").is_file():
@@ -129,7 +129,10 @@ def main(argv: list[str] | None = None) -> int:
                     self.recent.append(s)
                     compact = {k: s[k] for k in ("return", "duration_s", "is_success", "failure_reason", "forward_m", "max_tilt_deg", "valid_landings")}
                     compact.update({k: s.get(k) for k in ("requested_forward_m_s", "qualified_liftoffs", "forward_landings",
-                             "behavior", "success_checks", "reward_components", "event_rejections", "max_sole_clearance_m")})
+                             "behavior", "success_checks", "reward_components", "event_rejections", "max_sole_clearance_m",
+                             "quality_checks", "failed_checks", "pitch_rate_rms_rad_s", "roll_rate_rms_rad_s",
+                             "body_pitch_peak_to_peak_deg", "peak_sole_load_bw", "target_error_rms_rad",
+                             "action_delta_rms", "mean_recent_step_imbalance_cost", "saturation_fraction")})
                     compact["num_timesteps"] = int(self.num_timesteps)
                     self.ep_file.write(json.dumps(compact) + "\n")
             if self.num_timesteps >= self.next_eval:
@@ -142,6 +145,10 @@ def main(argv: list[str] | None = None) -> int:
                 self.logger.record("eval/forward_m", metrics["mean_forward_m"])
                 self.logger.record("eval/mean_return", metrics["mean_return"])
                 self.logger.record("eval/locomotion_score", metrics["locomotion_score"])
+                for name, value in metrics.get("mean_quality", {}).items():
+                    self.logger.record("eval_quality/"+name, value)
+                for name, value in metrics.get("failed_check_counts", {}).items():
+                    self.logger.record("eval_failed/"+name, value/metrics["episodes"])
                 for i, side in enumerate(("left", "right")):
                     self.logger.record("eval/"+side+"_valid_landings", metrics["mean_valid_landings"][i])
                     self.logger.record("eval/"+side+"_forward_landings", metrics["mean_forward_landings"][i])
@@ -154,7 +161,9 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"[eval {self.num_timesteps}] success={metrics['successful_episodes']}/{metrics['episodes']} "
                       f"survival={metrics['mean_duration_s']:.2f}s forward={metrics['mean_forward_m']:.3f}m "
                       f"landings={metrics['mean_valid_landings']} forward_landings={metrics['mean_forward_landings']} "
-                      f"behavior={metrics['behavior_counts']}", flush=True)
+                      f"behavior={metrics['behavior_counts']} "
+                      f"failed={metrics.get('failed_check_counts', {})} "
+                      f"pitch_rms={metrics.get('mean_quality', {}).get('pitch_rate_rms_rad_s', 'not_measured')}", flush=True)
             if self.num_timesteps >= self.next_save:
                 self.next_save += cfg["train"]["checkpoint_every_timesteps"]
                 save_bundle(self.model, run_dir / "checkpoints" / f"step_{self.num_timesteps:010d}", cfg, interface, self.last_metrics)
@@ -172,6 +181,10 @@ def main(argv: list[str] | None = None) -> int:
                     for field in ("valid_landings", "qualified_liftoffs", "forward_landings"):
                         self.logger.record("robot/"+side+"_"+field,
                             sum(float(s.get(field,[0,0])[i]) for s in self.recent)/len(self.recent))
+                for name in ("pitch_rate_rms_rad_s", "roll_rate_rms_rad_s", "body_pitch_peak_to_peak_deg", "action_delta_rms"):
+                    values = [float(s[name]) for s in self.recent if name in s]
+                    if values:
+                        self.logger.record("robot_quality/"+name, sum(values)/len(values))
                 names = set().union(*(s["reward_components"] for s in self.recent))
                 for name in names:
                     self.logger.record("reward_per_second/"+name, sum(s["reward_components"].get(name, 0)/max(s["duration_s"], 0.02) for s in self.recent) / len(self.recent))
@@ -205,6 +218,16 @@ def main(argv: list[str] | None = None) -> int:
                 save_json(run_dir / "transfer.json", transfer)
                 print("Transfer:", transfer, flush=True)
                 del previous
+        if init_data and cfg["transfer"]["evaluate_before_learning"]:
+            print("Evaluating transferred policy BEFORE learning (same new criteria).", flush=True)
+            metrics = evaluate_configured(agent, cfg)
+            save_json(run_dir / "initial_evaluation.json", metrics)
+            save_bundle(agent, run_dir / "initial", cfg, interface, metrics)
+            save_bundle(agent, run_dir / "best", cfg, interface, metrics)
+            callback.best_key = tuple(metrics["selection_key"])
+            callback.last_metrics = metrics
+            print("Initial failed checks:", metrics.get("failed_check_counts", {}), flush=True)
+            print("Initial quality:", metrics.get("mean_quality", {}), flush=True)
         print(f"Task={cfg['task']} | A-model mass={RobotSpec.load(cfg).mass:.4f}kg | "
               f"{len(fns)} CPU envs | requested additional steps={cfg['train']['total_timesteps']}", flush=True)
         agent.learn(total_timesteps=cfg["train"]["total_timesteps"], callback=callback,

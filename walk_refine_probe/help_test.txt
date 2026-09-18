@@ -1,0 +1,20 @@
+usage: compare_control.py [-h] [--project PROJECT] --checkpoint CHECKPOINT
+                          [--episodes EPISODES] [--seed SEED]
+                          [--command COMMAND] [--taus-ms TAUS_MS] [--out OUT]
+
+Headless controlled experiment on the SAME saved policy (no training).
+Baseline and post-slew LP40/LP80 run identical seeds and commands. Filters
+alter runtime control dynamics intentionally; they are NOT claimed to be
+checkpoint- compatible for resuming training, nor are successful-looking
+rollouts evidence of sim-to-real safety. Results retain v3's raw-action
+quality criteria unchanged.
+
+options:
+  -h, --help            show this help message and exit
+  --project PROJECT
+  --checkpoint CHECKPOINT
+  --episodes EPISODES
+  --seed SEED
+  --command COMMAND
+  --taus-ms TAUS_MS
+  --out OUT

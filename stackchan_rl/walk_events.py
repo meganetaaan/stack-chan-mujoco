@@ -62,7 +62,8 @@ class WalkEventTracker:
         out = {"valid_landings_this_step": 0, "qualified_liftoffs_this_step": 0,
                "rewarded_liftoffs_this_step": 0, "rewarded_landings_this_step": 0,
                "forward_landings_this_step": 0, "alternating_landings_this_step": 0,
-               "new_forward_distance_m": 0.0, "no_step_elapsed_s": 0.0}
+               "new_forward_distance_m": 0.0, "no_step_elapsed_s": 0.0,
+               "valid_landing_feet": [], "forward_landing_feet": []}
         if active:
             if not self._active:
                 self._base_highwater = float(base_forward)
@@ -122,6 +123,7 @@ class WalkEventTracker:
                         self.counts[i] += 1
                         self.sequence.append("left" if i == 0 else "right")
                         out["valid_landings_this_step"] += 1
+                        out["valid_landing_feet"].append(i)
                         if active:
                             self._last_step_at = self.active_time
                         if (active and self.last_reward_landing != i
@@ -138,6 +140,7 @@ class WalkEventTracker:
                             self.forward_counts[i] += 1
                             self.forward_sequence.append("left" if i == 0 else "right")
                             out["forward_landings_this_step"] += 1
+                            out["forward_landing_feet"].append(i)
                     self.pending[i] = None
                     self.touched[i] = True
                     self.last_ground[i] = xy[i]

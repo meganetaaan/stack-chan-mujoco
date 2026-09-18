@@ -1,47 +1,56 @@
-# v2 配布前テスト結果
+# v3 配布前検査記録
 
-**96件を検出し、82件を実行して合格。MuJoCo/Gymnasium/SB3を必要とする14件は未実行です。実学習・歩行成功を確認した結果ではありません。**
+**156件を検出し、134件を実行して合格、22件は依存ライブラリー不足のため未実行です。MuJoCoの物理歩行、SB3での本学習、v2方策との改善比較は実施していません。**
 
-作成環境：Python 3.13.5、NumPy 2.3.5、PyTorch 2.10.0+cpu。`pip install` を試しましたが、パッケージ取得先の名前解決に失敗してMuJoCo/Gymnasium/SB3を導入できませんでした。ユーザーのWSL2でこれらが動かないという意味ではありません。
+## 環境と実施範囲
 
-## 実行したテスト
+Python 3.13.5、NumPy 2.3.5、PyTorch 2.10.0+cpu。MuJoCo/Gymnasium/Stable Baselines3は未導入です。pipの取得試行が失敗し、追加のpypi.org接続確認でも名前解決失敗を記録しています。ユーザーのWSL2環境でこれらを導入できないという意味ではありません。
 
 | 範囲 | 結果 |
 |---|---|
-| Python構文コンパイル | 合格 |
-| 旧キットのオフライン回帰40件 | 合格 |
-| 新しい報酬・接地イベント・選択・互換性・workflow・torch転送の42件 | 合格 |
-| 全A案assetのSHA-256 | 旧キットと一致 |
-| 旧/新Stage 1〜3の方策I/O契約 | 一致 |
-| 速度0、半分の速度、指令一致、後退に対する報酬値 | 人工状態で比較済み |
-| 初期落下・滑り・チャタリング・同時跳躍・同一足連打 | 人工接地系列で得点/カウントを検査済み |
-| 同じ区間の足の往復、胴体の揺動 | 前進記録を繰り返し得点にしない検査に合格 |
-| actorの出力保持、criticの非転送、log_std再設定 | PyTorchのSB3類似構造で検査。実SB3実行とは別 |
-| 旧configの補完 | 報酬version 1と旧係数を保持 |
-| 時間だけ完走した方策のbest選択 | 人工評価データで、実歩数・前進のある候補を優先 |
-| 停止試験と歩行試験が混在する進級判定 | 全指令を検査し、停止成功で歩行失敗を隠さない |
+| Python構文コンパイル | 成功 |
+| 既存v2のオフライン回帰 | 82件合格 |
+| v3の新規オフライン試験 | 52件合格 |
+| 全A案assetのSHA-256 | 43ファイル、v2と全一致 |
+| 制御・観測契約 | actuation/spec等のハッシュ一致、61次元/10次元のinterface同一 |
+| ピッチ/ロール分離、デッドバンド、区間二乗平均 | 人工入力で確認 |
+| 初期落下・短い接触チャタリングの除外 | 人工接触系列で確認 |
+| 接近速度eventと荷重rateのdt扱い | 人工入力で確認 |
+| 歩数差1回の許容、過去の偏りを忘れる4秒窓 | 人工系列で確認 |
+| v1/v2の報酬・転送互換性 | オフライン試験で確認 |
+| 歩いていない候補を滑らかさだけで選ばないbest選択 | 人工評価データで確認 |
+| actorの平均出力とlog_std保持、新criticの非転送 | PyTorchの類似構造の試験で確認。実SB3では未確認 |
+| 同一指令/seed/設定による比較、欠けた指標の検出 | 人工JSONで確認 |
+| MuJoCo/SB3の旧14件＋v3の新8件 | 計22件skipped、合格ではない |
+| `check_env.py --config configs/walk_refine.json` | 依存不足で終了コード2、物理未実行 |
+| `smoke_test.py --subproc` | 最初のpreflightで終了コード2、PPOまで到達せず |
 
-## 未実行
+モデル質量は元定義どおり 0.8260386996 kgです。実測重量ではありません。model fingerprintは `fd52c6f9a48c468ff049caf0392a1d855c6d3566c5ebf81e93e58a9e5a97f27c`。
 
-MuJoCoによる新コードのコンパイル・接触・PD駆動、実SB3でのactor転送、PPO更新、並列プロセス・保存・再読込み、GUI/動画、長時間学習、ユーザーの既存policyでの再現、歩行成功率は未確認です。ユーザーの学習済み重みと詳細評価CSVは受け取っていません。
+## 未確認の項目
 
-`check_env.py --config configs/walk_step1.json` と `smoke_test.py --subproc` を実行しましたが、依存不足を検出した段階で終了コード2となりました。シミュレーターをスタブ化して「実行済み」にする処理はありません。
+実エンジンでのsubstep計測/接触座標、計測ON/OFF時の物理同一性、実SB3のactor転送・保存・再開、並列プロセス、学習時間、GUI/動画、学習による揺れ・着地衝撃・左右偏りの改善率は未確認です。ユーザーの学習済み重みと実評価JSON/CSVも未受領です。報告された約194 mm前進・5対2着地をこの環境で再現していません。
 
-## 報酬式だけの検査例
-
-0.02 m/s指令に対し、旧式では静止中も速度項が約1.443/秒（最大2/秒）、新式では0/秒（指令一致時8/秒）です。新式では半分の速度0.01 m/sも正の速度項になります。
-
-この数値は人工的な状態で関数を呼んだ結果で、力学的に到達可能な歩容を観測したものではありません。報酬の順位が改善したことと、PPOの収束・歩行成功は別です。探索や接触条件、機構の制約が原因となる可能性も残ります。
+物理テストをスタブに差し替えて通過させていません。人工系列/人工状態のunit testは、力学的に実現可能な歩容や学習の成功を意味しません。新報酬の係数と品質しきい値は最初の試行値で、実測による最適化済みパラメーターではありません。
 
 ## 再実行
 
-既にMuJoCoが動くWSLの仮想環境で、キットのルートから次を実行します。
+MuJoCoが動作している仮想環境で、配布フォルダーのルートから実行します。
 
 ```bash
-python -m unittest discover -s tests -v
+python validation/run_tests.py
+python check_env.py --config configs/walk_refine.json
 python smoke_test.py --subproc
 ```
 
-依存がある環境では14件の実行テストも走ります。`OK (skipped=14)` はそれら14件の合格を意味しません。`validation/run_tests.py` で検査記録を更新できます。
+依存が揃えば22件のruntime testsも実行対象になります。出力のskippedを合格と解釈せず、失敗時は学習へ進む前に確認してください。smokeは接続試験であり、歩行習得試験ではありません。
 
-詳しい実行ログは `validation/unit_tests.json`, `validation/unit_tests.log`, `validation/preflight.json`, `validation/runtime_v2/`, `validation/reward_audit.json`, `validation/dependency_install_attempt.log`、旧配布版の検査記録は `validation/v1/` に保存しています。
+## 再現情報
+
+- `validation/unit_tests.json`, `unit_tests.log`：実際の合否とskip理由。
+- `validation/source_hashes.json`：source ZIPとassetのハッシュ、方策interface照合。
+- `validation/changes_from_v2.patch`：コード/設定/文書のレビュー用差分。自動上書き処理ではありません。
+- `validation/preflight.json`, `preflight.log`：実エンジンを呼ぶ前の依存エラー。
+- `validation/runtime_v3/`, `runtime_smoke.log`：preflightで停止したsmokeログ。
+- `validation/dependency_install_attempt.log`, `network_probe.log`：パッケージ取得試行の失敗。
+- `validation/v1/`, `validation/v2/`：旧配布物の検査履歴。現在の版の実行結果とは区別。
