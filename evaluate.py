@@ -27,7 +27,7 @@ def main():
     folder, cfg, interface, _ = bundle_info(args.checkpoint)
     assert_interface(interface, cfg)
     agent = PPO.load(str(folder / "model.zip"), device="cpu")
-    commands = [float(x.strip()) for x in args.commands.split(",")] if args.commands else [cfg["train"]["eval_forward_m_s"]]
+    commands = [float(x.strip()) for x in args.commands.split(",")] if args.commands else (cfg["train"]["eval_commands_m_s"] or [cfg["train"]["eval_forward_m_s"]])
     results = []
     for i, command in enumerate(commands):
         output = args.trajectories / f"cmd_{command:.3f}" if args.trajectories else None
@@ -36,7 +36,9 @@ def main():
         result["command_forward_m_s"] = command
         results.append(result)
         print(f"vx={command:.3f}: success {result['successful_episodes']}/{result['episodes']}, "
-              f"survival {result['mean_duration_s']:.2f}s, forward {result['mean_forward_m']:.3f}m")
+              f"survival {result['mean_duration_s']:.2f}s, forward {result['mean_forward_m']:.3f}m "
+              f"landings={result['mean_valid_landings']} advancing={result['mean_forward_landings']} "
+              f"behavior={result['behavior_counts']}")
     save_json(args.out, {"checkpoint": str(folder), "task": cfg["task"], "physics_executed": True,
                          "versions": versions(), "seed": args.seed, "results": results,
                          "not_hardware_validation": True})

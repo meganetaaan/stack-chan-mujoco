@@ -47,8 +47,55 @@ test_real_PPO_update_save_and_reload (test_runtime.RuntimeTests.test_real_PPO_up
 test_seeded_reset_and_step (test_runtime.RuntimeTests.test_seeded_reset_and_step) ... skipped 'MuJoCo / Gymnasium / SB3 missing: real runtime NOT EXECUTED'
 test_time_limit_is_truncation (test_runtime.RuntimeTests.test_time_limit_is_truncation) ... skipped 'MuJoCo / Gymnasium / SB3 missing: real runtime NOT EXECUTED'
 test_torque_interface_and_no_root_assist (test_runtime.RuntimeTests.test_torque_interface_and_no_root_assist) ... skipped 'MuJoCo / Gymnasium / SB3 missing: real runtime NOT EXECUTED'
+test_actor_interface_unchanged_for_all_stages (test_walk_v2.CompatibilityAndSelectionTests.test_actor_interface_unchanged_for_all_stages) ... ok
+test_curriculum_commands_and_no_stop_at_first (test_walk_v2.CompatibilityAndSelectionTests.test_curriculum_commands_and_no_stop_at_first) ... ok
+test_high_reward_stationary_not_preferred_to_physical_progress (test_walk_v2.CompatibilityAndSelectionTests.test_high_reward_stationary_not_preferred_to_physical_progress) ... ok
+test_invalid_objective_and_transfer_rejected (test_walk_v2.CompatibilityAndSelectionTests.test_invalid_objective_and_transfer_rejected) ... ok
+test_old_checkpoint_config_remains_legacy (test_walk_v2.CompatibilityAndSelectionTests.test_old_checkpoint_config_remains_legacy) ... ok
+test_stationary_not_called_stand_success_under_forward_command (test_walk_v2.CompatibilityAndSelectionTests.test_stationary_not_called_stand_success_under_forward_command) ... ok
+test_stop_evaluation_not_rejected_for_zero_landings (test_walk_v2.CompatibilityAndSelectionTests.test_stop_evaluation_not_rejected_for_zero_landings) ... ok
+test_success_still_requires_real_steps (test_walk_v2.CompatibilityAndSelectionTests.test_success_still_requires_real_steps) ... ok
+test_synthetic_ranking_does_not_claim_physical_execution (test_walk_v2.CompatibilityAndSelectionTests.test_synthetic_ranking_does_not_claim_physical_execution) ... ok
+test_actor_only_preserves_mean_and_reinitializes_critic_and_noise (test_walk_v2.TransferTensorTests.test_actor_only_preserves_mean_and_reinitializes_critic_and_noise) ... ok
+test_alternating_footsteps_and_forward_steps (test_walk_v2.WalkEventTests.test_alternating_footsteps_and_forward_steps) ... ok
+test_bare_unload_is_diagnostic_not_qualified_lift (test_walk_v2.WalkEventTests.test_bare_unload_is_diagnostic_not_qualified_lift) ... ok
+test_body_rocking_does_not_refarm_progress (test_walk_v2.WalkEventTests.test_body_rocking_does_not_refarm_progress) ... ok
+test_chatter_not_accumulated_as_airtime (test_walk_v2.WalkEventTests.test_chatter_not_accumulated_as_airtime) ... ok
+test_foot_forward_backward_cannot_refarm_old_record (test_walk_v2.WalkEventTests.test_foot_forward_backward_cannot_refarm_old_record) ... ok
+test_foot_lift_in_place_not_forward_landing (test_walk_v2.WalkEventTests.test_foot_lift_in_place_not_forward_landing) ... ok
+test_hanging_one_foot_does_not_reset_no_step_timer (test_walk_v2.WalkEventTests.test_hanging_one_foot_does_not_reset_no_step_timer) ... ok
+test_hopping_without_other_support_rejected (test_walk_v2.WalkEventTests.test_hopping_without_other_support_rejected) ... ok
+test_initial_drop_not_a_step (test_walk_v2.WalkEventTests.test_initial_drop_not_a_step) ... ok
+test_landing_waits_for_contact_confirmation (test_walk_v2.WalkEventTests.test_landing_waits_for_contact_confirmation) ... ok
+test_no_stagnation_penalty_timer_when_stopped (test_walk_v2.WalkEventTests.test_no_stagnation_penalty_timer_when_stopped) ... ok
+test_no_steps_for_sliding (test_walk_v2.WalkEventTests.test_no_steps_for_sliding) ... ok
+test_repeated_same_leg_no_lift_or_alternation_bonus (test_walk_v2.WalkEventTests.test_repeated_same_leg_no_lift_or_alternation_bonus) ... ok
+test_unconfirmed_touch_not_repeated_landing (test_walk_v2.WalkEventTests.test_unconfirmed_touch_not_repeated_landing) ... ok
+test_backward_motion_scores_less_than_stop (test_walk_v2.WalkRewardTests.test_backward_motion_scores_less_than_stop) ... ok
+test_clearance_needs_air_and_other_foot_support (test_walk_v2.WalkRewardTests.test_clearance_needs_air_and_other_foot_support) ... ok
+test_correct_swing_contact_is_rewarded (test_walk_v2.WalkRewardTests.test_correct_swing_contact_is_rewarded) ... ok
+test_events_are_discrete_not_scaled_by_dt (test_walk_v2.WalkRewardTests.test_events_are_discrete_not_scaled_by_dt) ... ok
+test_events_zero_at_stop_command (test_walk_v2.WalkRewardTests.test_events_zero_at_stop_command) ... ok
+test_excessive_lift_not_rewarded_over_target (test_walk_v2.WalkRewardTests.test_excessive_lift_not_rewarded_over_target) ... ok
+test_no_forward_position_hold_in_walk (test_walk_v2.WalkRewardTests.test_no_forward_position_hold_in_walk) ... ok
+test_no_gait_contact_partial_credit_when_both_feet_stay_down (test_walk_v2.WalkRewardTests.test_no_gait_contact_partial_credit_when_both_feet_stay_down) ... ok
+test_partial_forward_motion_is_better_than_stop (test_walk_v2.WalkRewardTests.test_partial_forward_motion_is_better_than_stop) ... ok
+test_standing_with_no_steps_better_than_immediate_fall (test_walk_v2.WalkRewardTests.test_standing_with_no_steps_better_than_immediate_fall) ... ok
+test_stationary_gets_zero_velocity_credit_for_all_commands (test_walk_v2.WalkRewardTests.test_stationary_gets_zero_velocity_credit_for_all_commands) ... ok
+test_stuck_penalty_bounded_and_has_grace (test_walk_v2.WalkRewardTests.test_stuck_penalty_bounded_and_has_grace) ... ok
+test_unloading_has_continuous_signal (test_walk_v2.WalkRewardTests.test_unloading_has_continuous_signal) ... ok
+test_unloading_reward_requires_other_foot_support (test_walk_v2.WalkRewardTests.test_unloading_reward_requires_other_foot_support) ... ok
+test_velocity_upper_bound (test_walk_v2.WalkRewardTests.test_velocity_upper_bound) ... ok
+test_smoke_configs_can_transfer_architecture_and_interface (test_walk_v2.WorkflowTests.test_smoke_configs_can_transfer_architecture_and_interface) ... ok
+test_stage_gate_rejects_success_flag_without_steps (test_walk_v2.WorkflowTests.test_stage_gate_rejects_success_flag_without_steps) ... ok
+test_stop_group_cannot_hide_failed_walk_in_gate (test_walk_v2.WorkflowTests.test_stop_group_cannot_hide_failed_walk_in_gate) ... ok
+test_actor_transfer_on_actual_SB3_MlpPolicy (test_walk_v2_runtime.WalkV2RuntimeTests.test_actor_transfer_on_actual_SB3_MlpPolicy) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v2 runtime NOT EXECUTED'
+test_contract_v2 (test_walk_v2_runtime.WalkV2RuntimeTests.test_contract_v2) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v2 runtime NOT EXECUTED'
+test_csv_columns_stable_from_reset_through_rollout (test_walk_v2_runtime.WalkV2RuntimeTests.test_csv_columns_stable_from_reset_through_rollout) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v2 runtime NOT EXECUTED'
+test_short_v2_PPO_and_saved_evaluation (test_walk_v2_runtime.WalkV2RuntimeTests.test_short_v2_PPO_and_saved_evaluation) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v2 runtime NOT EXECUTED'
+test_v2_episode_reports_event_diagnostics (test_walk_v2_runtime.WalkV2RuntimeTests.test_v2_episode_reports_event_diagnostics) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v2 runtime NOT EXECUTED'
 
 ----------------------------------------------------------------------
-Ran 49 tests in 0.103s
+Ran 96 tests in 1.650s
 
-OK (skipped=9)
+OK (skipped=14)

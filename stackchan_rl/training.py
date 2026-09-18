@@ -7,9 +7,10 @@ from functools import partial
 import json
 from pathlib import Path
 import traceback
-from .config import ROOT, load_config, validate, save_json
+from .config import ROOT, load_config, validate, save_json, normalize_config
 from .checkpoints import versions, bundle_info, assert_interface, save_bundle
 from .spec import RobotSpec
+from .transfer import transfer_policy
 
 
 def make_worker(config: dict, rank: int, log_dir: str):
@@ -26,7 +27,7 @@ def parser() -> argparse.ArgumentParser:
     select.add_argument("--task", choices=("stand", "walk"), help="shorthand for configs/<task>.json")
     source = p.add_mutually_exclusive_group()
     source.add_argument("--resume", type=Path, help="resume a complete checkpoint, including optimizer")
-    source.add_argument("--init-from", type=Path, help="copy policy/value weights, NEW optimizer (e.g. stand -> walk)")
+    source.add_argument("--init-from", type=Path, help="transfer weights according to config.transfer with a NEW optimizer (e.g. stand -> walk)")
     p.add_argument("--run-dir", type=Path, required=True)
     p.add_argument("--num-envs", type=int)
     p.add_argument("--total-timesteps", type=int, help="ADDITIONAL environment transitions on resume")
@@ -53,7 +54,7 @@ def main(argv: list[str] | None = None) -> int:
     if run_dir.exists() and any(run_dir.iterdir()) and not resume_data:
         raise FileExistsError(f"{run_dir} is not empty. Use a new --run-dir, or --resume; files will not be overwritten.")
     if resume_data and (run_dir / "config.json").is_file():
-        old = json.loads((run_dir / "config.json").read_text(encoding="utf-8"))
+        old = normalize_config(json.loads((run_dir / "config.json").read_text(encoding="utf-8")))
         if any(old.get(k) != cfg[k] for k in ("task", "env", "reward", "success")):
             raise ValueError("Existing run-dir belongs to a different task/environment. Resume into a new directory.")
     try:
@@ -63,7 +64,7 @@ def main(argv: list[str] | None = None) -> int:
         from stable_baselines3.common.callbacks import BaseCallback
         from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv
         from .env import StackChanEnv
-        from .evaluation import evaluate_agent
+        from .evaluation import evaluate_configured
     except ImportError as exc:
         raise SystemExit("Missing runtime dependencies. Run: python -m pip install -r requirements.txt\n" + str(exc))
     torch.set_num_threads(1)
@@ -98,7 +99,7 @@ def main(argv: list[str] | None = None) -> int:
     class RunCallback(BaseCallback):
         def __init__(self):
             super().__init__(verbose=0)
-            self.best_key = (-float("inf"),) * 3
+            self.best_key = (-float("inf"),) * (6 if cfg["train"]["selection_version"] == 2 else 3)
             if resume_data:
                 self.best_key = tuple(resume_data[3].get("metrics", {}).get("selection_key", self.best_key))
             if (run_dir / "best" / "READY").is_file():
@@ -127,24 +128,33 @@ def main(argv: list[str] | None = None) -> int:
                     s = info["episode_summary"]
                     self.recent.append(s)
                     compact = {k: s[k] for k in ("return", "duration_s", "is_success", "failure_reason", "forward_m", "max_tilt_deg", "valid_landings")}
+                    compact.update({k: s.get(k) for k in ("requested_forward_m_s", "qualified_liftoffs", "forward_landings",
+                             "behavior", "success_checks", "reward_components", "event_rejections", "max_sole_clearance_m")})
                     compact["num_timesteps"] = int(self.num_timesteps)
                     self.ep_file.write(json.dumps(compact) + "\n")
             if self.num_timesteps >= self.next_eval:
                 self.next_eval += cfg["train"]["eval_every_timesteps"]
-                metrics = evaluate_agent(self.model, cfg, cfg["train"]["eval_episodes"], cfg["train"]["eval_seed"],
-                                         command=cfg["train"]["eval_forward_m_s"])
+                metrics = evaluate_configured(self.model, cfg)
                 self.last_metrics = metrics
                 save_json(run_dir / "evaluations" / f"step_{self.num_timesteps:010d}.json", metrics)
                 self.logger.record("eval/success_rate", metrics["success_rate"])
                 self.logger.record("eval/mean_duration_s", metrics["mean_duration_s"])
                 self.logger.record("eval/forward_m", metrics["mean_forward_m"])
                 self.logger.record("eval/mean_return", metrics["mean_return"])
+                self.logger.record("eval/locomotion_score", metrics["locomotion_score"])
+                for i, side in enumerate(("left", "right")):
+                    self.logger.record("eval/"+side+"_valid_landings", metrics["mean_valid_landings"][i])
+                    self.logger.record("eval/"+side+"_forward_landings", metrics["mean_forward_landings"][i])
+                for command, cm in metrics["by_command"].items():
+                    self.logger.record("eval_command_"+command+"/success_rate", cm["success_rate"])
                 key = tuple(metrics["selection_key"])
                 if key > self.best_key:
                     self.best_key = key
                     save_bundle(self.model, run_dir / "best", cfg, interface, metrics)
                 print(f"[eval {self.num_timesteps}] success={metrics['successful_episodes']}/{metrics['episodes']} "
-                      f"survival={metrics['mean_duration_s']:.2f}s forward={metrics['mean_forward_m']:.3f}m", flush=True)
+                      f"survival={metrics['mean_duration_s']:.2f}s forward={metrics['mean_forward_m']:.3f}m "
+                      f"landings={metrics['mean_valid_landings']} forward_landings={metrics['mean_forward_landings']} "
+                      f"behavior={metrics['behavior_counts']}", flush=True)
             if self.num_timesteps >= self.next_save:
                 self.next_save += cfg["train"]["checkpoint_every_timesteps"]
                 save_bundle(self.model, run_dir / "checkpoints" / f"step_{self.num_timesteps:010d}", cfg, interface, self.last_metrics)
@@ -153,9 +163,15 @@ def main(argv: list[str] | None = None) -> int:
             return True
 
         def _on_rollout_end(self):
+            if self.ep_file:
+                self.ep_file.flush()
             if self.recent:
                 for key in ("duration_s", "is_success", "max_tilt_deg", "forward_m"):
                     self.logger.record("robot/" + key, sum(float(s[key]) for s in self.recent) / len(self.recent))
+                for i, side in enumerate(("left", "right")):
+                    for field in ("valid_landings", "qualified_liftoffs", "forward_landings"):
+                        self.logger.record("robot/"+side+"_"+field,
+                            sum(float(s.get(field,[0,0])[i]) for s in self.recent)/len(self.recent))
                 names = set().union(*(s["reward_components"] for s in self.recent))
                 for name in names:
                     self.logger.record("reward_per_second/"+name, sum(s["reward_components"].get(name, 0)/max(s["duration_s"], 0.02) for s in self.recent) / len(self.recent))
@@ -183,14 +199,17 @@ def main(argv: list[str] | None = None) -> int:
                                        "log_std_init": log_std}, **ppo)
             if init_data:
                 previous = PPO.load(str(init_data[0] / "model.zip"), device="cpu")
-                agent.policy.load_state_dict(previous.policy.state_dict(), strict=True)
+                transfer = transfer_policy(previous.policy, agent.policy,
+                    actor_only=cfg["transfer"]["actor_only"], reset_log_std=cfg["transfer"]["reset_log_std"])
+                transfer["source_checkpoint"] = str(init_data[0])
+                save_json(run_dir / "transfer.json", transfer)
+                print("Transfer:", transfer, flush=True)
                 del previous
         print(f"Task={cfg['task']} | A-model mass={RobotSpec.load(cfg).mass:.4f}kg | "
               f"{len(fns)} CPU envs | requested additional steps={cfg['train']['total_timesteps']}", flush=True)
         agent.learn(total_timesteps=cfg["train"]["total_timesteps"], callback=callback,
                     reset_num_timesteps=not bool(resume_data), tb_log_name=cfg["task"], progress_bar=False)
-        metrics = evaluate_agent(agent, cfg, cfg["train"]["eval_episodes"], cfg["train"]["eval_seed"],
-                                 command=cfg["train"]["eval_forward_m_s"])
+        metrics = evaluate_configured(agent, cfg)
         save_bundle(agent, run_dir / "final", cfg, interface, metrics)
         save_bundle(agent, run_dir / "latest", cfg, interface, metrics)
         if tuple(metrics["selection_key"]) > callback.best_key or not (run_dir / "best").exists():

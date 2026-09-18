@@ -1,7 +1,7 @@
 {
   "scope": "software unit tests; not a learned-policy success report",
-  "discovered": 49,
-  "passed_executed": 40,
+  "discovered": 96,
+  "passed_executed": 82,
   "skipped": [
     {
       "test": "test_runtime.RuntimeTests.test_SB3_env_contract",
@@ -38,6 +38,26 @@
     {
       "test": "test_runtime.RuntimeTests.test_torque_interface_and_no_root_assist",
       "reason": "MuJoCo / Gymnasium / SB3 missing: real runtime NOT EXECUTED"
+    },
+    {
+      "test": "test_walk_v2_runtime.WalkV2RuntimeTests.test_actor_transfer_on_actual_SB3_MlpPolicy",
+      "reason": "MuJoCo/Gymnasium/SB3 missing: v2 runtime NOT EXECUTED"
+    },
+    {
+      "test": "test_walk_v2_runtime.WalkV2RuntimeTests.test_contract_v2",
+      "reason": "MuJoCo/Gymnasium/SB3 missing: v2 runtime NOT EXECUTED"
+    },
+    {
+      "test": "test_walk_v2_runtime.WalkV2RuntimeTests.test_csv_columns_stable_from_reset_through_rollout",
+      "reason": "MuJoCo/Gymnasium/SB3 missing: v2 runtime NOT EXECUTED"
+    },
+    {
+      "test": "test_walk_v2_runtime.WalkV2RuntimeTests.test_short_v2_PPO_and_saved_evaluation",
+      "reason": "MuJoCo/Gymnasium/SB3 missing: v2 runtime NOT EXECUTED"
+    },
+    {
+      "test": "test_walk_v2_runtime.WalkV2RuntimeTests.test_v2_episode_reports_event_diagnostics",
+      "reason": "MuJoCo/Gymnasium/SB3 missing: v2 runtime NOT EXECUTED"
     }
   ],
   "errors": [],

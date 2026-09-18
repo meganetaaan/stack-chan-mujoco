@@ -1,2 +1,2 @@
-"""CPU PPO toolkit for the R5-A Tab5 biped. Simulation only."""
-__version__ = "0.1.0"
+"""R5-A CPU MuJoCo PPO kit: versioned walk objective and actor transfer."""
+__version__ = "2.0.0"

@@ -1,10 +1,25 @@
-"""Evaluate real contacts/progress, not just the PPO reward."""
+"""Held-out physical evaluation. Model selection is separate from training reward."""
 from __future__ import annotations
 from collections import Counter
 from copy import deepcopy
 import csv
 from pathlib import Path
 import numpy as np
+
+
+def classify_behavior(s: dict) -> str:
+    if s.get("terminated"):
+        return "terminated:"+str(s.get("failure_reason") or "unspecified")
+    if s["requested_forward_m_s"] <= 0.003:
+        return "stand_success" if s.get("is_success") else "stand_failed_checks"
+    counts = s["valid_landings"]
+    if sum(counts) == 0:
+        return "moving_without_verified_steps" if abs(s["forward_m"]) > 0.015 else "no_verified_steps"
+    if min(counts) == 0:
+        return "one_sided_stepping"
+    if s["forward_m"] < 0.025:
+        return "stepping_in_place"
+    return "walk_success" if s.get("is_success") else "walking_candidate_failed_checks"
 
 
 def evaluate_agent(agent, config: dict, episodes: int, seed: int, command: float | None = None,
@@ -40,6 +55,7 @@ def evaluate_agent(agent, config: dict, episodes: int, seed: int, command: float
                     if terminated or truncated:
                         summary = info["episode_summary"]
                         summary["seed"] = seed+ep
+                        summary["episode_limit_s"] = cfg["env"]["episode_seconds"]
                         summaries.append(summary)
                         break
             finally:
@@ -47,25 +63,71 @@ def evaluate_agent(agent, config: dict, episodes: int, seed: int, command: float
                     handle.close()
     finally:
         env.close()
-    return aggregate(summaries)
+    return aggregate(summaries, config["train"]["selection_version"], physics_executed=True)
 
 
-def aggregate(summaries: list[dict]) -> dict:
+def _locomotion_score(s: dict) -> float:
+    if s["requested_forward_m_s"] <= 0.003:
+        return 0.
+    # Progress without verified steps cannot dominate selection. Falls, flight,
+    # and unsafe contacts reduce this *ranking* score; no success gate is relaxed.
+    def balanced(values):
+        a = np.clip(np.asarray(values, dtype=float)/2., 0., 1.)
+        return float(0.6*a.min()+0.4*a.mean())
+    valid = balanced(s.get("valid_landings", [0,0]))
+    forward = balanced(s.get("forward_landings", [0,0]))
+    progress = float(np.clip(s["forward_m"]/max(0.025, s["commanded_distance_m"]), 0., 1.))
+    survival = min(1., s["duration_s"]/max(0.02, s.get("episode_limit_s", 12.)))
+    flight = max(0., 1.-s.get("flight_fraction", 0.)/0.15)
+    safe = 0. if s.get("bad_contact_steps",0) or s.get("self_contact_steps",0) else 1.
+    advancing_gate = min(1., sum(s.get("forward_landings", [0,0]))/2.)
+    return survival*flight*safe*(0.2*valid+0.3*forward+0.5*progress*advancing_gate)
+
+
+def aggregate(summaries: list[dict], selection_version: int = 1, *, physics_executed: bool = False) -> dict:
     if not summaries:
         raise ValueError("No completed evaluations")
     failure_counts = Counter(s["failure_reason"] or "time_limit" for s in summaries)
     success = float(np.mean([s["is_success"] for s in summaries]))
+    duration = float(np.mean([s["duration_s"] for s in summaries]))
+    reward = float(np.mean([s["return"] for s in summaries]))
+    key = [success, duration, reward]
+    by_command = {}
+    for v in sorted({s["requested_forward_m_s"] for s in summaries}):
+        items = [s for s in summaries if s["requested_forward_m_s"] == v]
+        by_command[f"{v:.6f}"] = {"episodes": len(items),
+            "success_rate": float(np.mean([s["is_success"] for s in items])),
+            "mean_forward_m": float(np.mean([s["forward_m"] for s in items]))}
+    moving = [s for s in summaries if s["requested_forward_m_s"] > 0.003]
+    motion_score = float(np.mean([_locomotion_score(s) for s in moving])) if moving else 0.
+    if selection_version == 2:
+        # Macro-average commands, so extra stop trials cannot hide a failed walk.
+        per_command = [v["success_rate"] for v in by_command.values()]
+        key = [min(per_command), float(np.mean(per_command)), motion_score,
+               float(np.mean([min(s.get("forward_landings",[0,0])) for s in moving])) if moving else 0.,
+               duration, reward]
     return {
-        "physics_executed": True,
-        "episodes": len(summaries),
-        "success_rate": success,
+        "physics_executed": bool(physics_executed),
+        "episodes": len(summaries), "success_rate": success,
         "successful_episodes": sum(s["is_success"] for s in summaries),
-        "mean_duration_s": float(np.mean([s["duration_s"] for s in summaries])),
-        "mean_return": float(np.mean([s["return"] for s in summaries])),
+        "mean_duration_s": duration, "mean_return": reward,
         "mean_forward_m": float(np.mean([s["forward_m"] for s in summaries])),
         "mean_velocity_error_m_s": float(np.mean([s["mean_abs_forward_velocity_error_m_s"] for s in summaries])),
-        "failure_counts": dict(failure_counts),
-        "selection_key": [success, float(np.mean([s["duration_s"] for s in summaries])),
-                          float(np.mean([s["return"] for s in summaries]))],
-        "episode_results": summaries,
+        "mean_valid_landings": np.mean([s["valid_landings"] for s in summaries],axis=0).tolist(),
+        "mean_forward_landings": np.mean([s.get("forward_landings",[0,0]) for s in summaries],axis=0).tolist(),
+        "mean_qualified_liftoffs": np.mean([s.get("qualified_liftoffs",[0,0]) for s in summaries],axis=0).tolist(),
+        "behavior_counts": dict(Counter(classify_behavior(s) for s in summaries)),
+        "failure_counts": dict(failure_counts), "by_command": by_command,
+        "selection_version": selection_version, "locomotion_score": motion_score,
+        "selection_key": key, "episode_results": summaries,
     }
+
+
+def evaluate_configured(agent, cfg: dict) -> dict:
+    commands = cfg["train"]["eval_commands_m_s"] or [cfg["train"]["eval_forward_m_s"]]
+    records = []
+    for i, command in enumerate(commands):
+        result = evaluate_agent(agent, cfg, cfg["train"]["eval_episodes"],
+                                cfg["train"]["eval_seed"]+1000*i, command=command)
+        records.extend(result["episode_results"])
+    return aggregate(records, cfg["train"]["selection_version"], physics_executed=True)

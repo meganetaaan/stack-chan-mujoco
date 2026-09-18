@@ -1,0 +1,27 @@
+{
+  "extends": "walk_step2.json",
+  "env": {
+    "command_forward_range_m_s": [
+      0.02,
+      0.06
+    ],
+    "command_zero_probability": 0.2
+  },
+  "transfer": {
+    "actor_only": false,
+    "reset_log_std": null
+  },
+  "ppo": {
+    "ent_coef": 0.003
+  },
+  "train": {
+    "total_timesteps": 2000000,
+    "eval_forward_m_s": 0.04,
+    "eval_commands_m_s": [
+      0.0,
+      0.02,
+      0.04,
+      0.06
+    ]
+  }
+}

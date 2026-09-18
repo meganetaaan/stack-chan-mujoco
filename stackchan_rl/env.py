@@ -12,12 +12,13 @@ import numpy as np
 import gymnasium as gym
 from gymnasium import spaces
 import mujoco
-from .config import validate
+from .config import validate, normalize_config
 from .spec import RobotSpec, JOINT_NAMES, SOLE_GEOMS, SOLE_SITES, OBS_DIM
 from .actuation import ServoBank, bounded_target
 from .math_utils import euler_quat, quat_mul, yaw_matrix, wrap_angle, command_at, swing_mask
 from .rewards import reward_terms, success_checks
 from .steps import FootStepTracker
+from .walk_events import WalkEventTracker
 
 
 class StackChanEnv(gym.Env):
@@ -25,6 +26,7 @@ class StackChanEnv(gym.Env):
 
     def __init__(self, config: dict, render_mode: str | None = None):
         super().__init__()
+        config = normalize_config(config)
         validate(config)
         if render_mode not in (None, "human", "rgb_array"):
             raise ValueError(f"Unsupported render_mode: {render_mode}")
@@ -159,10 +161,13 @@ class StackChanEnv(gym.Env):
         self.requested_forward = requested
         self.command = np.zeros(3)
         self.commanded_distance = 0.0
-        self.step_tracker = FootStepTracker(self.dt, self.e["minimum_airtime_s"], self.e["minimum_lift_m"])
+        self.step_tracker = (WalkEventTracker(self.dt, self.e)
+            if self.config["task"] == "walk" and self.e["walk_objective_version"] == 2
+            else FootStepTracker(self.dt, self.e["minimum_airtime_s"], self.e["minimum_lift_m"]))
         self.valid_landings = self.step_tracker.counts
         self.landing_sequence = self.step_tracker.sequence
         self.episode_return = 0.0
+        self.last_reward_terms = {}
         self.reward_sums: dict[str, float] = {}
         self.stats = {
             "samples": 0, "measured_samples": 0, "double_support": 0, "flight": 0,
@@ -266,6 +271,13 @@ class StackChanEnv(gym.Env):
         return np.clip(obs, -self.e["obs_clip"], self.e["obs_clip"]).astype(np.float32)
 
     def _landings(self, s: dict) -> int:
+        if isinstance(self.step_tracker, WalkEventTracker):
+            feet = (s["foot_xyz"]-self.start_position) @ self.heading_R
+            base_forward = float((s["base_position"]-self.start_position) @ self.heading_R[:,0])
+            events = self.step_tracker.update(s["contacts"], s["foot_height"], feet[:,:2],
+                                             base_forward, self.command[0] > 0.003)
+            s.update(events)
+            return int(events["valid_landings_this_step"])
         return self.step_tracker.update(s["contacts"], s["foot_height"])
 
     def _failure_reason(self, s: dict) -> str | None:
@@ -344,7 +356,11 @@ class StackChanEnv(gym.Env):
         s.update({"command": self.command.copy(), "pose_normalized": (s["q"]-self.home_joints)/self.action_scale,
                   "torque_fraction_sq": self._torque_fraction_sq, "power_W": self._power,
                   "action_delta": self.last_action-self.previous_action, "saturation": self._saturation,
-                  "valid_landings_this_step": new_landings})
+                  "valid_landings_this_step": new_landings,
+                  "walk_objective_version": self.e["walk_objective_version"],
+                  "requested_forward_m_s": self.requested_forward,
+                  "no_step_grace_s": self.e["no_step_grace_s"],
+                  "no_step_ramp_s": self.e["no_step_ramp_s"]})
         terminated = failure is not None
         # Time limits are truncations, not terminal MDP states (SB3 bootstraps).
         truncated = self.steps >= self.max_steps and not terminated
@@ -373,6 +389,8 @@ class StackChanEnv(gym.Env):
             checks = success_checks(summary, self.config)
             summary["success_checks"] = checks
             summary["is_success"] = all(checks.values())
+            from .evaluation import classify_behavior
+            summary["behavior"] = classify_behavior(summary)
             info["is_success"] = summary["is_success"]
             info["episode_summary"] = summary
         return obs, reward, bool(terminated), bool(truncated), info
@@ -415,6 +433,8 @@ class StackChanEnv(gym.Env):
             "rms_torque_Nm": dict(zip(JOINT_NAMES, np.sqrt(st["torque_sq_sum"]/max(1,st["samples"])).tolist())),
             "saturation_fraction": dict(zip(JOINT_NAMES, (st["sat_sum"]/max(1,st["samples"])).tolist())),
             "reward_components": dict(self.reward_sums),
+            "walk_objective_version": self.e["walk_objective_version"],
+            **(self.step_tracker.summary() if isinstance(self.step_tracker, WalkEventTracker) else {}),
         }
 
     def trajectory_row(self) -> dict:
@@ -424,7 +444,22 @@ class StackChanEnv(gym.Env):
                "tilt_deg": float(np.rad2deg(s["tilt_rad"])), "command_vx_m_s": float(self.command[0]),
                "actual_vx_m_s": float(s["velocity"][0]), "left_load_N": float(s["loads"][0]),
                "right_load_N": float(s["loads"][1]), "left_sole_height_m": float(s["foot_height"][0]),
-               "right_sole_height_m": float(s["foot_height"][1])}
+               "right_sole_height_m": float(s["foot_height"][1]),
+               "left_contact": int(s["contacts"][0]), "right_contact": int(s["contacts"][1]),
+               "left_valid_landings": int(self.valid_landings[0]),
+               "right_valid_landings": int(self.valid_landings[1]),
+               "gait_phase": float(self.phase),
+               "no_step_elapsed_s": float(s.get("no_step_elapsed_s", 0.0))}
+        if isinstance(self.step_tracker, WalkEventTracker):
+            for i, side in enumerate(("left", "right")):
+                row[side+"_qualified_liftoffs"] = int(self.step_tracker.liftoffs[i])
+                row[side+"_forward_landings"] = int(self.step_tracker.forward_counts[i])
+                row[side+"_raw_unloads"] = int(self.step_tracker.raw_unloads[i])
+                row[side+"_max_clearance_m"] = float(self.step_tracker.peak_episode[i])
+        # Always include every configured component, even on the initial row.
+        for name in ("velocity", "forward_progress", "unload", "clearance", "no_step", "landing_event",
+                     "liftoff_event", "forward_landing_event", "alternating_event", "slip", "torque"):
+            row["reward_"+name] = float(getattr(self, "last_reward_terms", {}).get(name, 0.0))
         for i, n in enumerate(JOINT_NAMES):
             row[n+"_rad"] = float(s["q"][i])
             row[n+"_target_rad"] = float(self.bank.filtered[i])

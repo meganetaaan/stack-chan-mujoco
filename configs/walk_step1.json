@@ -1,0 +1,77 @@
+{
+  "extends": "stand.json",
+  "task": "walk",
+  "env": {
+    "walk_objective_version": 2,
+    "episode_seconds": 12.0,
+    "command_forward_range_m_s": [
+      0.02,
+      0.02
+    ],
+    "command_zero_probability": 0.0,
+    "landing_contact_confirm_s": 0.04,
+    "minimum_airtime_s": 0.08,
+    "minimum_lift_m": 0.002,
+    "minimum_foot_advance_m": 0.004,
+    "event_cooldown_s": 0.25,
+    "no_step_grace_s": 1.5,
+    "no_step_ramp_s": 1.0
+  },
+  "reward": {
+    "alive": 0.1,
+    "upright": 0.45,
+    "height": 0.25,
+    "velocity": 8.0,
+    "heading": 0.15,
+    "position": 0.08,
+    "double_support": 0.2,
+    "gait_contact": 0.6,
+    "clearance": 0.8,
+    "unload": 0.6,
+    "forward_progress": 1.5,
+    "liftoff_event": 0.08,
+    "landing_event": 0.1,
+    "forward_landing_event": 0.3,
+    "alternating_event": 0.15,
+    "no_step": 0.45,
+    "overspeed": 0.4,
+    "pose": 0.002,
+    "angular_velocity": 0.015,
+    "joint_velocity": 0.0008,
+    "torque": 0.01,
+    "power": 0.008,
+    "action_rate": 0.01,
+    "slip": 0.06,
+    "flight": 0.4,
+    "saturation": 0.04,
+    "termination": 3.0,
+    "velocity_relative_sigma": 0.6,
+    "velocity_min_sigma_m_s": 0.006
+  },
+  "success": {
+    "walk_min_command_distance_fraction": 0.1,
+    "walk_min_forward_m": 0.025,
+    "walk_min_landings_each": 2,
+    "walk_min_forward_landings_each": 1,
+    "walk_min_alternations": 3
+  },
+  "ppo": {
+    "learning_rate": 0.00015,
+    "n_epochs": 5,
+    "ent_coef": 0.01,
+    "log_std_init": -1.0
+  },
+  "transfer": {
+    "actor_only": true,
+    "reset_log_std": -1.0
+  },
+  "train": {
+    "total_timesteps": 1000000,
+    "eval_forward_m_s": 0.02,
+    "eval_commands_m_s": [
+      0.02
+    ],
+    "eval_episodes": 6,
+    "selection_version": 2
+  }
+}

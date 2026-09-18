@@ -64,7 +64,8 @@ def main():
                     s = info["episode_summary"]
                     print(f"episode={episode} success={s['is_success']} duration={s['duration_s']:.2f}s "
                           f"forward={s['forward_m']:.3f}m landings={s['valid_landings']} "
-                          f"reason={s['failure_reason']}")
+                          f"forward_landings={s.get('forward_landings', 'legacy')} "
+                          f"behavior={s.get('behavior','legacy')} reason={s['failure_reason']}")
                     break
     finally:
         env.close()

@@ -5,7 +5,7 @@ import json
 import shutil
 import uuid
 from pathlib import Path
-from .config import save_json
+from .config import save_json, normalize_config
 from .spec import RobotSpec
 
 
@@ -32,6 +32,7 @@ def save_bundle(agent, destination: str | Path, config: dict, interface: dict, m
         save_json(staging / "interface.json", interface)
         save_json(staging / "metadata.json", {"num_timesteps": int(agent.num_timesteps),
                                              "versions": versions(), "metrics": metrics or {},
+                                             "kit_version": "2.0.0", "walk_objective_version": config["env"].get("walk_objective_version", 1),
                                              "normalization": "fixed observation scales; no VecNormalize",
                                              "resume_scope": "weights + optimizer; simulator/RNG rollout state is not restored"})
         (staging / "READY").write_text("complete\n", encoding="utf-8")
@@ -60,7 +61,7 @@ def bundle_info(path: str | Path) -> tuple[Path, dict, dict, dict]:
     if missing:
         raise FileNotFoundError(f"Incomplete checkpoint {p}: missing {missing}. Pass the bundle directory, e.g. runs/stand/best.")
     read = lambda n: json.loads((p / n).read_text(encoding="utf-8"))
-    return p, read("config.json"), read("interface.json"), read("metadata.json")
+    return p, normalize_config(read("config.json")), read("interface.json"), read("metadata.json")
 
 
 def assert_interface(saved: dict, config: dict) -> dict:

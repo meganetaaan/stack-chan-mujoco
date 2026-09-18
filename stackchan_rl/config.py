@@ -43,6 +43,13 @@ DEFAULT: dict[str, Any] = {
         "minimum_airtime_s": 0.08,
         "minimum_lift_m": 0.002,
         "measurement_start_s": 0.5,
+        # Added in v2; legacy bundles fill these with defaults, not new rewards.
+        "walk_objective_version": 1,
+        "landing_contact_confirm_s": 0.04,
+        "minimum_foot_advance_m": 0.004,
+        "event_cooldown_s": 0.25,
+        "no_step_grace_s": 1.5,
+        "no_step_ramp_s": 1.0,
         "obs_clip": 10.0,
         "domain_randomization": False,
         "mass_scale_range": [0.95, 1.05],
@@ -75,6 +82,15 @@ DEFAULT: dict[str, Any] = {
         "height_sigma_m": 0.015,
         "tilt_sigma_rad": 0.18,
         "target_clearance_m": 0.006,
+        "velocity_relative_sigma": 0.6,
+        "velocity_min_sigma_m_s": 0.006,
+        "forward_progress": 0.0,
+        "unload": 0.0,
+        "liftoff_event": 0.0,
+        "forward_landing_event": 0.0,
+        "alternating_event": 0.0,
+        "no_step": 0.0,
+        "overspeed": 0.0,
     },
     "success": {
         "stand_max_tilt_deg": 15.0,
@@ -87,6 +103,9 @@ DEFAULT: dict[str, Any] = {
         "walk_min_command_distance_fraction": 0.5,
         "walk_min_landings_each": 2,
         "walk_max_flight_fraction": 0.15,
+        "walk_min_forward_landings_each": 0,
+        "walk_min_alternations": 3,
+        "walk_min_forward_m": 0.025,
     },
     "ppo": {
         "learning_rate": 0.0003,
@@ -103,6 +122,10 @@ DEFAULT: dict[str, Any] = {
         "net_arch": [128, 128],
         "log_std_init": -1.5,
     },
+    "transfer": {
+        "actor_only": False,
+        "reset_log_std": None,
+    },
     "train": {
         "num_envs": 4,
         "total_timesteps": 1000000,
@@ -111,6 +134,10 @@ DEFAULT: dict[str, Any] = {
         "eval_episodes": 4,
         "eval_seed": 10000,
         "eval_forward_m_s": 0.0,
+        # Empty means the legacy single-command evaluation. Explicit values are
+        # evaluated separately; stop and movement scores do not mask each other.
+        "eval_commands_m_s": [],
+        "selection_version": 1,
     },
 }
 
@@ -151,9 +178,30 @@ def resolve_path(path: str | Path) -> Path:
 
 
 def validate(c: dict) -> None:
+    if not isinstance(c["transfer"]["actor_only"], bool):
+        raise ValueError("transfer.actor_only must be boolean")
+    log_std = c["transfer"]["reset_log_std"]
+    if log_std is not None and (not isinstance(log_std, (int, float)) or not math.isfinite(log_std) or not -5 <= log_std <= 0):
+        raise ValueError("transfer.reset_log_std must be null or in [-5,0]")
     if c["task"] not in {"stand", "walk"}:
         raise ValueError("task must be stand or walk")
     e, p, t = c["env"], c["ppo"], c["train"]
+    if e["walk_objective_version"] not in (1, 2) or t["selection_version"] not in (1, 2):
+        raise ValueError("Only walk objective and selection versions 1 or 2 are supported")
+    for k in ("landing_contact_confirm_s", "minimum_foot_advance_m", "event_cooldown_s",
+              "no_step_grace_s", "no_step_ramp_s", "minimum_airtime_s", "minimum_lift_m"):
+        if not isinstance(e[k], (int, float)) or not math.isfinite(e[k]) or e[k] <= 0:
+            raise ValueError(f"env.{k} must be finite and positive")
+    for k in ("velocity_relative_sigma", "velocity_min_sigma_m_s", "target_clearance_m"):
+        if not isinstance(c["reward"][k], (int, float)) or not math.isfinite(c["reward"][k]) or c["reward"][k] <= 0:
+            raise ValueError(f"reward.{k} must be finite and positive")
+    for k, v in c["reward"].items():
+        if not isinstance(v, (int, float)) or not math.isfinite(v) or v < 0:
+            raise ValueError(f"reward.{k} must be finite and nonnegative")
+    if not isinstance(t["eval_commands_m_s"], list) or any(not isinstance(x, (int, float)) or not math.isfinite(x) or x < 0 for x in t["eval_commands_m_s"]):
+        raise ValueError("train.eval_commands_m_s must contain nonnegative finite velocities")
+    if c["task"] == "stand" and any(t["eval_commands_m_s"]):
+        raise ValueError("stand evaluation cannot request motion")
     for k in ("policy_hz", "episode_seconds", "target_slew_rad_s", "gait_period_s", "command_ramp_s"):
         if not isinstance(e[k], (int, float)) or e[k] <= 0 or not math.isfinite(e[k]):
             raise ValueError(f"env.{k} must be finite and positive")
@@ -191,3 +239,14 @@ def save_json(path: str | Path, value: Any) -> None:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, indent=2, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
+
+
+def normalize_config(raw: dict) -> dict:
+    """Fill v2's added fields for old bundles without upgrading their objective.
+
+    In particular the fallback walk_objective_version stays 1. Old PPO
+    checkpoints must not silently acquire different rewards when resumed.
+    """
+    c = merge(DEFAULT, raw)
+    validate(c)
+    return c
