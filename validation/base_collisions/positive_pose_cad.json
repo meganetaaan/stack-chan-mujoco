@@ -1,0 +1,72 @@
+{
+  "revision": "r6-experimental-hip-22mm-internal-lower-envelope-gait-opening-leg-relief-collar-relief-rear-bridge",
+  "threshold_mm3": 0.01,
+  "scope": "All mechanical pairs at supplied sampled poses; no swept-volume, tolerance, cable or fastener proof",
+  "trajectory_sha256": "c19e95822fabaaff187b7351f422e7064c1a3a678693694905f11030866f8bc6",
+  "trajectory_stride": null,
+  "trajectory_from_time_s": null,
+  "checker_sha256": "8d9fbb5e9b166072bfe665d46524cf98ccce8556ee1ac17fd643ae51a53370f3",
+  "mechanical_parts": 33,
+  "same_link_and_adjacent_pairs_included": true,
+  "manufacturing_release": false,
+  "walking_validated": false,
+  "input_sha256": {
+    "robot.json": "81f32b0a39c56d09ffc3329bfcd5acb0f99f358761a246d5d436be0780c2ca25",
+    "cad/build.py": "fe13dd18c8c79800a317031c07b1eca35c57ac6b3e0a395e70ab420203436cd9",
+    "cad/r4_geometry.py": "cacbb3297050b1c8a4ae5f00e57ac49e09f1188c17665b06ec7092b0f561431d",
+    "src/tab5_biped/core.py": "9a16813b61435492746dc3cb7d7e765a7a7432e47ab29c266ce011742da5c322",
+    "docs/underside_cutouts.json": "89f44ba11c781edb992b1a84cee59a4add54a263ff6e11246a0f84d74650f196"
+  },
+  "sampled_poses_clear": false,
+  "elapsed_s": 10.73112112499075,
+  "results": [
+    {
+      "pose": "trajectory_row_0",
+      "q_rad": [
+        8.5039294589e-05,
+        0.95,
+        -1.18410650338,
+        0.747125895537,
+        -8.5039294589e-05,
+        8.50397900169e-05,
+        0.436996774595,
+        -1.18414535841,
+        0.747148583815,
+        -8.50397900169e-05
+      ],
+      "brep_calls": 87,
+      "findings": [
+        {
+          "a": "body_shroud",
+          "b": "left_thigh_yoke",
+          "overlap_mm3": 39.747419181985016
+        },
+        {
+          "a": "body_shroud",
+          "b": "left_knee_motor",
+          "overlap_mm3": 302.37396298671104
+        },
+        {
+          "a": "body_shroud",
+          "b": "left_shin_yoke",
+          "overlap_mm3": 39.28285903090303
+        },
+        {
+          "a": "body_shroud",
+          "b": "left_boot_shell",
+          "overlap_mm3": 415.87131620966045
+        },
+        {
+          "a": "left_hip_roll_motor",
+          "b": "left_knee_motor",
+          "overlap_mm3": 191.5349381295723
+        },
+        {
+          "a": "left_fixed_roll_cradle",
+          "b": "left_knee_motor",
+          "overlap_mm3": 19.634957094894386
+        }
+      ]
+    }
+  ]
+}
