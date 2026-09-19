@@ -1,0 +1,145 @@
+{
+  "scope": "Compare XC330 ankle-pitch motors, including mass, inertia and speed changes.",
+  "source_model": "outputs/yaw_offset_flange_base_v2",
+  "changes": [
+    {
+      "part": "left_ankle_pitch_motor",
+      "link": "left_knee",
+      "old_motor_mass_kg": 0.018,
+      "new_motor_mass_kg": 0.023,
+      "old_inertial": {
+        "mass_kg": 0.023410050940515598,
+        "com_m": [
+          0.0003136629939560892,
+          0.00543197786853098,
+          -0.03336082831598169
+        ],
+        "inertia_kg_m2": [
+          [
+            7.084758178071457e-06,
+            2.1164918484161255e-08,
+            -1.4950133643603465e-07
+          ],
+          [
+            2.1164918484161255e-08,
+            5.3580944725749014e-06,
+            2.4780389263889156e-07
+          ],
+          [
+            -1.4950133643603465e-07,
+            2.4780389263889156e-07,
+            3.3825828126251975e-06
+          ]
+        ]
+      },
+      "new_inertial": {
+        "mass_kg": 0.0284100509405156,
+        "com_m": [
+          0.00025846017249462277,
+          0.005531946385422824,
+          -0.03401431264453619
+        ],
+        "inertia_kg_m2": [
+          [
+            7.913163974305532e-06,
+            2.189897397456248e-08,
+            -1.5429978472936658e-07
+          ],
+          [
+            2.189897397456248e-08,
+            6.059253183210138e-06,
+            2.5649355281507393e-07
+          ],
+          [
+            -1.5429978472936658e-07,
+            2.5649355281507393e-07,
+            3.840102525548241e-06
+          ]
+        ]
+      }
+    },
+    {
+      "part": "right_ankle_pitch_motor",
+      "link": "right_knee",
+      "old_motor_mass_kg": 0.018,
+      "new_motor_mass_kg": 0.023,
+      "old_inertial": {
+        "mass_kg": 0.023410050940515598,
+        "com_m": [
+          0.00031366299395609043,
+          -0.0054319778685309895,
+          -0.03336082831598169
+        ],
+        "inertia_kg_m2": [
+          [
+            7.084758178071455e-06,
+            -2.116491848416168e-08,
+            -1.4950133643603518e-07
+          ],
+          [
+            -2.116491848416168e-08,
+            5.3580944725749e-06,
+            -2.478038926388891e-07
+          ],
+          [
+            -1.4950133643603518e-07,
+            -2.478038926388891e-07,
+            3.3825828126251945e-06
+          ]
+        ]
+      },
+      "new_inertial": {
+        "mass_kg": 0.0284100509405156,
+        "com_m": [
+          0.0002584601724946238,
+          -0.005531946385422832,
+          -0.03401431264453619
+        ],
+        "inertia_kg_m2": [
+          [
+            7.913163974305529e-06,
+            -2.1898973974562907e-08,
+            -1.5429978472936714e-07
+          ],
+          [
+            -2.1898973974562907e-08,
+            6.059253183210136e-06,
+            -2.564935528150715e-07
+          ],
+          [
+            -1.5429978472936714e-07,
+            -2.564935528150715e-07,
+            3.8401025255482375e-06
+          ]
+        ]
+      }
+    }
+  ],
+  "motor_specification": {
+    "joint_types": [
+      "hip_roll",
+      "knee",
+      "ankle_pitch"
+    ],
+    "name": "ROBOTIS DYNAMIXEL XC330-M288-T",
+    "quantity": 6,
+    "mass_kg": 0.023,
+    "stall_torque_Nm": 0.93,
+    "stall_current_A": 1.8,
+    "no_load_speed_rpm": 81,
+    "simulation_torque_cap_Nm": 0.45,
+    "static_review_threshold_Nm": 0.25,
+    "continuous_torque_rating_Nm": null,
+    "model_status": "datasheet-derived approximation; NOT Microduck XL330 BAM parameters"
+  },
+  "specification_source": "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/",
+  "simulation_cap_is_not_continuous_rating": true,
+  "uniform_case_inertia_approximation": true,
+  "source_sha256": {
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/upgrade_candidate_ankles.py": "71bcde18f8d053779660de65a3dc5256b93cf044c8f3b54a753a2f3eecfd93be",
+    "outputs/yaw_offset_flange_base_v2/models/scene.xml": "70a7d812ce23df5d667b622e77d819c83a46a49bc3c0793c2e08c8ce77bbbf4b",
+    "outputs/yaw_offset_flange_base_v2/robot.json": "a60a7bdaf27661f4dcfb6957d84ea513278465c30114e61c3004af0b1bc8017e",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_base_collisions/cad/build.py": "fe13dd18c8c79800a317031c07b1eca35c57ac6b3e0a395e70ab420203436cd9",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_base_collisions/cad/r4_geometry.py": "cacbb3297050b1c8a4ae5f00e57ac49e09f1188c17665b06ec7092b0f561431d"
+  }
+}

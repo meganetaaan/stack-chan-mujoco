@@ -20,3 +20,7 @@
 ```sh
 python fetch_x330_reference.py --out outputs/new_x330_reference
 ```
+
+## 偏心を反映した開発候補
+
+`assets/r8_yaw_offset_flange_v1` にケース偏心・回転ホーン・穴付きフランジとトレー支持経路の修正を追加した。ヨー取付部の離散干渉検査と短期動作試験の結果は `validation/yaw_offset_flange_development_v1/README.md`。ケース固定・ねじ・支持強度・慣性同定は未完了で、製作リリースではない。

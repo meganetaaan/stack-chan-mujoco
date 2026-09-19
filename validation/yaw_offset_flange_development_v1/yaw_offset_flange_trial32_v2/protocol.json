@@ -1,0 +1,247 @@
+{
+  "schema": "tab5-maneuver-protocol-v1",
+  "status": "predeclared before maneuver development evaluation",
+  "command_frame": "robot body forward velocity and world vertical yaw rate; +yaw is left",
+  "segments": [
+    {
+      "name": "00_stop",
+      "mode": "stop",
+      "vx_m_s": 0.0,
+      "yaw_rate_rad_s": 0.0,
+      "duration_s": 4.0
+    },
+    {
+      "name": "01_forward",
+      "mode": "forward",
+      "vx_m_s": 0.1,
+      "yaw_rate_rad_s": 0.0,
+      "duration_s": 10.0
+    },
+    {
+      "name": "02_stop",
+      "mode": "stop",
+      "vx_m_s": 0.0,
+      "yaw_rate_rad_s": 0.0,
+      "duration_s": 4.0
+    },
+    {
+      "name": "03_backward",
+      "mode": "backward",
+      "vx_m_s": -0.05,
+      "yaw_rate_rad_s": 0.0,
+      "duration_s": 10.0
+    },
+    {
+      "name": "04_stop",
+      "mode": "stop",
+      "vx_m_s": 0.0,
+      "yaw_rate_rad_s": 0.0,
+      "duration_s": 4.0
+    },
+    {
+      "name": "05_left",
+      "mode": "left",
+      "vx_m_s": 0.0,
+      "yaw_rate_rad_s": 0.15707963267948966,
+      "duration_s": 10.0
+    },
+    {
+      "name": "06_stop",
+      "mode": "stop",
+      "vx_m_s": 0.0,
+      "yaw_rate_rad_s": 0.0,
+      "duration_s": 4.0
+    },
+    {
+      "name": "07_right",
+      "mode": "right",
+      "vx_m_s": 0.0,
+      "yaw_rate_rad_s": -0.15707963267948966,
+      "duration_s": 10.0
+    },
+    {
+      "name": "08_forward",
+      "mode": "forward",
+      "vx_m_s": 0.1,
+      "yaw_rate_rad_s": 0.0,
+      "duration_s": 10.0
+    },
+    {
+      "name": "09_backward",
+      "mode": "backward",
+      "vx_m_s": -0.05,
+      "yaw_rate_rad_s": 0.0,
+      "duration_s": 10.0
+    },
+    {
+      "name": "10_forward",
+      "mode": "forward",
+      "vx_m_s": 0.1,
+      "yaw_rate_rad_s": 0.0,
+      "duration_s": 10.0
+    },
+    {
+      "name": "11_left",
+      "mode": "left",
+      "vx_m_s": 0.0,
+      "yaw_rate_rad_s": 0.15707963267948966,
+      "duration_s": 10.0
+    },
+    {
+      "name": "12_forward",
+      "mode": "forward",
+      "vx_m_s": 0.1,
+      "yaw_rate_rad_s": 0.0,
+      "duration_s": 10.0
+    },
+    {
+      "name": "13_right",
+      "mode": "right",
+      "vx_m_s": 0.0,
+      "yaw_rate_rad_s": -0.15707963267948966,
+      "duration_s": 10.0
+    },
+    {
+      "name": "14_backward",
+      "mode": "backward",
+      "vx_m_s": -0.05,
+      "yaw_rate_rad_s": 0.0,
+      "duration_s": 10.0
+    },
+    {
+      "name": "15_left",
+      "mode": "left",
+      "vx_m_s": 0.0,
+      "yaw_rate_rad_s": 0.15707963267948966,
+      "duration_s": 10.0
+    },
+    {
+      "name": "16_backward",
+      "mode": "backward",
+      "vx_m_s": -0.05,
+      "yaw_rate_rad_s": 0.0,
+      "duration_s": 10.0
+    },
+    {
+      "name": "17_right",
+      "mode": "right",
+      "vx_m_s": 0.0,
+      "yaw_rate_rad_s": -0.15707963267948966,
+      "duration_s": 10.0
+    },
+    {
+      "name": "18_left",
+      "mode": "left",
+      "vx_m_s": 0.0,
+      "yaw_rate_rad_s": 0.15707963267948966,
+      "duration_s": 10.0
+    },
+    {
+      "name": "19_right",
+      "mode": "right",
+      "vx_m_s": 0.0,
+      "yaw_rate_rad_s": -0.15707963267948966,
+      "duration_s": 10.0
+    },
+    {
+      "name": "20_stop",
+      "mode": "stop",
+      "vx_m_s": 0.0,
+      "yaw_rate_rad_s": 0.0,
+      "duration_s": 4.0
+    },
+    {
+      "name": "21_arc_left",
+      "mode": "arc",
+      "vx_m_s": 0.06,
+      "yaw_rate_rad_s": 0.12,
+      "duration_s": 10.0
+    },
+    {
+      "name": "22_arc_right",
+      "mode": "arc",
+      "vx_m_s": 0.06,
+      "yaw_rate_rad_s": -0.12,
+      "duration_s": 10.0
+    },
+    {
+      "name": "23_final_stop",
+      "mode": "stop",
+      "vx_m_s": 0.0,
+      "yaw_rate_rad_s": 0.0,
+      "duration_s": 5.0
+    }
+  ],
+  "settling_time_s": 2.0,
+  "velocity_smoothing_window_s": 0.5,
+  "thresholds": {
+    "mean_vx_error_m_s": 0.02,
+    "smoothed_vx_rmse_m_s": 0.03,
+    "mean_yaw_rate_error_rad_s": 0.04,
+    "smoothed_yaw_rate_rmse_rad_s": 0.06,
+    "segment_forward_displacement_error_m": 0.2,
+    "segment_yaw_error_rad": 0.2617993877991494,
+    "in_place_max_displacement_m": 0.15,
+    "stop_planar_speed_rms_m_s": 0.015,
+    "stop_yaw_rate_rms_rad_s": 0.08,
+    "stop_position_drift_m": 0.03,
+    "stop_yaw_drift_rad": 0.08726646259971647,
+    "smoothed_lateral_velocity_rmse_m_s": 0.03
+  },
+  "fixed_seeds": [
+    217000,
+    217001,
+    217002,
+    217003,
+    217004,
+    217005,
+    217006,
+    217007,
+    217008,
+    217009,
+    217010,
+    217011,
+    217012,
+    217013,
+    217014,
+    217015,
+    217016,
+    217017,
+    217018,
+    217019
+  ],
+  "randomized_seeds": [
+    218000,
+    218001,
+    218002,
+    218003,
+    218004,
+    218005,
+    218006,
+    218007,
+    218008,
+    218009,
+    218010,
+    218011,
+    218012,
+    218013,
+    218014,
+    218015,
+    218016,
+    218017,
+    218018,
+    218019
+  ],
+  "required_successes": {
+    "fixed": 20,
+    "randomized": 18
+  },
+  "physics_baseline": "policies/r6_mounted_seed20260924/config.json",
+  "plant_baseline": "assets/r6_mounted_battery",
+  "allow_mechanism_change": "hip yaw or other internal changes allowed; preserve torso/leg lengths/foot outline; regenerate inertia and freeze new model before acceptance",
+  "independence": "acceptance seeds are reserved; development uses different seeds; no replacements after failure",
+  "walking_evidence": {
+    "minimum_valid_landings_each_foot_per_moving_segment": 2,
+    "definition": "retain existing airtime/lift/contact-confirmation qualification; stop segments exempt; do not require global +X progress for a landing"
+  }
+}

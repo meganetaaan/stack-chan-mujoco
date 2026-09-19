@@ -1,0 +1,83 @@
+{
+  "formal_acceptance": false,
+  "mass_kg": 0.9354361441264679,
+  "full_fixed_development": {
+    "failure": null,
+    "time_s": 205.0000000006148,
+    "valid_landings": [
+      292,
+      292
+    ],
+    "landing_requirements_pass": true,
+    "complete_schedule": true,
+    "development_trial_pass": false
+  },
+  "motion_violations": [
+    {
+      "name": "10_forward",
+      "violations": [
+        "smoothed_lateral_velocity_rmse_m_s"
+      ],
+      "metrics": {
+        "mean_vx_error_m_s": 0.008906013257629505,
+        "smoothed_vx_rmse_m_s": 0.011518406734817946,
+        "mean_yaw_rate_error_rad_s": 0.003312681329042779,
+        "smoothed_yaw_rate_rmse_rad_s": 0.03495600455931045,
+        "smoothed_lateral_velocity_rmse_m_s": 0.03025507934431192,
+        "segment_forward_displacement_error_m": 0.037096813533362916,
+        "segment_yaw_error_rad": 0.019187546814098705
+      }
+    },
+    {
+      "name": "12_forward",
+      "violations": [
+        "smoothed_lateral_velocity_rmse_m_s"
+      ],
+      "metrics": {
+        "mean_vx_error_m_s": 0.007876971835330579,
+        "smoothed_vx_rmse_m_s": 0.011423116745956093,
+        "mean_yaw_rate_error_rad_s": 0.00041391558565764244,
+        "smoothed_yaw_rate_rmse_rad_s": 0.03484755642012207,
+        "smoothed_lateral_velocity_rmse_m_s": 0.03062354207351483,
+        "segment_forward_displacement_error_m": 0.03747254172925385,
+        "segment_yaw_error_rad": 0.061509843575392464
+      }
+    },
+    {
+      "name": "21_arc_left",
+      "violations": [
+        "smoothed_lateral_velocity_rmse_m_s"
+      ],
+      "metrics": {
+        "mean_vx_error_m_s": 0.007188075454685763,
+        "smoothed_vx_rmse_m_s": 0.009147116575062866,
+        "mean_yaw_rate_error_rad_s": 0.008688183413028489,
+        "smoothed_yaw_rate_rmse_rad_s": 0.025950909470843435,
+        "smoothed_lateral_velocity_rmse_m_s": 0.031032198950276903,
+        "segment_forward_displacement_error_m": 0.05441015916477088,
+        "segment_yaw_error_rad": 0.0857717272933809
+      }
+    },
+    {
+      "name": "22_arc_right",
+      "violations": [
+        "smoothed_lateral_velocity_rmse_m_s"
+      ],
+      "metrics": {
+        "mean_vx_error_m_s": 0.007098830668450046,
+        "smoothed_vx_rmse_m_s": 0.00908762210343226,
+        "mean_yaw_rate_error_rad_s": 0.007781890283304477,
+        "smoothed_yaw_rate_rmse_rad_s": 0.026695887258125505,
+        "smoothed_lateral_velocity_rmse_m_s": 0.031323959386519724,
+        "segment_forward_displacement_error_m": 0.07600409997999125,
+        "segment_yaw_error_rad": 0.1617138865419474
+      }
+    }
+  ],
+  "not_complete": [
+    "lateral motion metrics",
+    "full randomized development evaluation",
+    "fixed 20/20 and randomized 18/20 formal acceptance",
+    "fixed-case fasteners, strength and detailed mass identification"
+  ]
+}

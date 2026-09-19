@@ -76,16 +76,6 @@ def main():
                      ((18,2.4,6),(-25,sign*30,57.6)),
                      ((2.4,10.4,6),(-16,sign*26,57.6)),
                      ((4.35,2.4,6),(-13.825,sign*22,57.6))])
-    if a.manufacturer_yaw_layout:
-        # Preserve tray interfaces while leaving >=0.8 mm radial clearance
-        # around the 16 mm output flange at every yaw angle.
-        webs=[]
-        for sign in (-1,1):
-            webs.extend([((10,2.4,6),(-39,sign*22,57.6)),
-                         ((2.4,12.4,6),(-35,sign*27,57.6)),
-                         ((20,2.4,6),(-25,sign*32,57.6)),
-                         ((2.4,12.4,6),(-15,sign*27,57.6)),
-                         ((3.35,2.4,6),(-13.325,sign*22,57.6))])
     tray=union(tray.cut(old_webs),*(box(size,center) for size,center in webs))
     if not tray.isValid() or len(tray.Solids())!=1:raise ValueError('rerouted tray must remain connected')
     records['battery_tray']=record_shape('battery_tray',tray)
