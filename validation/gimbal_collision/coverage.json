@@ -1,0 +1,61 @@
+{
+  "scope": "Gimbal and yoke bearing collision augmentation; other regions remain approximate",
+  "parent_filter": "disabled",
+  "CAD_and_inertials_unchanged": true,
+  "URDF_not_updated": true,
+  "gimbals": [
+    {
+      "part": "left_ankle_gimbal",
+      "convex_pieces": 62,
+      "cad_volume_mm3": 4076.128657530403,
+      "uncovered_volume_mm3": 0.0,
+      "extra_volume_mm3": 8.44974964570368,
+      "ring_radial_overcoverage_bound_mm": 0.09060408609160475
+    },
+    {
+      "part": "right_ankle_gimbal",
+      "convex_pieces": 62,
+      "cad_volume_mm3": 4076.1286575304043,
+      "uncovered_volume_mm3": 0.0,
+      "extra_volume_mm3": 8.449749645703761,
+      "ring_radial_overcoverage_bound_mm": 0.09060408609160475
+    }
+  ],
+  "bearing_collars": [
+    {
+      "part": "left_thigh_yoke",
+      "collars": 4,
+      "convex_pieces": 96,
+      "small_fastener_holes_filled": true,
+      "full_part_coverage_verified": false
+    },
+    {
+      "part": "left_shin_yoke",
+      "collars": 4,
+      "convex_pieces": 96,
+      "small_fastener_holes_filled": true,
+      "full_part_coverage_verified": false
+    },
+    {
+      "part": "right_thigh_yoke",
+      "collars": 4,
+      "convex_pieces": 96,
+      "small_fastener_holes_filled": true,
+      "full_part_coverage_verified": false
+    },
+    {
+      "part": "right_shin_yoke",
+      "collars": 4,
+      "convex_pieces": 96,
+      "small_fastener_holes_filled": true,
+      "full_part_coverage_verified": false
+    }
+  ],
+  "source_sha256": {
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_leg_collar_relief/robot.json": "a165127b886db2b8442dde518adeb1679e0655876527747c035577949935a75b",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_leg_collar_relief/models/scene.xml": "b44a3ac750ef8b3e6bf035039905c85b97d56a4f25539aa5b0e61cb4aa615552",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_leg_collar_relief/cad/build.py": "fe13dd18c8c79800a317031c07b1eca35c57ac6b3e0a395e70ab420203436cd9",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_leg_collar_relief/cad/r4_geometry.py": "e52a22404b64653d243de535a695487c2f2b8bfc490eb6b50325cd9adc1df862",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/add_gimbal_collisions.py": "83c811470d3dbb9117810f3b6489181ae92c7a057607e924c20a64dbd8fdf4af"
+  }
+}

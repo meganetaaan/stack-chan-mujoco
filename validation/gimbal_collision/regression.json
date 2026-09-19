@@ -1,0 +1,41 @@
+{
+  "scope": "Known-contact regression and physical-parameter invariance; not whole-robot collision coverage",
+  "passed": true,
+  "checks": {
+    "body_mass": true,
+    "body_inertia": true,
+    "body_ipos": true,
+    "body_iquat": true,
+    "body_pos": true,
+    "body_quat": true,
+    "jnt_pos": true,
+    "jnt_axis": true,
+    "jnt_range": true,
+    "dof_damping": true,
+    "dof_frictionloss": true,
+    "dof_armature": true,
+    "actuator_gear": true,
+    "actuator_ctrlrange": true,
+    "actuator_forcerange": true,
+    "key_qpos": true,
+    "visual_mesh_bytes_unchanged": true,
+    "parent_contact_filter_disabled": true,
+    "no_root_assistance": true,
+    "baseline_replay_matches_model": true,
+    "candidate_replay_matches_model": true,
+    "same_trajectory": true,
+    "control_poses_remain_clear": true,
+    "row_315_old_missed": true,
+    "row_315_thigh_yoke_now_detected": true,
+    "row_315_shin_yoke_now_detected": true,
+    "row_320_old_missed": true,
+    "row_320_thigh_yoke_now_detected": true,
+    "row_320_shin_yoke_now_detected": true
+  },
+  "input_sha256": {
+    "validation/gimbal_collision/baseline_replay.json": "f7f382d3f74ca8978d8eae41287656311abe6a45eacf1a69dd1dc0699a7a0ce7",
+    "validation/gimbal_collision/patched_replay.json": "acf829cdd8eae12bc6dc2f5816714b7b9b5c726d01e58393626726108ed410c5",
+    "outputs/design_r6_leg_collar_relief/models/scene.xml": "b44a3ac750ef8b3e6bf035039905c85b97d56a4f25539aa5b0e61cb4aa615552",
+    "outputs/design_r6_gimbal_bearing_collision/models/scene.xml": "0d5de54724b8d8b7649744ebf1921ad40b3545c5724c7fffe86147320c801fe1"
+  }
+}

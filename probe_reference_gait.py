@@ -194,8 +194,11 @@ def main():
                     assert geom.get("contype") == "0" and geom.get("conaffinity") == "0" and geom.get("mass") == "0"
                     body.remove(geom)
         asset = root.find("asset")
+        collision_meshes = {g.get("mesh") for g in root.findall(".//geom") if g.get("mesh")}
         for mesh in list(asset):
-            asset.remove(mesh)
+            if mesh.tag == "mesh" and mesh.get("name") not in collision_meshes:
+                asset.remove(mesh)
+        root.find("compiler").set("meshdir", str((xml.parent/"meshes").resolve()))
         model = mujoco.MjModel.from_xml_string(ET.tostring(root, encoding="unicode"))
         data = mujoco.MjData(model)
         assert (model.nq, model.nv, model.nu) == (17, 16, 10)
