@@ -1,0 +1,206 @@
+{
+  "schema": "r6-residual-evaluation-v1",
+  "domain": "randomized",
+  "seed": 88016,
+  "controller": "trained",
+  "hardware_tested": false,
+  "simulation_trial_pass": false,
+  "reward": -132170.51322862066,
+  "failure": null,
+  "time_s": 109.50000000015879,
+  "forward_m": 7.693298443741886,
+  "crossing_time_s": null,
+  "valid_landings": [
+    200,
+    199
+  ],
+  "parameters": {
+    "mass_scale": 1.020718279504398,
+    "base_com_shift_m": [
+      -0.0004419072876261147,
+      -0.0008430928696935531,
+      0.0006634390154728004
+    ],
+    "friction": 0.9271188382312749,
+    "torque_scale": 0.9539514815367143,
+    "speed_scale": 1.0013391659191622,
+    "extra_delay_s": 0.00024477532588185994,
+    "gravity_noise_std": 0.002118584929740451,
+    "gyro_noise_std_rad_s": 0.006700353224744273,
+    "gyro_bias_std_rad_s": 0.0020606225145160272,
+    "initial_joint_offsets_rad": [
+      0.004094180327820025,
+      -0.004270763541812382,
+      -0.0006029924367993043,
+      -0.003150749061945891,
+      0.0037480490678193134,
+      -0.00417430855351009,
+      0.004254518431506988,
+      -0.003744271054433378,
+      -0.0014466869515909085,
+      -0.004083727333381418
+    ],
+    "gyro_bias_rad_s": [
+      -0.001623788739542085,
+      0.0007663292304319048,
+      -0.003671878870855626
+    ],
+    "battery_included_total_mass_kg": 0.8730041863813066,
+    "initial_com_world_m": [
+      -0.010624518647903387,
+      -0.0005084432758325774,
+      0.11050576470910779
+    ],
+    "motor_caps_Nm": [
+      0.4292781666915214,
+      0.24802738519954573,
+      0.4292781666915214,
+      0.24802738519954573,
+      0.24802738519954573,
+      0.4292781666915214,
+      0.24802738519954573,
+      0.4292781666915214,
+      0.24802738519954573,
+      0.24802738519954573
+    ],
+    "motor_speeds_rad_s": [
+      8.493659371989102,
+      10.80057920141824,
+      8.493659371989102,
+      10.80057920141824,
+      10.80057920141824,
+      8.493659371989102,
+      10.80057920141824,
+      8.493659371989102,
+      10.80057920141824,
+      10.80057920141824
+    ],
+    "effective_delay_s": 0.01,
+    "randomized": true
+  },
+  "saturation_fraction": [
+    0.0,
+    0.0,
+    0.0,
+    0.10357077625570776,
+    0.0036073059360730592,
+    0.0,
+    0.0,
+    0.0,
+    0.1002283105022831,
+    0.003579908675799087
+  ],
+  "peak_continuous_saturation_s": [
+    0.0,
+    0.0,
+    0.0,
+    0.058,
+    0.002,
+    0.0,
+    0.0,
+    0.0,
+    0.057,
+    0.002
+  ],
+  "peak_one_second_saturation_duty": [
+    0.0,
+    0.0,
+    0.0,
+    0.115,
+    0.004,
+    0.0,
+    0.0,
+    0.0,
+    0.112,
+    0.004
+  ],
+  "trajectory_sha256": "736466ee2e8850b2e6e4c85f612a41edc7641885adc6e175c3dadf88224fdde8",
+  "interface": {
+    "schema": "r6-residual-v1",
+    "model_sha256": "bc9a75d2ee002602db6d0a2f83bf76caf1bd1bee47471c5007302e2f186c0383",
+    "robot_sha256": "81f32b0a39c56d09ffc3329bfcd5acb0f99f358761a246d5d436be0780c2ca25",
+    "reference_sha256": "cbe03c81e6ee80a465c1716de2ac7675b80492b833796f7ccf4454235f0c4515",
+    "source_sha256": {
+      "stackchan_rl/residual.py": "d0370eef86fbec9d1659c2ae3f8362207e56f6e2f6d8c750b6a320ca9abf8ef6",
+      "stackchan_rl/actuation.py": "08fb037114c07e47a52b7b722910dd90edf8f5e78be26adbc8784e0f38fc9351",
+      "stackchan_rl/walk_events.py": "0a33e2df8f4442807adf395721a247cfbdb4a8597cca6f6f3f617cd8798286d6",
+      "stackchan_rl/ordered_steps.py": "c7aa08f0fecfd55ba5a7287b5418a58c3636d96d8b3f2bcdaea3d01d1c2be1ea",
+      "stackchan_rl/config.py": "61740892a46f533af6095ca4ab441fa7d35873d45f5c700eeef0915798f563c4"
+    },
+    "observation_fields": [
+      [
+        "reference_q",
+        10
+      ],
+      [
+        "q_minus_reference",
+        10
+      ],
+      [
+        "joint_velocity_div10",
+        10
+      ],
+      [
+        "noisy_projected_gravity",
+        3
+      ],
+      [
+        "noisy_gyro_div10",
+        3
+      ],
+      [
+        "body_velocity",
+        3
+      ],
+      [
+        "previous_action",
+        10
+      ],
+      [
+        "filtered_minus_reference",
+        10
+      ],
+      [
+        "command",
+        1
+      ],
+      [
+        "phase_sin_cos",
+        2
+      ],
+      [
+        "planned_support",
+        2
+      ],
+      [
+        "height_error",
+        1
+      ]
+    ],
+    "joint_order": [
+      "left_hip_roll",
+      "left_hip_pitch",
+      "left_knee",
+      "left_ankle_pitch",
+      "left_ankle_roll",
+      "right_hip_roll",
+      "right_hip_pitch",
+      "right_knee",
+      "right_ankle_pitch",
+      "right_ankle_roll"
+    ]
+  },
+  "action_rms": [
+    0.01579249955880175,
+    0.019941001264586034,
+    0.004567643194048653,
+    0.005683125141759623,
+    0.02931075376061434,
+    0.01686339112915771,
+    0.022425923324238487,
+    0.005070076683067244,
+    0.023296623037957816,
+    0.01513647638436084
+  ],
+  "external_root_forces_used": false
+}
