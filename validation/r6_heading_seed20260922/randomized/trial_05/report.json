@@ -1,0 +1,250 @@
+{
+  "schema": "r6-residual-evaluation-v1",
+  "domain": "randomized",
+  "seed": 98005,
+  "controller": "trained",
+  "hardware_tested": false,
+  "simulation_trial_pass": true,
+  "reward": 4285.124343567855,
+  "failure": null,
+  "time_s": 109.50000000015879,
+  "forward_m": 11.645790595990315,
+  "crossing_time_s": 93.74600000008357,
+  "valid_landings": [
+    200,
+    199
+  ],
+  "parameters": {
+    "mass_scale": 1.0322145047776015,
+    "base_com_shift_m": [
+      -0.0008267389523277981,
+      -0.00039084695399463603,
+      -0.000690445290463039
+    ],
+    "friction": 0.747851640291222,
+    "torque_scale": 0.9910553945494278,
+    "speed_scale": 1.0070483372457353,
+    "extra_delay_s": 0.003553426183085047,
+    "gravity_noise_std": 0.002556103998388545,
+    "gyro_noise_std_rad_s": 0.012351730795458414,
+    "gyro_bias_std_rad_s": 0.003815730502912429,
+    "initial_joint_offsets_rad": [
+      -0.001041862545912979,
+      -0.0046317457957397515,
+      -0.0030634503713665683,
+      -0.0008678782350819061,
+      0.0014187572282722202,
+      -0.000562362247797217,
+      -0.004351442375292041,
+      -0.003626217463474005,
+      0.0045880465364514815,
+      -0.0010155826801782168
+    ],
+    "gyro_bias_rad_s": [
+      0.006618129259241581,
+      -0.00621914540189403,
+      -0.0010514709801493142
+    ],
+    "battery_included_total_mass_kg": 0.8828367258710099,
+    "initial_com_world_m": [
+      -0.010744159835100275,
+      -0.0002545693825970761,
+      0.10968742085701995
+    ],
+    "motor_caps_Nm": [
+      0.44597492754724255,
+      0.25767440258285124,
+      0.44597492754724255,
+      0.25767440258285124,
+      0.25767440258285124,
+      0.44597492754724255,
+      0.25767440258285124,
+      0.44597492754724255,
+      0.25767440258285124,
+      0.25767440258285124
+    ],
+    "motor_speeds_rad_s": [
+      8.54208627687275,
+      10.862159092813496,
+      8.54208627687275,
+      10.862159092813496,
+      10.862159092813496,
+      8.54208627687275,
+      10.862159092813496,
+      8.54208627687275,
+      10.862159092813496,
+      10.862159092813496
+    ],
+    "effective_delay_s": 0.014,
+    "randomized": true,
+    "external_heading_std_rad": 0.003481658675002777,
+    "lateral_pose_std_m": 0.001001108303169622,
+    "heading_source": "simulated external reference; not IMU-only"
+  },
+  "saturation_fraction": [
+    0.0,
+    0.0,
+    0.0,
+    0.09805479452054794,
+    0.0017899543378995435,
+    0.0,
+    0.0,
+    0.0,
+    0.08526027397260275,
+    0.0
+  ],
+  "peak_continuous_saturation_s": [
+    0.0,
+    0.0,
+    0.0,
+    0.054,
+    0.001,
+    0.0,
+    0.0,
+    0.0,
+    0.048,
+    0.0
+  ],
+  "peak_one_second_saturation_duty": [
+    0.0,
+    0.0,
+    0.0,
+    0.108,
+    0.002,
+    0.0,
+    0.0,
+    0.0,
+    0.096,
+    0.0
+  ],
+  "heading_error_rad": -0.03626481580868975,
+  "lateral_error_m": -0.16009232286482727,
+  "direction_penalty": 0.51587851865481,
+  "trajectory_sha256": "d69fa5e0861e5d3aaea527833e893de72cd3b6cee27125fb81e5b8cac0e2af2e",
+  "interface": {
+    "schema": "r6-residual-heading-v2",
+    "model_sha256": "bc9a75d2ee002602db6d0a2f83bf76caf1bd1bee47471c5007302e2f186c0383",
+    "robot_sha256": "81f32b0a39c56d09ffc3329bfcd5acb0f99f358761a246d5d436be0780c2ca25",
+    "reference_sha256": "cbe03c81e6ee80a465c1716de2ac7675b80492b833796f7ccf4454235f0c4515",
+    "source_sha256": {
+      "stackchan_rl/residual.py": "d0370eef86fbec9d1659c2ae3f8362207e56f6e2f6d8c750b6a320ca9abf8ef6",
+      "stackchan_rl/actuation.py": "08fb037114c07e47a52b7b722910dd90edf8f5e78be26adbc8784e0f38fc9351",
+      "stackchan_rl/walk_events.py": "0a33e2df8f4442807adf395721a247cfbdb4a8597cca6f6f3f617cd8798286d6",
+      "stackchan_rl/ordered_steps.py": "c7aa08f0fecfd55ba5a7287b5418a58c3636d96d8b3f2bcdaea3d01d1c2be1ea",
+      "stackchan_rl/config.py": "61740892a46f533af6095ca4ab441fa7d35873d45f5c700eeef0915798f563c4",
+      "stackchan_rl/residual_heading.py": "7111451bc9b26d181fb1b7a146ded84981f63dc770f456b543a38822abc38920"
+    },
+    "observation_fields": [
+      [
+        "reference_q",
+        10
+      ],
+      [
+        "q_minus_reference",
+        10
+      ],
+      [
+        "joint_velocity_div10",
+        10
+      ],
+      [
+        "noisy_projected_gravity",
+        3
+      ],
+      [
+        "noisy_gyro_div10",
+        3
+      ],
+      [
+        "body_velocity",
+        3
+      ],
+      [
+        "previous_action",
+        10
+      ],
+      [
+        "filtered_minus_reference",
+        10
+      ],
+      [
+        "command",
+        1
+      ],
+      [
+        "phase_sin_cos",
+        2
+      ],
+      [
+        "planned_support",
+        2
+      ],
+      [
+        "height_error",
+        1
+      ],
+      [
+        "noisy_external_heading_sin_cos",
+        2
+      ],
+      [
+        "noisy_lateral_error",
+        1
+      ],
+      [
+        "world_velocity_xy",
+        2
+      ]
+    ],
+    "joint_order": [
+      "left_hip_roll",
+      "left_hip_pitch",
+      "left_knee",
+      "left_ankle_pitch",
+      "left_ankle_roll",
+      "right_hip_roll",
+      "right_hip_pitch",
+      "right_knee",
+      "right_ankle_pitch",
+      "right_ankle_roll"
+    ],
+    "heading_state_estimation": "external_reference_plus_white_noise; not IMU-only",
+    "control_parameters": {
+      "command_m_s": 0.1,
+      "policy_dt_s": 0.02,
+      "residual_scale_rad": 0.02,
+      "slew_rad_s": 6.0,
+      "lowpass_s": 0.04,
+      "protection": {
+        "continuous_saturation_s": 0.25,
+        "saturation_window_s": 1.0,
+        "saturation_duty_limit": 0.5
+      },
+      "heading_observation": {
+        "heading_std_rad_range": [
+          0.002,
+          0.01
+        ],
+        "lateral_std_m_range": [
+          0.001,
+          0.003
+        ],
+        "fixed_heading_std_rad": 0.005,
+        "fixed_lateral_std_m": 0.002
+      }
+    }
+  },
+  "action_rms": [
+    0.043598674722152515,
+    0.05010965779297369,
+    0.05697339968049692,
+    0.045140647329881226,
+    0.035691994976350144,
+    0.04253804380099742,
+    0.04052791065745204,
+    0.05040357209929663,
+    0.06366665998021583,
+    0.07465391502000543
+  ],
+  "external_root_forces_used": false
+}
