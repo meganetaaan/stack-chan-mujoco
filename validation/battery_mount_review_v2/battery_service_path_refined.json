@@ -1,0 +1,176 @@
+{
+  "scope": "Straight rear extraction at nominal leg pose; conservative swept boxes per tray component and per other module part",
+  "translation_base_mm": [
+    -82,
+    0,
+    0
+  ],
+  "removed_before_extraction": [
+    "rear_cover",
+    "battery_M3_envelope_0",
+    "battery_M3_envelope_1"
+  ],
+  "preconditions": [
+    "Power disconnected, battery/electrical leads disconnected",
+    "Robot supported with legs at nominal maintenance pose",
+    "Rear cover and both mounting fasteners removed"
+  ],
+  "not_verified": [
+    "Cable slack, connector disengagement and polarity",
+    "Finger/tool access and screw removal",
+    "Strap closure release and pack-only removal",
+    "Tolerance, elastic deformation, strength"
+  ],
+  "swept_boxes_clear": false,
+  "findings": [
+    {
+      "module": "battery_2S_reservation",
+      "fixed_part": "TTL_interface",
+      "swept_box_intersection_mm3": 1820.73805208364,
+      "sampled_actual_shape_intersections": [
+        {
+          "translation_x_mm": -16,
+          "overlap_mm3": 636.7690260418201
+        },
+        {
+          "translation_x_mm": -18,
+          "overlap_mm3": 1366.3690260418196
+        },
+        {
+          "translation_x_mm": -20,
+          "overlap_mm3": 1820.73805208364
+        },
+        {
+          "translation_x_mm": -22,
+          "overlap_mm3": 1820.73805208364
+        },
+        {
+          "translation_x_mm": -24,
+          "overlap_mm3": 1820.73805208364
+        },
+        {
+          "translation_x_mm": -26,
+          "overlap_mm3": 1820.73805208364
+        },
+        {
+          "translation_x_mm": -28,
+          "overlap_mm3": 1820.73805208364
+        },
+        {
+          "translation_x_mm": -30,
+          "overlap_mm3": 1820.73805208364
+        },
+        {
+          "translation_x_mm": -32,
+          "overlap_mm3": 1820.73805208364
+        },
+        {
+          "translation_x_mm": -34,
+          "overlap_mm3": 1820.73805208364
+        },
+        {
+          "translation_x_mm": -36,
+          "overlap_mm3": 1366.3690260418198
+        },
+        {
+          "translation_x_mm": -38,
+          "overlap_mm3": 636.7690260418201
+        }
+      ]
+    },
+    {
+      "module": "battery_strap_envelope",
+      "fixed_part": "TTL_interface",
+      "swept_box_intersection_mm3": 627.9999999999993,
+      "sampled_actual_shape_intersections": [
+        {
+          "translation_x_mm": -14,
+          "overlap_mm3": 61.060325732896914
+        },
+        {
+          "translation_x_mm": -16,
+          "overlap_mm3": 73.06032573289744
+        },
+        {
+          "translation_x_mm": -18,
+          "overlap_mm3": 77.88473684210695
+        },
+        {
+          "translation_x_mm": -20,
+          "overlap_mm3": 19.999999999999996
+        },
+        {
+          "translation_x_mm": -22,
+          "overlap_mm3": 19.999999999999996
+        },
+        {
+          "translation_x_mm": -24,
+          "overlap_mm3": 19.999999999999996
+        },
+        {
+          "translation_x_mm": -26,
+          "overlap_mm3": 19.999999999999996
+        },
+        {
+          "translation_x_mm": -28,
+          "overlap_mm3": 19.999999999999996
+        },
+        {
+          "translation_x_mm": -30,
+          "overlap_mm3": 19.999999999999996
+        },
+        {
+          "translation_x_mm": -32,
+          "overlap_mm3": 19.999999999999996
+        },
+        {
+          "translation_x_mm": -34,
+          "overlap_mm3": 19.999999999999996
+        },
+        {
+          "translation_x_mm": -36,
+          "overlap_mm3": 77.88473684210466
+        },
+        {
+          "translation_x_mm": -38,
+          "overlap_mm3": 73.06032573290213
+        },
+        {
+          "translation_x_mm": -40,
+          "overlap_mm3": 61.06032573290483
+        }
+      ]
+    }
+  ],
+  "module": [
+    {
+      "part": "battery_tray",
+      "initial_xmax_mm": 11.15,
+      "final_xmax_mm": -70.85,
+      "fully_behind_body_x_minus64": true
+    },
+    {
+      "part": "battery_2S_reservation",
+      "initial_xmax_mm": 9.25,
+      "final_xmax_mm": -72.75,
+      "fully_behind_body_x_minus64": true
+    },
+    {
+      "part": "battery_strap_envelope",
+      "initial_xmax_mm": 11.65,
+      "final_xmax_mm": -70.35,
+      "fully_behind_body_x_minus64": true
+    }
+  ],
+  "source_sha256": {
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/check_battery_service_path.py": "b82c47c044f558e1272d68e8a798b6ce52e310559b82268db0a0bdcce0756a76",
+    "design/battery_mount_concept.json": "b2b60fd27eb0130ccc26874a89250d806dacb65ca6b7cf69787ae87f193ab2c1",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_base_collisions/robot.json": "81f32b0a39c56d09ffc3329bfcd5acb0f99f358761a246d5d436be0780c2ca25",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_base_collisions/cad/build.py": "fe13dd18c8c79800a317031c07b1eca35c57ac6b3e0a395e70ab420203436cd9",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_base_collisions/cad/r4_geometry.py": "cacbb3297050b1c8a4ae5f00e57ac49e09f1188c17665b06ec7092b0f561431d",
+    "validation/battery_mount_review_v2/battery_tray.step": "5017bcc6cce673e7aad0dbf98919d0a3f0d0b4ee7cbd89b4db83187a8b48b49a",
+    "validation/battery_mount_review_v2/battery_2S_reservation.step": "a191262ab43f4cfc6b5ae62ca9970ff39739cf0f0978f6c40c8a1667897b5429",
+    "validation/battery_mount_review_v2/battery_strap_envelope.step": "baf3dd2471ec5a5b190f7514c99c395e2281056ad95964512e504c1be1eee3d2",
+    "validation/battery_mount_review_v2/body_shroud.step": "c4a995aa9d6a7ede0ad1254a8164aab2b38e8a63cfcae0ffd089c30a1965a497"
+  }
+}

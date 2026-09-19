@@ -155,3 +155,5 @@ python run_planned_r6_evaluation.py --checkpoint runs/r6_mounted_seed20260924 --
 ```
 
 前者は胴体質量・慣性・接触を更新した `assets/r6_mounted_battery` 上で32,768ステップのPPOを行う。親の重みを移植し、オプティマイザは新規。親の読み込み後に新seedでPPOを構築する。学習・評価の完了は各結果ファイルで確認する。従来モデルの20/20を固定具込みモデルの成績として扱わない。
+
+固定具込み方策の評価中に、seed 118010が10.763秒で右足首ロール下限を0.000272 rad超えた。`validation/r6_mounted_development/joint_limit_trial10` に失敗状態と診断を保存。記録されたフィルター後目標は約-0.171725 rad、実角度は-0.280272 rad。遅延・接触・負荷を含む根本原因の特定ではない。受入閾値や失敗集計を変更せず、全40試行を継続する。診断は `inspect_joint_limit_failure.py` で再生成できる。
