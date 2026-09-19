@@ -96,3 +96,9 @@ uv pip install --python .venv-dynamics/bin/python -r design/requirements-dynamic
 クレードル・ジンバル・足外装内側の修正、全保存姿勢からの開口再生成を追加した。
 [設計と再現手順](../design/leg_relief/README_ja.md)を参照。
 高速動力学ではモーター同士の接触が続き、制御・関節の組合せ制約の課題が残る。
+
+## 重心軌道の前後位置・横振幅の診断
+
+[追加診断](COM_REFERENCE_STUDY_ja.md)で最大約1.04 mまで前進したが、接触停止している。
+短時間の約0.52 m試験にも、ジンバルの衝突形状不足により見逃されたCAD干渉がある。
+実機・10 m受入の成功とは扱わない。
