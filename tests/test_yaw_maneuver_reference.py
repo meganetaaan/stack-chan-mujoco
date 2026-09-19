@@ -33,7 +33,13 @@ class YawCommandReferenceTests(unittest.TestCase):
     def test_adaptive_width_uses_continuous_swing_and_returns_to_neutral_at_stops(self):
         self.check_schedule(.25,.32,.30,62.)
 
-    def check_schedule(self,fraction,period,forward,width=None):
+    def test_longer_backward_settle_keeps_full_schedule_continuous(self):
+        self.check_schedule(.25,.32,.30,62.,.2)
+
+    def test_slower_backward_transfer_keeps_full_schedule_continuous(self):
+        self.check_schedule(.25,.32,.30,62.,.1,.35)
+
+    def check_schedule(self,fraction,period,forward,width=None,backward_settle=.1,backward_shift=None):
         # Isolate the heading scheduler from expensive CAD IK; separate tests
         # validate real six-axis IK and the generated reference uses that IK.
         initial=SimpleNamespace(initial_feet=np.array([[0.,.032,0.],[0.,-.032,0.]]),q0=np.zeros(10),b0=np.eye(4))
@@ -45,7 +51,7 @@ class YawCommandReferenceTests(unittest.TestCase):
             return np.r_[yaw,np.zeros(5)],0.,None
         kin=SimpleNamespace(legacy=SimpleNamespace(fk_leg=lambda *args:(None,np.eye(4))),solve_flat_foot=solve)
         protocol=json.loads(Path('configs/maneuver/acceptance_v1.json').read_text());bounds=validate(protocol)
-        planner=YawCommandReference(initial,pose,smooth,protocol,kin,fraction,step_period=period,forward_period=forward,forward_stance_width_mm=width)
+        planner=YawCommandReference(initial,pose,smooth,protocol,kin,fraction,step_period=period,forward_period=forward,forward_stance_width_mm=width,backward_settle_fraction=backward_settle,backward_shift_fraction=backward_shift)
         angles=[];foot_y=[]
         for t in np.arange(0,bounds[-1]+.01,.02):
             sample=planner.sample(t);angles.append(sample.q12[[0,6]])
