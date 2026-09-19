@@ -226,6 +226,10 @@ def main():
         start = data.xpos[base_id].copy()
         max_tau, sum_tau2, sat = np.zeros(10), np.zeros(10), np.zeros(10)
         tilt, max_tilt, count, failure, failure_pairs = 0., 0., 0, None, []
+        contact_metrics = {"self_penetration_steps":0,"nonsole_floor_penetration_steps":0,
+                           "peak_self_contact_force_N":0.,"peak_nonsole_floor_force_N":0.,
+                           "max_self_penetration_mm":0.,"max_nonsole_floor_penetration_mm":0.,
+                           "penetration_tolerance_m":1e-8}
         force = np.zeros(6)
         loads, heights = np.zeros(2), np.zeros(2)
         clipped_targets = np.zeros(10, dtype=int)
@@ -273,6 +277,8 @@ def main():
                         tilt = float(np.rad2deg(np.arccos(np.clip(data.xmat[base_id].reshape(3,3)[2,2],-1,1))))
                         max_tilt = max(max_tilt, tilt)
                         loads[:] = 0
+                        self_penetrating = False
+                        nonsole_penetrating = False
                         for k in range(data.ncon):
                             c = data.contact[k]
                             mujoco.mj_contactForce(model, data, k, force)
@@ -281,11 +287,21 @@ def main():
                                 other = c.geom2 if c.geom1 == floor else c.geom1
                                 if other in soles:
                                     loads[sole_ids.index(other)] += abs((c.frame.reshape(3,3).T @ force[:3])[2])
-                                if other not in soles and norm > .4:
-                                    failure = "non_sole_floor_contact"
-                            elif norm > .8:
-                                failure = "self_contact"
-                                failure_pairs.append([model.geom(c.geom1).name, model.geom(c.geom2).name])
+                                if other not in soles:
+                                    nonsole_penetrating |= c.dist < -1e-8
+                                    contact_metrics["peak_nonsole_floor_force_N"] = max(contact_metrics["peak_nonsole_floor_force_N"],float(norm))
+                                    contact_metrics["max_nonsole_floor_penetration_mm"] = max(contact_metrics["max_nonsole_floor_penetration_mm"],float(-1000*c.dist))
+                                    if norm > .4:
+                                        failure = "non_sole_floor_contact"
+                            else:
+                                self_penetrating |= c.dist < -1e-8
+                                contact_metrics["peak_self_contact_force_N"] = max(contact_metrics["peak_self_contact_force_N"],float(norm))
+                                contact_metrics["max_self_penetration_mm"] = max(contact_metrics["max_self_penetration_mm"],float(-1000*c.dist))
+                                if norm > .8:
+                                    failure = "self_contact"
+                                    failure_pairs.append([model.geom(c.geom1).name, model.geom(c.geom2).name])
+                        contact_metrics["self_penetration_steps"] += int(self_penetrating)
+                        contact_metrics["nonsole_floor_penetration_steps"] += int(nonsole_penetrating)
                         if tilt > 35:
                             failure = failure or "excessive_tilt"
                         if failure:
@@ -300,6 +316,7 @@ def main():
                         break
         report["physics_executed"] = count > 0
         report["simulation"] = {"duration_s": float(data.time), "failure": failure, "failure_pairs": failure_pairs,
+            "contact_metrics":contact_metrics,
             "forward_m": float(data.xpos[base_id,0]-start[0]) if np.isfinite(data.xpos[base_id,0]) else None, "max_tilt_deg": max_tilt,
             "peak_torque_Nm": max_tau.tolist(), "rms_torque_Nm": np.sqrt(sum_tau2/max(count,1)).tolist(),
             "saturation_fraction": (sat/max(count,1)).tolist(), "external_root_forces_used": False,

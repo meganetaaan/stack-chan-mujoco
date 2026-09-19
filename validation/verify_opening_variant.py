@@ -16,7 +16,11 @@ def main():
     p.add_argument('--leg-relief', action='store_true',
                    help='Also expect the two cradles and two ankle gimbals to change')
     p.add_argument('--boot-relief', action='store_true')
+    p.add_argument('--expected-meshes', nargs='+',
+                   help='Explicit changed mesh names for a local geometry variant')
     args = p.parse_args()
+    if args.expected_meshes and (args.leg_relief or args.boot_relief):
+        p.error('use explicit mesh names or relief flags, not both')
     old, new = args.baseline, args.candidate
     a = json.loads((old/'robot.json').read_text())
     b = json.loads((new/'robot.json').read_text())
@@ -36,6 +40,8 @@ def main():
                      for suffix in ('_fixed_roll_cradle.stl', '_ankle_gimbal.stl')]
     if args.boot_relief:
         expected += ['left_boot_shell.stl','right_boot_shell.stl']
+    if args.expected_meshes:
+        expected = args.expected_meshes
     checks = {'same_component_mesh_names': meshes == new_meshes,
               'only_expected_meshes_changed': changed == sorted(expected),
               'kinematics_unchanged': a['kinematics'] == b['kinematics'],

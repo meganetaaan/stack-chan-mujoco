@@ -48,9 +48,12 @@ def main():
     if args.out.exists():
         p.error('output already exists')
     source = (design/'cad/r4_geometry.py').read_text()
+    rear_bridge = "box((2.4,34.9,8),(-55,sgn*1.95,12.5))" in source
+    bridge_marker = ("box((2.4,34.9,8),(-55,sgn*1.95,12.5))" if rear_bridge
+                     else "box((8,34.9,2.4),(-42,sgn*1.95,15.2))")
     markers = ["profile_y(outline,2.0,yy)", "cyl(10.5,2.0,(0,yy-1.0,0),(0,1,0))",
                "ss=ss.cut(cyl(3.1,3,(0,yy-1.5,0),(0,1,0)))",
-               "box((8,34.9,2.4),(-42,sgn*1.95,15.2))",
+               bridge_marker,
                "box((2.4,34.9,2.4),(-55,sgn*1.95,-18.8))"]
     if any(source.count(marker) != 1 for marker in markers):
         p.error('CAD implementation changed; review gimbal decomposition')
@@ -90,7 +93,8 @@ def main():
             for poly in polygons:
                 solids.append(profile_y(poly,2.,y))
                 vertices.append([[x,yy,z] for yy in (y-1,y+1) for x,z in poly])
-        for size,center in [((8,34.9,2.4),(-42,sign*1.95,15.2)),
+        upper_bridge = ((2.4,34.9,8),(-55,sign*1.95,12.5)) if rear_bridge else ((8,34.9,2.4),(-42,sign*1.95,15.2))
+        for size,center in [upper_bridge,
                             ((2.4,34.9,2.4),(-55,sign*1.95,-18.8))]:
             solids.append(box(size,center))
             vertices.append([[center[0]+sx*size[0]/2,center[1]+sy*size[1]/2,center[2]+sz*size[2]/2]

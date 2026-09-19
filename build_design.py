@@ -27,7 +27,11 @@ def main():
                    help="Experimental cradle notch and rerouted gimbal arm; requires gait opening")
     p.add_argument("--boot-collar-relief", action="store_true",
                    help="Local inner collar recess; requires leg relief")
+    p.add_argument("--rear-gimbal-bridge", action="store_true",
+                   help="Move the upper ankle cross-brace behind the roll motor; requires leg relief")
     args = p.parse_args()
+    if args.rear_gimbal_bridge and not args.leg_clearance_relief:
+        p.error("--rear-gimbal-bridge requires --leg-clearance-relief")
     if args.leg_clearance_relief and args.underside_cutouts is None:
         p.error("--leg-clearance-relief requires --underside-cutouts")
     if args.boot_collar_relief and not args.leg_clearance_relief:
@@ -92,6 +96,8 @@ def main():
             robot["revision"] += "-leg-relief"
         if args.boot_collar_relief:
             robot["revision"] += "-collar-relief"
+        if args.rear_gimbal_bridge:
+            robot["revision"] += "-rear-bridge"
         robot["kinematics"]["hip_half_spacing_mm"] = spacing
         (out / "robot.json").write_text(json.dumps(robot, indent=2)+"\n")
         # Every leg and base-mounted cradle moves rigidly by the same delta.
@@ -132,6 +138,8 @@ def main():
                 "    # Local internal top-collar recess; external sole and side outline retained.\n"
                 "    out=out.cut(box((42,56,8),(1,0,38),r=2,edge='|Z'))\n"
                 "    # Inboard sweep channel: the two-axis ankle needs lateral clearance.")
+        if args.rear_gimbal_bridge:
+            adaptations["box((8,34.9,2.4),(-42,sgn*1.95,15.2))"] = "box((2.4,34.9,8),(-55,sgn*1.95,12.5))"
         for old, new in adaptations.items():
             if text.count(old) != 1:
                 raise RuntimeError("Archived leg implementation changed; review relief adaptation")
@@ -153,6 +161,7 @@ def main():
             "battery_planning_envelope": battery,
             "leg_clearance_relief": args.leg_clearance_relief,
             "boot_collar_relief": args.boot_collar_relief,
+            "rear_gimbal_bridge": args.rear_gimbal_bridge,
             "underside_cutouts_sha256": hashlib.sha256(args.underside_cutouts.read_bytes()).hexdigest() if cutouts is not None else None,
             "changes": ["leg joint origins and fixed cradles", "body mounting rails",
                         "supplied gait opening" if cutouts is not None else "translated sampled underside opening", "CAD-derived mass and inertia"],
