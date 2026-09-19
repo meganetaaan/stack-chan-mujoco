@@ -1,0 +1,363 @@
+{
+  "scope": "Exploratory assumed-uncertainty simulation, not hardware acceptance",
+  "hardware_acceptance": false,
+  "hardware_trials_performed_by_this_task": 0,
+  "case_count": 20,
+  "ten_metres_within_100s_count": 20,
+  "clean_complete_run_count": 17,
+  "shared_reference_sha256": "b2c93a69e7c4dff68f4db14b80263ccf0e5df13d50cf92100fc99a60eb71fa45",
+  "uniform_source_signature": {
+    "plant_variation_code_sha256": "506892b5afadedbdabd3f980ee442ff5d4d2ffef796635a4d4b4974426b20e34",
+    "probe_sha256": "034b5235341b38afc2b5c157ba5017d8c2f0fd139a797bd1f517c707d473d7cd",
+    "source_sha256": {
+      "models/inertials.json": "eeca592922b8ec9f450d92a11d3615b84f028afcce24e41ab3c15245578559d1",
+      "models/scene.xml": "bc9a75d2ee002602db6d0a2f83bf76caf1bd1bee47471c5007302e2f186c0383",
+      "robot.json": "81f32b0a39c56d09ffc3329bfcd5acb0f99f358761a246d5d436be0780c2ca25",
+      "src/tab5_biped/core.py": "9a16813b61435492746dc3cb7d7e765a7a7432e47ab29c266ce011742da5c322",
+      "src/tab5_biped/planner.py": "f54a0a680412715d3f0abbbd9495e5c7aeb255d9ba71fbef76df07e150c7025b"
+    },
+    "stopping_reference_extension": null
+  },
+  "results": [
+    {
+      "case": "case_00",
+      "crossing": {
+        "previous_time_s": 92.80000000007905,
+        "first_sample_at_distance_time_s": 92.82000000007915,
+        "interpolated_time_s": 92.80750049860133,
+        "conservative_average_speed_m_s": 0.10773540185295705,
+        "sample_forward_m": 10.001323607690022
+      },
+      "failure": "self_contact",
+      "duration_s": 109.28600000015777,
+      "forward_m": 11.772223549143805,
+      "contact_clean": false,
+      "clean_finish": false,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": false
+    },
+    {
+      "case": "case_01",
+      "crossing": {
+        "previous_time_s": 93.28000000008134,
+        "first_sample_at_distance_time_s": 93.30000000008144,
+        "interpolated_time_s": 93.29902206095655,
+        "conservative_average_speed_m_s": 0.10718113611994931,
+        "sample_forward_m": 10.000120118739924
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.708720973065056,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    },
+    {
+      "case": "case_02",
+      "crossing": {
+        "previous_time_s": 93.26000000008125,
+        "first_sample_at_distance_time_s": 93.28000000008134,
+        "interpolated_time_s": 93.26309124007372,
+        "conservative_average_speed_m_s": 0.10720411663798542,
+        "sample_forward_m": 10.002941795693948
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.715400672074296,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    },
+    {
+      "case": "case_03",
+      "crossing": {
+        "previous_time_s": 93.26000000008125,
+        "first_sample_at_distance_time_s": 93.28000000008134,
+        "interpolated_time_s": 93.26951837910516,
+        "conservative_average_speed_m_s": 0.10720411663798542,
+        "sample_forward_m": 10.001706097014448
+      },
+      "failure": "self_contact",
+      "duration_s": 109.27800000015773,
+      "forward_m": 11.71754890873518,
+      "contact_clean": false,
+      "clean_finish": false,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": false
+    },
+    {
+      "case": "case_04",
+      "crossing": {
+        "previous_time_s": 94.06000000008507,
+        "first_sample_at_distance_time_s": 94.08000000008516,
+        "interpolated_time_s": 94.07656234457761,
+        "conservative_average_speed_m_s": 0.1062925170067065,
+        "sample_forward_m": 10.000608858971722
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.616070024695949,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    },
+    {
+      "case": "case_05",
+      "crossing": {
+        "previous_time_s": 94.12000000008535,
+        "first_sample_at_distance_time_s": 94.14000000008545,
+        "interpolated_time_s": 94.13227299472062,
+        "conservative_average_speed_m_s": 0.1062247716166446,
+        "sample_forward_m": 10.001167951097655
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.602982054341172,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    },
+    {
+      "case": "case_06",
+      "crossing": {
+        "previous_time_s": 94.3800000000866,
+        "first_sample_at_distance_time_s": 94.40000000008669,
+        "interpolated_time_s": 94.39181474752753,
+        "conservative_average_speed_m_s": 0.10593220338973322,
+        "sample_forward_m": 10.001266382251478
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.567657795378144,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    },
+    {
+      "case": "case_07",
+      "crossing": {
+        "previous_time_s": 94.28000000008612,
+        "first_sample_at_distance_time_s": 94.30000000008621,
+        "interpolated_time_s": 94.29209999186021,
+        "conservative_average_speed_m_s": 0.10604453870615968,
+        "sample_forward_m": 10.001065176878987
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.588223224724464,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    },
+    {
+      "case": "case_08",
+      "crossing": {
+        "previous_time_s": 93.0600000000803,
+        "first_sample_at_distance_time_s": 93.08000000008039,
+        "interpolated_time_s": 93.06689720610595,
+        "conservative_average_speed_m_s": 0.10743446497627163,
+        "sample_forward_m": 10.00171369987605
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.739919056618053,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    },
+    {
+      "case": "case_09",
+      "crossing": {
+        "previous_time_s": 93.98000000008469,
+        "first_sample_at_distance_time_s": 94.00000000008478,
+        "interpolated_time_s": 93.9977401382383,
+        "conservative_average_speed_m_s": 0.1063829787233083,
+        "sample_forward_m": 10.000138884148894
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.628258583492952,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    },
+    {
+      "case": "case_10",
+      "crossing": {
+        "previous_time_s": 93.36000000008173,
+        "first_sample_at_distance_time_s": 93.38000000008182,
+        "interpolated_time_s": 93.3659832532408,
+        "conservative_average_speed_m_s": 0.10708931248652,
+        "sample_forward_m": 10.0011036731891
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.700677930621818,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    },
+    {
+      "case": "case_11",
+      "crossing": {
+        "previous_time_s": 94.32000000008631,
+        "first_sample_at_distance_time_s": 94.3400000000864,
+        "interpolated_time_s": 94.33785910343533,
+        "conservative_average_speed_m_s": 0.10599957600159891,
+        "sample_forward_m": 10.000334468458323
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.576643282531972,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    },
+    {
+      "case": "case_12",
+      "crossing": {
+        "previous_time_s": 94.46000000008698,
+        "first_sample_at_distance_time_s": 94.48000000008707,
+        "interpolated_time_s": 94.4717695138463,
+        "conservative_average_speed_m_s": 0.10584250635045284,
+        "sample_forward_m": 10.000513380738784
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.561679180183125,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    },
+    {
+      "case": "case_13",
+      "crossing": {
+        "previous_time_s": 94.18000000008564,
+        "first_sample_at_distance_time_s": 94.20000000008574,
+        "interpolated_time_s": 94.19186524450647,
+        "conservative_average_speed_m_s": 0.10615711252644267,
+        "sample_forward_m": 10.000593621493602
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.59184147758338,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    },
+    {
+      "case": "case_14",
+      "crossing": {
+        "previous_time_s": 93.32000000008154,
+        "first_sample_at_distance_time_s": 93.34000000008163,
+        "interpolated_time_s": 93.32992287910778,
+        "conservative_average_speed_m_s": 0.10713520462814714,
+        "sample_forward_m": 10.001402379551768
+      },
+      "failure": "self_contact",
+      "duration_s": 109.28500000015777,
+      "forward_m": 11.703567328369477,
+      "contact_clean": false,
+      "clean_finish": false,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": false
+    },
+    {
+      "case": "case_15",
+      "crossing": {
+        "previous_time_s": 93.00000000008001,
+        "first_sample_at_distance_time_s": 93.0200000000801,
+        "interpolated_time_s": 93.0175300019123,
+        "conservative_average_speed_m_s": 0.10750376263159954,
+        "sample_forward_m": 10.000362740562844
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.748449280595226,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    },
+    {
+      "case": "case_16",
+      "crossing": {
+        "previous_time_s": 94.12000000008535,
+        "first_sample_at_distance_time_s": 94.14000000008545,
+        "interpolated_time_s": 94.1324519000599,
+        "conservative_average_speed_m_s": 0.1062247716166446,
+        "sample_forward_m": 10.001083995327566
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.606644116241432,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    },
+    {
+      "case": "case_17",
+      "crossing": {
+        "previous_time_s": 93.74000000008354,
+        "first_sample_at_distance_time_s": 93.76000000008364,
+        "interpolated_time_s": 93.74024403417734,
+        "conservative_average_speed_m_s": 0.10665529010229394,
+        "sample_forward_m": 10.001839933035821
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.652867837773014,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    },
+    {
+      "case": "case_18",
+      "crossing": {
+        "previous_time_s": 93.28000000008134,
+        "first_sample_at_distance_time_s": 93.30000000008144,
+        "interpolated_time_s": 93.2878459085042,
+        "conservative_average_speed_m_s": 0.10718113611994931,
+        "sample_forward_m": 10.001744920149292
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.715344970406782,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    },
+    {
+      "case": "case_19",
+      "crossing": {
+        "previous_time_s": 94.56000000008746,
+        "first_sample_at_distance_time_s": 94.58000000008755,
+        "interpolated_time_s": 94.56505367111947,
+        "conservative_average_speed_m_s": 0.10573059843508927,
+        "sample_forward_m": 10.001858876198249
+      },
+      "failure": null,
+      "duration_s": 109.50000000015879,
+      "forward_m": 11.556511277898482,
+      "contact_clean": true,
+      "clean_finish": true,
+      "ten_metres_within_100s": true,
+      "simulation_screen_pass": true
+    }
+  ]
+}

@@ -8,6 +8,7 @@ import hashlib
 import csv
 import itertools
 import json
+import math
 from pathlib import Path
 import sys
 import time
@@ -23,7 +24,12 @@ def main():
     p.add_argument("--stride", type=int, default=10)
     trajectories.add_argument("--trajectory-terminal-csv", type=Path,
                    help="Check the actual last joint pose of a diagnostic CSV instead of five splay poses")
+    p.add_argument("--from-time-s",type=float,
+                   help="Check only rows at/after this time in --trajectory-csv")
     args = p.parse_args()
+    if args.from_time_s is not None and (not args.trajectory_csv or
+            not math.isfinite(args.from_time_s) or args.from_time_s < 0):
+        p.error("finite nonnegative --from-time-s requires --trajectory-csv")
     if args.stride < 1:
         p.error("stride must be positive")
     trajectory_path = args.trajectory_csv or args.trajectory_terminal_csv
@@ -41,8 +47,12 @@ def main():
             trajectory = list(csv.DictReader(handle))
         if not trajectory:
             p.error("trajectory has no samples")
+        eligible = [i for i,row in enumerate(trajectory)
+                    if args.from_time_s is None or float(row['time_s']) >= args.from_time_s]
+        if not eligible:
+            p.error("no trajectory rows in requested interval")
         indices = [len(trajectory)-1] if args.trajectory_terminal_csv else sorted(
-            set(range(0, len(trajectory), args.stride)) | {len(trajectory)-1})
+            set(eligible[::args.stride]) | {eligible[-1]})
         for index in indices:
             qq = np.array([float(trajectory[index][name]) for name in JOINT_NAMES])
             if not np.isfinite(qq).all():
@@ -76,6 +86,7 @@ def main():
               "scope": "All mechanical pairs at supplied sampled poses; no swept-volume, tolerance, cable or fastener proof",
               "trajectory_sha256": hashlib.sha256(trajectory_path.read_bytes()).hexdigest() if trajectory_path else None,
               "trajectory_stride": args.stride if args.trajectory_csv else None,
+              "trajectory_from_time_s":args.from_time_s,
               "checker_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               "mechanical_parts": len(parts), "same_link_and_adjacent_pairs_included": True,
               "manufacturing_release": False, "walking_validated": False,

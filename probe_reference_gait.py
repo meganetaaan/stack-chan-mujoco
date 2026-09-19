@@ -18,6 +18,7 @@ import mujoco
 from stackchan_rl.actuation import PostSlewLowPassBank
 from stackchan_rl.walk_events import WalkEventTracker
 from stackchan_rl.config import DEFAULT
+from plant_variation import validate_variation, vary_model, vary_motors
 
 
 class MovingCOMReference:
@@ -98,7 +99,10 @@ def main():
                         help="Ideal body attitude feedback to stance ankle targets, rad/rad")
     parser.add_argument("--imu-rate-gain", type=float, default=0.,
                         help="Ideal local angular-rate feedback to stance ankles, seconds")
+    parser.add_argument("--plant-variation", type=Path,
+                        help="JSON perturbation of the physical plant only; reference remains nominal")
     args = parser.parse_args()
+    variation = validate_variation(json.loads(args.plant_variation.read_text()) if args.plant_variation else {})
     if any(not np.isfinite(v) or v < 0 or v > 2 for v in (args.imu_angle_gain,args.imu_rate_gain)):
         parser.error("IMU gains must be finite and in 0..2")
     if not np.isfinite(args.com_forward_offset_mm) or abs(args.com_forward_offset_mm) > 15:
@@ -154,6 +158,10 @@ def main():
     xml = design / "models/scene.xml"
     report = {"scope": "Reference feasibility and unassisted servo diagnostic with optional ideal attitude feedback",
         "hardware_tested": False, "goal_acceptance": False, "physics_executed": False,
+        "plant_variation":variation,
+        "plant_variation_input_sha256":hashlib.sha256(args.plant_variation.read_bytes()).hexdigest() if args.plant_variation else None,
+        "plant_variation_code_sha256":hashlib.sha256((Path(__file__).parent/'plant_variation.py').read_bytes()).hexdigest(),
+        "steps_requested":args.steps,
         "speed_request_m_s": args.speed, "step_period_s": args.step_period,
         "reference_mode": args.reference_mode,
         "height_offset_mm": args.height_offset_mm,
@@ -201,6 +209,8 @@ def main():
         root.find("compiler").set("meshdir", str((xml.parent/"meshes").resolve()))
         model = mujoco.MjModel.from_xml_string(ET.tostring(root, encoding="unicode"))
         data = mujoco.MjData(model)
+        if args.plant_variation:
+            vary_model(model,data,variation)
         assert (model.nq, model.nv, model.nu) == (17, 16, 10)
         assert model.neq == 0 and not np.any(model.body_gravcomp)
         mujoco.mj_resetDataKeyframe(model, data, model.key("home").id)
@@ -209,15 +219,22 @@ def main():
         aids = np.array([model.actuator(n+"_motor").id for n in JOINT_NAMES])
         data.qpos[:3] = np.array(samples[0]["base"])[:3,3]
         data.qpos[2] += .0005
-        data.qpos[qadr] = samples[0]["q"]
+        data.qpos[qadr] = np.array(samples[0]["q"])+np.array(variation["initial_joint_offset_rad"])
         mujoco.mj_forward(model, data)
         limits = np.array([model.joint(n).range for n in JOINT_NAMES])
         motor = {k: np.array([s[f] for s in specs]) for k, f in
                  {"cap":"simulation_torque_cap_Nm", "stall":"stall_torque_Nm", "kp":"kp_Nm_rad",
                   "kd":"kd_Nm_s_rad", "delay_s":"command_delay_s"}.items()}
         motor["omega"] = np.array([s["no_load_speed_rpm"]*np.pi/30 for s in specs])
+        if args.plant_variation:
+            vary_motors(model,motor,aids,variation)
         bank = PostSlewLowPassBank(motor, model.opt.timestep, args.slew, .04)
         bank.reset(data.qpos[qadr])
+        report["effective_plant"] = {"total_mass_kg":float(sum(model.body_mass)),
+            "sliding_friction_min_max": [float(model.geom_friction[:,0].min()),float(model.geom_friction[:,0].max())],
+            "torque_caps_Nm":motor["cap"].tolist(),"stall_torques_Nm":motor["stall"].tolist(),
+            "no_load_speeds_rad_s":motor["omega"].tolist(),"requested_delay_s":motor["delay_s"].tolist(),
+            "quantized_delay_s":bank.delay_ticks*model.opt.timestep}
         floor = model.geom("floor").id
         sole_ids = [model.geom("col_"+side+"_sole_TPU_0").id for side in ("left", "right")]
         soles = set(sole_ids)
