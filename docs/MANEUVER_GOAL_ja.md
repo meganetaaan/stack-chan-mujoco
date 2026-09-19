@@ -65,7 +65,8 @@
 手順は [YAW_ACCEPTANCE_RUN_ja.md](YAW_ACCEPTANCE_RUN_ja.md)、
 後退の位相比較は [開発記録](../validation/yaw_backward_contact_development_v1/README.md) を参照する。
 22%候補の正式評価を開始した。凍結記録は `validation/yaw_acceptance_phase22_v1/candidate/`。
-結果が揃うまで達成は未確認であり、開発結果を正式20/20・18/20の達成に転用しない。
+正式40試行は固定20/20・ランダム化18/20を通過し、状態記録からの再評価も一致した。
+開発結果とは分離して `validation/yaw_acceptance_phase22_v1/trials/` に全結果を保存する。
 
 旧方策には前進専用の参照・報酬・歩行中断条件がある。新しい指令系は別実装とし、
 停止を失敗にしないことと、停止指令中の動き過ぎを失敗にすることを両立させる。
