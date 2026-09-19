@@ -9,7 +9,15 @@ from maneuver_reference import CommandReference
 
 
 class YawCommandReference(CommandReference):
-    def __init__(self, initial, pose, smooth, protocol, kinematics):
+    def __init__(self, initial, pose, smooth, protocol, kinematics, shift_fraction=.35, steady_inset_mm=25.5, step_period=.32, forward_period=None):
+        if not np.isfinite(shift_fraction) or not .2<=shift_fraction<=.5:raise ValueError('shift fraction outside [.2,.5]')
+        if not np.isfinite(steady_inset_mm) or not 20<=steady_inset_mm<26:raise ValueError('steady inset outside [20,26) mm')
+        if not np.isfinite(step_period) or not .24<=step_period<=.4:raise ValueError('step period outside [.24,.4] seconds')
+        self.shift_fraction=shift_fraction
+        self.steady_inset_delta=(steady_inset_mm-24.)/1000
+        self.step_period=step_period
+        self.forward_period=step_period if forward_period is None else forward_period
+        if not np.isfinite(self.forward_period) or not .24<=self.forward_period<=.4:raise ValueError('forward period outside [.24,.4] seconds')
         self.kinematics=kinematics
         self.heading=0.
         self.foot_headings=np.zeros(2)
@@ -30,28 +38,41 @@ class YawCommandReference(CommandReference):
         self.from_heading=self.heading
         self.from_foot_headings=self.foot_headings.copy()
         if self.mode in ('step','align'):
-            self.period=.32;self.end=t+self.period
+            self.period=self.forward_period if self.mode=='step' and command['vx_m_s']>0 else self.step_period
+            self.end=t+self.period
             lower,upper=-np.inf,np.inf
-            for leg,interval in ((self.stance,self.period),(self.swing,.35*self.period)):
+            for leg,interval in ((self.stance,self.period),(self.swing,self.shift_fraction*self.period)):
                 relative=self.foot_headings[leg]-self.heading
                 lower=max(lower,(relative-.072)/interval)
                 upper=min(upper,(relative+.072)/interval)
             self.yaw_rate=float(np.clip(self.yaw_rate,lower,upper))
             self.target_x=self.feet[self.stance,0]+(command['vx_m_s'] if self.mode=='step' else 0.)*self.period
-            inset=.024+.0015*np.clip((self.motion_steps-1)/2,0.,1.)
+            inset=.024+self.steady_inset_delta*np.clip((self.motion_steps-1)/2,0.,1.)
             self.target_y=self.feet[self.stance,1]-(1 if self.stance==0 else -1)*inset
             self.target_offset=0.
-            self.swing_heading_target=self.heading+1.625*self.period*self.yaw_rate
+            self.swing_heading_target=self.heading+(1.45+.5*self.shift_fraction)*self.period*self.yaw_rate
 
     def heading_geometry(self,t):
         elapsed=np.clip(t-self.start,0.,self.end-self.start)
         heading=self.from_heading+self.yaw_rate*elapsed
         feet=self.from_foot_headings.copy()
         if self.mode in ('step','align'):
-            u=np.clip((elapsed-.35*self.period)/(.55*self.period),0.,1.)
+            u=np.clip((elapsed-self.shift_fraction*self.period)/((.9-self.shift_fraction)*self.period),0.,1.)
             blend=u*u*(3-2*u)
             feet[self.swing]+=(self.swing_heading_target-feet[self.swing])*blend
         return heading,feet
+
+    def geometry(self,t):
+        feet,xy,support,offset=super().geometry(t)
+        if self.mode in ('step','align'):
+            u=np.clip(t-self.start,0.,self.period)
+            shift=self.smooth(u/(self.shift_fraction*self.period))
+            xy[1]=self.from_xy[1]+(self.target_y-self.from_xy[1])*shift
+            support=(1-shift)*self.from_support+shift*np.eye(2)[self.stance]
+            fraction=np.clip((u-self.shift_fraction*self.period)/((.9-self.shift_fraction)*self.period),0.,1.)
+            feet[self.swing,0]=self.feet[self.swing,0]+(self.target_x-self.feet[self.swing,0])*self.smooth(fraction)
+            feet[self.swing,2]=.004*16*fraction**2*(1-fraction)**2
+        return feet,xy,support,offset
 
     def sample(self,t):
         sample=super().sample(t)

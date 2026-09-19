@@ -9,6 +9,10 @@ from stackchan_rl.maneuver_protocol import validate
 
 class YawCommandReferenceTests(unittest.TestCase):
     def test_full_schedule_yaw_is_continuous_bounded_and_neutral_at_settled_stops(self):
+        for fraction,period,forward in ((.25,.32,.30),(.25,.30,None),(.25,.32,None),(.35,.32,None),(.4,.32,None)):
+            with self.subTest(shift_fraction=fraction,period=period,forward=forward):self.check_schedule(fraction,period,forward)
+
+    def check_schedule(self,fraction,period,forward):
         # Isolate the heading scheduler from expensive CAD IK; separate tests
         # validate real six-axis IK and the generated reference uses that IK.
         initial=SimpleNamespace(initial_feet=np.array([[0.,.022,0.],[0.,-.022,0.]]),q0=np.zeros(10),b0=np.eye(4))
@@ -20,7 +24,7 @@ class YawCommandReferenceTests(unittest.TestCase):
             return np.r_[yaw,np.zeros(5)],0.,None
         kin=SimpleNamespace(legacy=SimpleNamespace(fk_leg=lambda *args:(None,np.eye(4))),solve_flat_foot=solve)
         protocol=json.loads(Path('configs/maneuver/acceptance_v1.json').read_text());bounds=validate(protocol)
-        planner=YawCommandReference(initial,pose,smooth,protocol,kin)
+        planner=YawCommandReference(initial,pose,smooth,protocol,kin,fraction,step_period=period,forward_period=forward)
         angles=[]
         for t in np.arange(0,bounds[-1]+.01,.02):
             sample=planner.sample(t);angles.append(sample.q12[[0,6]])
