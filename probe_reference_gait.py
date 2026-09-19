@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Screen a COM/IK reference and run it through unassisted MuJoCo servos.
 
-This diagnostic is neither a feedback walking controller nor hardware acceptance.
+This diagnostic has optional ideal attitude feedback; it is not hardware acceptance.
 Reference base motion is used ONLY for IK and is never imposed on the simulator.
 """
 from __future__ import annotations
@@ -94,7 +94,13 @@ def main():
     parser.add_argument("--height-offset-mm", type=float, default=0.)
     parser.add_argument("--com-forward-offset-mm", type=float, default=0.,
                         help="Fore-aft COM offset relative to foot-midpoint reference; moving-com only")
+    parser.add_argument("--imu-angle-gain", type=float, default=0.,
+                        help="Ideal body attitude feedback to stance ankle targets, rad/rad")
+    parser.add_argument("--imu-rate-gain", type=float, default=0.,
+                        help="Ideal local angular-rate feedback to stance ankles, seconds")
     args = parser.parse_args()
+    if any(not np.isfinite(v) or v < 0 or v > 2 for v in (args.imu_angle_gain,args.imu_rate_gain)):
+        parser.error("IMU gains must be finite and in 0..2")
     if not np.isfinite(args.com_forward_offset_mm) or abs(args.com_forward_offset_mm) > 15:
         parser.error("COM forward offset must be finite and within +/-15 mm")
     if args.com_forward_offset_mm and args.reference_mode != "moving-com":
@@ -146,12 +152,15 @@ def main():
             planning_failure = {"time_s": float(t), "reason": str(exc)}
             break
     xml = design / "models/scene.xml"
-    report = {"scope": "Reference feasibility and unassisted open-loop servo diagnostic",
+    report = {"scope": "Reference feasibility and unassisted servo diagnostic with optional ideal attitude feedback",
         "hardware_tested": False, "goal_acceptance": False, "physics_executed": False,
         "speed_request_m_s": args.speed, "step_period_s": args.step_period,
         "reference_mode": args.reference_mode,
         "height_offset_mm": args.height_offset_mm,
         "com_forward_offset_mm": args.com_forward_offset_mm,
+        "attitude_feedback": {"angle_gain":args.imu_angle_gain,"rate_gain_s":args.imu_rate_gain,
+                              "sensor_model":"ideal MuJoCo body orientation and local angular velocity",
+                              "support_weights":"planned support fractions"},
         "gait": PARAMS["gait"], "planning_failure": planning_failure,
         "source_sha256": {name: hashlib.sha256((design/name).read_bytes()).hexdigest()
                            for name in ("robot.json", "models/scene.xml", "models/inertials.json", "src/tab5_biped/core.py", "src/tab5_biped/planner.py")},
@@ -232,6 +241,16 @@ def main():
                     target = np.array(samples[index]["q"])
                     if args.static_compensation:
                         target += np.array(samples[index]["quasistatic_torque_Nm"])/motor["kp"]
+                    if args.imu_angle_gain or args.imu_rate_gain:
+                        rotation = data.xmat[base_id].reshape(3,3)
+                        angles = np.array([np.arctan2(rotation[2,1],rotation[2,2]),
+                                           np.arcsin(np.clip(-rotation[2,0],-1,1))])
+                        velocity = np.zeros(6)
+                        mujoco.mj_objectVelocity(model,data,mujoco.mjtObj.mjOBJ_BODY,base_id,velocity,1)
+                        correction = args.imu_angle_gain*angles+args.imu_rate_gain*velocity[:2]
+                        for leg, weight in enumerate(samples[index]["support"]):
+                            target[5*leg+3] += weight*correction[1]
+                            target[5*leg+4] += weight*correction[0]
                     limited = np.clip(target, limits[:,0]+.015, limits[:,1]-.015)
                     clipped_targets += np.abs(target-limited) > 1e-12
                     target_count += 1
