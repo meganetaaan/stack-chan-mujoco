@@ -1,0 +1,86 @@
+{
+  "scope": "Signed reference and unassisted development probe; not maneuver acceptance",
+  "requested_vx_m_s": -0.05,
+  "planning_failure": null,
+  "physics_executed": true,
+  "com_forward_offset_mm": 3.0,
+  "controller": "joint reference plus static torque compensation; zero learned residual",
+  "runtime": {
+    "python": "3.14.7 (main, Aug  7 2026, 02:26:00) [Clang 22.1.3 ]",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "mujoco": "3.13.0"
+  },
+  "reference_generator_sha256": "034b5235341b38afc2b5c157ba5017d8c2f0fd139a797bd1f517c707d473d7cd",
+  "source_sha256": "4e9bc77a6ce5ea881ba56ac0d51cfb1513bbe0e6eeb950eec65aaa07b1ee794e",
+  "cad_inputs_sha256": {
+    "robot.json": "81f32b0a39c56d09ffc3329bfcd5acb0f99f358761a246d5d436be0780c2ca25",
+    "src/tab5_biped/core.py": "9a16813b61435492746dc3cb7d7e765a7a7432e47ab29c266ce011742da5c322",
+    "src/tab5_biped/planner.py": "f54a0a680412715d3f0abbbd9495e5c7aeb255d9ba71fbef76df07e150c7025b"
+  },
+  "seed": 310001,
+  "failure": null,
+  "time_s": 7.480000000000833,
+  "forward_m": -0.056362350366308774,
+  "crossing_time_s": null,
+  "valid_landings": [
+    11,
+    10
+  ],
+  "saturation_fraction": [
+    0.0,
+    0.005614973262032086,
+    0.0,
+    0.0032085561497326204,
+    0.029679144385026737,
+    0.0,
+    0.006951871657754011,
+    0.0,
+    0.003877005347593583,
+    0.026203208556149733
+  ],
+  "peak_continuous_saturation_s": [
+    0.0,
+    0.019,
+    0.0,
+    0.024,
+    0.033,
+    0.0,
+    0.02,
+    0.0,
+    0.029,
+    0.03
+  ],
+  "peak_one_second_saturation_duty": [
+    0.0,
+    0.025,
+    0.0,
+    0.024,
+    0.059,
+    0.0,
+    0.02,
+    0.0,
+    0.029,
+    0.059
+  ],
+  "late_forward_speed_m_s": 0.0009672216669123863,
+  "terminal_penetrating_contacts": [
+    {
+      "geom1": "floor",
+      "geom2": "col_left_sole_TPU_0",
+      "distance_m": -0.0003361569819085651
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_left_sole_TPU_0",
+      "distance_m": -0.00012835284151628068
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_right_sole_TPU_0",
+      "distance_m": -0.0003960101682530144
+    }
+  ],
+  "trajectory_sha256": "03a5e625de6f2b120384413a2126a71c6c924737f9367f9b5aa8838f79e35aee",
+  "reference_sha256": "9054e9d0615624339586373afddfd50f3be8d2cda88a8a771808c4eb9c6fdde9"
+}
