@@ -157,3 +157,7 @@ python run_planned_r6_evaluation.py --checkpoint runs/r6_mounted_seed20260924 --
 前者は胴体質量・慣性・接触を更新した `assets/r6_mounted_battery` 上で32,768ステップのPPOを行う。親の重みを移植し、オプティマイザは新規。親の読み込み後に新seedでPPOを構築する。学習・評価の完了は各結果ファイルで確認する。従来モデルの20/20を固定具込みモデルの成績として扱わない。
 
 固定具込み方策の評価中に、seed 118010が10.763秒で右足首ロール下限を0.000272 rad超えた。`validation/r6_mounted_development/joint_limit_trial10` に失敗状態と診断を保存。記録されたフィルター後目標は約-0.171725 rad、実角度は-0.280272 rad。遅延・接触・負荷を含む根本原因の特定ではない。受入閾値や失敗集計を変更せず、全40試行を継続する。診断は `inspect_joint_limit_failure.py` で再生成できる。
+
+固定具込み評価のseed 118016は8.688秒で自己衝突。終端実状態を同じモデル・実現パラメータで復元すると、左膝モータと左足首ロールモータの接触距離は-0.01535 mm。元のCADで同じ関節姿勢を検査し、同じ2部品に0.010624 mm³の体積干渉を確認した。両モータのメッシュは固定具追加前後で同一ハッシュ。CAD確認は変更のない脚部の衝突確認に用いており、追加固定具の全体検査ではない。閾値を緩めず失敗として集計する。
+
+結果と終端姿勢は `validation/r6_mounted_development/self_collision_trial16`。MuJoCo接触の復元は `inspect_self_collision.py`、CAD検査は `check_design_clearance.py --trajectory-terminal-csv`。保存状態の復元は、物理全ステップの独立再実行を意味しない。
