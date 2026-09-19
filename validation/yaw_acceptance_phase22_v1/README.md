@@ -35,4 +35,4 @@ python run_yaw_acceptance.py --snapshot validation/yaw_acceptance_phase22_v1/can
 python assess_yaw_acceptance.py --snapshot validation/yaw_acceptance_phase22_v1/candidate/snapshot.json --trials validation/yaw_acceptance_phase22_v1/trials --out outputs/new_formal_audit.json
 ```
 
-`videos/randomized218004.mp4` は不合格試行の全実状態再生。全10,251フレーム・50 fps、記録時刻0〜205秒。成功試行218000の再生動画も生成中。動画の有限描画床の外側は黒く見えるが、物理床は無限平面である。
+`videos/randomized218004.mp4` は不合格試行の全実状態再生。全10,251フレーム・50 fps、記録時刻0〜205秒。成功試行は `videos/randomized218000.mp4` に保存した。両動画のメタデータJSONで状態・モデル・動画のハッシュを記録し、フレーム数と代表場面を確認した。動画の有限描画床の外側は黒く見えるが、物理床は無限平面である。
