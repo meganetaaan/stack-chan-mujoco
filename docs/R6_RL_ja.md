@@ -122,3 +122,21 @@ python run_planned_r6_evaluation.py --checkpoint runs/r6_heading_seed20260922 \
 環境シード20260922–20260925と親方策に保存されたseed値20260920、および読み込み順を含めて再現する。
 親方策の追加学習では20260921を明示設定したが、SB3の `set_random_seed` は保存属性 `seed` 自体を書き換えない。
 単一の手動seed設定だけに置き換えない。実行ディレクトリの `rng_sequence_audit.json` に順序を記録した。
+
+## 旋回応答を使った初期化とPPO（評価中）
+
+`validation/yaw_authority` で左右膝目標差の旋回応答を確認した。
+この応答を使う教師関数を記録済み観測上でニューラルactorへ近似し、
+criticは新しく初期化してからPPOで追加学習する。実行時の解析的な旋回制御追加はない。
+教師への関数近似の精度と、実際の歩行受入は別々に扱う。
+
+```bash
+python train_steering_initialized.py --parent policies/r6_heading_seed20260922 \
+  --dataset validation/r6_heading_seed20260922 --out runs/r6_steering_seed20260923
+python run_planned_r6_evaluation.py --checkpoint policies/r6_steering_seed20260923 \
+  --seed-plan configs/r6/steering_evaluation_seeds.json --out outputs/r6_steering_acceptance
+```
+
+この候補は `assets/r6_base_collisions` の追加形状を含む。教師関数の初期化は8,000更新、
+実MuJoCo上のPPOは32,768ステップ。親の読み込み後に新しい学習器をseed 20260923で生成する。
+凍結済みの候補、初期値、全設定、データのハッシュを `policies/r6_steering_seed20260923` に保存する。

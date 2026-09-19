@@ -1,0 +1,18 @@
+{
+  "seed": 20260923,
+  "parent_policy_sha256": "e84e82497139410b12104ebdf4a8cc6a5d9c74de5f1d2f91e63cdae3408633ae",
+  "script_sha256": "9c5ed8a654b0d9721c43e14fbe43be06b2414fee832641433ddf74cbb2783159",
+  "initialization": "analytic differential-knee steering teacher fitted on real recorded observations; fresh critic",
+  "teacher_action_correction": "clamp(-(1.5*sin_heading+.45*lateral_m+.25*gyro_z_rad_s)*support_asymmetry, +/-.6), left knee plus, right knee minus",
+  "runtime_analytic_feedback": false,
+  "bc_steps": 8000,
+  "ppo_steps": 32768,
+  "rng_order": "load parent, construct new PPO with requested seed, use separate NumPy generator for BC minibatches",
+  "packages": {
+    "mujoco": "3.13.0",
+    "numpy": "2.5.3",
+    "gymnasium": "1.3.0",
+    "stable-baselines3": "2.9.0",
+    "torch": "2.14.0"
+  }
+}
