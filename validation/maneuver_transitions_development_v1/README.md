@@ -20,3 +20,12 @@ python -m unittest tests.test_maneuver_reference tests.test_maneuver_env tests.t
 ```
 
 実行環境は既存RL環境＋SciPy 1.18.1。状態記録は `states.npz`、実測位置・向きは `motion.npz`、判定値は `report.json`。参考軌道とprotocol/configも保存した。未調整の `--yaw-feedback` はこの試験では使用していない。旋回制御と全区間の受入評価は引き続き必要。
+
+
+## 保存状態からの再生動画
+
+[32秒の切替動画](videos/transitions.mp4) は実際のMuJoCo積分状態1601フレームを50 fpsで再生したもの。位置や姿勢の補間・合成はしていない。撮影カメラだけロボットに追従する。モデル・コード・プロトコル・状態ハッシュ、seedから再構成した物理ばらつき、指令と状態の時刻対応を検証してから描画した。動画の長さ32.02秒には時刻0のフレームが含まれ、シミュレータの最終時刻は32秒。正式な全試験の動画ではない。
+
+```sh
+MUJOCO_GL=egl python replay_maneuvers.py --trial validation/maneuver_transitions_development_v1 --out outputs/new_transitions.mp4
+```
