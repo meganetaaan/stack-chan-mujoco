@@ -21,6 +21,8 @@ def main():
                    help="Experimental 19..28 mm leg-spacing variant; not a fabrication release")
     p.add_argument("--battery-layout", type=Path,
                    help="Planning-envelope JSON; requires an experimental hip spacing")
+    p.add_argument("--underside-cutouts", type=Path,
+                   help="Sample-derived opening polygons; requires experimental hip spacing")
     args = p.parse_args()
     source = ROOT / "design/r5a_source"
     out = args.out.resolve()
@@ -31,6 +33,22 @@ def main():
     spacing = args.hip_half_spacing_mm
     if spacing is not None and (not math.isfinite(spacing) or not 19 <= spacing <= 28):
         p.error("experimental half spacing must be between 19 and 28 mm")
+    cutouts = None
+    if args.underside_cutouts is not None:
+        if spacing is None:
+            p.error("--underside-cutouts requires --hip-half-spacing-mm")
+        cutouts = json.loads(args.underside_cutouts.read_text())
+        if set(cutouts) != {"left", "right"}:
+            p.error("cutouts must contain left and right polygons")
+        for points in cutouts.values():
+            if not isinstance(points, list) or len(points) < 3:
+                p.error("each cutout requires at least three points")
+            for point in points:
+                if not isinstance(point, list) or len(point) != 2 or any(
+                    type(v) not in (int, float) or not math.isfinite(v) or abs(v) > 60
+                    for v in point
+                ):
+                    p.error("cutout coordinates must be finite and within +/-60 mm")
     battery = None
     if args.battery_layout is not None:
         if spacing is None:
@@ -60,6 +78,8 @@ def main():
             robot["revision"] += "-" + battery["layout_id"]
             robot["battery_envelope"] = battery
             robot["mass_assumptions"]["upper_2s_battery_kg"] = battery["mass_kg"]
+        if cutouts is not None:
+            robot["revision"] += "-gait-opening"
         robot["kinematics"]["hip_half_spacing_mm"] = spacing
         (out / "robot.json").write_text(json.dumps(robot, indent=2)+"\n")
         # Every leg and base-mounted cradle moves rigidly by the same delta.
@@ -69,7 +89,7 @@ def main():
         for side, points in polygons.items():
             for point in points:
                 point[1] += delta * (1 if side == "left" else -1)
-        path.write_text(json.dumps(polygons)+"\n")
+        path.write_text(json.dumps(cutouts if cutouts is not None else polygons)+"\n")
         path = out / "cad/build.py"
         text = path.read_text()
         marker = "(-50.2,sg*19,51)"
@@ -98,8 +118,9 @@ def main():
             "base_source_manifest": manifest, "manufacturing_release": False,
             "walking_validated": False,
             "battery_planning_envelope": battery,
+            "underside_cutouts_sha256": hashlib.sha256(args.underside_cutouts.read_bytes()).hexdigest() if cutouts is not None else None,
             "changes": ["leg joint origins and fixed cradles", "body mounting rails",
-                        "translated sampled underside opening", "CAD-derived mass and inertia"],
+                        "supplied gait opening" if cutouts is not None else "translated sampled underside opening", "CAD-derived mass and inertia"],
             "needs_validation": ["full assembly clearance", "mount strength and tolerances",
                                  "collision proxy conservatism", "gait dynamics", "hardware"]
         }, indent=2)+"\n")

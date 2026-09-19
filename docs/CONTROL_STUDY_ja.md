@@ -83,3 +83,10 @@ uv pip install --python .venv-dynamics/bin/python -r design/requirements-dynamic
 このCAD検査は終端1姿勢のみを扱う。関節姿勢による内部干渉は基底の剛体移動・回転に不変なため、
 基底は検査側の基準変換を用いる。全軌道や床との接触、柔軟物を検証するものではない。
 上記の既知の干渉ケースでは不合格の終了コード1になる。
+
+## 底面開口の修正候補
+
+歩行ログ49姿勢から底面開口を拡張した候補では、抽出姿勢の胴体との干渉を解消した。
+脚内部の干渉は残っている。外形・関節配置の不変検査と再現手順は
+[`design/gait_opening/README_ja.md`](../design/gait_opening/README_ja.md)を参照。
+これは変更後モデルの歩行性能を示すものではない。
