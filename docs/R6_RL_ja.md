@@ -110,3 +110,14 @@ python train_heading_residual.py --parent runs/r6_residual_seed20260921   --out 
 
 追加学習の結果を旧方策の20/20・12/20に混ぜない。
 次の評価シードは `configs/r6/next_evaluation_seeds.json` に事前固定している。
+
+両バッチを事前固定シードから実行するには、学習完了後に以下を使う。
+
+```bash
+python run_planned_r6_evaluation.py --checkpoint runs/r6_heading_seed20260922 \
+  --out outputs/r6_heading_acceptance
+```
+
+方角観測版の初回学習では、親方策の `PPO.load` もグローバル乱数状態を再初期化する。
+環境シード20260922–20260925と親方策シード20260921、および読み込み順を含めて再現する。
+単一の手動seed設定だけに置き換えない。実行ディレクトリの `rng_sequence_audit.json` に順序を記録した。
