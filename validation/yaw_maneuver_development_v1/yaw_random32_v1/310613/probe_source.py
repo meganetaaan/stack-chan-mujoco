@@ -171,7 +171,6 @@ def main():
         np.savez_compressed(a.out/'landing_events.npz',segment_counts=tracker.segment_landings,
                             events=np.array([[x['time_s'],x['segment_index'],x['foot']] for x in tracker.landing_events]).reshape(-1,3))
     report={'scope':__doc__,'design':str(a.design),'reference':str(a.reference),'requested_duration_s':a.duration,
-            'formal_acceptance':False,
             'failure':failure,'time_s':float(d.time),'forward_m':float(d.xpos[plant.base,0]-start[0]),
             'yaw_change_rad':float(np.unwrap(np.array(motion)[:,3])[-1]-motion[0][3]),
             'reference_has_q12':'q12' in reference[0],
@@ -191,9 +190,7 @@ def main():
                                 Path('stackchan_rl/residual.py'),Path('stackchan_rl/actuation.py'),Path('stackchan_rl/walk_events.py')]}}
     if protocol:
         measured=np.array(motion)
-        scored=(score_motion(protocol,measured[:,0],measured[:,1:3],measured[:,3],allow_partial=True)
-                if len(measured)>=3 else {'scope':'insufficient motion samples after immediate physics failure',
-                                          'complete_schedule':False,'motion_pass':False,'segments':[]})
+        scored=score_motion(protocol,measured[:,0],measured[:,1:3],measured[:,3],allow_partial=True)
         landings_pass=all(s['mode']=='stop' or np.all(tracker.segment_landings[j]>=protocol['walking_evidence']['minimum_valid_landings_each_foot_per_moving_segment']) for j,s in enumerate(protocol['segments']))
         report.update(motion_scoring=scored,segment_valid_landings=tracker.segment_landings.tolist(),landing_requirements_pass=bool(landings_pass),
                       complete_schedule=scored['complete_schedule'],development_trial_pass=bool(not failure and landings_pass and scored['motion_pass']),

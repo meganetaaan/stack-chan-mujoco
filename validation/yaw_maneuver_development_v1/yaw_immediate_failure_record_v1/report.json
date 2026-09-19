@@ -1,0 +1,402 @@
+{
+  "scope": "Drive a 12-axis candidate through actual constrained servo physics.\n\nDevelopment only: drive a ten-axis reference with zero yaw, or an explicit q12\nreference. Neither mode substitutes for the frozen maneuver acceptance test.\n",
+  "design": "outputs/yaw_xc_flipped_knees_v1",
+  "reference": "outputs/yaw_maneuver_ref_v6/reference.json.gz",
+  "requested_duration_s": 4.0,
+  "formal_acceptance": false,
+  "failure": "self_collision",
+  "time_s": 0.0,
+  "forward_m": 0.0,
+  "yaw_change_rad": 0.0,
+  "reference_has_q12": true,
+  "parameters": {
+    "mass_scale": 1.0,
+    "base_com_shift_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "friction": 0.8,
+    "torque_scale": 1.0,
+    "speed_scale": 1.0,
+    "extra_delay_s": 0.0,
+    "gravity_noise_std": 0.002,
+    "gyro_noise_std_rad_s": 0.01,
+    "gyro_bias_std_rad_s": 0.002,
+    "initial_joint_offsets_rad": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "randomized": false
+  },
+  "randomized": false,
+  "variation_source_sha256": "764e70260caf0f0273b73fe46384ab16b4e9bfb7866b6ebb70d4d8f426a043d5",
+  "valid_landings": [
+    0,
+    0
+  ],
+  "joint_order": [
+    "left_hip_yaw",
+    "left_hip_roll",
+    "left_hip_pitch",
+    "left_knee",
+    "left_ankle_pitch",
+    "left_ankle_roll",
+    "right_hip_yaw",
+    "right_hip_roll",
+    "right_hip_pitch",
+    "right_knee",
+    "right_ankle_pitch",
+    "right_ankle_roll"
+  ],
+  "mass_kg": 0.9345584348791331,
+  "old_static_torque_mass_scale": 1.0,
+  "terminal_penetrating_contacts": [
+    {
+      "geom1": "col_left_knee_motor_0",
+      "geom2": "col_left_ankle_roll_motor_0",
+      "distance_m": -0.005403196896645132
+    },
+    {
+      "geom1": "col_left_knee_motor_0",
+      "geom2": "col_left_ankle_roll_motor_0",
+      "distance_m": -0.005403196896645132
+    },
+    {
+      "geom1": "col_left_knee_motor_0",
+      "geom2": "col_left_ankle_gimbal_0",
+      "distance_m": -0.003441459059531492
+    },
+    {
+      "geom1": "col_left_knee_motor_0",
+      "geom2": "col_left_ankle_gimbal_0",
+      "distance_m": -0.0034414590595314943
+    },
+    {
+      "geom1": "col_left_knee_motor_0",
+      "geom2": "col_left_ankle_gimbal_5",
+      "distance_m": -0.0008150487698619889
+    },
+    {
+      "geom1": "col_left_knee_motor_0",
+      "geom2": "col_left_ankle_gimbal_5",
+      "distance_m": -0.0008150487698619915
+    },
+    {
+      "geom1": "col_right_knee_motor_0",
+      "geom2": "col_right_ankle_roll_motor_0",
+      "distance_m": -0.005403729485482606
+    },
+    {
+      "geom1": "col_right_knee_motor_0",
+      "geom2": "col_right_ankle_roll_motor_0",
+      "distance_m": -0.005403729485482606
+    },
+    {
+      "geom1": "col_right_knee_motor_0",
+      "geom2": "col_right_ankle_gimbal_0",
+      "distance_m": -0.0034421887377801322
+    },
+    {
+      "geom1": "col_right_knee_motor_0",
+      "geom2": "col_right_ankle_gimbal_0",
+      "distance_m": -0.0034421887377801314
+    },
+    {
+      "geom1": "col_right_knee_motor_0",
+      "geom2": "col_right_ankle_gimbal_5",
+      "distance_m": -0.0008159267632265182
+    },
+    {
+      "geom1": "col_right_knee_motor_0",
+      "geom2": "col_right_ankle_gimbal_5",
+      "distance_m": -0.0008159267632265165
+    }
+  ],
+  "legacy_policy": null,
+  "legacy_policy_sha256": null,
+  "observation_view_sha256": null,
+  "seed": 310501,
+  "yaw_servo_gains": {
+    "kp_Nm_rad": 6.0,
+    "kd_Nm_s_rad": 0.13,
+    "identified_hardware": false
+  },
+  "attitude_feedback": {
+    "angle_gain": 0.0,
+    "rate_gain_s": 0.0,
+    "input": "noisy gravity and gyro from legacy observation view"
+  },
+  "motor_parameters": {
+    "cap": [
+      0.26,
+      0.45,
+      0.26,
+      0.45,
+      0.45,
+      0.26,
+      0.26,
+      0.45,
+      0.26,
+      0.45,
+      0.45,
+      0.26
+    ],
+    "stall": [
+      0.52,
+      0.93,
+      0.52,
+      0.93,
+      0.93,
+      0.52,
+      0.52,
+      0.93,
+      0.52,
+      0.93,
+      0.93,
+      0.52
+    ],
+    "kp": [
+      6.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      6.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0
+    ],
+    "kd": [
+      0.13,
+      0.065,
+      0.065,
+      0.065,
+      0.065,
+      0.065,
+      0.13,
+      0.065,
+      0.065,
+      0.065,
+      0.065,
+      0.065
+    ],
+    "delay_s": [
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01,
+      0.01
+    ],
+    "omega": [
+      10.786134777324955,
+      8.482300164692441,
+      10.786134777324955,
+      8.482300164692441,
+      8.482300164692441,
+      10.786134777324955,
+      10.786134777324955,
+      8.482300164692441,
+      10.786134777324955,
+      8.482300164692441,
+      8.482300164692441,
+      10.786134777324955
+    ]
+  },
+  "baseline_config_sha256": "d8df75a26ee5e4184a5bd81d5686027ce2c99dd4b614e97334f83dfae993c0c9",
+  "peak_continuous_saturation_s": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "peak_one_second_saturation_duty": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "trajectory_sha256": "74617a2fed2e9fa4311e23cb0eaad7458fa9b0aba1cfa71c79b65f4f1dbf7622",
+  "source_sha256": {
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/probe_yaw_dynamics_candidate.py": "1b0a38dcabd695af543978f834246e01486247e05aa2e722b2995dc7e79d07dd",
+    "outputs/yaw_xc_flipped_knees_v1/models/scene.xml": "0b6783fd85f2d99935fc0d6a685f9a37010fde0c493995c26cb4dadc7821f585",
+    "outputs/yaw_xc_flipped_knees_v1/robot.json": "6a96a0589c5f5f8c3e6bdc42c425010c9505519d8b9e15d86f92db532099de2f",
+    "outputs/yaw_maneuver_ref_v6/reference.json.gz": "00295289fc3e0d3812d096b30f3bb03b3eec289819ec3060182fbd5332e77d79",
+    "stackchan_rl/residual.py": "d0370eef86fbec9d1659c2ae3f8362207e56f6e2f6d8c750b6a320ca9abf8ef6",
+    "stackchan_rl/actuation.py": "08fb037114c07e47a52b7b722910dd90edf8f5e78be26adbc8784e0f38fc9351",
+    "stackchan_rl/walk_events.py": "0a33e2df8f4442807adf395721a247cfbdb4a8597cca6f6f3f617cd8798286d6",
+    "configs/maneuver/acceptance_v1.json": "3fba1d1c37b92dc24f69c6ac2c300916b98df6b2c9cf1ef5dffcd25acbc1e347",
+    "stackchan_rl/maneuver_protocol.py": "32254157b3ddb94b5727751cfb35d828d0295bbf2520a98a4935fa5b5c2a9d40",
+    "stackchan_rl/maneuver_env.py": "87e1de4dd84adbdef17a79aa4540598c75d43ea5f4375db7c89e672abfaa952d"
+  },
+  "motion_scoring": {
+    "scope": "insufficient motion samples after immediate physics failure",
+    "complete_schedule": false,
+    "motion_pass": false,
+    "segments": []
+  },
+  "segment_valid_landings": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "landing_requirements_pass": false,
+  "complete_schedule": false,
+  "development_trial_pass": false,
+  "landing_events_sha256": "5257117d260310c7b8e7ba06f402e1a008263eb4793ff51b1a236c457617bcd6",
+  "walking_evidence": {
+    "qualified_liftoffs": [
+      0,
+      0
+    ],
+    "forward_landings": [
+      0,
+      0
+    ],
+    "forward_landing_sequence": [],
+    "raw_unloads": [
+      0,
+      0
+    ],
+    "max_sole_clearance_m": [
+      0.0,
+      0.0
+    ],
+    "event_rejections": {
+      "short_airtime": 0,
+      "low_clearance": 0,
+      "insufficient_other_support": 0,
+      "unconfirmed_touch": 0
+    },
+    "seconds_without_valid_landing": 0.0
+  }
+}
