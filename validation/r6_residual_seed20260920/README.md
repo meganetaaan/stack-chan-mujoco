@@ -30,3 +30,7 @@
 - [ランダム化条件05の可動域超過](videos/r6_trial05_failure.mp4)
 
 各動画の同名JSONに元状態・レポート・動画・再生スクリプトのハッシュを記録した。
+
+[全ランダム化試行の実移動経路](paths.png)。図中の赤線には、10 mに到達しても100秒を超えた失敗が含まれる。
+再作図は `python plot_residual_paths.py --batch validation/r6_residual_seed20260920/randomized --out outputs/paths.png`。
+作図依存は `design/requirements-r6-plots.txt`。
