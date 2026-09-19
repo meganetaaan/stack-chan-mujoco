@@ -1,304 +1,230 @@
 {
-  "source_archive": "stackchan_r5a_rl_v2.zip",
-  "source_archive_sha256": "4dc9ba5f01a139d03c46393522a8056836e0a08845a240c7722f4628badc81e6",
-  "source_version": "2.0.0",
-  "new_version": "3.0.0",
-  "assets_checked": 43,
-  "all_assets_identical": true,
+  "base_kit": "stackchan_r5a_rl_v3.zip",
+  "base_kit_sha256": "8629ae83337136f695cd70590735bc11dcc3a988a762177b0acafd77f7b3c0de",
+  "control_probe": "walk_refine_probe.zip",
+  "control_probe_sha256": "e277568c6e85525abaf6e71b41398c53cc649a45690aea5b170f37152bc4232c",
+  "user_diagnostic_comparison_sha256": "1b7ab5dd3349ab4f6d028dc0791d873116fe010c218f75700375d054cc386922",
+  "assets_unchanged_count": 43,
   "assets": [
     {
       "path": "assets/r5a/SOURCE_MANIFEST.json",
-      "v2_sha256": "d70a9111252881b3f0bc86a44785080ba5c6cd62314a796b000760efe4dc8b2c",
-      "v3_sha256": "d70a9111252881b3f0bc86a44785080ba5c6cd62314a796b000760efe4dc8b2c",
-      "identical": true
+      "sha256": "d70a9111252881b3f0bc86a44785080ba5c6cd62314a796b000760efe4dc8b2c",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/inertials.json",
-      "v2_sha256": "c65ca3919d2a132a5a6ec1e6398904598812318081735686aa807de7c291af3d",
-      "v3_sha256": "c65ca3919d2a132a5a6ec1e6398904598812318081735686aa807de7c291af3d",
-      "identical": true
+      "sha256": "c65ca3919d2a132a5a6ec1e6398904598812318081735686aa807de7c291af3d",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/joint_map.json",
-      "v2_sha256": "a3a2f9b8a6c03da22b6e8d3f09c8b2166389f84ab9f63930f0a346b53f61dbdd",
-      "v3_sha256": "a3a2f9b8a6c03da22b6e8d3f09c8b2166389f84ab9f63930f0a346b53f61dbdd",
-      "identical": true
+      "sha256": "a3a2f9b8a6c03da22b6e8d3f09c8b2166389f84ab9f63930f0a346b53f61dbdd",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/TTL_interface.stl",
-      "v2_sha256": "8a0a9717e086eafdc686f111ba54ad6441152e615cbe7d642c8fb141bc402aff",
-      "v3_sha256": "8a0a9717e086eafdc686f111ba54ad6441152e615cbe7d642c8fb141bc402aff",
-      "identical": true
+      "sha256": "8a0a9717e086eafdc686f111ba54ad6441152e615cbe7d642c8fb141bc402aff",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/Tab5.stl",
-      "v2_sha256": "98cdcfd274f899e585669e2d279a0f9913b82d58523138276cefeed5a62fc871",
-      "v3_sha256": "98cdcfd274f899e585669e2d279a0f9913b82d58523138276cefeed5a62fc871",
-      "identical": true
+      "sha256": "98cdcfd274f899e585669e2d279a0f9913b82d58523138276cefeed5a62fc871",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/battery_2S_reservation.stl",
-      "v2_sha256": "2794aa0e6818d877b57393f5a1c959451c19405cae4f6fdb516f8e4b8fbb77fa",
-      "v3_sha256": "2794aa0e6818d877b57393f5a1c959451c19405cae4f6fdb516f8e4b8fbb77fa",
-      "identical": true
+      "sha256": "2794aa0e6818d877b57393f5a1c959451c19405cae4f6fdb516f8e4b8fbb77fa",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/body_shroud.stl",
-      "v2_sha256": "24c3abe523ff462e87285ec155f3b75ac1e1e5162219257b563905f0b9d2dbc9",
-      "v3_sha256": "24c3abe523ff462e87285ec155f3b75ac1e1e5162219257b563905f0b9d2dbc9",
-      "identical": true
+      "sha256": "24c3abe523ff462e87285ec155f3b75ac1e1e5162219257b563905f0b9d2dbc9",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/cables_and_fasteners.stl",
-      "v2_sha256": "e7528957dc3851a3775225cfdd75c50e357d1c7443c337a4efc3f45cccaf4324",
-      "v3_sha256": "e7528957dc3851a3775225cfdd75c50e357d1c7443c337a4efc3f45cccaf4324",
-      "identical": true
+      "sha256": "e7528957dc3851a3775225cfdd75c50e357d1c7443c337a4efc3f45cccaf4324",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/camera.stl",
-      "v2_sha256": "2163f0827fb981eb11e83f938dc36c0d37011e223223f5af623c1e6b832b2665",
-      "v3_sha256": "2163f0827fb981eb11e83f938dc36c0d37011e223223f5af623c1e6b832b2665",
-      "identical": true
+      "sha256": "2163f0827fb981eb11e83f938dc36c0d37011e223223f5af623c1e6b832b2665",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/dedicated_5V_converter.stl",
-      "v2_sha256": "12696f7837da8041ef4fdbc306c5ac18ee0943718f75e9779bee4c7d44880fe4",
-      "v3_sha256": "12696f7837da8041ef4fdbc306c5ac18ee0943718f75e9779bee4c7d44880fe4",
-      "identical": true
+      "sha256": "12696f7837da8041ef4fdbc306c5ac18ee0943718f75e9779bee4c7d44880fe4",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/face_0.stl",
-      "v2_sha256": "ae3fbd94d310dd48443f3c6eca58ae83f26abb7fbf0beabee7e66fba494669eb",
-      "v3_sha256": "ae3fbd94d310dd48443f3c6eca58ae83f26abb7fbf0beabee7e66fba494669eb",
-      "identical": true
+      "sha256": "ae3fbd94d310dd48443f3c6eca58ae83f26abb7fbf0beabee7e66fba494669eb",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/face_1.stl",
-      "v2_sha256": "3836047e0ca852bf1c9abad7af42ff5ff2ad85b1fc65c050db674659b732b08a",
-      "v3_sha256": "3836047e0ca852bf1c9abad7af42ff5ff2ad85b1fc65c050db674659b732b08a",
-      "identical": true
+      "sha256": "3836047e0ca852bf1c9abad7af42ff5ff2ad85b1fc65c050db674659b732b08a",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/face_2.stl",
-      "v2_sha256": "3bc9588cce04db6092466ff2b724b364f28e47cf1351ed509878299a3d5af89b",
-      "v3_sha256": "3bc9588cce04db6092466ff2b724b364f28e47cf1351ed509878299a3d5af89b",
-      "identical": true
+      "sha256": "3bc9588cce04db6092466ff2b724b364f28e47cf1351ed509878299a3d5af89b",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/left_ankle_gimbal.stl",
-      "v2_sha256": "9a9eb094309a507874b571cdf11f9d15efd018046e50146117edc13d0dda88f6",
-      "v3_sha256": "9a9eb094309a507874b571cdf11f9d15efd018046e50146117edc13d0dda88f6",
-      "identical": true
+      "sha256": "9a9eb094309a507874b571cdf11f9d15efd018046e50146117edc13d0dda88f6",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/left_ankle_pitch_motor.stl",
-      "v2_sha256": "fd21985817962dc559874ecd276b1466e588ebf8e68841c6f5ce01e77b5522cb",
-      "v3_sha256": "fd21985817962dc559874ecd276b1466e588ebf8e68841c6f5ce01e77b5522cb",
-      "identical": true
+      "sha256": "fd21985817962dc559874ecd276b1466e588ebf8e68841c6f5ce01e77b5522cb",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/left_ankle_roll_motor.stl",
-      "v2_sha256": "818cabe53c9b4f93dde554b789723669814ae0bcddd05f1d470456a433933fab",
-      "v3_sha256": "818cabe53c9b4f93dde554b789723669814ae0bcddd05f1d470456a433933fab",
-      "identical": true
+      "sha256": "818cabe53c9b4f93dde554b789723669814ae0bcddd05f1d470456a433933fab",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/left_boot_shell.stl",
-      "v2_sha256": "cf3faae4cc21f1a674a9006538e12a5420b42c1bf46f5d27218368ef1022a1d1",
-      "v3_sha256": "cf3faae4cc21f1a674a9006538e12a5420b42c1bf46f5d27218368ef1022a1d1",
-      "identical": true
+      "sha256": "cf3faae4cc21f1a674a9006538e12a5420b42c1bf46f5d27218368ef1022a1d1",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/left_fixed_roll_cradle.stl",
-      "v2_sha256": "89d98bd921b946d8349320339f5b424eefcbf11153ca2063371e4b5df6b3330d",
-      "v3_sha256": "89d98bd921b946d8349320339f5b424eefcbf11153ca2063371e4b5df6b3330d",
-      "identical": true
+      "sha256": "89d98bd921b946d8349320339f5b424eefcbf11153ca2063371e4b5df6b3330d",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/left_foot_yoke.stl",
-      "v2_sha256": "d774642ae98447e638daa513c27e013c2ad295dd8fcb94feb461f8223343a674",
-      "v3_sha256": "d774642ae98447e638daa513c27e013c2ad295dd8fcb94feb461f8223343a674",
-      "identical": true
+      "sha256": "d774642ae98447e638daa513c27e013c2ad295dd8fcb94feb461f8223343a674",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/left_hip_pitch_motor.stl",
-      "v2_sha256": "79290c32c6703c6c71da356f7c01c54c0eb2e9d08ba8dfcfc92d7a697b51c647",
-      "v3_sha256": "79290c32c6703c6c71da356f7c01c54c0eb2e9d08ba8dfcfc92d7a697b51c647",
-      "identical": true
+      "sha256": "79290c32c6703c6c71da356f7c01c54c0eb2e9d08ba8dfcfc92d7a697b51c647",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/left_hip_roll_motor.stl",
-      "v2_sha256": "180ad215b1b04b7ac80b00ae411ddc500175834f0be5e4d730cebba7b5de4a3e",
-      "v3_sha256": "180ad215b1b04b7ac80b00ae411ddc500175834f0be5e4d730cebba7b5de4a3e",
-      "identical": true
+      "sha256": "180ad215b1b04b7ac80b00ae411ddc500175834f0be5e4d730cebba7b5de4a3e",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/left_knee_motor.stl",
-      "v2_sha256": "4790a8b760035ef015d876439be05b3b718df90df7f8231957d46c8616e25f2a",
-      "v3_sha256": "4790a8b760035ef015d876439be05b3b718df90df7f8231957d46c8616e25f2a",
-      "identical": true
+      "sha256": "4790a8b760035ef015d876439be05b3b718df90df7f8231957d46c8616e25f2a",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/left_roll_to_pitch_carrier.stl",
-      "v2_sha256": "d5697ca479b254513d7b3d7e0f09989e6f5a6a4c3cb356033e38c56fbc238ca8",
-      "v3_sha256": "d5697ca479b254513d7b3d7e0f09989e6f5a6a4c3cb356033e38c56fbc238ca8",
-      "identical": true
+      "sha256": "d5697ca479b254513d7b3d7e0f09989e6f5a6a4c3cb356033e38c56fbc238ca8",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/left_shin_yoke.stl",
-      "v2_sha256": "32c0c835043e37445352a4977967ba48fe94a30b1ce02aa53ccfff8ed88cf78a",
-      "v3_sha256": "32c0c835043e37445352a4977967ba48fe94a30b1ce02aa53ccfff8ed88cf78a",
-      "identical": true
+      "sha256": "32c0c835043e37445352a4977967ba48fe94a30b1ce02aa53ccfff8ed88cf78a",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/left_sole_TPU.stl",
-      "v2_sha256": "a267b4a21617a9a3245ffff7bfc6dcf33b1294f70740d4a3acda0766bab1f6f6",
-      "v3_sha256": "a267b4a21617a9a3245ffff7bfc6dcf33b1294f70740d4a3acda0766bab1f6f6",
-      "identical": true
+      "sha256": "a267b4a21617a9a3245ffff7bfc6dcf33b1294f70740d4a3acda0766bab1f6f6",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/left_thigh_yoke.stl",
-      "v2_sha256": "6b8ddaa9e7573dc87067a041194f89141be30d6c4f633f671a88c71bdebc7ca7",
-      "v3_sha256": "6b8ddaa9e7573dc87067a041194f89141be30d6c4f633f671a88c71bdebc7ca7",
-      "identical": true
+      "sha256": "6b8ddaa9e7573dc87067a041194f89141be30d6c4f633f671a88c71bdebc7ca7",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/rear_cover.stl",
-      "v2_sha256": "ad2a315f520897b29d4ae805b979fae7572343414f4125d039e618a304d0926b",
-      "v3_sha256": "ad2a315f520897b29d4ae805b979fae7572343414f4125d039e618a304d0926b",
-      "identical": true
+      "sha256": "ad2a315f520897b29d4ae805b979fae7572343414f4125d039e618a304d0926b",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/right_ankle_gimbal.stl",
-      "v2_sha256": "6bc35690241215dd011c5c71c02b6af6efd33dac018ff45884004bd7e5e9424c",
-      "v3_sha256": "6bc35690241215dd011c5c71c02b6af6efd33dac018ff45884004bd7e5e9424c",
-      "identical": true
+      "sha256": "6bc35690241215dd011c5c71c02b6af6efd33dac018ff45884004bd7e5e9424c",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/right_ankle_pitch_motor.stl",
-      "v2_sha256": "ab9e6f3779071233736ee13bcb7dab9a7de385d0ceaf09d40e59cd255c3a964f",
-      "v3_sha256": "ab9e6f3779071233736ee13bcb7dab9a7de385d0ceaf09d40e59cd255c3a964f",
-      "identical": true
+      "sha256": "ab9e6f3779071233736ee13bcb7dab9a7de385d0ceaf09d40e59cd255c3a964f",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/right_ankle_roll_motor.stl",
-      "v2_sha256": "818cabe53c9b4f93dde554b789723669814ae0bcddd05f1d470456a433933fab",
-      "v3_sha256": "818cabe53c9b4f93dde554b789723669814ae0bcddd05f1d470456a433933fab",
-      "identical": true
+      "sha256": "818cabe53c9b4f93dde554b789723669814ae0bcddd05f1d470456a433933fab",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/right_boot_shell.stl",
-      "v2_sha256": "25cec4dd822d565a8c4fba443d465279b2e92c028ee0736361eec693f1b16ba5",
-      "v3_sha256": "25cec4dd822d565a8c4fba443d465279b2e92c028ee0736361eec693f1b16ba5",
-      "identical": true
+      "sha256": "25cec4dd822d565a8c4fba443d465279b2e92c028ee0736361eec693f1b16ba5",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/right_fixed_roll_cradle.stl",
-      "v2_sha256": "d6079014a992d19dafc40bc5cb8a640c845efa3f45429363e9de5eb14f67e274",
-      "v3_sha256": "d6079014a992d19dafc40bc5cb8a640c845efa3f45429363e9de5eb14f67e274",
-      "identical": true
+      "sha256": "d6079014a992d19dafc40bc5cb8a640c845efa3f45429363e9de5eb14f67e274",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/right_foot_yoke.stl",
-      "v2_sha256": "eef85135178ac7ae59be094fe3ffc9b052fe374474668178844d6ba49dfecfeb",
-      "v3_sha256": "eef85135178ac7ae59be094fe3ffc9b052fe374474668178844d6ba49dfecfeb",
-      "identical": true
+      "sha256": "eef85135178ac7ae59be094fe3ffc9b052fe374474668178844d6ba49dfecfeb",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/right_hip_pitch_motor.stl",
-      "v2_sha256": "79290c32c6703c6c71da356f7c01c54c0eb2e9d08ba8dfcfc92d7a697b51c647",
-      "v3_sha256": "79290c32c6703c6c71da356f7c01c54c0eb2e9d08ba8dfcfc92d7a697b51c647",
-      "identical": true
+      "sha256": "79290c32c6703c6c71da356f7c01c54c0eb2e9d08ba8dfcfc92d7a697b51c647",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/right_hip_roll_motor.stl",
-      "v2_sha256": "f36931a346aaa3f55e25eef1103a8d0a68ad9ae18451f1b06753f7fbd362b9b2",
-      "v3_sha256": "f36931a346aaa3f55e25eef1103a8d0a68ad9ae18451f1b06753f7fbd362b9b2",
-      "identical": true
+      "sha256": "f36931a346aaa3f55e25eef1103a8d0a68ad9ae18451f1b06753f7fbd362b9b2",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/right_knee_motor.stl",
-      "v2_sha256": "4790a8b760035ef015d876439be05b3b718df90df7f8231957d46c8616e25f2a",
-      "v3_sha256": "4790a8b760035ef015d876439be05b3b718df90df7f8231957d46c8616e25f2a",
-      "identical": true
+      "sha256": "4790a8b760035ef015d876439be05b3b718df90df7f8231957d46c8616e25f2a",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/right_roll_to_pitch_carrier.stl",
-      "v2_sha256": "d5697ca479b254513d7b3d7e0f09989e6f5a6a4c3cb356033e38c56fbc238ca8",
-      "v3_sha256": "d5697ca479b254513d7b3d7e0f09989e6f5a6a4c3cb356033e38c56fbc238ca8",
-      "identical": true
+      "sha256": "d5697ca479b254513d7b3d7e0f09989e6f5a6a4c3cb356033e38c56fbc238ca8",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/right_shin_yoke.stl",
-      "v2_sha256": "4356605bd626be8602bf422d138afd7c9bea3741a55f89789b6711c8770a51ee",
-      "v3_sha256": "4356605bd626be8602bf422d138afd7c9bea3741a55f89789b6711c8770a51ee",
-      "identical": true
+      "sha256": "4356605bd626be8602bf422d138afd7c9bea3741a55f89789b6711c8770a51ee",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/right_sole_TPU.stl",
-      "v2_sha256": "56f5d4f6cabcdc7f2a46f420e39737cb583ca8f5cd567eb226357ae3d45c6702",
-      "v3_sha256": "56f5d4f6cabcdc7f2a46f420e39737cb583ca8f5cd567eb226357ae3d45c6702",
-      "identical": true
+      "sha256": "56f5d4f6cabcdc7f2a46f420e39737cb583ca8f5cd567eb226357ae3d45c6702",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/right_thigh_yoke.stl",
-      "v2_sha256": "6b8ddaa9e7573dc87067a041194f89141be30d6c4f633f671a88c71bdebc7ca7",
-      "v3_sha256": "6b8ddaa9e7573dc87067a041194f89141be30d6c4f633f671a88c71bdebc7ca7",
-      "identical": true
+      "sha256": "6b8ddaa9e7573dc87067a041194f89141be30d6c4f633f671a88c71bdebc7ca7",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/meshes/screen.stl",
-      "v2_sha256": "375f52f731d513372916ca4be0d86ef5ea559714b1c603ba25cca4cba7204589",
-      "v3_sha256": "375f52f731d513372916ca4be0d86ef5ea559714b1c603ba25cca4cba7204589",
-      "identical": true
+      "sha256": "375f52f731d513372916ca4be0d86ef5ea559714b1c603ba25cca4cba7204589",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/robot.json",
-      "v2_sha256": "3b40b4d0b81d190bfa5b72ca8602093675829599e423b3a72a828367b1751291",
-      "v3_sha256": "3b40b4d0b81d190bfa5b72ca8602093675829599e423b3a72a828367b1751291",
-      "identical": true
+      "sha256": "3b40b4d0b81d190bfa5b72ca8602093675829599e423b3a72a828367b1751291",
+      "matches_v3": true
     },
     {
       "path": "assets/r5a/scene.xml",
-      "v2_sha256": "263449787583e76ade7f460a5517c235320600b5362de86fa26a23a44c03fa70",
-      "v3_sha256": "263449787583e76ade7f460a5517c235320600b5362de86fa26a23a44c03fa70",
-      "identical": true
+      "sha256": "263449787583e76ade7f460a5517c235320600b5362de86fa26a23a44c03fa70",
+      "matches_v3": true
     }
   ],
-  "unchanged_control_files": [
-    {
-      "path": "stackchan_rl/actuation.py",
-      "sha256": "b47d0f0f6eb419e9984633c8be9f7d180fb97801201c78b7e0545cdd3e9059ce",
-      "identical": true
-    },
-    {
-      "path": "stackchan_rl/spec.py",
-      "sha256": "4ac2c889651a07fc3c943a944346d70c7c336b091f92c06e0e9bfe2c1df689b9",
-      "identical": true
-    },
-    {
-      "path": "stackchan_rl/math_utils.py",
-      "sha256": "80cd876afb8a5c1d4c4397c117413a5ce36c29690358b23c59d49007ccfe432a",
-      "identical": true
-    },
-    {
-      "path": "stackchan_rl/steps.py",
-      "sha256": "1864a0bef2d53d586d934337762fa59aa2061bd20a74af297614111a14ee0f86",
-      "identical": true
-    },
-    {
-      "path": "stackchan_rl/transfer.py",
-      "sha256": "27b53073385be986bacbc263eda5cbdd983df16fa1a2f1d0f4e4ac12028820fc",
-      "identical": true
-    },
-    {
-      "path": "requirements.txt",
-      "sha256": "63864ceec9f183f09b7d82b1a75ca76aedeaf724004afff3c4f7549277d6003d",
-      "identical": true
-    }
-  ],
-  "policy_interface_identical": true,
-  "model_mass_kg": 0.8260386995994602,
-  "model_fingerprint": "fd52c6f9a48c468ff049caf0392a1d855c6d3566c5ebf81e93e58a9e5a97f27c",
-  "physics_executed": false
+  "learned_policy_included": false,
+  "physical_model_changed": false,
+  "new_control_changes_closed_loop_dynamics": true,
+  "new_policy_training_executed": false,
+  "model_fingerprint": "fd52c6f9a48c468ff049caf0392a1d855c6d3566c5ebf81e93e58a9e5a97f27c"
 }

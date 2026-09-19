@@ -7,7 +7,7 @@ This module does NOT modify the installed stackchan_rl sources or checkpoints.
 from __future__ import annotations
 import math
 import numpy as np
-from stackchan_rl.actuation import ServoBank
+from tests._actuation_v3_reference import ServoBank
 
 class PostSlewLowPassBank(ServoBank):
     def __init__(self, motor, physics_dt: float, slew: float, time_constant_s: float):

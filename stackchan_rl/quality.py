@@ -182,7 +182,7 @@ class GaitQuality:
 
 def quality_checks(s: dict, cfg: dict) -> dict[str, bool]:
     """Separate experimental quality gates, not hardware safety ratings."""
-    if cfg['env']['walk_objective_version'] != 3 or s['requested_forward_m_s'] <= .003:
+    if cfg['env']['walk_objective_version'] not in (3, 4) or s['requested_forward_m_s'] <= .003:
         return {}
     c = cfg['success']
     forward = s.get('forward_landings', [0, 0])
@@ -191,13 +191,22 @@ def quality_checks(s: dict, cfg: dict) -> dict[str, bool]:
     seq = s.get('landing_sequence', [])
     repeats = sum(a == b for a, b in zip(seq, seq[1:]))/max(1, len(seq)-1)
     has = bool(s.get('quality_samples', 0) > 0)
-    return {'quality_measured': has,
+    checks = {'quality_measured': has,
             'pitch_rate': has and s.get('pitch_rate_rms_rad_s', math.inf) <= c['refine_max_pitch_rate_rms_rad_s'],
             'pitch_excursion': has and s.get('body_pitch_peak_to_peak_deg', math.inf) <= c['refine_max_pitch_peak_to_peak_deg'],
             'action_smoothness': has and s.get('action_delta_rms', math.inf) <= c['refine_max_action_delta_rms'],
             'step_balance': min(forward) >= 2 and excess <= c['refine_max_step_excess_fraction'],
             'step_alternation': len(seq) >= 4 and repeats <= c['refine_max_repeat_fraction'],
             'load_peak': has and max(s.get('peak_sole_load_bw', [math.inf])) <= c['refine_max_load_bw']}
+    if cfg['env']['walk_objective_version'] == 4:
+        distance = s.get('commanded_distance_m', 0.)
+        ratio = s.get('forward_m', 0.)/distance if distance > 1e-9 else math.inf
+        checks.update({
+            'distance_tracking': c['refine_distance_ratio_min'] <= ratio <= c['refine_distance_ratio_max'],
+            'mean_velocity_tracking': s.get('mean_abs_forward_velocity_error_m_s', math.inf) <= c['refine_max_velocity_error_m_s'],
+            'target_smoothness': s.get('target_metric_samples', 0) > 0 and s.get('target_delta_rms_rad_mean', math.inf) <= c['refine_max_target_delta_rms_rad'],
+        })
+    return checks
 
 
 def quality_score(s: dict) -> float:
@@ -209,4 +218,31 @@ def quality_score(s: dict) -> float:
     terms = [s['pitch_rate_rms_rad_s']/1., s['action_delta_rms']/.25,
              s.get('mean_excess_load_cost', 0.)**.5,
              s.get('body_pitch_peak_to_peak_deg', 0.)/25., balance*2.]
+    return float(np.mean(np.exp(-np.minimum(np.square(terms), 80.))))
+
+
+def quality_score_v4(s: dict) -> float:
+    """Reward-independent ordering AFTER basic locomotion. No speed reward.
+
+    Distance overshoot and undershoot are symmetric. Actual contact sequence,
+    not credited events, determines repetition. Raw actions remain separate
+    from smoothed servo targets. All terms are finite bounded [0,1].
+    """
+    if s.get("quality_samples", 0) <= 0 or s.get("target_metric_samples", 0) <= 0:
+        return 0.0
+    c = s.get("quality_scoring_limits", {})
+    ratio = s.get("forward_m", 0.)/max(1e-9, s.get("commanded_distance_m", 0.))
+    seq = s.get("landing_sequence", [])
+    repeat = sum(a == b for a, b in zip(seq, seq[1:]))/max(1, len(seq)-1)
+    forward = s.get("forward_landings", [0, 0])
+    imbalance = max(0, abs(forward[0]-forward[1])-1)/max(1, sum(forward))
+    terms = [
+        s.get("action_delta_rms", math.inf)/c.get("refine_max_action_delta_rms", .25),
+        s.get("target_delta_rms_rad_mean", math.inf)/c.get("refine_max_target_delta_rms_rad", .0125),
+        repeat/c.get("refine_max_repeat_fraction", .25),
+        abs(ratio-1.)/max(1e-6, c.get("refine_distance_ratio_max", 1.10)-1.),
+        s.get("mean_abs_forward_velocity_error_m_s", math.inf)/c.get("refine_max_velocity_error_m_s", .012),
+        s.get("pitch_rate_rms_rad_s", math.inf)/c.get("refine_max_pitch_rate_rms_rad_s", 1.),
+        imbalance/c.get("refine_max_step_excess_fraction", .2),
+    ]
     return float(np.mean(np.exp(-np.minimum(np.square(terms), 80.))))

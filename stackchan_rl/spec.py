@@ -147,6 +147,10 @@ class RobotSpec:
         e = config["env"]
         control_keys = ("policy_hz", "action_scale_rad", "target_slew_rad_s",
                         "target_joint_margin_rad", "max_outward_hip_spread_rad", "obs_clip")
+        control = {k: e[k] for k in control_keys}
+        if e.get("target_lowpass_time_constant_s", 0.0) > 0:
+            control.update({"target_lowpass_time_constant_s": e["target_lowpass_time_constant_s"],
+                            "target_lowpass_kind": "post_slew_v1"})
         return {
             "schema_version": 1,
             "model_fingerprint": self.fingerprint,
@@ -154,6 +158,6 @@ class RobotSpec:
             "observation_fields": observation_schema(),
             "observation_scaling_version": 1,
             "home_joints": self.home[7:].tolist(),
-            "control": {k: e[k] for k in control_keys},
+            "control": control,
             "normalization": "fixed physical scales; no VecNormalize state",
         }

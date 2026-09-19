@@ -35,6 +35,7 @@ def main():
     cfg["env"]["domain_randomization"] = False
     command = cfg["train"]["eval_forward_m_s"] if args.command is None else args.command
     mode = "rgb_array" if args.record else (None if args.headless else "human")
+    print(f"Control LPF={cfg['env']['target_lowpass_time_constant_s']:.3f}s (saved checkpoint config)", flush=True)
     env = StackChanEnv(cfg, render_mode=mode)
     agent = PPO.load(str(folder / "model.zip"), device="cpu")
     writer = None

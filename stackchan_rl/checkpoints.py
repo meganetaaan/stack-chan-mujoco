@@ -32,7 +32,7 @@ def save_bundle(agent, destination: str | Path, config: dict, interface: dict, m
         save_json(staging / "interface.json", interface)
         save_json(staging / "metadata.json", {"num_timesteps": int(agent.num_timesteps),
                                              "versions": versions(), "metrics": metrics or {},
-                                             "kit_version": "3.0.0", "walk_objective_version": config["env"].get("walk_objective_version", 1),
+                                             "kit_version": "4.0.0", "walk_objective_version": config["env"].get("walk_objective_version", 1),
                                              "normalization": "fixed observation scales; no VecNormalize",
                                              "resume_scope": "weights + optimizer; simulator/RNG rollout state is not restored"})
         (staging / "READY").write_text("complete\n", encoding="utf-8")
@@ -71,3 +71,34 @@ def assert_interface(saved: dict, config: dict) -> dict:
         raise ValueError("Checkpoint/model interface mismatch: " + ", ".join(differing) +
                          ". Do not mix A/B models or change action/observation meanings during resume.")
     return current
+
+
+def assert_transfer_interface(saved: dict, config: dict, *, allow_lowpass_change: bool = False) -> tuple[dict, dict]:
+    """Allow exactly the documented low-pass change, not arbitrary I/O mismatch.
+
+    Resume/play remain strict. Used by explicit --init-from and by evaluation
+    only with a dedicated opt-in flag. 61 fields and their normalization, model,
+    home, slew, action scaling, and all other contract fields must match.
+    """
+    from copy import deepcopy
+    import math
+    current = RobotSpec.load(config).interface(config)
+    if saved == current:
+        return current, {"control_changed": False}
+    if not allow_lowpass_change:
+        assert_interface(saved, config)
+    a, b = deepcopy(saved), deepcopy(current)
+    old_tau = a.get("control", {}).pop("target_lowpass_time_constant_s", 0.0)
+    new_tau = b.get("control", {}).pop("target_lowpass_time_constant_s", 0.0)
+    old_kind = a.get("control", {}).pop("target_lowpass_kind", None)
+    new_kind = b.get("control", {}).pop("target_lowpass_kind", None)
+    for tau, kind in ((old_tau, old_kind), (new_tau, new_kind)):
+        if not isinstance(tau, (float, int)) or not math.isfinite(tau) or tau < 0:
+            raise ValueError("Invalid source/destination lowpass contract")
+        if (tau == 0 and kind not in (None, "post_slew_v1")) or (tau > 0 and kind != "post_slew_v1"):
+            raise ValueError("Unknown lowpass implementation; migration refused")
+    if a != b:
+        raise ValueError("Transfer mismatch beyond target lowpass; model/action/observation changes are not allowed")
+    return current, {"control_changed": True, "allowed_change": "post_slew_lowpass",
+                     "source_time_constant_s": old_tau, "destination_time_constant_s": new_tau,
+                     "observation_note": "target field is post-filter and pre-transport-delay in the new runtime"}

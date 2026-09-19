@@ -1,41 +1,62 @@
-# v3 設計メモ — 歩容整形
+# v4 設計の変更範囲
 
-## 今回の対象と未取得の証拠
+v4の実行仕様・コマンド・評価条件は `../README_ja.md` が入口です。
+本書はv3からの変更箇所と、判断に必要な境界を整理します。
 
-ユーザーはA案のStage 1方策で12秒・約194 mm前進、左右の有効/前進着地5対2を報告し、激しい前後の揺れと重い踏み込みを観察しています。学習済みチェックポイント、20回評価JSON、詳細CSVは未受領です。どの成功条件に落ちたか、原因が報酬/飽和/接触/機構のどれかは断定しません。
+## 制御の一本化
 
-## 保持するもの
+`StackChanEnv` が `make_servo_bank` を呼ぶため、学習ワーカー・評価・GUI再生・
+動画出力が同一の制御を使います。`target_lowpass_time_constant_s=0` は元の
+`ServoBank` をそのまま返します。正の値は `PostSlewLowPassBank` を使用します。
 
-A案の全asset、61次元観測、10次元action、joint順序、PD、slew、遅延、トルク/速度制限、探索ガード、物理の時間刻みを保持します。source_hashes.jsonと方策interfaceを照合します。新しい計測器は物理状態を読むだけで、mj_forwardを追加したり外力で姿勢を支えたりしません。
+LPFは1 kHzで更新し、速度制限の後段・元の通信遅延の前段に置きます。
+`filtered_target_offset`は実際に遅延キューへ渡す値です。前段のslewとLPFの状態を
+別に保持し、reset時に再初期化します。60次元台への観測拡張は行っていません。
+前段状態、遅延キュー、イベントの履歴が完全には観測されない制限は残ります。
 
-## 計測時刻と座標
+## 報酬と評価の分離
 
-各mj_stepの直後に、解かれた動力学段階の姿勢・空間速度・接触力を読みます。これは積分後のqposと完全に同時刻の値を再計算する処理ではなく、1刻み以内のsolver-stage telemetryです。mj_objectVelocity(..., local=0)のworld angular velocityをdata.xmatの転置でbody座標へ変換し、local Yの角速度をpitch rateと呼びます。body inertial frameとbody frameが一致するという仮定はしません。姿勢はZYX Euler roll/pitchですが、その微分をgyroと呼ぶことはしません。
+v4前進報酬は、新しい最大到達位置の増分を現在の速度指令×方策周期で上限制限。
+上限を越えた分を将来に繰り越さないため、急に進んで停止する行動へ貯金を与えません。
+速度追従の項と別に速度超過を抑制します。これは停止/過速という人工状態での
+報酬の性質を調整したもので、PPOが目的の歩容を必ず獲得する証明ではありません。
 
-接触力はmj_contactForceのcontact frameからworldへ変換し、各soleとfloor間の鉛直成分を合計します。接近速度は同じsolver段階のsite linear/angular velocityと接触点位置からv+omega×rを計算します。airtime40 ms以上、過去に支持ありという条件で生の着地を診断します。初期落下や短いチャタリングはイベントに数えません。このイベントは既存の歩数の代替ではありません。
+`OrderedStepCredit` は実測された直前の有効着地を基準に報酬を決めます。
+報酬を付けなかった着地も履歴を更新するため、報酬用cooldownで抑制された
+イベントを飛ばして架空の左右交互を作りません。同時着地には順序を割り当てません。
+元の歩数・着地順序は別に保持し、qualityや成功判定を通すために書き換えません。
 
-荷重とpitch rateの集計は1 kHz。品質統計は最初の0.5秒を除外します。CSVは50 Hzの各区間のRMSとピークです。有限刻み/接触モデルに依存する代理量であり、連続時間の衝撃ピークや実物の材料・ギアの特性ではありません。
+生のaction差分と、LPF後の目標差分を別集計します。実関節の変位や角速度とは別量です。
+新しい品質条件とbest選択では、動かない方策を滑らかさだけで優先しません。
+速度超過の改善で移動距離が減ることは想定内で、指令積分距離との誤差で比較します。
 
-## 報酬
+## 保存・移行
 
-v2の前進・速度・離床・着地項を保持し、v3選択時だけquality.pyの計測から追加します。pitch rateの二乗、8度のデッドバンド付きpitch角度、action二階差分、2.5mgを超える各足の鉛直荷重二乗がrate costです。dtは一度だけ掛けます。荷重正規化のmgはリセット後の実モデル総重量です。
+LPF設定と実装種類をinterfaceへ追加します。tau=0の旧interfaceは変更しません。
+旧checkpointのresume/playは厳密なinterface一致が必要です。
+`--init-from`だけ、設定で明示許可したLPF差分を限定的に認めます。
+評価の制御変更にも専用フラグが必要です。モデル、関節順、可動域、home、
+actionスケール、slew、観測の違いを、この移行許可で無視することはできません。
 
-新しいtouchdown speed costと同じ足の連続着地costは離散eventで、dtを掛けません。左右差は直近4秒の前進着地数の差から1回を引いた超過分のみ。イベントの古い履歴は窓から消えます。停止指令中には歩数バランスや歩行イベントの罰則を与えません。単に歩数を同数にするため足踏みを稼ぐことを避けるため、バランスには前進着地を使います。
+転送したactor/log_stdを保存して新条件で初期評価を行い、その後にPPO更新します。
+criticとoptimizerは新しくします。旧runやユーザーの元重みを上書きしません。
 
-rollの追加罰則は設けません。ただしv2に元からある小さい全角速度ペナルティと傾き/接触/速度の判定は残しています。
+## 変更していないもの
 
-## 転送とbest選択
+A案の43 asset、サーボ仕様、MJCFの衝突代理形状・接触フィルター・慣性・質量、
+トルク/速度上限、PDゲイン、10 ms遅延、関節ガード、歩数検出の高さ/時間しきい値。
+胴体の固定、補助外力、ルート姿勢の強制移動は追加していません。
+元の機構・実機に関する未検証事項は `R5_source_report.md` を参照してください。
 
-今回の転送は歩いたactorとlog_stdをそのままコピーします。報酬が変わるためcritic/optimizerは新規。PPOの学習率とentropy係数を下げますが、改善する保証はありません。
+## ソースとAPI参照
 
-学習前に同じ新基準で評価し、initialとbestを保存。selection v3は (1)実際の歩行条件を通った測定済みエピソード率、(2)指令別最小成功率、(3)指令別平均成功率、(4)歩けている候補のquality score、(5)歩行スコア、(6)報酬 の辞書順です。歩行条件を通る候補が無い場合の第4要素は歩行スコアにして回復を優先します。停止して滑らかになった候補だけでbestを更新しません。ただし、有限回評価の順位であり、全条件での改善や過学習防止を保証するものではありません。
+- 直接の改修元: v3のPython一式。差分は `../validation/changes_from_v3.patch`。
+- LPFの独立参照: 比較試験用probe。数値回帰用の凍結コピーを `../tests/` に収録。
+- ユーザーの `comparison.json`: LP40の採用根拠。v4の学習結果ではありません。
+- SB3 PPO: https://stable-baselines3.readthedocs.io/en/master/modules/ppo.html
+- SB3 Gymnasium environment: https://stable-baselines3.readthedocs.io/en/master/guide/custom_env.html
+- MuJoCo Python: https://mujoco.readthedocs.io/en/stable/python.html
 
-品質スコア/成功にはpitch RMS、角度振れ幅、action差分、着地バランス、連打、ピーク荷重を使います。品質しきい値は設計上の試行値。メーカーの連続トルク定格/衝撃定格や実機安全認証ではありません。
-
-## 比較・互換性
-
-旧v1/v2 checkpointの再生/再開時は旧目的を維持し、新しい測定は既定OFF。明示のevaluate.py --configでv3測定へ変更しても重みや旧保存設定は書き換えません。比較時は同じモデルinterfaceとenv/reward/success、指令、seed、reset設定を要求します。旧50 Hz CSVから未記録の1 kHz荷重ピークを作りません。
-
-source差分、互換性照合、テストの実行/未実行記録はvalidation/。実際のMuJoCo/Gymnasium/SB3による接続と学習は、依存の動作しているユーザー環境で行う必要があります。
-
-公式API参照先はREADME末尾、v2の設計履歴はdocs/legacy/v2/DESIGN_ja.mdです。
+元の61次元I/Oとv3設計は `legacy/v3/DESIGN_ja.md` に保存しています。
+旧スタンド/歩行の設定例 `resolved_stand_config.json` / `resolved_walk_config.json` は
+従来版の参照用です。v4用は `resolved_walk_lp40_config.json` と `interface_lp40.example.json`。

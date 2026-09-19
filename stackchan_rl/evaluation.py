@@ -5,7 +5,7 @@ from copy import deepcopy
 import csv
 from pathlib import Path
 import numpy as np
-from .quality import quality_score
+from .quality import quality_score, quality_score_v4
 
 
 def classify_behavior(s: dict) -> str:
@@ -113,7 +113,7 @@ def aggregate(summaries: list[dict], selection_version: int = 1, *, physics_exec
         key = [min(per_command), float(np.mean(per_command)), motion_score,
                float(np.mean([min(s.get("forward_landings",[0,0])) for s in moving])) if moving else 0.,
                duration, reward]
-    if selection_version == 3:
+    if selection_version in (3, 4):
         per_command = [v["success_rate"] for v in by_command.values()]
         # Quality is allowed to rank a candidate only AFTER genuine walking.
         # This prevents selecting a motionless but extremely smooth policy.
@@ -121,7 +121,7 @@ def aggregate(summaries: list[dict], selection_version: int = 1, *, physics_exec
             return bool(s.get("locomotion_pass", False) and s.get("quality_samples", 0) > 0)
         eligible = [s for s in moving if gate(s)]
         eligible_rate = len(eligible)/max(1, len(moving))
-        qscore = float(np.mean([quality_score(s) for s in eligible])) if eligible else 0.
+        qscore = float(np.mean([(quality_score_v4(s) if selection_version == 4 else quality_score(s)) for s in eligible])) if eligible else 0.
         key = [eligible_rate, min(per_command), float(np.mean(per_command)),
                qscore if eligible else motion_score,
                motion_score if eligible else 0., reward]
@@ -130,6 +130,9 @@ def aggregate(summaries: list[dict], selection_version: int = 1, *, physics_exec
                       "action_delta_rms", "action_second_difference_rms", "mean_excess_load_cost",
                       "mean_recent_step_imbalance_cost", "repeated_valid_landings")
     mean_quality = {k: float(np.mean([s[k] for s in measured])) for k in quality_fields} if measured else {}
+    for name in ("target_delta_rms_rad_mean", "distance_tracking_abs_error_m", "step_repeat_fraction"):
+        if measured and all(name in s for s in measured):
+            mean_quality[name] = float(np.mean([s[name] for s in measured]))
     if measured:
         mean_quality["mean_peak_sole_load_bw"] = float(np.mean([max(s["peak_sole_load_bw"]) for s in measured]))
         mean_quality["max_peak_sole_load_bw"] = float(max(max(s["peak_sole_load_bw"]) for s in measured))

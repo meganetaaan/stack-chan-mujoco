@@ -1,56 +1,75 @@
-# v3 配布前検査記録
+# v4 配布前検査結果
 
-**156件を検出し、134件を実行して合格、22件は依存ライブラリー不足のため未実行です。MuJoCoの物理歩行、SB3での本学習、v2方策との改善比較は実施していません。**
+**212件を検出し、182件を実行して合格。MuJoCo/Gymnasium/SB3を必要とする30件は未実行です。**
+物理歩行・PPO本学習・GUI・旧方策の閉ループ再現をこの環境で実行した結果ではありません。
 
-## 環境と実施範囲
+## 実行環境
 
-Python 3.13.5、NumPy 2.3.5、PyTorch 2.10.0+cpu。MuJoCo/Gymnasium/Stable Baselines3は未導入です。pipの取得試行が失敗し、追加のpypi.org接続確認でも名前解決失敗を記録しています。ユーザーのWSL2環境でこれらを導入できないという意味ではありません。
+Python 3.13.5 / NumPy 2.3.5 / PyTorch 2.10.0+cpu。
+MuJoCo/Gymnasium/Stable Baselines3は未導入。pipの名前解決に失敗し、別経路での
+取得も失敗しました。ユーザーのWSL環境で利用できない、という意味ではありません。
+動作中の仮想環境に追加ライブラリーを導入する必要はありません。
+
+## 実行した検査
 
 | 範囲 | 結果 |
 |---|---|
-| Python構文コンパイル | 成功 |
-| 既存v2のオフライン回帰 | 82件合格 |
-| v3の新規オフライン試験 | 52件合格 |
-| 全A案assetのSHA-256 | 43ファイル、v2と全一致 |
-| 制御・観測契約 | actuation/spec等のハッシュ一致、61次元/10次元のinterface同一 |
-| ピッチ/ロール分離、デッドバンド、区間二乗平均 | 人工入力で確認 |
-| 初期落下・短い接触チャタリングの除外 | 人工接触系列で確認 |
-| 接近速度eventと荷重rateのdt扱い | 人工入力で確認 |
-| 歩数差1回の許容、過去の偏りを忘れる4秒窓 | 人工系列で確認 |
-| v1/v2の報酬・転送互換性 | オフライン試験で確認 |
-| 歩いていない候補を滑らかさだけで選ばないbest選択 | 人工評価データで確認 |
-| actorの平均出力とlog_std保持、新criticの非転送 | PyTorchの類似構造の試験で確認。実SB3では未確認 |
-| 同一指令/seed/設定による比較、欠けた指標の検出 | 人工JSONで確認 |
-| MuJoCo/SB3の旧14件＋v3の新8件 | 計22件skipped、合格ではない |
-| `check_env.py --config configs/walk_refine.json` | 依存不足で終了コード2、物理未実行 |
-| `smoke_test.py --subproc` | 最初のpreflightで終了コード2、PPOまで到達せず |
+| 全Pythonの構文 | compileall成功 |
+| 既存v3オフライン回帰 | 134件合格 |
+| v4追加オフライン試験 | 48件合格 |
+| 元A案の43 asset | SHA-256がすべてv3と一致 |
+| フィルター数値 | 凍結した旧bank＋probeと、新制御のトルク・target・遅延状態を照合。40/80 ms、reset、強度係数変更を含め合格 |
+| フィルターなし | 元のServoBankとの数値一致、旧interface一致 |
+| 指令距離cap | 静止・半速・指令一致・過速で人工状態の報酬を照合 |
+| 着地報酬の順序 | 同一脚連打、cooldownで抑制した反対脚、同時着地、停止を検査。生カウントは旧版と一致 |
+| 計測・評価・選択 | targetの関節別平均とglobal RMSを分離。静止・過速・連打・欠落データを検査 |
+| 保存互換性 | LPF以外のモデル/観測/action差分は拒否。旧設定はtau=0で維持 |
+| 実ユーザー重みの転送 | 保存テンソルを一致する純PyTorch構造へ厳密読込み。actor出力差0、新critic非転送、log_std一致 |
+| 実preflight / smokeの試行 | 依存不足で終了コード2、物理/PPOに未到達 |
 
-モデル質量は元定義どおり 0.8260386996 kgです。実測重量ではありません。model fingerprintは `fd52c6f9a48c468ff049caf0392a1d855c6d3566c5ebf81e93e58a9e5a97f27c`。
+## 実ユーザー重みの試験の意味
 
-## 未確認の項目
+提供された `walk_refine_debug.zip` の475,000ステップ時点の `best/model.zip`
+（SHA-256 `649edf23c0557e09468bd4c8e6254a4f3fba1250a981228fb09f002d03dd77f4`）
+から、`policy.pth`を `torch.load(weights_only=True)` で読み込みました。
+SB3と同じ名前・寸法・活性化の層を持つ純PyTorch構造にstrict loadし、実際の
+`transfer_policy` 関数を適用しました。100個の同一人工観測に対しactorの生出力の
+最大差は0で、log_stdも一致し、新criticの初期値が保持されました。
 
-実エンジンでのsubstep計測/接触座標、計測ON/OFF時の物理同一性、実SB3のactor転送・保存・再開、並列プロセス、学習時間、GUI/動画、学習による揺れ・着地衝撃・左右偏りの改善率は未確認です。ユーザーの学習済み重みと実評価JSON/CSVも未受領です。報告された約194 mm前進・5対2着地をこの環境で再現していません。
+**SB3のPPO.load、最適化、物理閉ループを試したものではありません。**
+モデルZIP内のpickle設定を代替実行して「SB3動作確認」とは扱っていません。
+ユーザーの重みそのものは本キットに再配布していません。
+記録は `validation/user_checkpoint_transfer.json`。
 
-物理テストをスタブに差し替えて通過させていません。人工系列/人工状態のunit testは、力学的に実現可能な歩容や学習の成功を意味しません。新報酬の係数と品質しきい値は最初の試行値で、実測による最適化済みパラメーターではありません。
+## 未実行
+
+30件の実行テスト（v3まで22件＋新規8件）、実MuJoCoでのprobe等価性、
+SB3への接続、並列学習、真の保存・再開・転送、GUI、動画、本学習、
+20試行の改善率、実機動作は未確認です。
+
+ユーザーが既に実行したLPF比較結果は採用判断の根拠ですが、v4のソフトウェアや
+新報酬での学習結果ではありません。新しい距離/速度/滑らかさの目標が達成可能と
+実証したわけではありません。試験基準を緩めて成功にする変更はしていません。
 
 ## 再実行
 
-MuJoCoが動作している仮想環境で、配布フォルダーのルートから実行します。
-
 ```bash
 python validation/run_tests.py
-python check_env.py --config configs/walk_refine.json
+python check_env.py --config configs/walk_lp40.json
 python smoke_test.py --subproc
+python audit_lp40.py
 ```
 
-依存が揃えば22件のruntime testsも実行対象になります。出力のskippedを合格と解釈せず、失敗時は学習へ進む前に確認してください。smokeは接続試験であり、歩行習得試験ではありません。
+依存が揃ったWSLでは実行テストも走ります。`skipped=30`は30件の合格ではなく、
+未実行を意味します。smokeは短いソフトウェア接続試験で、歩行習得の試験ではありません。
 
-## 再現情報
+## 検査ファイル
 
-- `validation/unit_tests.json`, `unit_tests.log`：実際の合否とskip理由。
-- `validation/source_hashes.json`：source ZIPとassetのハッシュ、方策interface照合。
-- `validation/changes_from_v2.patch`：コード/設定/文書のレビュー用差分。自動上書き処理ではありません。
-- `validation/preflight.json`, `preflight.log`：実エンジンを呼ぶ前の依存エラー。
-- `validation/runtime_v3/`, `runtime_smoke.log`：preflightで停止したsmokeログ。
-- `validation/dependency_install_attempt.log`, `network_probe.log`：パッケージ取得試行の失敗。
-- `validation/v1/`, `validation/v2/`：旧配布物の検査履歴。現在の版の実行結果とは区別。
+- `validation/unit_tests.json` / `.log`: 212件の内訳・skip理由・環境情報。
+- `validation/user_checkpoint_transfer.json`: 実保存重みのテンソル転送。
+- `validation/source_hashes.json`: 元ZIP、probe、ユーザー比較結果、43 assetの由来。
+- `validation/reward_audit.json`: 人工状態での報酬計算。
+- `validation/preflight.*` / `runtime_v4/` / `runtime_smoke.log`: 依存不足で停止した実行記録。
+- `validation/dependency_install_attempt.log`: 実際の取得エラー。
+- `validation/changes_from_v3.patch`: 実装・設定・文書の差分。
+- `validation/v3/`: 過去の検査結果。v4の結果ではありません。

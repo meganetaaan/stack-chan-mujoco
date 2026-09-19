@@ -55,13 +55,13 @@ def reward_terms(s: dict, w: dict, task: str, dt: float, terminated: bool) -> di
     progress is new body high-water distance, not abs(displacement).
     """
     result = _legacy_reward_terms(s, w, task, dt, terminated)
-    if terminated or task != "walk" or s.get("walk_objective_version", 1) not in (2, 3):
+    if terminated or task != "walk" or s.get("walk_objective_version", 1) not in (2, 3, 4):
         return result
     for k in ("forward_progress", "unload", "liftoff_event", "forward_landing_event",
               "alternating_event", "no_step", "overspeed"):
         result[k] = 0.0
     moving = s["command"][0] > 0.003
-    if s.get("walk_objective_version") == 3:
+    if s.get("walk_objective_version") in (3, 4):
         quality = s.get("gait_quality", {})
         # Preserve v2 stepping rewards. Do not synthesize forces or change PD.
         result.update({
@@ -115,6 +115,18 @@ def reward_terms(s: dict, w: dict, task: str, dt: float, terminated: bool) -> di
     result["landing_event"] = w["landing_event"]*s.get("rewarded_landings_this_step", 0)
     result["forward_landing_event"] = w["forward_landing_event"]*s.get("forward_landings_this_step", 0)
     result["alternating_event"] = w["alternating_event"]*s.get("alternating_landings_this_step", 0)
+    if s.get("walk_objective_version") == 4:
+        # No banking of unpaid distance: highwater is advanced by the tracker
+        # regardless of this cap. Ramp uses the CURRENT, not final, command.
+        budget_m = cmd * dt
+        credited_m = min(new_distance, budget_m)
+        result["forward_progress"] = w["forward_progress"] * credited_m/requested
+        over = max(0., (float(s["velocity"][0])-cmd)/requested-w["overspeed_free_fraction"])
+        result["overspeed"] = -w["overspeed"] * min(4., over*over) * dt
+        result["landing_event"] = w["landing_event"] * s.get("ordered_rewarded_landings_this_step", 0)
+        result["forward_landing_event"] = w["forward_landing_event"] * s.get("ordered_forward_landings_this_step", 0)
+        result["alternating_event"] = w["alternating_event"] * s.get("ordered_alternating_landings_this_step", 0)
+        result["repeated_step"] = -w["repeated_step"] * s.get("ordered_repeated_landings_this_step", 0)
     return {k: float(v) for k, v in result.items()}
 
 def success_checks(summary: dict, cfg: dict) -> dict[str, bool]:

@@ -14,7 +14,8 @@ from gymnasium import spaces
 import mujoco
 from .config import validate, normalize_config
 from .spec import RobotSpec, JOINT_NAMES, SOLE_GEOMS, SOLE_SITES, OBS_DIM
-from .actuation import ServoBank, bounded_target
+from .actuation import ServoBank, bounded_target, make_servo_bank
+from .target_metrics import TargetMotionMetrics
 from .math_utils import euler_quat, quat_mul, yaw_matrix, wrap_angle, command_at, swing_mask
 from .rewards import reward_terms, success_checks
 from .steps import FootStepTracker
@@ -61,7 +62,7 @@ class StackChanEnv(gym.Env):
         self.home_joints = self.home[self.qadr].copy()
         self.nominal_height = float(self.home[self.root_qadr + 2])
         self.action_scale = np.array(self.e["action_scale_rad"], dtype=float)
-        self.bank = ServoBank(spec.motor, float(self.model.opt.timestep), self.e["target_slew_rad_s"])
+        self.bank = make_servo_bank(spec.motor, float(self.model.opt.timestep), self.e)
         self._verify_motors()
         self._nom_mass = self.model.body_mass.copy()
         self._nom_inertia = self.model.body_inertia.copy()
@@ -139,6 +140,8 @@ class StackChanEnv(gym.Env):
             raise RuntimeError("Reset has >0.5 mm self-penetration in the ORIGINAL collision proxies. "
                                "Review check_env.py output; collisions are not silently disabled. " + repr(initial_penetrations[:8]))
         self.bank.reset(self.home_joints, strength=strength)
+        self.target_metrics = TargetMotionMetrics(self.bank.filtered, self.e["measurement_start_s"])
+        self.last_bounded_target = self.home_joints.copy()
         self.steps = 0
         self.phase = 0.0
         self.previous_action = np.zeros(10)
@@ -163,7 +166,7 @@ class StackChanEnv(gym.Env):
         self.command = np.zeros(3)
         self.commanded_distance = 0.0
         self.step_tracker = (WalkEventTracker(self.dt, self.e)
-            if self.config["task"] == "walk" and self.e["walk_objective_version"] in (2, 3)
+            if self.config["task"] == "walk" and self.e["walk_objective_version"] in (2, 3, 4)
             else FootStepTracker(self.dt, self.e["minimum_airtime_s"], self.e["minimum_lift_m"]))
         self.valid_landings = self.step_tracker.counts
         self.landing_sequence = self.step_tracker.sequence
@@ -189,6 +192,7 @@ class StackChanEnv(gym.Env):
         self._warning_counts = np.array([w.number for w in self.data.warning])
         self.last_snapshot = self._snapshot()
         self._last_observation = self._observation(self.last_snapshot)
+        self.policy_input = self._last_observation.copy()
         return self._last_observation.copy(), {"task": self.config["task"], "requested_forward_m_s": requested,
                                              "mass_scale": mass_scale, "friction_scale": friction_scale,
                                              "motor_strength": strength}
@@ -222,6 +226,7 @@ class StackChanEnv(gym.Env):
             foot_omega[i] = self._jacr @ self.data.qvel
         loads = np.zeros(2)
         bad_force = self_force = 0.0
+        self_pairs = []
         slip_sum = slip_count = 0.0
         for k in range(self.data.ncon):
             c = self.data.contact[k]
@@ -242,6 +247,11 @@ class StackChanEnv(gym.Env):
                     bad_force = max(bad_force, force_mag)
             else:
                 self_force = max(self_force, force_mag)
+                if force_mag > self.e["self_contact_threshold_N"]:
+                    self_pairs.append({"geom1": self.model.geom(c.geom1).name,
+                                       "geom2": self.model.geom(c.geom2).name,
+                                       "force_N": force_mag, "distance_m": float(c.dist),
+                                       "time_s": float(self.data.time)})
         pos = self.data.xpos[self.base_id].copy()
         ep_error = self.heading_R[:2, :2].T @ (pos[:2] - self.desired_xy)
         heading_error = wrap_angle(float(np.arctan2(R[1, 0], R[0, 0])) - self.initial_heading)
@@ -259,6 +269,7 @@ class StackChanEnv(gym.Env):
             "bad_contact_force_N": bad_force,
             "self_contact": self_force > self.e["self_contact_threshold_N"],
             "self_contact_force_N": self_force,
+            "self_contact_pairs": self_pairs,
             "slip_speed_sq": slip_sum / max(1.0, slip_count),
             "command": self.command.copy(), "swing_mask": swing_mask(self.phase),
         }
@@ -348,7 +359,9 @@ class StackChanEnv(gym.Env):
         if not self._has_reset or self._done:
             raise RuntimeError("Call reset() before step(), and after termination/truncation")
         # Reject NaNs in policy outputs instead of converting them into valid actions.
+        self.policy_input = self._last_observation.copy()
         target = bounded_target(action, self.home_joints, self.specification.limits, self.e)
+        self.last_bounded_target = target.copy()
         action = np.clip(np.asarray(action, dtype=float), -1.0, 1.0)
         self.previous_action = self.last_action.copy()
         previous_delta = self.previous_action_delta.copy()
@@ -399,6 +412,7 @@ class StackChanEnv(gym.Env):
             failure = "physics_error:" + str(exc)
             s = self.last_snapshot
         self.steps += 1
+        self.target_metrics.observe(self.bank.filtered, self.steps*self.dt)
         self._torque_fraction_sq = cap_fraction_sq / self.substeps
         self._power = power / self.substeps
         self._sat_each = sat_each / self.substeps
@@ -499,6 +513,13 @@ class StackChanEnv(gym.Env):
             "saturation_fraction": dict(zip(JOINT_NAMES, (st["sat_sum"]/max(1,st["samples"])).tolist())),
             "reward_components": dict(self.reward_sums),
             "walk_objective_version": self.e["walk_objective_version"],
+            "target_lowpass_time_constant_s": self.e["target_lowpass_time_constant_s"],
+            "terminal_self_contact_pairs": self.last_snapshot.get("self_contact_pairs", []) if reason == "self_contact" else [],
+            "command_distance_ratio": float(delta[0]/self.commanded_distance) if self.commanded_distance > 1e-9 else None,
+            "distance_tracking_abs_error_m": float(abs(delta[0]-self.commanded_distance)),
+            "step_repeat_fraction": sum(a == b for a, b in zip(self.landing_sequence, self.landing_sequence[1:]))/max(1, len(self.landing_sequence)-1),
+            "quality_scoring_limits": dict(self.config["success"]),
+            **self.target_metrics.summary(),
             **(self.quality.summary() if self.quality is not None else {}),
             **(self.step_tracker.summary() if isinstance(self.step_tracker, WalkEventTracker) else {}),
         }
@@ -515,7 +536,22 @@ class StackChanEnv(gym.Env):
                "left_valid_landings": int(self.valid_landings[0]),
                "right_valid_landings": int(self.valid_landings[1]),
                "gait_phase": float(self.phase),
-               "no_step_elapsed_s": float(s.get("no_step_elapsed_s", 0.0))}
+               "no_step_elapsed_s": float(s.get("no_step_elapsed_s", 0.0)),
+               "target_lowpass_time_constant_s": self.e["target_lowpass_time_constant_s"],
+               "target_delta_rms_rad": float(np.sqrt(np.mean(self.target_metrics.last_delta**2)))}
+        row["forward_position_m"] = float((s["base_position"]-self.start_position)@self.heading_R[:,0])
+        row["commanded_distance_m"] = float(self.commanded_distance)
+        for i, side in enumerate(("left", "right")):
+            for axis, value in zip("xyz", s["foot_xyz"][i]):
+                row[side+"_sole_world_"+axis+"_m"] = float(value)
+            row[side+"_landing_event"] = int(i in s.get("valid_landing_feet", []))
+            row[side+"_forward_landing_event"] = int(i in s.get("forward_landing_feet", []))
+        for name in ("ordered_rewarded_landings_this_step", "ordered_forward_landings_this_step",
+                     "ordered_alternating_landings_this_step", "ordered_repeated_landings_this_step",
+                     "simultaneous_landing_frames_this_step"):
+            row[name] = int(s.get(name, 0))
+        for i, value in enumerate(self.policy_input):
+            row[f"policy_input_{i:02d}"] = float(value)
         if isinstance(self.step_tracker, WalkEventTracker):
             for i, side in enumerate(("left", "right")):
                 row[side+"_qualified_liftoffs"] = int(self.step_tracker.liftoffs[i])
@@ -548,6 +584,10 @@ class StackChanEnv(gym.Env):
             row[n+"_target_rad"] = float(self.bank.filtered[i])
             row[n+"_Nm"] = float(self.last_torque[i])
             row[n+"_action"] = float(self.last_action[i])
+            row[n+"_velocity_rad_s"] = float(s["qd"][i])
+            row[n+"_bounded_target_rad"] = float(self.last_bounded_target[i])
+            row[n+"_slew_target_rad"] = float(getattr(self.bank, "slew_stage", self.bank.filtered)[i])
+            row[n+"_delayed_target_rad"] = float(self.bank.delayed[i])
         return row
 
     def render(self):

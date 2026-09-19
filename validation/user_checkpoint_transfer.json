@@ -1,0 +1,57 @@
+{
+  "status": "PASS_ACTUAL_SAVED_TENSORS_IN_MATCHING_TORCH_STRUCTURE",
+  "checkpoint_sha256": "649edf23c0557e09468bd4c8e6254a4f3fba1250a981228fb09f002d03dd77f4",
+  "checkpoint_num_timesteps": 475000,
+  "source_interface_valid": true,
+  "control_migration": {
+    "control_changed": true,
+    "allowed_change": "post_slew_lowpass",
+    "source_time_constant_s": 0.0,
+    "destination_time_constant_s": 0.04,
+    "observation_note": "target field is post-filter and pre-transport-delay in the new runtime"
+  },
+  "transfer": {
+    "copied_actor_only": true,
+    "copied_tensor_count": 6,
+    "critic": "new initialization",
+    "optimizer": "new",
+    "source_log_std": [
+      -0.8128601908683777,
+      -0.8506703972816467,
+      -0.7522727251052856,
+      -0.8899235129356384,
+      -0.809380054473877,
+      -0.9751566052436829,
+      -0.8743974566459656,
+      -0.7508295178413391,
+      -0.8514987826347351,
+      -0.8749336004257202
+    ],
+    "destination_log_std": [
+      -0.8128601908683777,
+      -0.8506703972816467,
+      -0.7522727251052856,
+      -0.8899235129356384,
+      -0.809380054473877,
+      -0.9751566052436829,
+      -0.8743974566459656,
+      -0.7508295178413391,
+      -0.8514987826347351,
+      -0.8749336004257202
+    ]
+  },
+  "max_raw_actor_output_difference": 0.0,
+  "new_critic_unchanged": true,
+  "sb3_runtime_executed": false,
+  "physics_executed": false,
+  "scope": "Actual user policy.pth loaded weights_only into matching pure PyTorch layer structure; does NOT execute SB3 loading or MuJoCo rollout.",
+  "versions": {
+    "python": "3.13.5",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "mujoco": "NOT_INSTALLED",
+    "gymnasium": "NOT_INSTALLED",
+    "stable-baselines3": "NOT_INSTALLED",
+    "numpy": "2.3.5",
+    "torch": "2.10.0+cpu"
+  }
+}

@@ -1,157 +1,222 @@
-# R5-A PPO v3 — Stage 1.5「歩容整形」
+# R5-A PPO v4 — 40 msフィルター込みで歩容と速度追従を整える
 
-v2の `runs/walk_step1/best` を初期値に、0.02 m/sの前進を維持しながら、前後の揺れ・指令の急変・左右の偏り・強い着地を抑える版です。立位からやり直しません。
+対象はA案（横置きTab5・128 × 128 × 128 mmボディ）です。v3の
+`runs/walk_refine/best` を初期値に使います。モデル・メッシュを同梱しています。
+**学習済み方策は同梱していません。旧runを上書きせず、新しいrunに学習します。**
 
-**A案のMJCF・メッシュ・慣性・サーボ・PDゲイン・トルク上限・61次元観測・10次元action・指令フィルターは変更していません。** モデル一式を同梱。追加ライブラリーはありません。`--task walk` は互換性のためv2のStage 1のままです。今回の学習は必ず `--config configs/walk_refine.json` を指定します。
+今回は実行済みの比較試験で用いた「速度制限の後段の40 msローパス」を正式な
+制御経路にしました。物理モデル、サーボのトルク・速度上限、PDゲインは変更して
+いませんが、**制御系の動力学は変わります**。観測61次元、action10次元を維持し、
+新しい制御条件でactorを微調整します。実行テストの実施範囲は
+`TEST_REPORT_ja.md` に記載しています。v4での歩行改善・収束は未実証です。
 
-**実行済み：134件のオフラインテスト合格。未実行：MuJoCo/SB3等を必要とする22件、学習・GUI・ユーザーの既存方策との物理比較。** この環境では依存パッケージ取得先の名前解決に失敗しています。改修による歩容改善を実証した配布物ではありません。`TEST_REPORT_ja.md` を参照。
+## 1. 配置と接続テスト
 
-## 1. 旧フォルダーを残して展開
-
-現在MuJoCoとSB3が動作しているWSLの仮想環境を有効にして実行します。
+現在MuJoCo/SB3が動く仮想環境を有効にして実行します。追加の依存はありません。
+ZIPを `~/stack-chan-mujoco` にコピーした例です。
 
 ```bash
 cd ~/stack-chan-mujoco
-unzip stackchan_r5a_rl_v3.zip
-cd stackchan_r5a_rl_v3
+unzip stackchan_r5a_rl_v4.zip
+cd stackchan_r5a_rl_v4
 
 python -m unittest discover -s tests -v
 python smoke_test.py --subproc
 ```
 
-未導入の環境では `python -m pip install -r requirements.txt` が必要です。`smoke_test.py` は短い学習・保存・再開・歩行への転送・整形への転送・評価を通す接続試験で、歩行の習得試験ではありません。失敗しても衝突やトルク上限を無効化せず、ログを確認してください。
+`smoke_test.py` は短いPPO更新、保存・再開、旧制御からLP40へのactor転送、
+評価までの接続試験です。歩容の習得試験ではありません。失敗したら長時間学習へ
+進まず、出力先の `stage_*.log` を確認してください。依存があるWSLでは実MuJoCo/
+SB3テストも走ります。`skipped` は合格ではなく未実行です。
 
-## 2. 今回歩いた方策から整形を開始
+未導入の環境だけ `python -m pip install -r requirements.txt` を実行します。
+動いている環境のライブラリーを、この変更のためだけに更新する必要はありません。
+
+## 2. v3の歩けた方策から、0.02 m/s固定で学習
 
 ```bash
-python train.py --config configs/walk_refine.json \
-  --init-from ../stackchan_r5a_rl_v2/runs/walk_step1/best \
+python train.py --config configs/walk_lp40.json \
+  --init-from ../stackchan_r5a_rl_v3/runs/walk_refine/best \
   --num-envs 4 \
   --total-timesteps 500000 \
-  --run-dir runs/walk_refine
+  --run-dir runs/walk_lp40
 ```
 
-**旧 `stand/best` ではなく、前進0.194 mを出した `walk_step1/best` を使用します。最初の切替には `--resume` を使いません。** `--resume` は保存時の報酬設定を維持する操作です。チェックポイントは `model.zip` だけでなく `config.json`, `interface.json`, `metadata.json`, `READY` を含むフォルダー全体が必要です。
+**最初の切替は `--init-from` です。`--resume` は使いません。**
+`model.zip` だけではなく、`config.json`、`interface.json`、`metadata.json`、
+`READY` を含む旧チェックポイントフォルダー全体を保持してください。
 
-方策の行動平均を決めるactorと学習済みlog_stdを引き継ぎます。新報酬用のcriticとoptimizerは新規。探索幅をStage 1の−1.0に戻して歩容を大きく壊すことはしません。学習率は0.00015→0.00005、entropy係数は0.01→0.001、clipは0.2→0.15、target_klは0.03→0.015にします。これらは最初の試行値です。
+actorと学習済みの探索幅 `log_std` は引き継ぎます。新しい報酬と制御条件に合わせ、
+critic・optimizerは新規にします。学習率3e-5、entropy係数0.0005、clip 0.15、
+target_kl 0.015です。学習開始前に新条件で6試行を評価し、`initial/`と`best/`を保存。
+以後25,000遷移ごとに評価します。**改善しなければbestはinitialのままです。**
+50万は初回の試行量で、成功を保証する回数でも早期終了条件でもありません。
 
-開始時、転送直後の方策を新しい基準で6回評価し、`initial_evaluation.json` と `initial/`、`best/` へ保存してからPPO更新を始めます。25,000遷移ごとの評価で改善を確認します。**改善がなければ `best/` が開始時の方策のまま残ります。** `final/` は最後の更新結果、`best/` は評価で選ばれた候補で、同一とは限りません。
+`--task walk` は互換性のため旧v2 Stage 1を指したままです。
+**今回の学習では `--config configs/walk_lp40.json` を指定してください。**
 
-50万ステップは初回の追加予算です。収束・改善の保証や所要時間の約束ではありません。新しい品質計測は1 kHzで行うため、v2よりCPU負荷が増える可能性があります。
-
-## 3. まずGUIなしで評価
+## 3. 新しい初期状態で20回評価
 
 ```bash
-python evaluate.py --checkpoint runs/walk_refine/best \
-  --commands 0.02 --episodes 20 \
-  --out outputs/walk_refine_eval.json \
-  --trajectories outputs/walk_refine_trajectories
+python evaluate.py --checkpoint runs/walk_lp40/best \
+  --commands 0.02 --episodes 20 --seed 40000 \
+  --out outputs/walk_lp40_eval.json \
+  --trajectories outputs/walk_lp40_trajectories
 
-python diagnose_gait.py --evaluation outputs/walk_refine_eval.json \
-  --out outputs/walk_refine_diagnosis.json
+python diagnose_gait.py --evaluation outputs/walk_lp40_eval.json \
+  --out outputs/walk_lp40_diagnosis.json
 ```
 
-各エピソードの `failed=[...]` に、失敗した条件を直接表示します。`failure_reason=None` は「時間上限まで走った」という状態で、全成功条件の達成とは別です。物理的な歩行条件と整形条件はそれぞれ `success_checks`, `quality_checks` に分け、両方が合格したときだけ `is_success=true` です。
+40000番台は学習中のモデル選択用seed（10000番台）と、既に調べたフィルター比較
+（20000番台）から分けた検証用です。後からこの結果でチューニングした場合は、
+そのseedも未知条件の検証とは扱えません。
 
-途中経過を `walk_refine_eval.partial.json` に保存し、全試行の完了後に本番JSONを書き出します。`.partial.json` は未完了で、進級・正式な比較には使いません。評価コマンドの終了コード0は処理完了を示し、歩行成功を示すものではありません。
-
-再生は独立したコマンドで行います。
+再生は独立して実行します。チェックポイントのLPF設定を自動で読みます。
 
 ```bash
-python play.py --checkpoint runs/walk_refine/best \
+python play.py --checkpoint runs/walk_lp40/best \
   --command 0.02 --episodes 1 --random-reset
 ```
 
-`evaluate.py` はビューアーもOpenGLコンテキストも作らず、GUIの描画経路から分離しています。`GLXBadDrawable` のドライバー側原因を特定・修復したわけではありません。画面が閉じた際の確認とビューアー属性更新時のlockを加えていますが、GLX問題の解消を保証しません。
+`evaluate.py` はOpenGL/ビューアーを起動しません。WSLg/GLXドライバーの問題を
+修復したものではありません。
 
-以前の `play.py` は既定で同じhome姿勢から3回再生します。提示された `episode=0..2` はその出力形式です。20回の評価が完了したかは、評価JSONと端末の終了状態を確認してください。v3の `evaluate.py` は各回のseedを記録し、既定では初期姿勢に乱れを入れます。
+## 4. 学習前後を同じ条件で比較
 
-## 4. v2の方策と同じ条件で比較する
+`initial/`は旧actorに40 msフィルターを組み合わせた**新条件の基準方策**です。
+フィルターなしの旧v3と比べて、フィルターの効果を「学習の効果」と数えません。
 
-旧チェックポイントを**新しいコード・新しい計測条件**で再評価します。保存済みの重み・旧設定は変更しません。
+```bash
+python evaluate.py --checkpoint runs/walk_lp40/initial \
+  --commands 0.02 --episodes 20 --seed 40000 \
+  --out outputs/walk_lp40_before.json
+
+python diagnose_gait.py --evaluation outputs/walk_lp40_eval.json \
+  --baseline outputs/walk_lp40_before.json \
+  --out outputs/walk_lp40_comparison.json
+
+python check_stage.py --evaluation outputs/walk_lp40_eval.json --min-success 0.8
+```
+
+0.307 mから指令相当の約0.220 mへ減速した場合を悪化としないため、v4の比較は
+「距離85%維持」ではなく、指令距離からの誤差で判断します。次段階へ自動進級
+しません。80%以上の総合合格に加え、v4の進級判定では試行群全体の自己接触・
+足裏以外の接触がないことも確認します。これは試験上の目安で、実機安全認証では
+ありません。結果JSON、接触記録、映像を分けて確認します。
+
+## 5. 再開
+
+```bash
+python train.py --resume runs/walk_lp40/latest \
+  --num-envs 4 --total-timesteps 500000 --run-dir runs/walk_lp40
+```
+
+Ctrl+C時は `interrupted/`、正常終了時は `final/` にも保存します。
+`--total-timesteps` は再開時も**追加**する遷移数。保存済みのLPF・報酬・評価設定を
+維持します。物理状態や途中のrollout、乱数状態までの完全復元ではありません。
+
+## 6. 制御・報酬の変更
+
+制御経路は
+
+```text
+50 Hz action → 目標角の可動域/開脚制約
+             → 1 kHz速度制限 → 1 kHz・40 msローパス
+             → 最終速度ガード → 元の10 ms指令遅延 → PD → 元のトルク/速度制約
+```
+
+フィルターは `alpha = 1-exp(-physics_dt/0.040)`。
+初期状態、slew状態、LPF状態、遅延キューをresetごとに同じhome値で初期化します。
+比較試験の処理と数値的に一致させるため、元のServoBankを最後に呼ぶ実装を維持。
+最終速度ガードは正常な初期化では冗長ですが、削除していません。
+
+観測の39〜48番 `filtered_target_offset` は**LPF後・通信遅延前の目標角**です。
+29〜38番 `previous_action` は生の方策出力のままです。遅延キューやLPF前のslew
+内部状態、イベント履歴全体を観測へ追加していないため、完全なMarkov状態では
+ありません。今回は既存actorの継承を優先した設計です。
+
+| 項目 | v4 |
+|---|---|
+| 前進報酬 | 新規到達距離を「現在の指令速度 × 20 ms」で上限制限。余りを後で支払わない。係数1.5→0.5 |
+| 速度追従 | 係数8を維持。正の速度指令で静止した場合は速度報酬ゼロ |
+| 速度超過 | 係数0.4→1.0。現在の指令に対し、最終指令の10%に相当する余裕を越えた超過を二乗罰則 |
+| 生action一階差分 | 係数0.06→0.60 |
+| 生action二階差分 | 係数0.025→0.15 |
+| 前進着地・交互着地 | 直前の実際の有効着地と反対脚の場合だけ加点。同じ足の連打で前進着地ボーナスを取れない |
+| 同一脚の連続着地 | 係数0.08→0.25。前回の加点イベントではなく実測イベントを基準に判定 |
+| 交互ボーナス | 係数0.25→0.30。反対脚かつ前進を伴う着地が必要 |
+| ピッチ・荷重・モデル | v3のまま。サーボ強化、補助外力、衝突無効化はしない |
+
+歩数の生カウント・離床高さ2 mm・滞空80 ms・接地確認40 ms・前進4 mmの条件は
+変更していません。新しい`ordered_*`は**報酬を与えたイベント**であって歩数の
+置換ではありません。同時フレームでの両足着地は、報酬上の順序を捏造せず加点
+しません。成功判定は従来の実測`landing_sequence`等を使います。
+
+## 7. 評価とbest選択
+
+従来の基本歩行条件・生action差分RMS≤0.25・同一脚連続割合≤0.25等は維持し、
+v4ではさらに以下を品質条件に追加しました。
+
+- 実移動距離が指令積分距離の90〜110%（0.02 m/s・12秒・現ランプでは約198〜242 mm）。
+- 平均絶対速度誤差 ≤0.012 m/s。
+- LPF後目標角の1方策周期差分RMSの**関節別RMSの平均** ≤0.0125 rad。
+
+これらは新しい試行目標で、達成可能性を学習で実証した値ではありません。
+細かいサーボ目標が滑らかでも、生actionが振動していれば不合格です。
+歩行としての条件を満たした候補でのみ、速度追従・順序・指令・姿勢の品質を比較
+してbestを選びます。総報酬や前進距離だけでは選びません。
+
+`target_delta_rms_rad_mean`は実関節の振れ幅ではありません。
+`target_delta_global_rms_rad`は全関節二乗平均をまとめてから平方根を取る別値です。
+比較試験との連続性のため、進級判定には前者を使います。
+
+## 8. 診断ログ
+
+CSVに生action、可動域制約後の目標、slew後の目標、LPF後の目標、遅延後の目標、
+実角・実角速度・トルクを収録します。`policy_input_00`〜`60`はそのactionに使った
+観測です（reset行は初期観測）。足底の世界座標と着地イベントも追加しています。
+
+JSONには`target_lowpass_time_constant_s`、指令距離比、距離誤差、連続着地割合、
+`ordered_*`累積値、終了時の実MuJoCo接触対を収録。接触対の名前と力は代理衝突
+形状の値であり、実物のケースの接触を保証しません。通常の自己接触終了判定は
+50 Hzのままです。1 ms全接触履歴の保存ではありません。
+
+```bash
+python audit_lp40.py
+tensorboard --logdir runs --host 127.0.0.1 --port 6006
+```
+
+`audit_lp40.py`は人工状態での報酬関数テストです。物理歩行・学習結果ではありません。
+
+## 9. 互換性
+
+旧checkpointはLPFなしで読み込まれ、旧v1〜v3報酬のまま再生・再開されます。
+旧フォルダーへ上書きインストールせず、v4を別フォルダーで使用してください。
+新LPF設定は`interface.json`にも保存します。暗黙の制御条件変更は拒否します。
+
+`walk_lp40.json`は`transfer.allow_target_lowpass_change=true`で、`--init-from`時
+に限ってLPF差分を許可します。モデル・関節順・actionスケール・slew・観測等の
+他の不一致を無視するフラグではありません。変更は`transfer.json`に記録します。
+
+診断だけで旧方策へLPFを付けて評価する場合は、明示的なオプションが必要です。
 
 ```bash
 python evaluate.py \
-  --checkpoint ../stackchan_r5a_rl_v2/runs/walk_step1/best \
-  --config configs/walk_refine.json \
-  --commands 0.02 --episodes 20 --seed 20000 \
-  --out outputs/before_refine.json \
-  --trajectories outputs/before_refine_trajectories
-
-python evaluate.py --checkpoint runs/walk_refine/best \
-  --config configs/walk_refine.json \
-  --commands 0.02 --episodes 20 --seed 20000 \
-  --out outputs/after_refine.json \
-  --trajectories outputs/after_refine_trajectories
-
-python diagnose_gait.py --evaluation outputs/after_refine.json \
-  --baseline outputs/before_refine.json \
-  --out outputs/refine_comparison.json
+  --checkpoint ../stackchan_r5a_rl_v3/runs/walk_refine/best \
+  --config configs/walk_lp40_baseline.json --allow-target-lowpass-change \
+  --commands 0.02 --episodes 5 --seed 20000 \
+  --out outputs/lp40_integration_baseline.json
 ```
 
-比較では同じ指令・seed・初期化条件・モデル・報酬・評価条件であることを検査します。単に旧版JSONと新品JSONを並べて、未計測の1 kHzピークを推定しません。20回試行の比較は統計的有意差や実機安全性の認定ではありません。
+このbaseline設定は**v3報酬＋LPF40 ms**で、以前のprobeと制御・目的を揃えるもの。
+新学習用`walk_lp40.json`とは報酬が違います。v3との重みは同じでも、フィルター
+の有無で閉ループ挙動が変わるので、同一挙動を保証する「互換性」ではありません。
+実行時ライブラリーの差による再現差にも注意してください。
 
-診断用の初期目安は「平均前進量を旧方策の85%以上かつ80 mm以上に維持」「左右それぞれ平均2回以上の前進着地」「ピッチ角速度RMSを10%以上低減」「指令変化・ピーク荷重が5%超悪化しない」「転倒・異常接触が増えない」です。条件ごとの成否を返し、結果だけで自動進級はしません。
+## 10. 未検証の範囲
 
-## 5. 何を変えたか
-
-| 項目 | v3の内容 |
-|---|---|
-| 前進・離床 | v2の速度報酬、前進記録、離床・有効着地・前進着地を保持 |
-| ピッチの揺れ | 胴体ローカルY軸の角速度二乗に係数0.20の追加罰則。ロールには追加しない |
-| ピッチ姿勢 | ±8°までは追加の角度罰則なし。越えた部分を緩やかに抑制。姿勢固定や補助力はない |
-| action変化 | 係数0.01→0.06。さらに二階差分に0.025。出力の意味・slew/PD/遅延はそのまま |
-| 左右の偏り | 直近4秒の**前進を伴う着地**の左右差を評価。差1回は許容。過去の偏りは窓から消える |
-| 連打 | 同じ足の有効着地が続くと小さな罰則。交互着地ボーナス0.15→0.25 |
-| 着地荷重 | 各足の鉛直床反力を機体全重量mgで正規化。2.5倍を越えた部分の二乗を抑制 |
-| 接近速度 | 40 ms以上の非支持後の接地で、接触点の下向き接近速度を評価。初期落下・短いチャタリングは除外 |
-| bestの選択 | 前進・両脚の有効歩数・接触・姿勢の条件を通った候補で品質を比較。動かなくなった方策を滑らかさだけで選ばない |
-
-ピッチ・荷重の**報酬用の計測は物理刻み1 ms**です。50 Hzの最終フレームだけを見て衝撃や高周波振動を見落とすことを避けるためです。初期落下を除くため最初の0.5秒は品質集計から除外します。CSVは50 Hzで、各区間のRMS/ピークを記録します。1 kHz全生波形のCSVではありません。
-
-MuJoCo `mj_step` が直前に解いた動力学段階の速度・床反力を読みます。積分後のqposとの時刻差は最大1刻み程度あり、連続時間の最大荷重・厳密な着地インパルスではありません。接近速度は接触点の剛体速度 `v + omega × r` を使った代理量です。実材質の柔らかさや実モーターを同定した結果ではありません。
-
-既存の「歩数」判定は互換性のため50 Hzのままです。1 kHz側の `raw_touchdown_counts` は別の診断量で、歩行成功や着地ボーナスの回数には使いません。サーボの最大トルクや摩擦を増やして問題を隠す変更はありません。
-
-## 6. 品質の合格条件とログ
-
-整形ステージの歩行条件は従来の高さ・傾き・自己接触・非足底接触チェックを維持し、前進量を `max(80 mm, 指令距離の50%)`、左右各2回以上の前進着地にします。速度条件も保持します。
-
-追加の品質目安は、ピッチ角速度RMS ≤1.0 rad/s、ピッチの振れ幅 ≤25°、正規化actionの1周期差分RMS ≤0.25、左右前進着地数の差から1を引いた値/総数 ≤0.20、同じ足の連続着地割合 ≤0.25、各足のピーク鉛直荷重 ≤4.0 mgです。例えば5対4は許容、5対2は偏り条件に不合格です。これらは**設計上の初期判定値であり、サーボ定格・機構強度・人に対する安全上限ではありません。**
-
-評価JSONには `pitch_rate_rms_rad_s`, `roll_rate_rms_rad_s`, `body_pitch_peak_to_peak_deg`, `peak_sole_load_bw`, `action_delta_rms`, `target_error_rms_rad`, 既存のトルク・飽和率、`failed_checks` を保存します。TensorBoardは `eval_quality/*`, `eval_failed/*`, `robot_quality/*` を追加しています。
-
-ヘッドバンギングの原因は、現時点では報酬だけとは断定できません。接触時の力、目標追従誤差、トルク飽和が大きければ、制御・機構・接触モデルも原因候補です。今回の変更は、それを計測して切り分けつつ歩容を改善する最初の試行です。
-
-## 7. 中断・再開と次段階
-
-v3の学習を中断した場合はv3の保存物から再開します。
-
-```bash
-python train.py --resume runs/walk_refine/interrupted \
-  --num-envs 4 --total-timesteps 500000 --run-dir runs/walk_refine
-```
-
-`--total-timesteps` は追加の遷移数です。途中のシミュレーター/RNG/rolloutを完全復元するものではありません。
-
-整形が未達のまま速度だけ上げません。20回評価・映像・比較を確認してから、整形報酬を保持する `configs/walk_step2_smooth.json`（0.02〜0.04 m/s）へ移れます。旧 `walk_step2.json` はv2設定のままです。
-
-```bash
-python check_stage.py --evaluation outputs/after_refine.json
-# 上記の基準・映像を確認した後に実行する次段階
-python train.py --config configs/walk_step2_smooth.json \
-  --init-from runs/walk_refine/best --num-envs 4 \
-  --total-timesteps 2000000 --run-dir runs/walk_step2_smooth
-```
-
-負荷測定は `python benchmark.py --config configs/walk_refine.json --num-envs 1 4 6`。頭部形状、可動域、姿勢への補助力は一切変更しません。実機への転送や大きな蹴り出し・走行は今回の対象外です。
-
-## 8. 公式API確認先
-
-MuJoCoの速度はrot:lin順、接触力はcontact frameで返る仕様を確認して実装しています。API確認と実エンジンテストは別です。
-
-- MuJoCo `mj_objectVelocity` / `mj_contactForce`: https://mujoco.readthedocs.io/en/stable/APIreference/APIfunctions.html
-- MuJoCo passive viewer: https://mujoco.readthedocs.io/en/stable/python.html
-- SB3 PPO: https://stable-baselines3.readthedocs.io/en/master/modules/ppo.html
-
-旧説明は `docs/legacy/v2/`、元設計情報は `docs/R5_source_report.md`、今回のソース差分は `validation/changes_from_v2.patch` に収録しています。
+今回の配布環境ではMuJoCo/SB3依存の取得に失敗し、v4の物理実行・本学習・GUI・
+ユーザー方策の閉ループ再現は未実行です。単体テスト、実際の保存重みのPyTorch
+テンソルレベルでの転送試験、フィルターの独立参照実装との一致を、それらと区別
+して記録しています。詳細は `TEST_REPORT_ja.md` と `validation/` を参照。
+実機転送、電源・熱・ホーン・配線・CAD連続干渉、走行は対象外です。

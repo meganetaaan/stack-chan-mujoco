@@ -1,0 +1,24 @@
+{
+  "extends": "walk_lp40.json",
+  "env": {
+    "episode_seconds": 0.3,
+    "measurement_start_s": 0.02,
+    "command_start_s": 0.0,
+    "command_ramp_s": 0.02
+  },
+  "ppo": {
+    "n_steps": 64,
+    "batch_size": 32,
+    "n_epochs": 1,
+    "net_arch": [
+      64,
+      64
+    ]
+  },
+  "train": {
+    "total_timesteps": 128,
+    "eval_every_timesteps": 128,
+    "checkpoint_every_timesteps": 128,
+    "eval_episodes": 1
+  }
+}

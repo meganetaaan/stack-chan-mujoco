@@ -1,0 +1,22 @@
+{
+  "extends": "walk_lp40_baseline.json",
+  "env": {
+    "walk_objective_version": 4
+  },
+  "reward": {
+    "forward_progress": 0.5,
+    "overspeed": 1.0,
+    "overspeed_free_fraction": 0.1,
+    "action_rate": 0.6,
+    "action_acceleration": 0.15,
+    "repeated_step": 0.25,
+    "alternating_event": 0.3
+  },
+  "ppo": {
+    "learning_rate": 3e-05,
+    "ent_coef": 0.0005
+  },
+  "train": {
+    "selection_version": 4
+  }
+}

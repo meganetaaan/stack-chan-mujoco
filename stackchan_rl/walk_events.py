@@ -6,6 +6,7 @@ not a fabricated force or a change to the collision model.
 """
 from __future__ import annotations
 import numpy as np
+from .ordered_steps import OrderedStepCredit
 
 
 class WalkEventTracker:
@@ -44,6 +45,8 @@ class WalkEventTracker:
         self.rejected = {"short_airtime": 0, "low_clearance": 0,
                          "insufficient_other_support": 0, "unconfirmed_touch": 0}
         self.last_events: dict = {}
+        self.ordered_credit = (OrderedStepCredit(self.cooldown)
+                               if env_config.get("walk_objective_version") == 4 else None)
 
     def _qualified(self, i: int) -> bool:
         return bool(self.touched[i] and self.airtime[i] + 1e-10 >= self.min_air
@@ -149,11 +152,14 @@ class WalkEventTracker:
         self.previous_contacts[:] = contacts
         if active:
             out["no_step_elapsed_s"] = self.active_time-self._last_step_at
+        if self.ordered_credit is not None:
+            out.update(self.ordered_credit.update(out, self.t, active))
         self.last_events = out
         return out
 
     def summary(self) -> dict:
-        return {"qualified_liftoffs": self.liftoffs.tolist(),
+        return {**(self.ordered_credit.totals if self.ordered_credit else {}),
+                "qualified_liftoffs": self.liftoffs.tolist(),
                 "forward_landings": self.forward_counts.tolist(),
                 "forward_landing_sequence": list(self.forward_sequence),
                 "raw_unloads": self.raw_unloads.tolist(),

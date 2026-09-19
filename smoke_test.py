@@ -35,6 +35,15 @@ def main():
         ["train.py", "--resume", str(out / "refine/final"), "--run-dir", str(out / "refine_resume"),
          "--total-timesteps", "128", "--no-tensorboard"],
     ]
+    commands += [
+        ["check_env.py", "--config", "configs/walk_lp40.json", "--seconds", "0.2", "--out", str(out / "lp40_preflight.json")],
+        ["train.py", "--config", "configs/lp40_smoke.json", "--init-from", str(out / "refine/final"),
+         "--run-dir", str(out / "lp40"), "--num-envs", n, "--no-tensorboard"],
+        ["evaluate.py", "--checkpoint", str(out / "lp40/final"), "--episodes", "1", "--commands", "0.02",
+         "--out", str(out / "lp40_eval.json"), "--trajectories", str(out / "lp40_csv")],
+        ["train.py", "--resume", str(out / "lp40/final"), "--run-dir", str(out / "lp40_resume"),
+         "--total-timesteps", "128", "--no-tensorboard"],
+    ]
     records = []
     for i, command in enumerate(commands):
         cmd = [sys.executable, *command]

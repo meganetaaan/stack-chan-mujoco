@@ -1,59 +1,3 @@
-test_all_configs_validate (test_lp40.ContractTests.test_all_configs_validate) ... ok
-test_bad_versions_and_bad_controls_rejected (test_lp40.ContractTests.test_bad_versions_and_bad_controls_rejected) ... ok
-test_explicit_migration_succeeds_and_is_recorded (test_lp40.ContractTests.test_explicit_migration_succeeds_and_is_recorded) ... ok
-test_legacy_configuration_not_upgraded (test_lp40.ContractTests.test_legacy_configuration_not_upgraded) ... ok
-test_legacy_interface_unchanged (test_lp40.ContractTests.test_legacy_interface_unchanged) ... ok
-test_migration_does_not_bypass_other_mismatches (test_lp40.ContractTests.test_migration_does_not_bypass_other_mismatches) ... ok
-test_new_runtime_has_same_dimensions_but_distinct_contract (test_lp40.ContractTests.test_new_runtime_has_same_dimensions_but_distinct_contract) ... ok
-test_strict_loading_rejects_implicit_change (test_lp40.ContractTests.test_strict_loading_rejects_implicit_change) ... ok
-test_unknown_filter_refused (test_lp40.ContractTests.test_unknown_filter_refused) ... ok
-test_40ms_and_80ms_match_original_probe_exactly (test_lp40.FilterRegression.test_40ms_and_80ms_match_original_probe_exactly) ... ok
-test_constant_input_settles_and_preserves_delay (test_lp40.FilterRegression.test_constant_input_settles_and_preserves_delay) ... ok
-test_disabled_matches_v3_bitwise (test_lp40.FilterRegression.test_disabled_matches_v3_bitwise) ... ok
-test_exact_coefficient_at_physics_rate (test_lp40.FilterRegression.test_exact_coefficient_at_physics_rate) ... ok
-test_filter_does_not_violate_slew_or_torque_caps (test_lp40.FilterRegression.test_filter_does_not_violate_slew_or_torque_caps) ... ok
-test_invalid_tau_rejected (test_lp40.FilterRegression.test_invalid_tau_rejected) ... ok
-test_reset_clears_filter_and_transport_state (test_lp40.FilterRegression.test_reset_clears_filter_and_transport_state) ... ok
-test_cooldown_suppressed_landing_still_changes_predecessor (test_lp40.OrderedCreditTests.test_cooldown_suppressed_landing_still_changes_predecessor) ... ok
-test_first_then_opposite_then_repeat (test_lp40.OrderedCreditTests.test_first_then_opposite_then_repeat) ... ok
-test_in_place_landing_is_not_forward_alternation (test_lp40.OrderedCreditTests.test_in_place_landing_is_not_forward_alternation) ... ok
-test_legacy_raw_counts_identical_under_v4 (test_lp40.OrderedCreditTests.test_legacy_raw_counts_identical_under_v4) ... ok
-test_repeated_steps_cannot_fake_alternation (test_lp40.OrderedCreditTests.test_repeated_steps_cannot_fake_alternation) ... ok
-test_simultaneous_no_invented_order (test_lp40.OrderedCreditTests.test_simultaneous_no_invented_order) ... ok
-test_stop_no_step_credit (test_lp40.OrderedCreditTests.test_stop_no_step_credit) ... ok
-test_eighty_percent_does_not_hide_contact (test_lp40.PromotionV4Tests.test_eighty_percent_does_not_hide_contact) ... ok
-test_good_trials_can_promote (test_lp40.PromotionV4Tests.test_good_trials_can_promote) ... ok
-test_partial_not_accepted (test_lp40.PromotionV4Tests.test_partial_not_accepted) ... ok
-test_discrete_events_not_multiplied_by_dt (test_lp40.RewardV4Tests.test_discrete_events_not_multiplied_by_dt) ... ok
-test_extra_distance_not_repaid_later (test_lp40.RewardV4Tests.test_extra_distance_not_repaid_later) ... ok
-test_high_overspeed_cost_bounded (test_lp40.RewardV4Tests.test_high_overspeed_cost_bounded) ... ok
-test_progress_cap_matches_command_interval (test_lp40.RewardV4Tests.test_progress_cap_matches_command_interval) ... ok
-test_progress_uses_ramped_current_command (test_lp40.RewardV4Tests.test_progress_uses_ramped_current_command) ... ok
-test_raw_chatter_penalty_not_hidden_by_filter (test_lp40.RewardV4Tests.test_raw_chatter_penalty_not_hidden_by_filter) ... ok
-test_stop_event_rewards_are_zero (test_lp40.RewardV4Tests.test_stop_event_rewards_are_zero) ... ok
-test_strict_events_not_legacy_event_numbers (test_lp40.RewardV4Tests.test_strict_events_not_legacy_event_numbers) ... ok
-test_termination_only_penalty (test_lp40.RewardV4Tests.test_termination_only_penalty) ... ok
-test_velocity_zero_not_rewarded_and_matching_beats_overspeed (test_lp40.RewardV4Tests.test_velocity_zero_not_rewarded_and_matching_beats_overspeed) ... ok
-test_filtered_target_does_not_hide_raw_action_failure (test_lp40.TargetAndAcceptanceTests.test_filtered_target_does_not_hide_raw_action_failure) ... ok
-test_matching_gait_passes_new_gates (test_lp40.TargetAndAcceptanceTests.test_matching_gait_passes_new_gates) ... ok
-test_motionless_cannot_win_selection (test_lp40.TargetAndAcceptanceTests.test_motionless_cannot_win_selection) ... ok
-test_quality_selection_prefers_tracking_and_alternation (test_lp40.TargetAndAcceptanceTests.test_quality_selection_prefers_tracking_and_alternation) ... ok
-test_smooth_overspeed_fails_distance_gate (test_lp40.TargetAndAcceptanceTests.test_smooth_overspeed_fails_distance_gate) ... ok
-test_target_missing_is_not_pass (test_lp40.TargetAndAcceptanceTests.test_target_missing_is_not_pass) ... ok
-test_target_rms_mean_and_global_explicitly_distinguished (test_lp40.TargetAndAcceptanceTests.test_target_rms_mean_and_global_explicitly_distinguished) ... ok
-test_warmup_ignored_but_previous_target_tracks_it (test_lp40.TargetAndAcceptanceTests.test_warmup_ignored_but_previous_target_tracks_it) ... ok
-test_new_diagnosis_accepts_less_distance_when_tracking_improves (test_lp40.WorkflowV4Tests.test_new_diagnosis_accepts_less_distance_when_tracking_improves) ... ok
-test_pipeline_contains_v4_train_and_eval (test_lp40.WorkflowV4Tests.test_pipeline_contains_v4_train_and_eval) ... ok
-test_same_seed_comparison_rejects_different_filter (test_lp40.WorkflowV4Tests.test_same_seed_comparison_rejects_different_filter) ... ok
-test_smoke_architectures_match_all_transfers (test_lp40.WorkflowV4Tests.test_smoke_architectures_match_all_transfers) ... ok
-test_csv_schema_and_new_metrics (test_lp40_runtime.LP40Runtime.test_csv_schema_and_new_metrics) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v4 runtime NOT EXECUTED'
-test_legacy_actor_preserved_new_critic_new_filter (test_lp40_runtime.LP40Runtime.test_legacy_actor_preserved_new_critic_new_filter) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v4 runtime NOT EXECUTED'
-test_observation_is_post_filter_pre_delay (test_lp40_runtime.LP40Runtime.test_observation_is_post_filter_pre_delay) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v4 runtime NOT EXECUTED'
-test_production_matches_original_probe_physics_and_observation (test_lp40_runtime.LP40Runtime.test_production_matches_original_probe_physics_and_observation) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v4 runtime NOT EXECUTED'
-test_reset_repeatability_clears_all_stages (test_lp40_runtime.LP40Runtime.test_reset_repeatability_clears_all_stages) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v4 runtime NOT EXECUTED'
-test_sb3_contract (test_lp40_runtime.LP40Runtime.test_sb3_contract) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v4 runtime NOT EXECUTED'
-test_success_quality_and_new_selection_serialize (test_lp40_runtime.LP40Runtime.test_success_quality_and_new_selection_serialize) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v4 runtime NOT EXECUTED'
-test_true_sb3_transfer_save_load_resume (test_lp40_runtime.LP40Runtime.test_true_sb3_transfer_save_load_resume) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v4 runtime NOT EXECUTED'
 test_bundle_roundtrip_and_staged_replacement_without_SB3 (test_offline.CheckpointTests.test_bundle_roundtrip_and_staged_replacement_without_SB3) ... ok
 test_incomplete_checkpoint_rejected (test_offline.CheckpointTests.test_incomplete_checkpoint_rejected) ... ok
 test_actual_A_mass_and_ten_motors (test_offline.ConfigAndModelTests.test_actual_A_mass_and_ten_motors) ... ok
@@ -212,6 +156,6 @@ test_short_v2_PPO_and_saved_evaluation (test_walk_v2_runtime.WalkV2RuntimeTests.
 test_v2_episode_reports_event_diagnostics (test_walk_v2_runtime.WalkV2RuntimeTests.test_v2_episode_reports_event_diagnostics) ... skipped 'MuJoCo/Gymnasium/SB3 missing: v2 runtime NOT EXECUTED'
 
 ----------------------------------------------------------------------
-Ran 212 tests in 2.374s
+Ran 156 tests in 1.043s
 
-OK (skipped=30)
+OK (skipped=22)

@@ -18,6 +18,8 @@ DEFAULT: dict[str, Any] = {
         "episode_seconds": 10.0,
         "action_scale_rad": [0.14, 0.35, 0.45, 0.35, 0.14] * 2,
         "target_slew_rad_s": 2.0,
+        # 0 preserves every v1-v3 checkpoint. Updated at physics frequency.
+        "target_lowpass_time_constant_s": 0.0,
         "target_joint_margin_rad": 0.015,
         "max_outward_hip_spread_rad": math.radians(10),
         "actual_guard_margin_rad": 0.035,
@@ -105,6 +107,7 @@ DEFAULT: dict[str, Any] = {
         "pitch_free_deg": 8.0,
         "pitch_scale_deg": 8.0,
         "impact_free_bw": 2.5,
+        "overspeed_free_fraction": 0.10,
         "touchdown_free_speed_m_s": 0.05,
         "touchdown_speed_scale_m_s": 0.10,
     },
@@ -128,6 +131,11 @@ DEFAULT: dict[str, Any] = {
         "refine_max_step_excess_fraction": 0.20,
         "refine_max_repeat_fraction": 0.25,
         "refine_max_load_bw": 4.0,
+        # v4 quality gates; not applied to legacy objectives.
+        "refine_distance_ratio_min": 0.90,
+        "refine_distance_ratio_max": 1.10,
+        "refine_max_velocity_error_m_s": 0.012,
+        "refine_max_target_delta_rms_rad": 0.0125,
     },
     "ppo": {
         "learning_rate": 0.0003,
@@ -146,6 +154,7 @@ DEFAULT: dict[str, Any] = {
     },
     "transfer": {
         "actor_only": False,
+        "allow_target_lowpass_change": False,
         "evaluate_before_learning": False,
         "reset_log_std": None,
     },
@@ -209,14 +218,21 @@ def validate(c: dict) -> None:
     if c["task"] not in {"stand", "walk"}:
         raise ValueError("task must be stand or walk")
     e, p, t = c["env"], c["ppo"], c["train"]
-    if e["walk_objective_version"] not in (1, 2, 3) or t["selection_version"] not in (1, 2, 3):
-        raise ValueError("Only walk objective and selection versions 1, 2 or 3 are supported")
+    if e["walk_objective_version"] not in (1, 2, 3, 4) or t["selection_version"] not in (1, 2, 3, 4):
+        raise ValueError("Only walk objective and selection versions 1, 2, 3 or 4 are supported")
     if not isinstance(e["gait_quality_metrics"], bool) or not isinstance(c["transfer"]["evaluate_before_learning"], bool):
         raise ValueError("gait_quality_metrics / evaluate_before_learning must be boolean")
-    if e["walk_objective_version"] == 3 and (c["task"] != "walk" or not e["gait_quality_metrics"] or t["selection_version"] != 3):
-        raise ValueError("walk objective v3 requires walk, substep quality metrics, and selection v3")
-    if t["selection_version"] == 3 and e["walk_objective_version"] != 3:
-        raise ValueError("selection v3 requires walk objective v3")
+    if e["walk_objective_version"] in (3, 4) and (c["task"] != "walk" or not e["gait_quality_metrics"] or t["selection_version"] != e["walk_objective_version"]):
+        raise ValueError("walk objective v3/v4 requires walk, substep quality metrics, and matching selection version")
+    if t["selection_version"] in (3, 4) and e["walk_objective_version"] != t["selection_version"]:
+        raise ValueError("selection v3/v4 requires matching walk objective")
+    tau = e["target_lowpass_time_constant_s"]
+    if isinstance(tau, bool) or not isinstance(tau, (int, float)) or not math.isfinite(tau) or tau < 0:
+        raise ValueError("env.target_lowpass_time_constant_s must be finite and nonnegative")
+    if not isinstance(c["transfer"]["allow_target_lowpass_change"], bool):
+        raise ValueError("transfer.allow_target_lowpass_change must be boolean")
+    if not 0 < c["success"]["refine_distance_ratio_min"] < 1 < c["success"]["refine_distance_ratio_max"]:
+        raise ValueError("refine distance ratio interval must bracket 1")
     for k in ("quality_window_s", "touchdown_min_airtime_s"):
         if not isinstance(e[k], (int, float)) or not math.isfinite(e[k]) or e[k] <= 0:
             raise ValueError(f"env.{k} must be finite and positive")

@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 import traceback
 from .config import ROOT, load_config, validate, save_json, normalize_config
-from .checkpoints import versions, bundle_info, assert_interface, save_bundle
+from .checkpoints import versions, bundle_info, assert_interface, assert_transfer_interface, save_bundle
 from .spec import RobotSpec
 from .transfer import transfer_policy
 
@@ -81,7 +81,10 @@ def main(argv: list[str] | None = None) -> int:
         assert_interface(resume_data[2], cfg)
     init_data = bundle_info(args.init_from) if args.init_from else None
     if init_data:
-        assert_interface(init_data[2], cfg)
+        # First validate the old bundle against its own saved configuration.
+        assert_interface(init_data[2], init_data[1])
+        _, migration = assert_transfer_interface(init_data[2], cfg,
+                          allow_lowpass_change=cfg["transfer"]["allow_target_lowpass_change"])
         if init_data[1]["ppo"]["net_arch"] != cfg["ppo"]["net_arch"]:
             raise ValueError("--init-from requires the same net_arch as the saved policy")
     run_dir.mkdir(parents=True, exist_ok=True)
@@ -99,7 +102,7 @@ def main(argv: list[str] | None = None) -> int:
     class RunCallback(BaseCallback):
         def __init__(self):
             super().__init__(verbose=0)
-            self.best_key = (-float("inf"),) * (6 if cfg["train"]["selection_version"] in (2, 3) else 3)
+            self.best_key = (-float("inf"),) * (6 if cfg["train"]["selection_version"] in (2, 3, 4) else 3)
             if resume_data:
                 self.best_key = tuple(resume_data[3].get("metrics", {}).get("selection_key", self.best_key))
             if (run_dir / "best" / "READY").is_file():
@@ -132,7 +135,9 @@ def main(argv: list[str] | None = None) -> int:
                              "behavior", "success_checks", "reward_components", "event_rejections", "max_sole_clearance_m",
                              "quality_checks", "failed_checks", "pitch_rate_rms_rad_s", "roll_rate_rms_rad_s",
                              "body_pitch_peak_to_peak_deg", "peak_sole_load_bw", "target_error_rms_rad",
-                             "action_delta_rms", "mean_recent_step_imbalance_cost", "saturation_fraction")})
+                             "action_delta_rms", "mean_recent_step_imbalance_cost", "saturation_fraction",
+                             "target_delta_rms_rad_mean", "distance_tracking_abs_error_m", "command_distance_ratio",
+                             "step_repeat_fraction", "terminal_self_contact_pairs", "target_lowpass_time_constant_s")})
                     compact["num_timesteps"] = int(self.num_timesteps)
                     self.ep_file.write(json.dumps(compact) + "\n")
             if self.num_timesteps >= self.next_eval:
@@ -215,6 +220,8 @@ def main(argv: list[str] | None = None) -> int:
                 transfer = transfer_policy(previous.policy, agent.policy,
                     actor_only=cfg["transfer"]["actor_only"], reset_log_std=cfg["transfer"]["reset_log_std"])
                 transfer["source_checkpoint"] = str(init_data[0])
+                transfer["control_migration"] = migration
+                transfer["source_num_timesteps"] = init_data[3].get("num_timesteps")
                 save_json(run_dir / "transfer.json", transfer)
                 print("Transfer:", transfer, flush=True)
                 del previous
@@ -229,7 +236,7 @@ def main(argv: list[str] | None = None) -> int:
             print("Initial failed checks:", metrics.get("failed_check_counts", {}), flush=True)
             print("Initial quality:", metrics.get("mean_quality", {}), flush=True)
         print(f"Task={cfg['task']} | A-model mass={RobotSpec.load(cfg).mass:.4f}kg | "
-              f"{len(fns)} CPU envs | requested additional steps={cfg['train']['total_timesteps']}", flush=True)
+              f"LPF={cfg['env']['target_lowpass_time_constant_s']:.3f}s | {len(fns)} CPU envs | requested additional steps={cfg['train']['total_timesteps']}", flush=True)
         agent.learn(total_timesteps=cfg["train"]["total_timesteps"], callback=callback,
                     reset_num_timesteps=not bool(resume_data), tb_log_name=cfg["task"], progress_bar=False)
         metrics = evaluate_configured(agent, cfg)

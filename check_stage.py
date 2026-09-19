@@ -14,7 +14,7 @@ def check_report(report: dict, minimum_success: float) -> tuple[bool, list[dict]
     if not 0 < minimum_success <= 1:
         raise ValueError('minimum_success must be in (0,1]')
     groups=report.get('results')
-    if not report.get('physics_executed') or not isinstance(groups,list) or not groups:
+    if report.get('status') == 'IN_PROGRESS' or not report.get('physics_executed') or not isinstance(groups,list) or not groups:
         raise ValueError('Expected evaluate.py output with real rollout results')
     outcomes=[]
     for group in groups:
@@ -26,15 +26,21 @@ def check_report(report: dict, minimum_success: float) -> tuple[bool, list[dict]
             checks=s.get('success_checks',{})
             if not s.get('is_success') or not checks or not all(checks.values()):return False
             quality = s.get('quality_checks', {})
-            if s.get('walk_objective_version') == 3 and (not quality or not all(quality.values())):return False
+            if s.get('walk_objective_version') in (3, 4) and (not quality or not all(quality.values())):return False
             if abs(s.get('requested_forward_m_s',-1.)-command)>1e-8:return False
             if s.get('terminated') or not s.get('time_limit_reached'):return False
             if command > .003:
                 return min(s.get('valid_landings',[0,0]))>=2 and min(s.get('forward_landings',[0,0]))>=1 and s['forward_m']>=.025
             return True
         rate=sum(accepted(s) for s in episodes)/len(episodes)
+        v4 = any(s.get('walk_objective_version') == 4 for s in episodes)
+        # A high success fraction must not hide a contact violation in another
+        # seed when promoting the v4 control stage.
+        no_contacts = all(s.get('self_contact_steps',0) == 0 and s.get('bad_contact_steps',0) == 0 for s in episodes)
         outcomes.append({'command_m_s':command,'episodes':len(episodes),
-                         'verified_success_rate':rate,'pass':rate>=minimum_success})
+                         'verified_success_rate':rate,
+                         'contact_free_trials':no_contacts,
+                         'pass':rate>=minimum_success and (no_contacts or not v4)})
     return all(g['pass'] for g in outcomes),outcomes
 
 

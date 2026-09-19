@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "model_fingerprint": "fd52c6f9a48c468ff049caf0392a1d855c6d3566c5ebf81e93e58a9e5a97f27c",
+  "joint_order": [
+    "left_hip_roll",
+    "left_hip_pitch",
+    "left_knee",
+    "left_ankle_pitch",
+    "left_ankle_roll",
+    "right_hip_roll",
+    "right_hip_pitch",
+    "right_knee",
+    "right_ankle_pitch",
+    "right_ankle_roll"
+  ],
+  "observation_fields": [
+    {
+      "name": "projected_gravity_body",
+      "start": 0,
+      "stop": 3
+    },
+    {
+      "name": "linear_velocity_episode_heading",
+      "start": 3,
+      "stop": 6
+    },
+    {
+      "name": "angular_velocity_body",
+      "start": 6,
+      "stop": 9
+    },
+    {
+      "name": "joint_position_offset",
+      "start": 9,
+      "stop": 19
+    },
+    {
+      "name": "joint_velocity",
+      "start": 19,
+      "stop": 29
+    },
+    {
+      "name": "previous_action",
+      "start": 29,
+      "stop": 39
+    },
+    {
+      "name": "filtered_target_offset",
+      "start": 39,
+      "stop": 49
+    },
+    {
+      "name": "command_vx_vy_wz",
+      "start": 49,
+      "stop": 52
+    },
+    {
+      "name": "base_height_error",
+      "start": 52,
+      "stop": 53
+    },
+    {
+      "name": "position_tracking_error",
+      "start": 53,
+      "stop": 55
+    },
+    {
+      "name": "heading_error_sin_cos",
+      "start": 55,
+      "stop": 57
+    },
+    {
+      "name": "sole_contacts",
+      "start": 57,
+      "stop": 59
+    },
+    {
+      "name": "gait_phase_sin_cos",
+      "start": 59,
+      "stop": 61
+    }
+  ],
+  "observation_scaling_version": 1,
+  "home_joints": [
+    0.000104860283333,
+    0.441524946578,
+    -1.18540945229,
+    0.743884505711,
+    -0.000104860283333,
+    0.000104861036626,
+    0.441544930579,
+    -1.18545733825,
+    0.74391240767,
+    -0.000104861036626
+  ],
+  "control": {
+    "policy_hz": 50,
+    "action_scale_rad": [
+      0.14,
+      0.35,
+      0.45,
+      0.35,
+      0.14,
+      0.14,
+      0.35,
+      0.45,
+      0.35,
+      0.14
+    ],
+    "target_slew_rad_s": 2.0,
+    "target_joint_margin_rad": 0.015,
+    "max_outward_hip_spread_rad": 0.17453292519943295,
+    "obs_clip": 10.0,
+    "target_lowpass_time_constant_s": 0.04,
+    "target_lowpass_kind": "post_slew_v1"
+  },
+  "normalization": "fixed physical scales; no VecNormalize state"
+}
