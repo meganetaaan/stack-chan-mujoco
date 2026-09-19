@@ -26,10 +26,6 @@ def main():
     p.add_argument('--step-period',type=float,default=.27)
     p.add_argument('--height-offset-mm',type=float,default=0.)
     p.add_argument('--step-height-mm',type=float,default=4.)
-    p.add_argument('--constant-action',type=float,nargs=10,default=[0.]*10,
-                   help='ten bounded residual actions; order matches config joint order')
-    p.add_argument('--seed',type=int,default=310001)
-    p.add_argument('--randomize',action='store_true')
     a=p.parse_args()
     if a.out.exists() or not np.isfinite(a.speed) or a.steps<4:p.error('new output, finite speed, >=4 steps required')
     if not np.isfinite(a.com_forward_offset_mm) or abs(a.com_forward_offset_mm)>15:
@@ -42,11 +38,6 @@ def main():
         p.error('height offset must be in [-10,3] mm')
     if not np.isfinite(a.step_height_mm) or not 2<=a.step_height_mm<=10:
         p.error('step height must be in [2,10] mm')
-    action=np.asarray(a.constant_action)
-    if not np.isfinite(action).all() or np.any(abs(action)>1):
-        p.error('constant actions must be finite and in [-1,1]')
-    if 217000<=a.seed<=217019 or 218000<=a.seed<=218019:
-        p.error('acceptance seeds are reserved; this is a development probe')
     a.out.mkdir(parents=True);cad=a.cad_design.resolve()
     sys.path.insert(0,str(cad/'src'))
     from tab5_biped.core import PARAMS,smooth,SIDES
@@ -74,8 +65,7 @@ def main():
             'com_forward_offset_mm':a.com_forward_offset_mm,
             'step_period_s':period,'height_offset_mm':a.height_offset_mm,
             'step_height_mm':a.step_height_mm,'com_inset_mm':a.com_inset_mm,'steps':a.steps,
-            'controller':'joint reference plus static torque compensation and constant residual; no learned policy',
-            'constant_action':action.tolist(),'randomized':a.randomize,
+            'controller':'joint reference plus static torque compensation; zero learned residual',
             'runtime':{'python':sys.version,'numpy':np.__version__,'scipy':scipy.__version__,'mujoco':mujoco.__version__},
             'reference_generator_sha256':sha('probe_reference_gait.py'),
             'source_sha256':sha(__file__),'cad_inputs_sha256':{name:sha(cad/name) for name in ('robot.json','src/tab5_biped/core.py','src/tab5_biped/planner.py')}}
@@ -86,7 +76,7 @@ def main():
     reference_path=a.out/'reference.json.gz'
     with gzip.open(reference_path,'wt') as f:json.dump(reference,f)
     config=json.loads(Path('policies/r6_mounted_seed20260924/config.json').read_text())
-    config.update(schema='r6-residual-v1',reference=str(reference_path.resolve()),episode_s=float(duration),randomize=a.randomize)
+    config.update(schema='r6-residual-v1',reference=str(reference_path.resolve()),episode_s=float(duration),randomize=False)
     # Legacy constructor only accepts +0.10. Override its command-dependent
     # observations/reward explicitly after initialization; physics is unchanged.
     env=ResidualEnv(config,record=True)
@@ -94,29 +84,20 @@ def main():
     env.fingerprint['signed_reference_probe']={'requested_vx_m_s':a.speed,'source_sha256':sha(__file__)}
     (a.out/'config.json').write_text(json.dumps(config,indent=2)+'\n')
     try:
-        env.reset(seed=a.seed,options={'randomize':a.randomize})
-        def current_yaw():
-            rot=env.data.xmat[env.base].reshape(3,3)
-            return float(np.arctan2(rot[1,0],rot[0,0]))
-        yaws=[current_yaw()]
+        env.reset(seed=310001,options={'randomize':False})
         while True:
-            _,_,done,truncated,info=env.step(action)
-            yaws.append(current_yaw())
+            _,_,done,truncated,info=env.step(np.zeros(10))
             if done or truncated:break
         env.save_trajectory(a.out/'states.npz')
         states=np.asarray(env.states);late=states[:,0]>=2.
         rate=float(np.polyfit(states[late,0],states[late,1],1)[0]) if np.count_nonzero(late)>20 else None
-        yaw=np.unwrap(yaws)
-        yaw_rate=float(np.polyfit(states[late,0],yaw[late],1)[0]) if np.count_nonzero(late)>20 else None
         contacts=[]
         for contact in env.data.contact:
             if contact.dist<0:
                 contacts.append({'geom1':env.model.geom(int(contact.geom1)).name,
                                  'geom2':env.model.geom(int(contact.geom2)).name,
                                  'distance_m':float(contact.dist)})
-        report.update(physics_executed=True,seed=a.seed,**info,late_forward_speed_m_s=rate,
-                      late_yaw_rate_rad_s=yaw_rate,final_yaw_change_rad=float(yaw[-1]-yaw[0]),
-                      lateral_displacement_m=float(env.data.xpos[env.base,1]-env.start[1]),
+        report.update(physics_executed=True,seed=310001,**info,late_forward_speed_m_s=rate,
                       terminal_penetrating_contacts=contacts,
                       interface=env.fingerprint,trajectory_sha256=sha(a.out/'states.npz'),
                       reference_sha256=sha(reference_path))

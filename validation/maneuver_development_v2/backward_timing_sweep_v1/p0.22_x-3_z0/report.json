@@ -1,0 +1,234 @@
+{
+  "scope": "Signed reference and unassisted development probe; not maneuver acceptance",
+  "requested_vx_m_s": -0.05,
+  "planning_failure": null,
+  "physics_executed": true,
+  "com_forward_offset_mm": -3.0,
+  "step_period_s": 0.22,
+  "height_offset_mm": 0.0,
+  "step_height_mm": 4.0,
+  "com_inset_mm": 24.0,
+  "steps": 24,
+  "controller": "joint reference plus static torque compensation; zero learned residual",
+  "runtime": {
+    "python": "3.14.7 (main, Aug  7 2026, 02:26:00) [Clang 22.1.3 ]",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "mujoco": "3.13.0"
+  },
+  "reference_generator_sha256": "034b5235341b38afc2b5c157ba5017d8c2f0fd139a797bd1f517c707d473d7cd",
+  "source_sha256": "da19131aaa168aaaa4fa4c9a0154c574d897a7f8a52b6b4066f91c148d486b0d",
+  "cad_inputs_sha256": {
+    "robot.json": "81f32b0a39c56d09ffc3329bfcd5acb0f99f358761a246d5d436be0780c2ca25",
+    "src/tab5_biped/core.py": "9a16813b61435492746dc3cb7d7e765a7a7432e47ab29c266ce011742da5c322",
+    "src/tab5_biped/planner.py": "f54a0a680412715d3f0abbbd9495e5c7aeb255d9ba71fbef76df07e150c7025b"
+  },
+  "seed": 310001,
+  "failure": null,
+  "time_s": 6.280000000000432,
+  "forward_m": -0.06494668106828522,
+  "crossing_time_s": null,
+  "valid_landings": [
+    8,
+    7
+  ],
+  "parameters": {
+    "mass_scale": 1.0,
+    "base_com_shift_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "friction": 0.8,
+    "torque_scale": 1.0,
+    "speed_scale": 1.0,
+    "extra_delay_s": 0.0,
+    "gravity_noise_std": 0.002,
+    "gyro_noise_std_rad_s": 0.01,
+    "gyro_bias_std_rad_s": 0.002,
+    "initial_joint_offsets_rad": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_bias_rad_s": [
+      -0.0005380829166705351,
+      0.0003894736451805527,
+      -0.001350091995107885
+    ],
+    "battery_included_total_mass_kg": 0.8659818914640227,
+    "initial_com_world_m": [
+      -0.0107771559496696,
+      -9.212361622270617e-08,
+      0.11221618213113269
+    ],
+    "motor_caps_Nm": [
+      0.45,
+      0.26,
+      0.45,
+      0.26,
+      0.26,
+      0.45,
+      0.26,
+      0.45,
+      0.26,
+      0.26
+    ],
+    "motor_speeds_rad_s": [
+      8.482300164692441,
+      10.786134777324955,
+      8.482300164692441,
+      10.786134777324955,
+      10.786134777324955,
+      8.482300164692441,
+      10.786134777324955,
+      8.482300164692441,
+      10.786134777324955,
+      10.786134777324955
+    ],
+    "effective_delay_s": 0.01,
+    "randomized": false
+  },
+  "saturation_fraction": [
+    0.0,
+    0.006210191082802548,
+    0.0,
+    0.012898089171974523,
+    0.016560509554140127,
+    0.0,
+    0.006369426751592357,
+    0.0,
+    0.0030254777070063696,
+    0.022770700636942674
+  ],
+  "peak_continuous_saturation_s": [
+    0.0,
+    0.017,
+    0.0,
+    0.07,
+    0.017,
+    0.0,
+    0.012,
+    0.0,
+    0.009000000000000001,
+    0.031
+  ],
+  "peak_one_second_saturation_duty": [
+    0.0,
+    0.027,
+    0.0,
+    0.081,
+    0.046,
+    0.0,
+    0.018,
+    0.0,
+    0.01,
+    0.048
+  ],
+  "late_forward_speed_m_s": -0.010008777650907647,
+  "terminal_penetrating_contacts": [
+    {
+      "geom1": "floor",
+      "geom2": "col_left_sole_TPU_0",
+      "distance_m": -0.00036820336761690794
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_left_sole_TPU_0",
+      "distance_m": -0.00018564641053496044
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_right_sole_TPU_0",
+      "distance_m": -0.00011328613757967572
+    }
+  ],
+  "interface": {
+    "schema": "r6-residual-v1",
+    "model_sha256": "31e25ff2b4d25255482368c557ddd62ba79f04ce2b87a8ade414407a7eec2500",
+    "robot_sha256": "84a5e9eaaced0954a204791ff61d3d745e291268f7a1806b4b64dc9b6d2563ca",
+    "reference_sha256": "b26d9c8c9163f2f09168a653841c087e5ef19735bd2835294e56cedfa90aa136",
+    "source_sha256": {
+      "stackchan_rl/residual.py": "d0370eef86fbec9d1659c2ae3f8362207e56f6e2f6d8c750b6a320ca9abf8ef6",
+      "stackchan_rl/actuation.py": "08fb037114c07e47a52b7b722910dd90edf8f5e78be26adbc8784e0f38fc9351",
+      "stackchan_rl/walk_events.py": "0a33e2df8f4442807adf395721a247cfbdb4a8597cca6f6f3f617cd8798286d6",
+      "stackchan_rl/ordered_steps.py": "c7aa08f0fecfd55ba5a7287b5418a58c3636d96d8b3f2bcdaea3d01d1c2be1ea",
+      "stackchan_rl/config.py": "61740892a46f533af6095ca4ab441fa7d35873d45f5c700eeef0915798f563c4"
+    },
+    "observation_fields": [
+      [
+        "reference_q",
+        10
+      ],
+      [
+        "q_minus_reference",
+        10
+      ],
+      [
+        "joint_velocity_div10",
+        10
+      ],
+      [
+        "noisy_projected_gravity",
+        3
+      ],
+      [
+        "noisy_gyro_div10",
+        3
+      ],
+      [
+        "body_velocity",
+        3
+      ],
+      [
+        "previous_action",
+        10
+      ],
+      [
+        "filtered_minus_reference",
+        10
+      ],
+      [
+        "command",
+        1
+      ],
+      [
+        "phase_sin_cos",
+        2
+      ],
+      [
+        "planned_support",
+        2
+      ],
+      [
+        "height_error",
+        1
+      ]
+    ],
+    "joint_order": [
+      "left_hip_roll",
+      "left_hip_pitch",
+      "left_knee",
+      "left_ankle_pitch",
+      "left_ankle_roll",
+      "right_hip_roll",
+      "right_hip_pitch",
+      "right_knee",
+      "right_ankle_pitch",
+      "right_ankle_roll"
+    ],
+    "signed_reference_probe": {
+      "requested_vx_m_s": -0.05,
+      "source_sha256": "da19131aaa168aaaa4fa4c9a0154c574d897a7f8a52b6b4066f91c148d486b0d"
+    }
+  },
+  "trajectory_sha256": "52d13b26222f814533464f10b4a9105af219898cd70312de2f5832bd9b286c9f",
+  "reference_sha256": "b26d9c8c9163f2f09168a653841c087e5ef19735bd2835294e56cedfa90aa136"
+}

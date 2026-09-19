@@ -7,6 +7,15 @@ from stackchan_rl.maneuver_protocol import validate,command_at,score_motion
 
 
 class ManeuverProtocolTests(unittest.TestCase):
+    def test_partial_diagnostics_never_pass_the_full_schedule(self):
+        t, xy, yaw = self.perfect_trace()
+        keep = t <= 7.00000001
+        result = score_motion(self.p, t[keep], xy[keep], yaw[keep], allow_partial=True)
+        self.assertFalse(result['motion_pass'])
+        self.assertFalse(result['complete_schedule'])
+        self.assertEqual(len(result['segments']), 1)
+        self.assertTrue(result['segments'][0]['motion_pass'])
+
     def setUp(self):
         self.p=json.loads((Path(__file__).resolve().parents[1]/'configs/maneuver/acceptance_v1.json').read_text())
 

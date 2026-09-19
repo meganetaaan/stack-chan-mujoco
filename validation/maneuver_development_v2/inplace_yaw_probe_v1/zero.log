@@ -1,0 +1,112 @@
+{
+  "scope": "Signed reference and unassisted development probe; not maneuver acceptance",
+  "requested_vx_m_s": 0.0,
+  "planning_failure": null,
+  "physics_executed": true,
+  "com_forward_offset_mm": 0.0,
+  "step_period_s": 0.32,
+  "height_offset_mm": 0.0,
+  "step_height_mm": 4.0,
+  "com_inset_mm": 24.0,
+  "steps": 24,
+  "controller": "joint reference plus static torque compensation and constant residual; no learned policy",
+  "constant_action": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "randomized": false,
+  "runtime": {
+    "python": "3.14.7 (main, Aug  7 2026, 02:26:00) [Clang 22.1.3 ]",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "mujoco": "3.13.0"
+  },
+  "reference_generator_sha256": "034b5235341b38afc2b5c157ba5017d8c2f0fd139a797bd1f517c707d473d7cd",
+  "source_sha256": "7e42e21dc9b3ecc19dac7ad1c5d1f3fc8871054d843498b54bc21d6d6ee42bf9",
+  "cad_inputs_sha256": {
+    "robot.json": "81f32b0a39c56d09ffc3329bfcd5acb0f99f358761a246d5d436be0780c2ca25",
+    "src/tab5_biped/core.py": "9a16813b61435492746dc3cb7d7e765a7a7432e47ab29c266ce011742da5c322",
+    "src/tab5_biped/planner.py": "f54a0a680412715d3f0abbbd9495e5c7aeb255d9ba71fbef76df07e150c7025b"
+  },
+  "seed": 310001,
+  "failure": null,
+  "time_s": 8.680000000000629,
+  "forward_m": 0.007741866809223904,
+  "crossing_time_s": null,
+  "valid_landings": [
+    11,
+    11
+  ],
+  "saturation_fraction": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "peak_continuous_saturation_s": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "peak_one_second_saturation_duty": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "late_forward_speed_m_s": 0.001063936866879745,
+  "late_yaw_rate_rad_s": 8.742087411174272e-06,
+  "final_yaw_change_rad": -0.0007002126022822639,
+  "lateral_displacement_m": -0.012487018884712391,
+  "terminal_penetrating_contacts": [
+    {
+      "geom1": "floor",
+      "geom2": "col_right_sole_TPU_0",
+      "distance_m": -0.00015647868996076478
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_right_sole_TPU_0",
+      "distance_m": -0.00014918386565618844
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_right_sole_TPU_0",
+      "distance_m": -0.00020707207463484343
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_right_sole_TPU_0",
+      "distance_m": -0.0001997772503302671
+    }
+  ],
+  "trajectory_sha256": "bc5ba12f0bbf2689fa874eea9bff75c25764cf4aaddf4c308066908db5e882c8",
+  "reference_sha256": "0988bafca10b453cb9e2ebc0050e16ae3d7181cdb2e733a0eec493e3903a9978"
+}

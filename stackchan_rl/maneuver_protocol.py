@@ -38,13 +38,14 @@ def command_at(protocol,time_s):
     return index,np.array([s['vx_m_s'],0.,s['yaw_rate_rad_s']])
 
 
-def score_motion(protocol,times,positions_xy,yaw_rad):
+def score_motion(protocol,times,positions_xy,yaw_rad,*,allow_partial=False):
     boundaries=validate(protocol);t=np.asarray(times);xy=np.asarray(positions_xy);yaw=np.unwrap(yaw_rad)
     if t.ndim!=1 or xy.shape!=(len(t),2) or yaw.shape!=t.shape:raise ValueError('unaligned motion arrays')
     if not all(np.isfinite(x).all() for x in (t,xy,yaw)):raise ValueError('nonfinite motion')
     dt=np.diff(t)
     if len(dt)<2 or np.any(dt<=0) or np.max(dt)>.020000001:raise ValueError('requires complete samples at <=20 ms')
-    if abs(t[0])>1e-9 or abs(t[-1]-boundaries[-1])>1e-8:raise ValueError('incomplete scheduled motion')
+    complete=abs(t[-1]-boundaries[-1])<=1e-8
+    if abs(t[0])>1e-9 or t[-1]>boundaries[-1]+1e-8 or (not complete and not allow_partial):raise ValueError('incomplete scheduled motion')
     velocity=np.diff(xy,axis=0)/dt[:,None];angle=(yaw[1:]+yaw[:-1])/2
     vx=velocity[:,0]*np.cos(angle)+velocity[:,1]*np.sin(angle)
     vy=-velocity[:,0]*np.sin(angle)+velocity[:,1]*np.cos(angle)
@@ -52,6 +53,7 @@ def score_motion(protocol,times,positions_xy,yaw_rad):
     th=protocol['thresholds'];rows=[]
     for i,s in enumerate(protocol['segments']):
         start,end=boundaries[i:i+2]
+        if end>t[-1]+1e-8:break
         first=int(np.argmin(abs(t-start)));last=int(np.argmin(abs(t-end)))
         if abs(t[first]-start)>1e-8 or abs(t[last]-end)>1e-8:raise ValueError('segment boundary sample missing')
         stable=np.flatnonzero((t[:-1]>=start+protocol['settling_time_s']-1e-9)&(t[1:]<=end+1e-9))
@@ -82,4 +84,5 @@ def score_motion(protocol,times,positions_xy,yaw_rad):
         rows.append({'name':s['name'],'start_s':float(start),'end_s':float(end),'metrics':metrics,'violations':failures,
                      'body_forward_displacement_m':fwd,'yaw_change_rad':turn,'motion_pass':not failures})
     return {'scope':'measured motion only; physics safety must be evaluated separately',
-            'motion_pass':all(r['motion_pass'] for r in rows),'segments':rows}
+            'complete_schedule':bool(complete),
+            'motion_pass':bool(complete and all(r['motion_pass'] for r in rows)),'segments':rows}
