@@ -146,3 +146,12 @@ python run_planned_r6_evaluation.py --checkpoint policies/r6_steering_seed202609
 `validation/r6_steering_seed20260923` に全40試行と独立記録監査を保存。固定107000–107019、ランダム化108000–108019とも20/20。全試行で100秒以内に10 mを通過し、109.5秒まで物理的失敗なし。これは `assets/r6_base_collisions` と公開設定の仮定モデルに限る。5,475行動の再計算誤差は最大3.28e-7、初期方策からの行動変化RMSは0.010087。固定具追加後の再評価、電源同定、実機評価は未実施。
 
 最新合格方策の固定・ランダム化試行00の全実状態再生動画を `validation/r6_steering_seed20260923/videos` に保存。各5,476フレーム、50 fps、実状態時刻0～109.5秒。動画ハッシュとフレーム数を検査済み。ロボットの補間や合成動作は使わない。
+
+## 固定具込みモデルへの転移学習
+
+```sh
+python train_mounted_residual.py --checkpoint policies/r6_steering_seed20260923 --out runs/r6_mounted_seed20260924 --seed 20260924
+python run_planned_r6_evaluation.py --checkpoint runs/r6_mounted_seed20260924 --seed-plan configs/r6/mounted_evaluation_seeds.json --out outputs/r6_mounted_acceptance
+```
+
+前者は胴体質量・慣性・接触を更新した `assets/r6_mounted_battery` 上で32,768ステップのPPOを行う。親の重みを移植し、オプティマイザは新規。親の読み込み後に新seedでPPOを構築する。学習・評価の完了は各結果ファイルで確認する。従来モデルの20/20を固定具込みモデルの成績として扱わない。

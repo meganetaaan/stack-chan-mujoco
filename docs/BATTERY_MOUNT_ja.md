@@ -25,3 +25,16 @@
 ```sh
 .venv-cad/bin/python check_battery_mount_trajectory.py --design outputs/design_r6_base_collisions --mount validation/battery_mount_review_v1 --trial validation/r6_steering_seed20260923/fixed/trial_00 --out outputs/battery_mount_fixed00_sampled.json
 ```
+
+## 固定具を反映したMuJoCo候補
+
+`assets/r6_mounted_battery` に固定具込みの別モデルを保存。総質量865.9819 g（従来855.2842 g）、差分10.6977 g。胴体リンク重心は(5.32142, 0.00884, 69.19325) mm。胴体の全慣性テンソルをCAD部品から平行軸の定理で再計算した。これは機体全体重心とは異なる。機体全体重心は姿勢に依存し、各試行の記録で確認する。
+
+トレーは構成箱、ベルトは中空部分を残した6個の凸プリズム、M3締結具は各1個の外接箱で接触を表現。CAD被覆の欠損体積は各0 mm³。トレーのねじ穴と締結具の軸周囲は保守的に埋まる。元の胴体レールの接触簡略化は残る。URDFを今回の候補へ転用せず、MJCFのみを出力する。
+
+```sh
+.venv-cad/bin/python integrate_battery_mount.py --design outputs/design_r6_base_collisions --mount validation/battery_mount_review_v2 --out outputs/r6_mounted_battery
+/home/sskw/stackchan-mujoco/.venv/bin/python -m unittest discover -s tests -p 'test_mounted_battery.py'
+```
+
+新規出力先を指定する。2テストにより、胴体以外の質量特性・関節・アクチュエータ設定の不変性、固定具質量の増分、コンパイル済み接触形状・電池位置・重力を確認した。歩行合格の証拠ではない。新しいモデルでは `train_mounted_residual.py` により既存の学習済み重みを初期値としてPPOを実行し、`configs/r6/mounted_evaluation_seeds.json` の別シードで評価する。
