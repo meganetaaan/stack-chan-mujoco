@@ -26,12 +26,13 @@ class MovingCOMReference:
     Kinematic reference only: quasistatic CoP feasibility does not include the
     acceleration needed to execute these minimum-jerk motions.
     """
-    def __init__(self, planner, pose, smooth, sides):
+    def __init__(self, planner, pose, smooth, sides, com_forward_offset_m=0.):
         self.initial_feet = planner.initial_feet.copy()
         self.q0, self.b0 = planner.q0.copy(), planner.b0.copy()
         self.seed = (self.q0, self.b0)
         self.g, self.steps = planner.g, planner.steps
         self.pose, self.smooth, self.sides = pose, smooth, sides
+        self.com_forward_offset_m = com_forward_offset_m
 
     def sample(self, time_s):
         g = self.g
@@ -72,6 +73,7 @@ class MovingCOMReference:
                 xy[1] = previous_y+(xy[1]-previous_y)*blend
                 support = (1-blend)*previous_support+blend*np.array([.5,.5])
                 phase = "finish"
+        xy[0] += self.com_forward_offset_m
         q, base, error = self.pose(feet, xy, self.seed, self.b0[2,3])
         self.seed = (q, base)
         return SimpleNamespace(q=q, base=base, support=support, phase=phase)
@@ -90,7 +92,13 @@ def main():
                         help="Add estimated static torque/kp to position targets, still subject to slew, LPF and torque limits")
     parser.add_argument("--slew", type=float, default=2.)
     parser.add_argument("--height-offset-mm", type=float, default=0.)
+    parser.add_argument("--com-forward-offset-mm", type=float, default=0.,
+                        help="Fore-aft COM offset relative to foot-midpoint reference; moving-com only")
     args = parser.parse_args()
+    if not np.isfinite(args.com_forward_offset_mm) or abs(args.com_forward_offset_mm) > 15:
+        parser.error("COM forward offset must be finite and within +/-15 mm")
+    if args.com_forward_offset_mm and args.reference_mode != "moving-com":
+        parser.error("COM forward offset requires moving-com reference")
     if not np.isfinite(args.speed) or args.speed < 0 or not np.isfinite(args.step_period) or args.step_period <= 0 or args.steps < 1:
         parser.error("finite nonnegative speed, positive period and step count required")
     if not np.isfinite(args.com_inset_mm) or not 0 <= args.com_inset_mm < 26:
@@ -115,7 +123,7 @@ def main():
             (planner.q0, planner.b0), planner.b0[2,3]+args.height_offset_mm/1000)
         planner.seed = (planner.q0, planner.b0)
     if args.reference_mode == "moving-com":
-        planner = MovingCOMReference(planner, pose, smooth, SIDES)
+        planner = MovingCOMReference(planner, pose, smooth, SIDES, args.com_forward_offset_mm/1000)
     end = 1.+args.steps*args.step_period+.5
     times = np.arange(0, end+dt/2, dt)
     samples, planning_failure = [], None
@@ -143,6 +151,7 @@ def main():
         "speed_request_m_s": args.speed, "step_period_s": args.step_period,
         "reference_mode": args.reference_mode,
         "height_offset_mm": args.height_offset_mm,
+        "com_forward_offset_mm": args.com_forward_offset_mm,
         "gait": PARAMS["gait"], "planning_failure": planning_failure,
         "source_sha256": {name: hashlib.sha256((design/name).read_bytes()).hexdigest()
                            for name in ("robot.json", "models/scene.xml", "models/inertials.json", "src/tab5_biped/core.py", "src/tab5_biped/planner.py")},

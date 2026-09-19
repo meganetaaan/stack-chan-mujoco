@@ -42,3 +42,12 @@ class ReferenceContinuityTests(unittest.TestCase):
         np.testing.assert_allclose(end.q[:6].reshape(2,3)[:,0], [.08,.06])
         np.testing.assert_allclose(end.base[:2,3], [.07,0.], atol=1e-12)
         np.testing.assert_allclose(end.support, [.5,.5])
+
+    def test_com_offset_preserves_foot_and_support_trajectories(self):
+        reference, shifted = self.planner(), self.planner()
+        shifted.com_forward_offset_m = -.006
+        for t in np.linspace(0, 3., 151):
+            a, b = reference.sample(t), shifted.sample(t)
+            np.testing.assert_allclose(a.q, b.q, atol=1e-12)
+            np.testing.assert_allclose(a.support, b.support, atol=1e-12)
+            np.testing.assert_allclose(b.base[:3,3]-a.base[:3,3], [-.006,0,0], atol=1e-12)
