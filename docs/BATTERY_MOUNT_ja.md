@@ -15,3 +15,13 @@
 出力先は新規ディレクトリを指定する。`validation/battery_mount_review_v1` にトレーSTEP/STL、変更する胴体と電池のSTEP、検査結果・入力ハッシュを保存した。組立STEPは同コマンドで生成できる。
 
 残作業は、動作中の脚との干渉、ベルト経路・締結具の形状と作業空間、電池端子・交換経路、保持強度、公差、衝突モデルと質量・慣性の再生成、最終構成の歩行評価。電気的適合は `docs/POWER_ja.md` の未確定項目を引き継ぐ。
+
+## ベルト・締結具の形状追加と歩行姿勢検査
+
+`validation/battery_mount_review_v2` に保持ベルトとM3締結具2組の形状を追加。全て有効な一体ソリッドで、静止姿勢の既存部品・トレーとの体積干渉はなかった。ねじ・ナットは融合した外形モデルで、ねじ山、締付け力、ベルトの留め部・変形は未モデル化。質量は前記仮定を維持する。現在の生成コマンドはv2を出力する。v1の厳密な再生成にはコミット `0d8e607` の生成スクリプトを使用する。
+
+固定条件の実記録 `validation/r6_steering_seed20260923/fixed/trial_00` から250フレーム間隔、終端、各関節の最大・最小角を選んだ39姿勢で、トレーと移動後の電池を既存機械部品と検査した。体積干渉なし。記録は固定具追加前の歩行であり、固定具込みの動力学成功を示さない。ベルト・締結具はこの39姿勢検査の対象外。全連続姿勢の保証でもない。
+
+```sh
+.venv-cad/bin/python check_battery_mount_trajectory.py --design outputs/design_r6_base_collisions --mount validation/battery_mount_review_v1 --trial validation/r6_steering_seed20260923/fixed/trial_00 --out outputs/battery_mount_fixed00_sampled.json
+```
