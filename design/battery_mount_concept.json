@@ -1,0 +1,212 @@
+{
+  "status": "unbuilt_mount_concept_pending_CAD_and_clearance_checks",
+  "units": "mm; kg for explicit mass assumptions",
+  "preserve": {
+    "body_mm": [
+      128,
+      128,
+      128
+    ],
+    "thigh_mm": 50,
+    "shin_mm": 44,
+    "foot_mm": [
+      94,
+      52
+    ]
+  },
+  "battery_center_base_mm": [
+    -1,
+    0,
+    80
+  ],
+  "battery_size_mm": [
+    20.5,
+    70.4,
+    38.4
+  ],
+  "battery_mass_kg": 0.103,
+  "clearance_per_side_mm": 0.4,
+  "tray_floor": {
+    "size_mm": [
+      24.3,
+      74.2,
+      1.5
+    ],
+    "center_mm": [
+      -1,
+      0,
+      60.05
+    ]
+  },
+  "long_walls": [
+    {
+      "size_mm": [
+        1.5,
+        74.2,
+        8
+      ],
+      "center_mm": [
+        -12.4,
+        0,
+        64.8
+      ]
+    },
+    {
+      "size_mm": [
+        1.5,
+        74.2,
+        8
+      ],
+      "center_mm": [
+        10.4,
+        0,
+        64.8
+      ]
+    }
+  ],
+  "corner_end_stops": [
+    {
+      "size_mm": [
+        3,
+        1.5,
+        3
+      ],
+      "center_mm": [
+        -10.15,
+        -36.35,
+        62.3
+      ]
+    },
+    {
+      "size_mm": [
+        3,
+        1.5,
+        3
+      ],
+      "center_mm": [
+        -10.15,
+        36.35,
+        62.3
+      ]
+    },
+    {
+      "size_mm": [
+        3,
+        1.5,
+        3
+      ],
+      "center_mm": [
+        8.15,
+        -36.35,
+        62.3
+      ]
+    },
+    {
+      "size_mm": [
+        3,
+        1.5,
+        3
+      ],
+      "center_mm": [
+        8.15,
+        36.35,
+        62.3
+      ]
+    }
+  ],
+  "mount_pads": [
+    {
+      "size_mm": [
+        14,
+        10,
+        2.4
+      ],
+      "center_mm": [
+        -46,
+        -22,
+        53.4
+      ]
+    },
+    {
+      "size_mm": [
+        14,
+        10,
+        2.4
+      ],
+      "center_mm": [
+        -46,
+        22,
+        53.4
+      ]
+    }
+  ],
+  "support_webs": [
+    {
+      "size_mm": [
+        32.35,
+        2.4,
+        6
+      ],
+      "center_mm": [
+        -27.825,
+        -22,
+        57.6
+      ]
+    },
+    {
+      "size_mm": [
+        32.35,
+        2.4,
+        6
+      ],
+      "center_mm": [
+        -27.825,
+        22,
+        57.6
+      ]
+    }
+  ],
+  "proposed_hole_axes": [
+    {
+      "x_mm": -49,
+      "y_mm": -22,
+      "axis": "Z",
+      "clearance_diameter_mm": 3.4
+    },
+    {
+      "x_mm": -49,
+      "y_mm": 22,
+      "axis": "Z",
+      "clearance_diameter_mm": 3.4
+    }
+  ],
+  "frame_rail_z_range_mm": [
+    49.8,
+    52.2
+  ],
+  "strap": {
+    "width_mm": 8,
+    "thickness_envelope_mm": 0.5,
+    "center_y_mm": 0,
+    "mass_assumption_kg": 0.0012,
+    "routing": "closed loop around tray and battery; clear both battery end faces"
+  },
+  "fasteners": {
+    "quantity": 2,
+    "proposal": "M3 through-bolt, washer, nut; final engagement and access require CAD check",
+    "mass_assumption_each_kg": 0.001
+  },
+  "mass_accounting": "Add CAD-derived printed mass, strap and fasteners explicitly. Do not silently deduct them from existing cable reservations.",
+  "electrical_compatibility_verified": false,
+  "connector_geometry_verified": false,
+  "checks_required": [
+    "tray and support single-solid validity",
+    "battery retention and insertion/removal path",
+    "both end connector service regions",
+    "converter clearance after -1 mm battery shift",
+    "moving-leg CAD clearance and conservative collision coverage",
+    "mount holes only in internal rails; no exterior shape change",
+    "new mass and inertia generation",
+    "repeat policy evaluation on final mounted model"
+  ]
+}
