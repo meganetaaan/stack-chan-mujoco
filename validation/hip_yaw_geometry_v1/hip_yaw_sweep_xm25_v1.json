@@ -1,0 +1,484 @@
+{
+  "scope": "Exact-CAD sampled clearance for a hypothetical yaw-before-roll arrangement.\n\nExisting complete legs, roll motors and their cradles rotate together about\nvertical lines. This is a geometry feasibility probe, not a connected mechanism\nor an unassisted dynamics result. No brackets, shaft offsets or bearings added.\n",
+  "axis_base_x_mm": -25.0,
+  "axis_base_y_mm": [
+    22,
+    -22
+  ],
+  "TTL_shift_z_mm": 12,
+  "joint_pose_rad": [
+    0.0,
+    0.6,
+    -1.2,
+    0.6,
+    0.0,
+    0.0,
+    0.6,
+    -1.2,
+    0.6,
+    0.0
+  ],
+  "intersection_threshold_mm3": 0.01,
+  "not_verified": [
+    "shaft-to-case offset",
+    "continuous swept volume between samples",
+    "other leg joint poses",
+    "connected mounts and bearings",
+    "dynamics and strength"
+  ],
+  "source_sha256": {
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/screen_hip_yaw_sweep.py": "0a56ff59351407d85a46a1f8583319a23aaef85bd2bbfeda1e020e1296044641",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_base_collisions/robot.json": "81f32b0a39c56d09ffc3329bfcd5acb0f99f358761a246d5d436be0780c2ca25",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_base_collisions/cad/build.py": "fe13dd18c8c79800a317031c07b1eca35c57ac6b3e0a395e70ab420203436cd9",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_base_collisions/cad/r4_geometry.py": "cacbb3297050b1c8a4ae5f00e57ac49e09f1188c17665b06ec7092b0f561431d",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_base_collisions/src/tab5_biped/core.py": "9a16813b61435492746dc3cb7d7e765a7a7432e47ab29c266ce011742da5c322",
+    "validation/battery_mount_review_v2/body_shroud.step": "c4a995aa9d6a7ede0ad1254a8164aab2b38e8a63cfcae0ffd089c30a1965a497",
+    "validation/battery_mount_review_v2/battery_2S_reservation.step": "a191262ab43f4cfc6b5ae62ca9970ff39739cf0f0978f6c40c8a1667897b5429",
+    "validation/battery_mount_review_v2/battery_tray.step": "5017bcc6cce673e7aad0dbf98919d0a3f0d0b4ee7cbd89b4db83187a8b48b49a",
+    "validation/battery_mount_review_v2/battery_strap_envelope.step": "baf3dd2471ec5a5b190f7514c99c395e2281056ad95964512e504c1be1eee3d2",
+    "validation/battery_mount_review_v2/battery_M3_envelope_0.step": "a2dbbbb77245ed0c64bf4dc3bc777c4b3664d9eea55f1bcb9d1940c500488b73",
+    "validation/battery_mount_review_v2/battery_M3_envelope_1.step": "a6990edb31d46aa5b58c90b28870190be34b3b25f685e9b791320d476fb63045"
+  },
+  "cases": [
+    {
+      "yaw_deg": [
+        0.0,
+        0.0
+      ],
+      "intersections": [],
+      "sample_clear": true
+    },
+    {
+      "yaw_deg": [
+        3.0,
+        0.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 8.541867022155916
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        -3.0,
+        0.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 8.54186702215585
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        3.0,
+        3.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 8.541867022155916
+        },
+        {
+          "part1": "right_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 8.541867022155921
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        -3.0,
+        -3.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 8.54186702215585
+        },
+        {
+          "part1": "right_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 8.541867022155849
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        3.0,
+        -3.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 8.541867022155916
+        },
+        {
+          "part1": "right_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 8.541867022155849
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        -3.0,
+        3.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 8.54186702215585
+        },
+        {
+          "part1": "right_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 8.541867022155921
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        6.0,
+        0.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 16.128343128807145
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        -6.0,
+        0.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 16.128343128807156
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        6.0,
+        6.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 16.128343128807145
+        },
+        {
+          "part1": "right_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 16.128343128807156
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        -6.0,
+        -6.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 16.128343128807156
+        },
+        {
+          "part1": "right_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 16.128343128807167
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        6.0,
+        -6.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 16.128343128807145
+        },
+        {
+          "part1": "right_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 16.128343128807167
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        -6.0,
+        6.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 16.128343128807156
+        },
+        {
+          "part1": "right_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 16.128343128807156
+        },
+        {
+          "part1": "left_hip_pitch_motor",
+          "part2": "right_hip_pitch_motor",
+          "overlap_mm3": 1.6666233242788788
+        },
+        {
+          "part1": "left_thigh_yoke",
+          "part2": "right_thigh_yoke",
+          "overlap_mm3": 148.1189427495234
+        },
+        {
+          "part1": "left_foot_yoke",
+          "part2": "right_foot_yoke",
+          "overlap_mm3": 6.38743198932948
+        },
+        {
+          "part1": "left_boot_shell",
+          "part2": "right_boot_shell",
+          "overlap_mm3": 93.7846467795138
+        },
+        {
+          "part1": "left_sole_TPU",
+          "part2": "right_sole_TPU",
+          "overlap_mm3": 6.38743198932948
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        12.0,
+        0.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 28.72773099269258
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        -12.0,
+        0.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 28.72773099269242
+        },
+        {
+          "part1": "left_hip_pitch_motor",
+          "part2": "right_hip_pitch_motor",
+          "overlap_mm3": 0.05996241020187251
+        },
+        {
+          "part1": "left_thigh_yoke",
+          "part2": "right_hip_pitch_motor",
+          "overlap_mm3": 12.506030839703879
+        },
+        {
+          "part1": "left_thigh_yoke",
+          "part2": "right_thigh_yoke",
+          "overlap_mm3": 90.60461100904769
+        },
+        {
+          "part1": "left_foot_yoke",
+          "part2": "right_foot_yoke",
+          "overlap_mm3": 4.255976438476399
+        },
+        {
+          "part1": "left_boot_shell",
+          "part2": "right_boot_shell",
+          "overlap_mm3": 60.315675044539155
+        },
+        {
+          "part1": "left_sole_TPU",
+          "part2": "right_sole_TPU",
+          "overlap_mm3": 4.255976438476399
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        12.0,
+        12.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 28.72773099269258
+        },
+        {
+          "part1": "right_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 28.72773099269242
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        -12.0,
+        -12.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 28.72773099269242
+        },
+        {
+          "part1": "right_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 28.727730992692592
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        12.0,
+        -12.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 28.72773099269258
+        },
+        {
+          "part1": "right_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 28.727730992692592
+        }
+      ],
+      "sample_clear": false
+    },
+    {
+      "yaw_deg": [
+        -12.0,
+        12.0
+      ],
+      "intersections": [
+        {
+          "part1": "left_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 28.72773099269242
+        },
+        {
+          "part1": "right_fixed_roll_cradle",
+          "part2": "body_shroud",
+          "overlap_mm3": 28.72773099269242
+        },
+        {
+          "part1": "left_roll_to_pitch_carrier",
+          "part2": "right_roll_to_pitch_carrier",
+          "overlap_mm3": 293.872450345461
+        },
+        {
+          "part1": "left_roll_to_pitch_carrier",
+          "part2": "right_hip_pitch_motor",
+          "overlap_mm3": 446.78629765905526
+        },
+        {
+          "part1": "left_roll_to_pitch_carrier",
+          "part2": "right_thigh_yoke",
+          "overlap_mm3": 165.39302502137377
+        },
+        {
+          "part1": "left_hip_pitch_motor",
+          "part2": "right_roll_to_pitch_carrier",
+          "overlap_mm3": 446.78629765905407
+        },
+        {
+          "part1": "left_hip_pitch_motor",
+          "part2": "right_hip_pitch_motor",
+          "overlap_mm3": 266.91351908744116
+        },
+        {
+          "part1": "left_hip_pitch_motor",
+          "part2": "right_thigh_yoke",
+          "overlap_mm3": 477.30651856463544
+        },
+        {
+          "part1": "left_thigh_yoke",
+          "part2": "right_roll_to_pitch_carrier",
+          "overlap_mm3": 165.3930250213792
+        },
+        {
+          "part1": "left_thigh_yoke",
+          "part2": "right_hip_pitch_motor",
+          "overlap_mm3": 477.30651856463265
+        },
+        {
+          "part1": "left_thigh_yoke",
+          "part2": "right_thigh_yoke",
+          "overlap_mm3": 356.9166444527592
+        },
+        {
+          "part1": "left_shin_yoke",
+          "part2": "right_shin_yoke",
+          "overlap_mm3": 28.27302588795993
+        },
+        {
+          "part1": "left_foot_yoke",
+          "part2": "right_foot_yoke",
+          "overlap_mm3": 709.031733274936
+        },
+        {
+          "part1": "left_boot_shell",
+          "part2": "right_boot_shell",
+          "overlap_mm3": 728.8823703591343
+        },
+        {
+          "part1": "left_sole_TPU",
+          "part2": "right_sole_TPU",
+          "overlap_mm3": 728.686092550095
+        }
+      ],
+      "sample_clear": false
+    }
+  ]
+}
