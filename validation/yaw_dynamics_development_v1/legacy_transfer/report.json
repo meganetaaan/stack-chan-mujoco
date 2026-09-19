@@ -1,0 +1,89 @@
+{
+  "scope": "Drive a 12-axis candidate through actual constrained servo physics.\n\nDevelopment only: transfer the old ten-axis reference with both added yaw targets\nzero. This tests the changed mass/support model, not commanded yaw capability.\n",
+  "design": "assets/r7_yaw_candidate_v1",
+  "reference": "validation/plant_screen/aligned_reference.json.gz",
+  "requested_duration_s": 6.0,
+  "failure": "walking_interrupted",
+  "time_s": 3.242999999999754,
+  "forward_m": 0.2384751904966329,
+  "valid_landings": [
+    2,
+    1
+  ],
+  "joint_order": [
+    "left_hip_yaw",
+    "left_hip_roll",
+    "left_hip_pitch",
+    "left_knee",
+    "left_ankle_pitch",
+    "left_ankle_roll",
+    "right_hip_yaw",
+    "right_hip_roll",
+    "right_hip_pitch",
+    "right_knee",
+    "right_ankle_pitch",
+    "right_ankle_roll"
+  ],
+  "mass_kg": 0.9245584348791331,
+  "old_static_torque_mass_scale": 1.0676417647903484,
+  "terminal_penetrating_contacts": [
+    {
+      "geom1": "floor",
+      "geom2": "col_right_sole_TPU_0",
+      "distance_m": -0.00019358033561962568
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_right_sole_TPU_0",
+      "distance_m": -0.00029277289206082273
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_right_sole_TPU_0",
+      "distance_m": -4.920085775192147e-05
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_right_sole_TPU_0",
+      "distance_m": -0.00014839341419311852
+    }
+  ],
+  "peak_continuous_saturation_s": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.065,
+    0.01,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.066,
+    0.012
+  ],
+  "peak_one_second_saturation_duty": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.121,
+    0.023,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.126,
+    0.031
+  ],
+  "trajectory_sha256": "100efca574a99aebeb9813c2ca398700693cac3d7cb92566a350d8461d8e6a7e",
+  "source_sha256": {
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/probe_yaw_dynamics_candidate.py": "15357158b94f85928a11b3726999ec6b5c3858926bc2be6e559309d77617d39f",
+    "assets/r7_yaw_candidate_v1/models/scene.xml": "372b9f92673fe7c13fbbafb94d8fa21759d9c6c6dc3c9376bae02f4c8307a057",
+    "assets/r7_yaw_candidate_v1/robot.json": "bf1d2f55b399b77ce5b97aaa074b663a68eae7fa715329a3f6f0ca14e840ea75",
+    "validation/plant_screen/aligned_reference.json.gz": "cbe03c81e6ee80a465c1716de2ac7675b80492b833796f7ccf4454235f0c4515",
+    "stackchan_rl/residual.py": "d0370eef86fbec9d1659c2ae3f8362207e56f6e2f6d8c750b6a320ca9abf8ef6",
+    "stackchan_rl/actuation.py": "08fb037114c07e47a52b7b722910dd90edf8f5e78be26adbc8784e0f38fc9351",
+    "stackchan_rl/walk_events.py": "0a33e2df8f4442807adf395721a247cfbdb4a8597cca6f6f3f617cd8798286d6"
+  }
+}
