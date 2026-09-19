@@ -1,0 +1,30 @@
+{
+  "scope": "Measure isolated yaw trials; deliberately cannot declare maneuver acceptance.",
+  "formal_acceptance": false,
+  "complete_maneuver_schedule": false,
+  "settled_interval_s": [
+    2.9999999999997806,
+    11.23999999999921
+  ],
+  "mean_yaw_rate_rad_s": -0.15201414598014157,
+  "metrics": {
+    "mean_vx_error_m_s": 0.001775704484730727,
+    "smoothed_vx_rmse_m_s": 0.00219471983074023,
+    "mean_yaw_rate_error_rad_s": 0.005065486699348087,
+    "smoothed_yaw_rate_rmse_rad_s": 0.007956602817086428,
+    "smoothed_lateral_velocity_rmse_m_s": 0.02566773317035668,
+    "in_place_max_displacement_m": 0.02810174164528811
+  },
+  "violations_of_corresponding_motion_thresholds": [],
+  "failure": null,
+  "valid_landings": [
+    15,
+    16
+  ],
+  "source_sha256": {
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/analyze_yaw_development.py": "d01b659671c1036ea531db494b01fa21418b6528bb81cc68edcf50d750a36d1e",
+    "outputs/yaw_com_screen_v1/right25/report.json": "7d0e37d20a919ef85b80525e75c1333e4c2070ea7a82c8a6f34f945f300f8c43",
+    "outputs/yaw_com_screen_v1/right25_ref/report.json": "688121b7b18c0f314c6c5ac24d932962922d14494de2148910eb6f0edb885ad7",
+    "configs/maneuver/acceptance_v1.json": "3fba1d1c37b92dc24f69c6ac2c300916b98df6b2c9cf1ef5dffcd25acbc1e347"
+  }
+}
