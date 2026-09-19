@@ -23,7 +23,15 @@ def main():
                    help="Planning-envelope JSON; requires an experimental hip spacing")
     p.add_argument("--underside-cutouts", type=Path,
                    help="Sample-derived opening polygons; requires experimental hip spacing")
+    p.add_argument("--leg-clearance-relief", action="store_true",
+                   help="Experimental cradle notch and rerouted gimbal arm; requires gait opening")
+    p.add_argument("--boot-collar-relief", action="store_true",
+                   help="Local inner collar recess; requires leg relief")
     args = p.parse_args()
+    if args.leg_clearance_relief and args.underside_cutouts is None:
+        p.error("--leg-clearance-relief requires --underside-cutouts")
+    if args.boot_collar_relief and not args.leg_clearance_relief:
+        p.error("--boot-collar-relief requires --leg-clearance-relief")
     source = ROOT / "design/r5a_source"
     out = args.out.resolve()
     if out == source or source in out.parents:
@@ -80,6 +88,10 @@ def main():
             robot["mass_assumptions"]["upper_2s_battery_kg"] = battery["mass_kg"]
         if cutouts is not None:
             robot["revision"] += "-gait-opening"
+        if args.leg_clearance_relief:
+            robot["revision"] += "-leg-relief"
+        if args.boot_collar_relief:
+            robot["revision"] += "-collar-relief"
         robot["kinematics"]["hip_half_spacing_mm"] = spacing
         (out / "robot.json").write_text(json.dumps(robot, indent=2)+"\n")
         # Every leg and base-mounted cradle moves rigidly by the same delta.
@@ -104,6 +116,27 @@ def main():
                 raise RuntimeError("Archived battery implementation changed; review adaptation")
             lines[indices[0]] = "    add('battery_2S_reservation','base',box(P['battery_envelope']['size_mm'],P['battery_envelope']['center_base_mm']),'hardware','battery',P['battery_envelope']['mass_kg'],note='Planning box envelope, not a validated battery mount; electrical compatibility unverified')"
             path.write_text("\n".join(lines)+"\n")
+    if args.leg_clearance_relief:
+        path = out / "cad/r4_geometry.py"
+        text = path.read_text()
+        adaptations = {
+            "        add(side+'_fixed_roll_cradle'":
+                "        # Local lower-lip relief; upper web and bearing axis retained.\n"
+                "        holder=holder.cut(box((7,28,5),(-11,y,14.5)))\n"
+                "        add(side+'_fixed_roll_cradle'",
+            "(-44,19),(-55,19)": "(-44,15),(-55,19)",
+            "(-49,13),(-8,2)": "(-49,9),(-8,2)",
+        }
+        if args.boot_collar_relief:
+            adaptations["    # Inboard sweep channel: the two-axis ankle needs lateral clearance."] = (
+                "    # Local internal top-collar recess; external sole and side outline retained.\n"
+                "    out=out.cut(box((42,56,8),(1,0,38),r=2,edge='|Z'))\n"
+                "    # Inboard sweep channel: the two-axis ankle needs lateral clearance.")
+        for old, new in adaptations.items():
+            if text.count(old) != 1:
+                raise RuntimeError("Archived leg implementation changed; review relief adaptation")
+            text = text.replace(old, new)
+        path.write_text(text)
     for script in ("cad/build.py", "export_models.py", "cad/validate_export.py"):
         subprocess.run([sys.executable, str(out / script)], cwd=out, check=True)
     if spacing is not None:
@@ -118,6 +151,8 @@ def main():
             "base_source_manifest": manifest, "manufacturing_release": False,
             "walking_validated": False,
             "battery_planning_envelope": battery,
+            "leg_clearance_relief": args.leg_clearance_relief,
+            "boot_collar_relief": args.boot_collar_relief,
             "underside_cutouts_sha256": hashlib.sha256(args.underside_cutouts.read_bytes()).hexdigest() if cutouts is not None else None,
             "changes": ["leg joint origins and fixed cradles", "body mounting rails",
                         "supplied gait opening" if cutouts is not None else "translated sampled underside opening", "CAD-derived mass and inertia"],

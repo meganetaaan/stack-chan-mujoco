@@ -13,6 +13,9 @@ def main():
     p.add_argument('--baseline', required=True, type=Path)
     p.add_argument('--candidate', required=True, type=Path)
     p.add_argument('--out', required=True, type=Path)
+    p.add_argument('--leg-relief', action='store_true',
+                   help='Also expect the two cradles and two ankle gimbals to change')
+    p.add_argument('--boot-relief', action='store_true')
     args = p.parse_args()
     old, new = args.baseline, args.candidate
     a = json.loads((old/'robot.json').read_text())
@@ -27,8 +30,14 @@ def main():
                 for body in ET.parse(path).findall('.//body') if body.find('joint') is not None]
 
     model = mujoco.MjModel.from_xml_path(str((new/'models/scene.xml').resolve()))
+    expected = ['body_shroud.stl']
+    if args.leg_relief:
+        expected += [side+suffix for side in ('left', 'right')
+                     for suffix in ('_fixed_roll_cradle.stl', '_ankle_gimbal.stl')]
+    if args.boot_relief:
+        expected += ['left_boot_shell.stl','right_boot_shell.stl']
     checks = {'same_component_mesh_names': meshes == new_meshes,
-              'only_shroud_mesh_changed': changed == ['body_shroud.stl'],
+              'only_expected_meshes_changed': changed == sorted(expected),
               'kinematics_unchanged': a['kinematics'] == b['kinematics'],
               'body_parameters_unchanged': a['body'] == b['body'],
               'joint_origins_axes_limits_unchanged': joints(old/'models/scene.xml') == joints(new/'models/scene.xml'),
