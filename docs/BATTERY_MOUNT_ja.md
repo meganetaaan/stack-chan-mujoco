@@ -42,3 +42,15 @@
 ベルト・M3締結具を含むv2の5部品について、従来合格方策のランダム化試行00から選んだ41姿勢でも体積干渉なし。`validation/battery_mount_review_v2/random00_sampled.json` に対象部品とフレームを明示した。固定具間は同一剛体として静止CAD検査、既存部品との関係を各保存姿勢で検査している。新モデルの全動作・公差・保持強度を保証するものではない。
 
 固定具込みモデルで、転移直後の未追加学習方策を15秒間実行し、前進1.52086 m、左右各25着地、物理的失敗なしを記録。10 m評価には長さが足りず受入合格ではない。`validation/r6_mounted_development/initial_15s` に実状態を保存。転移前後の方策は55個の記録観測に対し行動が完全一致した。
+
+## 交換経路の未解決箇所
+
+背面カバーとM3取付具を外し、電池・トレー・ベルトを後方へ82 mm平行移動する案を、各部品の外接箱が通過する全範囲で検査した。TTL通信基板予約と電池／ベルトの通過範囲が重なり、無干渉とは証明できなかった。トレーの保守的な通過箱は配線・締結具予約とも重なる。この箱は空洞を埋めるため、全検出が実形状同士の衝突を意味するわけではない。
+
+結果は `validation/battery_mount_review_v2/rear_service_path_inconclusive.json`。直線後方取り出しを検証済み手順として採用しない。電装配置の見直し、または取り外す電装部品を含めた整備手順と工具・コネクター空間の検討が残る。検査はモデルや学習中の物理設定を変更しない。
+
+```sh
+.venv-cad/bin/python check_battery_service_path.py --design outputs/design_r6_base_collisions --mount validation/battery_mount_review_v2 --out outputs/battery_service_path.json
+```
+
+この入力では終了コード1が想定結果。無干渉確認の失敗を隠さず保存する。
