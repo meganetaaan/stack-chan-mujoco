@@ -5,6 +5,7 @@ import argparse
 import hashlib
 import json
 import math
+import re
 from pathlib import Path
 import shutil
 import subprocess
@@ -18,6 +19,8 @@ def main():
     p.add_argument("--out", required=True, type=Path)
     p.add_argument("--hip-half-spacing-mm", type=float,
                    help="Experimental 19..28 mm leg-spacing variant; not a fabrication release")
+    p.add_argument("--battery-layout", type=Path,
+                   help="Planning-envelope JSON; requires an experimental hip spacing")
     args = p.parse_args()
     source = ROOT / "design/r5a_source"
     out = args.out.resolve()
@@ -28,6 +31,21 @@ def main():
     spacing = args.hip_half_spacing_mm
     if spacing is not None and (not math.isfinite(spacing) or not 19 <= spacing <= 28):
         p.error("experimental half spacing must be between 19 and 28 mm")
+    battery = None
+    if args.battery_layout is not None:
+        if spacing is None:
+            p.error("--battery-layout requires --hip-half-spacing-mm")
+        battery = json.loads(args.battery_layout.read_text())
+        if not isinstance(battery.get("layout_id"), str) or not re.fullmatch(r"[a-z0-9_-]+", battery["layout_id"]):
+            p.error("battery layout_id must be a lowercase identifier")
+        for key in ("size_mm", "center_base_mm"):
+            value = battery.get(key)
+            if not isinstance(value, list) or len(value) != 3 or any(type(v) not in (int, float) or not math.isfinite(v) for v in value):
+                p.error(f"battery {key} must contain three finite numbers")
+        if any(v <= 0 for v in battery["size_mm"]):
+            p.error("battery dimensions must be positive")
+        if type(battery.get("mass_kg")) not in (int, float) or not math.isfinite(battery["mass_kg"]) or battery["mass_kg"] <= 0:
+            p.error("battery mass_kg must be positive and finite")
     manifest = json.loads((source / "SOURCE_MANIFEST.json").read_text())
     for name, digest in manifest["unmodified_source_sha256"].items():
         if hashlib.sha256((source / name).read_bytes()).hexdigest() != digest:
@@ -38,6 +56,10 @@ def main():
         robot = json.loads((out / "robot.json").read_text())
         delta = spacing - robot["kinematics"]["hip_half_spacing_mm"]
         robot["revision"] = f"r6-experimental-hip-{spacing:g}mm"
+        if battery is not None:
+            robot["revision"] += "-" + battery["layout_id"]
+            robot["battery_envelope"] = battery
+            robot["mass_assumptions"]["upper_2s_battery_kg"] = battery["mass_kg"]
         robot["kinematics"]["hip_half_spacing_mm"] = spacing
         (out / "robot.json").write_text(json.dumps(robot, indent=2)+"\n")
         # Every leg and base-mounted cradle moves rigidly by the same delta.
@@ -54,6 +76,14 @@ def main():
         if text.count(marker) != 1:
             raise RuntimeError("Archived mounting-rail implementation changed; review adaptation")
         path.write_text(text.replace(marker, "(-50.2,sg*KIN['hip_half_spacing_mm'],51)"))
+        if battery is not None:
+            path = out / "cad/r4_geometry.py"
+            lines = path.read_text().splitlines()
+            indices = [i for i, line in enumerate(lines) if line.strip().startswith("add('battery_2S_reservation',")]
+            if len(indices) != 1:
+                raise RuntimeError("Archived battery implementation changed; review adaptation")
+            lines[indices[0]] = "    add('battery_2S_reservation','base',box(P['battery_envelope']['size_mm'],P['battery_envelope']['center_base_mm']),'hardware','battery',P['battery_envelope']['mass_kg'],note='Planning box envelope, not a validated battery mount; electrical compatibility unverified')"
+            path.write_text("\n".join(lines)+"\n")
     for script in ("cad/build.py", "export_models.py", "cad/validate_export.py"):
         subprocess.run([sys.executable, str(out / script)], cwd=out, check=True)
     if spacing is not None:
@@ -67,6 +97,7 @@ def main():
             "revision": robot["revision"], "hip_half_spacing_mm": spacing,
             "base_source_manifest": manifest, "manufacturing_release": False,
             "walking_validated": False,
+            "battery_planning_envelope": battery,
             "changes": ["leg joint origins and fixed cradles", "body mounting rails",
                         "translated sampled underside opening", "CAD-derived mass and inertia"],
             "needs_validation": ["full assembly clearance", "mount strength and tolerances",

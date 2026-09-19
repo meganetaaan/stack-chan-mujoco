@@ -57,3 +57,37 @@ Tab5と胴体外寸、5軸×2脚、リンク長、足の形状、サーボ選定
 意図した接合面の接触は体積交差でないため除外されます。実ねじ・配線・変形・公差は未検査です。
 なお開口は元のサンプル集合の平行移動に限られ、新しい歩容全体の必要開口を保証しません。
 MuJoCoの簡略衝突形状も候補について追加検証が必要です。
+
+## 電池外形・質量の配置検討
+
+`battery_layouts/` の2案は実電池用マウントではなく、メーカー資料のケース寸法を用いた
+予約形状です。質量は検討上103 gとし、元の70 g予約形状を置換します。
+電池型番・電装・ロック形状は未確定。詳細と仕様の不一致は `docs/POWER_ja.md`。
+
+```bash
+.venv-cad/bin/python build_design.py --hip-half-spacing-mm 22 \
+  --battery-layout design/battery_layouts/tab5_rear_envelope.json \
+  --out outputs/design_r6_battery_rear
+.venv-cad/bin/python build_design.py --hip-half-spacing-mm 22 \
+  --battery-layout design/battery_layouts/internal_lower_envelope.json \
+  --out outputs/design_r6_battery_lower
+.venv-cad/bin/python check_design_clearance.py --design outputs/design_r6_battery_rear \
+  --out validation/goal_baseline/battery_rear_clearance.json
+.venv-cad/bin/python check_design_clearance.py --design outputs/design_r6_battery_lower \
+  --out validation/goal_baseline/battery_lower_clearance.json
+```
+
+以下はMuJoCo/NumPy導入済み環境で実行します。基準の股間隔44 mmモデルも事前生成してください。
+
+```bash
+python compare_design_mass.py --designs outputs/design_r6_hip22 \
+  outputs/design_r6_battery_rear outputs/design_r6_battery_lower \
+  --out validation/goal_baseline/battery_mass_comparison.json
+python validation/verify_battery_models.py --baseline outputs/design_r6_hip22 \
+  --candidates outputs/design_r6_battery_rear outputs/design_r6_battery_lower \
+  --out validation/goal_baseline/battery_model_checks.json
+```
+
+両案のCAD再読込み、MuJoCoコンパイル、電池の置換質量・箱慣性の解析値、
+他37メッシュ・脚関節の不変、全33機械部品の5姿勢での干渉を確認済みです。
+連続歩行中の干渉と電池保持・配線・端子の確認は含みません。

@@ -1,0 +1,45 @@
+{
+  "revision": "r6-experimental-hip-22mm-tab5-rear-envelope",
+  "threshold_mm3": 0.01,
+  "scope": "All mechanical pairs at five poses; no swept-volume, tolerance, cable or fastener proof",
+  "mechanical_parts": 33,
+  "same_link_and_adjacent_pairs_included": true,
+  "manufacturing_release": false,
+  "walking_validated": false,
+  "input_sha256": {
+    "robot.json": "4b7a089751d44f84048624de7c66ca09c010ae3857d45c3ea6cc78afe5c0f6ce",
+    "cad/build.py": "fe13dd18c8c79800a317031c07b1eca35c57ac6b3e0a395e70ab420203436cd9",
+    "cad/r4_geometry.py": "e525f92daea61b8bf2ff8ce92961bd65d68e595b0eaf3714d2189f4704dd3e24",
+    "src/tab5_biped/core.py": "9a16813b61435492746dc3cb7d7e765a7a7432e47ab29c266ce011742da5c322",
+    "docs/underside_cutouts.json": "f71b9fd3996400518cd2970c048385d9fa61d8c7560c82a5d2ee2979b53ba346"
+  },
+  "sampled_poses_clear": true,
+  "elapsed_s": 7.108801145979669,
+  "results": [
+    {
+      "outward_hip_roll_deg_each": 0,
+      "brep_calls": 71,
+      "findings": []
+    },
+    {
+      "outward_hip_roll_deg_each": 6,
+      "brep_calls": 75,
+      "findings": []
+    },
+    {
+      "outward_hip_roll_deg_each": 6.5,
+      "brep_calls": 75,
+      "findings": []
+    },
+    {
+      "outward_hip_roll_deg_each": 10,
+      "brep_calls": 79,
+      "findings": []
+    },
+    {
+      "outward_hip_roll_deg_each": 16,
+      "brep_calls": 83,
+      "findings": []
+    }
+  ]
+}

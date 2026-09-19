@@ -1,0 +1,122 @@
+{
+  "scope": "Mass/COM comparison, not gait, motor rating, mount or electrical validation",
+  "same_qpos_for_all_models": [
+    -0.0118185956587,
+    -9.19113942023e-06,
+    0.0845815478015,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.000104943410774,
+    0.441495525998,
+    -1.18540111172,
+    0.743905585724,
+    -0.000104943410774,
+    0.000104944165261,
+    0.441515525521,
+    -1.18544903581,
+    0.743933510285,
+    -0.000104944165261
+  ],
+  "gravity_pitch_moment_note": "Whole-body gravity moment about the midpoint of both soles, not a per-joint torque demand",
+  "mujoco_version": "3.13.0",
+  "results": [
+    {
+      "design": "design_r6_hip22",
+      "model_sha256": "26e270a1efc248702b67e47761d8f342cb4b83b1c4360375225ecff7dba1401f",
+      "total_mass_kg": 0.8255668654402538,
+      "whole_robot_com_in_base_m": [
+        0.004430797907255742,
+        9.19115512417978e-06,
+        0.02626055619587199
+      ],
+      "com_world_at_common_pose_m": [
+        -0.007387797751444258,
+        1.5703949780214483e-11,
+        0.11084210399737199
+      ],
+      "gravity_pitch_moment_about_sole_midpoint_Nm": 4.6235158169749725e-07,
+      "battery_mass_kg": 0.07,
+      "battery_com_base_m": [
+        -0.003999999999999999,
+        -1.6839634769411095e-19,
+        0.1
+      ],
+      "base_inertia_principal_kg_m2": [
+        0.001540894500067907,
+        0.0015037774450049825,
+        0.0012522425925571095
+      ],
+      "dimensions_nq_nv_nu": [
+        17,
+        16,
+        10
+      ]
+    },
+    {
+      "design": "design_r6_battery_rear",
+      "model_sha256": "b10337f05f7b4fcb32067db47d1d36f0d88c45ceb2f9b01863fc5786a4599035",
+      "total_mass_kg": 0.8585668654402537,
+      "whole_robot_com_in_base_m": [
+        0.009595257249356,
+        8.837882558794069e-06,
+        0.027655207787672137
+      ],
+      "com_world_at_common_pose_m": [
+        -0.0022233384093439993,
+        -3.532568614359315e-07,
+        0.11223675558917214
+      ],
+      "gravity_pitch_moment_about_sole_midpoint_Nm": 0.043498351126235055,
+      "battery_mass_kg": 0.103,
+      "battery_com_base_m": [
+        0.041749999999999995,
+        1.2308459253050513e-18,
+        0.08799999999999998
+      ],
+      "base_inertia_principal_kg_m2": [
+        0.0016932054895691766,
+        0.0015698379334550825,
+        0.0012004740472457433
+      ],
+      "dimensions_nq_nv_nu": [
+        17,
+        16,
+        10
+      ]
+    },
+    {
+      "design": "design_r6_battery_lower",
+      "model_sha256": "3364965e977adb52e8c773810678381f56e72aa6e24cd6dee8ea43e1b4f7c6ff",
+      "total_mass_kg": 0.8585668654402537,
+      "whole_robot_com_in_base_m": [
+        0.004586619980574737,
+        8.837882558794069e-06,
+        0.026455534190356733
+      ],
+      "com_world_at_common_pose_m": [
+        -0.007231975678125263,
+        -3.532568614359315e-07,
+        0.11103708199185673
+      ],
+      "gravity_pitch_moment_about_sole_midpoint_Nm": 0.001312898626384531,
+      "battery_mass_kg": 0.103,
+      "battery_com_base_m": [
+        8.890457814381135e-20,
+        1.393317587445318e-18,
+        0.078
+      ],
+      "base_inertia_principal_kg_m2": [
+        0.0015566568810305259,
+        0.0014485688861107745,
+        0.0012157531344087014
+      ],
+      "dimensions_nq_nv_nu": [
+        17,
+        16,
+        10
+      ]
+    }
+  ]
+}
