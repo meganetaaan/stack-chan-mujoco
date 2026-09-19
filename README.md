@@ -2,7 +2,7 @@
 
 現行の胴体・脚長・足形状とTab5の顔を維持した、R6の残差強化学習を進めています。
 現段階の受入条件は、0.10 m/s指令で10 m連続歩行を固定条件20/20、ランダム化条件18/20。
-実機10 m・18/20は電源構成と実機同定後の次段階です。**最新の仮定モデルで固定20/20、ランダム化20/20を達成**しました。固定具・電源・実機の検証は未完了です。結果は `validation/r6_steering_seed20260923`、方策は `policies/r6_steering_seed20260923`、モデルは `assets/r6_base_collisions`。
+実機10 m・18/20は電源構成と実機同定後の次段階です。**固定具込みの仮定モデルで固定20/20、ランダム化18/20を達成**しました。電源・製作・実機の検証は未完了です。結果は `validation/r6_mounted_seed20260924`、方策は `policies/r6_mounted_seed20260924`、モデルは `assets/r6_mounted_battery`。ランダム化の関節制限逸脱1件・自己衝突1件も保存しています。
 
 [学習と再現手順](docs/R6_RL_ja.md)、[受入条件](docs/GOAL_PROTOCOL_ja.md)、
 [機構](docs/REAR_BRIDGE_ja.md)、[電源・電池](docs/POWER_ja.md)を参照してください。

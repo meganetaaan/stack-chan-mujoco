@@ -163,3 +163,9 @@ python run_planned_r6_evaluation.py --checkpoint runs/r6_mounted_seed20260924 --
 結果と終端姿勢は `validation/r6_mounted_development/self_collision_trial16`。MuJoCo接触の復元は `inspect_self_collision.py`、CAD検査は `check_design_clearance.py --trajectory-terminal-csv`。保存状態の復元は、物理全ステップの独立再実行を意味しない。
 
 固定具込みモデルのランダム化評価（118000–118019）は20試行を完了し、18/20でランダム化側の受入条件を満たした。関節制限1件・自己衝突1件は除外せず失敗に集計。全20件の記録ハッシュ・時刻・通過時刻の整合性監査に合格し、`validation/r6_mounted_seed20260924/randomized` に保存した。固定条件側は完了待ちのため、両条件を合わせた合格はまだ主張しない。
+
+固定条件117000–117019も20/20で完了し、固定具込みの両条件は20/20・18/20で達成。`validation/r6_mounted_seed20260924` に全40試行、両バッチを結ぶmanifest、状態監査、方策行動照合、統合整合性監査を保存。統合監査はモデルの凍結ファイル、方策ハッシュ、各試行のシードと再生成パラメータ、記録からの合否条件を検査する。全物理刻みの独立再実行ではない。改変したシード計画を拒否する負の対照も確認した。
+
+```sh
+python verify_r6_release.py --checkpoint policies/r6_mounted_seed20260924 --evaluation validation/r6_mounted_seed20260924 --seed-plan configs/r6/mounted_evaluation_seeds.json --out outputs/mounted_release_audit.json
+```
