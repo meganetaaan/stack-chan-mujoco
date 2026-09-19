@@ -38,8 +38,8 @@ python audit_added_collision_states.py --design outputs/design_r6_base_collision
 
 陽性対照のCAD検査は交差を検出するため終了コード1が期待値。
 結果と入力・コードのハッシュは `validation/base_collisions` に保存する。
-この候補の合格歩行はまだ確認していない。元モデルの成績は流用しない。
+追加時点では未評価だったが、その後 `policies/r6_steering_seed20260923` で固定20/20・ランダム化20/20を確認した。元モデルの成績の流用ではなく、この候補での別評価である。
 
 電池の固定具は別途 `design/battery_mount_concept.json` に未製作の設計案を保存した。
 既存内部レールへ取り付けるトレーと中央の保持バンドを想定し、外形・脚長・足形状は維持する。
-これはまだCAD生成・干渉検証前の案であり、今回のモデルや質量には反映していない。
+この文書のモデルには固定具を含めない。後続のCAD化・質量／慣性反映・評価は [バッテリー固定具](BATTERY_MOUNT_ja.md) と `assets/r6_mounted_battery` を参照。

@@ -1,8 +1,8 @@
 # R6 残差強化学習
 
-現行外形と103 gの電池予約を含む0.855284 kgのモデルを使用する。
-この段階はシミュレーション。電池・降圧回路の電気的適合と実機試験は未確認。
-機構と電源の詳細は [REAR_BRIDGE_ja.md](REAR_BRIDGE_ja.md)、[POWER_ja.md](POWER_ja.md)。
+最新版は固定具込み0.865982 kg、`assets/r6_mounted_battery` と `policies/r6_mounted_seed20260924`。固定20/20・ランダム化18/20を達成し、全40試行と動画・監査を `validation/r6_mounted_seed20260924` に保存した。最新の実行手順は [固定具込み構成の再現](REPRODUCE_MOUNTED_ja.md)。
+
+この段階はシミュレーション。電池・降圧回路の電気的適合と実機試験は未確認。機構と電源の詳細は [バッテリー固定具](BATTERY_MOUNT_ja.md)、[REAR_BRIDGE_ja.md](REAR_BRIDGE_ja.md)、[POWER_ja.md](POWER_ja.md)。以下には旧0.855284 kgモデルからの開発履歴も残す。
 
 ## 初回の結果
 
