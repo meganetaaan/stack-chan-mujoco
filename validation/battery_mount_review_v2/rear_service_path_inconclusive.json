@@ -1,0 +1,72 @@
+{
+  "scope": "Straight rear extraction of rigid module at nominal leg pose, tested with conservative swept bounding boxes",
+  "translation_base_mm": [
+    -82,
+    0,
+    0
+  ],
+  "removed_before_extraction": [
+    "rear_cover",
+    "battery_M3_envelope_0",
+    "battery_M3_envelope_1"
+  ],
+  "preconditions": [
+    "Power disconnected, battery/electrical leads disconnected",
+    "Robot supported with legs at nominal maintenance pose",
+    "Rear cover and both mounting fasteners removed"
+  ],
+  "not_verified": [
+    "Cable slack, connector disengagement and polarity",
+    "Finger/tool access and screw removal",
+    "Strap closure release and pack-only removal",
+    "Tolerance, elastic deformation, strength"
+  ],
+  "swept_boxes_clear": false,
+  "findings": [
+    {
+      "module": "battery_tray",
+      "fixed_part": "cables_and_fasteners",
+      "swept_box_intersection_mm3": 462.755309347706
+    },
+    {
+      "module": "battery_2S_reservation",
+      "fixed_part": "TTL_interface",
+      "swept_box_intersection_mm3": 1820.73805208364
+    },
+    {
+      "module": "battery_strap_envelope",
+      "fixed_part": "TTL_interface",
+      "swept_box_intersection_mm3": 627.9999999999993
+    }
+  ],
+  "module": [
+    {
+      "part": "battery_tray",
+      "initial_xmax_mm": 11.15,
+      "final_xmax_mm": -70.85,
+      "fully_behind_body_x_minus64": true
+    },
+    {
+      "part": "battery_2S_reservation",
+      "initial_xmax_mm": 9.25,
+      "final_xmax_mm": -72.75,
+      "fully_behind_body_x_minus64": true
+    },
+    {
+      "part": "battery_strap_envelope",
+      "initial_xmax_mm": 11.65,
+      "final_xmax_mm": -70.35,
+      "fully_behind_body_x_minus64": true
+    }
+  ],
+  "source_sha256": {
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/check_battery_service_path.py": "c6a04f94864f59c9a52a183f3adec4d593288250d3f695d10c978543b1e8ccf3",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_base_collisions/robot.json": "81f32b0a39c56d09ffc3329bfcd5acb0f99f358761a246d5d436be0780c2ca25",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_base_collisions/cad/build.py": "fe13dd18c8c79800a317031c07b1eca35c57ac6b3e0a395e70ab420203436cd9",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_base_collisions/cad/r4_geometry.py": "cacbb3297050b1c8a4ae5f00e57ac49e09f1188c17665b06ec7092b0f561431d",
+    "validation/battery_mount_review_v2/battery_tray.step": "5017bcc6cce673e7aad0dbf98919d0a3f0d0b4ee7cbd89b4db83187a8b48b49a",
+    "validation/battery_mount_review_v2/battery_2S_reservation.step": "a191262ab43f4cfc6b5ae62ca9970ff39739cf0f0978f6c40c8a1667897b5429",
+    "validation/battery_mount_review_v2/battery_strap_envelope.step": "baf3dd2471ec5a5b190f7514c99c395e2281056ad95964512e504c1be1eee3d2",
+    "validation/battery_mount_review_v2/body_shroud.step": "c4a995aa9d6a7ede0ad1254a8164aab2b38e8a63cfcae0ffd089c30a1965a497"
+  }
+}
