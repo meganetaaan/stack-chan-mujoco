@@ -19,7 +19,6 @@ def main():
     p.add_argument('--shift-fraction',type=float,default=.35)
     p.add_argument('--steady-inset-mm',type=float,default=25.5)
     p.add_argument('--period',type=float,default=.32)
-    p.add_argument('--swing-profile',choices=['quartic','c2'],default='quartic',help='c2 has zero vertical acceleration at lift-off and touchdown')
     p.add_argument('--stance-width-mm',type=float,help='optional foot-center separation; leg dimensions unchanged')
     p.add_argument('--forward-period',type=float,help='optional distinct period for positive forward velocity')
     a=p.parse_args()
@@ -39,7 +38,7 @@ def main():
         initial.initial_feet[:,1]=center+np.array([1.,-1.])*a.stance_width_mm/2000
     initial.q0,initial.b0,_=legacy.pose(initial.initial_feet,initial.initial_feet.mean(axis=0)[:2],(initial.q0,initial.b0),initial.b0[2,3]+.002)
     kin=YawLegKinematics(core,robot['hip_yaw_candidate']['axis_base_m'],(-.075,.075))
-    planner=YawCommandReference(initial,legacy.pose,core.smooth,protocol,kin,a.shift_fraction,a.steady_inset_mm,a.period,a.forward_period,a.swing_profile)
+    planner=YawCommandReference(initial,legacy.pose,core.smooth,protocol,kin,a.shift_fraction,a.steady_inset_mm,a.period,a.forward_period)
     reference=[];failure=None
     for t in np.arange(0,a.duration+.01,.02):
         try:
@@ -57,7 +56,6 @@ def main():
     report={'scope':__doc__,'planning_failure':failure,'requested_duration_s':a.duration,'last_reference_time_s':reference[-1]['time_s'] if reference else None,
             'shift_fraction':a.shift_fraction,'swing_fraction':.9-a.shift_fraction,'settle_fraction':.1,
             'steady_inset_mm':a.steady_inset_mm,
-            'swing_profile':a.swing_profile,
             'stance_width_mm':original_stance_width if a.stance_width_mm is None else a.stance_width_mm,
             'original_stance_width_mm':original_stance_width,
             'step_period_s':a.period,

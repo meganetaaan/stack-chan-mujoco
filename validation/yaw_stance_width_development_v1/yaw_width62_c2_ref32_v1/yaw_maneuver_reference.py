@@ -73,10 +73,7 @@ class YawCommandReference(CommandReference):
             support=(1-shift)*self.from_support+shift*np.eye(2)[self.stance]
             fraction=np.clip((u-self.shift_fraction*self.period)/((.9-self.shift_fraction)*self.period),0.,1.)
             feet[self.swing,0]=self.feet[self.swing,0]+(self.target_x-self.feet[self.swing,0])*self.smooth(fraction)
-            if self.swing_profile=="quartic":
-                feet[self.swing,2]=.004*16*fraction**2*(1-fraction)**2
-            else:
-                feet[self.swing,2]=.004*(64*fraction**3*(1-fraction)**3)
+            feet[self.swing,2]=.004*(16*fraction**2*(1-fraction)**2 if self.swing_profile=="quartic" else 64*fraction**3*(1-fraction)**3)
         return feet,xy,support,offset
 
     def sample(self,t):

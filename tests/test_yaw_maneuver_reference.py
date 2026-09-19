@@ -8,6 +8,24 @@ from stackchan_rl.maneuver_protocol import validate
 
 
 class YawCommandReferenceTests(unittest.TestCase):
+    def test_c2_swing_has_smooth_floor_transitions_and_same_peak_height(self):
+        initial=SimpleNamespace(initial_feet=np.array([[0.,.031,0.],[0.,-.031,0.]]),q0=np.zeros(10),b0=np.eye(4))
+        protocol=json.loads(Path('configs/maneuver/acceptance_v1.json').read_text())
+        def smooth(t):
+            x=np.clip(t,0,1);return x**3*(10+x*(-15+6*x))
+        planner=YawCommandReference(initial,None,smooth,protocol,None,.25,25.9,.32,.30,'c2')
+        planner.begin(4.)
+        start=planner.start+planner.shift_fraction*planner.period
+        end=planner.start+.9*planner.period
+        height=lambda t:planner.geometry(t)[0][planner.swing,2]
+        self.assertEqual(height(start-.001),0.)
+        self.assertEqual(height(end+.001),0.)
+        self.assertAlmostEqual(height((start+end)/2),.004,places=12)
+        h=1e-5
+        for boundary,direction in [(start,1),(end,-1)]:
+            self.assertLess(abs((height(boundary+direction*h)-height(boundary))/h),1e-6)
+            self.assertLess(abs((height(boundary+direction*2*h)-2*height(boundary+direction*h)+height(boundary))/h**2),.01)
+
     def test_full_schedule_yaw_is_continuous_bounded_and_neutral_at_settled_stops(self):
         for fraction,period,forward in ((.25,.32,.30),(.25,.30,None),(.25,.32,None),(.35,.32,None),(.4,.32,None)):
             with self.subTest(shift_fraction=fraction,period=period,forward=forward):self.check_schedule(fraction,period,forward)

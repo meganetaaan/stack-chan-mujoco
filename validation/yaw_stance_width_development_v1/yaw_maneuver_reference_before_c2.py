@@ -9,12 +9,10 @@ from maneuver_reference import CommandReference
 
 
 class YawCommandReference(CommandReference):
-    def __init__(self, initial, pose, smooth, protocol, kinematics, shift_fraction=.35, steady_inset_mm=25.5, step_period=.32, forward_period=None, swing_profile="quartic"):
+    def __init__(self, initial, pose, smooth, protocol, kinematics, shift_fraction=.35, steady_inset_mm=25.5, step_period=.32, forward_period=None):
         if not np.isfinite(shift_fraction) or not .2<=shift_fraction<=.5:raise ValueError('shift fraction outside [.2,.5]')
         if not np.isfinite(steady_inset_mm) or not 20<=steady_inset_mm<26:raise ValueError('steady inset outside [20,26) mm')
         if not np.isfinite(step_period) or not .24<=step_period<=.4:raise ValueError('step period outside [.24,.4] seconds')
-        if swing_profile not in ("quartic","c2"):raise ValueError("unknown swing profile")
-        self.swing_profile=swing_profile
         self.shift_fraction=shift_fraction
         self.steady_inset_delta=(steady_inset_mm-24.)/1000
         self.step_period=step_period
@@ -73,10 +71,7 @@ class YawCommandReference(CommandReference):
             support=(1-shift)*self.from_support+shift*np.eye(2)[self.stance]
             fraction=np.clip((u-self.shift_fraction*self.period)/((.9-self.shift_fraction)*self.period),0.,1.)
             feet[self.swing,0]=self.feet[self.swing,0]+(self.target_x-self.feet[self.swing,0])*self.smooth(fraction)
-            if self.swing_profile=="quartic":
-                feet[self.swing,2]=.004*16*fraction**2*(1-fraction)**2
-            else:
-                feet[self.swing,2]=.004*(64*fraction**3*(1-fraction)**3)
+            feet[self.swing,2]=.004*16*fraction**2*(1-fraction)**2
         return feet,xy,support,offset
 
     def sample(self,t):
