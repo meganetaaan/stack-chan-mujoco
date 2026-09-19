@@ -41,8 +41,10 @@ def main():
     indices = sorted(set(range(0, len(states), a.stride)) | {len(states)-1} |
                      set(np.argmin(joints, axis=0).tolist()) | set(np.argmax(joints, axis=0).tolist()))
     parts = {x.name:x for x in build() if x.role != 'visual'}
+    target_names = ['battery_tray', 'battery_2S_reservation']
+    target_names += sorted(x.stem for x in a.mount.glob('battery_*envelope*.step'))
     targets = {name:cq.importers.importStep(str(a.mount/(name+'.step'))).val()
-               for name in ('battery_tray', 'battery_2S_reservation')}
+               for name in target_names}
     parts['body_shroud'].shape = cq.importers.importStep(str(a.mount/'body_shroud.step')).val()
     _, base = nominal()
 
@@ -71,7 +73,9 @@ def main():
         rows.append({'frame':index,'time_s':float(states[index,0]),'q_rad':joints[index].tolist(),
                      'brep_queries':queries,'findings':hits})
         print(f'frame {index}: {len(hits)} intersections', flush=True)
-    result = {'scope':'Tray and shifted battery against all mechanical parts at sampled recorded poses; no swept-volume proof or dynamics rerun',
+    result = {'scope':'Specified mount components against existing mechanical parts at sampled recorded poses; no swept-volume proof or dynamics rerun',
+              'target_parts':target_names,
+              'mount_internal_pairs':'Checked statically in mount build report; all mount components are on the same rigid base',
               'sample_selection':'stride plus terminal and per-joint minima/maxima', 'stride':a.stride,
               'recorded_frames':len(states),'checked_frames':len(rows),'threshold_mm3':.01,
               'sampled_poses_clear':all(not r['findings'] for r in rows),
