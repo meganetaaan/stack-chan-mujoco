@@ -1,0 +1,25 @@
+{
+  "scope": "RNG sequencing audit of the running heading training; training code and execution were not changed",
+  "environment_seed_base": 20260922,
+  "environment_seeds": [
+    20260922,
+    20260923,
+    20260924,
+    20260925
+  ],
+  "parent_policy_seed": 20260920,
+  "sequence": [
+    "new PPO constructor seeds global RNGs and queues environment seeds",
+    "PPO.load(parent) calls _setup_model and reseeds global RNGs with the parent seed; constructing the parent network then consumes random numbers",
+    "weights are transferred; learning continues from that deterministic global RNG state while environment seeds remain queued from the new PPO"
+  ],
+  "reproduction": "run the exact published training command with the recorded parent policy and package versions; setting only one manual seed is not equivalent",
+  "observed_library_source_sha256": {
+    "OnPolicyAlgorithm._setup_model": "1bfc1e2ac80d7ca860ced58c737688f4df269446c86959d44ee1712fabd1ca36",
+    "BaseAlgorithm.set_random_seed": "0e7d5cb60fca15ab4919fab79381a7455f783bfd2977890dcf063d4bf57d63c7",
+    "utils.set_random_seed": "72309e17cff74c17ec9184d90a6661364724c169b612904b36e63614b4f3f23b"
+  },
+  "parent_continuation_explicit_seed": 20260921,
+  "parent_serialized_seed": 20260920,
+  "note": "SB3 set_random_seed changes RNG state but not the algorithm.seed attribute; the parent checkpoint retains 20260920."
+}
