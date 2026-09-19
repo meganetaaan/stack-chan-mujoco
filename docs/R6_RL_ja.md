@@ -140,3 +140,7 @@ python run_planned_r6_evaluation.py --checkpoint policies/r6_steering_seed202609
 この候補は `assets/r6_base_collisions` の追加形状を含む。教師関数の初期化は8,000更新、
 実MuJoCo上のPPOは32,768ステップ。親の読み込み後に新しい学習器をseed 20260923で生成する。
 凍結済みの候補、初期値、全設定、データのハッシュを `policies/r6_steering_seed20260923` に保存する。
+
+## 旋回初期化＋PPO版の確定評価
+
+`validation/r6_steering_seed20260923` に全40試行と独立記録監査を保存。固定107000–107019、ランダム化108000–108019とも20/20。全試行で100秒以内に10 mを通過し、109.5秒まで物理的失敗なし。これは `assets/r6_base_collisions` と公開設定の仮定モデルに限る。5,475行動の再計算誤差は最大3.28e-7、初期方策からの行動変化RMSは0.010087。固定具追加後の再評価、電源同定、実機評価は未実施。
