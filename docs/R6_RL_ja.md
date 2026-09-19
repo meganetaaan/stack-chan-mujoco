@@ -169,3 +169,5 @@ python run_planned_r6_evaluation.py --checkpoint runs/r6_mounted_seed20260924 --
 ```sh
 python verify_r6_release.py --checkpoint policies/r6_mounted_seed20260924 --evaluation validation/r6_mounted_seed20260924 --seed-plan configs/r6/mounted_evaluation_seeds.json --out outputs/mounted_release_audit.json
 ```
+
+固定具込み方策の成功動画2本（固定・ランダム化の試行00、各5,476フレーム）と関節限界失敗動画（540フレーム）を `validation/r6_mounted_seed20260924/videos` に公開。保存された実状態から再生し、フレーム数と動画ハッシュを確認した。実際の前進・横移動軌跡は同ディレクトリの `paths.png`。
