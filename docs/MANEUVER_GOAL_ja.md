@@ -54,10 +54,18 @@
 
 ## 現在の実装範囲
 
-`stackchan_rl/maneuver_protocol.py` は指令スケジュールと実位置・ヨー角の動作評価のみ。
-物理的安全、着地イベント、指令追従制御、受入ランナーはこれから接続する。
-このモジュールの `motion_pass` だけを試行合格として扱わない。
+`stackchan_rl/maneuver_protocol.py` は指令スケジュールと実位置・ヨー角の動作評価を担う。
+`yaw_maneuver_reference.py` と生成器で12軸の指令参照を作り、
+`probe_yaw_dynamics_candidate.py` で浮遊ベースの実MuJoCo動力学、全軸の駆動制約・保護、
+物理的安全、着地イベントを統合して評価する。
+`motion_pass` だけを試行合格として扱わず、物理異常なしと全着地要件も必要とする。
 テストの合成軌跡は評価器の正負対照であり、ロボットの歩行証拠ではない。
+
+正式評価の候補凍結と全40試行の実行器は実装済み。
+手順は [YAW_ACCEPTANCE_RUN_ja.md](YAW_ACCEPTANCE_RUN_ja.md)、
+後退の位相比較は [開発記録](../validation/yaw_backward_contact_development_v1/README.md) を参照する。
+22%候補の正式評価を開始した。凍結記録は `validation/yaw_acceptance_phase22_v1/candidate/`。
+結果が揃うまで達成は未確認であり、開発結果を正式20/20・18/20の達成に転用しない。
 
 旧方策には前進専用の参照・報酬・歩行中断条件がある。新しい指令系は別実装とし、
 停止を失敗にしないことと、停止指令中の動き過ぎを失敗にすることを両立させる。
