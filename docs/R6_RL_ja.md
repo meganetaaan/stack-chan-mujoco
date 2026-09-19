@@ -1,0 +1,80 @@
+# R6 残差強化学習
+
+現行外形と103 gの電池予約を含む0.855284 kgのモデルを使用する。
+この段階はシミュレーション。電池・降圧回路の電気的適合と実機試験は未確認。
+機構と電源の詳細は [REAR_BRIDGE_ja.md](REAR_BRIDGE_ja.md)、[POWER_ja.md](POWER_ja.md)。
+
+## 方策の構成
+
+PPOが10軸の目標角補正を出力する。各軸の補正上限は±0.02 rad。
+先行検証したCOM/IK歩容と静的トルク補償を事前知識として使い、その上の補正を学習する。
+ゼロから歩容全体を発見した学習ではない。補正なし参照と学習済み方策は別に評価する。
+初回学習は seed 20260920、32,768ステップ、4環境、12秒エピソード。
+PPOの初期・学習済み重み、実行設定、全エピソードのMonitorログを `policies/r6_residual_seed20260920` に保存。
+
+IMUはノイズ付き重力方向と角速度。速度・関節状態等は理想状態推定を仮定する。
+方策は65次元観測を受け取り、位相・参照関節角・前回行動も観測する。
+モデルの物理制約を外して学習しない。サーボはトルク・速度包絡、指令遅延、スルー・LPFを通す。
+無負荷回転速度は駆動時のトルク包絡に使い、外力による逆駆動を不自然に遮断しない。
+質量・重心・摩擦・トルク・速度・遅延・ノイズの範囲は設定JSONと
+[GOAL_PROTOCOL_ja.md](GOAL_PROTOCOL_ja.md) に明記する。範囲は実機未同定。
+
+## 再現
+
+学習環境の実測バージョンは `runtime.json`。Python 3.14.7、MuJoCo 3.13.0、
+Gymnasium 1.3.0、SB3 2.9.0、PyTorch 2.14.0、NumPy 2.5.3、CPUで実行した。
+依存関係の直接指定は `design/requirements-r6-rl.txt`。完全な推移依存ロックではない。
+OS・CPU・数値ライブラリ差による学習結果の差を避けるため、評価には公開済み方策を使う。
+
+凍結したモデルを実行設定のパスへ配置する（既存出力を上書きしない）:
+
+```bash
+mkdir -p outputs
+test ! -e outputs/design_r6_rear_bridge8_collision && \
+  cp -a assets/r6_rear_bridge8_collision outputs/design_r6_rear_bridge8_collision
+```
+
+モデルから再生成する場合は `docs/REAR_BRIDGE_ja.md` のコマンドとCAD依存ロックを使う。
+再生成結果は `assets/r6_rear_bridge8_collision/FROZEN_FILES.json` と照合する。
+学習を再実行する:
+
+```bash
+python train_residual.py --config configs/r6/residual.json --out runs/r6_reproduction
+```
+
+学習済み方策の評価例:
+
+```bash
+python evaluate_residual.py --checkpoint policies/r6_residual_seed20260920 \
+  --domain fixed --episodes 20 --seed 87000 --purpose acceptance \
+  --out outputs/reproduce_fixed
+python evaluate_residual.py --checkpoint policies/r6_residual_seed20260920 \
+  --domain randomized --episodes 20 --seed 88000 --purpose acceptance \
+  --out outputs/reproduce_randomized
+```
+
+全20件が終了するまで `manifest.json` の `complete` はfalse。
+途中経過・短距離評価・未学習方策は受入成功に数えない。
+既存結果を上書きせず、各試行に実現したプラント値・シード・停止理由・ハッシュを残す。
+
+## 実状態の再生
+
+`states.npz` は方策周期20 msごとのMuJoCo `mjSTATE_INTEGRATION` と最後の物理刻みの実状態、
+観測・行動・最終サブステップトルクを含む。時刻・自由基底の位置姿勢・関節・速度・制御値等を保存する。
+動画はこの実状態を `mj_setState` で復元し、参照軌跡による置換や姿勢補間をしない。
+カメラのみが胴体を追う。保護・衝突監視と初回10 m通過は1 msごとの判定で、動画の50 fpsに依存しない。
+
+```bash
+MUJOCO_GL=egl python replay_residual.py --batch outputs/reproduce_fixed \
+  --trial trial_00 --out outputs/reproduce_fixed_trial00.mp4
+```
+
+ffmpegが必要。動画と元状態・レポートのハッシュを同名JSONに保存する。
+失敗が方策周期の途中なら、動画終端の時刻だけ最大20 ms未満の量子化が生じる。
+合否の計時は記録されたシミュレータ時刻を使用する。
+
+## 限界
+
+飽和保護はシミュレーション上の仮定であり、電流・熱・電源・通信を同定した保護ではない。
+接触形状にはCADとの近似と未モデル化部品が残る。成功が得られても実機受入の代替にはならない。
+学習に使っていない乱数での20件の観測結果は、未知条件での成功率の統計的保証ではない。
