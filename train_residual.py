@@ -18,7 +18,7 @@ from stackchan_rl.residual import ResidualEnv,sha
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--config',type=Path,default=Path('configs/r6_residual.json'))
+    p.add_argument('--config',type=Path,default=Path('configs/r6/residual.json'))
     p.add_argument('--out',type=Path,required=True)
     p.add_argument('--timesteps',type=int)
     args=p.parse_args()

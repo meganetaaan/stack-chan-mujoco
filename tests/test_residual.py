@@ -23,7 +23,7 @@ class ProtectionTests(unittest.TestCase):
 @unittest.skipUnless(Path('outputs/design_r6_rear_bridge8_collision/models/scene.xml').exists(),'build R6 design first')
 class ResidualPhysicsTests(unittest.TestCase):
     def make(self,randomize=False,record=False):
-        c=json.loads(Path('configs/r6_residual.json').read_text());c['randomize']=randomize
+        c=json.loads(Path('configs/r6/residual.json').read_text());c['randomize']=randomize
         return ResidualEnv(c,record=record)
     def test_real_state_replay_and_collision_meshes(self):
         e=self.make(record=True);e.reset(seed=71)

@@ -27,7 +27,7 @@
 
 ## 残差RLの初期実装
 
-`configs/r6_residual.json` と `stackchan_rl/residual.py` はR5環境と別のインターフェース。
+`configs/r6/residual.json` と `stackchan_rl/residual.py` はR5環境と別のインターフェース。
 参照歩容＋PPOの関節目標補正で学習する。参照のみの成功を学習結果に数えない。
 最初の学習エピソードは12秒であり、長距離および停止学習の達成を示さない。
 
