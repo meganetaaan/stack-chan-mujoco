@@ -6,12 +6,15 @@ for name in ('OMP_NUM_THREADS','MKL_NUM_THREADS','OPENBLAS_NUM_THREADS','NUMEXPR
 import argparse
 from concurrent.futures import ProcessPoolExecutor,as_completed
 import json
+import importlib.metadata
+import platform
 import multiprocessing
 from pathlib import Path
 import numpy as np
 import torch
 from stable_baselines3 import PPO
-from stackchan_rl.residual import ResidualEnv,sha
+from stackchan_rl.residual import sha
+from stackchan_rl.r6_factory import make_env
 
 
 def canonical(value):return json.dumps(value,sort_keys=True)
@@ -21,7 +24,7 @@ def run_trial(job):
     checkpoint,config,out,seed,domain,controller=job
     torch.set_num_threads(1)
     out=Path(out);out.mkdir()
-    env=ResidualEnv(config,record=True)
+    env=make_env(config,record=True)
     interface=json.loads((Path(checkpoint)/'interface.json').read_text())
     if canonical(interface)!=canonical(env.fingerprint):raise ValueError('checkpoint interface/source mismatch')
     policy=None if controller=='zero' else PPO.load(Path(checkpoint)/('initial_policy' if controller=='initial' else 'policy'),device='cpu')
@@ -67,9 +70,16 @@ def main():
     config['randomize']=args.domain=='randomized'
     policy_path=args.checkpoint/('initial_policy.zip' if args.controller=='initial' else 'policy.zip')
     if args.controller!='zero' and not policy_path.is_file():p.error('missing policy')
+    if args.controller=='trained':
+        training=json.loads((args.checkpoint/'training_result.json').read_text())
+        if not training.get('trained') or training.get('policy_sha256')!=sha(policy_path):
+            p.error('trained-policy provenance mismatch')
+        if training.get('training_config_sha256',sha(args.checkpoint/'config.json'))!=sha(args.checkpoint/'config.json'):
+            p.error('training config hash mismatch')
     args.out.mkdir(parents=True)
     (args.out/'config.json').write_text(json.dumps(config,indent=2)+'\n')
     manifest={'schema':'r6-residual-batch-v1','purpose':args.purpose,'domain':args.domain,
+        'runtime':{'python':platform.python_version(),'packages':{k:importlib.metadata.version(k) for k in ('mujoco','numpy','gymnasium','stable-baselines3','torch')}},
         'controller':args.controller,'expected_trials':args.episodes,'seeds':list(range(args.seed,args.seed+args.episodes)),
         'policy_sha256':sha(policy_path) if args.controller!='zero' else None,'evaluator_sha256':sha(__file__),
         'training_config_sha256':sha(args.checkpoint/'config.json'),'evaluation_config_sha256':sha(args.out/'config.json'),

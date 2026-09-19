@@ -90,3 +90,23 @@ ffmpegが必要。動画と元状態・レポートのハッシュを同名JSON�
 飽和保護はシミュレーション上の仮定であり、電流・熱・電源・通信を同定した保護ではない。
 接触形状にはCADとの近似と未モデル化部品が残る。成功が得られても実機受入の代替にはならない。
 学習に使っていない乱数での20件の観測結果は、未知条件での成功率の統計的保証ではない。
+
+## 方角観測を追加する次版（未評価）
+
+`configs/r6/heading_residual.json` / `stackchan_rl/residual_heading.py` は70次元の別インターフェース。
+外部基準による方角のsin/cos、横位置、世界座標の平面速度を追加する。
+方角ノイズ標準偏差0.002–0.01 rad、横位置0.001–0.003 mを試行ごとに抽選。
+固定条件では0.005 rad、0.002 m。これはIMU単独の積分ではなく、外部基準付き推定を仮定する。
+実機実装では、その推定を実現するセンサー・遅延・欠測を改めて同定する必要がある。
+
+物理・アクチュエータ・保護判定は旧版と同じ。ゼロ行動での状態一致をテストした。
+報酬には方角・横ずれのペナルティを追加する。旧方策を初期値とする際には新しい入力列を0にして、
+初期のactor出力とcritic値を保つことをテストした。最適化器は新しく作る。
+
+```bash
+python continue_residual.py --checkpoint policies/r6_residual_seed20260920   --out runs/r6_residual_seed20260921 --seed 20260921
+python train_heading_residual.py --parent runs/r6_residual_seed20260921   --out runs/r6_heading_seed20260922
+```
+
+追加学習の結果を旧方策の20/20・12/20に混ぜない。
+次の評価シードは `configs/r6/next_evaluation_seeds.json` に事前固定している。

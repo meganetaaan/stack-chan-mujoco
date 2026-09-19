@@ -6,7 +6,8 @@ from pathlib import Path
 import subprocess
 import mujoco
 import numpy as np
-from stackchan_rl.residual import ResidualEnv,STATE_SPEC,sha
+from stackchan_rl.residual import STATE_SPEC,sha
+from stackchan_rl.r6_factory import make_env
 
 
 def main():
@@ -19,7 +20,7 @@ def main():
     folder=args.batch/args.trial
     report=json.loads((folder/'report.json').read_text());config=json.loads((args.batch/'config.json').read_text())
     if sha(folder/'states.npz')!=report['trajectory_sha256']:raise ValueError('trajectory hash mismatch')
-    env=ResidualEnv(config,visuals=True)
+    env=make_env(config,visuals=True)
     if json.dumps(env.fingerprint,sort_keys=True)!=json.dumps(report['interface'],sort_keys=True):
         raise ValueError('model/code fingerprint mismatch')
     env.reset(seed=report['seed'],options={'randomize':report['domain']=='randomized'})
