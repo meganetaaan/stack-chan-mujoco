@@ -161,3 +161,5 @@ python run_planned_r6_evaluation.py --checkpoint runs/r6_mounted_seed20260924 --
 固定具込み評価のseed 118016は8.688秒で自己衝突。終端実状態を同じモデル・実現パラメータで復元すると、左膝モータと左足首ロールモータの接触距離は-0.01535 mm。元のCADで同じ関節姿勢を検査し、同じ2部品に0.010624 mm³の体積干渉を確認した。両モータのメッシュは固定具追加前後で同一ハッシュ。CAD確認は変更のない脚部の衝突確認に用いており、追加固定具の全体検査ではない。閾値を緩めず失敗として集計する。
 
 結果と終端姿勢は `validation/r6_mounted_development/self_collision_trial16`。MuJoCo接触の復元は `inspect_self_collision.py`、CAD検査は `check_design_clearance.py --trajectory-terminal-csv`。保存状態の復元は、物理全ステップの独立再実行を意味しない。
+
+固定具込みモデルのランダム化評価（118000–118019）は20試行を完了し、18/20でランダム化側の受入条件を満たした。関節制限1件・自己衝突1件は除外せず失敗に集計。全20件の記録ハッシュ・時刻・通過時刻の整合性監査に合格し、`validation/r6_mounted_seed20260924/randomized` に保存した。固定条件側は完了待ちのため、両条件を合わせた合格はまだ主張しない。
