@@ -7,9 +7,9 @@ root=Path(__file__).resolve().parents[3]
 if a.out.exists():p.error('new output required')
 a.out.mkdir(parents=True)
 paths=[root/f'software/sim/mujoco/assets/r9_fast_turn_v1/cad/{s}_boot_shell.step' for s in ('left','right')]
-plan={'opening_roll_frame_mm':{'x':[-31.5,3],'y':[-32,32],'z':[15,45]},'criteria':{'valid_single_solid':True,'unchanged_below_z_mm':10},'source_sha256':{str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in paths},'limitations':['Candidate opening only; edge radii, boot stiffness and whole assembly clearance remain unverified.']}
+plan={'opening_roll_frame_mm':{'x':[-31.5,-10.7],'y':[-32,32],'z':[15,45]},'criteria':{'valid_single_solid':True,'unchanged_below_z_mm':10},'source_sha256':{str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in paths},'limitations':['Candidate opening only; edge radii, boot stiffness and whole assembly clearance remain unverified.']}
 (a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n');rows=[]
-cut=cq.Workplane('XY').box(34.5,64,30).val().translate((-14.25,0,30))
+cut=cq.Workplane('XY').box(20.8,64,30).val().translate((-21.1,0,30))
 protected=cq.Workplane('XY').box(200,200,200).val().translate((0,0,-90))
 for side,path in zip(('left','right'),paths):
  old=cq.importers.importStep(str(path)).val();new=old.cut(cut).clean()
