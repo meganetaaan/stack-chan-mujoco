@@ -1,0 +1,31 @@
+{
+  "scope": "Necessary shaft-bending screen; excludes offset stem, jaws and handle compliance.",
+  "force_N": 1.0,
+  "young_MPa": 180000.0,
+  "displacement_limit_mm": 0.1,
+  "material_basis": "Core304 typical modulus 200 GPa at 20 C, reduced 10% as an engineering assumption, not a guaranteed minimum.",
+  "source": "https://www.outokumpu.com/-/media/files/products/core/outokumpu-core-range-datasheet.pdf",
+  "load_basis": "1 N transverse assembly-force design screen; actual insertion and withdrawal forces remain unverified",
+  "cases": [
+    {
+      "name": "slender_upper",
+      "section_mm": 2.0,
+      "length_mm": 133.9
+    },
+    {
+      "name": "slender_lower",
+      "section_mm": 2.0,
+      "length_mm": 131.9
+    },
+    {
+      "name": "stiff6_candidate",
+      "section_mm": 6.0,
+      "length_mm": 127.9
+    }
+  ],
+  "limitations": [
+    "ideal fixed shaft end",
+    "no offset moment, torsion, joints or finger compliance",
+    "not total jig deflection"
+  ]
+}

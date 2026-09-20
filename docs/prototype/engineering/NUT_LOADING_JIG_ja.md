@@ -32,7 +32,7 @@
 
 ```sh
 LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bin/python software/sim/structural/build_captive_rear_nuts.py --out outputs/captive_rear_nuts_wide_new --slot-width-mm 6.4
-LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bin/python software/sim/structural/check_nut_loading_jig.py --body outputs/captive_rear_nuts_wide_new/body_shroud.step --out outputs/nut_jig_new --path-mode lift14 --fastener-check on
+LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bin/python software/sim/structural/check_nut_loading_jig.py --body outputs/captive_rear_nuts_wide_new/body_shroud.step --out outputs/nut_jig_new --path-mode lift14 --tool-profile slender --fastener-check on
 ```
 
-初回失敗は`--path-mode direct --fastener-check off`、途中の失敗は`--path-mode lift20 --fastener-check off`。この比較用のfastener-check offは、組立検証の最終判定には使用しない。
+初回失敗は`--path-mode direct --tool-profile slender --fastener-check off`、途中の失敗は`--path-mode lift20 --tool-profile slender --fastener-check off`。この比較用のfastener-check offは、組立検証の最終判定には使用しない。

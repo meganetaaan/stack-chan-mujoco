@@ -1,0 +1,32 @@
+{
+  "status": "next structural analysis candidate, not manufacturing release",
+  "method": "hardware inserted during paused printing; enclosed square nut pockets",
+  "corner_y_mm": [
+    -57,
+    57
+  ],
+  "corner_z_mm": [
+    8,
+    120
+  ],
+  "assets": {
+    "body": {
+      "path": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/body_shroud.step",
+      "sha256": "8de9bb8c59896372a4c07b6f108cd7490ea58219cfb9def69e2bc880cd36580d"
+    },
+    "rear_plate": {
+      "path": "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/rear_structural_plate.step",
+      "sha256": "604f5385918959d2066bd24234d591b3490692194ad2a4bea4ebbd1d5599f62d"
+    }
+  },
+  "source_plan": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/plan.json",
+  "process_evidence": "validation/jig_stiffness_embedded_development_v1/embedded_nut_process_v1/report.json",
+  "next_requirements": [
+    "slicer and printer process compatibility",
+    "screw alignment and engagement",
+    "contact/preload and load-path FE",
+    "all-load strength, convergence, buckling and mass/load update"
+  ],
+  "mass_model_updated": false,
+  "joint_strength_verified": false
+}

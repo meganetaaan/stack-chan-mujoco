@@ -1,0 +1,34 @@
+{
+  "scope": "Three-mesh FE screen of jig core under any force vector of magnitude <= 1 N.",
+  "geometry_sha256": "30384cfc48299160ee66a4d8b06ce61e37bfa8d2bb0b62175e2f262f72c954c8",
+  "young_MPa": 180000.0,
+  "poisson": 0.3,
+  "force_radius_N": 1.0,
+  "origin_mm": [
+    -54.8,
+    57,
+    120.0
+  ],
+  "fixed": "shaft end x=80 mm; ideal handle grip",
+  "loaded": "hub face y=51 mm, resulting wrench at nut center",
+  "mesh_mm": [
+    3.0,
+    2.0,
+    1.5
+  ],
+  "criteria": {
+    "displacement_mm": 0.1,
+    "stress_MPa": 100.0,
+    "free_residual_N": 1e-06,
+    "relative_mesh_displacement": 0.05,
+    "relative_mesh_stress": 0.1
+  },
+  "material_basis": "conditional stainless steel candidate: E=200GPa typical reduced 10%, nu assumed; stress allowable 100MPa provisional, purchased material and joints unqualified",
+  "limitations": [
+    "no spring fingers or their contacts",
+    "no handle/joint compliance",
+    "no material/preload/force qualification",
+    "distributed resultant on hub, not actual finger contact stress",
+    "single monolithic elastic core"
+  ]
+}
