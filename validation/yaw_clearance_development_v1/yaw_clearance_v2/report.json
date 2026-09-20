@@ -1,0 +1,83 @@
+{
+  "scope": "B-rep yaw coupler/support clearance over continuous recorded angle ranges.\n\nThe between-sample lower bound assumes rigid single-axis rotation; deformation\nand manufacturing allowances are separately subtracted, not modeled as loads.\n",
+  "results": [
+    {
+      "side": "left",
+      "variant": "original",
+      "angle_range_rad": [
+        -0.22282982618918928,
+        0.17506116904540503
+      ],
+      "sample_count": 93,
+      "radial_bound_mm": 31.016124838541646,
+      "sampling_miss_bound_mm": 0.0670708520669989,
+      "minimum_sampled_distance_mm": 22.78610224322668,
+      "minimum_angle_rad": -0.22282982618918928,
+      "residual_lower_bound_mm": 21.919031391159685,
+      "passed_screen": true,
+      "cad_sha256": {
+        "software/sim/mujoco/assets/r9_fast_turn_v1/cad/left_yaw_coupler.step": "6ef8b119b380a3ee3b22798ee80e2c9d43f27b99efbd497168e901af7c291585",
+        "software/sim/mujoco/assets/r9_fast_turn_v1/cad/left_yaw_fixed_support.step": "6c352645ed7ae1a04920e8b6d3a4896ad07b8d2fabaf69848bffacd4691b8275"
+      }
+    },
+    {
+      "side": "left",
+      "variant": "ribbed_connection",
+      "angle_range_rad": [
+        -0.22282982618918928,
+        0.17506116904540503
+      ],
+      "sample_count": 93,
+      "radial_bound_mm": 31.016124838541646,
+      "sampling_miss_bound_mm": 0.0670708520669989,
+      "minimum_sampled_distance_mm": 9.450723726022222,
+      "minimum_angle_rad": 0.07126351811464132,
+      "residual_lower_bound_mm": 8.583652873955222,
+      "passed_screen": true,
+      "cad_sha256": {
+        "software/sim/mujoco/assets/r9_fast_turn_v1/cad/left_yaw_coupler.step": "6ef8b119b380a3ee3b22798ee80e2c9d43f27b99efbd497168e901af7c291585",
+        "validation/yaw_connection_development_v1/yaw_connection_v1/left_yaw_fixed_support.step": "a063baa660297c8a5dbdf314bb52bfd1898417a387cc2d9995a9c66465a5dbdf"
+      }
+    },
+    {
+      "side": "right",
+      "variant": "original",
+      "angle_range_rad": [
+        -0.1749919094245127,
+        0.22299004014726734
+      ],
+      "sample_count": 93,
+      "radial_bound_mm": 31.016124838541646,
+      "sampling_miss_bound_mm": 0.0670861838663294,
+      "minimum_sampled_distance_mm": 22.78541062282065,
+      "minimum_angle_rad": 0.22299004014726734,
+      "residual_lower_bound_mm": 21.918324438954322,
+      "passed_screen": true,
+      "cad_sha256": {
+        "software/sim/mujoco/assets/r9_fast_turn_v1/cad/right_yaw_coupler.step": "1b1e309ebbbdf5f4b2d33a6ed9d4b7c2ce9a4e16f173cc5c4a8a9300670f175a",
+        "software/sim/mujoco/assets/r9_fast_turn_v1/cad/right_yaw_fixed_support.step": "c808d17244d490b2cb956a4f37dd44e83a64dcf93983dc0c85303e7ca15fcb79"
+      }
+    },
+    {
+      "side": "right",
+      "variant": "ribbed_connection",
+      "angle_range_rad": [
+        -0.1749919094245127,
+        0.22299004014726734
+      ],
+      "sample_count": 93,
+      "radial_bound_mm": 31.016124838541646,
+      "sampling_miss_bound_mm": 0.0670861838663294,
+      "minimum_sampled_distance_mm": 9.450707770400633,
+      "minimum_angle_rad": -0.0711705312753527,
+      "residual_lower_bound_mm": 8.583621586534303,
+      "passed_screen": true,
+      "cad_sha256": {
+        "software/sim/mujoco/assets/r9_fast_turn_v1/cad/right_yaw_coupler.step": "1b1e309ebbbdf5f4b2d33a6ed9d4b7c2ce9a4e16f173cc5c4a8a9300670f175a",
+        "validation/yaw_connection_development_v1/yaw_connection_v1/right_yaw_fixed_support.step": "deb5df46835afc342941e3c0eaab57002366713fcca64a0385e33e10048d100c"
+      }
+    }
+  ],
+  "passed_screen": true,
+  "assembly_clearance_verified": false
+}
