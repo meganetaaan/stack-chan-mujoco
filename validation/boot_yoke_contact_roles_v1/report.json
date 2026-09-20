@@ -1,0 +1,32 @@
+{
+  "comparisons": [
+    {
+      "quantity": "max_displacement_mm",
+      "part": "BOOT",
+      "relative_change": 5.28769206287194e-06,
+      "limit": 0.05,
+      "passed": true
+    },
+    {
+      "quantity": "max_displacement_mm",
+      "part": "YOKE",
+      "relative_change": 2.636395857846807e-06,
+      "limit": 0.05,
+      "passed": true
+    },
+    {
+      "quantity": "pressure_max_MPa",
+      "before": 5.524037,
+      "after": 5.526602,
+      "relative_change": 0.00046433432650783146,
+      "limit": 0.1,
+      "passed": true
+    }
+  ],
+  "source_sha256": {
+    "validation/boot_yoke_mesh_sensitivity_v1/h0.5/evaluation.json": "6605267ae23292c9fdbe242c02017d46b6ad7dbe22a1045d99055ce19839175f",
+    "outputs/boot_yoke_contact_roles_v1/reversed/evaluation.json": "97eac7b8d3aca44c36a6eb3e0d9fdfee38b20b0bf892e12ba272dfe512904857"
+  },
+  "sensitivity_pass": true,
+  "joint_strength_verified": false
+}

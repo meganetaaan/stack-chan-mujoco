@@ -2,12 +2,12 @@
 import argparse,collections,hashlib,json,os,subprocess
 from pathlib import Path
 import meshio,numpy as np
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--mesh-mm',choices=['1','0.7','0.5'],default='0.7');a=p.parse_args()
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--reverse-contact',action='store_true');p.add_argument('--out',type=Path,required=True);p.add_argument('--mesh-mm',choices=['1','0.7','0.5'],default='0.7');a=p.parse_args()
 root=Path(__file__).resolve().parents[3]
 if a.out.exists():p.error('new output required')
 a.out.mkdir(parents=True)
 paths={'BOOT':root/f'validation/boot_nut_patch_development_v1/seat_{a.mesh_mm}.msh','YOKE':root/f'validation/local_yoke_contact_mesh_v1/yoke_{a.mesh_mm}.msh'}
-plan={'scope':__doc__,'mesh_mm':float(a.mesh_mm),'force_each_N':20,'penalty_N_mm3':1e6,'E_MPa':1120,'poisson':.35,'source_sha256':{str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in paths.values()},'criteria':{'solver_completion':True,'relative_anchor_force':1e-4,'maximum_penetration_mm':.01},'limitations':['Cropped geometry with free cut faces, not full yoke/boot.','Balanced nominal forces substitute screw/nut elasticity and actual preload.','Single C3D4 mesh; no creep or walking loads.']}
+plan={'scope':__doc__,'reverse_contact':a.reverse_contact,'mesh_mm':float(a.mesh_mm),'force_each_N':20,'penalty_N_mm3':1e6,'E_MPa':1120,'poisson':.35,'source_sha256':{str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in paths.values()},'criteria':{'solver_completion':True,'relative_anchor_force':1e-4,'maximum_penetration_mm':.01},'limitations':['Cropped geometry with free cut faces, not full yoke/boot.','Balanced nominal forces substitute screw/nut elasticity and actual preload.','Single C3D4 mesh; no creep or walking loads.']}
 (a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
 lines=['*HEADING',__doc__];offset=0;eo=0;anchors=[];constraints=[];loads={};total_force=np.zeros(3);total_moment=np.zeros(3);node_xyz={}
 face_indices=[(0,1,2),(0,3,1),(1,3,2),(2,3,0)]
@@ -42,8 +42,8 @@ for name,path in paths.items():
 for n,f in loads.items():total_force += [0,0,f];total_moment += np.cross(node_xyz[n],[0,0,f])
 if np.linalg.norm(total_force)>1e-8 or np.linalg.norm(total_moment)>1e-7:raise ValueError('unbalanced input load')
 for name in paths:lines += [f'*MATERIAL,NAME={name}','*ELASTIC','1120,.35',f'*SOLID SECTION,ELSET={name},MATERIAL={name}']
-lines+=['*NSET,NSET=ANCHORS',','.join(map(str,anchors)),'*SURFACE INTERACTION,NAME=NORMAL','*SURFACE BEHAVIOR,PRESSURE-OVERCLOSURE=LINEAR','1000000','*CONTACT PAIR,INTERACTION=NORMAL,TYPE=SURFACE TO SURFACE','BOOT_CONTACT,YOKE_CONTACT','*BOUNDARY',*constraints,'*STEP,NLGEOM,INC=100','*STATIC','.1,1,1e-6,.1','*CLOAD']+[f'{n},3,{f:.15g}' for n,f in sorted(loads.items())]
-lines+=['*NODE PRINT,NSET=ANCHORS,TOTALS=ONLY','RF','*NODE PRINT,NSET=BOOT','U','*NODE PRINT,NSET=YOKE','U','*CONTACT PRINT,SLAVE=BOOT_CONTACT,MASTER=YOKE_CONTACT','CF,CDIS,CSTR','*END STEP']
+lines+=['*NSET,NSET=ANCHORS',','.join(map(str,anchors)),'*SURFACE INTERACTION,NAME=NORMAL','*SURFACE BEHAVIOR,PRESSURE-OVERCLOSURE=LINEAR','1000000','*CONTACT PAIR,INTERACTION=NORMAL,TYPE=SURFACE TO SURFACE',('YOKE_CONTACT,BOOT_CONTACT' if a.reverse_contact else 'BOOT_CONTACT,YOKE_CONTACT'),'*BOUNDARY',*constraints,'*STEP,NLGEOM,INC=100','*STATIC','.1,1,1e-6,.1','*CLOAD']+[f'{n},3,{f:.15g}' for n,f in sorted(loads.items())]
+lines+=['*NODE PRINT,NSET=ANCHORS,TOTALS=ONLY','RF','*NODE PRINT,NSET=BOOT','U','*NODE PRINT,NSET=YOKE','U',('*CONTACT PRINT,SLAVE=YOKE_CONTACT,MASTER=BOOT_CONTACT' if a.reverse_contact else '*CONTACT PRINT,SLAVE=BOOT_CONTACT,MASTER=YOKE_CONTACT'),'CF,CDIS,CSTR','*END STEP']
 (a.out/'contact.inp').write_text('\n'.join(lines)+'\n');(a.out/'assembly.json').write_text(json.dumps({'force_N':total_force.tolist(),'moment_Nmm':total_moment.tolist(),'anchors':{str(n):node_xyz[n].tolist() for n in anchors}},indent=2)+'\n')
 exe=root/'.tools/root/usr/bin/ccx';env=os.environ.copy();env['LD_LIBRARY_PATH']=str(root/'.tools/root/usr/lib/x86_64-linux-gnu');env['OMP_NUM_THREADS']='1'
 r=subprocess.run([str(exe),'-i','contact'],cwd=a.out.resolve(),env=env,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
