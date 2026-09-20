@@ -1,0 +1,39 @@
+{
+  "scope": "Conditional component-interface and minimum-delay budget for converter enable.",
+  "regulator": "Pololu D42V55F5",
+  "delay_supervisor_candidate": "TPS3840DL30",
+  "sources": [
+    "https://www.pololu.com/product/5571",
+    "https://www.ti.com/lit/ds/symlink/tps3840.pdf"
+  ],
+  "supervisor_supply_assumed_V": [
+    3.234,
+    3.366
+  ],
+  "supply_status": "3.3 V +/-2 percent always-on supply requirement; LDO not yet selected",
+  "VIT_minus_nominal_V": 3.0,
+  "threshold_error_fraction": 0.015,
+  "hysteresis_max_V": 0.125,
+  "CT_nominal_F": 4.7e-09,
+  "CT_effective_tolerance_fraction": 0.05,
+  "RCT_min_ohm": 350000,
+  "minimum_delay_log_argument": 0.36,
+  "output_low_max_V": 0.2,
+  "output_low_test_current_A": 0.002,
+  "EN_disable_below_V": 0.5,
+  "EN_enable_above_V": 1.0,
+  "EN_pullup_nominal_ohm": 1000000.0,
+  "battery_assumed_max_V": 8.4,
+  "criteria": {
+    "delay_min_s": 0.001,
+    "monitor_ready_s": 0.00045
+  },
+  "limitations": [
+    "CT effective tolerance must include temperature and bias; part not yet selected",
+    "Internal EN pull-up tolerance and EN input leakage not published on product page",
+    "Open-drain release pull-up voltage calculation omits unspecified EN input current",
+    "Always-on regulator, sequencing wiring, hot plug, brownout and residual charge not simulated",
+    "EN is pulled to battery before the 3.3 V supervisor is powered; a default-off circuit is still required to prevent early enable",
+    "No claim that this 3 V supervisor protects a 2S battery against overdischarge"
+  ]
+}
