@@ -21,6 +21,7 @@ def main():
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--step-deg', type=float, default=.25)
     p.add_argument('--include-cradle', action='store_true')
+    p.add_argument('--support-dir',type=Path,help='Directory with revised left/right support STEP files')
     a=p.parse_args()
     if not np.isfinite(a.step_deg) or a.step_deg<=0 or a.step_deg>5:
         p.error('step must be finite, positive and <= 5 degrees')
@@ -65,7 +66,7 @@ def main():
         # chord displacement is <= radius * angle_difference (radians).
         sampling_bound=radius*float(np.diff(angles).max())/2
         for variant,path in [('original',design/'cad'/f'{side}_yaw_fixed_support.step'),
-                             ('ribbed_connection',ROOT/'validation/yaw_connection_development_v1/yaw_connection_v1'/f'{side}_yaw_fixed_support.step')]:
+                             ('ribbed_connection',(a.support_dir.resolve() if a.support_dir else ROOT/'validation/yaw_connection_development_v1/yaw_connection_v1')/f'{side}_yaw_fixed_support.step')]:
             fixed=cq.importers.importStep(str(path)).val()
             rows=[]
             for angle in angles:
