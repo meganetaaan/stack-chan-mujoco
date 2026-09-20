@@ -1,0 +1,2060 @@
+{
+  "schema_version": 1,
+  "domain": "actuator",
+  "commit": "e06359693fc193b1c62cfedc060fc3bf812b86bc",
+  "runtime": {
+    "python": "3.14.7 (main, Aug  7 2026, 02:26:00) [Clang 22.1.3 ]",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "packages": {
+      "mujoco": "3.13.0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "gymnasium": "1.3.0"
+    }
+  },
+  "commands": [
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_support_nominal",
+      "--side",
+      "left",
+      "--mode",
+      "support"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_transfer_nominal",
+      "--side",
+      "left",
+      "--mode",
+      "transfer"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_swing_nominal",
+      "--side",
+      "left",
+      "--mode",
+      "swing"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_voltage_3.7",
+      "--side",
+      "left",
+      "--mode",
+      "swing",
+      "--voltage",
+      "3.7"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_voltage_6.0",
+      "--side",
+      "left",
+      "--mode",
+      "swing",
+      "--voltage",
+      "6.0"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_delay_0.005",
+      "--side",
+      "left",
+      "--mode",
+      "swing",
+      "--delay",
+      "0.005"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_delay_0.02",
+      "--side",
+      "left",
+      "--mode",
+      "swing",
+      "--delay",
+      "0.02"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_backlash_0.0",
+      "--side",
+      "left",
+      "--mode",
+      "swing",
+      "--backlash",
+      "0.0"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_backlash_0.017453292519943295",
+      "--side",
+      "left",
+      "--mode",
+      "swing",
+      "--backlash",
+      "0.017453292519943295"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_current_tau_0.001",
+      "--side",
+      "left",
+      "--mode",
+      "swing",
+      "--current-tau",
+      "0.001"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_current_tau_0.005",
+      "--side",
+      "left",
+      "--mode",
+      "swing",
+      "--current-tau",
+      "0.005"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_mass_0.95",
+      "--side",
+      "left",
+      "--mode",
+      "support",
+      "--mass-scale",
+      "0.95"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_mass_1.05",
+      "--side",
+      "left",
+      "--mode",
+      "support",
+      "--mass-scale",
+      "1.05"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_friction_0.5",
+      "--side",
+      "left",
+      "--mode",
+      "swing",
+      "--friction-scale",
+      "0.5"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_friction_1.5",
+      "--side",
+      "left",
+      "--mode",
+      "swing",
+      "--friction-scale",
+      "1.5"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_support_nominal",
+      "--side",
+      "right",
+      "--mode",
+      "support"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_transfer_nominal",
+      "--side",
+      "right",
+      "--mode",
+      "transfer"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_swing_nominal",
+      "--side",
+      "right",
+      "--mode",
+      "swing"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_voltage_3.7",
+      "--side",
+      "right",
+      "--mode",
+      "swing",
+      "--voltage",
+      "3.7"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_voltage_6.0",
+      "--side",
+      "right",
+      "--mode",
+      "swing",
+      "--voltage",
+      "6.0"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_delay_0.005",
+      "--side",
+      "right",
+      "--mode",
+      "swing",
+      "--delay",
+      "0.005"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_delay_0.02",
+      "--side",
+      "right",
+      "--mode",
+      "swing",
+      "--delay",
+      "0.02"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_backlash_0.0",
+      "--side",
+      "right",
+      "--mode",
+      "swing",
+      "--backlash",
+      "0.0"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_backlash_0.017453292519943295",
+      "--side",
+      "right",
+      "--mode",
+      "swing",
+      "--backlash",
+      "0.017453292519943295"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_current_tau_0.001",
+      "--side",
+      "right",
+      "--mode",
+      "swing",
+      "--current-tau",
+      "0.001"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_current_tau_0.005",
+      "--side",
+      "right",
+      "--mode",
+      "swing",
+      "--current-tau",
+      "0.005"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_mass_0.95",
+      "--side",
+      "right",
+      "--mode",
+      "support",
+      "--mass-scale",
+      "0.95"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_mass_1.05",
+      "--side",
+      "right",
+      "--mode",
+      "support",
+      "--mass-scale",
+      "1.05"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_friction_0.5",
+      "--side",
+      "right",
+      "--mode",
+      "swing",
+      "--friction-scale",
+      "0.5"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_friction_1.5",
+      "--side",
+      "right",
+      "--mode",
+      "swing",
+      "--friction-scale",
+      "1.5"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_forward_swing",
+      "--side",
+      "left",
+      "--mode",
+      "swing",
+      "--trajectory",
+      "forward.npz"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_backward_swing",
+      "--side",
+      "left",
+      "--mode",
+      "swing",
+      "--trajectory",
+      "backward.npz"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_forward_swing",
+      "--side",
+      "right",
+      "--mode",
+      "swing",
+      "--trajectory",
+      "forward.npz"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_backward_swing",
+      "--side",
+      "right",
+      "--mode",
+      "swing",
+      "--trajectory",
+      "backward.npz"
+    ],
+    [
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_single_joint.py",
+      "--workload",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+      "--out",
+      "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/single_joint"
+    ],
+    [
+      ".venv/bin/python",
+      "software/sim/integration/audit_actuator_results.py",
+      "--root",
+      "validation/prototype_epic4_v1",
+      "--out",
+      "validation/prototype_epic4_v1/audit.json"
+    ]
+  ],
+  "inputs": [
+    {
+      "path": "board/mechanical/prototype/joints.json",
+      "sha256": "157f531e2821249cbab85b17b0ed5674b27239a4708c1f27c49aa937d1b1c392"
+    },
+    {
+      "path": "software/sim/actuator/capture_translation_workload.py",
+      "sha256": "db56c6821d6628b8682ed144d3c737984ca220f97c24f78aeb7480476afd4c2e"
+    },
+    {
+      "path": "software/sim/actuator/capture_workload.py",
+      "sha256": "679f7a3e5f1c27466cfa735481ab7491231bcec4bbd15080a7039689492731b7"
+    },
+    {
+      "path": "software/sim/actuator/catalog.json",
+      "sha256": "1ceb656e7f2530a2862b8c18544eddc2e89df1ebd0754a68dcad0a8ca9019ae6"
+    },
+    {
+      "path": "software/sim/actuator/drive.py",
+      "sha256": "cf858371b2ff4fa958eaa660dfd76e10338ccb86f5983f4637a7bdc5cd7af0eb"
+    },
+    {
+      "path": "software/sim/actuator/export_loads.py",
+      "sha256": "dbd7f7e2674e639bdaa9e324e3e8f287fc16112819f2cd9826fa0a1618eb4870"
+    },
+    {
+      "path": "software/sim/actuator/fixtures.py",
+      "sha256": "bf012e7a479092fc10009fc7ef5a32ecfb54aceba640bdcf05028936a677e81d"
+    },
+    {
+      "path": "software/sim/actuator/load_export.py",
+      "sha256": "fa26791978559bb959158a01941d7ccbc47779e341987426d721e56ea8bc67e0"
+    },
+    {
+      "path": "software/sim/actuator/merge_workloads.py",
+      "sha256": "23f93ea19965584992c0b328472551695643dcdc68520fdf0a43ba2d54e6fffc"
+    },
+    {
+      "path": "software/sim/actuator/run_leg.py",
+      "sha256": "cf270f7a41a4eeb5d2a766b71d19f99bef048148d2ad43a5a4d1bca8d6a37d4c"
+    },
+    {
+      "path": "software/sim/actuator/run_load_sweep.py",
+      "sha256": "1c02e4b261df89385ea1bfb0dc9804af43d60a0c516e92c49b6f4b7bc0762b7a"
+    },
+    {
+      "path": "software/sim/actuator/run_probe.py",
+      "sha256": "c229d7f5b058a0e7d8e6ce26187e39dddaff0d56769345c34baa5f267ba0034d"
+    },
+    {
+      "path": "software/sim/actuator/run_single_joint.py",
+      "sha256": "c6856b6118917e189864b69ec9162ff020a99bc6c7885e17f0bfbb57bd29c6d5"
+    },
+    {
+      "path": "software/sim/actuator/run_suite.py",
+      "sha256": "ae7fbaf703fb3e59ff666622d05f2a84ffc885188b7faa27db5354baee240840"
+    },
+    {
+      "path": "software/sim/actuator/tests/test_drive.py",
+      "sha256": "2a2ed0348107b3b8c9bafc74cf33c8dc15f343139c58cb7375cc6248ea494137"
+    },
+    {
+      "path": "software/sim/actuator/tests/test_loads.py",
+      "sha256": "f9caa1d0733b9c01ec4830906da9af29712503c9d9afcbed87d4f539bfbccc55"
+    },
+    {
+      "path": "software/sim/actuator/thermal_screen.py",
+      "sha256": "da151258e60416a0df458dade71760548a271cd927ea7aace1f72481cebe1861"
+    },
+    {
+      "path": "software/sim/integration/audit_actuator_results.py",
+      "sha256": "69e61de0ed7406bbd0902de197547ef1139c138647b62b98057be902d58454ed"
+    },
+    {
+      "path": "software/sim/integration/build_prototype_spec.py",
+      "sha256": "f146b79a9e5a391cd42b147368f0680e8060f4e00bbde85d28085958a3e8aecc"
+    },
+    {
+      "path": "software/sim/integration/result_bundle.py",
+      "sha256": "020905acd223bd9347b27298d0b1a668888f6194c3ba758702a007d51f7c2050"
+    },
+    {
+      "path": "software/sim/integration/run_baseline.py",
+      "sha256": "2786a438acd67c59c39bfba260a7d9e6060a72ab6424773f546e051e98731082"
+    },
+    {
+      "path": "software/sim/integration/tests/test_evidence.py",
+      "sha256": "1e6e3a95cd6999eafb060b042d8a441159281832b11b2911e4968d2a759a777e"
+    },
+    {
+      "path": "software/sim/integration/verify_migration.py",
+      "sha256": "8da664ba7a4245a6e8722b911350d480c9aada081e4fbcd739664b14030cf6f0"
+    },
+    {
+      "path": "software/sim/integration/verify_prototype_spec.py",
+      "sha256": "aad9bba00207590d52a6c2e569046f62c35f37549516f188b3fff88d32f4a62a"
+    },
+    {
+      "path": "software/sim/mujoco/add_base_reservation_collisions.py",
+      "sha256": "c3738b64f788fb5d8477f84782d405754c3fe5feb23de05aab5c58caeb60e161"
+    },
+    {
+      "path": "software/sim/mujoco/add_gimbal_collisions.py",
+      "sha256": "584ec08ab42ac987f46904b2286fa56a03546e42c2da921d90138624fb8ae92c"
+    },
+    {
+      "path": "software/sim/mujoco/analyze_yaw_development.py",
+      "sha256": "d01b659671c1036ea531db494b01fa21418b6528bb81cc68edcf50d750a36d1e"
+    },
+    {
+      "path": "software/sim/mujoco/analyze_yaw_lateral.py",
+      "sha256": "727208ba7bc12875469ac907ed4eebac6095610afbea70eb4ce0ecdca2eea38a"
+    },
+    {
+      "path": "software/sim/mujoco/assess_acceptance.py",
+      "sha256": "7ba75cd5b257b97d923c2680ecb40ffcefda3ad9ef7444fa894255e6d44fafb0"
+    },
+    {
+      "path": "software/sim/mujoco/assess_fast_turn_trial.py",
+      "sha256": "a4870d1f6d809c17f0d8178d03ee2bcbba2a8ce426608c24da80dd60ef475394"
+    },
+    {
+      "path": "software/sim/mujoco/assess_yaw_acceptance.py",
+      "sha256": "0d6cd017c456be9a580c6050db3a1368a34ac1322471c5d07bbe5d7869192f4b"
+    },
+    {
+      "path": "software/sim/mujoco/assess_yaw_development_batch.py",
+      "sha256": "223e33bd70fcd030bccd79b0ddf201f56849f38cb067e9ee43658adc9ffee076"
+    },
+    {
+      "path": "software/sim/mujoco/assets/r9_fast_turn_v1/build_fast_turn_candidate.source.py",
+      "sha256": "1fce9344e705173d5bcafd255854d3a4aa9df3d83d70298da0d46f584f50aee8"
+    },
+    {
+      "path": "software/sim/mujoco/assets/r9_fast_turn_v1/reference/src/tab5_biped/__init__.py",
+      "sha256": "20ee02304324f2f8b4fb2552b9e410421ba270be94c9779068f36a6d87678d6f"
+    },
+    {
+      "path": "software/sim/mujoco/assets/r9_fast_turn_v1/reference/src/tab5_biped/core.py",
+      "sha256": "9a16813b61435492746dc3cb7d7e765a7a7432e47ab29c266ce011742da5c322"
+    },
+    {
+      "path": "software/sim/mujoco/assets/r9_fast_turn_v1/reference/src/tab5_biped/planner.py",
+      "sha256": "f54a0a680412715d3f0abbbd9495e5c7aeb255d9ba71fbef76df07e150c7025b"
+    },
+    {
+      "path": "software/sim/mujoco/audit_added_collision_states.py",
+      "sha256": "04a428c16e0769f9dd3e3d194bd34e1a4f8ed5fab93353ac3bb2016fc11a9b18"
+    },
+    {
+      "path": "software/sim/mujoco/audit_fast_turn_ankle_cad.py",
+      "sha256": "4210124c91f93979d57c3aca4f9161373feb9e484c00873c8b3102ab806491f9"
+    },
+    {
+      "path": "software/sim/mujoco/audit_fast_turn_body_cad.py",
+      "sha256": "4267825913c1020a1f1166494bcf1b6fec2eb174d2a041e3533472a9ce03d724"
+    },
+    {
+      "path": "software/sim/mujoco/audit_fast_turn_candidate.py",
+      "sha256": "665aa64ee9b7a3f8a0a0d9fbb6ed0fef0a2be4014db95462ea6490871e5959e3"
+    },
+    {
+      "path": "software/sim/mujoco/audit_lp40.py",
+      "sha256": "1bd77a04fda8fe3c925610468e568e8a4b03a0125097d39b9a61fd9351b81674"
+    },
+    {
+      "path": "software/sim/mujoco/audit_residual_batch.py",
+      "sha256": "69b3921fdfa0fa02dea60468d9d3111be3f9c7f2f03b88f8e389444f3a74e9a8"
+    },
+    {
+      "path": "software/sim/mujoco/audit_rewards.py",
+      "sha256": "bd334e4fa6a4ea417f7c9b103e4ec01daba6a585067e1ef7727a45245235131e"
+    },
+    {
+      "path": "software/sim/mujoco/audit_yaw_fixed_cad.py",
+      "sha256": "5bf157e87ae67562356242318747d416b349e1db8b87891f2d138c18f568d134"
+    },
+    {
+      "path": "software/sim/mujoco/audit_yaw_layout.py",
+      "sha256": "407a35d762978ed7a8c9cefcc7262eb33ef4c893e003be09f21df8380abf48b6"
+    },
+    {
+      "path": "software/sim/mujoco/audit_yaw_reference_feet.py",
+      "sha256": "32eaf9e6135dc1acede3ee7e773298b9a198deb49b12d09a4942d872510a04a7"
+    },
+    {
+      "path": "software/sim/mujoco/benchmark.py",
+      "sha256": "0443f198af373551961324381050687dbcd9daf3a5ef4229b1c4634ae35b70ab"
+    },
+    {
+      "path": "software/sim/mujoco/build_battery_mount.py",
+      "sha256": "a87e4513d7b6ebf88fdf4af96950232de46509917d4d5f8ae0c92613d65eaf26"
+    },
+    {
+      "path": "software/sim/mujoco/build_design.py",
+      "sha256": "603e2bc51ed44cb63c76f65061cd1222126ff2309e77ecbf1181a9ccf3da36a2"
+    },
+    {
+      "path": "software/sim/mujoco/build_fast_turn_candidate.py",
+      "sha256": "1fce9344e705173d5bcafd255854d3a4aa9df3d83d70298da0d46f584f50aee8"
+    },
+    {
+      "path": "software/sim/mujoco/build_fast_turn_feet.py",
+      "sha256": "314c3e12f7b4c962ee398a7adec5ee304ac93e36c75cf4ff4abfb7e246481578"
+    },
+    {
+      "path": "software/sim/mujoco/build_fast_turn_packaging.py",
+      "sha256": "e4d78f13339b8c9efe82a0d2f16b4bb306e41531674ca88e43ac553a0dd26509"
+    },
+    {
+      "path": "software/sim/mujoco/build_fast_turn_tray.py",
+      "sha256": "220f5f86082ec9bbd9982b67ac2f96b4ecb60351ada7965cac27f29db890fb51"
+    },
+    {
+      "path": "software/sim/mujoco/build_yaw_dynamics_candidate.py",
+      "sha256": "0257efc16145632991e85c76081533a31f169b43bafdc566f2e47c19fd9e77ba"
+    },
+    {
+      "path": "software/sim/mujoco/check_battery_mount_trajectory.py",
+      "sha256": "8565e5eb54438a86bcfc880d462d2cb6bee5882d54e019a3efd715a96dea6b4d"
+    },
+    {
+      "path": "software/sim/mujoco/check_battery_service_path.py",
+      "sha256": "b82c47c044f558e1272d68e8a798b6ce52e310559b82268db0a0bdcce0756a76"
+    },
+    {
+      "path": "software/sim/mujoco/check_design_clearance.py",
+      "sha256": "8d9fbb5e9b166072bfe665d46524cf98ccce8556ee1ac17fd643ae51a53370f3"
+    },
+    {
+      "path": "software/sim/mujoco/check_env.py",
+      "sha256": "298dc32b73b8751311460c18c3bc273f705b75e1efdf788e5d5233fd4214d96f"
+    },
+    {
+      "path": "software/sim/mujoco/check_stage.py",
+      "sha256": "0de1688a3cd8825182c28c1d892c5c988f903d6992299c9e47311e4f9e987bd5"
+    },
+    {
+      "path": "software/sim/mujoco/compare_design_mass.py",
+      "sha256": "c9c1785ad2f883a1039814401bc8127db6d3ece767b39834fc468c9346df25d0"
+    },
+    {
+      "path": "software/sim/mujoco/continue_residual.py",
+      "sha256": "3618bbb6adc69f75822b103625054bea2562ab0afd3859c28941e16f137b2077"
+    },
+    {
+      "path": "software/sim/mujoco/crab_control.py",
+      "sha256": "ef6bb01cdd5782b1ab5202f122f1d9c16da21c05305f3a51899c1f80f099c3b1"
+    },
+    {
+      "path": "software/sim/mujoco/derive_underside_cutouts.py",
+      "sha256": "3767c09462e0ee8550316e02b0e4eb04be19102f295b9855a75d61b12c6908ea"
+    },
+    {
+      "path": "software/sim/mujoco/diagnose_gait.py",
+      "sha256": "88a83677e064d8c5784bf649ea3047f24da33e909f44f210ac7a4352097c5ec9"
+    },
+    {
+      "path": "software/sim/mujoco/evaluate.py",
+      "sha256": "c801e0b6c15859bdd92b464d10a7833159dd55bd3f90f4982cd0dfb2f448dfb0"
+    },
+    {
+      "path": "software/sim/mujoco/evaluate_residual.py",
+      "sha256": "5f4b06be0e0d1bb0659c750418d1ce31914b166d3dee907b6c7c3a599b858c04"
+    },
+    {
+      "path": "software/sim/mujoco/export_fast_turn_cad_poses.py",
+      "sha256": "4a6039adc7a42df7ee337b4e9f5d0ae8155187d06db012dab32209864fe5d324"
+    },
+    {
+      "path": "software/sim/mujoco/export_policy.py",
+      "sha256": "bbaa6df5c1cc4c6e7a5b05c0fc4760c64281fe5653a1f34b2cdef8e70a7a3e59"
+    },
+    {
+      "path": "software/sim/mujoco/fast_turn_reference.py",
+      "sha256": "6277b0a4e2c467414408c615be1967af2552ac1571ec0cad99425667ce6b70b7"
+    },
+    {
+      "path": "software/sim/mujoco/fetch_x330_reference.py",
+      "sha256": "edfc4bcca04c974b44035d02f49ce9951fd7d15932121ce15bc0f4c900d158cb"
+    },
+    {
+      "path": "software/sim/mujoco/generate_yaw_maneuver_reference.py",
+      "sha256": "250eb44c713cff379e5774c88abdf42fffdffc0bbb946e5c3fffa4b59c7f7899"
+    },
+    {
+      "path": "software/sim/mujoco/generate_yaw_step_reference.py",
+      "sha256": "948cb27a91a44cfd86420f29c833bf81eedb316e368cae9308ecacd036b7d8ed"
+    },
+    {
+      "path": "software/sim/mujoco/generate_yaw_zero_reference.py",
+      "sha256": "569ce9f0164f54c28fc10bc4572ce9d57984d225f27060f0efc8dad00db89ccd"
+    },
+    {
+      "path": "software/sim/mujoco/inspect_design_pair.py",
+      "sha256": "c9a38071d4fb0f1740fc58d22d0bbe1c33dc5322735a395f83254f095fc7af2b"
+    },
+    {
+      "path": "software/sim/mujoco/inspect_joint_limit_failure.py",
+      "sha256": "9cc9573699baedd81b5b139115ec61075cf4c383b121d99e92e76f652ce58d1a"
+    },
+    {
+      "path": "software/sim/mujoco/inspect_self_collision.py",
+      "sha256": "c307c7132ccb276b374dae85066729935060ac9bb1defd4f37c7bac57b53c7ca"
+    },
+    {
+      "path": "software/sim/mujoco/inspect_x330_step.py",
+      "sha256": "d146d3dd5a1ee60a6854b56b0196c456a8977853212fcb26654d987ce5a53638"
+    },
+    {
+      "path": "software/sim/mujoco/integrate_battery_mount.py",
+      "sha256": "646cc0d0c9f1aeb8cfd223274fa9202a34d5dbd63375ad926396a92e03d70316"
+    },
+    {
+      "path": "software/sim/mujoco/live_fast_turn_reference.py",
+      "sha256": "f0944932c918a344e47e39784449bf265b10840f20f746a1ad8a42ae64702928"
+    },
+    {
+      "path": "software/sim/mujoco/make_plant_variation_suite.py",
+      "sha256": "0efbbf8064a32a6abd81aaf4b6e0240d0ae0e8f0e817b040a29b99b9e1168119"
+    },
+    {
+      "path": "software/sim/mujoco/maneuver_reference.py",
+      "sha256": "666774e32fa4efc208843e78274252498e29fe80cb3aa4fddbc66604625e1fdd"
+    },
+    {
+      "path": "software/sim/mujoco/measure_forward_traversal.py",
+      "sha256": "1e28d186c3c7d7eb07a185dd2e8e01c7635db6f4ad9bd9df24eff19c83ebb732"
+    },
+    {
+      "path": "software/sim/mujoco/plant_variation.py",
+      "sha256": "506892b5afadedbdabd3f980ee442ff5d4d2ffef796635a4d4b4974426b20e34"
+    },
+    {
+      "path": "software/sim/mujoco/play.py",
+      "sha256": "7d7705570bd6cccedc3fe934f115d9c259465e95c30eed72f6c08e98a02163df"
+    },
+    {
+      "path": "software/sim/mujoco/plot_residual_paths.py",
+      "sha256": "7b802313de6b60ca5e7e4b200640b5199c49fa07ccf18373f42bc8db9845dc8c"
+    },
+    {
+      "path": "software/sim/mujoco/plot_yaw_contacts.py",
+      "sha256": "2e0d887760aace6d845d5d9f2ba7257e04af301adc03cec7ebd1aeccae3a69d8"
+    },
+    {
+      "path": "software/sim/mujoco/plot_yaw_lateral.py",
+      "sha256": "ad2237a2591ef5d73d436fc4a875bf954e32f18c6a882c5ef973bc9fb1d67412"
+    },
+    {
+      "path": "software/sim/mujoco/probe_fast_turn.py",
+      "sha256": "b8b869c91ef11bcf6cdf2aa8461e687498f949ed2defdf6839f85329d8082566"
+    },
+    {
+      "path": "software/sim/mujoco/probe_maneuvers.py",
+      "sha256": "ae807b3c1333519dae86d84e67a28e82e64a52312c106bf446f40c03c248783d"
+    },
+    {
+      "path": "software/sim/mujoco/probe_reference_gait.py",
+      "sha256": "034b5235341b38afc2b5c157ba5017d8c2f0fd139a797bd1f517c707d473d7cd"
+    },
+    {
+      "path": "software/sim/mujoco/probe_signed_reference.py",
+      "sha256": "737670965141b46673be55d637a0757c847d839366a58784c739c3d28c844dd4"
+    },
+    {
+      "path": "software/sim/mujoco/probe_stopping_gait.py",
+      "sha256": "a7beba328d2e5c5fdb3addc2618598f3603b2351b00d9a44b37f244f724871e9"
+    },
+    {
+      "path": "software/sim/mujoco/probe_yaw_authority.py",
+      "sha256": "3c18691e0c2cbc3ac91de893e9305c478e4f7a9e7422b566dd96c486d695c030"
+    },
+    {
+      "path": "software/sim/mujoco/probe_yaw_dynamics_candidate.py",
+      "sha256": "233f36854bce8efa6960445cf62811d8aeee0a14efdf2a5e8f4805111049abd0"
+    },
+    {
+      "path": "software/sim/mujoco/render_fast_turn_trial.py",
+      "sha256": "d01ee09e334dd66073fb881378e3acd5a58634a1ad52700fc0b2ec4c2d337c31"
+    },
+    {
+      "path": "software/sim/mujoco/replay_maneuvers.py",
+      "sha256": "99a056415d3eaa82e72ba9f3482938cd3c6b4cb4eaba85298ef87808eae6b0ba"
+    },
+    {
+      "path": "software/sim/mujoco/replay_residual.py",
+      "sha256": "dbc7902a814232fbbbefc44e37f42155bee4d11bf764e9a2b51796d2cb2d095c"
+    },
+    {
+      "path": "software/sim/mujoco/replay_self_contacts.py",
+      "sha256": "2d7eedc75eefb620ac06533b54cac5686e6ba381b89700c08ddc908d9297b75e"
+    },
+    {
+      "path": "software/sim/mujoco/replay_yaw_candidate.py",
+      "sha256": "e7c91c090b1c79e364420fd3a7b04b7c02d6b53b1c2d05c4879b4c52b6e68baf"
+    },
+    {
+      "path": "software/sim/mujoco/reproduce_mounted_design.py",
+      "sha256": "d6a323b06e3a27dc0232253eba65a1aa6bf99113578ca51b002c5735958b8fa5"
+    },
+    {
+      "path": "software/sim/mujoco/run_crab_evaluation.py",
+      "sha256": "141592bf3504b51d7cac9afe6c1fdecd41e3520f10b5e247a642180816950225"
+    },
+    {
+      "path": "software/sim/mujoco/run_fast_turn_sensitivity.py",
+      "sha256": "8f6068f79d25ca21730853f0a11071050cbc7944c25213ac9368c046061f36bb"
+    },
+    {
+      "path": "software/sim/mujoco/run_planned_r6_evaluation.py",
+      "sha256": "4deff2325867ebdf7997a302ed3e5e2bfa93ac372ae439aab193488a19939f92"
+    },
+    {
+      "path": "software/sim/mujoco/run_plant_screen.py",
+      "sha256": "71251eeef42fffd9f207427a4857e0653fb9c1978c4ebfdd5beb9c1b1a82b2ef"
+    },
+    {
+      "path": "software/sim/mujoco/run_velocity_evaluation.py",
+      "sha256": "7a21ad388d49fd42bc8aee4e262471670a41fec74bbf19d69f59db1e68f57c1b"
+    },
+    {
+      "path": "software/sim/mujoco/run_yaw_acceptance.py",
+      "sha256": "d9a6960c719542d37d567931de15457840d73bf82c24091220695e3af3366864"
+    },
+    {
+      "path": "software/sim/mujoco/run_yaw_development_batch.py",
+      "sha256": "e506b1c176eaf8781635ccdf33ef5951514cb35e5da96b5dc1c4d660d649374a"
+    },
+    {
+      "path": "software/sim/mujoco/screen_fast_turn_clearance.py",
+      "sha256": "ca374dac30fa25f54a3c3ff281cf732bbf2ac2be9506067cfb5e5ff2d44017ce"
+    },
+    {
+      "path": "software/sim/mujoco/screen_hip_spacing.py",
+      "sha256": "c7858402989ab98a2d347da4f9b6d2749a71afb853b1aaabf379c37dd592f9e7"
+    },
+    {
+      "path": "software/sim/mujoco/screen_hip_yaw_space.py",
+      "sha256": "c44d1c4253f1d77292a1d513337bc78cf6d5c434e608beeb6c88825ca89c7f5f"
+    },
+    {
+      "path": "software/sim/mujoco/screen_hip_yaw_sweep.py",
+      "sha256": "132a7d591e3193632ab7a62fbf85224a406eb13947d50a746ce8d6d95c7974dd"
+    },
+    {
+      "path": "software/sim/mujoco/screen_motor_clearance.py",
+      "sha256": "f450e9978792d1419e9c0de8a98c5e7bf91991164c8e08b8957e15666fac0c3e"
+    },
+    {
+      "path": "software/sim/mujoco/smoke_test.py",
+      "sha256": "ba2f047a68cbcdfd70f0e03977d82c53e7ceb14ac71a3e15b517a5638a1e4bbd"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/__init__.py",
+      "sha256": "ae2411c6f2d5b432fb774ffa90dfeb4fb068b9cc4ba346bde9e8009ef7ad3e01"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/acceptance.py",
+      "sha256": "9ad5505d6883a6c061b3cb6bc944ee1dc171b16c19b0abfb7f61c0e415bd4c4d"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/actuation.py",
+      "sha256": "08fb037114c07e47a52b7b722910dd90edf8f5e78be26adbc8784e0f38fc9351"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/attitude_observer.py",
+      "sha256": "5df71b3b59e24d36eaa7f8e275235deab08744b8cfc18c8f8d46893dadef4568"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/candidate_variation.py",
+      "sha256": "764e70260caf0f0273b73fe46384ab16b4e9bfb7866b6ebb70d4d8f426a043d5"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/checkpoints.py",
+      "sha256": "359e64eeec7241587bd36c19e6189a424b42fdb5dd4b38eb3334a80ed93f0067"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/config.py",
+      "sha256": "61740892a46f533af6095ca4ab441fa7d35873d45f5c700eeef0915798f563c4"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/env.py",
+      "sha256": "51e702c9de97492d94c7fffb5c460fd3115c7cce2ec06eb6c363eead364b3866"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/evaluation.py",
+      "sha256": "70e4d216c9c3ed9d0b48715678c2e6b5e586686d55d1c80d93c7eaeedeb0221f"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/legacy_policy_view.py",
+      "sha256": "ea477914833f63eb5d78bce7778a9433f72a3e5bcad1db6cbaf52f52f3dde2df"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/maneuver_env.py",
+      "sha256": "87e1de4dd84adbdef17a79aa4540598c75d43ea5f4375db7c89e672abfaa952d"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/maneuver_protocol.py",
+      "sha256": "32254157b3ddb94b5727751cfb35d828d0295bbf2520a98a4935fa5b5c2a9d40"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/math_utils.py",
+      "sha256": "80cd876afb8a5c1d4c4397c117413a5ce36c29690358b23c59d49007ccfe432a"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/ordered_steps.py",
+      "sha256": "c7aa08f0fecfd55ba5a7287b5418a58c3636d96d8b3f2bcdaea3d01d1c2be1ea"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/quality.py",
+      "sha256": "46e74517f5a3cc01ad17245b65e0dbe3d0c883aa6ffd94c082954ed4d80909df"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/r6_factory.py",
+      "sha256": "6f2e6243f439e22471e31bc501e9bc8e3c82c13380250da9b84df5aee43398d5"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/residual.py",
+      "sha256": "d0370eef86fbec9d1659c2ae3f8362207e56f6e2f6d8c750b6a320ca9abf8ef6"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/residual_heading.py",
+      "sha256": "7111451bc9b26d181fb1b7a146ded84981f63dc770f456b543a38822abc38920"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/rewards.py",
+      "sha256": "c05240c4e2b7071cdceb74e95b01be677f4860f6f3532b651a73f6c5994d8c5e"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/spec.py",
+      "sha256": "bc265a8192f44083cf55ab1b59ac9c3118b7bf5097e5c05f61207175433b69c3"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/steps.py",
+      "sha256": "1864a0bef2d53d586d934337762fa59aa2061bd20a74af297614111a14ee0f86"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/target_metrics.py",
+      "sha256": "f521029a257e7a63ab241a7207968148bd44708b7a2eb5a5d2dcd6b7c3a96050"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/training.py",
+      "sha256": "0ffeef8fa7851b706969c4d60456a366dfc125574fa8152446b02003574ededf"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/transfer.py",
+      "sha256": "27b53073385be986bacbc263eda5cbdd983df16fa1a2f1d0f4e4ac12028820fc"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/walk_events.py",
+      "sha256": "0a33e2df8f4442807adf395721a247cfbdb4a8597cca6f6f3f617cd8798286d6"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/yaw_kinematics.py",
+      "sha256": "7117829c02f7f6e5efba3268a5ef02b1109edcc03eca92f9cd7610f7459b91e4"
+    },
+    {
+      "path": "software/sim/mujoco/stopping_reference.py",
+      "sha256": "9b913c28e4ac2b893c65454effa9fd1891ab88408252e117d6f83ddf112755d1"
+    },
+    {
+      "path": "software/sim/mujoco/summarize_plant_screen.py",
+      "sha256": "028179aab8defa975f835c0931edf6114eefd5780dd570a020035ad2a926c075"
+    },
+    {
+      "path": "software/sim/mujoco/teleop_yaw.py",
+      "sha256": "9075bb386e74f4d9753916db789f59e0f2060dd5652c17d27808d96a34e25cb9"
+    },
+    {
+      "path": "software/sim/mujoco/tests/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "software/sim/mujoco/tests/_actuation_v3_reference.py",
+      "sha256": "b47d0f0f6eb419e9984633c8be9f7d180fb97801201c78b7e0545cdd3e9059ce"
+    },
+    {
+      "path": "software/sim/mujoco/tests/_probe_reference.py",
+      "sha256": "097bb68d7c8ed9ab105545f7cd96b45876eab125a0b7cb9279c462687fa35c51"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_acceptance.py",
+      "sha256": "e6a777eecb653d10325df35b12e9d7874c35500fb2c21e0ad29ac92866946c4a"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_attitude_observer.py",
+      "sha256": "a5c95fdc42d00ef3261d0aeaefd7bfeefd6975c19d7fa23748fe9c80e1fbe559"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_base_collisions.py",
+      "sha256": "aef0a63d4b76b664d1600acbae8c5c90e675bd4b77a7792fa30bfd925a019a18"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_candidate_ankle_upgrade.py",
+      "sha256": "9835cbcdce7cfe174671d63ccee8bdaf5f537a7b2f5aa67d9c9fa8d1c026b401"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_candidate_variation.py",
+      "sha256": "ef35c0e95656b9d61ccc7b3d27102eab6d7c2118ee94db381c0ecd10c996fd4a"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_crab_control.py",
+      "sha256": "b8ad49b3df64cab0bd8cd765f0f72ea0f8840d1beb1dbba3713cfd12e80e2e2c"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_forward_traversal.py",
+      "sha256": "ededa9ae6177d7c72d5edde15dabdc2c2f7e3c6433e7d3b838b43507dc1941ae"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_legacy_policy_view.py",
+      "sha256": "bf073fcb0f5f5da4cb9d7fc594d4f7505e4d51ada5052de986f11f33bbaea941"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_lp40.py",
+      "sha256": "575f6cbd90b145c3862402af1929f65b5ba0647c6db975ddb2c06c82027a01b9"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_lp40_runtime.py",
+      "sha256": "36e76313d00019d2ae5bbcd731bd6bc232f7d32481413b63ea368200ea1eca6f"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_maneuver_env.py",
+      "sha256": "644ce59a1065a9cb2366d710cc4fd6ab37fdfea65722ae229b4af36d2acd533d"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_maneuver_protocol.py",
+      "sha256": "ffd00e97856c39b469a05c30bb6337d3838d5841782e8d36bba23584b5fe0957"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_maneuver_reference.py",
+      "sha256": "2d5f49def15ec761b18d280b13bf91b9855a6421894aa4f98e82fad7ed744c22"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_mounted_battery.py",
+      "sha256": "2a604e1971c6efcd44a2a801ca05597a42219899ed424b0ae6d2ed30cd9415f6"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_offline.py",
+      "sha256": "7dc64453db07f094a6a5e6c4d54472624d2991e81624478976057a40f2fe3e9b"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_plant_variation.py",
+      "sha256": "c3c622f36c9a9b2f180a2827334549eaaa31913164fef485f325445a32e18678"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_reference_gait.py",
+      "sha256": "b480954924856e7e612a19944335c113ed18360621195778e037a4cf7b58406c"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_refine.py",
+      "sha256": "96f812366e5641358aeae8951bae81d45fb6f54657fc38fc024bdb881bad0b7d"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_refine_runtime.py",
+      "sha256": "7e434bb88908630c82836f140c8dc2d3ec6d64e5e21f196988cf46f95f24e2cb"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_residual.py",
+      "sha256": "595e2b1f722602ca79f63705dc7222cf0f144d469c12dc422a13ae93c8286fb4"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_residual_heading.py",
+      "sha256": "266d09a632281945d7ad821471a67baf2151eed482c5b1ce056ded80e77aa8a7"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_runtime.py",
+      "sha256": "d283b9ead612e59dae43b6976bc3beeef7b6bdafb0053fc4de4640479e59c663"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_stopping_reference.py",
+      "sha256": "0c6375ace272283e251fb48660f97024116d8fdb0f55cc85629cf10ef363915c"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_teleop_r9.py",
+      "sha256": "beb4658bddae6d5a0f4f9347a6187fb3c8fa34cbe102901e0481a331448d7f16"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_teleop_yaw.py",
+      "sha256": "99285951708400509e9e4f6befadb8c243d0131be3fd638218fc98deab1fd0eb"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_velocity_control.py",
+      "sha256": "cb8b8f82612f5eb017911c438e5107d1fd1afe1a5a9c4908fa02418cc8d10e38"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_walk_v2.py",
+      "sha256": "84f3c592b173da02baa08de14a848c3e926e3d24a64248dfe1d844c1fbb49eab"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_walk_v2_runtime.py",
+      "sha256": "702e0d336e215a0763ea42c07ce716e13e2cbf3d7fb3ce9266de2b5090b43bec"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_acceptance.py",
+      "sha256": "1ec52690a5f06fe95ce2ca1d6ebbd8d9c8bfde7e4a807dbd5a5e403da2f48348"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_acceptance_assessment.py",
+      "sha256": "21506d0817b7ad3f9812c9e637bff0daf8143159e3453fe2202d4839ac9d2570"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_acceptance_result.py",
+      "sha256": "9536479e7d3cf28d3ad4cf73782c09b88bd309d8299ae35247a2901eacc90b01"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_batch_assessment.py",
+      "sha256": "940aeea8578c905067d19f6fd38a01ebc16bcc16fc49bbce0ce530f4042f42f8"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_dynamics_candidate.py",
+      "sha256": "cb746cf528cc30d9b796245bfea4241c7741eaf0eeddcf545cf7222cecd79bc2"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_kinematics.py",
+      "sha256": "85117883bb5e8810fe4cca89e1a5df893cb9d8077c6179e78672a9cefc9ec93a"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_maneuver_reference.py",
+      "sha256": "98f448c36143398aa8111a7410108e6afd149a3379610e6dbd71e32423abf2e4"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_offset_layout.py",
+      "sha256": "dfbf502074e0258fbc5c3ce5b6e44855cc054b7dd31e624f56c9899a3e4e7086"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_step_reference.py",
+      "sha256": "703f8082f06b846ab10f836c0413e59897c5a7c3e0f25bb618464303d2842b4b"
+    },
+    {
+      "path": "software/sim/mujoco/train.py",
+      "sha256": "d230eabc539b986b8b13f6f0d9e1b93421dafc553a238da5854c120bcf8c351f"
+    },
+    {
+      "path": "software/sim/mujoco/train_heading_residual.py",
+      "sha256": "469e9dfbb9969cbfb9b72d7bdb49947c89434eae2d70e9f4251139cd12d2a96e"
+    },
+    {
+      "path": "software/sim/mujoco/train_mounted_residual.py",
+      "sha256": "ad43f78e0ca3df405d66d8190be8906ace205c2fec604f0152cabab6743ba674"
+    },
+    {
+      "path": "software/sim/mujoco/train_residual.py",
+      "sha256": "e29f7a6521f6ba6c493475d5a185039cddd935e409be3d348998dc0cb0445d44"
+    },
+    {
+      "path": "software/sim/mujoco/train_steering_initialized.py",
+      "sha256": "9c5ed8a654b0d9721c43e14fbe43be06b2414fee832641433ddf74cbb2783159"
+    },
+    {
+      "path": "software/sim/mujoco/upgrade_candidate_ankles.py",
+      "sha256": "71bcde18f8d053779660de65a3dc5256b93cf044c8f3b54a753a2f3eecfd93be"
+    },
+    {
+      "path": "software/sim/mujoco/velocity_control.py",
+      "sha256": "4dc2bd3982dd9f6d4c2afcb3175df51f39359b936cf7b09d7acc53e952d67514"
+    },
+    {
+      "path": "software/sim/mujoco/verify_fast_turn_release.py",
+      "sha256": "03434f1bfcedb73f53993c19e42416fb7601e65943d684f2a2a37b970a912d76"
+    },
+    {
+      "path": "software/sim/mujoco/verify_r6_release.py",
+      "sha256": "75f3a0cf13d4b8fe7a86053c248e6173a77e3751df61ec14547c5a1cb24f10c7"
+    },
+    {
+      "path": "software/sim/mujoco/verify_residual_policy_trace.py",
+      "sha256": "9ee728a2f18a24f070d383ba67b5da211ca696186d83869bbb4a3189ec5145d7"
+    },
+    {
+      "path": "software/sim/mujoco/yaw_acceptance.py",
+      "sha256": "99451cecef8551966bee928d724772186fc9264d0412b4997823972816239237"
+    },
+    {
+      "path": "software/sim/mujoco/yaw_maneuver_reference.py",
+      "sha256": "a9259bbfe073c58e11cb76850fa050e88996f8894389d1ddb66e895a56ffc46c"
+    },
+    {
+      "path": "software/sim/requirements-runtime.lock",
+      "sha256": "2338dbd51a3bc2826b8471725778d2ca465737f6f71cbd8b04f79ce0598458b4"
+    },
+    {
+      "path": "software/sim/run.py",
+      "sha256": "feb7329bd53b9aa268c34e1682a947b7eae47e95ec89f3d646ed80d3513dffbe"
+    },
+    {
+      "path": "validation/prototype_epic4_v1/actuator_workload_v2/backward.npz",
+      "sha256": "edc30e12cf3fe87aea6091f57b7936f2791a8db521c787051d96bad0490c3feb"
+    },
+    {
+      "path": "validation/prototype_epic4_v1/actuator_workload_v2/forward.npz",
+      "sha256": "e7bff2dde6b1f517414b4cbd4fd5aa4a1d0307468fe9d3cd02ef9d6172649481"
+    },
+    {
+      "path": "validation/prototype_epic4_v1/actuator_workload_v2/left.npz",
+      "sha256": "bb5b18ee690b55f98ff99b0c52678c830744a1b8c731afd7c7b2ca62064aabb2"
+    },
+    {
+      "path": "validation/prototype_epic4_v1/actuator_workload_v2/requirements.json",
+      "sha256": "6697247b6f7a1bcfd75febaa67651b961780ba5159a12e61faa2f185652964ad"
+    },
+    {
+      "path": "validation/prototype_epic4_v1/actuator_workload_v2/right.npz",
+      "sha256": "5f44f7d2db639c214aedee3ce9154d99865e320fe419381719ecfc566c62071e"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "case_temperature_screen",
+      "value": 70,
+      "unit": "degC",
+      "status": "assumed",
+      "source": "software/sim/actuator/catalog.json"
+    },
+    {
+      "name": "manufacturer_continuous_torque",
+      "value": null,
+      "unit": "Nm",
+      "status": "datasheet",
+      "source": "https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/"
+    },
+    {
+      "name": "leg_peak_tracking_error_limit",
+      "value": 0.15,
+      "unit": "rad",
+      "status": "assumed",
+      "source": "actuator_suite_v2/plan.json"
+    },
+    {
+      "name": "leg_RMS_tracking_error_limit",
+      "value": 0.06,
+      "unit": "rad",
+      "status": "assumed",
+      "source": "actuator_suite_v2/plan.json"
+    }
+  ],
+  "gates": [
+    {
+      "criterion": "12 joint and 34 leg fixtures satisfy frozen requirements",
+      "passed": true
+    },
+    {
+      "criterion": "source hashes, raw trajectories, electrical limits and load exports pass independent audit",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "artifacts": [
+    {
+      "path": "MANIFEST.json",
+      "sha256": "aaa4506a73e0a074c605df333017ff729e31b91c78c3b01d65b2639588577d6c"
+    },
+    {
+      "path": "actuator_fullbody_load_left_v1/report.json",
+      "sha256": "d50ccfba4a24f7b89d634a33dbc3b030c43b95086919994e20e9de4226b8da0d"
+    },
+    {
+      "path": "actuator_fullbody_load_left_v1/trace.npz",
+      "sha256": "9c4907b6a9b2439f5ca86cce73f32895f634534c34fb6e3dc7f0edecd2efdc19"
+    },
+    {
+      "path": "actuator_fullbody_load_right_v1/report.json",
+      "sha256": "8119fc6b6de97a08f8f491dd2329dfbb681ab7d01180ab82406a222c4cd9d753"
+    },
+    {
+      "path": "actuator_fullbody_load_right_v1/trace.npz",
+      "sha256": "476c5748e833fbee6226b92f3498da8581ebec770425ba713b8512912be28ec9"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_00.npz",
+      "sha256": "b5d7e44efcdc1a44f7739192cebe4cae0489eb961c64794b26f9b04417dfa5ba"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_01.npz",
+      "sha256": "ae3e331252d057d0d8a3a9f27f3260fbdfa5ccebaf2af3381b3def49c5810ae4"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_02.npz",
+      "sha256": "681d20a163cead191b105c69509b38997da920cd13b058477b478c7ddd095f21"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_03.npz",
+      "sha256": "a6c162effcc6029bd22b507d2456d2eea183954032bd3f3a27cfeaa3996cba6d"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_04.npz",
+      "sha256": "80fbda8a4f8cf0eed67b23cac6c36a631f76eabf166601ab837b4037638b32b1"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_05.npz",
+      "sha256": "71fa0c16b05cc757a5a912d2383e35afeecab7bd8a27c68dd03697f0c5002172"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_06.npz",
+      "sha256": "7177d64445a23180f547c2a395a9268d5cd1d5102f34289678df4153eb927883"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_07.npz",
+      "sha256": "11b769308e97ef3aae909f81d87288c0f5474f385b52298ae56423ef670f1461"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_08.npz",
+      "sha256": "5a495239f7f9d677491b2f36ca89014b15eb82afaccf0ee6972bdceda87b33a8"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_09.npz",
+      "sha256": "1e694b93c8a4f20d45a17f3fddc3dd6d47b82c330d85d36dbf6a298214f5442b"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_10.npz",
+      "sha256": "ebe4ae761e35ff0edbff697570f1341be57653331e8c100298976ee79cfd2a99"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_11.npz",
+      "sha256": "6b0f52dce55d757b4a7d2283c092f0d0b145ff207f280e3bed2981b6bbe653a1"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_12.npz",
+      "sha256": "0b9372eda7ebfd70831481d968d4d712abe98715f7c7e3fec17435d359455b5c"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_13.npz",
+      "sha256": "a3e7c26c52d3538cc50600a09b372b8beee891e7eff79129c340c37d15e4ec95"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_14.npz",
+      "sha256": "6d2e5513b65ef475243e215462e1980527ee337703bc974b56568c963e002b65"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_15.npz",
+      "sha256": "5a96a7e2d8140c9c2aa75c817f6937040f58f8ccc1ee9c3c38219aaaf31afdfc"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_16.npz",
+      "sha256": "e1b004abc1c6197a5d07633134f194c0f4d2c3d49db55c1c99d0ca306c803b0f"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_17.npz",
+      "sha256": "9c798f414e21c8415398915b661cfa828eaccd254a65971ce8e05d9d8203ef6e"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_18.npz",
+      "sha256": "d5c9098d8f83e502910f387c27772be4863914e17aa035826ec9b53010cf0d9f"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_19.npz",
+      "sha256": "c49992403e7de5de5d8ce9d48decef296ad79e939af23b728119fae67678e424"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_20.npz",
+      "sha256": "55da88c6fe3c44cb158ecc995c68fb79391502c34697cfdec4e4cef79407836a"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_21.npz",
+      "sha256": "cccdb3707448e064349ebfa747c0a5404347a53d7004d74856ce621a27c344b9"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_22.npz",
+      "sha256": "9f5b6b58f56cd4803b7ad916fac45680d649476bd7725a27a6a32ffc6a0c887b"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_23.npz",
+      "sha256": "2d375da9b01b0bae1c0e7169f691d9189e0e79451a3480d5a55ed28def424aa3"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_24.npz",
+      "sha256": "58ae63eefeeca34e69a5591124ccf7adab9c0b46420f785ce084e484307f2049"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_25.npz",
+      "sha256": "6c785b3d18d0ebb24951e1aa5a7e6bea473bdb5b0468d40de0f744eaa121f9bf"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_26.npz",
+      "sha256": "0cff5d3d0b071857183bdc0ddb23a2f8c8cbcbe3cd55e86248bdfc617b85d6d6"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_27.npz",
+      "sha256": "df30a904786ae0a0f90882eb3cd6ff88b112c5eef3c00ea69fb8ac9caf2e1ca0"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_28.npz",
+      "sha256": "bc7474482e4986da670ff2d3b2dedb14efee4d47b63a2c57a5054a4a3ebe576a"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_29.npz",
+      "sha256": "490ca96dac2de6c7139a22e07696b372a9d7bfb29b0c2223ae27024b966e61ff"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_30.npz",
+      "sha256": "3a88c1b7b2d62b9532ff0b35a69a69691f99b11d7086924b55904e34814b81ee"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_31.npz",
+      "sha256": "2677485084726d3f3e5baf63424cc5b67a7e8fd5c42fbcde3df41e3523cb01f0"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_32.npz",
+      "sha256": "57f73c3cb59ce166296f3b495d3effec2e0e172d8dffade3559f20e7340f31b8"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_33.npz",
+      "sha256": "84071444dc06c3b2151e647182dce764ab8352ee1b8e07ed241ff9f999f04e91"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_34.npz",
+      "sha256": "c89231ca8ad80a65080977af46041f7c6018c144438db355728f62d83c2d8e60"
+    },
+    {
+      "path": "actuator_load_sweep_v2/case_35.npz",
+      "sha256": "aaf590e1d722a66649d115459b911f62223932ba3757c0ee1ba3a4a2049e0400"
+    },
+    {
+      "path": "actuator_load_sweep_v2/plan.json",
+      "sha256": "cb61c60b7b93e22a6ed068b5d16e3574b9806da4cc92ee1a57e3d01e7375b128"
+    },
+    {
+      "path": "actuator_load_sweep_v2/summary.json",
+      "sha256": "96095209cd8de64e94042b943488a61eeb468a3f01b87ed0cf8272f7899e4868"
+    },
+    {
+      "path": "actuator_suite_v2/left_backlash_0.0/report.json",
+      "sha256": "ad5f6a29f8f17f482352a8a273c1014779769f2c4803cca4b3b12ca91c339b9e"
+    },
+    {
+      "path": "actuator_suite_v2/left_backlash_0.0/trace.npz",
+      "sha256": "b563fa453447e5aa29d0c4de7303c7559aefc8f252134d23beb605726f810406"
+    },
+    {
+      "path": "actuator_suite_v2/left_backlash_0.0.log",
+      "sha256": "ad5f6a29f8f17f482352a8a273c1014779769f2c4803cca4b3b12ca91c339b9e"
+    },
+    {
+      "path": "actuator_suite_v2/left_backlash_0.017453292519943295/report.json",
+      "sha256": "291727b2ffb93b1159ce1f0768a2acb1108c4223b65ef7bdec6bd10900227059"
+    },
+    {
+      "path": "actuator_suite_v2/left_backlash_0.017453292519943295/trace.npz",
+      "sha256": "684f0cf32c4ad2dab71a4f579f0955112230799baf2fc012e931e0338202c78d"
+    },
+    {
+      "path": "actuator_suite_v2/left_backlash_0.017453292519943295.log",
+      "sha256": "291727b2ffb93b1159ce1f0768a2acb1108c4223b65ef7bdec6bd10900227059"
+    },
+    {
+      "path": "actuator_suite_v2/left_backward_swing/report.json",
+      "sha256": "1eb7e30991b5e2e758f7eeddeb511a156cb75f6db63e7b3b5af897b9c87a0a44"
+    },
+    {
+      "path": "actuator_suite_v2/left_backward_swing/trace.npz",
+      "sha256": "83cec2a07c79def6a5ade1e9661a395ef497b5048fa20cdab4ec27b44efd75c3"
+    },
+    {
+      "path": "actuator_suite_v2/left_backward_swing.log",
+      "sha256": "1eb7e30991b5e2e758f7eeddeb511a156cb75f6db63e7b3b5af897b9c87a0a44"
+    },
+    {
+      "path": "actuator_suite_v2/left_current_tau_0.001/report.json",
+      "sha256": "f38e52c66bcc3af3d18f3c37adc1d0ba38a2eb5bbeda51b083d33f9175f03e1a"
+    },
+    {
+      "path": "actuator_suite_v2/left_current_tau_0.001/trace.npz",
+      "sha256": "e2cd83dfb68182e5cfb053bed662b2f12a9eddbb5c1da2d764c01375c47be6a4"
+    },
+    {
+      "path": "actuator_suite_v2/left_current_tau_0.001.log",
+      "sha256": "f38e52c66bcc3af3d18f3c37adc1d0ba38a2eb5bbeda51b083d33f9175f03e1a"
+    },
+    {
+      "path": "actuator_suite_v2/left_current_tau_0.005/report.json",
+      "sha256": "1220413c445e1a74d76a9b7b3e12843c3a032dd671d7d14dfbed53b834080426"
+    },
+    {
+      "path": "actuator_suite_v2/left_current_tau_0.005/trace.npz",
+      "sha256": "22798c8e1a09f1f4495faa69d2e65e73e3f7b87ec9be6cc2e1cd65ef7514d5ce"
+    },
+    {
+      "path": "actuator_suite_v2/left_current_tau_0.005.log",
+      "sha256": "1220413c445e1a74d76a9b7b3e12843c3a032dd671d7d14dfbed53b834080426"
+    },
+    {
+      "path": "actuator_suite_v2/left_delay_0.005/report.json",
+      "sha256": "190e2e45d898ee2de354767889db0d90f247362a382668de97eafa33db0552be"
+    },
+    {
+      "path": "actuator_suite_v2/left_delay_0.005/trace.npz",
+      "sha256": "14fb1b86c12b16868cec35fa846a56365503acc6f478d3bf92157f750f71082d"
+    },
+    {
+      "path": "actuator_suite_v2/left_delay_0.005.log",
+      "sha256": "190e2e45d898ee2de354767889db0d90f247362a382668de97eafa33db0552be"
+    },
+    {
+      "path": "actuator_suite_v2/left_delay_0.02/report.json",
+      "sha256": "ab598d6648f0dc2c9f0f210251dd7ad9773a7533816600f07f4b1273793d054d"
+    },
+    {
+      "path": "actuator_suite_v2/left_delay_0.02/trace.npz",
+      "sha256": "854da5778be98c44a5cb174f6c8ae9443a51470afe20031803e7ef6c1909a73d"
+    },
+    {
+      "path": "actuator_suite_v2/left_delay_0.02.log",
+      "sha256": "ab598d6648f0dc2c9f0f210251dd7ad9773a7533816600f07f4b1273793d054d"
+    },
+    {
+      "path": "actuator_suite_v2/left_forward_swing/report.json",
+      "sha256": "81ee7bc73e23c5ffac6693a28f98f639206fbc5028f28a7db4a8ca6db36fa927"
+    },
+    {
+      "path": "actuator_suite_v2/left_forward_swing/trace.npz",
+      "sha256": "a899bdbc0de4072bfcc2403f2220ce06e80edf560008da4cc08fa71d272ededa"
+    },
+    {
+      "path": "actuator_suite_v2/left_forward_swing.log",
+      "sha256": "81ee7bc73e23c5ffac6693a28f98f639206fbc5028f28a7db4a8ca6db36fa927"
+    },
+    {
+      "path": "actuator_suite_v2/left_friction_0.5/report.json",
+      "sha256": "5103d9a3dfe37b0d1fd7d5bd4508257ba5ce39c86843601bab2ff1b8c65d82fe"
+    },
+    {
+      "path": "actuator_suite_v2/left_friction_0.5/trace.npz",
+      "sha256": "7a5721bd00457ef668555ad4c2ed5ecaf91a429a9e3b76999b54e7436acfaadb"
+    },
+    {
+      "path": "actuator_suite_v2/left_friction_0.5.log",
+      "sha256": "5103d9a3dfe37b0d1fd7d5bd4508257ba5ce39c86843601bab2ff1b8c65d82fe"
+    },
+    {
+      "path": "actuator_suite_v2/left_friction_1.5/report.json",
+      "sha256": "0d9810be1e7590c9d56b5d08000361a2f4fc9b4d11e8e2f86522d53be1c0cdb7"
+    },
+    {
+      "path": "actuator_suite_v2/left_friction_1.5/trace.npz",
+      "sha256": "bfe4a5ae113cf4051c42623c681ede64a7e67a0cd5022016a1b1585e2049e08d"
+    },
+    {
+      "path": "actuator_suite_v2/left_friction_1.5.log",
+      "sha256": "0d9810be1e7590c9d56b5d08000361a2f4fc9b4d11e8e2f86522d53be1c0cdb7"
+    },
+    {
+      "path": "actuator_suite_v2/left_mass_0.95/report.json",
+      "sha256": "d2286a8383b70f804d32033941d5b36f3b1f28a12835e369c5f39f7caa18349a"
+    },
+    {
+      "path": "actuator_suite_v2/left_mass_0.95/trace.npz",
+      "sha256": "bfd910a4acddc5a4f0065bcb3525a62b7c951c0cf57d7b006cdf0ea5efdbdb21"
+    },
+    {
+      "path": "actuator_suite_v2/left_mass_0.95.log",
+      "sha256": "d2286a8383b70f804d32033941d5b36f3b1f28a12835e369c5f39f7caa18349a"
+    },
+    {
+      "path": "actuator_suite_v2/left_mass_1.05/report.json",
+      "sha256": "2a4bd2d057d77614d78912fcae503645749ba307fc61d1e199f94ff56696ce06"
+    },
+    {
+      "path": "actuator_suite_v2/left_mass_1.05/trace.npz",
+      "sha256": "b05b4586ba7cf9d5732e9f1a60ea984ae696126a693aeedb2b73660d75d5c759"
+    },
+    {
+      "path": "actuator_suite_v2/left_mass_1.05.log",
+      "sha256": "2a4bd2d057d77614d78912fcae503645749ba307fc61d1e199f94ff56696ce06"
+    },
+    {
+      "path": "actuator_suite_v2/left_support_nominal/report.json",
+      "sha256": "c666417b4472c2d359bff4b21be7bfa192b3b37c54e637e7d20de183682780dc"
+    },
+    {
+      "path": "actuator_suite_v2/left_support_nominal/trace.npz",
+      "sha256": "1a1bf157102d924231516c31e9cb5082a12151816e92bf362608fb2bf28a854c"
+    },
+    {
+      "path": "actuator_suite_v2/left_support_nominal.log",
+      "sha256": "c666417b4472c2d359bff4b21be7bfa192b3b37c54e637e7d20de183682780dc"
+    },
+    {
+      "path": "actuator_suite_v2/left_swing_nominal/report.json",
+      "sha256": "49b28be5c9009d3eb429bfe9baac021876ae69a35168e42de71feed83950eabe"
+    },
+    {
+      "path": "actuator_suite_v2/left_swing_nominal/trace.npz",
+      "sha256": "086eb91f30530afc46534d14e1884b2e5e0d1c85f41a7c7b930f311fba3d2ded"
+    },
+    {
+      "path": "actuator_suite_v2/left_swing_nominal.log",
+      "sha256": "49b28be5c9009d3eb429bfe9baac021876ae69a35168e42de71feed83950eabe"
+    },
+    {
+      "path": "actuator_suite_v2/left_transfer_nominal/report.json",
+      "sha256": "149b904e3736eae84437c0fa0fbacc151119d2101e050baa7dd8767f6a2849aa"
+    },
+    {
+      "path": "actuator_suite_v2/left_transfer_nominal/trace.npz",
+      "sha256": "58b662c9ae351f7c77c83688b8f0c0ad453c2b78029b454eab088a527a28e224"
+    },
+    {
+      "path": "actuator_suite_v2/left_transfer_nominal.log",
+      "sha256": "149b904e3736eae84437c0fa0fbacc151119d2101e050baa7dd8767f6a2849aa"
+    },
+    {
+      "path": "actuator_suite_v2/left_voltage_3.7/report.json",
+      "sha256": "a0bab228ea0f1f23b481615eae728d7a0c1b8066221f65a460131a630748d4e2"
+    },
+    {
+      "path": "actuator_suite_v2/left_voltage_3.7/trace.npz",
+      "sha256": "8c9cc81796519bd19920d1c27dea7ef035e95209bf8c47d2f247ca2400bf7dab"
+    },
+    {
+      "path": "actuator_suite_v2/left_voltage_3.7.log",
+      "sha256": "a0bab228ea0f1f23b481615eae728d7a0c1b8066221f65a460131a630748d4e2"
+    },
+    {
+      "path": "actuator_suite_v2/left_voltage_6.0/report.json",
+      "sha256": "03c501430ea0e050e94991f63104f15c5679049e72dc0b5173a55ca54459649d"
+    },
+    {
+      "path": "actuator_suite_v2/left_voltage_6.0/trace.npz",
+      "sha256": "1bf72a7a3b660c836790e54b879ef4ab3348ead773113a6c93369b441f89d9b9"
+    },
+    {
+      "path": "actuator_suite_v2/left_voltage_6.0.log",
+      "sha256": "03c501430ea0e050e94991f63104f15c5679049e72dc0b5173a55ca54459649d"
+    },
+    {
+      "path": "actuator_suite_v2/plan.json",
+      "sha256": "d2c8f5e21c046f95b7c18ba0a210fc07f2985e1511c1a881d84070072110c063"
+    },
+    {
+      "path": "actuator_suite_v2/right_backlash_0.0/report.json",
+      "sha256": "20d6a9b6712cf106d64f30a36ace5aec77c425e0515d8cdf8bbb5c0f533eadd8"
+    },
+    {
+      "path": "actuator_suite_v2/right_backlash_0.0/trace.npz",
+      "sha256": "a79f59e5ac8d6be58a3bdfdfbdb1ed87decc19082529ac10592033ee1cda713d"
+    },
+    {
+      "path": "actuator_suite_v2/right_backlash_0.0.log",
+      "sha256": "20d6a9b6712cf106d64f30a36ace5aec77c425e0515d8cdf8bbb5c0f533eadd8"
+    },
+    {
+      "path": "actuator_suite_v2/right_backlash_0.017453292519943295/report.json",
+      "sha256": "72fc72f0b6d603b128f1c7abe89f743354270b20445e22064c532b239437a0ba"
+    },
+    {
+      "path": "actuator_suite_v2/right_backlash_0.017453292519943295/trace.npz",
+      "sha256": "a0c204da5db7b37be72457c31cd6c65704979d395e4115029798e81c152d661a"
+    },
+    {
+      "path": "actuator_suite_v2/right_backlash_0.017453292519943295.log",
+      "sha256": "72fc72f0b6d603b128f1c7abe89f743354270b20445e22064c532b239437a0ba"
+    },
+    {
+      "path": "actuator_suite_v2/right_backward_swing/report.json",
+      "sha256": "ab1f98c981ce7e43dda93dc90576e395db0423eee4a2c3b0d5f9bdf3912344fa"
+    },
+    {
+      "path": "actuator_suite_v2/right_backward_swing/trace.npz",
+      "sha256": "ec3ba42ea74da758ee31a6c73c47e341550fce77b840f56c5170e7111942b44b"
+    },
+    {
+      "path": "actuator_suite_v2/right_backward_swing.log",
+      "sha256": "ab1f98c981ce7e43dda93dc90576e395db0423eee4a2c3b0d5f9bdf3912344fa"
+    },
+    {
+      "path": "actuator_suite_v2/right_current_tau_0.001/report.json",
+      "sha256": "e3c2fc0aaecc7daccf69d7663b2474988930ddd0881a62173a9913e71daf58ab"
+    },
+    {
+      "path": "actuator_suite_v2/right_current_tau_0.001/trace.npz",
+      "sha256": "804fb4694fc3f4c76b58a8ecb09230dfa4c1d7b8cb18b0f4ce81875b6670f32f"
+    },
+    {
+      "path": "actuator_suite_v2/right_current_tau_0.001.log",
+      "sha256": "e3c2fc0aaecc7daccf69d7663b2474988930ddd0881a62173a9913e71daf58ab"
+    },
+    {
+      "path": "actuator_suite_v2/right_current_tau_0.005/report.json",
+      "sha256": "a123d9ed4f4482efe0316fb83bc619f44c23f797a9cfbcd0bdf2c1ac2dbe964a"
+    },
+    {
+      "path": "actuator_suite_v2/right_current_tau_0.005/trace.npz",
+      "sha256": "d1d98fde24a29aa035ae87143a20d96febcf887da3fae3caf5df94fad6378498"
+    },
+    {
+      "path": "actuator_suite_v2/right_current_tau_0.005.log",
+      "sha256": "a123d9ed4f4482efe0316fb83bc619f44c23f797a9cfbcd0bdf2c1ac2dbe964a"
+    },
+    {
+      "path": "actuator_suite_v2/right_delay_0.005/report.json",
+      "sha256": "36b370d1240cb673358b0f80666685c7f74d026992ef694dbb35e25450b98bc0"
+    },
+    {
+      "path": "actuator_suite_v2/right_delay_0.005/trace.npz",
+      "sha256": "f56592332eaf91877bbd4e8939d825f168d36bf65ffec8ef9c9e5b799284d833"
+    },
+    {
+      "path": "actuator_suite_v2/right_delay_0.005.log",
+      "sha256": "36b370d1240cb673358b0f80666685c7f74d026992ef694dbb35e25450b98bc0"
+    },
+    {
+      "path": "actuator_suite_v2/right_delay_0.02/report.json",
+      "sha256": "53fb3bcefc73d8d5a3713e42610230be3d074951255fe97ac17b2243afbd9fa5"
+    },
+    {
+      "path": "actuator_suite_v2/right_delay_0.02/trace.npz",
+      "sha256": "0822c7d50eea74041285813affc9d51312d52e181646eeafa091a3c8d1dbcd75"
+    },
+    {
+      "path": "actuator_suite_v2/right_delay_0.02.log",
+      "sha256": "53fb3bcefc73d8d5a3713e42610230be3d074951255fe97ac17b2243afbd9fa5"
+    },
+    {
+      "path": "actuator_suite_v2/right_forward_swing/report.json",
+      "sha256": "2bd2b5a7637390251627ceb6c437e8918a0e8f4c098ebde6c100b5979e89aebb"
+    },
+    {
+      "path": "actuator_suite_v2/right_forward_swing/trace.npz",
+      "sha256": "a14ff664ad20a4c78f674a59ce7284f4b8fd52ebb2abdea6aa84fdd79d1963bb"
+    },
+    {
+      "path": "actuator_suite_v2/right_forward_swing.log",
+      "sha256": "2bd2b5a7637390251627ceb6c437e8918a0e8f4c098ebde6c100b5979e89aebb"
+    },
+    {
+      "path": "actuator_suite_v2/right_friction_0.5/report.json",
+      "sha256": "8bcc6e32295bcc1d90cf3c5f32bc6fa5872616d4aece5a1f0ed98dd2f4e4d9bd"
+    },
+    {
+      "path": "actuator_suite_v2/right_friction_0.5/trace.npz",
+      "sha256": "fc6d9ef9bec72497df5bdf73917bb7cb60fbd6a28c3be0b664276cabe9630a10"
+    },
+    {
+      "path": "actuator_suite_v2/right_friction_0.5.log",
+      "sha256": "8bcc6e32295bcc1d90cf3c5f32bc6fa5872616d4aece5a1f0ed98dd2f4e4d9bd"
+    },
+    {
+      "path": "actuator_suite_v2/right_friction_1.5/report.json",
+      "sha256": "45f89a068423137d8046b20457c4b4379f13010aaa551f1391fe0730c09ff8f4"
+    },
+    {
+      "path": "actuator_suite_v2/right_friction_1.5/trace.npz",
+      "sha256": "849d6f2ae06a396a5c37452b2c02eaafa189f5d6763a32b899a82931335701a3"
+    },
+    {
+      "path": "actuator_suite_v2/right_friction_1.5.log",
+      "sha256": "45f89a068423137d8046b20457c4b4379f13010aaa551f1391fe0730c09ff8f4"
+    },
+    {
+      "path": "actuator_suite_v2/right_mass_0.95/report.json",
+      "sha256": "f58dac16f8ad5b00a2905bd537f8fb94190f944d3d21aea7ebd9aa7910b2937c"
+    },
+    {
+      "path": "actuator_suite_v2/right_mass_0.95/trace.npz",
+      "sha256": "7e4709da9e855b4c66a6b241dfe0bd2300b55ceff64bb3be630e3bfa51302d35"
+    },
+    {
+      "path": "actuator_suite_v2/right_mass_0.95.log",
+      "sha256": "f58dac16f8ad5b00a2905bd537f8fb94190f944d3d21aea7ebd9aa7910b2937c"
+    },
+    {
+      "path": "actuator_suite_v2/right_mass_1.05/report.json",
+      "sha256": "dad221cb214c744d4c20c4ceea0dffe5a662cca039cf9012a12afa01e863512b"
+    },
+    {
+      "path": "actuator_suite_v2/right_mass_1.05/trace.npz",
+      "sha256": "8742ef12c77c8f7872054c443e7b5d7403ea288cfbe87ab5f404c51b8e1a9df4"
+    },
+    {
+      "path": "actuator_suite_v2/right_mass_1.05.log",
+      "sha256": "dad221cb214c744d4c20c4ceea0dffe5a662cca039cf9012a12afa01e863512b"
+    },
+    {
+      "path": "actuator_suite_v2/right_support_nominal/report.json",
+      "sha256": "15328d3ac937221532b62cad0e5860a36dd83edef394f5f5979598c93b0a0dd6"
+    },
+    {
+      "path": "actuator_suite_v2/right_support_nominal/trace.npz",
+      "sha256": "07ded6416b19d525e4aa1a0956b23229e380bbb050ec9127ecae0953dbd2310d"
+    },
+    {
+      "path": "actuator_suite_v2/right_support_nominal.log",
+      "sha256": "15328d3ac937221532b62cad0e5860a36dd83edef394f5f5979598c93b0a0dd6"
+    },
+    {
+      "path": "actuator_suite_v2/right_swing_nominal/report.json",
+      "sha256": "c9b4084c2d8232d9c2689b061ee749b0531dc65af55aaf008b419f935c96e492"
+    },
+    {
+      "path": "actuator_suite_v2/right_swing_nominal/trace.npz",
+      "sha256": "9ffabb5764978d751c558a988d7e1d90ddf60a839fda97df4e2605675d0f974c"
+    },
+    {
+      "path": "actuator_suite_v2/right_swing_nominal.log",
+      "sha256": "c9b4084c2d8232d9c2689b061ee749b0531dc65af55aaf008b419f935c96e492"
+    },
+    {
+      "path": "actuator_suite_v2/right_transfer_nominal/report.json",
+      "sha256": "da5d4573ec6d947496bb642bbf3a8ba148ac50d3a74bd604515bccba5d571969"
+    },
+    {
+      "path": "actuator_suite_v2/right_transfer_nominal/trace.npz",
+      "sha256": "923e447a295bb753b958ee9b3d070809914b5cd2650df47982dc1f68334ab39d"
+    },
+    {
+      "path": "actuator_suite_v2/right_transfer_nominal.log",
+      "sha256": "da5d4573ec6d947496bb642bbf3a8ba148ac50d3a74bd604515bccba5d571969"
+    },
+    {
+      "path": "actuator_suite_v2/right_voltage_3.7/report.json",
+      "sha256": "06f4810c22dc4b4a5638c4dd679b3144c63502d82625743fae1d61cd658f0dcf"
+    },
+    {
+      "path": "actuator_suite_v2/right_voltage_3.7/trace.npz",
+      "sha256": "288889c92063c16ec8f1ca95da4f47d36e8d11bb0c695f378bee80e088acc856"
+    },
+    {
+      "path": "actuator_suite_v2/right_voltage_3.7.log",
+      "sha256": "06f4810c22dc4b4a5638c4dd679b3144c63502d82625743fae1d61cd658f0dcf"
+    },
+    {
+      "path": "actuator_suite_v2/right_voltage_6.0/report.json",
+      "sha256": "31926e4aad5d9d66a7c75112ef14be558be8a128ba75a4c69e60fc8eb7dce9d3"
+    },
+    {
+      "path": "actuator_suite_v2/right_voltage_6.0/trace.npz",
+      "sha256": "3043a02f1926d420eba5856881e4e745c79c69b7c63164091da9d115888c812d"
+    },
+    {
+      "path": "actuator_suite_v2/right_voltage_6.0.log",
+      "sha256": "31926e4aad5d9d66a7c75112ef14be558be8a128ba75a4c69e60fc8eb7dce9d3"
+    },
+    {
+      "path": "actuator_suite_v2/single_joint/left_ankle_pitch.npz",
+      "sha256": "70b530775682e6de34f930e4e3717de43a86188f8c50fbbd1715d2d324030517"
+    },
+    {
+      "path": "actuator_suite_v2/single_joint/left_ankle_roll.npz",
+      "sha256": "97a17a15481deaaf1dc009c3578e1bcddc5b853429bb9df9d3d46a8d5258299b"
+    },
+    {
+      "path": "actuator_suite_v2/single_joint/left_hip_pitch.npz",
+      "sha256": "42b33522a0923846aa677ebef7b57dcd8e61b6f9b1506460946db1a99c9d9ef3"
+    },
+    {
+      "path": "actuator_suite_v2/single_joint/left_hip_roll.npz",
+      "sha256": "33ee911894e450a1e98de792890449ece1a6105a7bf32cc516ca3d119319f2e8"
+    },
+    {
+      "path": "actuator_suite_v2/single_joint/left_hip_yaw.npz",
+      "sha256": "43f4c42f24be024472a15a63aa6b78970e85b2b890e70a872d8389898abff64b"
+    },
+    {
+      "path": "actuator_suite_v2/single_joint/left_knee.npz",
+      "sha256": "0de84f0443bc39c02e07e9e54c34cb45a969a435c5d00417ccaaad9681dc0254"
+    },
+    {
+      "path": "actuator_suite_v2/single_joint/right_ankle_pitch.npz",
+      "sha256": "4cc0568e23ccb17b10e262c0095c69bd583899527ecfbd74897e941c2cad8598"
+    },
+    {
+      "path": "actuator_suite_v2/single_joint/right_ankle_roll.npz",
+      "sha256": "8af9aa9e5f36b18c38aad18c1badd523b4cf835b2d65a0bf53f69f59c9f43917"
+    },
+    {
+      "path": "actuator_suite_v2/single_joint/right_hip_pitch.npz",
+      "sha256": "202da87052629fe6f2742008e666f5b5d9c0d889e6b4a511bddf44ead010331d"
+    },
+    {
+      "path": "actuator_suite_v2/single_joint/right_hip_roll.npz",
+      "sha256": "8106a41a59b6fe04d8dadd35ebb0b585358efb182d82bdfa3d0b27d7eff2d75f"
+    },
+    {
+      "path": "actuator_suite_v2/single_joint/right_hip_yaw.npz",
+      "sha256": "960af6790acc0b26572b812f489bda484cb130bad631dee36e2d1eef887f2aad"
+    },
+    {
+      "path": "actuator_suite_v2/single_joint/right_knee.npz",
+      "sha256": "309bd71c01791fd906ef3b46be6df05481df07fa7afdc17f90270b21199ee152"
+    },
+    {
+      "path": "actuator_suite_v2/single_joint/summary.json",
+      "sha256": "b600b73cef6be7b2763dcf589a23d8b8ff236968edd5a8543fe67ffa1cc46b71"
+    },
+    {
+      "path": "actuator_suite_v2/single_joint.log",
+      "sha256": "05ba1caa9916693b071e4cd83a0c9fcd81394e03128c380819263dc27766a20c"
+    },
+    {
+      "path": "actuator_suite_v2/summary.json",
+      "sha256": "907181f8557f354d7043b0afaa9466b8c3895ded8d57c4ef12c706195ea0534d"
+    },
+    {
+      "path": "actuator_thermal_v2/report.json",
+      "sha256": "b0b7ef2e1af6141eadaa1758f0c4d0ef595fe5e6315a0263b96bd42d1658f928"
+    },
+    {
+      "path": "actuator_workload_v2/backward.npz",
+      "sha256": "edc30e12cf3fe87aea6091f57b7936f2791a8db521c787051d96bad0490c3feb"
+    },
+    {
+      "path": "actuator_workload_v2/forward.npz",
+      "sha256": "e7bff2dde6b1f517414b4cbd4fd5aa4a1d0307468fe9d3cd02ef9d6172649481"
+    },
+    {
+      "path": "actuator_workload_v2/left.npz",
+      "sha256": "bb5b18ee690b55f98ff99b0c52678c830744a1b8c731afd7c7b2ca62064aabb2"
+    },
+    {
+      "path": "actuator_workload_v2/requirements.json",
+      "sha256": "6697247b6f7a1bcfd75febaa67651b961780ba5159a12e61faa2f185652964ad"
+    },
+    {
+      "path": "actuator_workload_v2/right.npz",
+      "sha256": "5f44f7d2db639c214aedee3ce9154d99865e320fe419381719ecfc566c62071e"
+    },
+    {
+      "path": "audit.json",
+      "sha256": "eb634b63b265fc71297dc83ba1623ab796a2cea849350245e66586bc5c180f58"
+    },
+    {
+      "path": "export_sweep_audit.json",
+      "sha256": "7ac3e02ffc98c44be2f49aef66bed23b7ee8f1f2452faf84e5f01bdef6be9084"
+    },
+    {
+      "path": "load_export_left_v1/bus.csv.gz",
+      "sha256": "a4ef19f347fe53ef895b41d0a85285b39ecb162e3df4f1ad4fe08282a3686866"
+    },
+    {
+      "path": "load_export_left_v1/joints.csv.gz",
+      "sha256": "20c526804844e6658c4fbdb06b88aa763ddc8ee1af882fc5737ecc1405e22460"
+    },
+    {
+      "path": "load_export_left_v1/loads.npz",
+      "sha256": "9f05eb80ed081c2fd27128883a48fdbd1485984e72503718cf52ae41fcf3eabe"
+    },
+    {
+      "path": "load_export_left_v1/schema.json",
+      "sha256": "b34696045a89982d4af897b58a0873ae06b536a236a7ff90d71f8e71195e52c5"
+    },
+    {
+      "path": "load_export_right_v1/bus.csv.gz",
+      "sha256": "601a4c9e8e6238c782d50faa14febc99b78caa29ac6bffde8905e70fdbcfe532"
+    },
+    {
+      "path": "load_export_right_v1/joints.csv.gz",
+      "sha256": "ca9eb590efdc82526df2bc49e964998cc69e4c5bf2c91b1d40ad262b08da1712"
+    },
+    {
+      "path": "load_export_right_v1/loads.npz",
+      "sha256": "82822803b318c522aa937fce304f590ee1e469543ba51658330da98c6a049229"
+    },
+    {
+      "path": "load_export_right_v1/schema.json",
+      "sha256": "26ec29436052276ac36faf1a61dc6f3b70d061df667ea9709e6772e63dd329eb"
+    }
+  ],
+  "limitations": [
+    "Component acceptance only; current-model full-body heading is about 88.5 degrees and does not meet the frozen 90 +/- 1 degree gate.",
+    "No measured hardware current or thermal ratings.",
+    "Thermal source is actuator_fullbody_load_left_v1/trace.npz; 600-second repeated-cycle projection.",
+    "Complete reproduction commands: docs/prototype/ACTUATOR_RUN_ja.md."
+  ]
+}
