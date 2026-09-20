@@ -1,3 +1,5 @@
 # Preserve raw evidence bytes: SHA-256 records include CSV line endings.
 validation/**/*.csv -text whitespace=cr-at-eol
 policies/**/*.monitor.csv -text whitespace=cr-at-eol
+# ngspice wrdata includes significant-for-provenance formatting spaces.
+validation/engineering_setup_v1/rc.dat -text -whitespace
