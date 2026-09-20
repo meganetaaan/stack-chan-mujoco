@@ -18,12 +18,13 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--out',type=Path,required=True)
     p.add_argument('--mesh-mm',type=float,default=3.)
+    p.add_argument('--step',type=Path,help='Revised left support with the same load and mounting faces')
     a=p.parse_args()
     if not np.isfinite(a.mesh_mm) or a.mesh_mm<=0:p.error('positive finite mesh size required')
     a.out.mkdir(parents=True,exist_ok=False)
     source=ROOT/'validation/yaw_connection_development_v1/bolt_group_v1'
     cases=json.loads((source/'report.json').read_text())['rows']
-    geometry=ROOT/'validation/yaw_connection_development_v1/yaw_connection_v1/left_yaw_fixed_support.step'
+    geometry=a.step.resolve() if a.step else ROOT/'validation/yaw_connection_development_v1/yaw_connection_v1/left_yaw_fixed_support.step'
     paths=[source/(Path(r['source']).parent.name+'_'+r['side']+'.npz') for r in cases]
     criteria={'displacement_mm':.2,'stress_MPa':5.6}
     plan={'scope':__doc__,'mesh_mm':a.mesh_mm,'young_MPa':1120.,'poisson':.35,'criteria':criteria,
