@@ -1,0 +1,52 @@
+{
+  "status": "interface redesign required; not manufacturing release",
+  "review_date": "2026-09-21",
+  "axes": ["left_ankle_roll", "right_ankle_roll"],
+  "actuator": "XL330-M288-T",
+  "output_horn_candidate": {
+    "part": "HNX330-N101",
+    "sku": "903-0314-000",
+    "manufacturer": "ROBOTIS",
+    "compatibility_confirmed": ["XL330", "XC330"],
+    "kit_contents": {"metal_horn": 1, "PHS_M2x4_frame_screws": 6},
+    "source": "https://en.robotis.com/shop_en/item.php?it_id=903-0314-000",
+    "hole_pattern_verified": false,
+    "axial_stack_verified": false,
+    "mass_kg": null,
+    "adopted": false
+  },
+  "existing_cad": {
+    "source": "board/mechanical/design/r5a_source/cad/r4_geometry.py",
+    "motor_envelope_mm": [26,20,34],
+    "shaft_keepout_radius_mm": 2.45,
+    "shaft_keepout_length_mm": 5,
+    "foot_yoke_axis_hole_radius_mm": 3.1,
+    "note": "These are collision envelopes and prototype holes, not a qualified horn/bearing interface."
+  },
+  "required_load_path": [
+    "output gear to compatible horn",
+    "horn to foot yoke through defined screw group",
+    "opposite-side support with defined bearing or bushing and retention",
+    "actuator case to gimbal through specified case mounting fasteners"
+  ],
+  "required_evidence": [
+    "manufacturer drawing or STEP with verified reference frame and mounting dimensions",
+    "explicit screw count, engagement, head access and thread material",
+    "opposite-side support dimensions, fit, load rating and axial retention",
+    "all-motion nominal and tolerance/deflection clearance including hardware",
+    "joint wrench distribution, fastener and bearing reactions, structure strength",
+    "mass and inertia ledger replacement before updated load simulation"
+  ],
+  "prohibited_inferences": [
+    "Do not treat the 2.45 mm radius shaft keepout as a selected bearing journal.",
+    "Do not treat six supplied screws as six proven usable screw locations in this yoke.",
+    "Do not enlarge the yoke hole only to pass clearance without defining its mechanical function.",
+    "Do not infer HN11-I101 compatibility from its horn/bearing product category."
+  ],
+  "drawing_retrieval": {
+    "index": "https://en.robotis.com/service/downloadpage.php?ca_id=7020",
+    "xl330_step_link": "https://www.robotis.com/service/download.php?no=1987",
+    "xl330_pdf_link": "https://www.robotis.com/service/download.php?no=1986",
+    "status": "index and manual links located; local requests returned an HTML 404 page, not a CAD artifact"
+  }
+}
