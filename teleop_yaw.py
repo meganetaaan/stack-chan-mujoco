@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""WASD control of the r8 floating-base robot, using the accepted gait settings."""
+"""WASD control of the r9 floating-base robot (optional legacy r8 profile)."""
 import argparse
+import importlib.util
+import importlib
 import json
 import sys
 import time
@@ -9,6 +11,9 @@ from types import SimpleNamespace
 import numpy as np
 import mujoco
 from yaw_maneuver_reference import YawCommandReference
+from live_fast_turn_reference import LiveFastTurnReference
+from velocity_control import VelocityControl, keyboard_velocity
+from crab_control import LateralControl, crab_keyboard
 from generate_yaw_zero_reference import configure_candidate_mass
 from stackchan_rl.yaw_kinematics import YawLegKinematics
 from stackchan_rl.residual import runtime_xml, ResidualEnv
@@ -46,13 +51,23 @@ def advance_reusing_forward(model, data):
 
 
 class Simulation:
-    def __init__(self, cad_design, design):
+    def __init__(self, cad_design, design, *, fast_turn=False):
         src=cad_design/'src'
         if not (src/'tab5_biped/planner.py').exists():
             raise FileNotFoundError(f'{src}/tab5_biped/planner.py missing; see docs/REPRODUCE_MOUNTED_ja.md or --cad-design')
-        sys.path.insert(0,str(src.resolve()))
-        from tab5_biped import core
-        import tab5_biped.planner as legacy
+        # Keep model-specific geometry and mutable feedforward inertials isolated.
+        package=f'_teleop_reference_{id(self)}'
+        spec=importlib.util.spec_from_file_location(package,src/'tab5_biped/__init__.py',
+                                                   submodule_search_locations=[str(src/'tab5_biped')])
+        module=importlib.util.module_from_spec(spec)
+        sys.modules[package]=module
+        try:
+            spec.loader.exec_module(module)
+            core=importlib.import_module(package+'.core')
+            legacy=importlib.import_module(package+'.planner')
+        finally:
+            for name in list(sys.modules):
+                if name==package or name.startswith(package+'.'):del sys.modules[name]
         self.legacy=legacy
         robot=json.loads((design/'robot.json').read_text())
         configure_candidate_mass(legacy,json.loads((design/'models/inertials.json').read_text()),robot)
@@ -60,8 +75,11 @@ class Simulation:
         initial.q0,initial.b0,_=legacy.pose(initial.initial_feet,initial.initial_feet.mean(axis=0)[:2],(initial.q0,initial.b0),initial.b0[2,3]+.002)
         protocol=json.loads((ROOT/'configs/maneuver/acceptance_v1.json').read_text())
         for segment in protocol['segments']:segment.update(vx_m_s=0.,yaw_rate_rad_s=0.)
-        kin=YawLegKinematics(core,robot['hip_yaw_candidate']['axis_base_m'],(-.075,.075))
-        self.reference=LiveReference(initial,legacy.pose,core.smooth,protocol,kin,.25,25.9,.32,.30,'quartic',62.,.1,.22)
+        kin=YawLegKinematics(core,robot['hip_yaw_candidate']['axis_base_m'],(-.245,.245) if fast_turn else (-.075,.075))
+        if fast_turn:
+            self.reference=LiveFastTurnReference(initial,legacy.pose,core.smooth,protocol,kin)
+        else:
+            self.reference=LiveReference(initial,legacy.pose,core.smooth,protocol,kin,.25,25.9,.32,.30,'quartic',62.,.1,.22)
         self.reference.boundaries=np.array([0.,np.inf])
         self.reference.end=np.inf
         self.m=mujoco.MjModel.from_xml_string(runtime_xml(design/'models/scene.xml',visuals=True))
@@ -96,17 +114,49 @@ class Simulation:
             floor=self.m.geom('floor').id,soles=np.array([self.m.geom('col_'+s+'_sole_TPU_0').id for s in ['left','right']]),
             warnings=np.array([w.number for w in self.d.warning]),loads=np.zeros(2),force=np.zeros(6))
         if self.m.opt.integrator!=mujoco.mjtIntegrator.mjINT_IMPLICITFAST:
-            raise ValueError('interactive fast path requires the r8 implicitfast integrator')
+            raise ValueError('interactive fast path requires the implicitfast integrator')
         self.advance=advance_reusing_forward
         self.failure=None;self.command='stop';self.tick=0
         self.physics_observer=None
+        self.velocity=VelocityControl() if fast_turn else None
+        self.velocity_buffer=np.zeros(6)
+        self.lateral_control=LateralControl()
+        self.crab_heading=None
+        self.crab_pending=False
 
     def step(self, command):
         if self.failure:return
         t=self.tick*.02
         self.command=command if t>=2. else 'stop'
         try:
-            self.reference.set_command(self.command,t)
+            if self.velocity is not None and not isinstance(command,str):
+                R=self.d.xmat[self.plant.base].reshape(3,3)
+                tilt=np.rad2deg(np.arccos(np.clip(R[2,2],-1,1)))
+                self.velocity.observe_support(tilt,self.plant.loads)
+                vector=np.asarray(command,dtype=float)
+                if vector.shape==(3,):
+                    if self.crab_heading is None and (abs(self.velocity.target[1])>.02 or abs(self.velocity.measured[1])>.04):
+                        self.crab_pending=True
+                    if self.crab_pending and self.reference.mode=='stand' and abs(self.velocity.measured[1])<.03:
+                        self.crab_pending=False
+                    if self.crab_pending:vector=np.zeros(2)
+                else:self.crab_pending=False
+                if vector.shape==(3,):
+                    vx,vy,wz=vector
+                    if not np.isfinite(vector).all():raise ValueError('finite velocity required')
+                    yaw=float(np.arctan2(R[1,0],R[0,0]))
+                    if self.crab_heading is None:self.crab_heading=yaw
+                    error=np.arctan2(np.sin(self.crab_heading-yaw),np.cos(self.crab_heading-yaw))
+                    hold=float(np.clip(.8*error,-.06,.06)) if abs(vx)+abs(vy)>0 else 0.
+                    drive=self.velocity.update([vx,wz+hold],ready=t>=2.)
+                else:
+                    self.crab_heading=None
+                    vy=0.;drive=self.velocity.update(vector,ready=t>=2.)
+                side=self.lateral_control.update(vy,self.velocity.lateral,t>=2.,self.velocity.safety_scale)
+                self.reference.set_command((drive[0],side,drive[1]) if side or vector.shape==(3,) else drive,t)
+                self.command='velocity'
+            else:
+                self.reference.set_command(self.command,t)
             sample=self.reference.sample(t)
             tau,_=self.legacy.static_torques(sample.q,sample.base,sample.support)
             target=sample.q12.copy();target[self.old]+=tau/self.motor['kp'][self.old]
@@ -118,14 +168,21 @@ class Simulation:
                 self.failure=ResidualEnv._check_physics(self.plant) or self.protection.update(sat)
                 if self.physics_observer is not None:self.physics_observer(self)
                 if self.failure:break
+            if self.velocity is not None:
+                mujoco.mj_objectVelocity(self.m,self.d,mujoco.mjtObj.mjOBJ_BODY,self.plant.base,self.velocity_buffer,0)
+                R=self.d.xmat[self.plant.base].reshape(3,3)
+                yaw=np.arctan2(R[1,0],R[0,0]);c,s=np.cos(yaw),np.sin(yaw)
+                vx,vy=self.velocity_buffer[3:5]
+                self.velocity.observe([c*vx+s*vy,-s*vx+c*vy,self.velocity_buffer[2]])
             self.tick+=1
         except ValueError as exc:self.failure='planning: '+str(exc)
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--cad-design',type=Path,default=ROOT/'design/teleop_reference')
-    p.add_argument('--design',type=Path,default=ROOT/'assets/r8_yaw_offset_flange_v1')
+    p.add_argument('--profile',choices=['r9','r8'],default='r9',help='r9 fast turn (default), or legacy r8')
+    p.add_argument('--cad-design',type=Path,help='numeric reference source (normally selected with model)')
+    p.add_argument('--design',type=Path,help='model directory (normally selected with profile)')
     p.add_argument('--headless',action='store_true',help='run a 24 s command-switch smoke test without a window')
     p.add_argument('--fps',type=float,default=30.,help='maximum drawing rate; physics remains 1000 Hz')
     p.add_argument('--duration',type=float,default=0.,help='exit after this many simulation seconds (0: unlimited)')
@@ -135,18 +192,22 @@ def main():
     a=p.parse_args()
     if not np.isfinite(a.fps) or not 1<=a.fps<=120:p.error('--fps must be within 1..120')
     if not np.isfinite(a.duration) or a.duration<0:p.error('--duration must be finite and nonnegative')
-    sim=Simulation(a.cad_design,a.design)
+    if a.design is None:a.design=ROOT/'assets'/('r9_fast_turn_v1' if a.profile=='r9' else 'r8_yaw_offset_flange_v1')
+    if a.cad_design is None:a.cad_design=a.design/'reference' if a.profile=='r9' else ROOT/'design/teleop_reference'
+    sim=Simulation(a.cad_design,a.design,fast_turn=a.profile=='r9')
     if a.headless:
         sequence=['stop','forward','stop','backward','left','right','stop']
         for i in range(1200):
-            sim.step(sequence[min(i//175,len(sequence)-1)])
+            name=sequence[min(i//175,len(sequence)-1)]
+            cmd=LiveFastTurnReference.commands[name] if a.profile=='r9' else name
+            sim.step(cmd)
             if sim.failure:break
         print(json.dumps({'time_s':sim.d.time,'failure':sim.failure,'position':sim.d.qpos[:3].tolist()}))
         if sim.failure:raise SystemExit(1)
         return
     import glfw
     if not glfw.init():raise RuntimeError('GLFW initialization failed; a desktop display is required')
-    window=glfw.create_window(1000,750,'Tab5 - WASD move | release/Space stop | R reset | Esc quit',None,None)
+    window=glfw.create_window(1000,750,f'Tab5 {a.profile} - WASD move | release/Space stop | R reset | Esc quit',None,None)
     if not window:glfw.terminate();raise RuntimeError('Unable to create an OpenGL window')
     glfw.make_context_current(window);glfw.swap_interval(0)
     camera=mujoco.MjvCamera();camera.distance=.65;camera.azimuth=135;camera.elevation=-20
@@ -162,13 +223,17 @@ def main():
             if glfw.get_key(window,glfw.KEY_ESCAPE)==glfw.PRESS:break
             reset=glfw.get_key(window,glfw.KEY_R)==glfw.PRESS
             if reset and not reset_down:
-                sim=Simulation(a.cad_design,a.design)
+                sim=Simulation(a.cad_design,a.design,fast_turn=a.profile=='r9')
                 deadline=time.monotonic();rate_wall=deadline;rate_sim=0.
             reset_down=reset
             pressed={k for k in ['W','A','S','D','SPACE'] if glfw.get_key(window,getattr(glfw,'KEY_'+k))==glfw.PRESS}
             if not glfw.get_window_attrib(window,glfw.FOCUSED):pressed=set()
-            command=requested_command(pressed)
-            if a.demo:command=['stop','forward','stop','backward','left','right','stop'][min(int(sim.d.time/3.5),6)]
+            shift=glfw.get_window_attrib(window,glfw.FOCUSED) and any(glfw.get_key(window,k)==glfw.PRESS for k in (glfw.KEY_LEFT_SHIFT,glfw.KEY_RIGHT_SHIFT))
+            command=(crab_keyboard(pressed) if shift else keyboard_velocity(pressed)) if a.profile=='r9' else requested_command(pressed)
+            if a.demo:
+                if a.profile=='r9':
+                    command=[(0.,0.),(.025,.21),(-.012,.21),(-.012,-.21),(.025,-.21),(0.,-.55),(0.,0.)][min(int(sim.d.time/3.5),6)]
+                else:command=['stop','forward','stop','backward','left','right','stop'][min(int(sim.d.time/3.5),6)]
             sim.step(command)
             now=time.monotonic()
             if now-rate_wall>=.5:
@@ -184,9 +249,17 @@ def main():
                 viewport=mujoco.MjrRect(0,0,width,height)
                 mujoco.mjv_updateScene(sim.m,sim.d,option,None,camera,mujoco.mjtCatBit.mjCAT_ALL,scene)
                 mujoco.mjr_render(viewport,scene,context)
+                velocity_text=''
+                if sim.velocity is not None:
+                    ctl=sim.velocity
+                    velocity_text='\nRequest / Target / Measured (m/s, deg/s)'
+                    for label,val in [('Req',ctl.request),('Tgt',ctl.target),('Meas',ctl.measured)]:
+                        velocity_text+=f'\n{label}: {val[0]:+.3f}, {np.rad2deg(val[1]):+.1f}'
+                    velocity_text+=f'\nSide Req/Tgt/Meas: {sim.lateral_control.request:+.3f} / {sim.lateral_control.target:+.3f} / {ctl.lateral:+.3f} m/s'
+                    velocity_text+=f'\n{"Stopping turn before translation" if sim.crab_pending else (ctl.reason or "within envelope")}'
                 status=('STOPPED: '+sim.failure+' (R reset)') if sim.failure else sim.command
                 mujoco.mjr_overlay(mujoco.mjtFontScale.mjFONTSCALE_150,mujoco.mjtGridPos.mjGRID_TOPLEFT,viewport,
-                    'W/S forward/back | A/D turn\nRelease / Space: stop | R: reset\nDrag: orbit | Wheel: zoom',f'{status}\nSimulation: {sim.d.time:.2f} s\nSpeed: {rate:.2f}x (target 1.00x)',context)
+                    'W/S forward/back + A/D turn\nShift + WASD: translate\nRelease / Space: stop | R: reset\nDrag: orbit | Wheel: zoom',f'{a.profile}: {status}\nSimulation: {sim.d.time:.2f} s\nSpeed: {rate:.2f}x (target 1.00x){velocity_text}',context)
                 frames+=1
                 if a.capture and a.frames and frames>=a.frames:
                     from PIL import Image
