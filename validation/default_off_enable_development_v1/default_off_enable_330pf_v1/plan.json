@@ -1,0 +1,43 @@
+{
+  "scope": "Default-off EN pull-down and diode-isolated push-pull control development screen.",
+  "candidate_supervisor": "TPS3840PL30 (push-pull, changes earlier DL candidate)",
+  "candidate_diode": "BAS116, anode at supervisor output, cathode at EN",
+  "battery_max_V": 8.4,
+  "EN_internal_pullup_ohm": 800000,
+  "internal_pullup_status": "20 percent below nominal 1 Mohm is a sensitivity assumption, not manufacturer tolerance",
+  "external_pulldown_ohm": 33330.0,
+  "EN_source_leakage_A": 1e-06,
+  "EN_leakage_status": "assumed injection bound; regulator specification pending",
+  "control_high_V": 2.5872,
+  "control_low_V": 0.2,
+  "diode_forward_drop_V": 0.9,
+  "diode_series_ohm": 10,
+  "diode_reverse_leakage_A": 8e-08,
+  "EN_capacitance_F": 3.3e-10,
+  "diode_capacitance_F": 2e-12,
+  "events_s": {
+    "release": 0.003,
+    "supply_loss": 0.008,
+    "control_falls": 0.00803,
+    "restart_release": 0.012
+  },
+  "criteria": {
+    "off_max_V": 0.5,
+    "on_min_V": 1.0,
+    "disable_deadline_s": 0.0001,
+    "control_current_max_A": 0.002
+  },
+  "sources": [
+    "https://www.pololu.com/product/5571",
+    "https://www.ti.com/lit/ds/symlink/tps3840.pdf",
+    "https://assets.nexperia.com/documents/data-sheet/BAS116.pdf"
+  ],
+  "limitations": [
+    "Behavioral sources replace actual supervisor and LDO startup/reset state machine",
+    "Diode is a bounded-drop/leakage approximation, not a vendor macro-model",
+    "0.9 V diode drop derives from 25 C pulsed 1 mA spec; not a full-temperature guarantee",
+    "30 us control-fall delay assumes specified supervisor overdrive; slow brownouts unverified",
+    "No converter switching or load/energy model in this EN-only test",
+    "Capacitance and EN leakage require part/board constraints"
+  ]
+}
