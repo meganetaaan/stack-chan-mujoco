@@ -1,0 +1,37 @@
+{
+  "scope": "Audit initial contact geometry of the current rear connection CAD candidate.",
+  "criteria": {
+    "unintended_overlap_mm3": 0.01,
+    "contact_distance_mm": 1e-06,
+    "minimum_contact_area_mm2": 1.0
+  },
+  "source_sha256": {
+    "board/mechanical/engineering/rear_connection_candidate.json": "104bf8e7fa26fe1de300412c7943d8021dbf728aed4fff8f096985255d9208a4",
+    "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/body_shroud.step": "8de9bb8c59896372a4c07b6f108cd7490ea58219cfb9def69e2bc880cd36580d",
+    "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/rear_structural_plate.step": "604f5385918959d2066bd24234d591b3490692194ad2a4bea4ebbd1d5599f62d",
+    "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_0_bolt.step": "6c801ec58bf31ca8efe309a3686114a49d4b16da9a35e2abbee4a9e554e8d5e4",
+    "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_0_nut.step": "30289d52ac4e1a0d8dbe0200140a91c06d78f88a315b6d29a3793ecd7bb7f871",
+    "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_0_inner_washer.step": "c88304d3a298f1bddc23d90023e61dabc3ee25f4fbb9f8e6aa10beb0b0aec602",
+    "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/corner_0_rear_washer.step": "8f40e8cd2f8d19a530a8e7bd7ddb2f40b5b35700ced8d362a0c2152d7c2a1085",
+    "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_1_bolt.step": "4fc7986e0569cb1efac573c294b180b3610398f59b46e6c51066cb41a9108dc9",
+    "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_1_nut.step": "d37b5b9bd3a8ec16f37980739102561c7bc15ee3d814448afd4a70cc894d04c3",
+    "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_1_inner_washer.step": "0b5a3df22a8febd1de3469b06f02802d02a18c4843a4f37179352ffd7c80feda",
+    "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/corner_1_rear_washer.step": "c8aceee2457113e035eb812dc3bd5802a339fab6e0e9517a516c02c235534419",
+    "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_2_bolt.step": "fc4989bbc7bb94f46a3dab41fbdffcd3d0206e69ba752957313b24db1e59cbac",
+    "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_2_nut.step": "21d5999776fe253d599600463af00bfa42f77923ec266a2b8bd9fab5f1f2df49",
+    "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_2_inner_washer.step": "58c177b57d1876226273e489c065c9c1eb7ac4582a9f2d635569a193f2fd4110",
+    "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/corner_2_rear_washer.step": "1e3b6eb223bb8d223e361c1ff404c6e35d4c4aa7eeabfba78fb0964095937466",
+    "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_3_bolt.step": "b9954e6838d722cdd245c492aa757585b3486fd8eac09a833f0dc1571d5316e9",
+    "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_3_nut.step": "be184afd01d9b3a2a242699ed01b1c8bcf737e1980547a7609e4402aff5b2475",
+    "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_3_inner_washer.step": "4a74860e1f4300c8b41c34dac916af5e00d1270843072925a2b85c9d0dcd8f36",
+    "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/corner_3_rear_washer.step": "352373f454399af6bc84d4bbe6c994e60d49834ec4eef44a7c2934f211fe3310"
+  },
+  "contact_law_target": "unilateral compression; actual friction, preload and joint compliance to be specified",
+  "thread_model": "bolt major-diameter envelope overlaps nut minor-diameter envelope; not a physical thread contact mesh",
+  "limitations": [
+    "initial nominal geometry only",
+    "no deformation/preload/material solve",
+    "CAD faces are not yet mapped to FE contact elements",
+    "no manufacturing tolerance or roughness contact state"
+  ]
+}
