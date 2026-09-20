@@ -75,3 +75,16 @@ LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" \
 ```
 
 大きい生データ `.dat` と `.frd` はgzipで可逆圧縮保存し、圧縮前SHA-256も記録した。保存結果を再評価する場合はコピー先で解凍してから評価スクリプトを実行する。
+
+### 等価節点荷重による比較
+
+同じ初期接触面で面圧を節点力へ積分し、荷重方向と合力を保持した比較を `validation/rear_contact_probe_development_v1/nodal_v1` に保存した。四隅各25 N、同じ材料・接触ペナルティ・拘束・合格閾値を使用。全荷重まで収束し、全増分で合反力比の最大7.7423e-13は事前基準1e-4以内だった。最終個別拘束反力最大0.0003535 N、拘束反力モーメントは約[0, 0.03063, -0.01415] N mm。合反力の相殺だけで拘束影響なしと断定しない。
+
+参考の最大節点変位は胴体0.003444 mm、背面板0.0002194 mm。節点絶対主応力最大は胴体1.5119 MPa、背面板1.0524 MPa。今回の合格は接触試行の収束と合反力に限る。実ねじ結合・座金剛性・摩擦・締付け力保持・歩行荷重・メッシュ収束は未検証。
+
+```sh
+.venv-engineering/bin/python software/sim/structural/probe_rear_contact.py \
+  --load-mode nodal --out outputs/rear_nodal_reproduction
+.venv-engineering/bin/python software/sim/structural/evaluate_rear_contact_probe.py \
+  --run outputs/rear_nodal_reproduction
+```
