@@ -1,0 +1,22 @@
+{
+  "source_sha256": "f77f52fdf34e9bc127cfb886a39d90a98c5b01174b7c41a18adf299dbf31b402",
+  "force_N": 20,
+  "mesh_mm": [
+    1,
+    0.7,
+    0.5
+  ],
+  "E_MPa": 1120,
+  "poisson": 0.35,
+  "criteria": {
+    "displacement_mm": 0.2,
+    "principal_MPa": 5.6,
+    "relative_displacement": 0.05,
+    "relative_stress": 0.1
+  },
+  "limitations": [
+    "Cropped boss bottom fully clamped; not actual sleeve/contact boundary.",
+    "Traction on entire nut cavity floor, not exact 4 mm nut footprint.",
+    "Hypothetical preload, no walking shear, creep, anisotropy or thread strength."
+  ]
+}
