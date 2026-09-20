@@ -42,4 +42,4 @@ python assess_fast_turn_trial.py --trial outputs/r9_left --out outputs/r9_left/a
 python run_fast_turn_sensitivity.py --design assets/r9_fast_turn_v1 --out outputs/r9_verification
 ```
 
-モデルは [assets/r9_fast_turn_v1](../assets/r9_fast_turn_v1)、検証記録・動画は [validation/fast_turn_v1](../validation/fast_turn_v1)、失敗例を含む経緯は [FAST_TURN_GOAL_ja.md](FAST_TURN_GOAL_ja.md) に分離した。WASD用の既存 `teleop_yaw.py` は引き続きr8を既定としている。
+モデルは [assets/r9_fast_turn_v1](../software/sim/mujoco/assets/r9_fast_turn_v1)、検証記録・動画は [validation/fast_turn_v1](../validation/fast_turn_v1)、失敗例を含む経緯は [FAST_TURN_GOAL_ja.md](FAST_TURN_GOAL_ja.md) に分離した。WASD用の既存 `teleop_yaw.py` は引き続きr8を既定としている。

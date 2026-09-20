@@ -1,0 +1,863 @@
+{
+  "schema_version": 1,
+  "domain": "mujoco",
+  "commit": "313acdc04c500d50dd715eb5960f4fbe2fd86f29",
+  "runtime": {
+    "python": "3.14.7 (main, Aug  7 2026, 02:26:00) [Clang 22.1.3 ]",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "packages": {
+      "mujoco": "3.13.0",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "gymnasium": "1.3.0"
+    }
+  },
+  "commands": [
+    {
+      "cwd": "software/sim/mujoco",
+      "argv": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "probe_fast_turn.py",
+        "--design",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/mujoco/assets/r9_fast_turn_v1",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/prototype_baseline_v1/left",
+        "--rate-deg-s",
+        "40",
+        "--heading-goal-deg",
+        "91.5",
+        "--period",
+        ".4",
+        "--shift-fraction",
+        ".45",
+        "--inset-mm",
+        "25.5",
+        "--initial-inset-mm",
+        "25.5"
+      ]
+    },
+    {
+      "cwd": "software/sim/mujoco",
+      "argv": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "probe_fast_turn.py",
+        "--design",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/mujoco/assets/r9_fast_turn_v1",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/prototype_baseline_v1/right",
+        "--rate-deg-s",
+        "-40",
+        "--heading-goal-deg",
+        "-91.5",
+        "--period",
+        ".4",
+        "--shift-fraction",
+        ".45",
+        "--inset-mm",
+        "25.5",
+        "--initial-inset-mm",
+        "25.5"
+      ]
+    },
+    {
+      "cwd": "software/sim/mujoco",
+      "argv": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "-m",
+        "unittest",
+        "tests.test_teleop_yaw",
+        "tests.test_teleop_r9",
+        "tests.test_velocity_control",
+        "tests.test_crab_control",
+        "-v"
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "path": "docs/prototype/migration_manifest.json",
+      "sha256": "0f43dcbfe389a62d6815970eeae61afb6f508e6c1ec166d5fc5bb3a4c322db68"
+    },
+    {
+      "path": "software/sim/integration/result_bundle.py",
+      "sha256": "020905acd223bd9347b27298d0b1a668888f6194c3ba758702a007d51f7c2050"
+    },
+    {
+      "path": "software/sim/integration/run_baseline.py",
+      "sha256": "2786a438acd67c59c39bfba260a7d9e6060a72ab6424773f546e051e98731082"
+    },
+    {
+      "path": "software/sim/integration/verify_migration.py",
+      "sha256": "8da664ba7a4245a6e8722b911350d480c9aada081e4fbcd739664b14030cf6f0"
+    },
+    {
+      "path": "software/sim/mujoco/add_base_reservation_collisions.py",
+      "sha256": "c3738b64f788fb5d8477f84782d405754c3fe5feb23de05aab5c58caeb60e161"
+    },
+    {
+      "path": "software/sim/mujoco/add_gimbal_collisions.py",
+      "sha256": "584ec08ab42ac987f46904b2286fa56a03546e42c2da921d90138624fb8ae92c"
+    },
+    {
+      "path": "software/sim/mujoco/analyze_yaw_development.py",
+      "sha256": "d01b659671c1036ea531db494b01fa21418b6528bb81cc68edcf50d750a36d1e"
+    },
+    {
+      "path": "software/sim/mujoco/analyze_yaw_lateral.py",
+      "sha256": "727208ba7bc12875469ac907ed4eebac6095610afbea70eb4ce0ecdca2eea38a"
+    },
+    {
+      "path": "software/sim/mujoco/assess_acceptance.py",
+      "sha256": "7ba75cd5b257b97d923c2680ecb40ffcefda3ad9ef7444fa894255e6d44fafb0"
+    },
+    {
+      "path": "software/sim/mujoco/assess_fast_turn_trial.py",
+      "sha256": "a4870d1f6d809c17f0d8178d03ee2bcbba2a8ce426608c24da80dd60ef475394"
+    },
+    {
+      "path": "software/sim/mujoco/assess_yaw_acceptance.py",
+      "sha256": "0d6cd017c456be9a580c6050db3a1368a34ac1322471c5d07bbe5d7869192f4b"
+    },
+    {
+      "path": "software/sim/mujoco/assess_yaw_development_batch.py",
+      "sha256": "223e33bd70fcd030bccd79b0ddf201f56849f38cb067e9ee43658adc9ffee076"
+    },
+    {
+      "path": "software/sim/mujoco/assets/r9_fast_turn_v1/build_fast_turn_candidate.source.py",
+      "sha256": "1fce9344e705173d5bcafd255854d3a4aa9df3d83d70298da0d46f584f50aee8"
+    },
+    {
+      "path": "software/sim/mujoco/assets/r9_fast_turn_v1/models/scene.xml",
+      "sha256": "b79bc86618c58c44088fb9211c1807a09c27ea8f623152243a86b7959e74b434"
+    },
+    {
+      "path": "software/sim/mujoco/assets/r9_fast_turn_v1/reference/src/tab5_biped/__init__.py",
+      "sha256": "20ee02304324f2f8b4fb2552b9e410421ba270be94c9779068f36a6d87678d6f"
+    },
+    {
+      "path": "software/sim/mujoco/assets/r9_fast_turn_v1/reference/src/tab5_biped/core.py",
+      "sha256": "9a16813b61435492746dc3cb7d7e765a7a7432e47ab29c266ce011742da5c322"
+    },
+    {
+      "path": "software/sim/mujoco/assets/r9_fast_turn_v1/reference/src/tab5_biped/planner.py",
+      "sha256": "f54a0a680412715d3f0abbbd9495e5c7aeb255d9ba71fbef76df07e150c7025b"
+    },
+    {
+      "path": "software/sim/mujoco/audit_added_collision_states.py",
+      "sha256": "04a428c16e0769f9dd3e3d194bd34e1a4f8ed5fab93353ac3bb2016fc11a9b18"
+    },
+    {
+      "path": "software/sim/mujoco/audit_fast_turn_ankle_cad.py",
+      "sha256": "4210124c91f93979d57c3aca4f9161373feb9e484c00873c8b3102ab806491f9"
+    },
+    {
+      "path": "software/sim/mujoco/audit_fast_turn_body_cad.py",
+      "sha256": "4267825913c1020a1f1166494bcf1b6fec2eb174d2a041e3533472a9ce03d724"
+    },
+    {
+      "path": "software/sim/mujoco/audit_fast_turn_candidate.py",
+      "sha256": "665aa64ee9b7a3f8a0a0d9fbb6ed0fef0a2be4014db95462ea6490871e5959e3"
+    },
+    {
+      "path": "software/sim/mujoco/audit_lp40.py",
+      "sha256": "1bd77a04fda8fe3c925610468e568e8a4b03a0125097d39b9a61fd9351b81674"
+    },
+    {
+      "path": "software/sim/mujoco/audit_residual_batch.py",
+      "sha256": "69b3921fdfa0fa02dea60468d9d3111be3f9c7f2f03b88f8e389444f3a74e9a8"
+    },
+    {
+      "path": "software/sim/mujoco/audit_rewards.py",
+      "sha256": "bd334e4fa6a4ea417f7c9b103e4ec01daba6a585067e1ef7727a45245235131e"
+    },
+    {
+      "path": "software/sim/mujoco/audit_yaw_fixed_cad.py",
+      "sha256": "5bf157e87ae67562356242318747d416b349e1db8b87891f2d138c18f568d134"
+    },
+    {
+      "path": "software/sim/mujoco/audit_yaw_layout.py",
+      "sha256": "407a35d762978ed7a8c9cefcc7262eb33ef4c893e003be09f21df8380abf48b6"
+    },
+    {
+      "path": "software/sim/mujoco/audit_yaw_reference_feet.py",
+      "sha256": "32eaf9e6135dc1acede3ee7e773298b9a198deb49b12d09a4942d872510a04a7"
+    },
+    {
+      "path": "software/sim/mujoco/benchmark.py",
+      "sha256": "0443f198af373551961324381050687dbcd9daf3a5ef4229b1c4634ae35b70ab"
+    },
+    {
+      "path": "software/sim/mujoco/build_battery_mount.py",
+      "sha256": "a87e4513d7b6ebf88fdf4af96950232de46509917d4d5f8ae0c92613d65eaf26"
+    },
+    {
+      "path": "software/sim/mujoco/build_design.py",
+      "sha256": "603e2bc51ed44cb63c76f65061cd1222126ff2309e77ecbf1181a9ccf3da36a2"
+    },
+    {
+      "path": "software/sim/mujoco/build_fast_turn_candidate.py",
+      "sha256": "1fce9344e705173d5bcafd255854d3a4aa9df3d83d70298da0d46f584f50aee8"
+    },
+    {
+      "path": "software/sim/mujoco/build_fast_turn_feet.py",
+      "sha256": "314c3e12f7b4c962ee398a7adec5ee304ac93e36c75cf4ff4abfb7e246481578"
+    },
+    {
+      "path": "software/sim/mujoco/build_fast_turn_packaging.py",
+      "sha256": "e4d78f13339b8c9efe82a0d2f16b4bb306e41531674ca88e43ac553a0dd26509"
+    },
+    {
+      "path": "software/sim/mujoco/build_fast_turn_tray.py",
+      "sha256": "220f5f86082ec9bbd9982b67ac2f96b4ecb60351ada7965cac27f29db890fb51"
+    },
+    {
+      "path": "software/sim/mujoco/build_yaw_dynamics_candidate.py",
+      "sha256": "0257efc16145632991e85c76081533a31f169b43bafdc566f2e47c19fd9e77ba"
+    },
+    {
+      "path": "software/sim/mujoco/check_battery_mount_trajectory.py",
+      "sha256": "8565e5eb54438a86bcfc880d462d2cb6bee5882d54e019a3efd715a96dea6b4d"
+    },
+    {
+      "path": "software/sim/mujoco/check_battery_service_path.py",
+      "sha256": "b82c47c044f558e1272d68e8a798b6ce52e310559b82268db0a0bdcce0756a76"
+    },
+    {
+      "path": "software/sim/mujoco/check_design_clearance.py",
+      "sha256": "8d9fbb5e9b166072bfe665d46524cf98ccce8556ee1ac17fd643ae51a53370f3"
+    },
+    {
+      "path": "software/sim/mujoco/check_env.py",
+      "sha256": "298dc32b73b8751311460c18c3bc273f705b75e1efdf788e5d5233fd4214d96f"
+    },
+    {
+      "path": "software/sim/mujoco/check_stage.py",
+      "sha256": "0de1688a3cd8825182c28c1d892c5c988f903d6992299c9e47311e4f9e987bd5"
+    },
+    {
+      "path": "software/sim/mujoco/compare_design_mass.py",
+      "sha256": "c9c1785ad2f883a1039814401bc8127db6d3ece767b39834fc468c9346df25d0"
+    },
+    {
+      "path": "software/sim/mujoco/continue_residual.py",
+      "sha256": "3618bbb6adc69f75822b103625054bea2562ab0afd3859c28941e16f137b2077"
+    },
+    {
+      "path": "software/sim/mujoco/crab_control.py",
+      "sha256": "ef6bb01cdd5782b1ab5202f122f1d9c16da21c05305f3a51899c1f80f099c3b1"
+    },
+    {
+      "path": "software/sim/mujoco/derive_underside_cutouts.py",
+      "sha256": "3767c09462e0ee8550316e02b0e4eb04be19102f295b9855a75d61b12c6908ea"
+    },
+    {
+      "path": "software/sim/mujoco/diagnose_gait.py",
+      "sha256": "88a83677e064d8c5784bf649ea3047f24da33e909f44f210ac7a4352097c5ec9"
+    },
+    {
+      "path": "software/sim/mujoco/evaluate.py",
+      "sha256": "c801e0b6c15859bdd92b464d10a7833159dd55bd3f90f4982cd0dfb2f448dfb0"
+    },
+    {
+      "path": "software/sim/mujoco/evaluate_residual.py",
+      "sha256": "5f4b06be0e0d1bb0659c750418d1ce31914b166d3dee907b6c7c3a599b858c04"
+    },
+    {
+      "path": "software/sim/mujoco/export_fast_turn_cad_poses.py",
+      "sha256": "4a6039adc7a42df7ee337b4e9f5d0ae8155187d06db012dab32209864fe5d324"
+    },
+    {
+      "path": "software/sim/mujoco/export_policy.py",
+      "sha256": "bbaa6df5c1cc4c6e7a5b05c0fc4760c64281fe5653a1f34b2cdef8e70a7a3e59"
+    },
+    {
+      "path": "software/sim/mujoco/fast_turn_reference.py",
+      "sha256": "6277b0a4e2c467414408c615be1967af2552ac1571ec0cad99425667ce6b70b7"
+    },
+    {
+      "path": "software/sim/mujoco/fetch_x330_reference.py",
+      "sha256": "edfc4bcca04c974b44035d02f49ce9951fd7d15932121ce15bc0f4c900d158cb"
+    },
+    {
+      "path": "software/sim/mujoco/generate_yaw_maneuver_reference.py",
+      "sha256": "250eb44c713cff379e5774c88abdf42fffdffc0bbb946e5c3fffa4b59c7f7899"
+    },
+    {
+      "path": "software/sim/mujoco/generate_yaw_step_reference.py",
+      "sha256": "948cb27a91a44cfd86420f29c833bf81eedb316e368cae9308ecacd036b7d8ed"
+    },
+    {
+      "path": "software/sim/mujoco/generate_yaw_zero_reference.py",
+      "sha256": "569ce9f0164f54c28fc10bc4572ce9d57984d225f27060f0efc8dad00db89ccd"
+    },
+    {
+      "path": "software/sim/mujoco/inspect_design_pair.py",
+      "sha256": "c9a38071d4fb0f1740fc58d22d0bbe1c33dc5322735a395f83254f095fc7af2b"
+    },
+    {
+      "path": "software/sim/mujoco/inspect_joint_limit_failure.py",
+      "sha256": "9cc9573699baedd81b5b139115ec61075cf4c383b121d99e92e76f652ce58d1a"
+    },
+    {
+      "path": "software/sim/mujoco/inspect_self_collision.py",
+      "sha256": "c307c7132ccb276b374dae85066729935060ac9bb1defd4f37c7bac57b53c7ca"
+    },
+    {
+      "path": "software/sim/mujoco/inspect_x330_step.py",
+      "sha256": "d146d3dd5a1ee60a6854b56b0196c456a8977853212fcb26654d987ce5a53638"
+    },
+    {
+      "path": "software/sim/mujoco/integrate_battery_mount.py",
+      "sha256": "646cc0d0c9f1aeb8cfd223274fa9202a34d5dbd63375ad926396a92e03d70316"
+    },
+    {
+      "path": "software/sim/mujoco/live_fast_turn_reference.py",
+      "sha256": "f0944932c918a344e47e39784449bf265b10840f20f746a1ad8a42ae64702928"
+    },
+    {
+      "path": "software/sim/mujoco/make_plant_variation_suite.py",
+      "sha256": "0efbbf8064a32a6abd81aaf4b6e0240d0ae0e8f0e817b040a29b99b9e1168119"
+    },
+    {
+      "path": "software/sim/mujoco/maneuver_reference.py",
+      "sha256": "666774e32fa4efc208843e78274252498e29fe80cb3aa4fddbc66604625e1fdd"
+    },
+    {
+      "path": "software/sim/mujoco/measure_forward_traversal.py",
+      "sha256": "1e28d186c3c7d7eb07a185dd2e8e01c7635db6f4ad9bd9df24eff19c83ebb732"
+    },
+    {
+      "path": "software/sim/mujoco/plant_variation.py",
+      "sha256": "506892b5afadedbdabd3f980ee442ff5d4d2ffef796635a4d4b4974426b20e34"
+    },
+    {
+      "path": "software/sim/mujoco/play.py",
+      "sha256": "7d7705570bd6cccedc3fe934f115d9c259465e95c30eed72f6c08e98a02163df"
+    },
+    {
+      "path": "software/sim/mujoco/plot_residual_paths.py",
+      "sha256": "7b802313de6b60ca5e7e4b200640b5199c49fa07ccf18373f42bc8db9845dc8c"
+    },
+    {
+      "path": "software/sim/mujoco/plot_yaw_contacts.py",
+      "sha256": "2e0d887760aace6d845d5d9f2ba7257e04af301adc03cec7ebd1aeccae3a69d8"
+    },
+    {
+      "path": "software/sim/mujoco/plot_yaw_lateral.py",
+      "sha256": "ad2237a2591ef5d73d436fc4a875bf954e32f18c6a882c5ef973bc9fb1d67412"
+    },
+    {
+      "path": "software/sim/mujoco/probe_fast_turn.py",
+      "sha256": "b8b869c91ef11bcf6cdf2aa8461e687498f949ed2defdf6839f85329d8082566"
+    },
+    {
+      "path": "software/sim/mujoco/probe_maneuvers.py",
+      "sha256": "ae807b3c1333519dae86d84e67a28e82e64a52312c106bf446f40c03c248783d"
+    },
+    {
+      "path": "software/sim/mujoco/probe_reference_gait.py",
+      "sha256": "034b5235341b38afc2b5c157ba5017d8c2f0fd139a797bd1f517c707d473d7cd"
+    },
+    {
+      "path": "software/sim/mujoco/probe_signed_reference.py",
+      "sha256": "737670965141b46673be55d637a0757c847d839366a58784c739c3d28c844dd4"
+    },
+    {
+      "path": "software/sim/mujoco/probe_stopping_gait.py",
+      "sha256": "a7beba328d2e5c5fdb3addc2618598f3603b2351b00d9a44b37f244f724871e9"
+    },
+    {
+      "path": "software/sim/mujoco/probe_yaw_authority.py",
+      "sha256": "3c18691e0c2cbc3ac91de893e9305c478e4f7a9e7422b566dd96c486d695c030"
+    },
+    {
+      "path": "software/sim/mujoco/probe_yaw_dynamics_candidate.py",
+      "sha256": "233f36854bce8efa6960445cf62811d8aeee0a14efdf2a5e8f4805111049abd0"
+    },
+    {
+      "path": "software/sim/mujoco/render_fast_turn_trial.py",
+      "sha256": "d01ee09e334dd66073fb881378e3acd5a58634a1ad52700fc0b2ec4c2d337c31"
+    },
+    {
+      "path": "software/sim/mujoco/replay_maneuvers.py",
+      "sha256": "99a056415d3eaa82e72ba9f3482938cd3c6b4cb4eaba85298ef87808eae6b0ba"
+    },
+    {
+      "path": "software/sim/mujoco/replay_residual.py",
+      "sha256": "dbc7902a814232fbbbefc44e37f42155bee4d11bf764e9a2b51796d2cb2d095c"
+    },
+    {
+      "path": "software/sim/mujoco/replay_self_contacts.py",
+      "sha256": "2d7eedc75eefb620ac06533b54cac5686e6ba381b89700c08ddc908d9297b75e"
+    },
+    {
+      "path": "software/sim/mujoco/replay_yaw_candidate.py",
+      "sha256": "e7c91c090b1c79e364420fd3a7b04b7c02d6b53b1c2d05c4879b4c52b6e68baf"
+    },
+    {
+      "path": "software/sim/mujoco/reproduce_mounted_design.py",
+      "sha256": "d6a323b06e3a27dc0232253eba65a1aa6bf99113578ca51b002c5735958b8fa5"
+    },
+    {
+      "path": "software/sim/mujoco/run_crab_evaluation.py",
+      "sha256": "141592bf3504b51d7cac9afe6c1fdecd41e3520f10b5e247a642180816950225"
+    },
+    {
+      "path": "software/sim/mujoco/run_fast_turn_sensitivity.py",
+      "sha256": "8f6068f79d25ca21730853f0a11071050cbc7944c25213ac9368c046061f36bb"
+    },
+    {
+      "path": "software/sim/mujoco/run_planned_r6_evaluation.py",
+      "sha256": "4deff2325867ebdf7997a302ed3e5e2bfa93ac372ae439aab193488a19939f92"
+    },
+    {
+      "path": "software/sim/mujoco/run_plant_screen.py",
+      "sha256": "71251eeef42fffd9f207427a4857e0653fb9c1978c4ebfdd5beb9c1b1a82b2ef"
+    },
+    {
+      "path": "software/sim/mujoco/run_velocity_evaluation.py",
+      "sha256": "7a21ad388d49fd42bc8aee4e262471670a41fec74bbf19d69f59db1e68f57c1b"
+    },
+    {
+      "path": "software/sim/mujoco/run_yaw_acceptance.py",
+      "sha256": "d9a6960c719542d37d567931de15457840d73bf82c24091220695e3af3366864"
+    },
+    {
+      "path": "software/sim/mujoco/run_yaw_development_batch.py",
+      "sha256": "e506b1c176eaf8781635ccdf33ef5951514cb35e5da96b5dc1c4d660d649374a"
+    },
+    {
+      "path": "software/sim/mujoco/screen_fast_turn_clearance.py",
+      "sha256": "ca374dac30fa25f54a3c3ff281cf732bbf2ac2be9506067cfb5e5ff2d44017ce"
+    },
+    {
+      "path": "software/sim/mujoco/screen_hip_spacing.py",
+      "sha256": "c7858402989ab98a2d347da4f9b6d2749a71afb853b1aaabf379c37dd592f9e7"
+    },
+    {
+      "path": "software/sim/mujoco/screen_hip_yaw_space.py",
+      "sha256": "c44d1c4253f1d77292a1d513337bc78cf6d5c434e608beeb6c88825ca89c7f5f"
+    },
+    {
+      "path": "software/sim/mujoco/screen_hip_yaw_sweep.py",
+      "sha256": "132a7d591e3193632ab7a62fbf85224a406eb13947d50a746ce8d6d95c7974dd"
+    },
+    {
+      "path": "software/sim/mujoco/screen_motor_clearance.py",
+      "sha256": "f450e9978792d1419e9c0de8a98c5e7bf91991164c8e08b8957e15666fac0c3e"
+    },
+    {
+      "path": "software/sim/mujoco/smoke_test.py",
+      "sha256": "ba2f047a68cbcdfd70f0e03977d82c53e7ceb14ac71a3e15b517a5638a1e4bbd"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/__init__.py",
+      "sha256": "ae2411c6f2d5b432fb774ffa90dfeb4fb068b9cc4ba346bde9e8009ef7ad3e01"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/acceptance.py",
+      "sha256": "9ad5505d6883a6c061b3cb6bc944ee1dc171b16c19b0abfb7f61c0e415bd4c4d"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/actuation.py",
+      "sha256": "08fb037114c07e47a52b7b722910dd90edf8f5e78be26adbc8784e0f38fc9351"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/attitude_observer.py",
+      "sha256": "5df71b3b59e24d36eaa7f8e275235deab08744b8cfc18c8f8d46893dadef4568"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/candidate_variation.py",
+      "sha256": "764e70260caf0f0273b73fe46384ab16b4e9bfb7866b6ebb70d4d8f426a043d5"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/checkpoints.py",
+      "sha256": "359e64eeec7241587bd36c19e6189a424b42fdb5dd4b38eb3334a80ed93f0067"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/config.py",
+      "sha256": "61740892a46f533af6095ca4ab441fa7d35873d45f5c700eeef0915798f563c4"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/env.py",
+      "sha256": "51e702c9de97492d94c7fffb5c460fd3115c7cce2ec06eb6c363eead364b3866"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/evaluation.py",
+      "sha256": "70e4d216c9c3ed9d0b48715678c2e6b5e586686d55d1c80d93c7eaeedeb0221f"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/legacy_policy_view.py",
+      "sha256": "ea477914833f63eb5d78bce7778a9433f72a3e5bcad1db6cbaf52f52f3dde2df"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/maneuver_env.py",
+      "sha256": "87e1de4dd84adbdef17a79aa4540598c75d43ea5f4375db7c89e672abfaa952d"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/maneuver_protocol.py",
+      "sha256": "32254157b3ddb94b5727751cfb35d828d0295bbf2520a98a4935fa5b5c2a9d40"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/math_utils.py",
+      "sha256": "80cd876afb8a5c1d4c4397c117413a5ce36c29690358b23c59d49007ccfe432a"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/ordered_steps.py",
+      "sha256": "c7aa08f0fecfd55ba5a7287b5418a58c3636d96d8b3f2bcdaea3d01d1c2be1ea"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/quality.py",
+      "sha256": "46e74517f5a3cc01ad17245b65e0dbe3d0c883aa6ffd94c082954ed4d80909df"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/r6_factory.py",
+      "sha256": "6f2e6243f439e22471e31bc501e9bc8e3c82c13380250da9b84df5aee43398d5"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/residual.py",
+      "sha256": "d0370eef86fbec9d1659c2ae3f8362207e56f6e2f6d8c750b6a320ca9abf8ef6"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/residual_heading.py",
+      "sha256": "7111451bc9b26d181fb1b7a146ded84981f63dc770f456b543a38822abc38920"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/rewards.py",
+      "sha256": "c05240c4e2b7071cdceb74e95b01be677f4860f6f3532b651a73f6c5994d8c5e"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/spec.py",
+      "sha256": "bc265a8192f44083cf55ab1b59ac9c3118b7bf5097e5c05f61207175433b69c3"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/steps.py",
+      "sha256": "1864a0bef2d53d586d934337762fa59aa2061bd20a74af297614111a14ee0f86"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/target_metrics.py",
+      "sha256": "f521029a257e7a63ab241a7207968148bd44708b7a2eb5a5d2dcd6b7c3a96050"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/training.py",
+      "sha256": "0ffeef8fa7851b706969c4d60456a366dfc125574fa8152446b02003574ededf"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/transfer.py",
+      "sha256": "27b53073385be986bacbc263eda5cbdd983df16fa1a2f1d0f4e4ac12028820fc"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/walk_events.py",
+      "sha256": "0a33e2df8f4442807adf395721a247cfbdb4a8597cca6f6f3f617cd8798286d6"
+    },
+    {
+      "path": "software/sim/mujoco/stackchan_rl/yaw_kinematics.py",
+      "sha256": "7117829c02f7f6e5efba3268a5ef02b1109edcc03eca92f9cd7610f7459b91e4"
+    },
+    {
+      "path": "software/sim/mujoco/stopping_reference.py",
+      "sha256": "9b913c28e4ac2b893c65454effa9fd1891ab88408252e117d6f83ddf112755d1"
+    },
+    {
+      "path": "software/sim/mujoco/summarize_plant_screen.py",
+      "sha256": "028179aab8defa975f835c0931edf6114eefd5780dd570a020035ad2a926c075"
+    },
+    {
+      "path": "software/sim/mujoco/teleop_yaw.py",
+      "sha256": "9075bb386e74f4d9753916db789f59e0f2060dd5652c17d27808d96a34e25cb9"
+    },
+    {
+      "path": "software/sim/mujoco/tests/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "software/sim/mujoco/tests/_actuation_v3_reference.py",
+      "sha256": "b47d0f0f6eb419e9984633c8be9f7d180fb97801201c78b7e0545cdd3e9059ce"
+    },
+    {
+      "path": "software/sim/mujoco/tests/_probe_reference.py",
+      "sha256": "097bb68d7c8ed9ab105545f7cd96b45876eab125a0b7cb9279c462687fa35c51"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_acceptance.py",
+      "sha256": "e6a777eecb653d10325df35b12e9d7874c35500fb2c21e0ad29ac92866946c4a"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_attitude_observer.py",
+      "sha256": "a5c95fdc42d00ef3261d0aeaefd7bfeefd6975c19d7fa23748fe9c80e1fbe559"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_base_collisions.py",
+      "sha256": "aef0a63d4b76b664d1600acbae8c5c90e675bd4b77a7792fa30bfd925a019a18"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_candidate_ankle_upgrade.py",
+      "sha256": "9835cbcdce7cfe174671d63ccee8bdaf5f537a7b2f5aa67d9c9fa8d1c026b401"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_candidate_variation.py",
+      "sha256": "ef35c0e95656b9d61ccc7b3d27102eab6d7c2118ee94db381c0ecd10c996fd4a"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_crab_control.py",
+      "sha256": "b8ad49b3df64cab0bd8cd765f0f72ea0f8840d1beb1dbba3713cfd12e80e2e2c"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_forward_traversal.py",
+      "sha256": "ededa9ae6177d7c72d5edde15dabdc2c2f7e3c6433e7d3b838b43507dc1941ae"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_legacy_policy_view.py",
+      "sha256": "bf073fcb0f5f5da4cb9d7fc594d4f7505e4d51ada5052de986f11f33bbaea941"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_lp40.py",
+      "sha256": "575f6cbd90b145c3862402af1929f65b5ba0647c6db975ddb2c06c82027a01b9"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_lp40_runtime.py",
+      "sha256": "36e76313d00019d2ae5bbcd731bd6bc232f7d32481413b63ea368200ea1eca6f"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_maneuver_env.py",
+      "sha256": "644ce59a1065a9cb2366d710cc4fd6ab37fdfea65722ae229b4af36d2acd533d"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_maneuver_protocol.py",
+      "sha256": "ffd00e97856c39b469a05c30bb6337d3838d5841782e8d36bba23584b5fe0957"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_maneuver_reference.py",
+      "sha256": "2d5f49def15ec761b18d280b13bf91b9855a6421894aa4f98e82fad7ed744c22"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_mounted_battery.py",
+      "sha256": "2a604e1971c6efcd44a2a801ca05597a42219899ed424b0ae6d2ed30cd9415f6"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_offline.py",
+      "sha256": "7dc64453db07f094a6a5e6c4d54472624d2991e81624478976057a40f2fe3e9b"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_plant_variation.py",
+      "sha256": "c3c622f36c9a9b2f180a2827334549eaaa31913164fef485f325445a32e18678"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_reference_gait.py",
+      "sha256": "b480954924856e7e612a19944335c113ed18360621195778e037a4cf7b58406c"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_refine.py",
+      "sha256": "96f812366e5641358aeae8951bae81d45fb6f54657fc38fc024bdb881bad0b7d"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_refine_runtime.py",
+      "sha256": "7e434bb88908630c82836f140c8dc2d3ec6d64e5e21f196988cf46f95f24e2cb"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_residual.py",
+      "sha256": "595e2b1f722602ca79f63705dc7222cf0f144d469c12dc422a13ae93c8286fb4"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_residual_heading.py",
+      "sha256": "266d09a632281945d7ad821471a67baf2151eed482c5b1ce056ded80e77aa8a7"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_runtime.py",
+      "sha256": "d283b9ead612e59dae43b6976bc3beeef7b6bdafb0053fc4de4640479e59c663"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_stopping_reference.py",
+      "sha256": "0c6375ace272283e251fb48660f97024116d8fdb0f55cc85629cf10ef363915c"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_teleop_r9.py",
+      "sha256": "beb4658bddae6d5a0f4f9347a6187fb3c8fa34cbe102901e0481a331448d7f16"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_teleop_yaw.py",
+      "sha256": "99285951708400509e9e4f6befadb8c243d0131be3fd638218fc98deab1fd0eb"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_velocity_control.py",
+      "sha256": "cb8b8f82612f5eb017911c438e5107d1fd1afe1a5a9c4908fa02418cc8d10e38"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_walk_v2.py",
+      "sha256": "84f3c592b173da02baa08de14a848c3e926e3d24a64248dfe1d844c1fbb49eab"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_walk_v2_runtime.py",
+      "sha256": "702e0d336e215a0763ea42c07ce716e13e2cbf3d7fb3ce9266de2b5090b43bec"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_acceptance.py",
+      "sha256": "1ec52690a5f06fe95ce2ca1d6ebbd8d9c8bfde7e4a807dbd5a5e403da2f48348"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_acceptance_assessment.py",
+      "sha256": "21506d0817b7ad3f9812c9e637bff0daf8143159e3453fe2202d4839ac9d2570"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_acceptance_result.py",
+      "sha256": "9536479e7d3cf28d3ad4cf73782c09b88bd309d8299ae35247a2901eacc90b01"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_batch_assessment.py",
+      "sha256": "940aeea8578c905067d19f6fd38a01ebc16bcc16fc49bbce0ce530f4042f42f8"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_dynamics_candidate.py",
+      "sha256": "cb746cf528cc30d9b796245bfea4241c7741eaf0eeddcf545cf7222cecd79bc2"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_kinematics.py",
+      "sha256": "85117883bb5e8810fe4cca89e1a5df893cb9d8077c6179e78672a9cefc9ec93a"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_maneuver_reference.py",
+      "sha256": "98f448c36143398aa8111a7410108e6afd149a3379610e6dbd71e32423abf2e4"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_offset_layout.py",
+      "sha256": "dfbf502074e0258fbc5c3ce5b6e44855cc054b7dd31e624f56c9899a3e4e7086"
+    },
+    {
+      "path": "software/sim/mujoco/tests/test_yaw_step_reference.py",
+      "sha256": "703f8082f06b846ab10f836c0413e59897c5a7c3e0f25bb618464303d2842b4b"
+    },
+    {
+      "path": "software/sim/mujoco/train.py",
+      "sha256": "d230eabc539b986b8b13f6f0d9e1b93421dafc553a238da5854c120bcf8c351f"
+    },
+    {
+      "path": "software/sim/mujoco/train_heading_residual.py",
+      "sha256": "469e9dfbb9969cbfb9b72d7bdb49947c89434eae2d70e9f4251139cd12d2a96e"
+    },
+    {
+      "path": "software/sim/mujoco/train_mounted_residual.py",
+      "sha256": "ad43f78e0ca3df405d66d8190be8906ace205c2fec604f0152cabab6743ba674"
+    },
+    {
+      "path": "software/sim/mujoco/train_residual.py",
+      "sha256": "e29f7a6521f6ba6c493475d5a185039cddd935e409be3d348998dc0cb0445d44"
+    },
+    {
+      "path": "software/sim/mujoco/train_steering_initialized.py",
+      "sha256": "9c5ed8a654b0d9721c43e14fbe43be06b2414fee832641433ddf74cbb2783159"
+    },
+    {
+      "path": "software/sim/mujoco/upgrade_candidate_ankles.py",
+      "sha256": "71bcde18f8d053779660de65a3dc5256b93cf044c8f3b54a753a2f3eecfd93be"
+    },
+    {
+      "path": "software/sim/mujoco/velocity_control.py",
+      "sha256": "4dc2bd3982dd9f6d4c2afcb3175df51f39359b936cf7b09d7acc53e952d67514"
+    },
+    {
+      "path": "software/sim/mujoco/verify_fast_turn_release.py",
+      "sha256": "03434f1bfcedb73f53993c19e42416fb7601e65943d684f2a2a37b970a912d76"
+    },
+    {
+      "path": "software/sim/mujoco/verify_r6_release.py",
+      "sha256": "75f3a0cf13d4b8fe7a86053c248e6173a77e3751df61ec14547c5a1cb24f10c7"
+    },
+    {
+      "path": "software/sim/mujoco/verify_residual_policy_trace.py",
+      "sha256": "9ee728a2f18a24f070d383ba67b5da211ca696186d83869bbb4a3189ec5145d7"
+    },
+    {
+      "path": "software/sim/mujoco/yaw_acceptance.py",
+      "sha256": "99451cecef8551966bee928d724772186fc9264d0412b4997823972816239237"
+    },
+    {
+      "path": "software/sim/mujoco/yaw_maneuver_reference.py",
+      "sha256": "a9259bbfe073c58e11cb76850fa050e88996f8894389d1ddb66e895a56ffc46c"
+    },
+    {
+      "path": "software/sim/run.py",
+      "sha256": "feb7329bd53b9aa268c34e1682a947b7eae47e95ec89f3d646ed80d3513dffbe"
+    }
+  ],
+  "parameters": [
+    {
+      "name": "actuator_identification",
+      "value": false,
+      "unit": "boolean",
+      "status": "assumed",
+      "source": "historical r9 datasheet approximation, not hardware measurement"
+    }
+  ],
+  "gates": [
+    {
+      "criterion": "all frozen files unchanged",
+      "passed": true
+    },
+    {
+      "criterion": "left: six landings, 90 +/-1 deg, body settles before 3 s for >=1 s, no physics failure",
+      "passed": true
+    },
+    {
+      "criterion": "right: six landings, 90 +/-1 deg, body settles before 3 s for >=1 s, no physics failure",
+      "passed": true
+    },
+    {
+      "criterion": "r8/r9 keyboard, command changes, velocity and lateral control regressions",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "artifacts": [
+    {
+      "path": "left/contact_trace.npz",
+      "sha256": "2b80b62f20be3fb987f5db18f3fd0e0d177f18fe9b0e601493a3eb02383fd0b2"
+    },
+    {
+      "path": "left/report.json",
+      "sha256": "b0d8ffb02e4d7afb6c4d471bf90f43393cf9c37f8fa8803476dc93f395eb4b59"
+    },
+    {
+      "path": "left/states.npz",
+      "sha256": "69e24165909f19929d09ef1614627cdb51980b079092ae0da706b1761e14135b"
+    },
+    {
+      "path": "left.log",
+      "sha256": "845993e1971b103ab2355a9a63d1d1843da337239a3c5b724385d88a1d2dc00d"
+    },
+    {
+      "path": "left_assessment.json",
+      "sha256": "0adfddfdc9a583d7a570946877a5b9d7e63af8e3db06ab618581bee33415f98d"
+    },
+    {
+      "path": "preservation.json",
+      "sha256": "1f4be3de591709f776a4034f6a4ef25b71fe4b30052c1bd110cf93f1d10f9315"
+    },
+    {
+      "path": "right/contact_trace.npz",
+      "sha256": "ffe65d5a3fc5bdea13c85b0028ec6c78f6a87080295a7b94d3804d423ea94ee3"
+    },
+    {
+      "path": "right/report.json",
+      "sha256": "9088bbf385820b444559d9133f9a030a6422b6fea2e812fbd77089b68e3cbd7e"
+    },
+    {
+      "path": "right/states.npz",
+      "sha256": "fa89a2de63adc460ac78a31f18853ebf28c4ffb71d9ae9eeb7ed91f4d4cc07a5"
+    },
+    {
+      "path": "right.log",
+      "sha256": "ac12325d652a7ad803368c15675f58ab97fb77e4ac673a14b25292ee7b88fa43"
+    },
+    {
+      "path": "right_assessment.json",
+      "sha256": "4bcbb45aef521a55bfc37c4a5ba285ee95e62e5f9b9577168936b571e4433cea"
+    },
+    {
+      "path": "teleop.log",
+      "sha256": "a2ec68e0a145705b18dffda3aabe87d862c405491fb1e8e65b8c9046a6b115ee"
+    }
+  ],
+  "limitations": [
+    "Nominal simulation baseline, not hardware acceptance or a new 20-trial reliability claim."
+  ]
+}

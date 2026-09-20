@@ -1,0 +1,65 @@
+{
+  "scope": "Unassisted r9 turn development probe; records failures, never acceptance by itself.",
+  "duration_s": 7.000000000000672,
+  "failure": null,
+  "final_penetrations": [],
+  "first_90_deg_time_s": 2.599999999999871,
+  "final_yaw_deg": 89.83615616580366,
+  "qualified_landings": [
+    3,
+    3
+  ],
+  "landing_events": [
+    [
+      2.5009999999998356,
+      1
+    ],
+    [
+      2.9279999999997885,
+      0
+    ],
+    [
+      3.3259999999997447,
+      1
+    ],
+    [
+      3.7179999999997015,
+      0
+    ],
+    [
+      4.130999999999714,
+      1
+    ],
+    [
+      4.521999999999845,
+      0
+    ]
+  ],
+  "last_second_yaw_range_deg": [
+    89.83615616580366,
+    89.87090063734038
+  ],
+  "settings": {
+    "design": "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/mujoco/assets/r9_fast_turn_v1",
+    "out": "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/prototype_baseline_v1/left",
+    "rate_deg_s": 40.0,
+    "period": 0.4,
+    "inset_mm": 25.5,
+    "initial_inset_mm": 25.5,
+    "shift_fraction": 0.45,
+    "duration": 7,
+    "stop_after_s": 0,
+    "heading_goal_deg": 91.5,
+    "mass_scale": 1.0,
+    "friction": null
+  },
+  "limitations": [
+    "development trial only; final heading tolerance and stability not yet acceptance-scored"
+  ],
+  "source_sha256": {
+    "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/mujoco/probe_fast_turn.py": "b8b869c91ef11bcf6cdf2aa8461e687498f949ed2defdf6839f85329d8082566",
+    "fast_turn_reference.py": "6277b0a4e2c467414408c615be1967af2552ac1571ec0cad99425667ce6b70b7",
+    "teleop_yaw.py": "9075bb386e74f4d9753916db789f59e0f2060dd5652c17d27808d96a34e25cb9",
+    "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/mujoco/assets/r9_fast_turn_v1/models/scene.xml": "b79bc86618c58c44088fb9211c1807a09c27ea8f623152243a86b7959e74b434"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "handedness": "right",
+  "length_unit": "m",
+  "angle_unit": "rad",
+  "mass_unit": "kg",
+  "world": {
+    "x": "initial forward",
+    "y": "initial left",
+    "z": "up"
+  },
+  "base": "MuJoCo base body frame; at initial heading x forward, y left, z up",
+  "joint_zero": "MJCF hinge reference (q=0); not necessarily inside its operational range or a standing pose",
+  "joint_axis": "axis in joint body local frame; positive right-hand rotation",
+  "encoder_formula": "q_rad = calibrated_sign * (raw_count - calibrated_zero_count) * 2*pi/4096",
+  "hardware_calibration_required": true
+}
