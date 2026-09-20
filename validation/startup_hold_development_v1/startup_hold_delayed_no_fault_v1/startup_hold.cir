@@ -1,0 +1,82 @@
+Recorded-load averaged supply probe
+Vbattery battery 0 7.4
+Rb battery vin .1
+Cin vin 0 100u
+Vref reference 0 PWL(0 0 0.001 0 0.006 5.15)
+Bconverter drive 0 V=max(0,min(V(reference),V(vin)-.6))
+Drect drive rect DAVG
+.model DAVG D(IS=1e-12 N=.01 RS=.001)
+Lout rect internal 1u
+Rout internal rail .03
+Cout rail 0 800u
+Rwire rail bus .02
+Vwave wave 0 PWL(
++ 0 0
++ 0.05 0
++ 0.051 0.3
++ 0.099 0.3
++ 0.1 -1
++ 0.12 -1
++ 0.121 0
++ 0.15 0
++ )
+Bload bus 0 I=V(wave)
+Binput vin 0 I=max(V(drive)*I(Lout),0)/(.85*max(V(vin),.5))
+Bcontroller vin 0 I=3/max(V(vin),.5)
+Rtop0 bus sense0 11918.0
+Rbottom0 sense0 0 9900.0
+Rfeedback0 gate0 sense0 990000.0
+Rpull0 bus gate0 2200
+Cgate0 gate0 0 2.2000000000000003e-09
+Rbias0 bus refbrake0 2200
+Bref0 refbrake0 0 V=min(2.507475,max(V(bus)-1,0))
+Berror0 cmp0 0 V=V(refbrake0)-V(sense0)+0.004
+Rlag0 cmp0 filt0 10000
+Clag0 filt0 0 2e-09
+Ssink0 gate0 0 filt0 0 SCOMP0
+.model SCOMP0 SW(RON=50 ROFF=1e9 VT=0 VH=.001)
+Rbrake0 bus drain0 4.9350000000000005
+Sbrake0 drain0 0 gate0 0 SMOS0
+.model SMOS0 SW(RON=0.1 ROFF=1e9 VT=2.5 VH=.05)
+Bzener0 gate0 0 I=max(0,(V(gate0)-7.7625)/80.0)
+Bquiescent0 bus 0 I=.0008
+Rtop1 bus sense1 12221.0
+Rbottom1 sense1 0 9900.0
+Rfeedback1 gate1 sense1 990000.0
+Rpull1 bus gate1 2200
+Cgate1 gate1 0 2.2000000000000003e-09
+Rbias1 bus refbrake1 2200
+Bref1 refbrake1 0 V=min(2.507475,max(V(bus)-1,0))
+Berror1 cmp1 0 V=V(refbrake1)-V(sense1)+0.004
+Rlag1 cmp1 filt1 10000
+Clag1 filt1 0 2e-09
+Ssink1 gate1 0 filt1 0 SCOMP1
+.model SCOMP1 SW(RON=50 ROFF=1e9 VT=0 VH=.001)
+Rbrake1 bus drain1 4.9350000000000005
+Sbrake1 drain1 0 gate1 0 SMOS1
+.model SMOS1 SW(RON=0.1 ROFF=1e9 VT=2.5 VH=.05)
+Bzener1 gate1 0 I=max(0,(V(gate1)-7.7625)/80.0)
+Bquiescent1 bus 0 I=.0008
+Ruvtop0 bus uvsense0 95300
+Ruvbottom0 uvsense0 0 10000
+Buvlogic0 uvlogic0 0 V=(time < 0.00045) ? -1 : (0.4-V(uvsense0))
+Vuvcurrent0 gate0 uvout0 0
+Suvsink0 uvout0 0 uvlogic0 0 UVHOLD
+Iuvq0 vin 0 13u
+Cuvdec0 vin 0 100n
+Ruvtop1 bus uvsense1 95300
+Ruvbottom1 uvsense1 0 10000
+Buvlogic1 uvlogic1 0 V=(time < 0.00045) ? -1 : (0.4-V(uvsense1))
+Vuvcurrent1 gate1 uvout1 0
+Suvsink1 uvout1 0 uvlogic1 0 UVHOLD
+Iuvq1 vin 0 13u
+Cuvdec1 vin 0 100n
+.model UVHOLD SW(RON=83.3333333333 ROFF=1e9 VT=.00275 VH=.00275)
+.control
+set wr_singlescale
+set wr_vecnames
+tran 1u 0.15 0 1u uic
+wrdata trace.dat v(battery) v(vin) v(drive) v(rect) v(internal) v(rail) v(bus) i(Vbattery) i(Lout) v(wave) v(gate0) v(drain0) v(sense0) v(refbrake0) v(gate1) v(drain1) v(sense1) v(refbrake1) i(Vuvcurrent0) i(Vuvcurrent1)
+quit
+.endc
+.end

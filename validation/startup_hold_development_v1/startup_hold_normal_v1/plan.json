@@ -1,0 +1,32 @@
+{
+  "scope": "TPS3700-inspired startup hold on dual brake; bounded behavioral development model.",
+  "case": "normal",
+  "source_sha256": "4f6d23599f0fc0c3a9dfe04354812ce691f4f6fc01eb704925b0db8bcbe91001",
+  "supervisor": "TPS3700, one independently powered monitor per branch",
+  "source": "https://www.ti.com/lit/ds/symlink/tps3700.pdf",
+  "ready_delay_us": 450,
+  "divider_ohm": [
+    95300,
+    10000
+  ],
+  "threshold_V": 0.4,
+  "hysteresis_V": 0.0055,
+  "sink_equivalent_ohm": 83.33333333333333,
+  "supervisor_supply": "vin (battery-side input)",
+  "supply_quiescent_A": 1.3e-05,
+  "criteria": {
+    "startup_gate_max_V": 0.4,
+    "startup_window_s": 0.05,
+    "active_bus_min_V": 4.75,
+    "active_bus_max_V": 5.25,
+    "sink_current_max_A": 0.003
+  },
+  "limitations": [
+    "Nominal divider and reference; corners not yet covered",
+    "Gate sink resistance approximates a single VOL bound, not a transistor macro-model",
+    "Supervisor held high impedance before fixed ready time; battery is pre-applied, no slow brownout or hot-plug model",
+    "Comparator propagation delay not modeled",
+    "Underlying brake MOSFET remains ideal 2.5 V switch",
+    "Not a complete protection or thermal qualification"
+  ]
+}
