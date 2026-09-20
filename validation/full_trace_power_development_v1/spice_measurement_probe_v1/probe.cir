@@ -1,0 +1,14 @@
+Verify internal-step extrema before display decimation
+Vsignal signal 0 PWL(0 0 24u 0 25u 1 26u 1 27u 0 1m 0)
+Rload signal 0 1k
+.save v(signal) i(Vsignal)
+.control
+set wr_singlescale
+set wr_vecnames
+tran 100u 1m 0 1u uic
+meas tran internal_peak MAX v(signal) FROM=0 TO=1m
+linearize v(signal) i(Vsignal)
+wrdata display.dat v(signal) i(Vsignal)
+quit
+.endc
+.end

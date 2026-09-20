@@ -46,3 +46,5 @@
   --ldo-model continuous --ldo-transition-v .01 --case slow_ramp \
   --out outputs/coupled_power_continuous_reproduction
 ```
+
+左右旋回の記録負荷を全7秒入力した追加結果は [FULL_TRACE_POWER_ja.md](FULL_TRACE_POWER_ja.md) を参照。150 msの試行とは別バンドルで保存し、過渡時刻の省略をなくした。ただし記録負荷以外の動作・故障と実部品モデルの未検証範囲は残る。
