@@ -31,3 +31,15 @@ LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" \
 ```
 
 実行環境はCadQuery 2.8。公称CADの初期接触のみを対象とし、公差・表面粗さ・変形・摩擦・締付け後の接触状態を含まない。ねじの嵌合と実際の組立可否も別判定とする。
+
+## 接触メッシュの準備
+
+`software/sim/structural/mesh_rear_contact.py` は監査済み接触面で現在の胴体・背面板を分割し、接触名をGmsh物理面グループとして保持する。`validation/rear_contact_mesh_development_v1` に公称3 mm指定の体積メッシュ、分割後BREP、計画・結果・ソースを保存した。胴体20,260節点、背面板6,815節点。接触面積のCADとの差は最大0.641315%で、事前基準1%以内。分割による体積変化は相対1e-8未満。両側のメッシュ節点は独立しており、接触ソルバーでの非整合面対応が必要である。
+
+```sh
+LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" \
+  .venv-engineering/bin/python software/sim/structural/mesh_rear_contact.py \
+  --out outputs/rear_contact_mesh_reproduction --mesh-mm 3
+```
+
+この段階では締結金物のメッシュ・ねじ接続・締付け・負荷・接触求解は含まない。面積一致は応力のメッシュ収束を保証しない。

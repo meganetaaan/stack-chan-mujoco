@@ -1,0 +1,28 @@
+{
+  "scope": "Partition current rear-joint solids by audited contact patches and mesh them.",
+  "parts": [
+    "body",
+    "rear_plate"
+  ],
+  "mesh_mm": 3.0,
+  "criteria": {
+    "relative_contact_area_error": 0.01,
+    "relative_volume_change": 1e-08
+  },
+  "limitations": [
+    "mesh preparation only; no contact or preload solve",
+    "linear tetrahedral geometry",
+    "hardware and thread connector not included"
+  ],
+  "audit_sha256": "e1c7b52842cc37c3551fb505c0fb45724270ecd6094728e88435eed4143cbd02",
+  "assets": {
+    "body": {
+      "path": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/body_shroud.step",
+      "sha256": "8de9bb8c59896372a4c07b6f108cd7490ea58219cfb9def69e2bc880cd36580d"
+    },
+    "rear_plate": {
+      "path": "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/rear_structural_plate.step",
+      "sha256": "604f5385918959d2066bd24234d591b3490692194ad2a4bea4ebbd1d5599f62d"
+    }
+  }
+}
