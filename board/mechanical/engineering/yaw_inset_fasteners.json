@@ -1,0 +1,66 @@
+{
+  "status": "inset mounting candidate; assembly and actual contact/load path verification incomplete",
+  "pattern_relative_mm": [
+    [
+      0,
+      -7,
+      -12
+    ],
+    [
+      0,
+      7,
+      -12
+    ],
+    [
+      0,
+      -7,
+      12
+    ],
+    [
+      0,
+      7,
+      12
+    ]
+  ],
+  "group_center_left_base_mm": [
+    -62.2,
+    26,
+    70
+  ],
+  "group_center_right_base_mm": [
+    -62.2,
+    -26,
+    70
+  ],
+  "bolt_axis": "base +X",
+  "bolt": {
+    "thread": "M3 x 0.5",
+    "property_class": "8.8",
+    "nominal_tensile_area_mm2": 5.03,
+    "proof_stress_MPa": 580,
+    "source": "https://www.bossard.com/global-en/-/media/bossard-group/website/documents/technical-resources/en/f-004-en.pdf",
+    "safety_factor": 2,
+    "nominal_length_mm": 16
+  },
+  "load_distribution": "equal-stiffness rigid bolt group, all 6 resultant components conserved",
+  "prying_multiplier_assumed": 2,
+  "tension_screen": "absolute axial force used conservatively; does not prove clamp retention",
+  "plastic_bearing_screen": {
+    "diameter_mm": 3,
+    "thickness_mm": 8,
+    "allowable_MPa": 5.6
+  },
+  "gap_to_existing_rear_cover_mm": 0.7,
+  "gap_treatment": "0.7 mm integral lands, radius 6 mm; cover and frame compliance not established",
+  "pending": [
+    "rear structural plate and body attachment",
+    "bolt length/washer/nut stack",
+    "preload and tightening procedure",
+    "contact and prying validation",
+    "tool access",
+    "cyclic/creep behavior"
+  ],
+  "group_plane_rationale": "rear integral-land interface; simplified equal-stiffness bolt group",
+  "nominal_stack_mm": 13.9,
+  "nominal_thread_beyond_nut_mm": 2.1
+}

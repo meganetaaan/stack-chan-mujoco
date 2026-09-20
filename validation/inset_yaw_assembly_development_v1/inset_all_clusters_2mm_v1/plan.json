@@ -1,0 +1,32 @@
+{
+  "scope": "Tighten linear FE all-load bounds using load-space subdivision.\n\nEach cluster is certified by the exact field at its center plus a rigorous\ntriangle-inequality bound on every recorded load's deviation from that center.\nNo interpolation between recorded times, contact or nonlinear behavior is proved.\n",
+  "original_limits": [
+    0.2,
+    5.6,
+    5.6
+  ],
+  "reserve_fraction": 0.05,
+  "limits_displacement_principal_von_mises": [
+    0.19,
+    5.319999999999999,
+    5.319999999999999
+  ],
+  "method": "midpoint of load bounding box; split largest weighted range; all records assigned to exactly one terminal cluster",
+  "bounds_report_sha256": "dcd27840e9fdc627dbee9f0a9190208d4d72bfd26315c30207296bcb34634afd",
+  "unit_sha256": {
+    "unit_0.npz": "e6e863ea7ce87d594f197033f8485073b1304abb64b78feb0a6f7a87f825b49f",
+    "unit_1.npz": "fa04dbf65fb3a2d5a81f479c5fa004794d92b26cba9856b0ff7550e7b140a476",
+    "unit_2.npz": "b55a7b623b2b59cdb018ab138f5afb2f32a72246d5f858d5eb652a97130acc3e",
+    "unit_3.npz": "d218b9f4a2f1172edd75e83c2b2662e722e09cfc7861ca8b8032c54cdfc336f4",
+    "unit_4.npz": "8e403b1e0a7aca89d7cfd31c9e3f43ca6c2a27c8ff729f2e4f26c7ede030b1a5",
+    "unit_5.npz": "ac597d2636f1cd471dfb410de958f09c82d1db213ad0733449ba0657391d412b"
+  },
+  "limitations": [
+    "isotropic linear FE",
+    "ideal clamped lands, no cover/bolt contact or buckling",
+    "right loads mirrored to left geometry, symmetric design assumption",
+    "single mesh; convergence not yet proved",
+    "triangle bounds may overestimate actual peaks",
+    "fixed FE mesh only; no time interpolation bound"
+  ]
+}
