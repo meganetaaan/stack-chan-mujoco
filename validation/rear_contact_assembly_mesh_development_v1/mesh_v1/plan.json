@@ -1,0 +1,108 @@
+{
+  "scope": "Partition current rear-joint solids by audited contact patches and mesh them.",
+  "parts": [
+    "body",
+    "rear_plate",
+    "bolt_0",
+    "nut_0",
+    "inner_washer_0",
+    "rear_washer_0",
+    "bolt_1",
+    "nut_1",
+    "inner_washer_1",
+    "rear_washer_1",
+    "bolt_2",
+    "nut_2",
+    "inner_washer_2",
+    "rear_washer_2",
+    "bolt_3",
+    "nut_3",
+    "inner_washer_3",
+    "rear_washer_3"
+  ],
+  "mesh_mm": 3.0,
+  "criteria": {
+    "relative_contact_area_error": 0.01,
+    "relative_volume_change": 1e-08
+  },
+  "limitations": [
+    "mesh preparation only; no contact or preload solve",
+    "linear tetrahedral geometry",
+    "thread envelopes remain nonphysical; no thread connector included"
+  ],
+  "audit_sha256": "e1c7b52842cc37c3551fb505c0fb45724270ecd6094728e88435eed4143cbd02",
+  "assets": {
+    "body": {
+      "path": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/body_shroud.step",
+      "sha256": "8de9bb8c59896372a4c07b6f108cd7490ea58219cfb9def69e2bc880cd36580d"
+    },
+    "rear_plate": {
+      "path": "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/rear_structural_plate.step",
+      "sha256": "604f5385918959d2066bd24234d591b3490692194ad2a4bea4ebbd1d5599f62d"
+    },
+    "bolt_0": {
+      "path": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_0_bolt.step",
+      "sha256": "6c801ec58bf31ca8efe309a3686114a49d4b16da9a35e2abbee4a9e554e8d5e4"
+    },
+    "nut_0": {
+      "path": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_0_nut.step",
+      "sha256": "30289d52ac4e1a0d8dbe0200140a91c06d78f88a315b6d29a3793ecd7bb7f871"
+    },
+    "inner_washer_0": {
+      "path": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_0_inner_washer.step",
+      "sha256": "c88304d3a298f1bddc23d90023e61dabc3ee25f4fbb9f8e6aa10beb0b0aec602"
+    },
+    "rear_washer_0": {
+      "path": "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/corner_0_rear_washer.step",
+      "sha256": "8f40e8cd2f8d19a530a8e7bd7ddb2f40b5b35700ced8d362a0c2152d7c2a1085"
+    },
+    "bolt_1": {
+      "path": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_1_bolt.step",
+      "sha256": "4fc7986e0569cb1efac573c294b180b3610398f59b46e6c51066cb41a9108dc9"
+    },
+    "nut_1": {
+      "path": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_1_nut.step",
+      "sha256": "d37b5b9bd3a8ec16f37980739102561c7bc15ee3d814448afd4a70cc894d04c3"
+    },
+    "inner_washer_1": {
+      "path": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_1_inner_washer.step",
+      "sha256": "0b5a3df22a8febd1de3469b06f02802d02a18c4843a4f37179352ffd7c80feda"
+    },
+    "rear_washer_1": {
+      "path": "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/corner_1_rear_washer.step",
+      "sha256": "c8aceee2457113e035eb812dc3bd5802a339fab6e0e9517a516c02c235534419"
+    },
+    "bolt_2": {
+      "path": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_2_bolt.step",
+      "sha256": "fc4989bbc7bb94f46a3dab41fbdffcd3d0206e69ba752957313b24db1e59cbac"
+    },
+    "nut_2": {
+      "path": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_2_nut.step",
+      "sha256": "21d5999776fe253d599600463af00bfa42f77923ec266a2b8bd9fab5f1f2df49"
+    },
+    "inner_washer_2": {
+      "path": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_2_inner_washer.step",
+      "sha256": "58c177b57d1876226273e489c065c9c1eb7ac4582a9f2d635569a193f2fd4110"
+    },
+    "rear_washer_2": {
+      "path": "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/corner_2_rear_washer.step",
+      "sha256": "1e3b6eb223bb8d223e361c1ff404c6e35d4c4aa7eeabfba78fb0964095937466"
+    },
+    "bolt_3": {
+      "path": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_3_bolt.step",
+      "sha256": "b9954e6838d722cdd245c492aa757585b3486fd8eac09a833f0dc1571d5316e9"
+    },
+    "nut_3": {
+      "path": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_3_nut.step",
+      "sha256": "be184afd01d9b3a2a242699ed01b1c8bcf737e1980547a7609e4402aff5b2475"
+    },
+    "inner_washer_3": {
+      "path": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/corner_3_inner_washer.step",
+      "sha256": "4a74860e1f4300c8b41c34dac916af5e00d1270843072925a2b85c9d0dcd8f36"
+    },
+    "rear_washer_3": {
+      "path": "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/corner_3_rear_washer.step",
+      "sha256": "352373f454399af6bc84d4bbe6c994e60d49834ec4eef44a7c2934f211fe3310"
+    }
+  }
+}

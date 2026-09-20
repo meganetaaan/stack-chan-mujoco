@@ -43,3 +43,18 @@ LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" \
 ```
 
 この段階では締結金物のメッシュ・ねじ接続・締付け・負荷・接触求解は含まない。面積一致は応力のメッシュ収束を保証しない。
+
+## 締結金物を含む接触面定義
+
+`--include-hardware` を指定して18部品を個別にメッシュ化し、`export_rear_contact_ccx.py` でCalculiXの節点・C3D4要素・接触面定義に変換した。結果は `validation/rear_contact_assembly_mesh_development_v1` に保存。31,167節点、85,766要素、17接触対（34面グループ）。全接触三角形がただ1つの四面体外表面に対応すること、四面体体積が正であること、各接触対の平均外向き法線が逆向きであることを確認した。要素面番号はCalculiX 2.21マニュアル7.43節に従う。
+
+```sh
+LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" \
+  .venv-engineering/bin/python software/sim/structural/mesh_rear_contact.py \
+  --include-hardware --out outputs/rear_contact_mesh_all_reproduction
+.venv-engineering/bin/python software/sim/structural/export_rear_contact_ccx.py \
+  --mesh-dir outputs/rear_contact_mesh_all_reproduction \
+  --out outputs/rear_contact_ccx_reproduction
+```
+
+出力 `mesh_surfaces.inp` はメッシュと面定義のみであり、実行可能な解析デッキではない。材料・荷重・拘束・ねじ接続・締付けをまだ含まない。ねじの外径包絡体とナット内径の重なりを保持した準備モデルなので、ねじ部は実形状または検証された等価モデルへ変更する必要がある。C3D4の剛性・薄板曲げ精度も未検証で、現メッシュによる強度判定は行っていない。
