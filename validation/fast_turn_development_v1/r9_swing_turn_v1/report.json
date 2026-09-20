@@ -1,0 +1,27 @@
+{
+  "scope": "Unassisted r9 turn development probe; records failures, never acceptance by itself.",
+  "duration_s": 2.725999999999811,
+  "failure": "joint_limit",
+  "final_penetrations": [],
+  "first_90_deg_time_s": null,
+  "final_yaw_deg": 17.09470420874247,
+  "settings": {
+    "design": "outputs/fast_turn_screen/r9_candidate_v4",
+    "out": "validation/fast_turn_development_v1/r9_swing_turn_v1",
+    "rate_deg_s": 37.5,
+    "period": 0.4,
+    "inset_mm": 23.5,
+    "shift_fraction": 0.45,
+    "duration": 7
+  },
+  "limitations": [
+    "no final heading stop yet",
+    "qualified step count not yet assessed"
+  ],
+  "source_sha256": {
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/probe_fast_turn.py": "49ecc42e9af8a86e768de830c40914e6ae041c56756900cb39e00e1911907578",
+    "fast_turn_reference.py": "948d4590033014561ea9eaeb945c01d8359cba94b24a5db2942469e2a6001267",
+    "teleop_yaw.py": "2a2a4068d61803ba534190b881e4c71ad828578cb23e5d65dd7ca34c1715f6e8",
+    "outputs/fast_turn_screen/r9_candidate_v4/models/scene.xml": "634d5bb4c0ae6dddee6597353d84694cb4313983e3cb57490e1a1763b3b6d890"
+  }
+}

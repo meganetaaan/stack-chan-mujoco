@@ -1,0 +1,145 @@
+{
+  "status": "manufacturer reference dimensions; candidate geometry reconciliation remains required",
+  "sources": {
+    "drawing": {
+      "source": "https://www.robotis.com/service/download.php?no=1986",
+      "redirect": "https://www.dropbox.com/s/gxgye7wt5sbt4i4/XL,XC-330.pdf?dl=1",
+      "size": 149731,
+      "sha256": "948b707cb26a64501c03fc45b1a9557b69a554dd5d6934f02e8e6f86cf2b46c2",
+      "header": "%PDF-1.7"
+    },
+    "cad": {
+      "source": "https://www.robotis.com/service/download.php?no=1987",
+      "redirect": "https://www.dropbox.com/s/qlzmp8mlvzrxmzu/XL,XC-330.stp?dl=1",
+      "size": 791238,
+      "sha256": "e2f7b060801a1d6a21f23bca2554f29a402f7d73b8498cb201c9e6adf3139eb6",
+      "header": "ISO-10303-21"
+    },
+    "inertia": {
+      "source": "https://www.robotis.com/service/download.php?no=2136",
+      "redirect": "https://www.dropbox.com/s/88jbmlyv8v1o73t/XL330%2CXC330%20Moment%20of%20Inertia.pdf?dl=1",
+      "size": 137692,
+      "sha256": "dacd173dfde3de78effa6ccb94baeea98edf378d63424aa3b26af81adc0c3df2",
+      "header": "%PDF-1.7\r\n%\ufffd"
+    }
+  },
+  "drawing_date": "2020-05-28",
+  "inertia_document_date": "2023-02",
+  "dimensions_mm": {
+    "width": 20,
+    "case_long_length": 34,
+    "shaft_from_short_end": 9.5,
+    "shaft_offset_from_case_long_midpoint": 7.5,
+    "case_depth_without_horn": 23,
+    "front_horn_protrusion": 3,
+    "overall_depth_front_horn": 26,
+    "overall_depth_with_rear_idler": 29,
+    "horn_diameter": 16,
+    "horn_hole_PCD": 12,
+    "horn_hole_diameter": 1.6,
+    "horn_hole_max_depth": 3
+  },
+  "horn_hole_count": 4,
+  "horn_fastener": "M2 tapping screw",
+  "inertia_coordinate_description": "Source figure: origin on front horn face at shaft axis; X right, Y toward nearest short case edge, Z outward along shaft. Tensor reference point must be confirmed before replacing model inertias.",
+  "models": {
+    "XL330-M288": {
+      "mass_kg": 0.018,
+      "com_source_mm": [
+        -0.29100243,
+        -9.2403727,
+        -13.121748
+      ],
+      "inertia_source_g_mm2": [
+        [
+          2555.525,
+          -20.247808,
+          -11.076849
+        ],
+        [
+          -20.247808,
+          1271.1372,
+          -229.79973
+        ],
+        [
+          -11.076849,
+          -229.79973,
+          2271.2629
+        ]
+      ]
+    },
+    "XC330-M288": {
+      "mass_kg": 0.023,
+      "com_source_mm": [
+        -0.23138703,
+        -7.5535115,
+        -11.165635
+      ],
+      "inertia_source_g_mm2": [
+        [
+          3528.656,
+          -23.270802,
+          -25.249287
+        ],
+        [
+          -23.270802,
+          1801.7452,
+          -457.158
+        ],
+        [
+          -25.249287,
+          -457.158,
+          2977.4326
+        ]
+      ]
+    }
+  },
+  "current_candidate_audit": {
+    "model": "assets/r7_yaw_xc_ankles_v1",
+    "scene_sha256": "55670520daf44dec564606f184049fcef5c1e2bae513c8e0eaa6a5eb6cb691f6",
+    "yaw_axis_longitudinal_offset_from_case_center_mm": 0,
+    "yaw_coupler_post_radius_mm": 4,
+    "horn_hole_radius_mm": 6,
+    "post_top_to_case_proxy_bottom_gap_mm": 0.5,
+    "manufacturing_release": false
+  },
+  "proposed_yaw_layout_unverified": {
+    "purpose": "preserve joint axes while placing the manufacturer long axis along robot X",
+    "manufacturer_axes_to_robot_rotation": [
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        -1
+      ]
+    ],
+    "case_envelope_centers_mm": {
+      "left": [
+        -32.5,
+        22,
+        75
+      ],
+      "right": [
+        -32.5,
+        -22,
+        75
+      ]
+    },
+    "envelope_without_rear_idler_mm": [
+      34,
+      20,
+      26
+    ],
+    "horn_front_plane_z_mm": 62,
+    "needs_CAD_clearance_and_mount_design": true
+  }
+}

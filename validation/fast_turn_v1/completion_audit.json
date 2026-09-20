@@ -1,0 +1,128 @@
+{
+  "scope": "Independently recompute saved turn/landing evidence and check release linkage.",
+  "pass": true,
+  "cases": [
+    {
+      "case": "left_friction07",
+      "completion_s": 2.521999999999845,
+      "landings": [
+        3,
+        3
+      ],
+      "final_error_deg": -0.1732462798817096,
+      "state_sha256": "c92a339dd0d461de94906f2467cbb24cd372bae5cc65162cc04fb654517ab379",
+      "contact_sha256": "b86b4a24236881669ffc65e7fb0b523f7f168f712fe6b1b4d6c1d4ef30d5e227"
+    },
+    {
+      "case": "left_friction09",
+      "completion_s": 2.521999999999845,
+      "landings": [
+        3,
+        3
+      ],
+      "final_error_deg": -0.1622692680309683,
+      "state_sha256": "d923f83a21a050f516ad2ba02efb57081b2bcde485cd928cae5f266b205efaa3",
+      "contact_sha256": "991aa199816efa4c571cb332380b7577f4a35e58d50065729efa8d23645d6be5"
+    },
+    {
+      "case": "left_mass095",
+      "completion_s": 2.531999999999848,
+      "landings": [
+        3,
+        3
+      ],
+      "final_error_deg": 0.035925068024766915,
+      "state_sha256": "ae87c21ea8412d8ff6d19e7adb62cdb5be28ffab53b97831a445fe5e12d97640",
+      "contact_sha256": "e2e82047e0eacb154859372bc393374dea4c3b88ed9a3e5cbee004f748a45370"
+    },
+    {
+      "case": "left_mass105",
+      "completion_s": 2.5149999999998425,
+      "landings": [
+        3,
+        3
+      ],
+      "final_error_deg": -0.5360901476310005,
+      "state_sha256": "81491af551e9b903192ca2e458f664eca843cd7606b4ab06398358a5a9c23a37",
+      "contact_sha256": "2e9932a53c814d04b99ed495150023f1023baf9f7471f987dae293b4d3ea6386"
+    },
+    {
+      "case": "left_nominal",
+      "completion_s": 2.521999999999845,
+      "landings": [
+        3,
+        3
+      ],
+      "final_error_deg": -0.1638438341963422,
+      "state_sha256": "69e24165909f19929d09ef1614627cdb51980b079092ae0da706b1761e14135b",
+      "contact_sha256": "2b80b62f20be3fb987f5db18f3fd0e0d177f18fe9b0e601493a3eb02383fd0b2"
+    },
+    {
+      "case": "right_friction07",
+      "completion_s": 2.521999999999845,
+      "landings": [
+        3,
+        3
+      ],
+      "final_error_deg": 0.17329417133169045,
+      "state_sha256": "99fe08fef4a4e5045143ebc7e2302b757450b89a8b1e6b5026510f77d7bc8242",
+      "contact_sha256": "719ae5bfee59c8105b00f40bc0666f4fb173a457629e04e3b614c206aadc4694"
+    },
+    {
+      "case": "right_friction09",
+      "completion_s": 2.521999999999845,
+      "landings": [
+        3,
+        3
+      ],
+      "final_error_deg": 0.16231812724248584,
+      "state_sha256": "56a6d797b62596d25772c7ecc7c842bc05f5ce729608782d040082213d3da8f6",
+      "contact_sha256": "aa88230e5df843926ee4952a81affe5c66c9a1d4d5bd7b5f1cf49be23da1da55"
+    },
+    {
+      "case": "right_mass095",
+      "completion_s": 2.531999999999848,
+      "landings": [
+        3,
+        3
+      ],
+      "final_error_deg": -0.026856863917430474,
+      "state_sha256": "5968bcfdd769ac38ecb8ac3169cb7c1548c2e215f72d3ade88c10ebb0365313a",
+      "contact_sha256": "b1e4b547b216aba90cd503c06396b74abadbfed5c788c76566e3fce4c5480e45"
+    },
+    {
+      "case": "right_mass105",
+      "completion_s": 2.5149999999998425,
+      "landings": [
+        3,
+        3
+      ],
+      "final_error_deg": 0.535994922979171,
+      "state_sha256": "c3109a1d6c629dd845dfeee645f1bd9338218ce53008db7cf539edbf9c021b30",
+      "contact_sha256": "fcadb74bb58282dd38053924765c0e197a5379a2662cc00b12af0855e324e9f8"
+    },
+    {
+      "case": "right_nominal",
+      "completion_s": 2.521999999999845,
+      "landings": [
+        3,
+        3
+      ],
+      "final_error_deg": 0.16389853482155559,
+      "state_sha256": "fa89a2de63adc460ac78a31f18853ebf28c4ffb71d9ae9eeb7ed91f4d4cc07a5",
+      "contact_sha256": "ffe65d5a3fc5bdea13c85b0028ec6c78f6a87080295a7b94d3804d423ea94ee3"
+    }
+  ],
+  "model_sha256": "b79bc86618c58c44088fb9211c1807a09c27ea8f623152243a86b7959e74b434",
+  "mass_kg": 0.9184400455756535,
+  "completion_range_s": [
+    2.5149999999998425,
+    2.531999999999848
+  ],
+  "evidence_limits": [
+    "MuJoCo only",
+    "10 one-factor trials, not randomized reliability",
+    "63 CAD poses per direction, not continuous swept-volume proof",
+    "prototype fasteners and strength; hardware validation deferred"
+  ]
+}

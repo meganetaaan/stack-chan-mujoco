@@ -1,0 +1,280 @@
+{
+  "scope": "Screen paired vertical servo CASE envelopes inside the current torso CAD.\n\nNominal static packaging only. Shaft alignment, brackets, rotating-leg sweeps,\nbearings, cabling, strength and kinematics are deliberately not claimed here.\n",
+  "case_size_xyz_mm": [
+    20.0,
+    34.0,
+    26.0
+  ],
+  "case_dimensions_basis": "existing robot.json XL330 case dimensions, reoriented with 26 mm along vertical; shaft offset not resolved",
+  "pair_separation_mm": 44.0,
+  "pair_case_gap_y_mm": 10.0,
+  "unchanged": [
+    "torso exterior",
+    "thigh length",
+    "shin length",
+    "foot outline",
+    "battery installed"
+  ],
+  "not_verified": [
+    "output shaft location",
+    "mounting and support bearings",
+    "joint sweep clearance",
+    "leg remounting geometry",
+    "cables and connector access",
+    "strength and dynamic behavior"
+  ],
+  "source_sha256": {
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/screen_hip_yaw_space.py": "590f0e8bf951a159b9d4a64462131cb5ad09ecb6e9910e440890de87013c0d63",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_base_collisions/robot.json": "81f32b0a39c56d09ffc3329bfcd5acb0f99f358761a246d5d436be0780c2ca25",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_base_collisions/cad/build.py": "fe13dd18c8c79800a317031c07b1eca35c57ac6b3e0a395e70ab420203436cd9",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_base_collisions/cad/r4_geometry.py": "cacbb3297050b1c8a4ae5f00e57ac49e09f1188c17665b06ec7092b0f561431d",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_base_collisions/src/tab5_biped/core.py": "9a16813b61435492746dc3cb7d7e765a7a7432e47ab29c266ce011742da5c322",
+    "validation/battery_mount_review_v2/body_shroud.step": "c4a995aa9d6a7ede0ad1254a8164aab2b38e8a63cfcae0ffd089c30a1965a497",
+    "validation/battery_mount_review_v2/battery_2S_reservation.step": "a191262ab43f4cfc6b5ae62ca9970ff39739cf0f0978f6c40c8a1667897b5429",
+    "validation/battery_mount_review_v2/battery_tray.step": "5017bcc6cce673e7aad0dbf98919d0a3f0d0b4ee7cbd89b4db83187a8b48b49a",
+    "validation/battery_mount_review_v2/battery_strap_envelope.step": "baf3dd2471ec5a5b190f7514c99c395e2281056ad95964512e504c1be1eee3d2",
+    "validation/battery_mount_review_v2/battery_M3_envelope_0.step": "a2dbbbb77245ed0c64bf4dc3bc777c4b3664d9eea55f1bcb9d1940c500488b73",
+    "validation/battery_mount_review_v2/battery_M3_envelope_1.step": "a6990edb31d46aa5b58c90b28870190be34b3b25f685e9b791320d476fb63045"
+  },
+  "cases": [
+    {
+      "center_x_mm": -35.0,
+      "center_z_mm": 65.0,
+      "center_y_mm": [
+        22.0,
+        -22.0
+      ],
+      "nominal_case_envelopes_clear": false,
+      "intersections": [
+        {
+          "side": "left",
+          "part": "body_shroud",
+          "overlap_mm3": 32.63999999999813
+        },
+        {
+          "side": "left",
+          "part": "left_fixed_roll_cradle",
+          "overlap_mm3": 29.759999999998314
+        },
+        {
+          "side": "left",
+          "part": "battery_tray",
+          "overlap_mm3": 417.60000000000014
+        },
+        {
+          "side": "right",
+          "part": "body_shroud",
+          "overlap_mm3": 32.63999999999813
+        },
+        {
+          "side": "right",
+          "part": "right_fixed_roll_cradle",
+          "overlap_mm3": 29.759999999998314
+        },
+        {
+          "side": "right",
+          "part": "battery_tray",
+          "overlap_mm3": 417.60000000000014
+        }
+      ]
+    },
+    {
+      "center_x_mm": -35.0,
+      "center_z_mm": 75.0,
+      "center_y_mm": [
+        22.0,
+        -22.0
+      ],
+      "nominal_case_envelopes_clear": false,
+      "intersections": [
+        {
+          "side": "left",
+          "part": "TTL_interface",
+          "overlap_mm3": 139.57079632679492
+        },
+        {
+          "side": "right",
+          "part": "TTL_interface",
+          "overlap_mm3": 139.5707963267949
+        }
+      ]
+    },
+    {
+      "center_x_mm": -35.0,
+      "center_z_mm": 90.0,
+      "center_y_mm": [
+        22.0,
+        -22.0
+      ],
+      "nominal_case_envelopes_clear": false,
+      "intersections": [
+        {
+          "side": "left",
+          "part": "TTL_interface",
+          "overlap_mm3": 662.9612825522757
+        },
+        {
+          "side": "right",
+          "part": "TTL_interface",
+          "overlap_mm3": 662.9612825522757
+        }
+      ]
+    },
+    {
+      "center_x_mm": -25.0,
+      "center_z_mm": 65.0,
+      "center_y_mm": [
+        22.0,
+        -22.0
+      ],
+      "nominal_case_envelopes_clear": false,
+      "intersections": [
+        {
+          "side": "left",
+          "part": "left_fixed_roll_cradle",
+          "overlap_mm3": 14.399999999999178
+        },
+        {
+          "side": "left",
+          "part": "battery_tray",
+          "overlap_mm3": 287.99999999999983
+        },
+        {
+          "side": "right",
+          "part": "right_fixed_roll_cradle",
+          "overlap_mm3": 14.399999999999178
+        },
+        {
+          "side": "right",
+          "part": "battery_tray",
+          "overlap_mm3": 287.99999999999983
+        }
+      ]
+    },
+    {
+      "center_x_mm": -25.0,
+      "center_z_mm": 75.0,
+      "center_y_mm": [
+        22.0,
+        -22.0
+      ],
+      "nominal_case_envelopes_clear": false,
+      "intersections": [
+        {
+          "side": "left",
+          "part": "TTL_interface",
+          "overlap_mm3": 139.57079632679492
+        },
+        {
+          "side": "right",
+          "part": "TTL_interface",
+          "overlap_mm3": 139.5707963267949
+        }
+      ]
+    },
+    {
+      "center_x_mm": -25.0,
+      "center_z_mm": 90.0,
+      "center_y_mm": [
+        22.0,
+        -22.0
+      ],
+      "nominal_case_envelopes_clear": false,
+      "intersections": [
+        {
+          "side": "left",
+          "part": "TTL_interface",
+          "overlap_mm3": 662.9612825522757
+        },
+        {
+          "side": "right",
+          "part": "TTL_interface",
+          "overlap_mm3": 662.9612825522757
+        }
+      ]
+    },
+    {
+      "center_x_mm": -15.0,
+      "center_z_mm": 65.0,
+      "center_y_mm": [
+        22.0,
+        -22.0
+      ],
+      "nominal_case_envelopes_clear": false,
+      "intersections": [
+        {
+          "side": "left",
+          "part": "battery_2S_reservation",
+          "overlap_mm3": 3246.5000000000036
+        },
+        {
+          "side": "left",
+          "part": "battery_tray",
+          "overlap_mm3": 978.6824999999998
+        },
+        {
+          "side": "right",
+          "part": "battery_2S_reservation",
+          "overlap_mm3": 3246.500000000004
+        },
+        {
+          "side": "right",
+          "part": "battery_tray",
+          "overlap_mm3": 978.6824999999998
+        }
+      ]
+    },
+    {
+      "center_x_mm": -15.0,
+      "center_z_mm": 75.0,
+      "center_y_mm": [
+        22.0,
+        -22.0
+      ],
+      "nominal_case_envelopes_clear": false,
+      "intersections": [
+        {
+          "side": "left",
+          "part": "battery_2S_reservation",
+          "overlap_mm3": 4907.5
+        },
+        {
+          "side": "left",
+          "part": "battery_tray",
+          "overlap_mm3": 335.51999999999913
+        },
+        {
+          "side": "right",
+          "part": "battery_2S_reservation",
+          "overlap_mm3": 4907.500000000001
+        },
+        {
+          "side": "right",
+          "part": "battery_tray",
+          "overlap_mm3": 335.5199999999992
+        }
+      ]
+    },
+    {
+      "center_x_mm": -15.0,
+      "center_z_mm": 90.0,
+      "center_y_mm": [
+        22.0,
+        -22.0
+      ],
+      "nominal_case_envelopes_clear": false,
+      "intersections": [
+        {
+          "side": "left",
+          "part": "battery_2S_reservation",
+          "overlap_mm3": 4190.249999999998
+        },
+        {
+          "side": "right",
+          "part": "battery_2S_reservation",
+          "overlap_mm3": 4190.249999999998
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "scope": "Recompute straight gait COM/torques for the 12-axis candidate at zero yaw.\n\nThe two yaw links are lumped into the base ONLY in the reference calculation at\nq_yaw=0. The actual simulator keeps all twelve joints floating and actuated.\n",
+  "mass_kg": 0.924558434879133,
+  "equivalent_base_at_zero_yaw": {
+    "mass_kg": 0.5839702711666661,
+    "com_m": [
+      0.0016944920248727381,
+      7.955379073881027e-06,
+      0.07017371666989142
+    ],
+    "inertia_kg_m2": [
+      [
+        0.0013416340939314943,
+        -3.760622927085766e-07,
+        -0.00011975888104018491
+      ],
+      [
+        -3.760622927085766e-07,
+        0.0015482563091440587,
+        -1.5337617672122914e-07
+      ],
+      [
+        -0.00011975888104018491,
+        -1.5337617672122914e-07,
+        0.001603645541017322
+      ]
+    ]
+  },
+  "speed_m_s": 0.1,
+  "period_s": 0.27,
+  "step_height_mm": 4.0,
+  "steps": 24,
+  "height_offset_mm": 0.0,
+  "duration_s": 7.48,
+  "reference_sha256": "d1afb4d113c208fd3cdae212664c1a9ee20a934b7100a9cdd3fecc5abf3ce0ed",
+  "source_sha256": {
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/generate_yaw_zero_reference.py": "c1ada94820d8a4d5a0ad5e99cb79094158d3961155618236d7d94941650e31c9",
+    "assets/r7_yaw_candidate_v1/models/inertials.json": "8cbce1e196d90169775584926c57fa1204559b9ea8f73bf94c80a877d4086f11",
+    "assets/r7_yaw_candidate_v1/robot.json": "bf1d2f55b399b77ce5b97aaa074b663a68eae7fa715329a3f6f0ca14e840ea75",
+    "outputs/design_r6_base_collisions/src/tab5_biped/core.py": "9a16813b61435492746dc3cb7d7e765a7a7432e47ab29c266ce011742da5c322",
+    "outputs/design_r6_base_collisions/src/tab5_biped/planner.py": "f54a0a680412715d3f0abbbd9495e5c7aeb255d9ba71fbef76df07e150c7025b",
+    "probe_reference_gait.py": "034b5235341b38afc2b5c157ba5017d8c2f0fd139a797bd1f517c707d473d7cd"
+  }
+}

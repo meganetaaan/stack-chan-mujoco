@@ -1,0 +1,990 @@
+{
+  "scope": "Drive a 12-axis candidate through actual constrained servo physics.\n\nDevelopment by default. Reserved acceptance seeds require a complete immutable\nmanifest; the same servo physics and qualification rules apply in both modes.\n",
+  "design": "assets/r8_yaw_offset_flange_v1",
+  "reference": "outputs/yaw_backshift0.22_ref205_v1/reference.json.gz",
+  "requested_duration_s": 205.0,
+  "formal_acceptance": false,
+  "acceptance": null,
+  "physics_dt_s": 0.001,
+  "effective_motor_delay_s": 0.012,
+  "failure": null,
+  "time_s": 205.0000000006148,
+  "forward_m": 3.027232589061802,
+  "yaw_change_rad": 0.08455521196052626,
+  "reference_has_q12": true,
+  "parameters": {
+    "mass_scale": 0.9901118363136686,
+    "base_com_shift_m": [
+      -0.0008909163300719785,
+      0.0003163833974993899,
+      -0.0006124573060198484
+    ],
+    "friction": 0.8693507473248916,
+    "torque_scale": 0.9257218951422045,
+    "speed_scale": 1.0115360376328053,
+    "extra_delay_s": 0.002288961855708673,
+    "gravity_noise_std": 0.0034172750164469094,
+    "gyro_noise_std_rad_s": 0.00972481119485528,
+    "gyro_bias_std_rad_s": 0.0001894392858517341,
+    "initial_joint_offsets_rad": [
+      -0.0024898678450386803,
+      0.0016346793112895046,
+      -0.0018401657640536471,
+      0.002657456579593864,
+      0.0032162679918363987,
+      -0.00014319655612832563,
+      -0.00499843404628204,
+      -0.0007531898895957465,
+      -0.002986522586873944,
+      -0.0030745863903353056,
+      -0.0025642365492763108,
+      0.004990117890939669
+    ],
+    "randomized": true
+  },
+  "randomized": true,
+  "variation_source_sha256": "764e70260caf0f0273b73fe46384ab16b4e9bfb7866b6ebb70d4d8f426a043d5",
+  "valid_landings": [
+    293,
+    292
+  ],
+  "joint_order": [
+    "left_hip_yaw",
+    "left_hip_roll",
+    "left_hip_pitch",
+    "left_knee",
+    "left_ankle_pitch",
+    "left_ankle_roll",
+    "right_hip_yaw",
+    "right_hip_roll",
+    "right_hip_pitch",
+    "right_knee",
+    "right_ankle_pitch",
+    "right_ankle_roll"
+  ],
+  "mass_kg": 0.9261863984152346,
+  "old_static_torque_mass_scale": 1.0,
+  "terminal_penetrating_contacts": [
+    {
+      "geom1": "floor",
+      "geom2": "col_left_sole_TPU_0",
+      "distance_m": -0.00010071453118583535
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_left_sole_TPU_0",
+      "distance_m": -9.821432004110961e-05
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_left_sole_TPU_0",
+      "distance_m": -0.00010372328350152348
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_left_sole_TPU_0",
+      "distance_m": -0.00010122307235679775
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_right_sole_TPU_0",
+      "distance_m": -0.00010280598447036556
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_right_sole_TPU_0",
+      "distance_m": -9.988615164889373e-05
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_right_sole_TPU_0",
+      "distance_m": -0.00010004281686342201
+    },
+    {
+      "geom1": "floor",
+      "geom2": "col_right_sole_TPU_0",
+      "distance_m": -9.712298404195019e-05
+    }
+  ],
+  "legacy_policy": null,
+  "legacy_policy_sha256": null,
+  "observation_view_sha256": null,
+  "seed": 311115,
+  "yaw_servo_gains": {
+    "kp_Nm_rad": 6.0,
+    "kd_Nm_s_rad": 0.13,
+    "identified_hardware": false
+  },
+  "ankle_damping_override_Nm_s_rad": null,
+  "attitude_feedback": {
+    "angle_gain": 0.0,
+    "rate_gain_s": 0.0,
+    "axes": "both",
+    "correction_limit_rad": 0.15,
+    "observer": null,
+    "observer_source_sha256": null
+  },
+  "motor_parameters": {
+    "cap": [
+      0.24068769273697319,
+      0.41657485281399204,
+      0.24068769273697319,
+      0.41657485281399204,
+      0.41657485281399204,
+      0.24068769273697319,
+      0.24068769273697319,
+      0.41657485281399204,
+      0.24068769273697319,
+      0.41657485281399204,
+      0.41657485281399204,
+      0.24068769273697319
+    ],
+    "stall": [
+      0.48137538547394637,
+      0.8609213624822503,
+      0.48137538547394637,
+      0.8609213624822503,
+      0.8609213624822503,
+      0.48137538547394637,
+      0.48137538547394637,
+      0.8609213624822503,
+      0.48137538547394637,
+      0.8609213624822503,
+      0.8609213624822503,
+      0.48137538547394637
+    ],
+    "kp": [
+      6.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      6.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0,
+      3.0
+    ],
+    "kd": [
+      0.13,
+      0.065,
+      0.065,
+      0.065,
+      0.065,
+      0.065,
+      0.13,
+      0.065,
+      0.065,
+      0.065,
+      0.065,
+      0.065
+    ],
+    "delay_s": [
+      0.012288961855708673,
+      0.012288961855708673,
+      0.012288961855708673,
+      0.012288961855708673,
+      0.012288961855708673,
+      0.012288961855708673,
+      0.012288961855708673,
+      0.012288961855708673,
+      0.012288961855708673,
+      0.012288961855708673,
+      0.012288961855708673,
+      0.012288961855708673
+    ],
+    "omega": [
+      10.910564034028686,
+      8.580152298605084,
+      10.910564034028686,
+      8.580152298605084,
+      8.580152298605084,
+      10.910564034028686,
+      10.910564034028686,
+      8.580152298605084,
+      10.910564034028686,
+      8.580152298605084,
+      8.580152298605084,
+      10.910564034028686
+    ]
+  },
+  "baseline_config_sha256": "d8df75a26ee5e4184a5bd81d5686027ce2c99dd4b614e97334f83dfae993c0c9",
+  "peak_continuous_saturation_s": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "peak_one_second_saturation_duty": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "trajectory_sha256": "6ce58cea41aea76147500eae27df1823b0a0abf19c9e0c0c0e0197f80d2e7238",
+  "source_sha256": {
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/probe_yaw_dynamics_candidate.py": "233f36854bce8efa6960445cf62811d8aeee0a14efdf2a5e8f4805111049abd0",
+    "assets/r8_yaw_offset_flange_v1/models/scene.xml": "37ed2633af2fb27701d12c71e9cb57afd804a62a4ca440d21c1540664e21e1d0",
+    "assets/r8_yaw_offset_flange_v1/robot.json": "bdcc012005557a6797f4124ad40714cf2c4684111e2ff3ee286f3c39e2c4389b",
+    "outputs/yaw_backshift0.22_ref205_v1/reference.json.gz": "90383e68a3aded9c0bf1b9c3c29b333e086e7fb0f73be4fcd2e82a3ca5ba5179",
+    "stackchan_rl/residual.py": "d0370eef86fbec9d1659c2ae3f8362207e56f6e2f6d8c750b6a320ca9abf8ef6",
+    "stackchan_rl/actuation.py": "08fb037114c07e47a52b7b722910dd90edf8f5e78be26adbc8784e0f38fc9351",
+    "stackchan_rl/walk_events.py": "0a33e2df8f4442807adf395721a247cfbdb4a8597cca6f6f3f617cd8798286d6",
+    "configs/maneuver/acceptance_v1.json": "3fba1d1c37b92dc24f69c6ac2c300916b98df6b2c9cf1ef5dffcd25acbc1e347",
+    "stackchan_rl/maneuver_protocol.py": "32254157b3ddb94b5727751cfb35d828d0295bbf2520a98a4935fa5b5c2a9d40",
+    "stackchan_rl/maneuver_env.py": "87e1de4dd84adbdef17a79aa4540598c75d43ea5f4375db7c89e672abfaa952d"
+  },
+  "motion_scoring": {
+    "scope": "measured motion only; physics safety must be evaluated separately",
+    "complete_schedule": true,
+    "motion_pass": true,
+    "segments": [
+      {
+        "name": "00_stop",
+        "start_s": 0.0,
+        "end_s": 4.0,
+        "metrics": {
+          "mean_vx_error_m_s": 4.824358472279177e-07,
+          "smoothed_vx_rmse_m_s": 6.400954536735916e-07,
+          "mean_yaw_rate_error_rad_s": 0.00010975901017351802,
+          "smoothed_yaw_rate_rmse_rad_s": 0.00015631361302029514,
+          "smoothed_lateral_velocity_rmse_m_s": 1.7589128291574565e-06,
+          "segment_forward_displacement_error_m": 0.00020840186566562616,
+          "segment_yaw_error_rad": 0.0001631189868446884,
+          "in_place_max_displacement_m": 0.0003318708312452776,
+          "stop_planar_speed_rms_m_s": 1.489478533388686e-06,
+          "stop_yaw_rate_rms_rad_s": 0.0001238734967718789,
+          "stop_position_drift_m": 2.6511086170346294e-06,
+          "stop_yaw_drift_rad": 0.0002195180203470119
+        },
+        "violations": [],
+        "body_forward_displacement_m": 0.00020840186566562616,
+        "yaw_change_rad": 0.0001631189868446884,
+        "motion_pass": true
+      },
+      {
+        "name": "01_forward",
+        "start_s": 4.0,
+        "end_s": 14.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.00789074072087266,
+          "smoothed_vx_rmse_m_s": 0.01063342805013146,
+          "mean_yaw_rate_error_rad_s": 0.0029990746023364043,
+          "smoothed_yaw_rate_rmse_rad_s": 0.026170017781322875,
+          "smoothed_lateral_velocity_rmse_m_s": 0.021405489218467737,
+          "segment_forward_displacement_error_m": 0.05083552354228349,
+          "segment_yaw_error_rad": 0.0150909332286769
+        },
+        "violations": [],
+        "body_forward_displacement_m": 1.0508355235422835,
+        "yaw_change_rad": 0.0150909332286769,
+        "motion_pass": true
+      },
+      {
+        "name": "02_stop",
+        "start_s": 14.0,
+        "end_s": 18.0,
+        "metrics": {
+          "mean_vx_error_m_s": 2.9595661192083765e-06,
+          "smoothed_vx_rmse_m_s": 4.850619687395531e-06,
+          "mean_yaw_rate_error_rad_s": 1.887492588803445e-05,
+          "smoothed_yaw_rate_rmse_rad_s": 2.7781722815198924e-05,
+          "smoothed_lateral_velocity_rmse_m_s": 6.6306089033720544e-06,
+          "segment_forward_displacement_error_m": 0.04990130833415405,
+          "segment_yaw_error_rad": 0.0074262805465995976,
+          "in_place_max_displacement_m": 0.056222191102945726,
+          "stop_planar_speed_rms_m_s": 3.95291008654538e-06,
+          "stop_yaw_rate_rms_rad_s": 2.1305677173725873e-05,
+          "stop_position_drift_m": 5.9559166837735855e-06,
+          "stop_yaw_drift_rad": 3.7749851776115034e-05
+        },
+        "violations": [],
+        "body_forward_displacement_m": 0.04990130833415405,
+        "yaw_change_rad": -0.0074262805465995976,
+        "motion_pass": true
+      },
+      {
+        "name": "03_backward",
+        "start_s": 18.0,
+        "end_s": 28.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.0027035911812428037,
+          "smoothed_vx_rmse_m_s": 0.005032192828550437,
+          "mean_yaw_rate_error_rad_s": 0.00037528834677922734,
+          "smoothed_yaw_rate_rmse_rad_s": 0.013925907554154605,
+          "smoothed_lateral_velocity_rmse_m_s": 0.027014397895578097,
+          "segment_forward_displacement_error_m": 0.03937295177036687,
+          "segment_yaw_error_rad": 0.010746610563365034
+        },
+        "violations": [],
+        "body_forward_displacement_m": -0.46062704822963313,
+        "yaw_change_rad": 0.010746610563365034,
+        "motion_pass": true
+      },
+      {
+        "name": "04_stop",
+        "start_s": 28.0,
+        "end_s": 32.0,
+        "metrics": {
+          "mean_vx_error_m_s": 1.1812310471677164e-06,
+          "smoothed_vx_rmse_m_s": 1.912318199210256e-06,
+          "mean_yaw_rate_error_rad_s": 7.432791417952054e-05,
+          "smoothed_yaw_rate_rmse_rad_s": 0.0001048112288613056,
+          "smoothed_lateral_velocity_rmse_m_s": 1.5539627056472335e-06,
+          "segment_forward_displacement_error_m": 0.02248414996417249,
+          "segment_yaw_error_rad": 0.0020289593368079534,
+          "in_place_max_displacement_m": 0.02438774876153408,
+          "stop_planar_speed_rms_m_s": 1.7220983049792796e-06,
+          "stop_yaw_rate_rms_rad_s": 8.38724681374312e-05,
+          "stop_position_drift_m": 2.9330945070328835e-06,
+          "stop_yaw_drift_rad": 0.0001486558283592225
+        },
+        "violations": [],
+        "body_forward_displacement_m": -0.02248414996417249,
+        "yaw_change_rad": 0.0020289593368079534,
+        "motion_pass": true
+      },
+      {
+        "name": "05_left",
+        "start_s": 32.0,
+        "end_s": 42.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.0024217793689497087,
+          "smoothed_vx_rmse_m_s": 0.0028902582768829998,
+          "mean_yaw_rate_error_rad_s": 0.005827466220756222,
+          "smoothed_yaw_rate_rmse_rad_s": 0.009007230308764843,
+          "smoothed_lateral_velocity_rmse_m_s": 0.02254640906299644,
+          "segment_forward_displacement_error_m": 0.025414788562789004,
+          "segment_yaw_error_rad": 0.06846805945660517,
+          "in_place_max_displacement_m": 0.03478254535157524
+        },
+        "violations": [],
+        "body_forward_displacement_m": 0.025414788562789004,
+        "yaw_change_rad": 1.5023282673382914,
+        "motion_pass": true
+      },
+      {
+        "name": "06_stop",
+        "start_s": 42.0,
+        "end_s": 46.0,
+        "metrics": {
+          "mean_vx_error_m_s": 2.258664327650749e-06,
+          "smoothed_vx_rmse_m_s": 5.289392918596274e-06,
+          "mean_yaw_rate_error_rad_s": 0.00012213228977781695,
+          "smoothed_yaw_rate_rmse_rad_s": 0.0001757859894420672,
+          "smoothed_lateral_velocity_rmse_m_s": 1.0564620323216622e-05,
+          "segment_forward_displacement_error_m": 0.003276362086339427,
+          "segment_yaw_error_rad": 0.04346575711387923,
+          "in_place_max_displacement_m": 0.022259050591818347,
+          "stop_planar_speed_rms_m_s": 4.81222727240774e-06,
+          "stop_yaw_rate_rms_rad_s": 0.00013782492578271764,
+          "stop_position_drift_m": 5.583254678575512e-06,
+          "stop_yaw_drift_rad": 0.00024426457955506464
+        },
+        "violations": [],
+        "body_forward_displacement_m": 0.003276362086339427,
+        "yaw_change_rad": 0.04346575711387923,
+        "motion_pass": true
+      },
+      {
+        "name": "07_right",
+        "start_s": 46.0,
+        "end_s": 56.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.0026611166206573418,
+          "smoothed_vx_rmse_m_s": 0.0028046656100397843,
+          "mean_yaw_rate_error_rad_s": 0.005840139990043097,
+          "smoothed_yaw_rate_rmse_rad_s": 0.008858805231838665,
+          "smoothed_lateral_velocity_rmse_m_s": 0.02249900986693025,
+          "segment_forward_displacement_error_m": 0.026327757977142662,
+          "segment_yaw_error_rad": 0.059195464704207446,
+          "in_place_max_displacement_m": 0.033422094857314046
+        },
+        "violations": [],
+        "body_forward_displacement_m": 0.026327757977142662,
+        "yaw_change_rad": -1.5116008620906891,
+        "motion_pass": true
+      },
+      {
+        "name": "08_forward",
+        "start_s": 56.0,
+        "end_s": 66.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.007402745483146844,
+          "smoothed_vx_rmse_m_s": 0.010586590191046451,
+          "mean_yaw_rate_error_rad_s": 0.002401415667864278,
+          "smoothed_yaw_rate_rmse_rad_s": 0.02557810634321351,
+          "smoothed_lateral_velocity_rmse_m_s": 0.021195666653429222,
+          "segment_forward_displacement_error_m": 0.02571066607209871,
+          "segment_yaw_error_rad": 0.02661076505469889
+        },
+        "violations": [],
+        "body_forward_displacement_m": 1.0257106660720987,
+        "yaw_change_rad": -0.02661076505469889,
+        "motion_pass": true
+      },
+      {
+        "name": "09_backward",
+        "start_s": 66.0,
+        "end_s": 76.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.002713551296371762,
+          "smoothed_vx_rmse_m_s": 0.005025124806917853,
+          "mean_yaw_rate_error_rad_s": 0.0032112558874642263,
+          "smoothed_yaw_rate_rmse_rad_s": 0.013883312186580232,
+          "smoothed_lateral_velocity_rmse_m_s": 0.02693060089129556,
+          "segment_forward_displacement_error_m": 0.08875261809529206,
+          "segment_yaw_error_rad": 0.007542263413841305
+        },
+        "violations": [],
+        "body_forward_displacement_m": -0.41124738190470794,
+        "yaw_change_rad": 0.007542263413841305,
+        "motion_pass": true
+      },
+      {
+        "name": "10_forward",
+        "start_s": 76.0,
+        "end_s": 86.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.008469908746967694,
+          "smoothed_vx_rmse_m_s": 0.011012992406853737,
+          "mean_yaw_rate_error_rad_s": 0.002325050743696321,
+          "smoothed_yaw_rate_rmse_rad_s": 0.028781568194476508,
+          "smoothed_lateral_velocity_rmse_m_s": 0.024179640331560347,
+          "segment_forward_displacement_error_m": 0.03431354841795842,
+          "segment_yaw_error_rad": 0.010851024000353964
+        },
+        "violations": [],
+        "body_forward_displacement_m": 1.0343135484179584,
+        "yaw_change_rad": -0.010851024000353964,
+        "motion_pass": true
+      },
+      {
+        "name": "11_left",
+        "start_s": 86.0,
+        "end_s": 96.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.0027115204284704026,
+          "smoothed_vx_rmse_m_s": 0.0028737582591490327,
+          "mean_yaw_rate_error_rad_s": 0.005192852102833101,
+          "smoothed_yaw_rate_rmse_rad_s": 0.008853105961999645,
+          "smoothed_lateral_velocity_rmse_m_s": 0.02580513857083452,
+          "segment_forward_displacement_error_m": 0.07600147713504671,
+          "segment_yaw_error_rad": 0.09397305249709409,
+          "in_place_max_displacement_m": 0.08495149208036837
+        },
+        "violations": [],
+        "body_forward_displacement_m": 0.07600147713504671,
+        "yaw_change_rad": 1.4768232742978025,
+        "motion_pass": true
+      },
+      {
+        "name": "12_forward",
+        "start_s": 96.0,
+        "end_s": 106.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.007352081492643159,
+          "smoothed_vx_rmse_m_s": 0.011028356668162027,
+          "mean_yaw_rate_error_rad_s": 0.0004819932874031175,
+          "smoothed_yaw_rate_rmse_rad_s": 0.0286313658731382,
+          "smoothed_lateral_velocity_rmse_m_s": 0.024463477134094032,
+          "segment_forward_displacement_error_m": 0.03311973674493918,
+          "segment_yaw_error_rad": 0.015681841257704443
+        },
+        "violations": [],
+        "body_forward_displacement_m": 1.0331197367449392,
+        "yaw_change_rad": 0.015681841257704443,
+        "motion_pass": true
+      },
+      {
+        "name": "13_right",
+        "start_s": 106.0,
+        "end_s": 116.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.00258304426142447,
+          "smoothed_vx_rmse_m_s": 0.0028949131682368782,
+          "mean_yaw_rate_error_rad_s": 0.005216437260677109,
+          "smoothed_yaw_rate_rmse_rad_s": 0.008492222183586312,
+          "smoothed_lateral_velocity_rmse_m_s": 0.025872185775041207,
+          "segment_forward_displacement_error_m": 0.060832413437278535,
+          "segment_yaw_error_rad": 0.07810722352234101,
+          "in_place_max_displacement_m": 0.06935143649643238
+        },
+        "violations": [],
+        "body_forward_displacement_m": 0.060832413437278535,
+        "yaw_change_rad": -1.4926891032725556,
+        "motion_pass": true
+      },
+      {
+        "name": "14_backward",
+        "start_s": 116.0,
+        "end_s": 126.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.0027344703687670405,
+          "smoothed_vx_rmse_m_s": 0.005002450710760363,
+          "mean_yaw_rate_error_rad_s": 0.00016395670447777002,
+          "smoothed_yaw_rate_rmse_rad_s": 0.013877216545621993,
+          "smoothed_lateral_velocity_rmse_m_s": 0.02689942352496669,
+          "segment_forward_displacement_error_m": 0.038201657292900315,
+          "segment_yaw_error_rad": 0.001026526370219008
+        },
+        "violations": [],
+        "body_forward_displacement_m": -0.4617983427070997,
+        "yaw_change_rad": -0.001026526370219008,
+        "motion_pass": true
+      },
+      {
+        "name": "15_left",
+        "start_s": 126.0,
+        "end_s": 136.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.0023721167398858094,
+          "smoothed_vx_rmse_m_s": 0.0029393948057547035,
+          "mean_yaw_rate_error_rad_s": 0.006770854047696562,
+          "smoothed_yaw_rate_rmse_rad_s": 0.009003647974995975,
+          "smoothed_lateral_velocity_rmse_m_s": 0.02582717628767874,
+          "segment_forward_displacement_error_m": 0.0012939195888316147,
+          "segment_yaw_error_rad": 0.10662876667742038,
+          "in_place_max_displacement_m": 0.028671076305624883
+        },
+        "violations": [],
+        "body_forward_displacement_m": 0.0012939195888316147,
+        "yaw_change_rad": 1.4641675601174762,
+        "motion_pass": true
+      },
+      {
+        "name": "16_backward",
+        "start_s": 136.0,
+        "end_s": 146.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.002666879818869393,
+          "smoothed_vx_rmse_m_s": 0.0049724334758247165,
+          "mean_yaw_rate_error_rad_s": 0.0011719948335835834,
+          "smoothed_yaw_rate_rmse_rad_s": 0.013790496618315232,
+          "smoothed_lateral_velocity_rmse_m_s": 0.026941781941725768,
+          "segment_forward_displacement_error_m": 0.04658405006808697,
+          "segment_yaw_error_rad": 0.03198933930464465
+        },
+        "violations": [],
+        "body_forward_displacement_m": -0.45341594993191303,
+        "yaw_change_rad": 0.03198933930464465,
+        "motion_pass": true
+      },
+      {
+        "name": "17_right",
+        "start_s": 146.0,
+        "end_s": 156.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.0025102014638493484,
+          "smoothed_vx_rmse_m_s": 0.002953670249331936,
+          "mean_yaw_rate_error_rad_s": 0.005668843734027373,
+          "smoothed_yaw_rate_rmse_rad_s": 0.008491705106571623,
+          "smoothed_lateral_velocity_rmse_m_s": 0.025824349870398215,
+          "segment_forward_displacement_error_m": 0.008450262710668241,
+          "segment_yaw_error_rad": 0.08562754793595628,
+          "in_place_max_displacement_m": 0.02638189169107758
+        },
+        "violations": [],
+        "body_forward_displacement_m": 0.008450262710668241,
+        "yaw_change_rad": -1.4851687788589403,
+        "motion_pass": true
+      },
+      {
+        "name": "18_left",
+        "start_s": 156.0,
+        "end_s": 166.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.002427614938351458,
+          "smoothed_vx_rmse_m_s": 0.00297983034032839,
+          "mean_yaw_rate_error_rad_s": 0.005759455137849645,
+          "smoothed_yaw_rate_rmse_rad_s": 0.008733787752749024,
+          "smoothed_lateral_velocity_rmse_m_s": 0.02584013833754426,
+          "segment_forward_displacement_error_m": 0.024119288713157494,
+          "segment_yaw_error_rad": 0.13342048394742312,
+          "in_place_max_displacement_m": 0.03118225911700069
+        },
+        "violations": [],
+        "body_forward_displacement_m": 0.024119288713157494,
+        "yaw_change_rad": 1.4373758428474734,
+        "motion_pass": true
+      },
+      {
+        "name": "19_right",
+        "start_s": 166.0,
+        "end_s": 176.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.0023662909202553824,
+          "smoothed_vx_rmse_m_s": 0.002985968729827681,
+          "mean_yaw_rate_error_rad_s": 0.005968518895146935,
+          "smoothed_yaw_rate_rmse_rad_s": 0.008463599611837513,
+          "smoothed_lateral_velocity_rmse_m_s": 0.025856587299327407,
+          "segment_forward_displacement_error_m": 0.02689436262598967,
+          "segment_yaw_error_rad": 0.20563285509222373,
+          "in_place_max_displacement_m": 0.0338244614004839
+        },
+        "violations": [],
+        "body_forward_displacement_m": 0.02689436262598967,
+        "yaw_change_rad": -1.3651634717026728,
+        "motion_pass": true
+      },
+      {
+        "name": "20_stop",
+        "start_s": 176.0,
+        "end_s": 180.0,
+        "metrics": {
+          "mean_vx_error_m_s": 2.1670175673799e-06,
+          "smoothed_vx_rmse_m_s": 4.870835366028081e-06,
+          "mean_yaw_rate_error_rad_s": 9.31648416364262e-05,
+          "smoothed_yaw_rate_rmse_rad_s": 0.00013176260078027804,
+          "smoothed_lateral_velocity_rmse_m_s": 5.3779879739711575e-06,
+          "segment_forward_displacement_error_m": 0.0033161399674183204,
+          "segment_yaw_error_rad": 0.03682608737670044,
+          "in_place_max_displacement_m": 0.015755571350366215,
+          "stop_planar_speed_rms_m_s": 3.797113196963142e-06,
+          "stop_yaw_rate_rms_rad_s": 0.00010511644741711082,
+          "stop_position_drift_m": 4.91514332739122e-06,
+          "stop_yaw_drift_rad": 0.0001863296832737421
+        },
+        "violations": [],
+        "body_forward_displacement_m": 0.0033161399674183204,
+        "yaw_change_rad": -0.03682608737670044,
+        "motion_pass": true
+      },
+      {
+        "name": "21_arc_left",
+        "start_s": 180.0,
+        "end_s": 190.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.00590223916456252,
+          "smoothed_vx_rmse_m_s": 0.007602931106736642,
+          "mean_yaw_rate_error_rad_s": 0.0008965054910431147,
+          "smoothed_yaw_rate_rmse_rad_s": 0.019287264985874006,
+          "smoothed_lateral_velocity_rmse_m_s": 0.023688857051982124,
+          "segment_forward_displacement_error_m": 0.04273204157685628,
+          "segment_yaw_error_rad": 0.021791260695257275
+        },
+        "violations": [],
+        "body_forward_displacement_m": 0.6427320415768563,
+        "yaw_change_rad": 1.1782087393047427,
+        "motion_pass": true
+      },
+      {
+        "name": "22_arc_right",
+        "start_s": 190.0,
+        "end_s": 200.0,
+        "metrics": {
+          "mean_vx_error_m_s": 0.005364771600053525,
+          "smoothed_vx_rmse_m_s": 0.007532428946772945,
+          "mean_yaw_rate_error_rad_s": 8.987443869500067e-05,
+          "smoothed_yaw_rate_rmse_rad_s": 0.01918749538704838,
+          "smoothed_lateral_velocity_rmse_m_s": 0.023604296998052585,
+          "segment_forward_displacement_error_m": 0.056439261970265164,
+          "segment_yaw_error_rad": 0.060188793139017926
+        },
+        "violations": [],
+        "body_forward_displacement_m": 0.6564392619702651,
+        "yaw_change_rad": -1.139811206860982,
+        "motion_pass": true
+      },
+      {
+        "name": "23_final_stop",
+        "start_s": 200.0,
+        "end_s": 205.0,
+        "metrics": {
+          "mean_vx_error_m_s": 1.8926519202150023e-06,
+          "smoothed_vx_rmse_m_s": 2.57942746690905e-06,
+          "mean_yaw_rate_error_rad_s": 2.8580282733320823e-05,
+          "smoothed_yaw_rate_rmse_rad_s": 4.510998359663931e-05,
+          "smoothed_lateral_velocity_rmse_m_s": 2.403607715832374e-06,
+          "segment_forward_displacement_error_m": 0.02352477923063127,
+          "segment_yaw_error_rad": 0.023883189016612433,
+          "in_place_max_displacement_m": 0.030181373552966396,
+          "stop_planar_speed_rms_m_s": 2.3012175088300564e-06,
+          "stop_yaw_rate_rms_rad_s": 3.591337197343575e-05,
+          "stop_position_drift_m": 5.799945769884552e-06,
+          "stop_yaw_drift_rad": 8.574084820037187e-05
+        },
+        "violations": [],
+        "body_forward_displacement_m": 0.02352477923063127,
+        "yaw_change_rad": -0.023883189016612433,
+        "motion_pass": true
+      }
+    ]
+  },
+  "segment_valid_landings": [
+    [
+      0,
+      0
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      15,
+      14
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      15,
+      15
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      15,
+      15
+    ],
+    [
+      17,
+      17
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      17
+    ],
+    [
+      16,
+      16
+    ],
+    [
+      17,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      16,
+      16
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      16,
+      16
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      16,
+      16
+    ],
+    [
+      17,
+      17
+    ],
+    [
+      1,
+      2
+    ]
+  ],
+  "landing_requirements_pass": true,
+  "complete_schedule": true,
+  "development_trial_pass": true,
+  "landing_events_sha256": "31ab9620936e97081558502411ac1adcf41b8a45f6c9a9b1e04b55d629788ad1",
+  "walking_evidence": {
+    "qualified_liftoffs": [
+      293,
+      294
+    ],
+    "forward_landings": [
+      64,
+      64
+    ],
+    "forward_landing_sequence": [
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "right",
+      "right",
+      "right",
+      "right",
+      "left",
+      "left",
+      "left",
+      "left",
+      "left",
+      "left",
+      "right",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left",
+      "right",
+      "left"
+    ],
+    "raw_unloads": [
+      440,
+      376
+    ],
+    "max_sole_clearance_m": [
+      0.007295598703181817,
+      0.007078852526297588
+    ],
+    "event_rejections": {
+      "short_airtime": 229,
+      "low_clearance": 0,
+      "insufficient_other_support": 0,
+      "unconfirmed_touch": 229
+    },
+    "seconds_without_valid_landing": 0.0
+  },
+  "acceptance_pass": false
+}
