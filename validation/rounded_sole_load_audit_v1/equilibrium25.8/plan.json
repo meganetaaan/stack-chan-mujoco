@@ -1,0 +1,15 @@
+{
+  "source_path": "validation/rounded_sole_posture_v1/inset25.8/foot_loads.jsonl.gz",
+  "source_sha256": "0e61b932a37be7cfe922b2150da82491c1a1a0b1f16dab277ced11d8f4f8895d",
+  "criteria": {
+    "force_residual_N": 1e-08,
+    "moment_residual_Nm": 1e-08
+  },
+  "convention": "World axes at subtree COM, torque then force. cacc includes gravity convention of MuJoCo.",
+  "formula": "I*a + v cross_force (I*v) = cfrc_int + cfrc_ext for leaf body",
+  "reference": "https://raw.githubusercontent.com/google-deepmind/mujoco/3.3.0/src/engine/engine_util_spatial.c",
+  "limitations": [
+    "Recorded model only; leaf-body and applied-force assumptions require model audit.",
+    "No structural strength claim."
+  ]
+}
