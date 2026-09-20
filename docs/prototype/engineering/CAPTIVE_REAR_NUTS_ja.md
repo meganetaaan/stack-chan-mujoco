@@ -23,7 +23,7 @@
 ## 再現と次の作業
 
 ```sh
-LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bin/python software/sim/structural/build_captive_rear_nuts.py --out outputs/captive_rear_nuts_new
+LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bin/python software/sim/structural/build_captive_rear_nuts.py --out outputs/captive_rear_nuts_new --slot-width-mm 6.2
 ```
 
 入力形状は`validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1`。板の四隅位置はこの入力から変更していない。出力・ナット・挿入包絡・計画・合否・コード・BOMは`validation/captive_rear_nuts_development_v1`に保存する。

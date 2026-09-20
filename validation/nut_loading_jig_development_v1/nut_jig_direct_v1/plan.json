@@ -1,0 +1,47 @@
+{
+  "scope": "Continuous axis-aligned sweep of a candidate spring-finger nut-loading jig.",
+  "stage": "bare body and rear plate, before Tab5, yaw supports, battery and power installation",
+  "source_sha256": {
+    "outputs/captive_rear_nuts_wide_v1/body_shroud.step": "f832dc5696edd32a2388bf11738237b8805b5a01519e02ded3283f2a5fbe4488",
+    "/home/sskw/.codex/worktrees/prototype-epics-5-6/stackchan_r5a_rl_v4/validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/rear_structural_plate.step": "604f5385918959d2066bd24234d591b3490692194ad2a4bea4ebbd1d5599f62d",
+    "outputs/captive_rear_nuts_wide_v1/plan.json": "2378a4c39197df356b378efa99422d9811061ba9eb9438e6d131993d7e16bb92"
+  },
+  "pocket_width_mm": 6.4,
+  "jaw_thickness_mm": 0.1,
+  "jaw_thickness_upper_mm": 0.12,
+  "jaw_material": "spring sheet candidate; alloy, stress and grip force not verified",
+  "shaft_section_mm": [
+    2,
+    2
+  ],
+  "shaft_end_x_mm": 80,
+  "handle_end_x_mm": 125,
+  "path_mode": "direct",
+  "fastener_check": "off",
+  "lateral_travel_mm": 20,
+  "lower_tool_offset_mm": 0,
+  "lower_approach_lift_mm": 0,
+  "stages": [
+    "axial approach at y=+/-37, lower nuts raised 0 mm",
+    "lower inside body",
+    "20 mm outward slide to y=+/-57",
+    "reverse slide after bolt engagement",
+    "raise lower jig",
+    "axial withdrawal"
+  ],
+  "criteria": {
+    "intersection_mm3": 0.01,
+    "functional_total_gap_mm": 0.1,
+    "free_tool_clearance_mm": 0.5
+  },
+  "body_surface_tolerance_mm": 0.2,
+  "rigid_tool_surface_tolerance_mm": 0.2,
+  "limitations": [
+    "kinematic geometry only",
+    "finger spring deflection, retention and release force not verified",
+    "no hand or cable geometry",
+    "fixed clamped-open finger shape during withdrawal",
+    "assembled fasteners require separate contact/strength checks"
+  ],
+  "fastener_staging": "Fasteners omitted for historical route comparison only."
+}
