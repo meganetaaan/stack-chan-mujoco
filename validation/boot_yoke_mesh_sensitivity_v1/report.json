@@ -1,0 +1,108 @@
+{
+  "source_sha256": {
+    "outputs/boot_yoke_mesh_sensitivity_v1/h1/evaluation.json": "16a5a65f8007627c9a182a44ff41d4f42d96355dc0f1a37bc9f11fb57dd38e7f",
+    "validation/boot_yoke_deformable_contact_v1/evaluation.json": "87469b66b7215a37ff0ff20a139a1e6348b094ac11d9c31b55fdd363c6e1cef1",
+    "outputs/boot_yoke_mesh_sensitivity_v1/h0.5/evaluation.json": "6605267ae23292c9fdbe242c02017d46b6ad7dbe22a1045d99055ce19839175f"
+  },
+  "rows": [
+    {
+      "mesh_mm": 1,
+      "anchor_resultant_N": [
+        -3.244353e-16,
+        2.721707e-17,
+        5.636333e-15
+      ],
+      "relative_anchor_force": 2.822864180211053e-16,
+      "gap_min_mm": -5.958389e-06,
+      "gap_max_mm": -3.188616e-10,
+      "maximum_penetration_mm": 5.958389e-06,
+      "pressure_min_MPa": 0.0003188616,
+      "pressure_max_MPa": 5.958389,
+      "max_displacement_mm": {
+        "BOOT": 0.0024119219845748848,
+        "YOKE": 0.004949303021531614
+      },
+      "gates": {
+        "solver_completion": true,
+        "anchor_force": true,
+        "penetration": true
+      },
+      "local_numerical_probe_pass": true,
+      "joint_strength_verified": false
+    },
+    {
+      "mesh_mm": 0.7,
+      "anchor_resultant_N": [
+        5.773189e-16,
+        -1.294948e-15,
+        -3.756977e-15
+      ],
+      "relative_anchor_force": 2.0078012609276228e-16,
+      "gap_min_mm": -6.356316e-06,
+      "gap_max_mm": -5.098171e-10,
+      "maximum_penetration_mm": 6.356316e-06,
+      "pressure_min_MPa": 0.0005098171,
+      "pressure_max_MPa": 6.356316,
+      "max_displacement_mm": {
+        "BOOT": 0.0024916231019426215,
+        "YOKE": 0.004927387459245619
+      },
+      "gates": {
+        "solver_completion": true,
+        "anchor_force": true,
+        "penetration": true
+      },
+      "local_numerical_probe_pass": true,
+      "joint_strength_verified": false
+    },
+    {
+      "mesh_mm": 0.5,
+      "anchor_resultant_N": [
+        9.132691e-16,
+        -5.341501e-16,
+        3.779746e-15
+      ],
+      "relative_anchor_force": 1.9625147517191317e-16,
+      "gap_min_mm": -5.524037e-06,
+      "gap_max_mm": -2.226361e-10,
+      "maximum_penetration_mm": 5.524037e-06,
+      "pressure_min_MPa": 0.0002226361,
+      "pressure_max_MPa": 5.524037,
+      "max_displacement_mm": {
+        "BOOT": 0.002505536079226721,
+        "YOKE": 0.0050274523019022905
+      },
+      "gates": {
+        "solver_completion": true,
+        "anchor_force": true,
+        "penetration": true
+      },
+      "local_numerical_probe_pass": true,
+      "joint_strength_verified": false
+    }
+  ],
+  "comparisons": [
+    {
+      "quantity": "max_displacement_mm",
+      "part": "BOOT",
+      "relative_change": 0.005583901222160126,
+      "limit": 0.05,
+      "passed": true
+    },
+    {
+      "quantity": "max_displacement_mm",
+      "part": "YOKE",
+      "relative_change": 0.020307890029819475,
+      "limit": 0.05,
+      "passed": true
+    },
+    {
+      "quantity": "pressure_max_MPa",
+      "relative_change": 0.13093732281403248,
+      "limit": 0.1,
+      "passed": false
+    }
+  ],
+  "all_numerical_gates_pass": false,
+  "joint_strength_verified": false
+}
