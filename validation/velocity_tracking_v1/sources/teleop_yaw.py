@@ -13,7 +13,6 @@ import mujoco
 from yaw_maneuver_reference import YawCommandReference
 from live_fast_turn_reference import LiveFastTurnReference
 from velocity_control import VelocityControl, keyboard_velocity
-from crab_control import LateralControl, crab_keyboard
 from generate_yaw_zero_reference import configure_candidate_mass
 from stackchan_rl.yaw_kinematics import YawLegKinematics
 from stackchan_rl.residual import runtime_xml, ResidualEnv
@@ -120,9 +119,6 @@ class Simulation:
         self.physics_observer=None
         self.velocity=VelocityControl() if fast_turn else None
         self.velocity_buffer=np.zeros(6)
-        self.lateral_control=LateralControl()
-        self.crab_heading=None
-        self.crab_pending=False
 
     def step(self, command):
         if self.failure:return
@@ -133,27 +129,8 @@ class Simulation:
                 R=self.d.xmat[self.plant.base].reshape(3,3)
                 tilt=np.rad2deg(np.arccos(np.clip(R[2,2],-1,1)))
                 self.velocity.observe_support(tilt,self.plant.loads)
-                vector=np.asarray(command,dtype=float)
-                if vector.shape==(3,):
-                    if self.crab_heading is None and (abs(self.velocity.target[1])>.02 or abs(self.velocity.measured[1])>.04):
-                        self.crab_pending=True
-                    if self.crab_pending and self.reference.mode=='stand' and abs(self.velocity.measured[1])<.03:
-                        self.crab_pending=False
-                    if self.crab_pending:vector=np.zeros(2)
-                else:self.crab_pending=False
-                if vector.shape==(3,):
-                    vx,vy,wz=vector
-                    if not np.isfinite(vector).all():raise ValueError('finite velocity required')
-                    yaw=float(np.arctan2(R[1,0],R[0,0]))
-                    if self.crab_heading is None:self.crab_heading=yaw
-                    error=np.arctan2(np.sin(self.crab_heading-yaw),np.cos(self.crab_heading-yaw))
-                    hold=float(np.clip(.8*error,-.06,.06)) if abs(vx)+abs(vy)>0 else 0.
-                    drive=self.velocity.update([vx,wz+hold],ready=t>=2.)
-                else:
-                    self.crab_heading=None
-                    vy=0.;drive=self.velocity.update(vector,ready=t>=2.)
-                side=self.lateral_control.update(vy,self.velocity.lateral,t>=2.,self.velocity.safety_scale)
-                self.reference.set_command((drive[0],side,drive[1]) if side or vector.shape==(3,) else drive,t)
+                drive=self.velocity.update(command,ready=t>=2.)
+                self.reference.set_command(drive,t)
                 self.command='velocity'
             else:
                 self.reference.set_command(self.command,t)
@@ -228,8 +205,7 @@ def main():
             reset_down=reset
             pressed={k for k in ['W','A','S','D','SPACE'] if glfw.get_key(window,getattr(glfw,'KEY_'+k))==glfw.PRESS}
             if not glfw.get_window_attrib(window,glfw.FOCUSED):pressed=set()
-            shift=glfw.get_window_attrib(window,glfw.FOCUSED) and any(glfw.get_key(window,k)==glfw.PRESS for k in (glfw.KEY_LEFT_SHIFT,glfw.KEY_RIGHT_SHIFT))
-            command=(crab_keyboard(pressed) if shift else keyboard_velocity(pressed)) if a.profile=='r9' else requested_command(pressed)
+            command=keyboard_velocity(pressed) if a.profile=='r9' else requested_command(pressed)
             if a.demo:
                 if a.profile=='r9':
                     command=[(0.,0.),(.025,.21),(-.012,.21),(-.012,-.21),(.025,-.21),(0.,-.55),(0.,0.)][min(int(sim.d.time/3.5),6)]
@@ -255,11 +231,10 @@ def main():
                     velocity_text='\nRequest / Target / Measured (m/s, deg/s)'
                     for label,val in [('Req',ctl.request),('Tgt',ctl.target),('Meas',ctl.measured)]:
                         velocity_text+=f'\n{label}: {val[0]:+.3f}, {np.rad2deg(val[1]):+.1f}'
-                    velocity_text+=f'\nSide Req/Tgt/Meas: {sim.lateral_control.request:+.3f} / {sim.lateral_control.target:+.3f} / {ctl.lateral:+.3f} m/s'
-                    velocity_text+=f'\n{"Stopping turn before translation" if sim.crab_pending else (ctl.reason or "within envelope")}'
+                    velocity_text+=f'\n{ctl.reason or "within envelope"}'
                 status=('STOPPED: '+sim.failure+' (R reset)') if sim.failure else sim.command
                 mujoco.mjr_overlay(mujoco.mjtFontScale.mjFONTSCALE_150,mujoco.mjtGridPos.mjGRID_TOPLEFT,viewport,
-                    'W/S forward/back + A/D turn\nShift + WASD: translate\nRelease / Space: stop | R: reset\nDrag: orbit | Wheel: zoom',f'{a.profile}: {status}\nSimulation: {sim.d.time:.2f} s\nSpeed: {rate:.2f}x (target 1.00x){velocity_text}',context)
+                    'W/S forward/back + A/D turn\nRelease / Space: stop | R: reset\nDrag: orbit | Wheel: zoom',f'{a.profile}: {status}\nSimulation: {sim.d.time:.2f} s\nSpeed: {rate:.2f}x (target 1.00x){velocity_text}',context)
                 frames+=1
                 if a.capture and a.frames and frames>=a.frames:
                     from PIL import Image
