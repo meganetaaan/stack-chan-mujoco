@@ -1,0 +1,14 @@
+{
+  "densities_kg_m3": [
+    1000,
+    1200,
+    1400
+  ],
+  "scope": "Subtract candidate sole spatial inertia from floor load; density sensitivity only.",
+  "limitations": [
+    "Assumed densities, not selected TPU specification.",
+    "Recorded frozen-foot motion reused with candidate sole; not rerun dynamics.",
+    "Rigid sole inertia only; deformation, adhesion and retention absent.",
+    "Rectangular COP check is necessary, not sufficient."
+  ]
+}
