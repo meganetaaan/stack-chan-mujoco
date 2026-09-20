@@ -1,0 +1,45 @@
+{
+  "scope": "Through-bolted rear plate/body candidate with inward-shifted corner axes.",
+  "inset_mm": 2.0,
+  "corner_y_mm": 57.0,
+  "corner_z_mm": [
+    8,
+    120
+  ],
+  "body_boss_back_x_mm": -62.2,
+  "body_boss_front_x_mm": -56.2,
+  "clearance_hole_diameter_mm": 3.4,
+  "bolt": "M3x16 nominal, class 8.8 candidate",
+  "washer": "OD7 / ID3.2 / thickness0.5 mm nominal",
+  "nut": "circumscribed OD6.4 / thickness2.4 mm, thread placeholder",
+  "inner_washer_count": 2,
+  "driver_model": "wera_2069_envelope",
+  "tool_source": "https://hybris-media.wera.de/download/pdfgenerator-datasheets/en/05118126001.pdf",
+  "wera_candidate": {
+    "part_number": "05118126001",
+    "tip_mm": 5.5,
+    "blade_diameter_mm": 7.8,
+    "blade_length_mm": 60,
+    "handle_length_mm": 97,
+    "overall_max_diameter_mm": 13,
+    "cavity_depth_mm": 8,
+    "cavity_status": "assumed, not specified by source"
+  },
+  "tool": "OD8 socket over full nut thickness plus 25 mm access, ID6.4 x8 mm cavity; purchased tool not yet specified",
+  "criteria": {
+    "intersection_mm3": 0.01,
+    "tool_residual_clearance_mm": 0.5,
+    "surface_tolerance_each_mm": 0.2,
+    "minimum_nominal_thread_projection_mm": 1.0
+  },
+  "source_sha256": {
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/body_shroud.step": "89008624473c666084f44ab67707cb6ea80971728e39a5d269f9a2c801c517ce",
+    "validation/back_cover_development_v1/backplate_2mm_v3/rear_structural_plate.step": "cd7e9eef74c043914ddd12bcecacfeeedf0b87b1823b9cb48bf79f4e1233d708"
+  },
+  "limitations": [
+    "nominal component envelopes",
+    "no screw preload or strength proof",
+    "neutral pose assembly subset",
+    "body boss root still unverified"
+  ]
+}
