@@ -48,3 +48,15 @@ LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bi
 構造板候補の左右同時荷重では、最大変位0.022879 mm、最大絶対主応力12.73405 MPaとなり、今回の単一時刻・理想四隅固定の予備基準を満たした。左右解の重ね合わせ検査も合格。メッシュ収束、全荷重ケース、胴体・締結の柔軟性と追加質量を含む評価は未完了であり、EPICの合格とはしない。
 
 解析計画・ネイティブ場・メッシュ・CAD・DXF・材料設定・コードスナップショットは`validation/back_cover_development_v1`に保存した。
+
+## 3段階メッシュの判定
+
+同じ形状・材料・荷重・拘束で4/3/2 mmメッシュを比較した。左右同時荷重の最大変位は0.022690/0.022879/0.022820 mm、最大絶対主応力は13.9168/12.7341/14.5742 MPa。最後の2段階を細かい側の値で割った相対差は、変位0.257%、最大主応力12.626%、von Mises応力5.752%。既定の変位5%・応力10%の収束判定は**不合格**。応力の絶対値が材料許容以下でも、収束した設計とは扱わない。
+
+最大主応力の評価点は、4/3 mmではy≈54.6、z≈116.3 mm、2 mmではy≈56.4、z≈13.0 mmであり、いずれも四隅の固定領域付近にある。粗密で最大点が移る。固定領域を面重心で選択する近似と理想拘束の境界が関与する可能性があり、接触面を幾何学的に分割したメッシュと実際の接合条件で再評価する必要がある。最大点を除外して合格へ変更しない。
+
+追加の場・メッシュ・判定・反力・コード・ハッシュは`validation/backplate_convergence_development_v1`に保存。3 mmの証跡は既存の`validation/back_cover_development_v1/backplate_load_v1`を使用する。
+
+```sh
+.venv-engineering/bin/python software/sim/structural/check_backplate_convergence.py --analyses validation/backplate_convergence_development_v1/backplate_load_4mm_v1 validation/back_cover_development_v1/backplate_load_v1 validation/backplate_convergence_development_v1/backplate_load_2mm_v1 --out outputs/backplate_convergence_new
+```
