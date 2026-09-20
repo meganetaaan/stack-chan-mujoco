@@ -33,3 +33,23 @@
 ```
 
 `--case` は `normal`, `no_fault`, `primary_open`, `secondary_open`, `both_open`。遅延なしは `--converter-delay-ms 0`。計画・ネットリスト・ログ・結果・可逆圧縮した生波形を `validation/startup_hold_development_v1` に保存した。
+
+## しきい値・抵抗・入力電流の追加条件
+
+`validation/startup_hold_corner_development_v1` に追加6試行を保存した。DC/DCの1 ms遅延、監視IC450 µs起動待ちを維持し、各条件で通常負荷と主経路開放を確認した。部品仕様の上昇・下降しきい値と最大ヒステリシスに整合する組を選んだ。入力電流±25 nAはデータシート記載の入力6.5 Vにおける値をモデル全域へ適用する仮定で、全入力電圧における保証とは扱わない。
+
+|条件|上側/下側抵抗公差|上昇/下降しきい値 mV|入力電流 nA|バス解除/再保持 V|
+|---|---|---|---:|---|
+|早い解除|−1%/+1%|396/387|−25|4.09279/3.99972|
+|遅い解除|+1%/−1%|404/400|+25|4.33431/4.29142|
+|最大ヒステリシス|+1%/−1%|404/392|+25|4.33431/4.20564|
+
+解除電圧は `Vthreshold × (1 + Rtop/Rbottom) + Ibias × Rtop` で計算した。6試行すべて起動ゲート最大0.114631 V未満、吸込み電流0.805304 mA未満。通常時バス最大5.143602 V未満、主経路開放で5.671822 V未満となり、以前と同じ開発基準に合格した。
+
+これらは選んだ公差条件での確認であり、電源全体の最悪条件網羅ではない。監視IC伝播遅延、出力特性、公差以外の温度影響、電池・DC/DC・配線・蓄電容量の組合せ、低電圧復帰を今後の評価に残す。
+
+```sh
+.venv-engineering/bin/python software/sim/circuits/run_startup_hold.py \
+  --converter-delay-ms 1 --uv-corner late --case primary_open \
+  --out outputs/startup_hold_corner_reproduction
+```
