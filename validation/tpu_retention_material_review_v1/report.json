@@ -1,0 +1,48 @@
+{
+  "comparison": [
+    {
+      "orientation": "XY",
+      "engineering_strain": 0.5,
+      "reported_MPa": 8.3,
+      "neo_hookean_prediction_MPa": 17.02962962962963,
+      "relative_error": 1.051762605979473
+    },
+    {
+      "orientation": "XY",
+      "engineering_strain": 1.0,
+      "reported_MPa": 10.5,
+      "neo_hookean_prediction_MPa": 28.233333333333334,
+      "relative_error": 1.688888888888889
+    },
+    {
+      "orientation": "XY",
+      "engineering_strain": 3.0,
+      "reported_MPa": 20.3,
+      "neo_hookean_prediction_MPa": 63.525,
+      "relative_error": 2.129310344827586
+    },
+    {
+      "orientation": "ZX",
+      "engineering_strain": 0.5,
+      "reported_MPa": 7.9,
+      "neo_hookean_prediction_MPa": 16.431481481481484,
+      "relative_error": 1.0799343647444917
+    },
+    {
+      "orientation": "ZX",
+      "engineering_strain": 1.0,
+      "reported_MPa": 9.9,
+      "neo_hookean_prediction_MPa": 27.24166666666667,
+      "relative_error": 1.7516835016835022
+    }
+  ],
+  "model_qualified": false,
+  "insertion_geometry": {
+    "head_diameter_mm": 8,
+    "hole_diameter_mm": 6,
+    "uniform_radial_stretch_hypothesis": 0.75,
+    "incompressible_axial_stretch_under_uniform_biaxial_squeeze": 1.7777777777777777,
+    "note": "Hypothetical uniform squeeze only; actual folding/contact strain is unknown, no insertion force inferred."
+  },
+  "conclusion": "Single-parameter model based on initial modulus cannot reproduce listed large-strain points; do not qualify snap insertion with this law."
+}
