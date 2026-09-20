@@ -3,12 +3,13 @@ import argparse,json,hashlib,math
 from pathlib import Path
 import gmsh,meshio,numpy as np
 from skfem.io import from_meshio
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args()
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--mesh-mm',type=float,nargs='+',default=[1,.7,.5]);p.add_argument('--out',type=Path,required=True);a=p.parse_args()
 root=Path(__file__).resolve().parents[3]
+if not all(np.isfinite(h) and h>0 for h in a.mesh_mm):p.error('positive finite mesh sizes required')
 if a.out.exists():p.error('new output required')
 a.out.mkdir(parents=True)
 source=root/'validation/boot_nut_seat_fe_development_v1/local_seat.step';expected=16-math.pi*1.15**2
-plan={'scope':__doc__,'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'nut_patch_xy_mm':{'x':[-36,-32],'y':[-16.5,-12.5]},'patch_z_mm':-14.6,'expected_patch_area_mm2':expected,'mesh_mm':[1,.7,.5],'criteria':{'cad_area_error_mm2':1e-6,'mesh_area_relative_error':.01,'volume_change_mm3':1e-6},'limitations':['Surface partition only; not a unilateral contact solve.','Nominal square nut face with circular through-hole; no nut edge chamfer.']}
+plan={'scope':__doc__,'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'nut_patch_xy_mm':{'x':[-36,-32],'y':[-16.5,-12.5]},'patch_z_mm':-14.6,'expected_patch_area_mm2':expected,'mesh_mm':a.mesh_mm,'criteria':{'cad_area_error_mm2':1e-6,'mesh_area_relative_error':.01,'volume_change_mm3':1e-6},'limitations':['Surface partition only; not a unilateral contact solve.','Nominal square nut face with circular through-hole; no nut edge chamfer.']}
 (a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n');rows=[]
 for size in plan['mesh_mm']:
  gmsh.initialize()

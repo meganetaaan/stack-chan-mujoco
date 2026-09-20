@@ -2,12 +2,12 @@
 import argparse,collections,hashlib,json,os,subprocess
 from pathlib import Path
 import meshio,numpy as np
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--reverse-contact',action='store_true');p.add_argument('--out',type=Path,required=True);p.add_argument('--mesh-mm',choices=['1','0.7','0.5'],default='0.7');a=p.parse_args()
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--boot-mesh-dir',type=Path);p.add_argument('--yoke-mesh-dir',type=Path);p.add_argument('--reverse-contact',action='store_true');p.add_argument('--out',type=Path,required=True);p.add_argument('--mesh-mm',default='0.7');a=p.parse_args()
 root=Path(__file__).resolve().parents[3]
 if a.out.exists():p.error('new output required')
 a.out.mkdir(parents=True)
-paths={'BOOT':root/f'validation/boot_nut_patch_development_v1/seat_{a.mesh_mm}.msh','YOKE':root/f'validation/local_yoke_contact_mesh_v1/yoke_{a.mesh_mm}.msh'}
-plan={'scope':__doc__,'reverse_contact':a.reverse_contact,'mesh_mm':float(a.mesh_mm),'force_each_N':20,'penalty_N_mm3':1e6,'E_MPa':1120,'poisson':.35,'source_sha256':{str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in paths.values()},'criteria':{'solver_completion':True,'relative_anchor_force':1e-4,'maximum_penetration_mm':.01},'limitations':['Cropped geometry with free cut faces, not full yoke/boot.','Balanced nominal forces substitute screw/nut elasticity and actual preload.','Single C3D4 mesh; no creep or walking loads.']}
+paths={'BOOT':(a.boot_mesh_dir or root/'validation/boot_nut_patch_development_v1')/f'seat_{a.mesh_mm}.msh','YOKE':(a.yoke_mesh_dir or root/'validation/local_yoke_contact_mesh_v1')/f'yoke_{a.mesh_mm}.msh'}
+plan={'scope':__doc__,'reverse_contact':a.reverse_contact,'mesh_mm':float(a.mesh_mm),'force_each_N':20,'penalty_N_mm3':1e6,'E_MPa':1120,'poisson':.35,'source_sha256':{str(f.resolve().relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in paths.values()},'criteria':{'solver_completion':True,'relative_anchor_force':1e-4,'maximum_penetration_mm':.01},'limitations':['Cropped geometry with free cut faces, not full yoke/boot.','Balanced nominal forces substitute screw/nut elasticity and actual preload.','Single C3D4 mesh; no creep or walking loads.']}
 (a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
 lines=['*HEADING',__doc__];offset=0;eo=0;anchors=[];constraints=[];loads={};total_force=np.zeros(3);total_moment=np.zeros(3);node_xyz={}
 face_indices=[(0,1,2),(0,3,1),(1,3,2),(2,3,0)]

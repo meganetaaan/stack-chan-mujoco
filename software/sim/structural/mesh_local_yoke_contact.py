@@ -3,12 +3,13 @@ import argparse,hashlib,json,math
 from pathlib import Path
 import cadquery as cq
 import gmsh,meshio,numpy as np
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args()
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--mesh-mm',type=float,nargs='+',default=[1,.7,.5]);p.add_argument('--out',type=Path,required=True);a=p.parse_args()
 root=Path(__file__).resolve().parents[3]
+if not all(np.isfinite(h) and h>0 for h in a.mesh_mm):p.error('positive finite mesh sizes required')
 if a.out.exists():p.error('new output required')
 a.out.mkdir(parents=True)
 source=root/'validation/native_horn_yoke_development_v1/v4/left_foot_yoke.step'
-plan={'scope':__doc__,'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'crop_xy_mm':[[-38,-30],[-18.5,-10.5]],'crop_z_mm':[-19,-16],'patches':{'boot_contact':{'z':-16,'radius':3},'head_bearing':{'z':-19,'radius':1.9}},'hole_radius_mm':1.15,'mesh_mm':[1,.7,.5],'criteria':{'cad_area_error_mm2':1e-6,'mesh_area_relative_error':.01,'volume_change_mm3':1e-6},'limitations':['Cut side faces omit surrounding yoke stiffness.','Nominal patches, no screw-head fillet or tolerance.','Mesh preparation only; not a contact solve.']}
+plan={'scope':__doc__,'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'crop_xy_mm':[[-38,-30],[-18.5,-10.5]],'crop_z_mm':[-19,-16],'patches':{'boot_contact':{'z':-16,'radius':3},'head_bearing':{'z':-19,'radius':1.9}},'hole_radius_mm':1.15,'mesh_mm':a.mesh_mm,'criteria':{'cad_area_error_mm2':1e-6,'mesh_area_relative_error':.01,'volume_change_mm3':1e-6},'limitations':['Cut side faces omit surrounding yoke stiffness.','Nominal patches, no screw-head fillet or tolerance.','Mesh preparation only; not a contact solve.']}
 (a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
 shape=cq.importers.importStep(str(source)).val().intersect(cq.Workplane('XY').box(8,8,3).val().translate((-34,-14.5,-17.5)))
 if not shape.isValid() or len(shape.Solids())!=1:raise ValueError('invalid crop')
