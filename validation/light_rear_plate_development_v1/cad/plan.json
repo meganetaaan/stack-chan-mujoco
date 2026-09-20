@@ -1,0 +1,31 @@
+{
+  "scope": "Cut rounded interior windows while retaining rear-plate contact patches.",
+  "windows_mm": [
+    {
+      "y_min": -45,
+      "y_max": 45,
+      "z_min": 18,
+      "z_max": 44
+    },
+    {
+      "y_min": -45,
+      "y_max": 45,
+      "z_min": 96,
+      "z_max": 110
+    }
+  ],
+  "corner_radius_mm": 3,
+  "criteria": {
+    "one_valid_solid": true,
+    "contact_area_change_max_mm2": 0.001,
+    "minimum_mass_saving_g": 5
+  },
+  "source_sha256": {
+    "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/rear_structural_plate.step": "604f5385918959d2066bd24234d591b3490692194ad2a4bea4ebbd1d5599f62d",
+    "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/body_shroud.step": "8de9bb8c59896372a4c07b6f108cd7490ea58219cfb9def69e2bc880cd36580d"
+  },
+  "limits": [
+    "Geometric screening only; structural stiffness, stress and buckling must be recomputed.",
+    "Preserved nominal contact does not establish bolt preload or load-path strength."
+  ]
+}
