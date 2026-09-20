@@ -1,0 +1,38 @@
+{
+  "scope": "Measure nominal fastener bearing faces for subsequent preload/contact analysis.",
+  "criteria": {
+    "positive_bearing_area_mm2": 0,
+    "overlap_max_mm3": 0.01
+  },
+  "screening_loads_N": [
+    10,
+    20,
+    40
+  ],
+  "source_sha256": {
+    "validation/boot_low_head_candidate_v1/cad/left_boot_shell.step": "bd17f19ec7269c33183c59bec92a5b2abac3aeb16b34c5dba8ad7f9709b22473",
+    "validation/boot_low_head_candidate_v1/cad/right_boot_shell.step": "67d00806c1a504cb13f98c22dbe1fb9f6df9c782099da80f65a4cc29f3c658fc",
+    "validation/native_horn_yoke_development_v1/v4/left_foot_yoke.step": "caa258c44b00ef85212f334087a6e16f81b3e7e2eba1ef029f7b421b307995a8",
+    "validation/native_horn_yoke_development_v1/v4/right_foot_yoke.step": "2e021b37af6c001ead6399d8356eb6d5e2dfa065b8d9e06ed9613bee358a4133",
+    "validation/captive_boot_hardware_development_v1/left_-34_-14.5_nut.step": "40070233bd794b14f91edcc21e7872f9df510ba7e5b71a8fb12a930092e27697",
+    "validation/captive_boot_hardware_development_v1/left_-34_-14.5_screw.step": "4725a532f2a1f8d6f98a8c485d50ac8aa685220d71428e3e6000c245b636f489",
+    "validation/captive_boot_hardware_development_v1/left_-34_26.5_nut.step": "90926f59c3e2a28d1ef9273013b502b5505149d36b6ce26d788276418799ac1a",
+    "validation/captive_boot_hardware_development_v1/left_-34_26.5_screw.step": "14d1e969c087f44202002c32826f47687e9eb0abda35a7de826fb2dc18fd4e7c",
+    "validation/captive_boot_hardware_development_v1/left_36_-14.5_nut.step": "715ef1cdbb560aa04fe28b33872fa12e171b65eec5808844f90585307f06c32b",
+    "validation/captive_boot_hardware_development_v1/left_36_-14.5_screw.step": "678e26bf3341199aa5951a1df5cb6a29d53381e1f5fa102c124b6779b7b4f815",
+    "validation/captive_boot_hardware_development_v1/left_36_26.5_nut.step": "b9a5147209ce7443a046b076f912da509a3404b2be7b55c6f505f1573aa1f76f",
+    "validation/captive_boot_hardware_development_v1/left_36_26.5_screw.step": "bc09413bd2cde9c3fa6476d7353cdb1ab7e364cdfa93aff54a6cfdbbff466914",
+    "validation/captive_boot_hardware_development_v1/right_-34_-26.5_nut.step": "53678aeaa1452a3e2a0ba9c1d5fa6835fe7cd2dce1ce4b9d15719c3a5461be9b",
+    "validation/captive_boot_hardware_development_v1/right_-34_-26.5_screw.step": "3a13f8a216e2c20f2ef93413ab9f9075fbcb1b6abf15671ce47a3802494250b2",
+    "validation/captive_boot_hardware_development_v1/right_-34_14.5_nut.step": "0f951b4803b4b636a1885a8cd113cfce57190e797dd9fff90491f1cb46a8555a",
+    "validation/captive_boot_hardware_development_v1/right_-34_14.5_screw.step": "4532338d4c41519d3cfd6a960388dc065c9b93d5f2b52c9fa189bee9468902b4",
+    "validation/captive_boot_hardware_development_v1/right_36_-26.5_nut.step": "4b1e45833906a0a20584330c0d0cfaa86a4bd8fd6049c21827be20eec3ed2a2a",
+    "validation/captive_boot_hardware_development_v1/right_36_-26.5_screw.step": "39015a2794364b259029b0158f1d35ea328055bfc4ebe2a274437f0f3345d604",
+    "validation/captive_boot_hardware_development_v1/right_36_14.5_nut.step": "7cbd0ae1889d64eef0140538394f5b5bfb0c1564213f06bde09133ecf55a8e7a",
+    "validation/captive_boot_hardware_development_v1/right_36_14.5_screw.step": "b257f76fd998a3a7eeed8d64bf90db91f804c9eea4b583167fd4356e241e7b00"
+  },
+  "limitations": [
+    "Mean force/area only; local contact pressure, bending, creep, thread and pull-through strength remain unverified.",
+    "Screening forces are not approved preload or manufacturer requirements."
+  ]
+}
