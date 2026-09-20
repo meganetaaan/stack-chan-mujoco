@@ -12,6 +12,7 @@ from compare_candidate_base_mass import aggregate
 
 p = argparse.ArgumentParser(description=__doc__)
 p.add_argument('--out', type=Path, required=True)
+p.add_argument('--support-dir', type=Path, help='Alternative left/right development support STEPs, PETG density 1270')
 p.add_argument('--rear-plate', type=Path, help='Alternative development STEP, same base frame, aluminum density 2700')
 p.add_argument('--case', choices=['full','mass_only','com_only','inertia_only'], default='full', help='Diagnostic single-property changes are not manufacturable designs')
 p.add_argument('--residual-grams', type=float, required=True, help='Assumed harness and unlisted hardware mass; not a qualified budget')
@@ -36,6 +37,15 @@ if a.rear_plate:
     records['rear_cover'] = dict(mass_kg=shape.Volume()*2700e-9,
         com_base_m=(np.array(shape.Center().toTuple())/1000).tolist(),
         inertia_com_kg_m2=(np.array(cq.Shape.matrixOfInertia(shape))*2700e-15).tolist())
+if a.support_dir:
+    for side in ('left','right'):
+        name = side+'_yaw_fixed_support'
+        shape = cq.importers.importStep(str(a.support_dir/(name+'.step'))).val()
+        if not shape.isValid() or len(shape.Solids()) != 1:
+            raise ValueError('Valid single-solid support required')
+        records[name] = dict(mass_kg=shape.Volume()*1270e-9,
+            com_base_m=(np.array(shape.Center().toTuple())/1000).tolist(),
+            inertia_com_kg_m2=(np.array(cq.Shape.matrixOfInertia(shape))*1270e-15).tolist())
 base = aggregate(records)
 source = root/'software/sim/mujoco/assets/r9_fast_turn_v1'
 full_base = base
@@ -70,5 +80,10 @@ plan = dict(scope=__doc__, case=a.case, full_candidate_base=full_base, residual_
 if a.rear_plate:
     plan['alternative_rear_plate'] = str(a.rear_plate)
     plan['source_sha256'][str(a.rear_plate)] = hashlib.sha256(a.rear_plate.read_bytes()).hexdigest()
+if a.support_dir:
+    plan['alternative_support_directory'] = str(a.support_dir)
+    for side in ('left','right'):
+        f = a.support_dir/(side+'_yaw_fixed_support.step')
+        plan['source_sha256'][str(f)] = hashlib.sha256(f.read_bytes()).hexdigest()
 (a.out/'mass_plan.json').write_text(json.dumps(plan,indent=2)+'\n')
 print(json.dumps(base))

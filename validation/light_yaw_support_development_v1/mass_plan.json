@@ -1,0 +1,76 @@
+{
+  "scope": "Build separate mass-only sensitivity plant; original collision geometry retained.",
+  "case": "full",
+  "full_candidate_base": {
+    "mass_kg": 0.6293329487487556,
+    "com_m": [
+      -0.0007907798317172128,
+      7.272785536649595e-06,
+      0.07407948962731645
+    ],
+    "inertia_kg_m2": [
+      [
+        0.0014651494722747252,
+        -3.872835544463066e-07,
+        -0.00010730374718101854
+      ],
+      [
+        -3.872835544463066e-07,
+        0.0019389316337090734,
+        -1.4025863488413662e-07
+      ],
+      [
+        -0.00010730374718101854,
+        -1.4025863488413662e-07,
+        0.0021278205007101802
+      ]
+    ]
+  },
+  "residual_mass_grams": 25.0,
+  "base": {
+    "mass_kg": 0.6293329487487556,
+    "com_m": [
+      -0.0007907798317172128,
+      7.272785536649595e-06,
+      0.07407948962731645
+    ],
+    "inertia_kg_m2": [
+      [
+        0.0014651494722747252,
+        -3.872835544463066e-07,
+        -0.00010730374718101854
+      ],
+      [
+        -3.872835544463066e-07,
+        0.0019389316337090734,
+        -1.4025863488413662e-07
+      ],
+      [
+        -0.00010730374718101854,
+        -1.4025863488413662e-07,
+        0.0021278205007101802
+      ]
+    ]
+  },
+  "source_sha256": {
+    "validation/candidate_base_mass_development_v1/report.json": "3c16c904fdee458eb88c926f8f7de12f2d583ec9ed0962a2d849d522b58dc07d",
+    "validation/fastener_allowance_development_v1/report.json": "982707cdc24f18049a14fba77c7bda15afcfcbb8ee719b17f166a8781368844b",
+    "outputs/light_rear_plate_v1/rear_structural_plate.step": "bf9b5e0d1e8a356cebf2395aa45856fbaf620310a005e11f70027aa889436e8d",
+    "outputs/light_yaw_support_v1/left_yaw_fixed_support.step": "f594759db4cbb29fddaf820c4232082813ffaef3cd6c744058d733c2d207a5a7",
+    "outputs/light_yaw_support_v1/right_yaw_fixed_support.step": "ed17382e80a6d125d9a910c109ca92abd0f1993b8de962de1abc16c36922b393"
+  },
+  "criteria": {
+    "finite_simulation_required": true,
+    "duration_s": 7,
+    "turn_error_limit_deg": 1,
+    "turn_target_abs_deg": 90
+  },
+  "limitations": [
+    "Original visual and collision geometry retained: not candidate interference acceptance.",
+    "Residual mass and its location are sensitivity assumptions, not a released harness design.",
+    "Hardware envelopes use assumed density and nominal geometry.",
+    "Only base inertia changed; original turn controller and motor parameters retained."
+  ],
+  "alternative_rear_plate": "outputs/light_rear_plate_v1/rear_structural_plate.step",
+  "alternative_support_directory": "outputs/light_yaw_support_v1"
+}
