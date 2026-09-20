@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "status": "pre-trial engineering assumptions; not measured printed-part allowables",
+  "PETG": {
+    "product": "Prusament PETG",
+    "source": "https://prusament.com/wp-content/uploads/2022/10/PETG_Prusament_TDS_2021_10_EN.pdf",
+    "source_version": "1.1, 2022-02-16",
+    "density_kg_m3": 1270,
+    "printed_modulus_lower_MPa": 1400,
+    "interlayer_strength_reference_MPa": 14,
+    "reference_derivation": "Published interlayer adhesion 18 +/- 4 MPa; 14 is a screening value, not a statistical lower confidence bound.",
+    "strength_safety_factor": 2,
+    "nominal_allowable_MPa": 7,
+    "sensitivity_stiffness_multiplier": [0.8, 1.0],
+    "sensitivity_strength_multiplier": [0.8, 1.0],
+    "poisson_ratio_assumed": 0.35,
+    "poisson_ratio_cases": [0.3, 0.35, 0.4],
+    "constitutive_model": "isotropic linear elastic compliance screen; weakest reported adhesion used for all principal directions and von Mises limit",
+    "print": {"layer_mm": 0.2, "infill_percent": 100, "infill": "rectilinear", "nozzle_C": 250, "bed_C": 80},
+    "limitations": [
+      "No measured orthotropic stiffness matrix or compression/shear strength is available.",
+      "Using adhesion/2 for stress modes is an engineering screening rule, not a validated failure surface.",
+      "The 0.8 multiplier explores uncertainty; it is not a measured temperature law.",
+      "Creep, print defects and cyclic degradation are not certified by a static solve.",
+      "Build orientation and physical sample verification remain necessary."
+    ]
+  }
+}
