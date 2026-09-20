@@ -1,0 +1,50 @@
+Recorded-load averaged supply probe
+Vbattery battery 0 7.4
+Rb battery vin .1
+Cin vin 0 100u
+Vref reference 0 PWL(0 0 .005 5.0)
+Bconverter drive 0 V=max(0,min(V(reference),V(vin)-.6))
+Drect drive rect DAVG
+.model DAVG D(IS=1e-12 N=.01 RS=.001)
+Lout rect internal 1u
+Rout internal rail .03
+Cout rail 0 0.001
+Rwire rail bus .02
+Vwave wave 0 PWL(
++ 0 0
++ 0.05 0
++ 0.051 0.3
++ 0.099 0.3
++ 0.1 -1
++ 0.12 -1
++ 0.121 0
++ 0.15 0
++ )
+Bload bus 0 I=V(wave)
+Binput vin 0 I=max(V(drive)*I(Lout),0)/(.85*max(V(vin),.5))
+Bcontroller vin 0 I=3/max(V(vin),.5)
+* Comparator and dissipative brake candidate
+Rtop bus sense 11800.0
+Rbottom sense 0 10000.0
+Rfeedback gate sense 1000000.0
+Rpull bus gate 2200
+Cgate gate 0 1.5e-09
+Rbias bus refbrake 2200
+Bref refbrake 0 V=min(2.495,max(V(bus)-1,0))
+Berror cmp 0 V=V(refbrake)-V(sense)+0.0
+Rlag cmp cmpfilter 10000
+Clag cmpfilter 0 5e-10
+Ssink gate 0 cmpfilter 0 SCOMP
+.model SCOMP SW(RON=50 ROFF=1e9 VT=0 VH=.001)
+Rbrake bus drain 4.7
+Sbrake drain 0 gate 0 SMOS
+.model SMOS SW(RON=0.05 ROFF=1e9 VT=2.5 VH=.05)
+Bquiescent bus 0 I=.0008
+.control
+set wr_singlescale
+set wr_vecnames
+tran 1u 0.15 0 1u uic
+wrdata trace.dat v(battery) v(vin) v(drive) v(rect) v(internal) v(rail) v(bus) i(Vbattery) i(Lout) v(wave) v(gate) v(drain) v(sense) v(refbrake)
+quit
+.endc
+.end
