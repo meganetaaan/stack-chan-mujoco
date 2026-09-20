@@ -1,0 +1,36 @@
+{
+  "scope": "Full-yoke static screening with rigid horn supports and equivalent sole traction.",
+  "mesh_mm": 3,
+  "source_case": "actuator_fullbody_load_left_v1_left",
+  "sample_index": 2446,
+  "time_s": 2.4469999999998415,
+  "wrench_N_Nmm": [
+    -0.19542192416201284,
+    0.011131575224837313,
+    8.451593845949999,
+    -206.31602237946942,
+    -81.84953764921484,
+    -39.019257543019215
+  ],
+  "origin_mm": [
+    1,
+    6,
+    -19
+  ],
+  "E_MPa": 1120,
+  "poisson": 0.35,
+  "criteria": {
+    "displacement_mm": 0.2,
+    "absolute_principal_MPa": 5.6
+  },
+  "source_sha256": {
+    "validation/native_horn_yoke_development_v1/v4/left_foot_yoke.step": "caa258c44b00ef85212f334087a6e16f81b3e7e2eba1ef029f7b421b307995a8",
+    "validation/ankle_mount_load_mapping_v1/actuator_fullbody_load_left_v1_left.npz": "a496a2fdff40566f28180305bc6764f3883a1fbf2de8a37be838b6dca806fecc",
+    "validation/ankle_mount_load_mapping_v1/report.json": "46622bdced17f0c83de0bef3818e719415246a529dde1f20dca482f71d3e743b"
+  },
+  "limitations": [
+    "Rigid clamping of horn annuli overestimates support stiffness.",
+    "Affine sole traction is an equivalent static load, not measured pressure; inertia and actual contact distribution omitted.",
+    "Single mesh, no bolt contact, anisotropy, creep or buckling; not acceptance."
+  ]
+}
