@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 import cadquery as cq
+import numpy as np
 
 
 def main():
@@ -31,7 +32,9 @@ def main():
         shape = cq.importers.importStep(str(path)).val()
         volume = shape.Volume()
         rows.append(dict(path=str(path.relative_to(root)), sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
-                         volume_mm3=volume, mass_kg=volume*1e-9*8000))
+                         volume_mm3=volume, mass_kg=volume*1e-9*8000,
+                         com_base_m=(np.array(shape.Center().toTuple())/1000).tolist(),
+                         inertia_com_kg_m2=(np.array(cq.Shape.matrixOfInertia(shape))*8000e-15).tolist()))
     total = sum(r['mass_kg'] for r in rows)
     report = dict(scope=__doc__, density_assumed_kg_m3=8000,
                   criteria={'allowance_must_cover_listed_hardware_kg': .025},

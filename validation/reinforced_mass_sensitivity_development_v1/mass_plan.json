@@ -1,0 +1,45 @@
+{
+  "scope": "Build separate mass-only sensitivity plant; original collision geometry retained.",
+  "residual_mass_grams": 25.0,
+  "base": {
+    "mass_kg": 0.6546950411699151,
+    "com_m": [
+      -0.0029443316907108046,
+      6.991046639457068e-06,
+      0.07353608944929885
+    ],
+    "inertia_kg_m2": [
+      [
+        0.001513307042779336,
+        -3.9714036898644894e-07,
+        -0.00012919225268809804
+      ],
+      [
+        -3.9714036898644894e-07,
+        0.0020469156661046223,
+        -1.4274577943739285e-07
+      ],
+      [
+        -0.00012919225268809804,
+        -1.4274577943739285e-07,
+        0.0022258474183990597
+      ]
+    ]
+  },
+  "source_sha256": {
+    "validation/candidate_base_mass_development_v1/report.json": "3c16c904fdee458eb88c926f8f7de12f2d583ec9ed0962a2d849d522b58dc07d",
+    "validation/fastener_allowance_development_v1/report.json": "982707cdc24f18049a14fba77c7bda15afcfcbb8ee719b17f166a8781368844b"
+  },
+  "criteria": {
+    "finite_simulation_required": true,
+    "duration_s": 7,
+    "turn_error_limit_deg": 1,
+    "turn_target_abs_deg": 90
+  },
+  "limitations": [
+    "Original visual and collision geometry retained: not candidate interference acceptance.",
+    "Residual mass and its location are sensitivity assumptions, not a released harness design.",
+    "Hardware envelopes use assumed density and nominal geometry.",
+    "Only base inertia changed; original turn controller and motor parameters retained."
+  ]
+}
