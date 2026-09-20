@@ -1,0 +1,30 @@
+{
+  "comparisons": [
+    {
+      "quantity": "displacement",
+      "part": "BOOT",
+      "relative_change": 0.02467972954072528,
+      "limit": 0.05,
+      "passed": true
+    },
+    {
+      "quantity": "displacement",
+      "part": "YOKE",
+      "relative_change": 0.011951817791491681,
+      "limit": 0.05,
+      "passed": true
+    },
+    {
+      "quantity": "peak_pressure",
+      "relative_change": 0.11372368555011803,
+      "limit": 0.1,
+      "passed": false
+    }
+  ],
+  "source_sha256": {
+    "validation/boot_yoke_refine_development_v1/contact/evaluation.json": "30ceb6b638c9b63be947955b0df8db0411bf033b3707f5e60d7d0a4072421ebe",
+    "outputs/boot_yoke_refine025_v1/contact/evaluation.json": "e683fde1d2da6d3c0f6844a52f4d629c125696a055e64efc047ec119a21963f0"
+  },
+  "numerical_gates_pass": false,
+  "joint_verified": false
+}
