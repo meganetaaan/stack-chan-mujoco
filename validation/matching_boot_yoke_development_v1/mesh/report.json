@@ -1,0 +1,36 @@
+{
+  "patches": [
+    {
+      "part": "BOOT",
+      "patch": "pad_bottom",
+      "mesh_area_mm2": 24.01756372414421,
+      "expected_mm2": 24.11957759793564,
+      "relative_error": 0.004229504989347709
+    },
+    {
+      "part": "BOOT",
+      "patch": "nut_bearing",
+      "mesh_area_mm2": 11.871888786138726,
+      "expected_mm2": 11.8452437156275,
+      "relative_error": 0.0022494320210628134
+    },
+    {
+      "part": "YOKE",
+      "patch": "boot_contact",
+      "mesh_area_mm2": 24.01756372414421,
+      "expected_mm2": 24.11957759793564,
+      "relative_error": 0.004229504989347709
+    },
+    {
+      "part": "YOKE",
+      "patch": "head_bearing",
+      "mesh_area_mm2": 7.140305785790291,
+      "expected_mm2": 7.186393195086652,
+      "relative_error": 0.006413148855794763
+    }
+  ],
+  "matching_contact_triangles": true,
+  "contact_triangles_per_part": 480,
+  "passed": true,
+  "joint_verified": false
+}

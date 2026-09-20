@@ -1,0 +1,17 @@
+{
+  "scope": "Post-run diagnostic comparison; no newly declared acceptance gate.",
+  "baseline": "validation/boot_yoke_mesh_sensitivity_v1/h0.5/evaluation.json",
+  "baseline_sha256": "6605267ae23292c9fdbe242c02017d46b6ad7dbe22a1045d99055ce19839175f",
+  "pressure_relative_change": -0.609580457191,
+  "displacement_relative_change": {
+    "BOOT": 0.0043351563957423345,
+    "YOKE": -0.0027909715216256625
+  },
+  "mesh_convergence_verified": false,
+  "joint_strength_verified": false,
+  "limitations": [
+    "Same nominal geometry, material and load; interior tetrahedralization also changes, so effect cannot be assigned exclusively to contact triangles.",
+    "Small negative pressure in solver output is retained; no clipping applied.",
+    "20 N hypothetical preload, cropped free boundaries; no walking load or full assembly qualification."
+  ]
+}
