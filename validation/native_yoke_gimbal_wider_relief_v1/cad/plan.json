@@ -1,0 +1,23 @@
+{
+  "scope": "Open the lower bridge center to clear the native idler-mounted yoke.",
+  "cut_x_mm": [
+    -55.4,
+    -53
+  ],
+  "cut_z_mm": [
+    -18.8,
+    -16.4
+  ],
+  "cut_y_relative_to_center_mm": [
+    -16.05,
+    16.05
+  ],
+  "criteria": {
+    "valid_single_solid": true,
+    "neutral_yoke_overlap_max_mm3": 0.01
+  },
+  "limitations": [
+    "Removal changes stiffness and load path; strength must be recomputed",
+    "No whole-robot clearance or screw qualification"
+  ]
+}
