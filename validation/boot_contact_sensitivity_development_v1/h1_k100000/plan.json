@@ -1,0 +1,25 @@
+{
+  "scope": "Unilateral local boot-seat contact probe against an ideal fixed support block.",
+  "source_sha256": "fb9290b500f6abe6e346cfdcd1f3cce278b345836085220070d5539b12f177b7",
+  "force_N": 20,
+  "mesh_mm": 1.0,
+  "penalty_N_mm3": 100000.0,
+  "material": {
+    "E_MPa": 1120,
+    "poisson": 0.35
+  },
+  "anchors": {
+    "xy_node": 214,
+    "y_node": 35
+  },
+  "criteria": {
+    "solver_completion": true,
+    "relative_force_balance": 0.0001,
+    "penetration_mm": 0.01
+  },
+  "limitations": [
+    "C3D4 single mesh; not comparable directly to quadratic FE peaks.",
+    "Ideal fixed support block; no deformable yoke or actual nut contact.",
+    "No walking loads, creep, thread or fastener preload qualification."
+  ]
+}
