@@ -1,0 +1,29 @@
+{
+  "scope": "Check revised boot/yoke overlap, mounting axes and retained material near holes.",
+  "criteria": {
+    "overlap_max_mm3": 0.01,
+    "hole_count_per_part": 4,
+    "axis_match_tolerance_mm": 1e-06,
+    "hole_radius_mm": 1.15,
+    "protected_hole_neighborhood_radius_mm": 3,
+    "protected_z_mm": [
+      -20,
+      -12
+    ],
+    "protected_removed_max_mm3": 1e-06
+  },
+  "source_sha256": {
+    "validation/boot_rear_relief_development_v1/cad/left_boot_shell.step": "f14dfb0fbf63c3ab92a978749838eab6afe199b3575ef7952cdeb94269d26799",
+    "validation/native_horn_yoke_development_v1/v4/left_foot_yoke.step": "caa258c44b00ef85212f334087a6e16f81b3e7e2eba1ef029f7b421b307995a8",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/left_boot_shell.step": "1a2b00690b82e3028b15fc6fd5e77a731c51dd4523d2d2df0bebe7c49ae49ce7",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/left_foot_yoke.step": "9b22088ef664634004479934005171165390b9306ba20fb5a768fb4242c3b807",
+    "validation/boot_rear_relief_development_v1/cad/right_boot_shell.step": "c20b1f787b4460ba6d3d4931275bb5b65f83ef77b94f9ef5485149885c2c32af",
+    "validation/native_horn_yoke_development_v1/v4/right_foot_yoke.step": "2e021b37af6c001ead6399d8356eb6d5e2dfa065b8d9e06ed9613bee358a4133",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/right_boot_shell.step": "bf3fec353786f2931e2cf839c56257a086c2ec1b549f14accaf740aab3e0d327",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/right_foot_yoke.step": "5a8837533aa00798bc1febb5a255c90e7855bc27fd243b347ee266cfb63a7ee9"
+  },
+  "limitations": [
+    "Nominal geometry only; no screw strength, edge-distance qualification, contact preload or elastic deformation.",
+    "Retaining original material does not establish original design adequacy."
+  ]
+}
