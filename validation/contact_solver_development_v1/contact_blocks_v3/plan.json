@@ -1,0 +1,38 @@
+{
+  "scope": "Verify unilateral face contact against a series-compliance block solution.",
+  "units": "mm, N, MPa",
+  "area_mm2": 100.0,
+  "height_each_mm": 2.0,
+  "young_MPa": [
+    1120.0,
+    68300.0
+  ],
+  "poisson": 0.0,
+  "compression_mm": 0.01,
+  "opening_mm": 0.01,
+  "penalty_N_mm3": [
+    10000.0,
+    1000000.0
+  ],
+  "mesh_cells_per_side": [
+    2,
+    4
+  ],
+  "criteria": {
+    "relative_reaction_error": 0.01,
+    "opened_force_N": 1e-05,
+    "relative_force_balance": 1e-06,
+    "relative_penalty_law_error": 1e-05,
+    "reclosure_relative_error": 1e-05,
+    "printed_gap_agreement_mm": 1e-08
+  },
+  "analytical_force": "A * compression / (h1/E1 + h2/E2 + 1/K)",
+  "sources": [
+    "https://www.dhondt.de/ccx_2.21.pdf"
+  ],
+  "limitations": [
+    "synthetic flat blocks, not actual robot geometry",
+    "nu=0 and lateral constraints isolate normal compliance",
+    "no friction, screw preload, bending, plasticity or material qualification"
+  ]
+}
