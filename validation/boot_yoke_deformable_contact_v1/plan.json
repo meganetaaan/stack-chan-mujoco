@@ -1,0 +1,22 @@
+{
+  "scope": "Balanced local boot/yoke contact with both actual cropped parts deformable.",
+  "mesh_mm": 0.7,
+  "force_each_N": 20,
+  "penalty_N_mm3": 1000000.0,
+  "E_MPa": 1120,
+  "poisson": 0.35,
+  "source_sha256": {
+    "validation/boot_nut_patch_development_v1/seat_0.7.msh": "f01103744f978e5240d5aa435abee29561410f1bf7e4ba1694df3c50075f8326",
+    "validation/local_yoke_contact_mesh_v1/yoke_0.7.msh": "a2d7d8a60aa8589e84f248bd9a3242617591f3a8e25f681f9ff5bd8a67d48b65"
+  },
+  "criteria": {
+    "solver_completion": true,
+    "relative_anchor_force": 0.0001,
+    "maximum_penetration_mm": 0.01
+  },
+  "limitations": [
+    "Cropped geometry with free cut faces, not full yoke/boot.",
+    "Balanced nominal forces substitute screw/nut elasticity and actual preload.",
+    "Single C3D4 mesh; no creep or walking loads."
+  ]
+}
