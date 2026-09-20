@@ -1,0 +1,217 @@
+{
+  "scope": "Reference feasibility and unassisted servo diagnostic with optional ideal attitude feedback",
+  "hardware_tested": false,
+  "goal_acceptance": false,
+  "physics_executed": true,
+  "speed_request_m_s": 0.1,
+  "step_period_s": 0.23,
+  "reference_mode": "moving-com",
+  "height_offset_mm": -2.0,
+  "com_forward_offset_mm": -3.0,
+  "attitude_feedback": {
+    "angle_gain": 0.0,
+    "rate_gain_s": 0.0,
+    "sensor_model": "ideal MuJoCo body orientation and local angular velocity",
+    "support_weights": "planned support fractions"
+  },
+  "gait": {
+    "nominal_knee_rad": -1.2,
+    "step_length_m": 0.023000000000000003,
+    "step_height_m": 0.004,
+    "shift_s": 0.0805,
+    "swing_s": 0.12650000000000003,
+    "settle_s": 0.023000000000000003,
+    "initial_stand_s": 1.0,
+    "control_hz": 100,
+    "com_inset_mm": 25.0
+  },
+  "planning_failure": null,
+  "source_sha256": {
+    "robot.json": "81f32b0a39c56d09ffc3329bfcd5acb0f99f358761a246d5d436be0780c2ca25",
+    "models/scene.xml": "bc9a75d2ee002602db6d0a2f83bf76caf1bd1bee47471c5007302e2f186c0383",
+    "models/inertials.json": "eeca592922b8ec9f450d92a11d3615b84f028afcce24e41ab3c15245578559d1",
+    "src/tab5_biped/core.py": "9a16813b61435492746dc3cb7d7e765a7a7432e47ab29c266ce011742da5c322",
+    "src/tab5_biped/planner.py": "f54a0a680412715d3f0abbbd9495e5c7aeb255d9ba71fbef76df07e150c7025b"
+  },
+  "probe_sha256": "987f4f232294ea6bb401bbd5d06d2a519c54655a4760b099e976de9284f5fb92",
+  "actuation_sha256": "08fb037114c07e47a52b7b722910dd90edf8f5e78be26adbc8784e0f38fc9351",
+  "mujoco_version": "3.13.0",
+  "event_criteria": {
+    "minimum_airtime_s": 0.08,
+    "minimum_lift_m": 0.002,
+    "landing_contact_confirm_s": 0.04,
+    "minimum_foot_advance_m": 0.004,
+    "event_cooldown_s": 0.25
+  },
+  "supporting_implementation_sha256": {
+    "stackchan_rl/walk_events.py": "0a33e2df8f4442807adf395721a247cfbdb4a8597cca6f6f3f617cd8798286d6",
+    "stackchan_rl/ordered_steps.py": "c7aa08f0fecfd55ba5a7287b5418a58c3636d96d8b3f2bcdaea3d01d1c2be1ea",
+    "stackchan_rl/config.py": "61740892a46f533af6095ca4ab441fa7d35873d45f5c700eeef0915798f563c4"
+  },
+  "reference_metrics": {
+    "sample_count": 766,
+    "complete": true,
+    "peak_quasistatic_torque_Nm": [
+      0.2065435877794562,
+      0.08129291129418266,
+      0.15052363889706533,
+      0.20520746330604842,
+      0.1805368239896736,
+      0.20665281056557208,
+      0.08081438965985649,
+      0.15055166444466422,
+      0.21305116252996528,
+      0.1805368575444352
+    ],
+    "peak_quasistatic_cap_fraction": [
+      0.45898575062101377,
+      0.31266504343916407,
+      0.33449697532681183,
+      0.7892594742540323,
+      0.6943723999602831,
+      0.4592284679234935,
+      0.3108245756148326,
+      0.33455925432147604,
+      0.8194275481921741,
+      0.6943725290170584
+    ],
+    "peak_reference_joint_speed_rad_s": [
+      5.010996574346514,
+      9.199991295108207,
+      6.182849858224692,
+      7.445371755948127,
+      5.010996574346514,
+      5.010245717386434,
+      9.208015156297861,
+      6.661747611092916,
+      7.607338923404766,
+      5.010245717386434
+    ],
+    "peak_reference_speed_no_load_fraction": [
+      0.5907591663880014,
+      0.8529460724381822,
+      0.7289119387640622,
+      0.6902724571549101,
+      0.4645775968682342,
+      0.5906706459459632,
+      0.8536899775863472,
+      0.7853704162489354,
+      0.7052886952049977,
+      0.4645079837050779
+    ],
+    "minimum_cop_edge_margin_m": 0.000999989158690335
+  },
+  "simulation": {
+    "duration_s": 2.9359999999997877,
+    "failure": "self_contact",
+    "failure_pairs": [
+      [
+        "col_left_knee_motor_0",
+        "col_left_ankle_roll_motor_0"
+      ],
+      [
+        "col_left_knee_motor_0",
+        "col_left_ankle_roll_motor_0"
+      ]
+    ],
+    "forward_m": 0.06958650906992801,
+    "max_tilt_deg": 15.909914745752953,
+    "peak_torque_Nm": [
+      0.23750655782455926,
+      0.23615091901284632,
+      0.232304273155723,
+      0.26,
+      0.26,
+      0.2247777921167552,
+      0.22911787515718737,
+      0.2604113804443171,
+      0.26,
+      0.2581150786268114
+    ],
+    "rms_torque_Nm": [
+      0.07906103946679818,
+      0.06740818541799123,
+      0.06526995898418489,
+      0.08874334009565074,
+      0.08343627538574806,
+      0.0739219998981022,
+      0.06874479599462013,
+      0.07133827741155027,
+      0.08685145907760075,
+      0.0820144261994556
+    ],
+    "saturation_fraction": [
+      0.0,
+      0.0,
+      0.0,
+      0.013283378746594006,
+      0.0017029972752043597,
+      0.0,
+      0.0,
+      0.0,
+      0.009196185286103543,
+      0.0
+    ],
+    "external_root_forces_used": false,
+    "step_events": {
+      "qualified_liftoffs": [
+        3,
+        4
+      ],
+      "forward_landings": [
+        2,
+        2
+      ],
+      "forward_landing_sequence": [
+        "left",
+        "right",
+        "left",
+        "right"
+      ],
+      "raw_unloads": [
+        23,
+        43
+      ],
+      "max_sole_clearance_m": [
+        0.008903539565978806,
+        0.006093016508122469
+      ],
+      "event_rejections": {
+        "short_airtime": 59,
+        "low_clearance": 0,
+        "insufficient_other_support": 0,
+        "unconfirmed_touch": 58
+      },
+      "seconds_without_valid_landing": 0.2159999999999762
+    },
+    "valid_landings": [
+      3,
+      2
+    ],
+    "landing_sequence": [
+      "left",
+      "right",
+      "left",
+      "right",
+      "left"
+    ],
+    "control": {
+      "target_slew_rad_s": 6.0,
+      "target_lowpass_s": 0.04,
+      "static_torque_position_compensation": true
+    },
+    "position_target_clipped_fraction": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "completed_reference_without_model_failure": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "scope": "Reference feasibility and unassisted open-loop servo diagnostic",
+  "hardware_tested": false,
+  "goal_acceptance": false,
+  "physics_executed": false,
+  "speed_request_m_s": 0.1,
+  "step_period_s": 0.3,
+  "reference_mode": "moving-com",
+  "height_offset_mm": -5.0,
+  "com_forward_offset_mm": -6.0,
+  "gait": {
+    "nominal_knee_rad": -1.2,
+    "step_length_m": 0.03,
+    "step_height_m": 0.004,
+    "shift_s": 0.105,
+    "swing_s": 0.165,
+    "settle_s": 0.03,
+    "initial_stand_s": 1.0,
+    "control_hz": 100,
+    "com_inset_mm": 20.0
+  },
+  "planning_failure": {
+    "time_s": 1.24,
+    "reason": "Analytic IK exceeds configured joint limits"
+  },
+  "source_sha256": {
+    "robot.json": "a165127b886db2b8442dde518adeb1679e0655876527747c035577949935a75b",
+    "models/scene.xml": "b44a3ac750ef8b3e6bf035039905c85b97d56a4f25539aa5b0e61cb4aa615552",
+    "models/inertials.json": "c9abc51d7a08a3a0daf055b1c828b8d969062c18817c7594710e52f8a24326f1",
+    "src/tab5_biped/core.py": "9a16813b61435492746dc3cb7d7e765a7a7432e47ab29c266ce011742da5c322",
+    "src/tab5_biped/planner.py": "f54a0a680412715d3f0abbbd9495e5c7aeb255d9ba71fbef76df07e150c7025b"
+  },
+  "probe_sha256": "8c729623bad759dc97f80225de1abf772721e1230cceed69c67a0853030346dc",
+  "actuation_sha256": "08fb037114c07e47a52b7b722910dd90edf8f5e78be26adbc8784e0f38fc9351",
+  "mujoco_version": "3.13.0",
+  "event_criteria": {
+    "minimum_airtime_s": 0.08,
+    "minimum_lift_m": 0.002,
+    "landing_contact_confirm_s": 0.04,
+    "minimum_foot_advance_m": 0.004,
+    "event_cooldown_s": 0.25
+  },
+  "supporting_implementation_sha256": {
+    "stackchan_rl/walk_events.py": "0a33e2df8f4442807adf395721a247cfbdb4a8597cca6f6f3f617cd8798286d6",
+    "stackchan_rl/ordered_steps.py": "c7aa08f0fecfd55ba5a7287b5418a58c3636d96d8b3f2bcdaea3d01d1c2be1ea",
+    "stackchan_rl/config.py": "61740892a46f533af6095ca4ab441fa7d35873d45f5c700eeef0915798f563c4"
+  },
+  "reference_metrics": {
+    "sample_count": 62,
+    "complete": false,
+    "peak_quasistatic_torque_Nm": [
+      0.21453330788263053,
+      0.057334784745627754,
+      0.1550494134738614,
+      0.1536412897601902,
+      0.13859171645837692,
+      0.04483564793412405,
+      0.020742065535943648,
+      0.03187952228411438,
+      0.07932639960062896,
+      0.024758930095686103
+    ],
+    "peak_quasistatic_cap_fraction": [
+      0.47674068418362336,
+      0.22051840286779906,
+      0.34455425216413643,
+      0.5909280375391931,
+      0.5330450633014497,
+      0.09963477318694233,
+      0.0797771751382448,
+      0.0708433828535875,
+      0.30510153692549596,
+      0.09522665421417732
+    ],
+    "peak_reference_joint_speed_rad_s": [
+      3.4572065993295404,
+      1.7925036860914512,
+      0.6095248405419751,
+      1.2301789513189942,
+      3.4572065993295404,
+      3.412215539404472,
+      5.200586846792524,
+      4.890476058330184,
+      3.100728258438784,
+      3.412215539404472
+    ],
+    "peak_reference_speed_no_load_fraction": [
+      0.4075789033875689,
+      0.16618591581663936,
+      0.0718584380070775,
+      0.11405188018836235,
+      0.32052321528536976,
+      0.40227479258607385,
+      0.48215481765770307,
+      0.5765506953746793,
+      0.28747353175646007,
+      0.31635202135409696
+    ],
+    "minimum_cop_edge_margin_m": 0.005999993764685931
+  }
+}

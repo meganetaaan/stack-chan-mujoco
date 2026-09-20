@@ -1,0 +1,54 @@
+{
+  "revision": "r6-experimental-hip-22mm-internal-lower-envelope",
+  "threshold_mm3": 0.01,
+  "scope": "All mechanical pairs at supplied sampled poses; no swept-volume, tolerance, cable or fastener proof",
+  "trajectory_sha256": "dfd6795c068cc362c9becb1f5a6056d4c4a5e71fc88a7194393c1183679f63f8",
+  "mechanical_parts": 33,
+  "same_link_and_adjacent_pairs_included": true,
+  "manufacturing_release": false,
+  "walking_validated": false,
+  "input_sha256": {
+    "robot.json": "583cc22826dc2704d05684f0c5d62910145c30d24d3d90cff19cbf6170bef4bf",
+    "cad/build.py": "fe13dd18c8c79800a317031c07b1eca35c57ac6b3e0a395e70ab420203436cd9",
+    "cad/r4_geometry.py": "e525f92daea61b8bf2ff8ce92961bd65d68e595b0eaf3714d2189f4704dd3e24",
+    "src/tab5_biped/core.py": "9a16813b61435492746dc3cb7d7e765a7a7432e47ab29c266ce011742da5c322",
+    "docs/underside_cutouts.json": "f71b9fd3996400518cd2970c048385d9fa61d8c7560c82a5d2ee2979b53ba346"
+  },
+  "sampled_poses_clear": false,
+  "elapsed_s": 4.645655654021539,
+  "results": [
+    {
+      "pose": "trajectory_terminal",
+      "q_rad": [
+        0.11362971282116635,
+        0.3049024162982761,
+        -1.2388173545222165,
+        0.9209142229152464,
+        -0.12109832403232731,
+        0.11605047637180224,
+        0.6772428711029524,
+        -1.381516551480935,
+        0.6915400345288499,
+        -0.12533920336010276
+      ],
+      "brep_calls": 82,
+      "findings": [
+        {
+          "a": "body_shroud",
+          "b": "right_thigh_yoke",
+          "overlap_mm3": 9.5360467242126
+        },
+        {
+          "a": "body_shroud",
+          "b": "right_knee_motor",
+          "overlap_mm3": 27.792297391159703
+        },
+        {
+          "a": "left_knee_motor",
+          "b": "left_ankle_gimbal",
+          "overlap_mm3": 6.134964349817784
+        }
+      ]
+    }
+  ]
+}

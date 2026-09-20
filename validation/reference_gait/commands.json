@@ -1,0 +1,7 @@
+{
+  "slow_no_comp": ".venv-dynamics/bin/python probe_reference_gait.py --design outputs/design_r6_battery_lower --speed .02 --step-period .8 --out outputs/reproduce_slow_no_comp",
+  "slow_comp": ".venv-dynamics/bin/python probe_reference_gait.py --design outputs/design_r6_battery_lower --speed .02 --step-period .8 --static-compensation --out outputs/reproduce_slow_comp",
+  "fast_crouched": ".venv-dynamics/bin/python probe_reference_gait.py --design outputs/design_r6_battery_lower --speed .1 --step-period .3 --height-offset-mm -5 --static-compensation --slew 6 --out outputs/reproduce_fast_crouched",
+  "fast_short": ".venv-dynamics/bin/python probe_reference_gait.py --design outputs/design_r6_battery_lower --speed .1 --step-period .2 --static-compensation --slew 6 --out outputs/reproduce_fast_short",
+  "medium_crouched": ".venv-dynamics/bin/python probe_reference_gait.py --design outputs/design_r6_battery_lower --speed .06 --step-period .4 --height-offset-mm -5 --static-compensation --slew 6 --out outputs/reproduce_medium_crouched"
+}

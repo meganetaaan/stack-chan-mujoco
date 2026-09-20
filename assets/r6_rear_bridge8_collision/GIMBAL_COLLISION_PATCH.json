@@ -1,0 +1,61 @@
+{
+  "scope": "Gimbal and yoke bearing collision augmentation; other regions remain approximate",
+  "parent_filter": "disabled",
+  "CAD_and_inertials_unchanged": true,
+  "URDF_not_updated": true,
+  "gimbals": [
+    {
+      "part": "left_ankle_gimbal",
+      "convex_pieces": 62,
+      "cad_volume_mm3": 4059.209177010926,
+      "uncovered_volume_mm3": 0.0,
+      "extra_volume_mm3": 8.44974964570372,
+      "ring_radial_overcoverage_bound_mm": 0.09060408609160475
+    },
+    {
+      "part": "right_ankle_gimbal",
+      "convex_pieces": 62,
+      "cad_volume_mm3": 4059.2091770109255,
+      "uncovered_volume_mm3": 0.0,
+      "extra_volume_mm3": 8.449749645703754,
+      "ring_radial_overcoverage_bound_mm": 0.09060408609160475
+    }
+  ],
+  "bearing_collars": [
+    {
+      "part": "left_thigh_yoke",
+      "collars": 4,
+      "convex_pieces": 96,
+      "small_fastener_holes_filled": true,
+      "full_part_coverage_verified": false
+    },
+    {
+      "part": "left_shin_yoke",
+      "collars": 4,
+      "convex_pieces": 96,
+      "small_fastener_holes_filled": true,
+      "full_part_coverage_verified": false
+    },
+    {
+      "part": "right_thigh_yoke",
+      "collars": 4,
+      "convex_pieces": 96,
+      "small_fastener_holes_filled": true,
+      "full_part_coverage_verified": false
+    },
+    {
+      "part": "right_shin_yoke",
+      "collars": 4,
+      "convex_pieces": 96,
+      "small_fastener_holes_filled": true,
+      "full_part_coverage_verified": false
+    }
+  ],
+  "source_sha256": {
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_rear_bridge8/robot.json": "81f32b0a39c56d09ffc3329bfcd5acb0f99f358761a246d5d436be0780c2ca25",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_rear_bridge8/models/scene.xml": "1eda76339e3351c1834067cd9c42f7ad6264a98c585ce603393b29aecf1f77d8",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_rear_bridge8/cad/build.py": "fe13dd18c8c79800a317031c07b1eca35c57ac6b3e0a395e70ab420203436cd9",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/design_r6_rear_bridge8/cad/r4_geometry.py": "cacbb3297050b1c8a4ae5f00e57ac49e09f1188c17665b06ec7092b0f561431d",
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/add_gimbal_collisions.py": "584ec08ab42ac987f46904b2286fa56a03546e42c2da921d90138624fb8ae92c"
+  }
+}

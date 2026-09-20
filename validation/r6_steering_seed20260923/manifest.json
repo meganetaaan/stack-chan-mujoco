@@ -1,0 +1,113 @@
+{
+  "scope": "both predeclared R6 simulation acceptance batches",
+  "seed_plan": {
+    "scope": "Predeclared evaluation for steering-initialized PPO on augmented collisions; no seed replacement",
+    "heading_training_seed": 20260923,
+    "fixed_seeds": [
+      107000,
+      107001,
+      107002,
+      107003,
+      107004,
+      107005,
+      107006,
+      107007,
+      107008,
+      107009,
+      107010,
+      107011,
+      107012,
+      107013,
+      107014,
+      107015,
+      107016,
+      107017,
+      107018,
+      107019
+    ],
+    "randomized_seeds": [
+      108000,
+      108001,
+      108002,
+      108003,
+      108004,
+      108005,
+      108006,
+      108007,
+      108008,
+      108009,
+      108010,
+      108011,
+      108012,
+      108013,
+      108014,
+      108015,
+      108016,
+      108017,
+      108018,
+      108019
+    ]
+  },
+  "seed_plan_sha256": "9801c109061cb5f29ad0698a234c547faee5c6efda82ec58cfbedd5b685d7036",
+  "policy_sha256": "502430e8d18974235adbcf8f362293e7289c44a24883b0c764258c153f2a6cd0",
+  "training_config_sha256": "54c11c2db75763256b03945999dad7016f3617dcda61d0320d60fa12350635f5",
+  "runner_sha256": "4deff2325867ebdf7997a302ed3e5e2bfa93ac372ae439aab193488a19939f92",
+  "evaluator_sha256": "5f4b06be0e0d1bb0659c750418d1ce31914b166d3dee907b6c7c3a599b858c04",
+  "complete": true,
+  "simulation_criteria_met": true,
+  "hardware_tested": false,
+  "commands": {
+    "fixed": [
+      "/home/sskw/stackchan-mujoco/.venv/bin/python",
+      "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/evaluate_residual.py",
+      "--checkpoint",
+      "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/runs/r6_steering_seed20260923",
+      "--out",
+      "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/r6_steering_acceptance/fixed",
+      "--domain",
+      "fixed",
+      "--seed",
+      "107000",
+      "--episodes",
+      "20",
+      "--purpose",
+      "acceptance",
+      "--workers",
+      "6"
+    ],
+    "randomized": [
+      "/home/sskw/stackchan-mujoco/.venv/bin/python",
+      "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/evaluate_residual.py",
+      "--checkpoint",
+      "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/runs/r6_steering_seed20260923",
+      "--out",
+      "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/outputs/r6_steering_acceptance/randomized",
+      "--domain",
+      "randomized",
+      "--seed",
+      "108000",
+      "--episodes",
+      "20",
+      "--purpose",
+      "acceptance",
+      "--workers",
+      "6"
+    ]
+  },
+  "batches": {
+    "fixed": {
+      "exit_code": 0,
+      "complete": true,
+      "successes": 20,
+      "criteria_met": true,
+      "manifest_sha256": "50f9dc2c7ec0c9da49c55b41480a805f9e771df7b55601e667ce93e88e2b6a97"
+    },
+    "randomized": {
+      "exit_code": 0,
+      "complete": true,
+      "successes": 20,
+      "criteria_met": true,
+      "manifest_sha256": "80a3dd252935c1c376e1e4fe2638d9dba8f69753d9254182f109bd079fdc44f9"
+    }
+  }
+}

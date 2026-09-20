@@ -1,0 +1,815 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="Tab5_R5_A_landscape_cube_X330_10DOF">
+  <!--Interchange file only. MJCF is the primary physics model; no world fixed joint.-->
+  <link name="base">
+    <inertial>
+      <origin xyz="0.00596216932885 9.02611409407e-06 0.0689648378066" rpy="0 0 0" />
+      <mass value="0.5146960061812935" />
+      <inertia ixx="0.0012806782635854893" iyy="0.0014344656159238434" izz="0.0014740151940342704" ixy="-3.562359234253673e-07" ixz="-0.0001387267445958887" iyz="-1.5899227114604638e-07" />
+    </inertial>
+    <visual name="body_shroud">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/body_shroud.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="body_shroud_color">
+        <color rgba="0.77 0.81 0.8 1" />
+      </material>
+    </visual>
+    <collision name="body_shroud0">
+      <origin xyz="-0.0062 -0.0631 0.064" rpy="0 0 0" />
+      <geometry>
+        <box size="0.1156 0.0018 0.128" />
+      </geometry>
+    </collision>
+    <collision name="body_shroud1">
+      <origin xyz="-0.0062 0.0631 0.064" rpy="0 0 0" />
+      <geometry>
+        <box size="0.1156 0.0018 0.128" />
+      </geometry>
+    </collision>
+    <collision name="body_shroud2">
+      <origin xyz="-0.0062 0 0.1271" rpy="0 0 0" />
+      <geometry>
+        <box size="0.1156 0.128 0.0018" />
+      </geometry>
+    </collision>
+    <collision name="body_shroud3">
+      <origin xyz="0.0631 0 0.0238" rpy="0 0 0" />
+      <geometry>
+        <box size="0.0018 0.128 0.0476" />
+      </geometry>
+    </collision>
+    <collision name="body_shroud4">
+      <origin xyz="-0.0062 -0.0575 0.0009" rpy="0 0 0" />
+      <geometry>
+        <box size="0.1156 0.013 0.0018" />
+      </geometry>
+    </collision>
+    <collision name="body_shroud5">
+      <origin xyz="-0.0062 0.0575 0.0009" rpy="0 0 0" />
+      <geometry>
+        <box size="0.1156 0.013 0.0018" />
+      </geometry>
+    </collision>
+    <visual name="rear_cover">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/rear_cover.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="rear_cover_color">
+        <color rgba="0.77 0.81 0.8 1" />
+      </material>
+    </visual>
+    <collision name="rear_cover0">
+      <origin xyz="-0.0631 0 0.064" rpy="0 0 0" />
+      <geometry>
+        <box size="0.0018 0.128 0.128" />
+      </geometry>
+    </collision>
+    <visual name="Tab5">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Tab5.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="Tab5_color">
+        <color rgba="0.77 0.81 0.8 1" />
+      </material>
+    </visual>
+    <collision name="Tab50">
+      <origin xyz="0.058 0 0.088" rpy="0 0 0" />
+      <geometry>
+        <box size="0.012 0.128 0.08" />
+      </geometry>
+    </collision>
+    <visual name="face_0">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/face_0.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="face_0_color">
+        <color rgba="0.94 0.98 0.96 1" />
+      </material>
+    </visual>
+    <visual name="face_1">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/face_1.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="face_1_color">
+        <color rgba="0.94 0.98 0.96 1" />
+      </material>
+    </visual>
+    <visual name="face_2">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/face_2.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="face_2_color">
+        <color rgba="0.94 0.98 0.96 1" />
+      </material>
+    </visual>
+    <visual name="screen">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/screen.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="screen_color">
+        <color rgba="0.012 0.022 0.025 1" />
+      </material>
+    </visual>
+    <visual name="camera">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/camera.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="camera_color">
+        <color rgba="0.012 0.022 0.025 1" />
+      </material>
+    </visual>
+    <visual name="battery_2S_reservation">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/battery_2S_reservation.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="battery_2S_reservation_color">
+        <color rgba="0.18 0.22 0.25 1" />
+      </material>
+    </visual>
+    <visual name="dedicated_5V_converter">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/dedicated_5V_converter.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="dedicated_5V_converter_color">
+        <color rgba="0.08 0.35 0.26 1" />
+      </material>
+    </visual>
+    <visual name="TTL_interface">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/TTL_interface.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="TTL_interface_color">
+        <color rgba="0.08 0.35 0.26 1" />
+      </material>
+    </visual>
+    <visual name="cables_and_fasteners">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/cables_and_fasteners.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="cables_and_fasteners_color">
+        <color rgba="0.08 0.35 0.26 1" />
+      </material>
+    </visual>
+    <visual name="left_hip_roll_motor">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_hip_roll_motor.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="left_hip_roll_motor_color">
+        <color rgba="0.11 0.16 0.18 1" />
+      </material>
+    </visual>
+    <collision name="left_hip_roll_motor0">
+      <origin xyz="-0.019 0.022 0.032" rpy="0 0 0" />
+      <geometry>
+        <box size="0.026 0.02 0.034" />
+      </geometry>
+    </collision>
+    <visual name="left_fixed_roll_cradle">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_fixed_roll_cradle.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="left_fixed_roll_cradle_color">
+        <color rgba="0.28 0.34 0.36 1" />
+      </material>
+    </visual>
+    <visual name="right_hip_roll_motor">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_hip_roll_motor.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="right_hip_roll_motor_color">
+        <color rgba="0.11 0.16 0.18 1" />
+      </material>
+    </visual>
+    <collision name="right_hip_roll_motor0">
+      <origin xyz="-0.019 -0.022 0.032" rpy="0 0 0" />
+      <geometry>
+        <box size="0.026 0.02 0.034" />
+      </geometry>
+    </collision>
+    <visual name="right_fixed_roll_cradle">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_fixed_roll_cradle.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="right_fixed_roll_cradle_color">
+        <color rgba="0.28 0.34 0.36 1" />
+      </material>
+    </visual>
+  </link>
+  <link name="left_hip_roll">
+    <inertial>
+      <origin xyz="0.0183199416856 1.26877268507e-19 0.00809677501526" rpy="0 0 0" />
+      <mass value="0.02730210605957944" />
+      <inertia ixx="5.287192200502966e-06" iyy="4.517975867633929e-06" izz="3.4977598466428955e-06" ixy="-5.816547340880221e-23" ixz="-1.0012233686429102e-07" iyz="-4.9489142378929325e-23" />
+    </inertial>
+    <visual name="left_roll_to_pitch_carrier">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_roll_to_pitch_carrier.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="left_roll_to_pitch_carrier_color">
+        <color rgba="0.28 0.34 0.36 1" />
+      </material>
+    </visual>
+    <collision name="left_roll_to_pitch_carrier0">
+      <origin xyz="0.0085 0 0.0075" rpy="0 0 0" />
+      <geometry>
+        <box size="0.002 0.029 0.037" />
+      </geometry>
+    </collision>
+    <collision name="left_roll_to_pitch_carrier1">
+      <origin xyz="0.02 -0.0142 0.007" rpy="0 0 0" />
+      <geometry>
+        <box size="0.025 0.0014 0.034" />
+      </geometry>
+    </collision>
+    <collision name="left_roll_to_pitch_carrier2">
+      <origin xyz="0.02 0.0142 0.007" rpy="0 0 0" />
+      <geometry>
+        <box size="0.025 0.0014 0.034" />
+      </geometry>
+    </collision>
+    <collision name="left_roll_to_pitch_carrier3">
+      <origin xyz="0.02 0 0.0252" rpy="0 0 0" />
+      <geometry>
+        <box size="0.019 0.029 0.002" />
+      </geometry>
+    </collision>
+    <visual name="left_hip_pitch_motor">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_hip_pitch_motor.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="left_hip_pitch_motor_color">
+        <color rgba="0.11 0.16 0.18 1" />
+      </material>
+    </visual>
+    <collision name="left_hip_pitch_motor0">
+      <origin xyz="0.02 0 0.007" rpy="0 0 0" />
+      <geometry>
+        <box size="0.02 0.026 0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hip_pitch">
+    <inertial>
+      <origin xyz="0.000250241719007 -2.15668886457e-16 -0.0390217669833" rpy="0 0 0" />
+      <mass value="0.029755038566515592" />
+      <inertia ixx="9.67772139650195e-06" iyy="7.55996851596789e-06" izz="4.192325599174548e-06" ixy="2.6480876825925043e-21" ixz="-8.579052391256142e-08" iyz="8.279716726931623e-20" />
+    </inertial>
+    <visual name="left_thigh_yoke">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_thigh_yoke.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="left_thigh_yoke_color">
+        <color rgba="0.28 0.34 0.36 1" />
+      </material>
+    </visual>
+    <collision name="left_thigh_yoke0">
+      <origin xyz="0 -0.0168 -0.025" rpy="0 0 0" />
+      <geometry>
+        <box size="0.017 0.0024 0.05" />
+      </geometry>
+    </collision>
+    <collision name="left_thigh_yoke1">
+      <origin xyz="0 0.0168 -0.025" rpy="0 0 0" />
+      <geometry>
+        <box size="0.017 0.0024 0.05" />
+      </geometry>
+    </collision>
+    <visual name="left_knee_motor">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_knee_motor.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="left_knee_motor_color">
+        <color rgba="0.11 0.16 0.18 1" />
+      </material>
+    </visual>
+    <collision name="left_knee_motor0">
+      <origin xyz="0 0 -0.043" rpy="0 0 0" />
+      <geometry>
+        <box size="0.02 0.026 0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_knee">
+    <inertial>
+      <origin xyz="0.000313662993956 0.00543197786853 -0.033360828316" rpy="0 0 0" />
+      <mass value="0.023410050940515598" />
+      <inertia ixx="7.084758178071457e-06" iyy="5.3580944725749014e-06" izz="3.3825828126251975e-06" ixy="2.1164918484161255e-08" ixz="-1.4950133643603465e-07" iyz="2.4780389263889156e-07" />
+    </inertial>
+    <visual name="left_shin_yoke">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_shin_yoke.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="left_shin_yoke_color">
+        <color rgba="0.28 0.34 0.36 1" />
+      </material>
+    </visual>
+    <collision name="left_shin_yoke0">
+      <origin xyz="0 -0.0145 -0.007" rpy="0 0 0" />
+      <geometry>
+        <box size="0.016 0.0016 0.013" />
+      </geometry>
+    </collision>
+    <collision name="left_shin_yoke1">
+      <origin xyz="0 0.0196 -0.007" rpy="0 0 0" />
+      <geometry>
+        <box size="0.016 0.0016 0.013" />
+      </geometry>
+    </collision>
+    <collision name="left_shin_yoke2">
+      <origin xyz="0 -0.0125 -0.0325" rpy="0 0 0" />
+      <geometry>
+        <box size="0.016 0.0016 0.023" />
+      </geometry>
+    </collision>
+    <collision name="left_shin_yoke3">
+      <origin xyz="0 0.0216 -0.0325" rpy="0 0 0" />
+      <geometry>
+        <box size="0.016 0.0016 0.023" />
+      </geometry>
+    </collision>
+    <visual name="left_ankle_pitch_motor">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_ankle_pitch_motor.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="left_ankle_pitch_motor_color">
+        <color rgba="0.11 0.16 0.18 1" />
+      </material>
+    </visual>
+    <collision name="left_ankle_pitch_motor0">
+      <origin xyz="0 0.006 -0.037" rpy="0 0 0" />
+      <geometry>
+        <box size="0.02 0.026 0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_ankle_pitch">
+    <inertial>
+      <origin xyz="-0.0371457348053 0.000426127255719 -0.00170297874945" rpy="0 0 0" />
+      <mass value="0.023033419379493547" />
+      <inertia ixx="4.12848887253703e-06" iyy="6.497016869489867e-06" izz="5.945935583299904e-06" ixy="-6.508470833421628e-08" ixz="-8.291610831231753e-08" iyz="-4.81204916878468e-08" />
+    </inertial>
+    <visual name="left_ankle_roll_motor">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_ankle_roll_motor.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="left_ankle_roll_motor_color">
+        <color rgba="0.11 0.16 0.18 1" />
+      </material>
+    </visual>
+    <collision name="left_ankle_roll_motor0">
+      <origin xyz="-0.039 0 -0.003" rpy="0 0 0" />
+      <geometry>
+        <box size="0.026 0.02 0.034" />
+      </geometry>
+    </collision>
+    <visual name="left_ankle_gimbal">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_ankle_gimbal.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="left_ankle_gimbal_color">
+        <color rgba="0.28 0.34 0.36 1" />
+      </material>
+    </visual>
+  </link>
+  <link name="left_ankle_roll">
+    <inertial>
+      <origin xyz="0.00606667377929 0.00662299133738 -0.00764361006869" rpy="0 0 0" />
+      <mass value="0.06679346691012936" />
+      <inertia ixx="3.699988030143581e-05" iyy="8.064982385130032e-05" izz="8.376244979727906e-05" ixy="-2.1471388513635225e-07" ixz="3.1423190483092153e-06" iyz="-4.693760703937454e-06" />
+    </inertial>
+    <visual name="left_foot_yoke">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_foot_yoke.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="left_foot_yoke_color">
+        <color rgba="0.28 0.34 0.36 1" />
+      </material>
+    </visual>
+    <collision name="left_foot_yoke0">
+      <origin xyz="0.008 0.004 -0.0175" rpy="0 0 0" />
+      <geometry>
+        <box size="0.094 0.052 0.003" />
+      </geometry>
+    </collision>
+    <visual name="left_boot_shell">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_boot_shell.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="left_boot_shell_color">
+        <color rgba="0.77 0.81 0.8 1" />
+      </material>
+    </visual>
+    <collision name="left_boot_shell0">
+      <origin xyz="0.002 0.029 0.0005" rpy="0 0 0" />
+      <geometry>
+        <box size="0.07 0.0015 0.023" />
+      </geometry>
+    </collision>
+    <collision name="left_boot_shell1">
+      <origin xyz="0.002 0.029 0.022" rpy="0 0 0" />
+      <geometry>
+        <box size="0.058 0.0015 0.012" />
+      </geometry>
+    </collision>
+    <collision name="left_boot_shell2">
+      <origin xyz="0.002 -0.021 -0.008" rpy="0 0 0" />
+      <geometry>
+        <box size="0.07 0.0015 0.009" />
+      </geometry>
+    </collision>
+    <collision name="left_boot_shell3">
+      <origin xyz="0.054 0.004 -0.006" rpy="0 0 0" />
+      <geometry>
+        <box size="0.0014 0.046 0.01" />
+      </geometry>
+    </collision>
+    <collision name="left_boot_shell4">
+      <origin xyz="-0.038 0.004 0.005" rpy="0 0 0" />
+      <geometry>
+        <box size="0.0014 0.046 0.029" />
+      </geometry>
+    </collision>
+    <visual name="left_sole_TPU">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/left_sole_TPU.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="left_sole_TPU_color">
+        <color rgba="0.12 0.16 0.17 1" />
+      </material>
+    </visual>
+    <collision name="left_sole_TPU0">
+      <origin xyz="0.008 0.004 -0.0205" rpy="0 0 0" />
+      <geometry>
+        <box size="0.094 0.052 0.003" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_hip_roll">
+    <inertial>
+      <origin xyz="0.0183199416856 1.26877268507e-19 0.00809677501526" rpy="0 0 0" />
+      <mass value="0.02730210605957944" />
+      <inertia ixx="5.287192200502966e-06" iyy="4.517975867633929e-06" izz="3.4977598466428955e-06" ixy="-5.816547340880221e-23" ixz="-1.0012233686429102e-07" iyz="-4.9489142378929325e-23" />
+    </inertial>
+    <visual name="right_roll_to_pitch_carrier">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_roll_to_pitch_carrier.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="right_roll_to_pitch_carrier_color">
+        <color rgba="0.28 0.34 0.36 1" />
+      </material>
+    </visual>
+    <collision name="right_roll_to_pitch_carrier0">
+      <origin xyz="0.0085 0 0.0075" rpy="0 0 0" />
+      <geometry>
+        <box size="0.002 0.029 0.037" />
+      </geometry>
+    </collision>
+    <collision name="right_roll_to_pitch_carrier1">
+      <origin xyz="0.02 -0.0142 0.007" rpy="0 0 0" />
+      <geometry>
+        <box size="0.025 0.0014 0.034" />
+      </geometry>
+    </collision>
+    <collision name="right_roll_to_pitch_carrier2">
+      <origin xyz="0.02 0.0142 0.007" rpy="0 0 0" />
+      <geometry>
+        <box size="0.025 0.0014 0.034" />
+      </geometry>
+    </collision>
+    <collision name="right_roll_to_pitch_carrier3">
+      <origin xyz="0.02 0 0.0252" rpy="0 0 0" />
+      <geometry>
+        <box size="0.019 0.029 0.002" />
+      </geometry>
+    </collision>
+    <visual name="right_hip_pitch_motor">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_hip_pitch_motor.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="right_hip_pitch_motor_color">
+        <color rgba="0.11 0.16 0.18 1" />
+      </material>
+    </visual>
+    <collision name="right_hip_pitch_motor0">
+      <origin xyz="0.02 0 0.007" rpy="0 0 0" />
+      <geometry>
+        <box size="0.02 0.026 0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_hip_pitch">
+    <inertial>
+      <origin xyz="0.000250241719007 -2.15668886457e-16 -0.0390217669833" rpy="0 0 0" />
+      <mass value="0.029755038566515592" />
+      <inertia ixx="9.67772139650195e-06" iyy="7.55996851596789e-06" izz="4.192325599174548e-06" ixy="2.6480876825925043e-21" ixz="-8.579052391256142e-08" iyz="8.279716726931623e-20" />
+    </inertial>
+    <visual name="right_thigh_yoke">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_thigh_yoke.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="right_thigh_yoke_color">
+        <color rgba="0.28 0.34 0.36 1" />
+      </material>
+    </visual>
+    <collision name="right_thigh_yoke0">
+      <origin xyz="0 -0.0168 -0.025" rpy="0 0 0" />
+      <geometry>
+        <box size="0.017 0.0024 0.05" />
+      </geometry>
+    </collision>
+    <collision name="right_thigh_yoke1">
+      <origin xyz="0 0.0168 -0.025" rpy="0 0 0" />
+      <geometry>
+        <box size="0.017 0.0024 0.05" />
+      </geometry>
+    </collision>
+    <visual name="right_knee_motor">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_knee_motor.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="right_knee_motor_color">
+        <color rgba="0.11 0.16 0.18 1" />
+      </material>
+    </visual>
+    <collision name="right_knee_motor0">
+      <origin xyz="0 0 -0.043" rpy="0 0 0" />
+      <geometry>
+        <box size="0.02 0.026 0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_knee">
+    <inertial>
+      <origin xyz="0.000313662993956 -0.00543197786853 -0.033360828316" rpy="0 0 0" />
+      <mass value="0.023410050940515598" />
+      <inertia ixx="7.084758178071455e-06" iyy="5.3580944725749e-06" izz="3.3825828126251945e-06" ixy="-2.116491848416168e-08" ixz="-1.4950133643603518e-07" iyz="-2.478038926388891e-07" />
+    </inertial>
+    <visual name="right_shin_yoke">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_shin_yoke.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="right_shin_yoke_color">
+        <color rgba="0.28 0.34 0.36 1" />
+      </material>
+    </visual>
+    <collision name="right_shin_yoke0">
+      <origin xyz="0 0.0145 -0.007" rpy="0 0 0" />
+      <geometry>
+        <box size="0.016 0.0016 0.013" />
+      </geometry>
+    </collision>
+    <collision name="right_shin_yoke1">
+      <origin xyz="0 -0.0196 -0.007" rpy="0 0 0" />
+      <geometry>
+        <box size="0.016 0.0016 0.013" />
+      </geometry>
+    </collision>
+    <collision name="right_shin_yoke2">
+      <origin xyz="0 0.0125 -0.0325" rpy="0 0 0" />
+      <geometry>
+        <box size="0.016 0.0016 0.023" />
+      </geometry>
+    </collision>
+    <collision name="right_shin_yoke3">
+      <origin xyz="0 -0.0216 -0.0325" rpy="0 0 0" />
+      <geometry>
+        <box size="0.016 0.0016 0.023" />
+      </geometry>
+    </collision>
+    <visual name="right_ankle_pitch_motor">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_ankle_pitch_motor.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="right_ankle_pitch_motor_color">
+        <color rgba="0.11 0.16 0.18 1" />
+      </material>
+    </visual>
+    <collision name="right_ankle_pitch_motor0">
+      <origin xyz="0 -0.006 -0.037" rpy="0 0 0" />
+      <geometry>
+        <box size="0.02 0.026 0.034" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_ankle_pitch">
+    <inertial>
+      <origin xyz="-0.0371457348053 -0.000426127255719 -0.00170297874945" rpy="0 0 0" />
+      <mass value="0.023033419379493547" />
+      <inertia ixx="4.128488872537027e-06" iyy="6.497016869489866e-06" izz="5.945935583299904e-06" ixy="6.508470833421909e-08" ixz="-8.291610831231753e-08" iyz="4.8120491687846596e-08" />
+    </inertial>
+    <visual name="right_ankle_roll_motor">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_ankle_roll_motor.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="right_ankle_roll_motor_color">
+        <color rgba="0.11 0.16 0.18 1" />
+      </material>
+    </visual>
+    <collision name="right_ankle_roll_motor0">
+      <origin xyz="-0.039 0 -0.003" rpy="0 0 0" />
+      <geometry>
+        <box size="0.026 0.02 0.034" />
+      </geometry>
+    </collision>
+    <visual name="right_ankle_gimbal">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_ankle_gimbal.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="right_ankle_gimbal_color">
+        <color rgba="0.28 0.34 0.36 1" />
+      </material>
+    </visual>
+  </link>
+  <link name="right_ankle_roll">
+    <inertial>
+      <origin xyz="0.00606667377929 -0.00662299133738 -0.00764361006869" rpy="0 0 0" />
+      <mass value="0.06679346691012925" />
+      <inertia ixx="3.699988030143559e-05" iyy="8.064982385130004e-05" izz="8.376244979727893e-05" ixy="2.147138851364566e-07" ixz="3.1423190483089722e-06" iyz="4.693760703937386e-06" />
+    </inertial>
+    <visual name="right_foot_yoke">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_foot_yoke.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="right_foot_yoke_color">
+        <color rgba="0.28 0.34 0.36 1" />
+      </material>
+    </visual>
+    <collision name="right_foot_yoke0">
+      <origin xyz="0.008 -0.004 -0.0175" rpy="0 0 0" />
+      <geometry>
+        <box size="0.094 0.052 0.003" />
+      </geometry>
+    </collision>
+    <visual name="right_boot_shell">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_boot_shell.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="right_boot_shell_color">
+        <color rgba="0.77 0.81 0.8 1" />
+      </material>
+    </visual>
+    <collision name="right_boot_shell0">
+      <origin xyz="0.002 -0.029 0.0005" rpy="0 0 0" />
+      <geometry>
+        <box size="0.07 0.0015 0.023" />
+      </geometry>
+    </collision>
+    <collision name="right_boot_shell1">
+      <origin xyz="0.002 -0.029 0.022" rpy="0 0 0" />
+      <geometry>
+        <box size="0.058 0.0015 0.012" />
+      </geometry>
+    </collision>
+    <collision name="right_boot_shell2">
+      <origin xyz="0.002 0.021 -0.008" rpy="0 0 0" />
+      <geometry>
+        <box size="0.07 0.0015 0.009" />
+      </geometry>
+    </collision>
+    <collision name="right_boot_shell3">
+      <origin xyz="0.054 -0.004 -0.006" rpy="0 0 0" />
+      <geometry>
+        <box size="0.0014 0.046 0.01" />
+      </geometry>
+    </collision>
+    <collision name="right_boot_shell4">
+      <origin xyz="-0.038 -0.004 0.005" rpy="0 0 0" />
+      <geometry>
+        <box size="0.0014 0.046 0.029" />
+      </geometry>
+    </collision>
+    <visual name="right_sole_TPU">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/right_sole_TPU.stl" scale=".001 .001 .001" />
+      </geometry>
+      <material name="right_sole_TPU_color">
+        <color rgba="0.12 0.16 0.17 1" />
+      </material>
+    </visual>
+    <collision name="right_sole_TPU0">
+      <origin xyz="0.008 -0.004 -0.0205" rpy="0 0 0" />
+      <geometry>
+        <box size="0.094 0.052 0.003" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_hip_roll" type="revolute">
+    <parent link="base" />
+    <child link="left_hip_roll" />
+    <origin xyz="-0.006 0.022 0.025" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.28" upper="0.28" effort="0.45" velocity="8.482300164692441" />
+    <dynamics damping="0.0015" friction="0.006" />
+  </joint>
+  <joint name="left_hip_pitch" type="revolute">
+    <parent link="left_hip_roll" />
+    <child link="left_hip_pitch" />
+    <origin xyz="0.02 0 0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="0.1" upper="1.35" effort="0.26" velocity="10.786134777324955" />
+    <dynamics damping="0.0015" friction="0.006" />
+  </joint>
+  <joint name="left_knee" type="revolute">
+    <parent link="left_hip_pitch" />
+    <child link="left_knee" />
+    <origin xyz="0 0 -0.05" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.95" upper="-0.35" effort="0.45" velocity="8.482300164692441" />
+    <dynamics damping="0.0015" friction="0.006" />
+  </joint>
+  <joint name="left_ankle_pitch" type="revolute">
+    <parent link="left_knee" />
+    <child link="left_ankle_pitch" />
+    <origin xyz="0 0.006 -0.044" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="0.05" upper="1.35" effort="0.26" velocity="10.786134777324955" />
+    <dynamics damping="0.0015" friction="0.006" />
+  </joint>
+  <joint name="left_ankle_roll" type="revolute">
+    <parent link="left_ankle_pitch" />
+    <child link="left_ankle_roll" />
+    <origin xyz="-0.026 0 -0.01" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.28" upper="0.28" effort="0.26" velocity="10.786134777324955" />
+    <dynamics damping="0.0015" friction="0.006" />
+  </joint>
+  <joint name="right_hip_roll" type="revolute">
+    <parent link="base" />
+    <child link="right_hip_roll" />
+    <origin xyz="-0.006 -0.022 0.025" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.28" upper="0.28" effort="0.45" velocity="8.482300164692441" />
+    <dynamics damping="0.0015" friction="0.006" />
+  </joint>
+  <joint name="right_hip_pitch" type="revolute">
+    <parent link="right_hip_roll" />
+    <child link="right_hip_pitch" />
+    <origin xyz="0.02 0 0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="0.1" upper="1.35" effort="0.26" velocity="10.786134777324955" />
+    <dynamics damping="0.0015" friction="0.006" />
+  </joint>
+  <joint name="right_knee" type="revolute">
+    <parent link="right_hip_pitch" />
+    <child link="right_knee" />
+    <origin xyz="0 0 -0.05" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.95" upper="-0.35" effort="0.45" velocity="8.482300164692441" />
+    <dynamics damping="0.0015" friction="0.006" />
+  </joint>
+  <joint name="right_ankle_pitch" type="revolute">
+    <parent link="right_knee" />
+    <child link="right_ankle_pitch" />
+    <origin xyz="0 -0.006 -0.044" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="0.05" upper="1.35" effort="0.26" velocity="10.786134777324955" />
+    <dynamics damping="0.0015" friction="0.006" />
+  </joint>
+  <joint name="right_ankle_roll" type="revolute">
+    <parent link="right_ankle_pitch" />
+    <child link="right_ankle_roll" />
+    <origin xyz="-0.026 0 -0.01" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="-0.28" upper="0.28" effort="0.26" velocity="10.786134777324955" />
+    <dynamics damping="0.0015" friction="0.006" />
+  </joint>
+</robot>

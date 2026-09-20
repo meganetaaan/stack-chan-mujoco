@@ -1,0 +1,334 @@
+{
+  "scope": "Additional conservative fixed-cradle and reservation collisions; no dynamics run by this script",
+  "physics_validated": false,
+  "CAD_inertia_joints_actuators_unchanged": true,
+  "source_model_sha256": "bc9a75d2ee002602db6d0a2f83bf76caf1bd1bee47471c5007302e2f186c0383",
+  "output_model_sha256": "c26ba1b28f6a58e041620d8fe6f280ecaac4e0edbd47a7882091c09a5d08207b",
+  "source_sha256": {
+    "robot.json": "81f32b0a39c56d09ffc3329bfcd5acb0f99f358761a246d5d436be0780c2ca25",
+    "cad/build.py": "fe13dd18c8c79800a317031c07b1eca35c57ac6b3e0a395e70ab420203436cd9",
+    "cad/r4_geometry.py": "cacbb3297050b1c8a4ae5f00e57ac49e09f1188c17665b06ec7092b0f561431d"
+  },
+  "augmentation_source_sha256": "c3738b64f788fb5d8477f84782d405754c3fe5feb23de05aab5c58caeb60e161",
+  "coverage_tolerance_mm3": 0.001,
+  "parts": [
+    {
+      "part": "left_fixed_roll_cradle",
+      "convex_boxes": 9,
+      "cad_volume_mm3": 5307.367748783934,
+      "uncovered_volume_mm3": 0.0,
+      "extra_volume_mm3": 11.03225121606495,
+      "boxes_mm": [
+        [
+          [
+            19.5,
+            1.4,
+            38.0
+          ],
+          [
+            -24.25,
+            10.7,
+            33.0
+          ]
+        ],
+        [
+          [
+            7.0,
+            1.4,
+            35.0
+          ],
+          [
+            -11.0,
+            10.7,
+            34.5
+          ]
+        ],
+        [
+          [
+            3.5,
+            1.4,
+            38.0
+          ],
+          [
+            -5.75,
+            10.7,
+            33.0
+          ]
+        ],
+        [
+          [
+            19.5,
+            1.4,
+            38.0
+          ],
+          [
+            -24.25,
+            33.3,
+            33.0
+          ]
+        ],
+        [
+          [
+            7.0,
+            1.4,
+            35.0
+          ],
+          [
+            -11.0,
+            33.3,
+            34.5
+          ]
+        ],
+        [
+          [
+            3.5,
+            1.4,
+            38.0
+          ],
+          [
+            -5.75,
+            33.3,
+            33.0
+          ]
+        ],
+        [
+          [
+            30.0,
+            21.2,
+            2.5
+          ],
+          [
+            -19.0,
+            22.0,
+            50.75
+          ]
+        ],
+        [
+          [
+            6.2,
+            24.0,
+            2.4
+          ],
+          [
+            -35.1,
+            22.0,
+            51.0
+          ]
+        ],
+        [
+          [
+            6.2,
+            24.0,
+            2.4
+          ],
+          [
+            -35.1,
+            22.0,
+            15.5
+          ]
+        ]
+      ]
+    },
+    {
+      "part": "right_fixed_roll_cradle",
+      "convex_boxes": 9,
+      "cad_volume_mm3": 5307.367748783934,
+      "uncovered_volume_mm3": 0.0,
+      "extra_volume_mm3": 11.032251216065632,
+      "boxes_mm": [
+        [
+          [
+            19.5,
+            1.4,
+            38.0
+          ],
+          [
+            -24.25,
+            -33.3,
+            33.0
+          ]
+        ],
+        [
+          [
+            7.0,
+            1.4,
+            35.0
+          ],
+          [
+            -11.0,
+            -33.3,
+            34.5
+          ]
+        ],
+        [
+          [
+            3.5,
+            1.4,
+            38.0
+          ],
+          [
+            -5.75,
+            -33.3,
+            33.0
+          ]
+        ],
+        [
+          [
+            19.5,
+            1.4,
+            38.0
+          ],
+          [
+            -24.25,
+            -10.7,
+            33.0
+          ]
+        ],
+        [
+          [
+            7.0,
+            1.4,
+            35.0
+          ],
+          [
+            -11.0,
+            -10.7,
+            34.5
+          ]
+        ],
+        [
+          [
+            3.5,
+            1.4,
+            38.0
+          ],
+          [
+            -5.75,
+            -10.7,
+            33.0
+          ]
+        ],
+        [
+          [
+            30.0,
+            21.2,
+            2.5
+          ],
+          [
+            -19.0,
+            -22.0,
+            50.75
+          ]
+        ],
+        [
+          [
+            6.2,
+            24.0,
+            2.4
+          ],
+          [
+            -35.1,
+            -22.0,
+            51.0
+          ]
+        ],
+        [
+          [
+            6.2,
+            24.0,
+            2.4
+          ],
+          [
+            -35.1,
+            -22.0,
+            15.5
+          ]
+        ]
+      ]
+    },
+    {
+      "part": "battery_2S_reservation",
+      "convex_boxes": 1,
+      "cad_volume_mm3": 55418.88000000001,
+      "uncovered_volume_mm3": 0.0,
+      "extra_volume_mm3": 0.0,
+      "boxes_mm": [
+        [
+          [
+            20.5,
+            70.4,
+            38.400000000000006
+          ],
+          [
+            0.0,
+            0.0,
+            78.0
+          ]
+        ]
+      ]
+    },
+    {
+      "part": "dedicated_5V_converter",
+      "convex_boxes": 1,
+      "cad_volume_mm3": 8635.707963267949,
+      "uncovered_volume_mm3": 0.0,
+      "extra_volume_mm3": 4.292036732051028,
+      "boxes_mm": [
+        [
+          [
+            12.0,
+            36.0,
+            20.0
+          ],
+          [
+            18.0,
+            0.0,
+            73.0
+          ]
+        ]
+      ]
+    },
+    {
+      "part": "TTL_interface",
+      "convex_boxes": 1,
+      "cad_volume_mm3": 2395.707963267949,
+      "uncovered_volume_mm3": 0.0,
+      "extra_volume_mm3": 4.292036732051001,
+      "boxes_mm": [
+        [
+          [
+            5.0,
+            24.0,
+            20.0
+          ],
+          [
+            -28.0,
+            0.0,
+            94.0
+          ]
+        ]
+      ]
+    },
+    {
+      "part": "cables_and_fasteners",
+      "convex_boxes": 1,
+      "cad_volume_mm3": 1276.566370614359,
+      "uncovered_volume_mm3": 0.0,
+      "extra_volume_mm3": 3.433629385640808,
+      "boxes_mm": [
+        [
+          [
+            8.0,
+            10.0,
+            16.0
+          ],
+          [
+            -25.0,
+            0.0,
+            50.0
+          ]
+        ]
+      ]
+    }
+  ]
+}

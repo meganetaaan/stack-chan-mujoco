@@ -1,0 +1,51 @@
+{
+  "scope": "Fresh CAD and model generation, no training or walking evaluation",
+  "complete": true,
+  "commands": [
+    [
+      "build_design.py",
+      "--out",
+      "/tmp/r6-clean-cad-20260920/rear_bridge",
+      "--hip-half-spacing-mm",
+      "22",
+      "--battery-layout",
+      "design/battery_layouts/internal_lower_envelope.json",
+      "--underside-cutouts",
+      "design/leg_relief/underside_cutouts.json",
+      "--leg-clearance-relief",
+      "--boot-collar-relief",
+      "--rear-gimbal-bridge"
+    ],
+    [
+      "add_gimbal_collisions.py",
+      "--design",
+      "/tmp/r6-clean-cad-20260920/rear_bridge",
+      "--out",
+      "/tmp/r6-clean-cad-20260920/gimbal_collisions"
+    ],
+    [
+      "add_base_reservation_collisions.py",
+      "--design",
+      "/tmp/r6-clean-cad-20260920/gimbal_collisions",
+      "--out",
+      "/tmp/r6-clean-cad-20260920/base_collisions"
+    ],
+    [
+      "build_battery_mount.py",
+      "--design",
+      "/tmp/r6-clean-cad-20260920/base_collisions",
+      "--out",
+      "/tmp/r6-clean-cad-20260920/mount"
+    ],
+    [
+      "integrate_battery_mount.py",
+      "--design",
+      "/tmp/r6-clean-cad-20260920/base_collisions",
+      "--mount",
+      "/tmp/r6-clean-cad-20260920/mount",
+      "--out",
+      "/tmp/r6-clean-cad-20260920/model"
+    ]
+  ],
+  "completed": 5
+}
