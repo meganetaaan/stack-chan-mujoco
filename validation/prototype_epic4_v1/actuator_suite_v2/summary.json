@@ -1,0 +1,2318 @@
+{
+  "scope": "Freeze and run 34 nominal/one-factor CAD leg fixtures plus all 12 joint fixtures.",
+  "passed": true,
+  "sources_unchanged": true,
+  "leg_passed": 34,
+  "leg_total": 34,
+  "single_joint_passed": true,
+  "rows": [
+    {
+      "case": "left_support_nominal",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "support",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "vertical_support": true
+        },
+        "passed": true,
+        "max_error_rad": 0.01663227389235722,
+        "rms_error_rad": [
+          0.00044481669596063673,
+          0.0005914134335130855,
+          0.0015550769276574125,
+          0.0025704096869485302,
+          0.00121426229473076,
+          0.0004206027298751466
+        ],
+        "minimum_steady_floor_load_N": 4.32767771243533,
+        "fixture_weight_N": 4.504948423548581,
+        "peak_draw_A": 0.12350637896757007,
+        "peak_regeneration_A": 0.007670466876981308,
+        "max_case_temperature_C": 25.05987346410778,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_support_nominal",
+        "--side",
+        "left",
+        "--mode",
+        "support"
+      ]
+    },
+    {
+      "case": "left_transfer_nominal",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "transfer",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "load_transfer": true
+        },
+        "passed": true,
+        "max_error_rad": 0.01663227389235722,
+        "rms_error_rad": [
+          0.0005884064862246327,
+          0.0006099705180587815,
+          0.0020873776652335922,
+          0.005686797882589939,
+          0.00498959933824722,
+          0.0005689757149642945
+        ],
+        "minimum_steady_floor_load_N": 2.2162995456504815,
+        "fixture_weight_N": 4.504948423548581,
+        "peak_draw_A": 0.12350637896757007,
+        "peak_regeneration_A": 0.007670466876981308,
+        "max_case_temperature_C": 25.05556910429876,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_transfer_nominal",
+        "--side",
+        "left",
+        "--mode",
+        "transfer"
+      ]
+    },
+    {
+      "case": "left_swing_nominal",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.043064799525277475,
+        "rms_error_rad": [
+          0.007573293477124989,
+          0.009765623459402118,
+          0.004207900076020994,
+          0.0064875358311718275,
+          0.004876357275712565,
+          0.011679500859669543
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548581,
+        "peak_draw_A": 0.12563995911317014,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.040982275776756,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_swing_nominal",
+        "--side",
+        "left",
+        "--mode",
+        "swing"
+      ]
+    },
+    {
+      "case": "left_voltage_3.7",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.04310638400787199,
+        "rms_error_rad": [
+          0.007580866980662987,
+          0.009771345211794895,
+          0.004243440580970359,
+          0.006493410708664285,
+          0.004877341149914974,
+          0.011676225595969047
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548581,
+        "peak_draw_A": 0.13315198650553456,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.030788432979126,
+        "parameters": {
+          "voltage": 3.7,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_voltage_3.7",
+        "--side",
+        "left",
+        "--mode",
+        "swing",
+        "--voltage",
+        "3.7"
+      ]
+    },
+    {
+      "case": "left_voltage_6.0",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.04307582292982403,
+        "rms_error_rad": [
+          0.007574407826247089,
+          0.009776809933730578,
+          0.004241669121510815,
+          0.006493255615785901,
+          0.0048733726376605155,
+          0.011676231901631806
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548581,
+        "peak_draw_A": 0.12227710531554355,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.048801727053704,
+        "parameters": {
+          "voltage": 6.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_voltage_6.0",
+        "--side",
+        "left",
+        "--mode",
+        "swing",
+        "--voltage",
+        "6.0"
+      ]
+    },
+    {
+      "case": "left_delay_0.005",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.03333779825842785,
+        "rms_error_rad": [
+          0.005894356216119073,
+          0.007046978562759417,
+          0.0037343141135505894,
+          0.006049017321704185,
+          0.004620902076556234,
+          0.00897072225276878
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548581,
+        "peak_draw_A": 0.12573053501134343,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.040986099289622,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.005,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_delay_0.005",
+        "--side",
+        "left",
+        "--mode",
+        "swing",
+        "--delay",
+        "0.005"
+      ]
+    },
+    {
+      "case": "left_delay_0.02",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.06472009416008459,
+        "rms_error_rad": [
+          0.011993118717987026,
+          0.016014370015633262,
+          0.00548243022348456,
+          0.008321860336375077,
+          0.005997152976335131,
+          0.018333209524816957
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548581,
+        "peak_draw_A": 0.12582521806209232,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.04098432879027,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.02,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_delay_0.02",
+        "--side",
+        "left",
+        "--mode",
+        "swing",
+        "--delay",
+        "0.02"
+      ]
+    },
+    {
+      "case": "left_backlash_0.0",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.04096071257149933,
+        "rms_error_rad": [
+          0.006525800133603829,
+          0.008752673883393557,
+          0.00307566842659197,
+          0.005352111631246942,
+          0.0038679146073529124,
+          0.010576816163809982
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548581,
+        "peak_draw_A": 0.12592729516961215,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.041061135313612,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.0,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_backlash_0.0",
+        "--side",
+        "left",
+        "--mode",
+        "swing",
+        "--backlash",
+        "0.0"
+      ]
+    },
+    {
+      "case": "left_backlash_0.017453292519943295",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.04974487142154395,
+        "rms_error_rad": [
+          0.011750194257336104,
+          0.013961323207982443,
+          0.009986332129508318,
+          0.01155290414606522,
+          0.010058603187432603,
+          0.01607023693438853
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548581,
+        "peak_draw_A": 0.12575288837073786,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.040937137929596,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.017453292519943295,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_backlash_0.017453292519943295",
+        "--side",
+        "left",
+        "--mode",
+        "swing",
+        "--backlash",
+        "0.017453292519943295"
+      ]
+    },
+    {
+      "case": "left_current_tau_0.001",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.04306820096306171,
+        "rms_error_rad": [
+          0.007577029335169398,
+          0.009770864111227169,
+          0.004207333062902373,
+          0.0064915493876207715,
+          0.004874276258016615,
+          0.01166927744250629
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548581,
+        "peak_draw_A": 0.1279952952779437,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.04098510242442,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.001,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_current_tau_0.001",
+        "--side",
+        "left",
+        "--mode",
+        "swing",
+        "--current-tau",
+        "0.001"
+      ]
+    },
+    {
+      "case": "left_current_tau_0.005",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.04305476903591407,
+        "rms_error_rad": [
+          0.007571433770884287,
+          0.009737247403506687,
+          0.004205841889517506,
+          0.006457128550956032,
+          0.004860062801613651,
+          0.011681977205189084
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548581,
+        "peak_draw_A": 0.12546152680851907,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.0409809425578,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.005,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_current_tau_0.005",
+        "--side",
+        "left",
+        "--mode",
+        "swing",
+        "--current-tau",
+        "0.005"
+      ]
+    },
+    {
+      "case": "left_mass_0.95",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "support",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "vertical_support": true
+        },
+        "passed": true,
+        "max_error_rad": 0.015628231876734233,
+        "rms_error_rad": [
+          0.0005129171212202077,
+          0.0005566645587015536,
+          0.0015132931699021412,
+          0.0019528716526451423,
+          0.0009556361830981465,
+          0.0004234915934892348
+        ],
+        "minimum_steady_floor_load_N": 4.124265155285507,
+        "fixture_weight_N": 4.279701002371152,
+        "peak_draw_A": 0.12242546395967027,
+        "peak_regeneration_A": 0.006200772205734162,
+        "max_case_temperature_C": 25.058681321180323,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 0.95,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_mass_0.95",
+        "--side",
+        "left",
+        "--mode",
+        "support",
+        "--mass-scale",
+        "0.95"
+      ]
+    },
+    {
+      "case": "left_mass_1.05",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "support",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "vertical_support": true
+        },
+        "passed": true,
+        "max_error_rad": 0.017536032646582322,
+        "rms_error_rad": [
+          0.00034643107294083926,
+          0.0006043146326604162,
+          0.0015754044470903472,
+          0.0033361200095512497,
+          0.001866104163547715,
+          0.00039858094603270345
+        ],
+        "minimum_steady_floor_load_N": 4.537579578032755,
+        "fixture_weight_N": 4.730195844726011,
+        "peak_draw_A": 0.12523720580497566,
+        "peak_regeneration_A": 0.009193231152614926,
+        "max_case_temperature_C": 25.060910317121742,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.05,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_mass_1.05",
+        "--side",
+        "left",
+        "--mode",
+        "support",
+        "--mass-scale",
+        "1.05"
+      ]
+    },
+    {
+      "case": "left_friction_0.5",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.04208537780560772,
+        "rms_error_rad": [
+          0.007356165299958976,
+          0.009335013399517063,
+          0.0038552175582886724,
+          0.0062616166777343385,
+          0.004669337845891138,
+          0.011240611666932595
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548581,
+        "peak_draw_A": 0.12165865472819526,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.040940602504683,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 0.5
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_friction_0.5",
+        "--side",
+        "left",
+        "--mode",
+        "swing",
+        "--friction-scale",
+        "0.5"
+      ]
+    },
+    {
+      "case": "left_friction_1.5",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.044155897102683556,
+        "rms_error_rad": [
+          0.007789494510552611,
+          0.010207241621745371,
+          0.004571515543007266,
+          0.006649392374721177,
+          0.005036481377274791,
+          0.012114519613215965
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548581,
+        "peak_draw_A": 0.13128215155825934,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.04101956178916,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.5
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_friction_1.5",
+        "--side",
+        "left",
+        "--mode",
+        "swing",
+        "--friction-scale",
+        "1.5"
+      ]
+    },
+    {
+      "case": "right_support_nominal",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "support",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "vertical_support": true
+        },
+        "passed": true,
+        "max_error_rad": 0.016624865480235007,
+        "rms_error_rad": [
+          0.0004831495974561853,
+          0.0006996656117695671,
+          0.0015447313150567079,
+          0.002548265017974314,
+          0.0012058655302793306,
+          0.0005308797437789761
+        ],
+        "minimum_steady_floor_load_N": 4.329753560206507,
+        "fixture_weight_N": 4.504948423548579,
+        "peak_draw_A": 0.1236472385585522,
+        "peak_regeneration_A": 0.007670425791307731,
+        "max_case_temperature_C": 25.05992038050158,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_support_nominal",
+        "--side",
+        "right",
+        "--mode",
+        "support"
+      ]
+    },
+    {
+      "case": "right_transfer_nominal",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "transfer",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "load_transfer": true
+        },
+        "passed": true,
+        "max_error_rad": 0.016624865480235007,
+        "rms_error_rad": [
+          0.0006182790216855057,
+          0.0005417107508860628,
+          0.002083347960897824,
+          0.005723448865839679,
+          0.005011969371262955,
+          0.0005050002071610758
+        ],
+        "minimum_steady_floor_load_N": 2.2231283819511014,
+        "fixture_weight_N": 4.504948423548579,
+        "peak_draw_A": 0.1236472385585522,
+        "peak_regeneration_A": 0.007670425791307731,
+        "max_case_temperature_C": 25.05557971412554,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_transfer_nominal",
+        "--side",
+        "right",
+        "--mode",
+        "transfer"
+      ]
+    },
+    {
+      "case": "right_swing_nominal",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.04576163252320332,
+        "rms_error_rad": [
+          0.00739051600737317,
+          0.009968954995564577,
+          0.004165930329081874,
+          0.006049439451281109,
+          0.0051997838024455305,
+          0.012352605011395106
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548579,
+        "peak_draw_A": 0.1257929241915891,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.041155424182463,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_swing_nominal",
+        "--side",
+        "right",
+        "--mode",
+        "swing"
+      ]
+    },
+    {
+      "case": "right_voltage_3.7",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.04573313341733953,
+        "rms_error_rad": [
+          0.007393320766645096,
+          0.009972448744908805,
+          0.004192448787949765,
+          0.006052206551073632,
+          0.005205504482226444,
+          0.012355817803672509
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548579,
+        "peak_draw_A": 0.13332547060917682,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.03096349692322,
+        "parameters": {
+          "voltage": 3.7,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_voltage_3.7",
+        "--side",
+        "right",
+        "--mode",
+        "swing",
+        "--voltage",
+        "3.7"
+      ]
+    },
+    {
+      "case": "right_voltage_6.0",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.045707025877443776,
+        "rms_error_rad": [
+          0.007396524264223958,
+          0.00996643908998883,
+          0.004178394362533164,
+          0.006052636472517605,
+          0.005207087866998391,
+          0.01234858018617693
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548579,
+        "peak_draw_A": 0.1228322052949497,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.048983017915667,
+        "parameters": {
+          "voltage": 6.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_voltage_6.0",
+        "--side",
+        "right",
+        "--mode",
+        "swing",
+        "--voltage",
+        "6.0"
+      ]
+    },
+    {
+      "case": "right_delay_0.005",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.03571269965595214,
+        "rms_error_rad": [
+          0.005763006290946228,
+          0.0071731116177508585,
+          0.003782569803561958,
+          0.005783948949867725,
+          0.004765375946528846,
+          0.009491487447041771
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548579,
+        "peak_draw_A": 0.12618928981419117,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.041155483123404,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.005,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_delay_0.005",
+        "--side",
+        "right",
+        "--mode",
+        "swing",
+        "--delay",
+        "0.005"
+      ]
+    },
+    {
+      "case": "right_delay_0.02",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.06831472009716943,
+        "rms_error_rad": [
+          0.011668920114794633,
+          0.0163252691179268,
+          0.0054001531474753344,
+          0.007448216571694693,
+          0.006621224630473626,
+          0.019281824237360846
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548579,
+        "peak_draw_A": 0.12604885168021251,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.041156479479124,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.02,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_delay_0.02",
+        "--side",
+        "right",
+        "--mode",
+        "swing",
+        "--delay",
+        "0.02"
+      ]
+    },
+    {
+      "case": "right_backlash_0.0",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.04368819138014243,
+        "rms_error_rad": [
+          0.006378774657151317,
+          0.008750692903873952,
+          0.003049625671152068,
+          0.00501231135929463,
+          0.003978803447176006,
+          0.011206391035701466
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548579,
+        "peak_draw_A": 0.12689860070133463,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.041240458662784,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.0,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_backlash_0.0",
+        "--side",
+        "right",
+        "--mode",
+        "swing",
+        "--backlash",
+        "0.0"
+      ]
+    },
+    {
+      "case": "right_backlash_0.017453292519943295",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.05230847388241238,
+        "rms_error_rad": [
+          0.011533345579752835,
+          0.01471301396375978,
+          0.009484182791070278,
+          0.010802494197931589,
+          0.010501010228933806,
+          0.016859842603281803
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548579,
+        "peak_draw_A": 0.1276613894766793,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.04108398675819,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.017453292519943295,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_backlash_0.017453292519943295",
+        "--side",
+        "right",
+        "--mode",
+        "swing",
+        "--backlash",
+        "0.017453292519943295"
+      ]
+    },
+    {
+      "case": "right_current_tau_0.001",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.04569761036685414,
+        "rms_error_rad": [
+          0.00738865212290159,
+          0.009962570896362762,
+          0.004174493603233812,
+          0.006048087030615207,
+          0.005207969359324277,
+          0.012342519674539509
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548579,
+        "peak_draw_A": 0.12740306290354284,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.04115523764535,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.001,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_current_tau_0.001",
+        "--side",
+        "right",
+        "--mode",
+        "swing",
+        "--current-tau",
+        "0.001"
+      ]
+    },
+    {
+      "case": "right_current_tau_0.005",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.04571100791841422,
+        "rms_error_rad": [
+          0.007382702947828301,
+          0.009937763899605618,
+          0.004134631337302692,
+          0.006024741088280918,
+          0.00519022937171023,
+          0.012358017728427727
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548579,
+        "peak_draw_A": 0.1259934581626615,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.041148439247323,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.005,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_current_tau_0.005",
+        "--side",
+        "right",
+        "--mode",
+        "swing",
+        "--current-tau",
+        "0.005"
+      ]
+    },
+    {
+      "case": "right_mass_0.95",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "support",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "vertical_support": true
+        },
+        "passed": true,
+        "max_error_rad": 0.015615830243782547,
+        "rms_error_rad": [
+          0.0005399886615730244,
+          0.0006371360371426893,
+          0.0015012669326867289,
+          0.0019326342891194431,
+          0.0009594965031865251,
+          0.0005053206972169441
+        ],
+        "minimum_steady_floor_load_N": 4.113921866731049,
+        "fixture_weight_N": 4.279701002371151,
+        "peak_draw_A": 0.12247814939053245,
+        "peak_regeneration_A": 0.006200771006049233,
+        "max_case_temperature_C": 25.05869729582639,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 0.95,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_mass_0.95",
+        "--side",
+        "right",
+        "--mode",
+        "support",
+        "--mass-scale",
+        "0.95"
+      ]
+    },
+    {
+      "case": "right_mass_1.05",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "support",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "vertical_support": true
+        },
+        "passed": true,
+        "max_error_rad": 0.017510918982446055,
+        "rms_error_rad": [
+          0.00039064187259965166,
+          0.0007227697658497679,
+          0.0015666881799327316,
+          0.0033118464077810375,
+          0.0018506516283300987,
+          0.0005191469133133147
+        ],
+        "minimum_steady_floor_load_N": 4.536697960827524,
+        "fixture_weight_N": 4.730195844726008,
+        "peak_draw_A": 0.12506006742581702,
+        "peak_regeneration_A": 0.009193147790415714,
+        "max_case_temperature_C": 25.06091085232299,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.05,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_mass_1.05",
+        "--side",
+        "right",
+        "--mode",
+        "support",
+        "--mass-scale",
+        "1.05"
+      ]
+    },
+    {
+      "case": "right_friction_0.5",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.044770635008115706,
+        "rms_error_rad": [
+          0.007182142120096202,
+          0.0094578017795444,
+          0.003835475742097359,
+          0.005885989705868629,
+          0.004920586311721112,
+          0.011890309132667405
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548579,
+        "peak_draw_A": 0.12152207783046491,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.041090883516006,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 0.5
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_friction_0.5",
+        "--side",
+        "right",
+        "--mode",
+        "swing",
+        "--friction-scale",
+        "0.5"
+      ]
+    },
+    {
+      "case": "right_friction_1.5",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "swing",
+        "trajectory_file": "left.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.04681364731153124,
+        "rms_error_rad": [
+          0.007629616646393685,
+          0.01045610477125,
+          0.004450571963202356,
+          0.006159757526497326,
+          0.0054435046229312795,
+          0.012837139063229407
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548579,
+        "peak_draw_A": 0.13041967269039526,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.04120355496937,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.5
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_friction_1.5",
+        "--side",
+        "right",
+        "--mode",
+        "swing",
+        "--friction-scale",
+        "1.5"
+      ]
+    },
+    {
+      "case": "left_forward_swing",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "swing",
+        "trajectory_file": "forward.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.04447209288105447,
+        "rms_error_rad": [
+          0.0015726233148304818,
+          0.011658469472206336,
+          0.010830600072391203,
+          0.009408906381703231,
+          0.007863722428873825,
+          0.013696864469541463
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548581,
+        "peak_draw_A": 0.1336679096195473,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.04345401323255,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_forward_swing",
+        "--side",
+        "left",
+        "--mode",
+        "swing",
+        "--trajectory",
+        "forward.npz"
+      ]
+    },
+    {
+      "case": "left_backward_swing",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "left",
+        "mode": "swing",
+        "trajectory_file": "backward.npz",
+        "joint_names": [
+          "left_hip_yaw",
+          "left_hip_roll",
+          "left_hip_pitch",
+          "left_knee",
+          "left_ankle_pitch",
+          "left_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.04151647011427766,
+        "rms_error_rad": [
+          0.001260259378454402,
+          0.011708305799450128,
+          0.0066555203950508564,
+          0.007609291394792877,
+          0.006099225161255931,
+          0.013653010872425694
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548581,
+        "peak_draw_A": 0.12742823090467534,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.04137056514657,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/left_backward_swing",
+        "--side",
+        "left",
+        "--mode",
+        "swing",
+        "--trajectory",
+        "backward.npz"
+      ]
+    },
+    {
+      "case": "right_forward_swing",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "swing",
+        "trajectory_file": "forward.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.04436516515748151,
+        "rms_error_rad": [
+          0.001426501204480042,
+          0.011693815091542072,
+          0.0108827508767139,
+          0.009635139363995501,
+          0.007722602466608032,
+          0.013851440556128851
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548579,
+        "peak_draw_A": 0.1346121414645014,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.042925720053166,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_forward_swing",
+        "--side",
+        "right",
+        "--mode",
+        "swing",
+        "--trajectory",
+        "forward.npz"
+      ]
+    },
+    {
+      "case": "right_backward_swing",
+      "passed": true,
+      "report": {
+        "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+        "side": "right",
+        "mode": "swing",
+        "trajectory_file": "backward.npz",
+        "joint_names": [
+          "right_hip_yaw",
+          "right_hip_roll",
+          "right_hip_pitch",
+          "right_knee",
+          "right_ankle_pitch",
+          "right_ankle_roll"
+        ],
+        "failure": null,
+        "gates": {
+          "no_failure": true,
+          "duration": true,
+          "peak_error": true,
+          "rms_error": true,
+          "fixture_has_no_floor_load": true
+        },
+        "passed": true,
+        "max_error_rad": 0.041669263326190704,
+        "rms_error_rad": [
+          0.0011546156335989332,
+          0.011730152789080144,
+          0.006574791577869154,
+          0.0075103623867497395,
+          0.006100177919882335,
+          0.01382807547547949
+        ],
+        "minimum_steady_floor_load_N": 0.0,
+        "fixture_weight_N": 4.504948423548579,
+        "peak_draw_A": 0.12747232762814328,
+        "peak_regeneration_A": 0.0,
+        "max_case_temperature_C": 25.041350135394207,
+        "parameters": {
+          "voltage": 5.0,
+          "delay_s": 0.01,
+          "current_tau": 0.002,
+          "backlash": 0.004363323129985824,
+          "mass_scale": 1.0,
+          "friction_scale": 1.0
+        },
+        "limitations": [
+          "explicit laboratory fixture constraints",
+          "not free-standing one-legged balance",
+          "model-estimated electrical/thermal quantities"
+        ]
+      },
+      "command": [
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_leg.py",
+        "--workload",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+        "--out",
+        "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/right_backward_swing",
+        "--side",
+        "right",
+        "--mode",
+        "swing",
+        "--trajectory",
+        "backward.npz"
+      ]
+    }
+  ],
+  "single_joint_command": [
+    "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/.venv/bin/python",
+    "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/software/sim/actuator/run_single_joint.py",
+    "--workload",
+    "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_workload_v2",
+    "--out",
+    "/home/sskw/.codex/worktrees/prototype-epics-3-4/stackchan_r5a_rl_v4/outputs/actuator_suite_v2/single_joint"
+  ]
+}

@@ -25,6 +25,10 @@ def verify():
     assert [j['index'] for j in joints]==list(range(12))
     assert len({j['bus_id'] for j in joints})==12 and all(0<=j['bus_id']<=252 for j in joints)
     assert frames['handedness']=='right' and frames['hardware_calibration_required']
+    placement=json.loads((ROOT/'validation/fast_turn_development_v1/packaging_cad_v5/report.json').read_text())['properties']
+    for name,com in robot['component_com_base_m'].items():
+        np.testing.assert_allclose(com,placement[name]['com_base_m'],rtol=0,atol=1e-12)
+    np.testing.assert_allclose(robot['battery_envelope']['center_base_mm'],np.array(placement['battery_2S_reservation']['com_base_m'])*1000,rtol=0,atol=1e-12)
     assert robot['scope']['yaw_actuators'] and not robot['scope']['hardware_control_enabled']
     assert robot['kinematics']['thigh_mm']==50 and robot['kinematics']['shin_mm']==44
     assert robot['body']['width_mm']==robot['body']['depth_mm']==robot['body']['height_mm']==128

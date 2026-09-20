@@ -46,6 +46,11 @@ def build():
                    'finite_turn':{'period_s':.4,'shift_fraction':.45,'initial_inset_mm':25.5,
                                   'steady_inset_mm':25.5,'command_rate_deg_s':40.,'reference_goal_deg':91.5},
                    'note':'Legacy robot.json gait is not the runtime gait. Direction changes the signs and first support foot.'}
+    placement=json.loads((ROOT/'validation/fast_turn_development_v1/packaging_cad_v5/report.json').read_text())['properties']
+    battery_center=(np.array(placement['battery_2S_reservation']['com_base_m'])*1000).tolist()
+    robot['battery_envelope']['center_base_mm']=battery_center
+    robot['battery_mount']['center_base_mm']=battery_center
+    robot['component_com_base_m']={name:placement[name]['com_base_m'] for name in ['battery_2S_reservation','dedicated_5V_converter','TTL_interface','Tab5']}
     robot['source']={'path':str(scene.relative_to(ROOT)),'sha256':hashlib.sha256(scene.read_bytes()).hexdigest(),
                      'kind':'frozen simulation baseline, not a measured robot'}
     frames={'handedness':'right','length_unit':'m','angle_unit':'rad','mass_unit':'kg',
@@ -74,7 +79,7 @@ def build():
     bom.append(('Printed structure and remaining CAD allocation',1,total-hardware_mass,'derived aggregate',
                 'remainder after commercial/allowance allocation; includes body, cover, tray, supports, links and soles; not an independently measured mass'))
     with (out/'bom.csv').open('w',newline='') as f:
-        writer=csv.writer(f);writer.writerow(['item','quantity','unit_mass_kg','subtotal_mass_kg','status','notes'])
+        writer=csv.writer(f,lineterminator="\n");writer.writerow(['item','quantity','unit_mass_kg','subtotal_mass_kg','status','notes'])
         writer.writerows((name,n,m,n*m,status,note) for name,n,m,status,note in bom)
     # Inventory geometry separately from the additive accounting to avoid counting
     # a servo case and its whole assembly mass twice.

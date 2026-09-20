@@ -1,0 +1,160 @@
+{
+  "scope": "Define the joint envelope over both turn signs and forward/backward motions.",
+  "joint_requirements": [
+    {
+      "joint": "left_hip_yaw",
+      "equivalent_inertia_kg_m2": 0.00014061311718253737,
+      "required_motion_rad": [
+        -0.2221180652407889,
+        0.17687348932923877
+      ],
+      "external_fixture_load_Nm": -0.09707946821685859,
+      "source_peak_time_s": 3.2189999999997565,
+      "source_peak_file": "left.npz"
+    },
+    {
+      "joint": "left_hip_roll",
+      "equivalent_inertia_kg_m2": 0.0009389723002896077,
+      "required_motion_rad": [
+        -0.19301103129425157,
+        0.19195955322068825
+      ],
+      "external_fixture_load_Nm": -0.2506949511961454,
+      "source_peak_time_s": 4.483999999999832,
+      "source_peak_file": "right.npz"
+    },
+    {
+      "joint": "left_hip_pitch",
+      "equivalent_inertia_kg_m2": 0.0009725581726625324,
+      "required_motion_rad": [
+        0.1549683319358953,
+        0.5232457642734691
+      ],
+      "external_fixture_load_Nm": 0.09343403572848039,
+      "source_peak_time_s": 2.91499999999979,
+      "source_peak_file": "right.npz"
+    },
+    {
+      "joint": "left_knee",
+      "equivalent_inertia_kg_m2": 0.0002736667113995972,
+      "required_motion_rad": [
+        -1.1242062659183039,
+        -0.9067132847836961
+      ],
+      "external_fixture_load_Nm": -0.13214360970521458,
+      "source_peak_time_s": 2.543999999999831,
+      "source_peak_file": "left.npz"
+    },
+    {
+      "joint": "left_ankle_pitch",
+      "equivalent_inertia_kg_m2": 0.00015041468557038266,
+      "required_motion_rad": [
+        0.547524964702766,
+        0.792314971499566
+      ],
+      "external_fixture_load_Nm": 0.23275081666877162,
+      "source_peak_time_s": 3.060999999999774,
+      "source_peak_file": "forward.npz"
+    },
+    {
+      "joint": "left_ankle_roll",
+      "equivalent_inertia_kg_m2": 3.825904086847575e-05,
+      "required_motion_rad": [
+        -0.19175534441873573,
+        0.2758301507256177
+      ],
+      "external_fixture_load_Nm": -0.17694731244425396,
+      "source_peak_time_s": 2.6309999999998213,
+      "source_peak_file": "right.npz"
+    },
+    {
+      "joint": "right_hip_yaw",
+      "equivalent_inertia_kg_m2": 0.0001405829541706428,
+      "required_motion_rad": [
+        -0.17687621385854466,
+        0.22211555139772102
+      ],
+      "external_fixture_load_Nm": 0.09709081042129639,
+      "source_peak_time_s": 3.2189999999997565,
+      "source_peak_file": "right.npz"
+    },
+    {
+      "joint": "right_hip_roll",
+      "equivalent_inertia_kg_m2": 0.0009389425359822657,
+      "required_motion_rad": [
+        -0.19181644630676445,
+        0.19315117200636983
+      ],
+      "external_fixture_load_Nm": 0.25079479332382737,
+      "source_peak_time_s": 4.483999999999832,
+      "source_peak_file": "left.npz"
+    },
+    {
+      "joint": "right_hip_pitch",
+      "equivalent_inertia_kg_m2": 0.0009725281404101065,
+      "required_motion_rad": [
+        0.15245685729548275,
+        0.5235776474689282
+      ],
+      "external_fixture_load_Nm": 0.09342948976160695,
+      "source_peak_time_s": 2.91499999999979,
+      "source_peak_file": "left.npz"
+    },
+    {
+      "joint": "right_knee",
+      "equivalent_inertia_kg_m2": 0.00027365569755982634,
+      "required_motion_rad": [
+        -1.125497372122721,
+        -0.9022137884996793
+      ],
+      "external_fixture_load_Nm": -0.13632608873492588,
+      "source_peak_time_s": 2.923999999999789,
+      "source_peak_file": "forward.npz"
+    },
+    {
+      "joint": "right_ankle_pitch",
+      "equivalent_inertia_kg_m2": 0.00015041311580983827,
+      "required_motion_rad": [
+        0.5476577981868928,
+        0.7912111771248143
+      ],
+      "external_fixture_load_Nm": 0.22623286891621133,
+      "source_peak_time_s": 5.0810000000000315,
+      "source_peak_file": "forward.npz"
+    },
+    {
+      "joint": "right_ankle_roll",
+      "equivalent_inertia_kg_m2": 3.8259040868475434e-05,
+      "required_motion_rad": [
+        -0.27596905908751007,
+        0.19161195946697201
+      ],
+      "external_fixture_load_Nm": 0.17694442081928266,
+      "source_peak_time_s": 2.6309999999998213,
+      "source_peak_file": "left.npz"
+    }
+  ],
+  "source_sha256": {
+    "right.npz": "5f44f7d2db639c214aedee3ce9154d99865e320fe419381719ecfc566c62071e",
+    "forward.npz": "e7bff2dde6b1f517414b4cbd4fd5aa4a1d0307468fe9d3cd02ef9d6172649481",
+    "left.npz": "bb5b18ee690b55f98ff99b0c52678c830744a1b8c731afd7c7b2ca62064aabb2",
+    "backward.npz": "edc30e12cf3fe87aea6091f57b7936f2791a8db521c787051d96bad0490c3feb"
+  },
+  "single_joint_gates": {
+    "steady_error_rad": 0.04,
+    "transient_error_rad": 0.15,
+    "settling_s": 0.5
+  },
+  "leg_gates": {
+    "peak_joint_tracking_error_rad": 0.15,
+    "rms_joint_tracking_error_rad": 0.06,
+    "no_joint_limit_violation": true,
+    "no_self_collision": true,
+    "no_protection_stop": true
+  },
+  "note": "Gates fixed before the new actuator fixture trials. Load is the peak legacy task torque held constant for a conservative single-joint test, not a continuous servo rating.",
+  "command_speeds_m_s": {
+    "forward": 0.04,
+    "backward": -0.02
+  }
+}
