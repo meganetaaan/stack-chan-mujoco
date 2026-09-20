@@ -1,0 +1,134 @@
+{
+  "source_sha256": "cd7e9eef74c043914ddd12bcecacfeeedf0b87b1823b9cb48bf79f4e1233d708",
+  "mesh_mm": 2.0,
+  "circle_points": 48,
+  "extend_boundary_sizes": false,
+  "volume_before_mm3": 32136.333957573654,
+  "volume_after_mm3": 32136.33395757366,
+  "patches": [
+    {
+      "group": "fixed",
+      "faces": [
+        1
+      ],
+      "area_mm2": 57.92311455056179,
+      "expected_area_mm2": 57.9231145505618
+    },
+    {
+      "group": "fixed",
+      "faces": [
+        3
+      ],
+      "area_mm2": 57.92311455056161,
+      "expected_area_mm2": 57.9231145505618
+    },
+    {
+      "group": "fixed",
+      "faces": [
+        5
+      ],
+      "area_mm2": 57.92311455056179,
+      "expected_area_mm2": 57.9231145505618
+    },
+    {
+      "group": "fixed",
+      "faces": [
+        7
+      ],
+      "area_mm2": 57.92311455056161,
+      "expected_area_mm2": 57.9231145505618
+    },
+    {
+      "group": "left",
+      "faces": [
+        9
+      ],
+      "area_mm2": 104.01813276035801,
+      "expected_area_mm2": 104.01813276035804
+    },
+    {
+      "group": "left",
+      "faces": [
+        11
+      ],
+      "area_mm2": 104.01813276035804,
+      "expected_area_mm2": 104.01813276035804
+    },
+    {
+      "group": "left",
+      "faces": [
+        13
+      ],
+      "area_mm2": 104.01813276035801,
+      "expected_area_mm2": 104.01813276035804
+    },
+    {
+      "group": "left",
+      "faces": [
+        15
+      ],
+      "area_mm2": 104.01813276035804,
+      "expected_area_mm2": 104.01813276035804
+    },
+    {
+      "group": "right",
+      "faces": [
+        17
+      ],
+      "area_mm2": 104.01813276035801,
+      "expected_area_mm2": 104.01813276035804
+    },
+    {
+      "group": "right",
+      "faces": [
+        19
+      ],
+      "area_mm2": 104.01813276035804,
+      "expected_area_mm2": 104.01813276035804
+    },
+    {
+      "group": "right",
+      "faces": [
+        21
+      ],
+      "area_mm2": 104.01813276035801,
+      "expected_area_mm2": 104.01813276035804
+    },
+    {
+      "group": "right",
+      "faces": [
+        23
+      ],
+      "area_mm2": 104.01813276035804,
+      "expected_area_mm2": 104.01813276035804
+    }
+  ],
+  "mesh_checks": {
+    "fixed": {
+      "facets": 694,
+      "mesh_area_mm2": 231.0313602294908,
+      "cad_area_mm2": 231.6924582022468,
+      "relative_area_error": 0.002853342650363402
+    },
+    "left": {
+      "facets": 792,
+      "mesh_area_mm2": 414.88533354296715,
+      "cad_area_mm2": 416.0725310414321,
+      "relative_area_error": 0.0028533426503629202
+    },
+    "right": {
+      "facets": 786,
+      "mesh_area_mm2": 414.8853335429672,
+      "cad_area_mm2": 416.0725310414321,
+      "relative_area_error": 0.0028533426503627836
+    }
+  },
+  "elements": 36886,
+  "criteria": {
+    "relative_patch_area_error": 0.01
+  },
+  "limitations": [
+    "linear chord geometry approximates circular boundaries",
+    "ideal fixed annuli; not contact analysis"
+  ]
+}

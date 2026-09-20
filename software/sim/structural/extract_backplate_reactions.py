@@ -19,7 +19,7 @@ def fixed(x):
     return (abs(x[0]+62.2)<1e-6) & np.any(
         ((x[1,None,:]-centers[:,1,None])**2 +
          (x[2,None,:]-centers[:,2,None])**2)<=4.6**2, axis=0)
-facets = mesh.facets_satisfying(fixed, boundaries_only=True)
+facets = mesh.boundaries['fixed'] if plan.get('boundary_method')=='CAD physical groups' else mesh.facets_satisfying(fixed, boundaries_only=True)
 nodes = np.unique(basis.get_dofs(facets=facets).all()//3)
 rows = []
 for name in ['left_only','right_only','simultaneous']:

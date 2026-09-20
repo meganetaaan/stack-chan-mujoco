@@ -34,17 +34,29 @@ def skew(r):
     return np.array([[0, -z, y], [z, 0, -x], [-y, x, 0]])
 
 
+def select_boundary(mesh, selector):
+    """Resolve a callable or a CAD physical-group name to boundary facets."""
+    if callable(selector):
+        return mesh.facets_satisfying(selector, boundaries_only=True)
+    if not isinstance(selector, str) or not mesh.boundaries or selector not in mesh.boundaries:
+        raise ValueError('Unknown boundary physical group')
+    facets = np.asarray(mesh.boundaries[selector], dtype=int)
+    if not set(facets).issubset(set(mesh.boundary_facets())):
+        raise ValueError('Physical group contains internal facets')
+    return facets
+
+
 def analyze_regions_many(mesh, fixed_selector, regions, load_cases, young=1400., poisson=.35):
     """Solve cases of independent six-component loads on disjoint face regions."""
     element = ElementVector(ElementTetP2())
     basis = Basis(mesh, element)
-    fixed = mesh.facets_satisfying(fixed_selector, boundaries_only=True)
+    fixed = select_boundary(mesh, fixed_selector)
     if not len(fixed):
         raise ValueError('Empty support surface')
     region_data = []
     occupied = set(fixed)
     for selector, origin in regions:
-        loaded = mesh.facets_satisfying(selector, boundaries_only=True)
+        loaded = select_boundary(mesh, selector)
         if not len(loaded) or occupied.intersection(loaded):
             raise ValueError('Empty or overlapping load region')
         occupied.update(loaded)

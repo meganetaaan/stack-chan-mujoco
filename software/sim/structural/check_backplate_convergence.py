@@ -10,10 +10,11 @@ for folder in a.analyses:
     plan=json.loads((folder/'plan.json').read_text())
     report=json.loads((folder/'report.json').read_text())
     current={k:plan[k] for k in ['geometry_sha256','young_MPa','poisson','criteria','fixed','load','wrenches_N_Nmm','selected_time_s']}
+    current['boundary_method']=plan.get('boundary_method','facet centroid selection')
     if identity is None:identity=current
     assert current==identity,'Different geometry, loading, constraints, material or criteria'
     case=next(r for r in report['rows'] if r['name']=='simultaneous')
-    rows.append({'mesh_mm':plan['mesh_mm'],'displacement_mm':case['max_displacement_mm'],
+    rows.append({'mesh_mm':plan['mesh_mm'],'circle_points':plan.get('circle_points',32 if plan.get('boundary_method')=='CAD physical groups' else None),'displacement_mm':case['max_displacement_mm'],
                  'principal_MPa':case['max_absolute_principal_MPa'],'von_mises_MPa':case['max_von_mises_MPa'],
                  'screen_passed':report['passed_screen'],
                  'source_hashes':{f.name:hashlib.sha256(f.read_bytes()).hexdigest() for f in [folder/'plan.json',folder/'report.json']}})
@@ -23,6 +24,8 @@ changes={key:abs(rows[-1][key]-rows[-2][key])/max(abs(rows[-1][key]),1e-30) for 
 gates={'three_meshes':len(rows)>=3,'displacement_convergence':changes['displacement_mm']<=.05,
        'principal_convergence':changes['principal_MPa']<=.1,'von_mises_convergence':changes['von_mises_MPa']<=.1,
        'all_mesh_screens':all(r['screen_passed'] for r in rows)}
+if identity['boundary_method']=='CAD physical groups':
+    gates['circle_refinement']=all(rows[i+1]['circle_points']>rows[i]['circle_points'] for i in range(len(rows)-1))
 result={'scope':__doc__,'criteria':{'relative_displacement':.05,'relative_stress':.1},
         'relative_change_denominator':'finest mesh absolute maximum','rows':rows,'last_two_relative_changes':changes,
         'gates':gates,'passed':all(gates.values()),'load_path_verified':False,

@@ -1,0 +1,67 @@
+{
+  "scope": "Check the predefined three-mesh displacement/stress convergence gate.",
+  "criteria": {
+    "relative_displacement": 0.05,
+    "relative_stress": 0.1
+  },
+  "relative_change_denominator": "finest mesh absolute maximum",
+  "rows": [
+    {
+      "mesh_mm": 3.0,
+      "circle_points": 32,
+      "displacement_mm": 0.02300797672795883,
+      "principal_MPa": 11.75893557775276,
+      "von_mises_MPa": 11.483720206848119,
+      "screen_passed": true,
+      "source_hashes": {
+        "plan.json": "6615b3ee007d7320d34a211c75366c573a425fed6d824f7d01265956e9c146dc",
+        "report.json": "9acea24d46193de4df1e26f77a1c19cd110177dbab923f03a1f32db1b48b05d6"
+      }
+    },
+    {
+      "mesh_mm": 2.0,
+      "circle_points": 48,
+      "displacement_mm": 0.02312079254031802,
+      "principal_MPa": 13.480405192127405,
+      "von_mises_MPa": 12.075745009592103,
+      "screen_passed": true,
+      "source_hashes": {
+        "plan.json": "5d9d72a5cb1b944ccfc155134ff0b02eaa1d73f8f716e321a963b8088fa0b2c8",
+        "report.json": "12c463762d1b586d308c20cc0278d35e0877078afe046e92459716263a9a10bf"
+      }
+    },
+    {
+      "mesh_mm": 1.5,
+      "circle_points": 64,
+      "displacement_mm": 0.023212698047617907,
+      "principal_MPa": 21.188917425831484,
+      "von_mises_MPa": 14.509160029415975,
+      "screen_passed": true,
+      "source_hashes": {
+        "plan.json": "5bc685346d7c4a542e3774e6de286dd12af93694d1c25f7106164c8e877e7c49",
+        "report.json": "304c191d0940ab1608c0623ae7b11a486c784f78fa08614aa07712544104b672"
+      }
+    }
+  ],
+  "last_two_relative_changes": {
+    "displacement_mm": 0.00395927725038052,
+    "principal_MPa": 0.363799248389472,
+    "von_mises_MPa": 0.16771577506143356
+  },
+  "gates": {
+    "three_meshes": true,
+    "displacement_convergence": true,
+    "principal_convergence": false,
+    "von_mises_convergence": false,
+    "all_mesh_screens": true,
+    "circle_refinement": true
+  },
+  "passed": false,
+  "load_path_verified": false,
+  "limitations": [
+    "single recorded instant",
+    "ideal corner clamps",
+    "extra plate mass absent from dynamic loads",
+    "contact, joint compliance and buckling not represented"
+  ]
+}

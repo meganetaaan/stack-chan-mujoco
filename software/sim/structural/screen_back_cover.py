@@ -8,6 +8,8 @@ p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--out',type=Path,required=True);p.add_argument('--step',type=Path)
 p.add_argument('--mesh-mm',type=float,default=3.)
 p.add_argument('--material-config',type=Path)
+p.add_argument('--conformal-patches',action='store_true')
+p.add_argument('--circle-points',type=int,default=32)
 a=p.parse_args()
 if not np.isfinite(a.mesh_mm) or a.mesh_mm<=0:p.error('positive finite mesh size required')
 a.out.mkdir(parents=True,exist_ok=False)
@@ -27,6 +29,7 @@ plan={'scope':__doc__,'selected_time_s':times[0],'wrenches_N_Nmm':w.tolist(),
       'source_sha256':{str(f.relative_to(ROOT)):hashlib.sha256(f.read_bytes()).hexdigest() for f in paths},
       'geometry_sha256':hashlib.sha256(step.read_bytes()).hexdigest(),
       'young_MPa':material['young_MPa'],'poisson':material['poisson'],'material':material,'mesh_mm':a.mesh_mm,
+      'boundary_method':'CAD physical groups' if a.conformal_patches else 'facet centroid selection',
       'criteria':{'displacement_mm':.2,'stress_MPa':material['allowable_MPa'],'relative_superposition_error':1e-8},
       'fixed':'inner-face disks radius 4.6 mm at (y,z)=(+/-59,8 or 120); ideal corner support',
       'load':'inner-face disks radius 6 mm at y=+/-19,+/-33; z=58,82, separated by side',
@@ -34,8 +37,15 @@ plan={'scope':__doc__,'selected_time_s':times[0],'wrenches_N_Nmm':w.tolist(),
                      'ideal corner clamp; no shell boss compliance, screw contact or preload',
                      'linear isotropic material screen; no joint/fatigue/temperature characterization',
                      'single mesh; no convergence demonstrated']}
+if a.conformal_patches:
+ plan['circle_points']=a.circle_points
+ plan['limitations'][1]='linear chord approximation of CAD-partitioned patch curves'
 (a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
-mesh=tetrahedralize(step,a.out/'cover.msh',a.mesh_mm)
+if a.conformal_patches:
+ from mesh_backplate_patches import build_mesh
+ mesh=build_mesh(step,a.out/'cover.msh',a.mesh_mm,a.circle_points)
+else:
+ mesh=tetrahedralize(step,a.out/'cover.msh',a.mesh_mm)
 def disk_union(x,centers,radius):
  result=np.zeros(x.shape[1],dtype=bool)
  for y,z in centers:result|=(x[1]-y)**2+(x[2]-z)**2<=radius**2
@@ -45,6 +55,9 @@ regions=[]
 for sign in [1,-1]:
  centers=[(sign*26+dy,70+dz) for dy in [-7,7] for dz in [-12,12]]
  regions.append((lambda x,centers=centers:disk_union(x,centers,6),[-62.2,sign*26,70]))
+if a.conformal_patches:
+ fixed='fixed'
+ regions=[('left',[-62.2,26,70]),('right',[-62.2,-26,70])]
 loads=[np.array([w[0],np.zeros(6)]),np.array([np.zeros(6),w[1]]),w]
 rows=[];fields=[]
 for name,(report,data) in zip(['left_only','right_only','simultaneous'],analyze_regions_many(mesh,fixed,regions,loads,plan['young_MPa'],plan['poisson'])):
