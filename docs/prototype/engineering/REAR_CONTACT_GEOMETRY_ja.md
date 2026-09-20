@@ -58,3 +58,20 @@ LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" \
 ```
 
 出力 `mesh_surfaces.inp` はメッシュと面定義のみであり、実行可能な解析デッキではない。材料・荷重・拘束・ねじ接続・締付けをまだ含まない。ねじの外径包絡体とナット内径の重なりを保持した準備モデルなので、ねじ部は実形状または検証された等価モデルへ変更する必要がある。C3D4の剛性・薄板曲げ精度も未検証で、現メッシュによる強度判定は行っていない。
+
+## 実形状での押付け接触試行
+
+`validation/rear_contact_probe_development_v1/pressure_v1` は胴体と背面板に四隅各25 N相当の面圧を与えた摩擦なし接触試行。全荷重まで12増分で収束したが、拘束点の合反力/総押付け力は0.000252410で、事前基準0.0001を超過したため**不合格**。基準は変更していない。最終合反力の大きさは約0.02524 N、個別拘束点の最大反力は0.01244 N。
+
+参考値として胴体最大節点変位0.003569 mm、背面板0.0004073 mm、最大絶対主応力の節点値は胴体1.5112 MPa、背面板1.0541 MPa。単一の一次四面体メッシュで節点へ外挿した値であり、強度合格の証拠ではない。実ねじ・座金の剛性、締付け力保持、歩行荷重は含まない。
+
+変形に追従する面圧による荷重不釣合いの可能性を調べるため、同じ初期面積分から等価節点力を作り、方向と合力を保持する `--load-mode nodal` を追加した。これは次の比較試行であり、面圧試行の失敗を取り消すものではない。
+
+```sh
+.venv-engineering/bin/python software/sim/structural/probe_rear_contact.py \
+  --load-mode pressure --out outputs/rear_pressure_reproduction
+.venv-engineering/bin/python software/sim/structural/evaluate_rear_contact_probe.py \
+  --run outputs/rear_pressure_reproduction
+```
+
+大きい生データ `.dat` と `.frd` はgzipで可逆圧縮保存し、圧縮前SHA-256も記録した。保存結果を再評価する場合はコピー先で解凍してから評価スクリプトを実行する。
