@@ -1,0 +1,190 @@
+{
+  "scope": "CAD cross-link intersection audit at saved physical trajectory poses.",
+  "parts": 45,
+  "rows": [
+    {
+      "time_s": 0.02000000000000001,
+      "intersections": []
+    },
+    {
+      "time_s": 1.9999999999998905,
+      "intersections": []
+    },
+    {
+      "time_s": 2.1999999999998687,
+      "intersections": []
+    },
+    {
+      "time_s": 2.3999999999998467,
+      "intersections": [
+        {
+          "pair": "left_roll_to_pitch_carrier / left_yaw_coupler",
+          "volume_mm3": 0.04023177904592222
+        },
+        {
+          "pair": "right_roll_to_pitch_carrier / right_yaw_coupler",
+          "volume_mm3": 0.23116945925687424
+        }
+      ]
+    },
+    {
+      "time_s": 2.5999999999998247,
+      "intersections": []
+    },
+    {
+      "time_s": 2.7999999999998026,
+      "intersections": [
+        {
+          "pair": "left_roll_to_pitch_carrier / left_yaw_coupler",
+          "volume_mm3": 0.19129644689581898
+        },
+        {
+          "pair": "body_shroud / left_thigh_yoke",
+          "volume_mm3": 3.1639093219176977
+        },
+        {
+          "pair": "right_roll_to_pitch_carrier / right_yaw_coupler",
+          "volume_mm3": 0.11220489300409556
+        }
+      ]
+    },
+    {
+      "time_s": 2.9999999999997806,
+      "intersections": []
+    },
+    {
+      "time_s": 3.1999999999997586,
+      "intersections": [
+        {
+          "pair": "right_roll_to_pitch_carrier / right_yaw_coupler",
+          "volume_mm3": 0.21214494951229937
+        }
+      ]
+    },
+    {
+      "time_s": 3.3999999999997366,
+      "intersections": []
+    },
+    {
+      "time_s": 3.5999999999997145,
+      "intersections": [
+        {
+          "pair": "left_roll_to_pitch_carrier / left_yaw_coupler",
+          "volume_mm3": 0.18720916257062928
+        },
+        {
+          "pair": "body_shroud / left_thigh_yoke",
+          "volume_mm3": 4.013067128261769
+        },
+        {
+          "pair": "right_roll_to_pitch_carrier / right_yaw_coupler",
+          "volume_mm3": 0.13533956755567744
+        }
+      ]
+    },
+    {
+      "time_s": 3.7999999999996925,
+      "intersections": []
+    },
+    {
+      "time_s": 3.9999999999996705,
+      "intersections": [
+        {
+          "pair": "right_roll_to_pitch_carrier / right_yaw_coupler",
+          "volume_mm3": 0.21334589388454878
+        }
+      ]
+    },
+    {
+      "time_s": 4.199999999999737,
+      "intersections": []
+    },
+    {
+      "time_s": 4.399999999999804,
+      "intersections": [
+        {
+          "pair": "left_roll_to_pitch_carrier / left_yaw_coupler",
+          "volume_mm3": 0.22105264162501473
+        },
+        {
+          "pair": "right_roll_to_pitch_carrier / right_yaw_coupler",
+          "volume_mm3": 0.1302194305568909
+        }
+      ]
+    },
+    {
+      "time_s": 4.599999999999871,
+      "intersections": [
+        {
+          "pair": "right_roll_to_pitch_carrier / right_yaw_coupler",
+          "volume_mm3": 0.011561754250919789
+        }
+      ]
+    },
+    {
+      "time_s": 7.000000000000672,
+      "intersections": []
+    }
+  ],
+  "worst_intersections": {
+    "left_roll_to_pitch_carrier / left_yaw_coupler": {
+      "volume_mm3": 0.22105264162501473,
+      "time_s": 4.399999999999804,
+      "intersection_bounds_base_mm": [
+        [
+          1.0989803443063881,
+          1.3654533084497178
+        ],
+        [
+          34.17394426984268,
+          36.117900161136944
+        ],
+        [
+          51.39999999999978,
+          52.29024383255628
+        ]
+      ]
+    },
+    "right_roll_to_pitch_carrier / right_yaw_coupler": {
+      "volume_mm3": 0.23116945925687424,
+      "time_s": 2.3999999999998467,
+      "intersection_bounds_base_mm": [
+        [
+          1.452983730180097,
+          1.802039342283447
+        ],
+        [
+          -35.76276179764143,
+          -33.80745712421256
+        ],
+        [
+          51.4000000000001,
+          52.32002356408269
+        ]
+      ]
+    },
+    "body_shroud / left_thigh_yoke": {
+      "volume_mm3": 4.013067128261769,
+      "time_s": 3.5999999999997145,
+      "intersection_bounds_base_mm": [
+        [
+          11.519539257270663,
+          19.681593714006883
+        ],
+        [
+          48.41607186578841,
+          49.90506345395593
+        ],
+        [
+          -1.000000541788836e-07,
+          1.8000000999999812
+        ]
+      ]
+    }
+  },
+  "limitations": [
+    "discrete saved poses",
+    "same-link pairs excluded here and reviewed separately",
+    "shaft/bearing intended interfaces must be interpreted explicitly"
+  ]
+}

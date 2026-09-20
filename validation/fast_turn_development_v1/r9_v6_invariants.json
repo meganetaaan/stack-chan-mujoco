@@ -1,0 +1,29 @@
+{
+  "scope": "Audit integrated candidate yaw grid and preservation of baseline physics limits.",
+  "physics_invariants": {
+    "actuator_ctrlrange": true,
+    "actuator_forcerange": true,
+    "dof_damping": true,
+    "dof_frictionloss": true,
+    "dof_armature": true,
+    "gravity": true,
+    "timestep": true,
+    "integrator": true,
+    "no_equalities": true,
+    "no_exclusions": true,
+    "parent_filter_disabled": true
+  },
+  "samples": 961,
+  "failed_samples": 0,
+  "worst_by_pair": {},
+  "limitations": [
+    "home pose only",
+    "no positive clearance margin established",
+    "same-body CAD interfaces not certified",
+    "not a turning performance test"
+  ],
+  "source_sha256": {
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/audit_fast_turn_candidate.py": "665aa64ee9b7a3f8a0a0d9fbb6ed0fef0a2be4014db95462ea6490871e5959e3",
+    "outputs/fast_turn_screen/r9_candidate_v6/models/scene.xml": "648d894a0c8f0f30ec5b9744b92778965eb7d5e2117e47d60898c96ac82055d1"
+  }
+}

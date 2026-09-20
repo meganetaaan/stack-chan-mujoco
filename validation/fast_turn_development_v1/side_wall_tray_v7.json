@@ -1,0 +1,45 @@
+{
+  "scope": "Geometry-only hip-spacing screen; not a connected CAD or dynamics candidate.",
+  "rows": [
+    {
+      "outward_shift_per_leg_mm": 4.0,
+      "yaw_axis_x_mm": -5.0,
+      "foot_length_mm": 86.0,
+      "foot_inner_trim_mm": 4.0,
+      "battery_dx_mm": 30.0,
+      "side_wall_tray": true,
+      "yaw_range_deg": 12.0,
+      "samples": 121,
+      "failed_samples": 0,
+      "left_right_pair_failed_samples": 0,
+      "home_penetration_pairs": [],
+      "worst_by_pair": {}
+    },
+    {
+      "outward_shift_per_leg_mm": 4.0,
+      "yaw_axis_x_mm": -5.0,
+      "foot_length_mm": 86.0,
+      "foot_inner_trim_mm": 4.0,
+      "battery_dx_mm": 30.0,
+      "side_wall_tray": true,
+      "yaw_range_deg": 15.0,
+      "samples": 121,
+      "failed_samples": 0,
+      "left_right_pair_failed_samples": 0,
+      "home_penetration_pairs": [],
+      "worst_by_pair": {}
+    }
+  ],
+  "limitations": [
+    "home pose only; discrete samples, no clearance margin",
+    "yaw sampled beyond existing joint limits",
+    "same-body overlaps require separate CAD inspection",
+    "shifted supports require new attachments and battery integration",
+    "relocated pivot requires redesigned coupler connection to unchanged cradle",
+    "visual meshes and inertia not regenerated; never use this as a dynamics model"
+  ],
+  "source_sha256": {
+    "/home/sskw/stack-chan-mujoco/stackchan_r5a_rl_v4/screen_fast_turn_clearance.py": "290906bd77c5a8a35c3e602259a9cc5b4e49f90647c69aaff50905cdc3c73b3e",
+    "assets/r8_yaw_offset_flange_v1/models/scene.xml": "37ed2633af2fb27701d12c71e9cb57afd804a62a4ca440d21c1540664e21e1d0"
+  }
+}
