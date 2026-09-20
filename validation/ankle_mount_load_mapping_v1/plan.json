@@ -1,0 +1,25 @@
+{
+  "scope": "Shift all EPIC4 ankle-roll wrenches to the boot mounting-plane center.",
+  "mount_center_mm": {
+    "left": [
+      1,
+      6,
+      -16
+    ],
+    "right": [
+      1,
+      -6,
+      -16
+    ]
+  },
+  "convention": "Parent-on-child, axes unchanged from ankle_roll body. M_at_center = M_at_joint - center cross F.",
+  "criteria": {
+    "maximum_reconstruction_error_Nmm": 1e-09
+  },
+  "limitations": [
+    "Equivalent interface wrench only: not the load borne by each screw or boot seat.",
+    "Foot component inertia and ground-contact load path must be included before distributing forces.",
+    "Frozen EPIC4 geometry/mass; revised CAD requires new dynamics.",
+    "No safety multiplier applied; fixture cases retained separately from fullbody cases."
+  ]
+}
