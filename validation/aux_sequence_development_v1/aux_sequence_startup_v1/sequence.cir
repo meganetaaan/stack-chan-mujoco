@@ -1,0 +1,28 @@
+Auxiliary supply and reset sequence development
+Vbattery battery 0 PWL(0 0 .0002 8.4 .15 8.4)
+Bldo battery aux I=(V(battery)>2.7) ? min(.15,max(0,(min(3.234,V(battery)-.5)-V(aux))/10)) : 0
+Caux aux 0 4.7u
+Rauxload aux 0 10k
+Buv uv 0 V=3.1075-V(aux)
+Sreset timer 0 uv 0 RESET
+.model RESET SW(RON=10 ROFF=1e12 VT=0 VH=.0625)
+Vnormalized normalized 0 1
+Rtimer normalized timer 350k
+Ctimer timer 0 4.465n
+Bdriver driver 0 V=(V(timer)>.64) ? .8*V(aux) : min(.2,V(aux))
+Bdriverload aux 0 I=max(0,-I(Bdriver)*V(driver))/max(V(aux),.1)
+Rdrive driver diode_anode 1000
+Bdiode diode_anode en I=max((V(diode_anode)-V(en)-.9)/10,0)-80n*max(0,min((V(en)-V(diode_anode))*100,1))
+Cdiode diode_anode en 2p
+Rinternal battery en 800k
+Roff en 0 22220
+Cen en 0 1n
+Iinput 0 en 1u
+.control
+set wr_singlescale
+set wr_vecnames
+tran 1u .15 0 1u uic
+wrdata trace.dat v(battery) v(aux) v(timer) v(driver) v(en) i(Bdriver)
+quit
+.endc
+.end

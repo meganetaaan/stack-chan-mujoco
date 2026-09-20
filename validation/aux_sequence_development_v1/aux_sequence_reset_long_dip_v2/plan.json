@@ -1,0 +1,46 @@
+{
+  "scope": "Coupled auxiliary-rail, reset-timer and default-off EN behavioral development model.",
+  "case": "long_dip",
+  "battery_reset": true,
+  "battery_reset_threshold_nominal_V": 6.0,
+  "battery_monitor_RC_lag_s": 5e-05,
+  "battery_PWL": "0 0 .0002 8.4 .08 8.4 .0801 0 .10 0 .1002 8.4 .15 8.4",
+  "ldo_candidate": "TPS70933DBVR, EN floating (do not tie to 8.4 V)",
+  "supervisor_candidate": "TPS3840PL30",
+  "diode_candidate": "BAS116",
+  "aux_target_V": 3.234,
+  "aux_C_F": 4.7e-06,
+  "aux_load_ohm": 10000,
+  "ldo_output_resistance_ohm": 10,
+  "ldo_current_limit_A": 0.15,
+  "ldo_dropout_assumed_V": 0.5,
+  "reset_rising_V": 3.17,
+  "reset_falling_V": 3.045,
+  "timer_R_ohm": 350000,
+  "timer_C_F": 4.465e-09,
+  "timer_release_normalized": 0.64,
+  "EN_pulldown_ohm": 22220,
+  "EN_pullup_assumed_ohm": 800000,
+  "EN_capacitance_F": 1e-09,
+  "drive_series_ohm": 1000,
+  "criteria": {
+    "initial_EN_stays_off_until_s": 0.001,
+    "off_EN_max_V": 0.5,
+    "on_EN_min_V": 1.0,
+    "recovery_by_s": 0.13,
+    "restart_hold_s": 0.00045
+  },
+  "sources": [
+    "https://www.ti.com/lit/ds/symlink/tps709.pdf",
+    "https://www.ti.com/lit/ds/symlink/tps3840.pdf",
+    "https://www.pololu.com/product/5571"
+  ],
+  "limitations": [
+    "LDO behavioral current source is not a vendor macro-model; startup, dropout and output resistance are assumptions",
+    "Timer is normalized RC with fast ideal reset; real reset-discharge and propagation delays not modeled",
+    "Optional battery reset uses nominal TPS3700 thresholds and assumed 50 us RC lag, not a guaranteed propagation limit; manual-reset release logic simplified",
+    "Supervisor drive uses 80 percent rail and ideal output impedance; below-POR behavior conservatively follows rail",
+    "No DC/DC power stage, motor load or regenerative energy in this EN interface test",
+    "Input leakage, diode parameters and EN pull-up remain assumptions from prior interface study"
+  ]
+}
