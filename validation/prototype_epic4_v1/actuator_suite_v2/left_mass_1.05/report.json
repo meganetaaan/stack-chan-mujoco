@@ -1,0 +1,50 @@
+{
+  "scope": "Single-leg CAD fixtures: half-body vertical support and mounted swing/yaw.\n\nThe support bench constrains horizontal translation and attitude, but cannot\nsupport vertical weight. The swing bench fixes the torso and removes the floor.\nThese are explicit test fixtures, not assisted full-body walking claims.\n",
+  "side": "left",
+  "mode": "support",
+  "trajectory_file": "left.npz",
+  "joint_names": [
+    "left_hip_yaw",
+    "left_hip_roll",
+    "left_hip_pitch",
+    "left_knee",
+    "left_ankle_pitch",
+    "left_ankle_roll"
+  ],
+  "failure": null,
+  "gates": {
+    "no_failure": true,
+    "duration": true,
+    "peak_error": true,
+    "rms_error": true,
+    "vertical_support": true
+  },
+  "passed": true,
+  "max_error_rad": 0.017536032646582322,
+  "rms_error_rad": [
+    0.00034643107294083926,
+    0.0006043146326604162,
+    0.0015754044470903472,
+    0.0033361200095512497,
+    0.001866104163547715,
+    0.00039858094603270345
+  ],
+  "minimum_steady_floor_load_N": 4.537579578032755,
+  "fixture_weight_N": 4.730195844726011,
+  "peak_draw_A": 0.12523720580497566,
+  "peak_regeneration_A": 0.009193231152614926,
+  "max_case_temperature_C": 25.060910317121742,
+  "parameters": {
+    "voltage": 5.0,
+    "delay_s": 0.01,
+    "current_tau": 0.002,
+    "backlash": 0.004363323129985824,
+    "mass_scale": 1.05,
+    "friction_scale": 1.0
+  },
+  "limitations": [
+    "explicit laboratory fixture constraints",
+    "not free-standing one-legged balance",
+    "model-estimated electrical/thermal quantities"
+  ]
+}

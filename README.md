@@ -1,3 +1,7 @@
+# stack-chan-walk
+
+**モノレポ移行:** シミュレーターは `software/sim/mujoco/`、CAD入力は `board/mechanical/design/` に移動しました。[配置・クリーン環境からの再現](docs/prototype/MONOREPO_ja.md)。下記の旧コマンドは `cd software/sim/mujoco` 後に実行してください。
+
 # stack-chan MuJoCo RL
 
 **高速旋回 r9:** MuJoCoで左右90°（停止誤差±1°以内）を6歩・約2.76秒で完了。名目条件と重量・摩擦の単独変動を含む10条件を検証済み。[再現手順・設計変更・結果](docs/FAST_TURN_RUN_ja.md)／[記録動画](validation/fast_turn_v1/left_turn.mp4)。既存r8とは別モデルです。

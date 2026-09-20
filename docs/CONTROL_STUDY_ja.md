@@ -88,13 +88,13 @@ uv pip install --python .venv-dynamics/bin/python -r design/requirements-dynamic
 
 歩行ログ49姿勢から底面開口を拡張した候補では、抽出姿勢の胴体との干渉を解消した。
 脚内部の干渉は残っている。外形・関節配置の不変検査と再現手順は
-[`design/gait_opening/README_ja.md`](../design/gait_opening/README_ja.md)を参照。
+[`design/gait_opening/README_ja.md`](../board/mechanical/design/gait_opening/README_ja.md)を参照。
 これは変更後モデルの歩行性能を示すものではない。
 
 ## 脚内部の局所修正と検査間隔の改善
 
 クレードル・ジンバル・足外装内側の修正、全保存姿勢からの開口再生成を追加した。
-[設計と再現手順](../design/leg_relief/README_ja.md)を参照。
+[設計と再現手順](../board/mechanical/design/leg_relief/README_ja.md)を参照。
 高速動力学ではモーター同士の接触が続き、制御・関節の組合せ制約の課題が残る。
 
 ## 重心軌道の前後位置・横振幅の診断
