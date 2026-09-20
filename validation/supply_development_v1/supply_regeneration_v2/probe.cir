@@ -1,0 +1,33 @@
+Recorded-load averaged supply probe
+Vbattery battery 0 7.4
+Rb battery vin .1
+Cin vin 0 100u
+Vref reference 0 PWL(0 0 .005 5)
+Bconverter drive 0 V=max(0,min(V(reference),V(vin)-.6))
+Drect drive rect DAVG
+.model DAVG D(IS=1e-12 N=.01 RS=.001)
+Lout rect internal 1u
+Rout internal rail .03
+Cout rail 0 1000u
+Rwire rail bus .02
+Vwave wave 0 PWL(
++ 0 0
++ 0.05 0
++ 0.051 0.3
++ 0.099 0.3
++ 0.1 -1
++ 0.12 -1
++ 0.121 0
++ 0.15 0
++ )
+Bload bus 0 I=V(wave)
+Binput vin 0 I=max(V(drive)*I(Lout),0)/(.85*max(V(vin),.5))
+Bcontroller vin 0 I=3/max(V(vin),.5)
+.control
+set wr_singlescale
+set wr_vecnames
+tran 100u 0.15 0 100u uic
+wrdata trace.dat v(battery) v(vin) v(drive) v(rect) v(internal) v(rail) v(bus) i(Vbattery) i(Lout) v(wave)
+quit
+.endc
+.end

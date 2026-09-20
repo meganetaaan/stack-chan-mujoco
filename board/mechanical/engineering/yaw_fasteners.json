@@ -1,0 +1,22 @@
+{
+  "status": "connection candidate; plate, clamp/contact compliance and assembly still require verification",
+  "pattern_relative_mm": [[0,-9,-12],[0,9,-12],[0,-9,12],[0,9,12]],
+  "group_center_left_base_mm": [-60,26,70],
+  "group_center_right_base_mm": [-60,-26,70],
+  "bolt_axis": "base +X",
+  "bolt": {
+    "thread": "M3 x 0.5",
+    "property_class": "8.8",
+    "nominal_tensile_area_mm2": 5.03,
+    "proof_stress_MPa": 580,
+    "source": "https://www.bossard.com/global-en/-/media/bossard-group/website/documents/technical-resources/en/f-004-en.pdf",
+    "safety_factor": 2
+  },
+  "load_distribution": "equal-stiffness rigid bolt group, all 6 resultant components conserved",
+  "prying_multiplier_assumed": 2,
+  "tension_screen": "absolute axial force used conservatively; does not prove clamp retention",
+  "plastic_bearing_screen": {"diameter_mm":3,"thickness_mm":3,"allowable_MPa":5.6},
+  "gap_to_existing_rear_cover_mm": 0.7,
+  "gap_treatment": "dedicated spacer; do not close the gap by bending the rear cover",
+  "pending": ["rear structural plate and body attachment", "bolt length/washer/nut stack", "preload and tightening procedure", "contact and prying validation", "tool access", "cyclic/creep behavior"]
+}
