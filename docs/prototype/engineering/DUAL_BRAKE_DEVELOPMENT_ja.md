@@ -50,3 +50,16 @@ ngspiceの開放注入は対象MOSFETスイッチを動作不能にするもの�
 
 最初のv1実行は回路計算後、NumPy真偽値のJSON保存で失敗した。Pythonのboolへ変換してv2を再実行した。回路・判定基準は変更していない。
 `validation/dual_brake_development_v1/` にv2の5条件の計画、回路、波形、判定、実行コードを保存した。
+
+## 起動時ゲートの部品仕様照合
+
+`validation/brake_startup_audit_development_v1` に通常負荷の保存波形を照合した結果を保存した。候補IRLML6344のデータシート2ページでは、25℃・VDS=VGS・ID=10 µAでVGS(th)=0.5〜1.1 V。2.5 Vは十分なオン抵抗を規定するゲート電圧であり、導通開始しきい値ではない。
+
+両経路の最大ゲート電圧は約1.811 V、0.5 Vを超える保存サンプルは起動後0.597〜1.797 ms（この間のバス電圧0.582〜1.818 V）に存在した。0.4 V以下という開発用オフ目標に両経路とも不合格。0.4 Vは25℃最小しきい値より20%低い設計目標で、温度全域のオフ電流保証ではない。保存サンプル間の正確な交差時刻や実ドレイン電流は、この監査からは求められない。
+
+次の回路案には低電圧起動中のゲート保持を含める必要がある。既存の理想MOSスイッチによる通常時吸収なしという結果を、実部品の起動時オフ保証に流用しない。
+
+```sh
+.venv-engineering/bin/python software/sim/circuits/audit_brake_startup.py \
+  --out outputs/brake_startup_audit_reproduction
+```
