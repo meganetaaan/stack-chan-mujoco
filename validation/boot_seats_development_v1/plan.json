@@ -1,0 +1,23 @@
+{
+  "pad_radius_mm": 3,
+  "hole_radius_mm": 1.15,
+  "pad_z_mm": [
+    -16,
+    -15.8
+  ],
+  "criteria": {
+    "single_valid_solid": true,
+    "overlap_max_mm3": 0.01,
+    "minimum_contact_area_per_pad_mm2": 20
+  },
+  "source_sha256": {
+    "validation/boot_rear_relief_development_v1/cad/left_boot_shell.step": "f14dfb0fbf63c3ab92a978749838eab6afe199b3575ef7952cdeb94269d26799",
+    "validation/native_horn_yoke_development_v1/v4/left_foot_yoke.step": "caa258c44b00ef85212f334087a6e16f81b3e7e2eba1ef029f7b421b307995a8",
+    "validation/boot_rear_relief_development_v1/cad/right_boot_shell.step": "c20b1f787b4460ba6d3d4931275bb5b65f83ef77b94f9ef5485149885c2c32af",
+    "validation/native_horn_yoke_development_v1/v4/right_foot_yoke.step": "2e021b37af6c001ead6399d8356eb6d5e2dfa065b8d9e06ed9613bee358a4133"
+  },
+  "limitations": [
+    "Nominal seat geometry only; print tolerances, surface flatness, preload and strength remain unverified.",
+    "Previously certified boot CAD has changed; clearance requires renewed assessment."
+  ]
+}
