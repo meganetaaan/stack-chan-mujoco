@@ -1,0 +1,39 @@
+{
+  "scope": "Check nominal low-head screw/nut envelopes and print-pause nut insertion.",
+  "screw_envelope_mm": {
+    "head_radius": 1.9,
+    "head_z": [
+      -20.3,
+      -19
+    ],
+    "shaft_radius": 1,
+    "shaft_z": [
+      -19,
+      -13
+    ]
+  },
+  "nut_envelope_mm": {
+    "width": 4,
+    "thickness": 1.2,
+    "z": [
+      -14.6,
+      -13.4
+    ]
+  },
+  "print_pause_z_mm": -12.8,
+  "nut_insertion_bottom_start_z_mm": 40,
+  "overlap_max_mm3": 0.01,
+  "source_sha256": {
+    "validation/boot_low_head_candidate_v1/cad/left_boot_shell.step": "bd17f19ec7269c33183c59bec92a5b2abac3aeb16b34c5dba8ad7f9709b22473",
+    "validation/boot_low_head_candidate_v1/cad/left_sole_TPU.step": "aa98b35b6780f322169a55b1a1aa350af341d620859db2074417be117ed11943",
+    "validation/native_horn_yoke_development_v1/v4/left_foot_yoke.step": "caa258c44b00ef85212f334087a6e16f81b3e7e2eba1ef029f7b421b307995a8",
+    "validation/boot_low_head_candidate_v1/cad/right_boot_shell.step": "67d00806c1a504cb13f98c22dbe1fb9f6df9c782099da80f65a4cc29f3c658fc",
+    "validation/boot_low_head_candidate_v1/cad/right_sole_TPU.step": "88dffc70a7e1c5c6ad20c9455c8b3cbea6c41a1db8d7c25a88cefcc295e9d194",
+    "validation/native_horn_yoke_development_v1/v4/right_foot_yoke.step": "2e021b37af6c001ead6399d8356eb6d5e2dfa065b8d9e06ed9613bee358a4133"
+  },
+  "limitations": [
+    "Nominal catalog envelopes only, not supplier CAD or tolerance extremes.",
+    "No helical thread, head fillet, tightening torque, thread strength or printer/tool-head simulation.",
+    "Print-pause cut assumes +Z build orientation and exactly planned layer height."
+  ]
+}
