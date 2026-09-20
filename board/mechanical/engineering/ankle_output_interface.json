@@ -1,14 +1,23 @@
 {
   "status": "interface redesign required; not manufacturing release",
   "review_date": "2026-09-21",
-  "axes": ["left_ankle_roll", "right_ankle_roll"],
+  "axes": [
+    "left_ankle_roll",
+    "right_ankle_roll"
+  ],
   "actuator": "XL330-M288-T",
   "output_horn_candidate": {
     "part": "HNX330-N101",
     "sku": "903-0314-000",
     "manufacturer": "ROBOTIS",
-    "compatibility_confirmed": ["XL330", "XC330"],
-    "kit_contents": {"metal_horn": 1, "PHS_M2x4_frame_screws": 6},
+    "compatibility_confirmed": [
+      "XL330",
+      "XC330"
+    ],
+    "kit_contents": {
+      "metal_horn": 1,
+      "PHS_M2x4_frame_screws": 6
+    },
     "source": "https://en.robotis.com/shop_en/item.php?it_id=903-0314-000",
     "hole_pattern_verified": false,
     "axial_stack_verified": false,
@@ -17,7 +26,11 @@
   },
   "existing_cad": {
     "source": "board/mechanical/design/r5a_source/cad/r4_geometry.py",
-    "motor_envelope_mm": [26,20,34],
+    "motor_envelope_mm": [
+      26,
+      20,
+      34
+    ],
     "shaft_keepout_radius_mm": 2.45,
     "shaft_keepout_length_mm": 5,
     "foot_yoke_axis_hole_radius_mm": 3.1,
@@ -47,6 +60,23 @@
     "index": "https://en.robotis.com/service/downloadpage.php?ca_id=7020",
     "xl330_step_link": "https://www.robotis.com/service/download.php?no=1987",
     "xl330_pdf_link": "https://www.robotis.com/service/download.php?no=1986",
-    "status": "index and manual links located; local requests returned an HTML 404 page, not a CAD artifact"
+    "status": "index and manual links located; local requests returned an HTML 404 page, not a CAD artifact",
+    "official_assembly_images": "validation/x330_assembly_reference_v1/manifest.json"
+  },
+  "native_idler_candidate": {
+    "source": "validation/x330_assembly_reference_v1/assembly.png",
+    "parts_shown": [
+      "idler horn",
+      "idler cap",
+      "M2.6x6 tapping screw"
+    ],
+    "status": "manufacturer assembly concept confirmed; dimensions, part numbers, fit and load capacity unresolved",
+    "adopted": false
+  },
+  "native_frame_screws": {
+    "case_mounting": "M2 tapping screws shown in front and back assembly drawings",
+    "horn_assembly_example": "3 mm frame and 3 mm horn section shown with PHS M2x6 TAP accepted, M2x8 TAP rejected",
+    "source": "validation/x330_assembly_reference_v1/horn_screw.png",
+    "limitation": "Do not transfer this example to HNX330-N101 metal horn without its own drawing and engagement specification."
   }
 }
