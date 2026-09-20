@@ -1,0 +1,32 @@
+{
+  "scope": "Create provisional embedded-nut cavities and sole screw-head recesses.",
+  "provisional_nut_cavity_mm": [
+    4.4,
+    4.4,
+    1.8
+  ],
+  "nut_cavity_z_mm": [
+    -14.6,
+    -12.8
+  ],
+  "sole_head_recess_radius_mm": 2.3,
+  "sole_head_recess_z_mm": [
+    -21.2,
+    -19
+  ],
+  "criteria": {
+    "single_valid_solid": true,
+    "floor_nominal_min_mm": 0.8
+  },
+  "assembly_hypothesis": "Insert nuts during boot print pause; attach boot to yoke from below with sole removed; install removable sole afterward.",
+  "source_sha256": {
+    "validation/boot_seats_development_v1/left_boot_shell.step": "3adc773b06063117120199696b07e319a0c7d2444d2b0a9613526ef3197a6838",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/left_sole_TPU.step": "372933a09fda4da9455d00b83ffbbce9eaad4026f1e42d531905a622411387a3",
+    "validation/boot_seats_development_v1/right_boot_shell.step": "ca4cf0617e43c2698705db99b35d4bafec17db8672c50e7434b4595709816766",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/right_sole_TPU.step": "6fc7f9e1955689997625a1bfb382716125fd784b699730d9421f70c4f2378939"
+  },
+  "limitations": [
+    "No purchased nut or screw selected; cavity is provisional, not a standardized fastener specification.",
+    "Print pause, nut insertion, roof closure, sole retention, preload and strength unqualified."
+  ]
+}
