@@ -1,0 +1,29 @@
+{
+  "scope": "Compare nut-footprint traction using validated surface groups on the local seat.",
+  "source_sha256": {
+    "validation/boot_nut_patch_development_v1/seat_1.msh": "fb9290b500f6abe6e346cfdcd1f3cce278b345836085220070d5539b12f177b7",
+    "validation/boot_nut_patch_development_v1/seat_0.7.msh": "f01103744f978e5240d5aa435abee29561410f1bf7e4ba1694df3c50075f8326",
+    "validation/boot_nut_patch_development_v1/seat_0.5.msh": "b122691de68263788a19487d5d52f3f3acf13f481e0aeaecb7042384d965ae19"
+  },
+  "mesh_mm": [
+    1,
+    0.7,
+    0.5
+  ],
+  "load_N": 20,
+  "support": "normal_z on pad_bottom, with minimal in-plane anchors",
+  "load": "downward resultant on nut_bearing only",
+  "young_MPa": 1120,
+  "poisson": 0.35,
+  "criteria": {
+    "displacement_mm": 0.2,
+    "stress_MPa": 5.6,
+    "last_displacement_relative_change": 0.05,
+    "last_stress_relative_change": 0.1
+  },
+  "limitations": [
+    "Prescribed traction on actual nominal footprint, not a contact solution.",
+    "Bilateral support does not allow separation.",
+    "Single cropped seat, isotropic unqualified PETG, no creep or full walking loads."
+  ]
+}
