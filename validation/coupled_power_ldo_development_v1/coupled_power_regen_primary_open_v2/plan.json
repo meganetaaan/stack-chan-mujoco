@@ -1,0 +1,43 @@
+{
+  "scope": "Couple auxiliary sequencing with averaged converter, recorded load and dual brake.",
+  "case": "startup",
+  "ldo_model": "continuous",
+  "ldo_transition_V": 0.1,
+  "continuous_ldo": {
+    "target_lower_V": 3.2070000000000003,
+    "current_limit_A": 0.32,
+    "reference_tau_s": 0.0002,
+    "feedback_resistance_ohm": 0.1,
+    "dropout_assumed_V": 0.65
+  },
+  "primary_open_regen": true,
+  "source_sha256": {
+    "validation/aux_sequence_development_v1/aux_sequence_reset_startup_v2/sequence.cir": "8b3a8d43487a26a8722390e44d9b50bdceb0d1bf2a85b7686994ac6c884bc4c5",
+    "validation/startup_hold_corner_development_v1/startup_hold_late_primary_open_v2/startup_hold.cir": "74112fa96c1705362018ef8ac43346b5a0d999af7468b7e24b894e231ca052d7"
+  },
+  "changes": [
+    "Auxiliary supply, EN pullup and battery monitor moved to vin after modeled battery resistance",
+    "EN gates converter directly; RC 1 ms reference rise replaces time-driven 5 ms reference ramp",
+    "Gate-hold TPS3700 monitors powered by AUX3V3; readiness restarts after AUX3V3 falls below 1.8 V",
+    "Positive recorded current load rolls off only below 0.5 V to avoid negative bus voltage; regen current remains injected",
+    "Controller 3 W model rolls to a resistive load below 0.5 V; not a Tab5 brownout model"
+  ],
+  "criteria": {
+    "normal_bus_min_V": 4.75,
+    "normal_bus_max_V": 5.25,
+    "regen_bus_max_V": 5.8,
+    "gate_off_max_V": 0.4,
+    "startup_complete_by_s": 0.03,
+    "recovery_by_s": 0.13
+  },
+  "limitations": [
+    "All inherited behavioral-model limitations apply; not vendor-macromodel validation",
+    "Continuous LDO UVLO ramp width is a sensitivity parameter, not a specified TPS709 UVLO characteristic",
+    "Continuous target combines DC accuracy, line and load limits conservatively; 200 us RC approximates 600 us to 95 percent but does not certify transient behavior",
+    "Only first 150 ms of recorded load or synthetic regeneration waveform is run",
+    "Output may drop during an input outage; this test checks controlled restart, not uninterrupted walking",
+    "No real motor brownout/reinitialization, battery protection, fuse, thermal or full energy accounting",
+    "Shared AUX3V3 introduces common supply failure, not covered by branch-open test",
+    "Converter enable thresholds and soft start remain approximations"
+  ]
+}

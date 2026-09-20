@@ -6,7 +6,8 @@
     "output": "AUX3V3",
     "enable": "leave floating; do not connect to 8.4 V battery",
     "output_capacitor": "4.7 uF nominal model; choose part with effective capacitance at least 2.2 uF",
-    "input_capacitor": "2.2 uF or greater candidate; final source/layout qualification pending"
+    "input_capacitor": "2.2 uF or greater candidate; final source/layout qualification pending",
+    "continuous_model_note": "Development model only: 3.207 V lower target including DC/line/load terms, 320 mA typical limit, 200 us RC reference, UVLO transition width sensitivity 10/100 mV; not a vendor macro-model"
   },
   "delay_supervisor": {
     "candidate": "TPS3840PL30",
@@ -31,8 +32,10 @@
   "verification": {
     "evidence": "validation/aux_sequence_development_v1",
     "actual_vendor_models": false,
-    "power_stage_coupled": false,
+    "power_stage_coupled": true,
     "pin_mapping_validated": false,
-    "manufacturing_release": false
+    "manufacturing_release": false,
+    "coupled_power_evidence": "validation/coupled_power_ldo_development_v1",
+    "power_stage_model": "averaged development model, first 150 ms recorded load or injected regeneration only"
   }
 }
