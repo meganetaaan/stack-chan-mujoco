@@ -1,0 +1,20 @@
+{
+  "question": "Can local shroud-floor notches remove the inherited support intersection while retaining supports and rear corner seats?",
+  "cutters": "X[-63.5,-52.2], Y=cy+/-19.3, Z[48.6,53.5], cy=+/-26 mm.",
+  "basis": "Observed intersection X[-62.2,-53.5], Y=cy+/-18, Z[49.9,52.2], expanded 1.3 mm along all axes. Clearance must still be measured against entire support.",
+  "criteria": {
+    "single_valid_solid": true,
+    "outer_bbox_delta_mm": 1e-06,
+    "support_overlap_max_mm3": 0.01,
+    "support_gap_min_mm": 1.3,
+    "protected_seat_removed_mm3": 1e-08
+  },
+  "protected": "Rear corner axes Y=+/-57, Z=8,120; radius 6 mm X[-70,-40] volumes.",
+  "stop": "One pair of local notches, no geometry sweep or FE.",
+  "limits": [
+    "Notches may reduce shroud stiffness and floor ligaments",
+    "Only nominal geometry; provisional 0.8 mm tolerance/deflection allocation",
+    "Assembly insertion path, fastener contact, full robot load path not verified",
+    "No manufacturing release"
+  ]
+}
