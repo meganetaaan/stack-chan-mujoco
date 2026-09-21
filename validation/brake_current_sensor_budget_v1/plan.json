@@ -1,0 +1,19 @@
+{
+ "scope": "Static threshold budget for INA180A1 with a proposed low-side shunt in each brake branch",
+ "source": "https://www.ti.com/lit/ds/symlink/ina180.pdf",
+ "source_revision": "SBOS741H July 2022 page 8",
+ "gain":20,
+ "gain_error_fraction":0.01,
+ "input_offset_V":0.0005,
+ "offset_drift_V_per_K":0.000001,
+ "max_temperature_delta_K":100,
+ "PSRR_V_per_V":0.00004,
+ "supply_deviation_from_5V_max_V":2.3,
+ "shunt_ohm":0.1,
+ "shunt_total_error_fraction_assumed":0.01,
+ "threshold_V":0.6,
+ "threshold_total_error_fraction_assumed":0.02,
+ "supply_min_armed_V":3.0,
+ "criteria":{"trip_current_min_A":0.25,"trip_current_max_A":0.35,"threshold_inside_gain_spec":true},
+ "limitations":["Shunt and comparator/reference not selected; their error bounds are design allocations","Linear offset drift budget uses worst delta over -40 to125 C relative25 C","No transient, input filter, unpowered output, noise or low-output transfer validation","0.1 ohm shunt must be added to power model; current traces currently omit it","Current threshold changed from ideal 0.1 A detector to nominal 0.3 A to stay in specified output gain range","No gate-voltage measurement error budget or shutdown/latch implementation"]
+}
