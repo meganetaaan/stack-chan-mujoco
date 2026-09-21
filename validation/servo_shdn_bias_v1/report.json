@@ -1,0 +1,14 @@
+{
+  "resistor_part": "TNPW0603100KBYEA",
+  "resistor_nominal_ohm": 100000,
+  "comparison_total_tolerance_fraction": 0.01,
+  "resistor_max_comparison_ohm": 101000,
+  "controller_pin_leakage_comparison_A": 1e-8,
+  "SHDN_falling_threshold_min_V": 0.4,
+  "pin_voltage_from_controller_leakage_only_V": 0.00101,
+  "additional_source_leakage_ceiling_exclusive_A": 0.00000395039603960396,
+  "equation": "Vpin = (Icontroller + Iexternal) * R; Vpin < 0.4V for DC default-low comparison",
+  "conditions": "LTC4365 leakage specified at SHDN0.75V VIN34V; not an all-state leakage guarantee",
+  "unresolved": ["Driver powered-off leakage and ESD paths", "Resistor life/temperature applicability", "SHDN logic high driver and rise behavior", "Supply ramp and capacitive injection", "Open resistor or external wiring fault"],
+  "qualification": false
+}
