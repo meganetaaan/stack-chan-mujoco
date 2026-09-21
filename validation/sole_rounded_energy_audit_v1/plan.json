@@ -1,0 +1,7 @@
+{
+ "scope":"Integrate all-element elastic energy across three existing rounded meshes and independently check displacement work identity",
+ "formula":"U=0.5*integral[((1+nu)/E)*sigma:sigma-(nu/E)*trace(sigma)^2]dV",
+ "identity":"2U = u dot (external load + contact force + gauge force), using final clipped contact forces",
+ "criteria":{"absolute_work_identity_error_Nmm":0.000001},
+ "limitations":["Energy diagnostic does not replace peak stress/displacement convergence gates","P1 constant strain per tetrahedron and isotropic assumed materials","Contact energy not added to elastic energy; identity uses final contact force work","No peak exclusion or physical material qualification"]
+}
