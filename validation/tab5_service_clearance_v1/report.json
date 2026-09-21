@@ -1,0 +1,61 @@
+{
+  "direction": "base +X",
+  "travel_mm": 17.0,
+  "initial_bbox_mm": [
+    52.0,
+    64.0,
+    -64.0,
+    64.00000000000001,
+    48.0,
+    128.0
+  ],
+  "method": "Bounding prism encloses all Tab5 poses over straight translation; overlap would require exact shape analysis, no overlap proves nominal volume clearance for included parts",
+  "rows": [
+    {
+      "part": "yaw_assembly",
+      "initial_actual_overlap_mm3": 0.0,
+      "swept_box_overlap_mm3": 0.0,
+      "distance_to_swept_box_mm": 0.3999999999999986
+    },
+    {
+      "part": "new_tray",
+      "initial_actual_overlap_mm3": 0.0,
+      "swept_box_overlap_mm3": 0.0,
+      "distance_to_swept_box_mm": 9.799999999999997
+    },
+    {
+      "part": "battery_box",
+      "initial_actual_overlap_mm3": 0.0,
+      "swept_box_overlap_mm3": 0.0,
+      "distance_to_swept_box_mm": 12.0
+    },
+    {
+      "part": "dedicated_5V_converter",
+      "initial_actual_overlap_mm3": 0.0,
+      "swept_box_overlap_mm3": 0.0,
+      "distance_to_swept_box_mm": 86.0
+    },
+    {
+      "part": "TTL_interface",
+      "initial_actual_overlap_mm3": 0.0,
+      "swept_box_overlap_mm3": 0.0,
+      "distance_to_swept_box_mm": 77.5
+    }
+  ],
+  "sources_sha256": {
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/Tab5.step": "bc4f282fb78ac58e92fb8d285a9dbfc7935f2d268dff3be77e88dda248214376",
+    "board/mechanical/prototype/yaw_support_candidate/revA/yaw_support_candidate.step": "519382141db1040e813441babe6fa07309a2e03d24ed6e363ce9435e10975934",
+    "board/mechanical/prototype/rc_battery_tray_revA/tray.step": "9067d70198488bd58d241678d8f627d245780d1da90cccf04ca7c875d2c3fb9d",
+    "validation/rc_battery_cad_v1_checked/battery_candidate.step": "5f3ece800a1715d5e12958fb7623d65ef4e9802fbacbb21010aa407bdb86b1b2",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/dedicated_5V_converter.step": "f261e050a36deb6c57261b60a36464b2dbd272658b37cd956b4080596081443a",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/TTL_interface.step": "794de1700aeede7d532a71870434be0b163ab272a86df6ccb92f675f903760c4"
+  },
+  "assembly_procedure_qualified": false,
+  "pending": [
+    "Actual mounting screws and threaded depth",
+    "Tool access and removal order",
+    "Tab5 power/data cable disconnection and slack",
+    "Hand support and removal of accessories",
+    "Nominal geometry tolerances and new UBEC placement"
+  ]
+}
