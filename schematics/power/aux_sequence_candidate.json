@@ -4,7 +4,7 @@
     "candidate": "TPS70933DBVR",
     "input": "reverse-protected battery input, upstream of servo converter enable",
     "output": "AUX3V3",
-    "enable": "leave floating; do not connect to 8.4 V battery",
+    "enable": "leave floating; do not connect to raw 2S or 3S battery",
     "output_capacitor": "4.7 uF nominal model; choose part with effective capacitance at least 2.2 uF",
     "input_capacitor": "2.2 uF or greater candidate; final source/layout qualification pending",
     "continuous_model_note": "Development model only: 3.207 V lower target including DC/line/load terms, 320 mA typical limit, 200 us RC reference, UVLO transition width sensitivity 10/100 mV; not a vendor macro-model"
@@ -37,5 +37,13 @@
     "manufacturing_release": false,
     "coupled_power_evidence": "validation/coupled_power_ldo_development_v1",
     "power_stage_model": "averaged development model, first 150 ms recorded load or injected regeneration only"
+  },
+  "three_cell_review": {
+    "status": "not_qualified",
+    "monitor_6V_threshold": "Historical 2S sequencing threshold; must not be reused as 3S pack or cell undervoltage protection",
+    "ldo_input": "TPS709 30V rated input permits further 3S review; thermal and transient qualification pending",
+    "ldo_source": "https://www.ti.com/product/TPS709",
+    "converter_EN": "Pololu-specific pullup and EN model does not apply to Hobbywing switch without circuit evidence",
+    "historical_simulation": "Existing 2S simulations retained, not evidence for 3S"
   }
 }
