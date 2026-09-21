@@ -1,0 +1,30 @@
+{
+  "invalid_limits_rejected": true,
+  "wraparound_and_backward_tick_checked": true,
+  "expiry_sticky_until_run_reset": true,
+  "timeout_wins_pg_trace": [
+    {
+      "tick": 100,
+      "output": 9,
+      "state": 4
+    },
+    {
+      "tick": 109,
+      "output": 9,
+      "state": 4
+    },
+    {
+      "tick": 110,
+      "output": 8,
+      "state": 0
+    }
+  ],
+  "host_arm_compile_pass": true,
+  "real_limit_selected": false,
+  "hardware_timebase_verified": false,
+  "limits": [
+    "Less than 2^31 ticks between updates",
+    "Clock stall not detectable from this clock alone",
+    "Real clock frequency/tolerance and safe startup deadline unselected"
+  ]
+}
