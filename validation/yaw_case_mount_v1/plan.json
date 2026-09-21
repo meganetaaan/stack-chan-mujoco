@@ -1,0 +1,20 @@
+{
+  "question": "Do drawing-derived rear case axes match STEP, and can a shelf clearance-hole candidate use them?",
+  "stop": "One 2.3 mm hole candidate on both supports; no FE or dimension sweep.",
+  "assumptions": {
+    "clearance_hole_diameter_mm": 2.3,
+    "tool_radius_mm": 2,
+    "tool_length_mm": 50
+  },
+  "criteria": {
+    "axis_match_mm": 0.001,
+    "tool_nominal_clearance_mm": 0.9,
+    "intersection_mm3": 0.01
+  },
+  "limitations": [
+    "Tool is a reservation, not purchased screwdriver",
+    "No screw head seating, thread depth or preload proof",
+    "Reference manufacturer drawing and nominal STEP",
+    "Do not manufacture until screw insertion limits are resolved"
+  ]
+}
