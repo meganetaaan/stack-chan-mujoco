@@ -13,7 +13,8 @@
     "RIGHT_SOURCE_VOLTAGE_VALID": "Qualified status not implemented; raw RIGHT_SOURCE_WINDOW_OD now exists in servo_power_rearm_integration_revF; require monitor supply validity and startup wait before accepting",
     "LEFT_PG_VALID": "Unimplemented qualified left switch status; distinguish startup low from RUN failure",
     "RIGHT_PG_VALID": "Unimplemented qualified right switch status; distinguish startup low from RUN failure",
-    "MONITOR_START_READY_OD": "Dedicated TPS3808G33 in revG; conditional initial-startup delay only; receiver and short-dip invalidation missing. Not complete source-valid status."
+    "MONITOR_START_READY_OD": "revH connected to SN74AUP1T50 input; timer load and short dip coverage pending",
+    "MONITOR_START_READY_LOGIC": "revH buffered timer output; requires valid receiver supply/temperature, subsequent qualification and inhibit; not direct enable"
   },
   "outputs": {
     "SEQUENCE_ENABLE_REQUEST": "revF U3 pin4; true only START/RUN and healthy",
@@ -51,5 +52,6 @@
   "dual_pg_receiver_candidate": "schematics/power/dual_pg_receiver_revB/connectivity.json",
   "source_window_integration": "schematics/power/servo_power_rearm_integration_revF/assembly.json",
   "monitor_startup_timer": "schematics/power/servo_power_rearm_integration_revG/integration_report.json",
-  "monitor_startup_receiver_screen": "validation/monitor_ready_receiver_v1/report.json"
+  "monitor_startup_receiver_screen": "validation/monitor_ready_receiver_v1/report.json",
+  "monitor_startup_receiver": "schematics/power/servo_power_rearm_integration_revH/assembly.json"
 }

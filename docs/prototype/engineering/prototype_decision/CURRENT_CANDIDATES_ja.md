@@ -9,7 +9,7 @@
 | 変換器の代替 | schematics/power/pol_module_screen.json | 電圧窓が未成立。UBECへ追加する部品ではない |
 | 既存2段保護案 | schematics/power/servo_ovp_candidate.json | OVP分圧、過渡、回生、故障記憶 |
 | 保護の統合代替 | schematics/power/integrated_servo_protection_screen.json | 2段保護と排他的な比較。型番動作・故障復帰・遮断保証 |
-| 電源保護・再始動の統合候補 | schematics/power/servo_power_rearm_current.json（revG） | 状態回路、監視の有効性判定、電源遷移・回生 |
+| 電源保護・再始動の統合候補 | schematics/power/servo_power_rearm_current.json（revH） | 状態回路、監視の有効性判定、電源遷移・回生 |
 
 revJのPG受信部はrevIの単一受信部を置換する。抵抗はR15を含め19個、
 局所コンデンサは17個。candidate_bom.csvの抵抗セット18個は別掲R15を除いた数。
@@ -46,3 +46,5 @@ EN停止回路: `integrated_enable_interface.json`へTPS259813L条件を定義�
 電源統合の現行入口を`schematics/power/servo_power_rearm_current.json`へ追加。revFは左右電圧窓を含む87部品・287端子。生の電圧監視出力は、起動資格付け前のためEN/RESETへ直結しない。状態回路・電源有効性・過渡確認は未完了。
 
 現行revGは専用の監視起動待ちTPS3808G33を追加した90部品・297端子。単調立上がりと有効電源維持の条件下で、待ち時間下限12 msは監視起動上限450 µsを上回る。復帰閾値と条件付き電源下限の余裕は約13 mVのみ。短い電圧低下の検出・再判定、受信回路、起動中の禁止は未証明で、給電許可は未成立。詳細はrevGのREADME。
+
+現行revHはSN74AUP1T50受信部を追加（93部品・306端子）。入力閾値は電源3.0〜3.6 Vで規定され、条件付き定常入力余裕はHigh 1.9362 V、Low 0.1 V。受信部は−40〜85℃の部品制約を持ち、温度・実電源範囲・過渡禁止・後段接続は未確認。1G17比較案は履歴として残す。

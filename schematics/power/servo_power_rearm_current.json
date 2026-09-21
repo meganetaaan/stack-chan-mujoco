@@ -1,6 +1,6 @@
 {
-  "revision": "servo_power_rearm_integration_revG",
-  "assembly": "schematics/power/servo_power_rearm_integration_revG/assembly.json",
+  "revision": "servo_power_rearm_integration_revH",
+  "assembly": "schematics/power/servo_power_rearm_integration_revH/assembly.json",
   "status": "integrated_comparison_not_released",
   "includes": [
     "Dual TPS259813L stages",
@@ -8,7 +8,8 @@
     "Dedicated STOP_AUX3V3 LDO and minimum load",
     "Common EN with local pulldowns",
     "Dual source voltage-window monitors",
-    "Dedicated monitor startup-delay supervisor; qualification incomplete"
+    "Dedicated monitor startup-delay supervisor; qualification incomplete",
+    "SN74AUP1T50 monitor-ready receiver with output pulldown; operating envelope conditional"
   ],
   "manufacturing_release": false,
   "electrical_qualification": false,
