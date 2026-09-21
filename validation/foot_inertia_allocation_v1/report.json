@@ -1,0 +1,97 @@
+{
+  "rows": [
+    {
+      "side": "left",
+      "legacy_parts": {
+        "left_foot_yoke": 0.01781906589148003,
+        "left_boot_shell": 0.02286097040917285,
+        "left_sole_TPU": 0.015327420522042189
+      },
+      "mass_kg": 0.05600745682269507,
+      "com_m": [
+        0.0016770604013399406,
+        0.009557370573837667,
+        -0.007327497155576911
+      ],
+      "inertia_kg_m2": [
+        [
+          2.8135968740287608e-05,
+          -8.639116440269935e-07,
+          2.9911233480874926e-06
+        ],
+        [
+          -8.639116440269935e-07,
+          6.011832936057525e-05,
+          -3.929349459430215e-06
+        ],
+        [
+          2.9911233480874926e-06,
+          -3.929349459430215e-06,
+          5.864063232510592e-05
+        ]
+      ],
+      "checks": {
+        "r9_mass": true,
+        "r9_com": true,
+        "r9_inertia": true,
+        "frozen_mass": true,
+        "frozen_com": true,
+        "frozen_inertia": true
+      }
+    },
+    {
+      "side": "right",
+      "legacy_parts": {
+        "right_foot_yoke": 0.017819065891480027,
+        "right_boot_shell": 0.022860970409172614,
+        "right_sole_TPU": 0.015327420522042189
+      },
+      "mass_kg": 0.056007456822694826,
+      "com_m": [
+        0.0016770604013400378,
+        -0.009557370573837626,
+        -0.007327497155577045
+      ],
+      "inertia_kg_m2": [
+        [
+          2.8135968740287337e-05,
+          8.639116440270559e-07,
+          2.9911233480873173e-06
+        ],
+        [
+          8.639116440270559e-07,
+          6.0118329360574895e-05,
+          3.929349459430144e-06
+        ],
+        [
+          2.9911233480873173e-06,
+          3.929349459430144e-06,
+          5.864063232510579e-05
+        ]
+      ],
+      "checks": {
+        "r9_mass": true,
+        "r9_com": true,
+        "r9_inertia": true,
+        "frozen_mass": true,
+        "frozen_com": true,
+        "frozen_inertia": true
+      }
+    }
+  ],
+  "source_sha256": {
+    "validation/fast_turn_development_v1/feet_cad_v2/report.json": "0bc1fac652655dc1643f615db012be7eec5ab5ee7be2b9fe056bd4aca9e3ecc3",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/models/inertials.json": "6897fee6ef11d64e4ec8b8fb483fc939bea1298bc0287b6cee75516ab9427aab",
+    "validation/foot_body_ownership_v1/report.json": "f418b55e51e1f71ab2959bb0d6a467cf8c3d79642eb3dffed61e0ef2e967e7e1",
+    "outputs/rounded_sole_fine_v1/models/scene.xml": "c4ef84bdac3377ba7752dadbb26677916b7b79c99b4e3c032f1dfe32c3199dbe"
+  },
+  "replacement_rule": "Replace entire ankle_roll inertial with complete new foot assembly; do not add new rigid mass to legacy mass.",
+  "legacy_foot_contains_motor_or_fasteners": false,
+  "remaining": [
+    "Select contact material and metal parts; complete new foot inertia.",
+    "Audit parent motor and horn allocations separately before modifying parent inertia.",
+    "Account for all assembly fasteners and harness omitted from legacy three-part foot."
+  ],
+  "model_updated": false,
+  "manufacturing_release": false
+}
