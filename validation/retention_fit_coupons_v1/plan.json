@@ -1,0 +1,23 @@
+{
+  "purpose": "Select fit clearance and measure print error before altering robot retention CAD",
+  "gaps_mm": [
+    0.2,
+    0.35,
+    0.5
+  ],
+  "stem_radius_mm": 2.8,
+  "head_radius_mm": 4,
+  "head_thickness_mm": 1.5,
+  "plate_thickness_mm": 3,
+  "slide_distance_mm": 8,
+  "criteria": {
+    "valid_single_solids": true,
+    "sampled_overlap_max_mm3": 0.01
+  },
+  "stop_condition": "Generate three variants and check nominal insertion/slide poses once",
+  "limitations": [
+    "Local fit only; no slide lock, full foot geometry, material strength or print tolerance certification",
+    "Radial and axial gaps co-vary; measure dimensions separately before attributing fit failure",
+    "Samples do not prove continuous clearance"
+  ]
+}
