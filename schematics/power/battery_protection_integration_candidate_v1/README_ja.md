@@ -436,3 +436,9 @@ LD計測誤差、残留電圧差から生じる突入、抵抗/逆流経路の�
 
 再現：`python3 software/sim/circuits/screen_bq76942_predischarge.py`
 出典：[TI TRM](https://www.ti.com/lit/ug/sluuby1b/sluuby1b.pdf) §5.2.3.2.2、13.3.6.5/6。
+
+## BQローカルホスト追加（2026-09-22）
+
+現在82部品。STM32G030F6P6＋周辺6部品を追加し、REG1／CELL_B_MINUSで給電、
+PB6/PB7でBQへ接続。独立監視・電源監視・境界ドライバー・設定ソフトは未実装。
+validation/bq_local_host_v1/README_ja.mdを参照。製作HOLD、BQ未設計3端子は継続。

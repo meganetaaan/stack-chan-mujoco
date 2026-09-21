@@ -1,7 +1,7 @@
 {
   "status": "partial_system_connection_candidate",
   "source_sha256": {
-    "schematics/power/battery_protection_integration_candidate_v1/assembly.json": "e407b8eca4951c07c2fb3a3edd96203772e83c46a59e7ddca393416ab2ab7c4e",
+    "schematics/power/battery_protection_integration_candidate_v1/assembly.json": "6387b460f0c1ff783f690ac29ae357f6517a6e0c593cb46f347d9dbac7f22d7d",
     "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json": "ae0e95e3e893f5ee0d438a0a508cf269cf967984d22b3f6dedecb0916e6c577d",
     "schematics/power/logic_predischarge_inhibit_candidate.json": "01c3f3adf65ec1edfac83e04b40a3176ce22d50080907501d62cac375829e5e7"
   },
@@ -895,6 +895,103 @@
         "2": "BQ_ALERT_N"
       },
       "source_reference": "R_BQ_ALERT",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__U_BQ_HOST",
+      "part": "STM32G030F6P6",
+      "pins": {
+        "1": "BQ_SDA",
+        "2": null,
+        "3": null,
+        "4": "BQ_CTRL3V3",
+        "5": "CELL_B_MINUS",
+        "6": "BQ_HOST_NRST",
+        "7": "BQ_ALLOW_BMINUS",
+        "8": "BQ_AUX_START_REQUEST",
+        "9": "BQ_ALERT_N",
+        "10": null,
+        "11": null,
+        "12": null,
+        "13": null,
+        "14": null,
+        "15": null,
+        "16": null,
+        "17": "BQ_HOST_HEARTBEAT",
+        "18": "BQ_HOST_SWDIO",
+        "19": "BQ_HOST_SWCLK",
+        "20": "BQ_SCL"
+      },
+      "package": "TSSOP20",
+      "role": "BQ-local configuration and startup coordinator; not independent fault cutoff",
+      "source_reference": "U_BQ_HOST",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_HOST_HF",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07,
+      "source_reference": "C_BQ_HOST_HF",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_HOST_BULK",
+      "part": "GRM31CR71H475KA12L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 4.7e-06,
+      "effective_capacitance_qualified": false,
+      "source_reference": "C_BQ_HOST_BULK",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_HOST_NRST",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_HOST_NRST",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07,
+      "source_reference": "C_BQ_HOST_NRST",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_BQ_HOST_NRST",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_HOST_NRST"
+      },
+      "value_ohm": 10000,
+      "source_reference": "R_BQ_HOST_NRST",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_BQ_AUX_START_REQUEST_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_AUX_START_REQUEST",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000,
+      "source_reference": "R_BQ_AUX_START_REQUEST_PD",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_BQ_HOST_HEARTBEAT_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_HOST_HEARTBEAT",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000,
+      "source_reference": "R_BQ_HOST_HEARTBEAT_PD",
       "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
     },
     {
@@ -2884,7 +2981,7 @@
     },
     {
       "issue": 21,
-      "gap": "BQ local controller and qualified cross-domain LOGIC_START_ALLOW driver independent of the disabled system logic supply"
+      "gap": "Local host reset/watchdog/firmware and cross-domain LOGIC_START_ALLOW driver remain unimplemented"
     },
     {
       "issue": 24,

@@ -1,0 +1,36 @@
+{
+  "source_sha256": {
+    "schematics/power/bq_local_host_candidate.json": "1569a9a6004502e0c8602a4958bd745457587f2f9c76964800b25a86e0292d94",
+    "schematics/power/system_power_integration_candidate_v1/assembly.json": "f7a40792a4b1a7bb96a3614b7c33bd86fbdf8500050550540f3566fec46b9ee5"
+  },
+  "checks": {
+    "all_20_package_pins_disposed": true,
+    "sda_pin1_pb7_to_bq27": true,
+    "scl_pin20_pb6_to_bq26": true,
+    "i2c_separate_package_pins": true,
+    "host_on_pre_main_fet_reg1": true,
+    "host_reference_bminus": true,
+    "alert_pa2_pin9": true,
+    "allow_pa0_uses_existing_series_inhibit_network": true,
+    "nrst_and_debug_not_enable_outputs": true,
+    "sda_bonded_pb8_inactive": true,
+    "scl_bonded_others_inactive": true,
+    "aux_cross_domain_not_directly_wired": true
+  },
+  "scope": "Package pin and named-net inspection only. GPIO initialization, currents, levels, reset and fault timing not verified.",
+  "system_part_count": 205,
+  "host_local_parts_added": 7,
+  "host_operating_supply_V": [
+    2.0,
+    3.6
+  ],
+  "BQ_REG1_conditional_supply_V": [
+    3.0,
+    3.6
+  ],
+  "supply_range_overlap_only": true,
+  "supply_startup_qualified": false,
+  "firmware_implemented": false,
+  "independent_fault_cutoff_implemented": false,
+  "manufacturing_release": false
+}

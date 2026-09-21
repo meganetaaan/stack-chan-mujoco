@@ -89,7 +89,7 @@ def compose():
     required_design = [
         {'issue': 21, 'gap': 'Main battery connector, fuse/disconnect/reverse protection before CELL_POS_FUSED'},
         {'issue': 21, 'gap': 'Tab5 protected input branch and independent default-off inhibit; Tab5 is absent from this netlist'},
-        {'issue': 21, 'gap': 'BQ local controller and qualified cross-domain LOGIC_START_ALLOW driver independent of the disabled system logic supply'},
+        {'issue': 21, 'gap': 'Local host reset/watchdog/firmware and cross-domain LOGIC_START_ALLOW driver remain unimplemented'},
         {'issue': 24, 'gap': 'External PDSG switch/resistor, independent abort and TS2 wake/PCHG disposition'},
         {'issue': 22, 'gap': 'Predischarge budget includes automatic-start logic/stop branches, both disabled regulators, capacitors and Tab5 leakage'},
         {'issue': 23, 'gap': 'Complete startup/reset/brownout sequence with raw comparator outputs qualified before motor enable'},
@@ -112,7 +112,7 @@ def compose():
         'check_scope': 'Explicit net naming/copper only; no component conduction, leakage, transient, ground offset, layout or fault proof',
         'logic_inhibit_driver_present': False,
         'unresolved_pins': unresolved, 'unselected_part_references': missing_parts,
-        'tab5_branch_present': False, 'controller_present': False,
+        'tab5_branch_present': False, 'battery_host_present': 'BAT__U_BQ_HOST' in byref, 'system_sequencer_present': False,
         'predischarge_hardware_present': False,
         'unimplemented_design': required_design,
         'decision': 'HOLD: incomplete design, not eligible for manufacturing or Issue closure',

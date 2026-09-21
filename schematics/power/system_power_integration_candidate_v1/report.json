@@ -1,11 +1,11 @@
 {
   "source_sha256": {
-    "schematics/power/battery_protection_integration_candidate_v1/assembly.json": "e407b8eca4951c07c2fb3a3edd96203772e83c46a59e7ddca393416ab2ab7c4e",
+    "schematics/power/battery_protection_integration_candidate_v1/assembly.json": "6387b460f0c1ff783f690ac29ae357f6517a6e0c593cb46f347d9dbac7f22d7d",
     "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json": "ae0e95e3e893f5ee0d438a0a508cf269cf967984d22b3f6dedecb0916e6c577d",
     "schematics/power/logic_predischarge_inhibit_candidate.json": "01c3f3adf65ec1edfac83e04b40a3176ce22d50080907501d62cac375829e5e7"
   },
-  "parts": 198,
-  "populated_pin_connections": 569,
+  "parts": 205,
+  "populated_pin_connections": 592,
   "explicit_trace_count": 4,
   "connection_checks": {
     "no_explicit_copper_short_across_shunt": true,
@@ -37,7 +37,8 @@
     "SYS__RIGHT_R_OV_BOTTOM"
   ],
   "tab5_branch_present": false,
-  "controller_present": false,
+  "battery_host_present": true,
+  "system_sequencer_present": false,
   "predischarge_hardware_present": false,
   "unimplemented_design": [
     {
@@ -50,7 +51,7 @@
     },
     {
       "issue": 21,
-      "gap": "BQ local controller and qualified cross-domain LOGIC_START_ALLOW driver independent of the disabled system logic supply"
+      "gap": "Local host reset/watchdog/firmware and cross-domain LOGIC_START_ALLOW driver remain unimplemented"
     },
     {
       "issue": 24,
