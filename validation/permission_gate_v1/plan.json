@@ -1,0 +1,11 @@
+{
+  "question": "Can retained permission or reset cancel EN command despite a stuck-high sequencer request?",
+  "acceptance": [
+    "No command when permission or RESET_N is low, regardless of sequencer request",
+    "Recovery without a new qualified press leaves command low",
+    "No added parts for available U3 gate",
+    "Account for extra reset fanout"
+  ],
+  "stop": "Pin-mapped truth table, settled fault/recovery trace and static load comparison; no analog or pulse timing claim",
+  "assembly_sha256": "33f1d2dc265258200335c64f84eb1ff0d4a7e2821b24e71692e25c42cbc02b12"
+}

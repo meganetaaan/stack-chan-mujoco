@@ -1,0 +1,24 @@
+{
+  "candidate_revision": "manual_rearm_revF",
+  "assembly": "schematics/power/manual_rearm_revF/assembly.json",
+  "readme": "schematics/power/manual_rearm_revF/README_ja.md",
+  "manufacturing_release": false,
+  "electrical_qualification": false,
+  "confirmed_scope": [
+    "Candidate pin map",
+    "Settled permission cancellation even with sequence request high",
+    "Static output-load comparisons"
+  ],
+  "open_interfaces": [
+    "SEQUENCE_ENABLE_REQUEST: actual startup/PG sequencer",
+    "RESET_N: external stop/fault sinks",
+    "RAW_RELEASED_CONDITIONED: button raw interface"
+  ],
+  "remaining": [
+    "Rail-wide static levels",
+    "Unpowered and partial-power behavior",
+    "Fault pulse capture and propagation",
+    "Exact passives and complete power path"
+  ],
+  "historical_failure": "validation/dual_supervisor_recovery_v1/README_ja.md"
+}

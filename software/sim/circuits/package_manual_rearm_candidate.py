@@ -2,7 +2,8 @@
 import argparse,csv,hashlib,json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[3]
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--supervisor',action='store_true');p.add_argument('--en-driver',action='store_true');p.add_argument('--en-clamp',action='store_true');p.add_argument('--clamp-cause',action='store_true');a=p.parse_args();
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--supervisor',action='store_true');p.add_argument('--en-driver',action='store_true');p.add_argument('--en-clamp',action='store_true');p.add_argument('--clamp-cause',action='store_true');p.add_argument('--permission-gate',action='store_true');a=p.parse_args();
+if a.permission_gate and not a.clamp_cause: p.error('--permission-gate requires --clamp-cause')
 if a.clamp_cause and not a.en_clamp: p.error('--clamp-cause requires --en-clamp')
 if a.en_clamp and not a.en_driver: p.error('--en-clamp requires --en-driver')
 if a.en_driver and not a.supervisor: p.error('--en-driver requires --supervisor')
@@ -49,15 +50,22 @@ if a.clamp_cause:
  add('U11',data['main_clamp_cause_candidate.json']['level_buffer_part'],[None,'RAIL_HEALTH_N','GND','CLAMP_MR_5V','EFUSE_INPUT_5V'],'main_clamp_cause_candidate.json')
  add('R9','10k cause pullup; total +/-1% budget, part pending',['LOGIC3V3','RAIL_HEALTH_N'])
  for n in [10,11]: add(f'C{n}','100nF local ceramic candidate; part pending',['EFUSE_INPUT_5V','GND'])
+if a.permission_gate:
+ gate=next(x for x in parts if x['reference']=='U3')['pins']
+ gate.update({'3':'ENABLE_PERMISSION','4':'SEQUENCE_ENABLE_REQUEST','5':'RESET_N','6':'POWER_ENABLE_COMMAND'})
 ports={'LOGIC3V3':'upstream logic rail; power budget and independent supervision unfinished','GND':'common reference; physical return routing unfinished','RESET_N':'independent health-qualified clear input; low on stop/fault/invalid power; must not depend on button debounce/timer','RAW_RELEASED_CONDITIONED':'unfinished protected raw-input interface from BUTTON_RAW; not a direct wire','ENABLE_PERMISSION':'logic output only; physical default-off power stage unfinished'}
 if a.supervisor: ports['RESET_N']='U7 open-drain rail reset plus external stop/fault sinks; sink components, fanout and fail-state behavior unfinished; never push-pull drive'
 if a.en_driver:
  ports['POWER_ENABLE_COMMAND']='output of unfinished startup/stop sequencer, not a wire from ENABLE_PERMISSION'
  ports['MAIN_EFUSE_EN']='TPS259823 pin6; conditional driver, brownout/default-off qualification incomplete'
 if a.en_clamp: ports['EFUSE_INPUT_5V']='input side of eFuse; must remain within supervisor supply rating, never raw battery'
+if a.permission_gate:
+ ports.pop('POWER_ENABLE_COMMAND')
+ ports['SEQUENCE_ENABLE_REQUEST']='unfinished startup/PG sequencer output; hardware gate also requires retained permission and RESET_N'
 report={'scope':__doc__,'parts':parts,'interfaces':ports,'source_sha256':{f:hashlib.sha256((ROOT/'schematics/power'/f).read_bytes()).hexdigest() for f in files},'part_count':len(parts),'pin_count':sum(len(x['pins']) for x in parts),'logical_composition_only':True,'electrical_qualification':False,'manufacturing_release':False}
 report['assembly_overrides'] = ['U8 pin4 routed through R7 to MAIN_EFUSE_EN; overrides direct output in individual driver candidate'] if a.en_clamp else []
 if a.clamp_cause: report['assembly_overrides'] += ['U9 RESET goes to RAIL_HEALTH_N instead of EN; U7 MR receives RAIL_HEALTH_N instead of LOGIC3V3; U11 level buffer and U10 reset follower drive EN']
+if a.permission_gate: report['assembly_overrides'] += ['U3 unused second AND gate: pins3,4,5 accept ENABLE_PERMISSION, SEQUENCE_ENABLE_REQUEST, RESET_N; pin6 drives U8 input POWER_ENABLE_COMMAND']
 # Wiring invariants that prevent accidental inversion or delayed stop substitution.
 refs={x['reference']:x for x in parts}
 assert refs['U6']['pins']['1']==refs['U6']['pins']['13']=='RESET_N'
@@ -76,6 +84,10 @@ if a.en_driver:
    assert refs['U11']['pins']['4'] == refs['U10']['pins']['3'] == 'CLAMP_MR_5V'
   assert refs['U9']['pins']['1'] != refs['U7']['pins']['1']
  else: assert refs['U8']['pins']['4'] == refs['R5']['pins']['1'] == 'MAIN_EFUSE_EN'
+if a.permission_gate:
+ assert refs['U3']['pins']['3']==refs['U6']['pins']['9']=='ENABLE_PERMISSION'
+ assert refs['U3']['pins']['5']==refs['U6']['pins']['13']=='RESET_N'
+ assert refs['U3']['pins']['6']==refs['U8']['pins']['2']=='POWER_ENABLE_COMMAND'
 (a.out/'assembly.json').write_text(json.dumps(report,indent=2)+'\n')
 with (a.out/'connections.csv').open('w',newline='') as f:
  w=csv.writer(f);w.writerow(['reference','part','pin','net'])
