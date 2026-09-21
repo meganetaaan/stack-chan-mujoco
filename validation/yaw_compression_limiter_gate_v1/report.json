@@ -1,0 +1,83 @@
+{
+  "source_sha256": {
+    "validation/yaw_joint_interfaces_v4/report.json": "49038b18d91ca8a3ad90c4dc4a110dc7208606d5ac36fe6b922f6c4c7a457b4e",
+    "validation/yaw_integrated_candidate_v4/inventory.json": "1192810d881e8db576fc9e8f808c01c4f0ff344339966e5e821f22d64fa63dc9",
+    "validation/yaw_integrated_candidate_v5/inventory.json": "2a17fb5a1566d3dbb1705386584d677ff5a69a71b1b70e5a5f8835f3fddd890c",
+    "validation/yaw_compression_limiter_gate_v1/plan.json": "69e5a901c7d052c836cc8edd4cc508902dd7834e3895c254fe4f4ec09f0e527a"
+  },
+  "rows": [
+    {
+      "joint": "left_plate_0",
+      "nominal_plastic_thickness_mm": 2.0,
+      "long_spacer_gap_at_nominal_shelf_mm": 0.10000000000000009,
+      "short_spacer_compression_to_seat_at_nominal_shelf_mm": 0.10000000000000009,
+      "short_spacer_geometric_compression_strain": 0.050000000000000044,
+      "always_clamps_even_nominal_shelf": false
+    },
+    {
+      "joint": "left_plate_1",
+      "nominal_plastic_thickness_mm": 2.0,
+      "long_spacer_gap_at_nominal_shelf_mm": 0.10000000000000009,
+      "short_spacer_compression_to_seat_at_nominal_shelf_mm": 0.10000000000000009,
+      "short_spacer_geometric_compression_strain": 0.050000000000000044,
+      "always_clamps_even_nominal_shelf": false
+    },
+    {
+      "joint": "left_plate_2",
+      "nominal_plastic_thickness_mm": 2.0,
+      "long_spacer_gap_at_nominal_shelf_mm": 0.10000000000000009,
+      "short_spacer_compression_to_seat_at_nominal_shelf_mm": 0.10000000000000009,
+      "short_spacer_geometric_compression_strain": 0.050000000000000044,
+      "always_clamps_even_nominal_shelf": false
+    },
+    {
+      "joint": "left_plate_3",
+      "nominal_plastic_thickness_mm": 2.0,
+      "long_spacer_gap_at_nominal_shelf_mm": 0.10000000000000009,
+      "short_spacer_compression_to_seat_at_nominal_shelf_mm": 0.10000000000000009,
+      "short_spacer_geometric_compression_strain": 0.050000000000000044,
+      "always_clamps_even_nominal_shelf": false
+    },
+    {
+      "joint": "right_plate_0",
+      "nominal_plastic_thickness_mm": 2.0,
+      "long_spacer_gap_at_nominal_shelf_mm": 0.10000000000000009,
+      "short_spacer_compression_to_seat_at_nominal_shelf_mm": 0.10000000000000009,
+      "short_spacer_geometric_compression_strain": 0.050000000000000044,
+      "always_clamps_even_nominal_shelf": false
+    },
+    {
+      "joint": "right_plate_1",
+      "nominal_plastic_thickness_mm": 2.0,
+      "long_spacer_gap_at_nominal_shelf_mm": 0.10000000000000009,
+      "short_spacer_compression_to_seat_at_nominal_shelf_mm": 0.10000000000000009,
+      "short_spacer_geometric_compression_strain": 0.050000000000000044,
+      "always_clamps_even_nominal_shelf": false
+    },
+    {
+      "joint": "right_plate_2",
+      "nominal_plastic_thickness_mm": 2.0,
+      "long_spacer_gap_at_nominal_shelf_mm": 0.10000000000000009,
+      "short_spacer_compression_to_seat_at_nominal_shelf_mm": 0.10000000000000009,
+      "short_spacer_geometric_compression_strain": 0.050000000000000044,
+      "always_clamps_even_nominal_shelf": false
+    },
+    {
+      "joint": "right_plate_3",
+      "nominal_plastic_thickness_mm": 2.0,
+      "long_spacer_gap_at_nominal_shelf_mm": 0.10000000000000009,
+      "short_spacer_compression_to_seat_at_nominal_shelf_mm": 0.10000000000000009,
+      "short_spacer_geometric_compression_strain": 0.050000000000000044,
+      "always_clamps_even_nominal_shelf": false
+    }
+  ],
+  "decision": "stock_spacer_not_drop_in_qualified",
+  "limits": [
+    "Shelf thickness is nominal; actual print thickness and flatness are unknown.",
+    "Strain is only geometric displacement needed to reach the spacer, not material acceptance.",
+    "Metal compression, face indentation and bending are omitted.",
+    "Pipe-spacer axial load rating is not established; not a qualified compression limiter.",
+    "No holes, formal BOM, preload or acceptance limits were changed."
+  ],
+  "manufacturing_release": false
+}
