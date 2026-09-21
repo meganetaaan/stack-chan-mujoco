@@ -1,0 +1,18 @@
+{
+  "question": "Does the corrected outer seating create upper-body interference; can existing staged assembly still access fasteners?",
+  "stop": "One nominal neutral assembly, complete hardware and two tool-installation stages; no geometry search.",
+  "criteria": {
+    "intersection_mm3": 0.01,
+    "tool_nominal_clearance_mm": 0.9,
+    "tool_residual_clearance_mm": 0.5,
+    "two_surface_tolerance_budget_mm": 0.4
+  },
+  "criteria_source": "Existing Codex screening budgets, not measured manufacturing tolerances.",
+  "limitations": [
+    "neutral upper body only",
+    "motor-case reservation CAD, not manufacturer internals",
+    "no cables or complete moving legs",
+    "simplified yaw nut-driver envelope",
+    "no strength or preload"
+  ]
+}
