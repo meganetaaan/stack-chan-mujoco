@@ -1,0 +1,14 @@
+{
+  "baseline": "validation/sole_rounded_refine_v1/analysis",
+  "variant": "validation/sole_rounded_third_mesh_v1/analysis",
+  "relative_pressure_change_max": 0.1,
+  "relative_stress_change_max": 0.1,
+  "relative_displacement_change_max": 0.05,
+  "scope": "Rounded-edge candidate mesh sensitivity; no material or assembly qualification",
+  "refinement": "global .35 to .25 mm, curvature 24 to 32, circle minimum 96 to 128; boundary extension off",
+  "limitations": [
+    "Third level; success requires this comparison and all applicable numerical gates, not merely three generated meshes",
+    "All peaks retained",
+    "Local assumed 20 N preload only"
+  ]
+}
