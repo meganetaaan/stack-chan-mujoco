@@ -1,0 +1,43 @@
+{
+  "status": "prototype_routing_candidate_not_released",
+  "cable": {
+    "manufacturer": "ROBOTIS",
+    "name": "Robot Cable-X3P 180mm (10pcs)",
+    "package_sku": "903-0249-000",
+    "nominal_length_mm": 180,
+    "required_cables": 12,
+    "source": "https://robotis.us/products/robot-cable-x3p-180mm-10pcs",
+    "compatibility": "Manufacturer lists X-series TTL; preserve factory servo-end termination."
+  },
+  "topology": "Individual branches; left and right supply positives remain separate.",
+  "proposed_distribution_end": "Keep both cable connectors; add one compatible EH header per servo on distribution PCB.",
+  "distribution_header_candidate": {
+    "part": "JST B3B-EH-A",
+    "quantity": 12,
+    "status": "candidate; footprint and exact ordering suffix pending"
+  },
+  "mutually_exclusive_with": "Self-crimped EHR-3/SEH-001T-P0.6 plus soldered distribution-end branch",
+  "not_used": [
+    "Convertible JST/Molex cable",
+    "XL-320-only 3P-XL cable"
+  ],
+  "confirmed": [
+    "Preassembled cable sold for X-series TTL",
+    "180 mm nominal length and ten cables per package"
+  ],
+  "unknown": {
+    "finished_cable_mass_g": null,
+    "insulated_conductor_OD_mm": null,
+    "minimum_dynamic_bend_radius_mm": null,
+    "rated_flex_cycles_in_this_route": null,
+    "max_loop_resistance_ohm": null,
+    "usable_route_length_after_connector_and_service_allowance_mm": null
+  },
+  "accounting_rules": [
+    "Retail weight 0.1 lb is not established as individual cable net mass; do not divide it into a model mass.",
+    "Do not add 12 self-crimp housings and 36 loose terminals to this factory-terminated variant.",
+    "Added distribution connector contacts require updating branch voltage-drop and thermal budgets.",
+    "180 mm is not proof that every routed branch fits; no extension splices or tight bends assumed."
+  ],
+  "manufacturing_release": false
+}
