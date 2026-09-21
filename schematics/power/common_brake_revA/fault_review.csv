@@ -1,0 +1,16 @@
+fault,connection_based_effect,required_response_or_evidence,status
+Main source disconnect opens,Detector and driver supplies remain on load bus,Cold regeneration startup and actual response qualification,unverified
+Servo branch fuse opens,Isolated servo loses common absorber path,Local absorption or retained regeneration path,unresolved
+Servo cable disconnects,Same loss of absorber path,Protection physically retained at servo or manufacturer evidence,unresolved
+Divider top resistor opens,Sense pulled low and branch commanded off,Other branch capability and fault recognition,unverified
+Divider bottom resistor opens,Sense can approach bus and exceed input rating during abnormal bus excursion,Input protection and fault behavior review,unresolved
+Detector output connection opens,Pullup can command continuous absorption,Real current fault detection and independent source isolation,unresolved
+Detector output shorts to ground,Branch commanded off,Other branch capability and fault recognition,unverified
+Driver supply opens,Gate state depends on discharge network and device unpowered behavior,Real pulldown and power-loss verification,unresolved
+MOS drain-source shorts,Brake resistor continuously loads bus through shunt,Current detection isolation and thermal duration bound,unresolved
+MOS channel opens,Branch cannot absorb,Other branch independent capability,unverified
+Brake resistor shorts,MOS on can short bus through shunt,Fault current coordination and independent protection,unresolved
+Brake resistor opens,Branch cannot absorb,Other branch capability,unverified
+Shunt opens,Power path and source reference disrupted,Gate-source stress and sensor input behavior analysis,unresolved
+Shared bus or ground opens,Both nominally separate branches can lose function,Common-cause design review,unresolved
+Both branches on,Current adds without guaranteed sharing,Supply wiring resistor shunt and isolation coordination,unverified
