@@ -1,0 +1,13 @@
+{
+  "question": "Does revD alone cancel retained permission whenever its independent clamp stops power?",
+  "acceptance": "After undervoltage causes EN shutdown, supply recovery alone must not restore EN",
+  "assumptions": [
+    "Previously accepted enable request remains at POWER_ENABLE_COMMAND unless explicitly cleared",
+    "U7 falling threshold at allowed low endpoint; U9 at allowed high endpoint",
+    "Supply dip is settled at 3.07V, not a timing model",
+    "Recovery to3.3V is observed after both release delays settle",
+    "eFuse input5V remains valid"
+  ],
+  "stop": "One permitted threshold counterexample; no random or transient sweep",
+  "assembly_sha256": "8bf84aa77ce0b992524453585d7d13412f2c96737965de03b868c61de722bc87"
+}
