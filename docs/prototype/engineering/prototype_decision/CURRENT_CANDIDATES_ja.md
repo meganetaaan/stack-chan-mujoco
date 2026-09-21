@@ -84,3 +84,5 @@ TPS70933の出力コンデンサ条件の出典を訂正。メーカーの実効
 停止監視電源の全接続先を分類した条件付きDC負荷集計は `validation/stop_supply_budget_v1/`。約1.466 mA、通過素子のみ約13.77 mW。TPS70933候補を維持するが、起動・リセット状態・漏れ・実基板熱は未確認で、電流/熱の最終合格ではない。
 
 現行電源はrevL（97部品315ピン）。停止電源専用の直列抵抗・逆接ダイオード・放電抵抗を接続。短絡の定常抵抗発熱は条件付き比較を通過。入力起動・急反転・上流配線保護は未確認。`schematics/power/servo_power_rearm_integration_revL/README_ja.md`。
+
+現行電源revMは98部品317ピン。停止電源入力に2.2 µF WIMAフィルム候補と100 nF C0G直近バイパスを選定。公称入力容量は維持し、フィルム高さ13 mmの配置は未確認。初期容量範囲・RC比較は `schematics/power/servo_power_rearm_integration_revM/selection_report.json`。起動期限の証明ではない。

@@ -1,6 +1,6 @@
 {
-  "revision": "servo_power_rearm_integration_revL",
-  "assembly": "schematics/power/servo_power_rearm_integration_revL/assembly.json",
+  "revision": "servo_power_rearm_integration_revM",
+  "assembly": "schematics/power/servo_power_rearm_integration_revM/assembly.json",
   "status": "integrated_comparison_not_released",
   "includes": [
     "Dual TPS259813L stages",
@@ -13,7 +13,8 @@
     "Local default-low resistor on sequence enable request",
     "13 monitor/default resistors assigned manufacturer ordering codes; nominal values unchanged",
     "21 local 100nF capacitors with selected ordering candidate",
-    "Dedicated stop input 1k/BAS116/100k branch; conditional DC screen only"
+    "Dedicated stop input 1k/BAS116/100k branch; conditional DC screen only",
+    "2.2uF WIMA film input candidate plus local 100nF C0G bypass"
   ],
   "manufacturing_release": false,
   "electrical_qualification": false,
@@ -24,6 +25,6 @@
     "Unselected passives and complete current/thermal budget",
     "Integrated transient and fault verification"
   ],
-  "candidate_bom": "schematics/power/servo_power_rearm_integration_revL/candidate_bom.csv",
+  "candidate_bom": "schematics/power/servo_power_rearm_integration_revM/candidate_bom.csv",
   "stop_output_capacitor_requirements": "schematics/power/stop_output_capacitor_requirements.json"
 }
