@@ -2,13 +2,35 @@
 import argparse,hashlib,json
 from pathlib import Path
 import cadquery as cq
-ROOT=Path(__file__).resolve().parents[3];p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
-assy=cq.Assembly(name='yaw_support_candidate');rows=[]
+ROOT=Path(__file__).resolve().parents[3];p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--moments',action='store_true');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+assy=cq.Assembly(name='yaw_support_candidate');rows=[];moments=[]
+if a.moments:
+ import numpy as np
+ from OCP.GProp import GProp_GProps
+ from OCP.BRepGProp import BRepGProp
+ def geometric_properties(shape):
+  props=GProp_GProps();BRepGProp.VolumeProperties_s(shape.wrapped,props)
+  center=props.CentreOfMass();matrix=props.MatrixOfInertia()
+  return props.Mass(),[center.X(),center.Y(),center.Z()],[[matrix.Value(i,j) for j in range(1,4)] for i in range(1,4)]
+ # Analytic translated box verifies units and central (not origin) inertia.
+ box=cq.Solid.makeBox(2,3,4,cq.Vector(10,20,30))
+ volume,center,matrix=geometric_properties(box)
+ assert abs(volume-24)<1e-9 and max(abs(x-y) for x,y in zip(center,[11,21.5,32]))<1e-9
+ assert max(abs(matrix[i][j]-([50,40,26][i] if i==j else 0)) for i in range(3) for j in range(3))<1e-8
+
 def add(name,s,source=None,note='nominal geometry'):
  assert s.isValid()
  assy.add(s,name=name);r={'name':name,'solids':len(s.Solids()),'volume_mm3':s.Volume(),'source':source,'note':note}
  if source:r['source_sha256']=hashlib.sha256((ROOT/source).read_bytes()).hexdigest()
  rows.append(r)
+ if a.moments:
+  volume,center,matrix=geometric_properties(s)
+  assert abs(volume-s.Volume())<1e-6
+  eigenvalues=np.linalg.eigvalsh(matrix)
+  assert eigenvalues[0]>0 and eigenvalues[-1]<=sum(eigenvalues[:2])+1e-6
+  eligible=name in ('body_shroud','rear_plate') or name.endswith(('yaw_fixed_support','threaded_backing_plate','mount_plate','rear_washer')) or ('_plate_' in name and name.endswith('_washer'))
+  moments.append({'name':name,'volume_mm3':volume,'com_assembly_m':[v*.001 for v in center],'mass_kg_per_density_kg_m3':volume*1e-9,'inertia_com_kg_m2_per_density_kg_m3':[[v*1e-15 for v in row] for row in matrix],'use_for_material_mass':eligible,'restriction':'homogeneous nominal solid only; process/material qualification pending' if eligible else 'collision/fastener envelope; not physical mass evidence'})
+
 def read(name,path,shift=None,note='nominal geometry'):
  s=cq.importers.importStep(str(ROOT/path)).val()
  if shift:s=s.translate(shift)
@@ -30,4 +52,6 @@ for side,cy in [('left',26),('right',-26)]:
 assy.save(str(a.out/'yaw_support_candidate.step'))
 report={'scope':__doc__,'parts':rows,'part_count':len(rows),'solid_count':sum(r['solids'] for r in rows),'omitted':['servo and horn hardware','case PHS M2x8 TAP screws','rear-plate-to-body corner hardware','legs','battery/electronics/harness','tools'],'manufacturing_release':False,'full_interference_verified':False,'strength_verified':False}
 (a.out/'inventory.json').write_text(json.dumps(report,indent=2)+'\n')
+if a.moments:
+ (a.out/'geometric_moments.json').write_text(json.dumps({'coordinate_frame':'assembly CAD origin, axes unchanged; mm converted to m','density_assigned':False,'analytic_translated_box_check':True,'parts':moments,'manufacturing_release':False},indent=2)+'\n')
 print(json.dumps({k:report[k] for k in ['part_count','solid_count','manufacturing_release']}))
