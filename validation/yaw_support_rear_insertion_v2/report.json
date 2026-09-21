@@ -1,0 +1,493 @@
+{
+  "source_sha256": {
+    "validation/yaw_integrated_candidate_v2/inventory.json": "abe177ddc07eb29be046070248853042bad698fcd75b334875c4001826e7f8e0",
+    "validation/yaw_integrated_candidate_v2/geometric_moments.json": "3fbdc817b505f12ac95963e352bff9586cd50f27f07c020d4ae2eb3bb3aab639",
+    "validation/yaw_integrated_candidate_v2/yaw_support_candidate.step": "13037a398982bbb3bbb98980aa5c5a8b3de2c9dd175a2e5b8b0cd6f1ff863ca0"
+  },
+  "rows": [
+    {
+      "group": "left",
+      "parts": [
+        "left_yaw_fixed_support",
+        "left_threaded_backing_plate",
+        "left_mount_plate",
+        "left_64_keeper",
+        "left_76_keeper",
+        "left_plate_0_screw",
+        "left_plate_0_washer",
+        "left_plate_0_nut",
+        "left_plate_1_screw",
+        "left_plate_1_washer",
+        "left_plate_1_nut",
+        "left_plate_2_screw",
+        "left_plate_2_washer",
+        "left_plate_2_nut",
+        "left_plate_3_screw",
+        "left_plate_3_washer",
+        "left_plate_3_nut"
+      ],
+      "final_bounds_mm": [
+        -62.2,
+        11.600000000000001,
+        8.0,
+        44.0,
+        52.2,
+        98.0
+      ],
+      "start_group_front_x_mm": -138.4,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 0.0,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "right",
+      "parts": [
+        "right_yaw_fixed_support",
+        "right_threaded_backing_plate",
+        "right_mount_plate",
+        "right_64_keeper",
+        "right_76_keeper",
+        "right_plate_0_screw",
+        "right_plate_0_washer",
+        "right_plate_0_nut",
+        "right_plate_1_screw",
+        "right_plate_1_washer",
+        "right_plate_1_nut",
+        "right_plate_2_screw",
+        "right_plate_2_washer",
+        "right_plate_2_nut",
+        "right_plate_3_screw",
+        "right_plate_3_washer",
+        "right_plate_3_nut"
+      ],
+      "final_bounds_mm": [
+        -62.2,
+        11.600000000000001,
+        -44.0,
+        -8.0,
+        52.19999999999908,
+        98.0
+      ],
+      "start_group_front_x_mm": -138.4,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 9.237055564881302e-13,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "rear_plate",
+      "parts": [
+        "rear_plate"
+      ],
+      "final_bounds_mm": [
+        -64.2,
+        -62.2,
+        -64.0,
+        64.0,
+        0.0,
+        128.0
+      ],
+      "start_group_front_x_mm": -212.2,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 1.4210854715202004e-14,
+          "nominal_corridor_pass": true
+        },
+        {
+          "target": "left",
+          "intersection_mm3": 0.0,
+          "distance_mm": 1.4210854715202004e-14,
+          "nominal_corridor_pass": true
+        },
+        {
+          "target": "right",
+          "intersection_mm3": 0.0,
+          "distance_mm": 1.4210854715202004e-14,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "left_rear_0_bolt",
+      "parts": [
+        "left_rear_0_bolt"
+      ],
+      "final_bounds_mm": [
+        -67.7,
+        -48.7,
+        16.25,
+        21.75,
+        55.25,
+        60.75
+      ],
+      "start_group_front_x_mm": -198.7,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 3.049999999999997,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "left_rear_0_rear_washer",
+      "parts": [
+        "left_rear_0_rear_washer"
+      ],
+      "final_bounds_mm": [
+        -64.7,
+        -64.2,
+        15.5,
+        22.5,
+        54.5,
+        61.5
+      ],
+      "start_group_front_x_mm": -214.2,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 3.0479501308256225,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "left_rear_1_bolt",
+      "parts": [
+        "left_rear_1_bolt"
+      ],
+      "final_bounds_mm": [
+        -67.7,
+        -48.7,
+        30.25,
+        35.75,
+        55.25,
+        60.75
+      ],
+      "start_group_front_x_mm": -198.7,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 3.049999999999997,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "left_rear_1_rear_washer",
+      "parts": [
+        "left_rear_1_rear_washer"
+      ],
+      "final_bounds_mm": [
+        -64.7,
+        -64.2,
+        29.5,
+        36.5,
+        54.5,
+        61.5
+      ],
+      "start_group_front_x_mm": -214.2,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 3.0479501308256225,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "left_rear_2_bolt",
+      "parts": [
+        "left_rear_2_bolt"
+      ],
+      "final_bounds_mm": [
+        -67.7,
+        -48.7,
+        16.25,
+        21.75,
+        79.25,
+        84.75
+      ],
+      "start_group_front_x_mm": -198.7,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 27.049999999999997,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "left_rear_2_rear_washer",
+      "parts": [
+        "left_rear_2_rear_washer"
+      ],
+      "final_bounds_mm": [
+        -64.7,
+        -64.2,
+        15.5,
+        22.5,
+        78.5,
+        85.5
+      ],
+      "start_group_front_x_mm": -214.2,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 26.375936002348805,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "left_rear_3_bolt",
+      "parts": [
+        "left_rear_3_bolt"
+      ],
+      "final_bounds_mm": [
+        -67.7,
+        -48.7,
+        30.25,
+        35.75,
+        79.25,
+        84.75
+      ],
+      "start_group_front_x_mm": -198.7,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 26.450000000000003,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "left_rear_3_rear_washer",
+      "parts": [
+        "left_rear_3_rear_washer"
+      ],
+      "final_bounds_mm": [
+        -64.7,
+        -64.2,
+        29.5,
+        36.5,
+        78.5,
+        85.5
+      ],
+      "start_group_front_x_mm": -214.2,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 25.777703543954416,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "right_rear_0_bolt",
+      "parts": [
+        "right_rear_0_bolt"
+      ],
+      "final_bounds_mm": [
+        -67.7,
+        -48.7,
+        -35.75,
+        -30.25,
+        55.25,
+        60.75
+      ],
+      "start_group_front_x_mm": -198.7,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 3.049999999999997,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "right_rear_0_rear_washer",
+      "parts": [
+        "right_rear_0_rear_washer"
+      ],
+      "final_bounds_mm": [
+        -64.7,
+        -64.2,
+        -36.5,
+        -29.5,
+        54.5,
+        61.5
+      ],
+      "start_group_front_x_mm": -214.2,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 3.0479501308256225,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "right_rear_1_bolt",
+      "parts": [
+        "right_rear_1_bolt"
+      ],
+      "final_bounds_mm": [
+        -67.7,
+        -48.7,
+        -21.75,
+        -16.25,
+        55.25,
+        60.75
+      ],
+      "start_group_front_x_mm": -198.7,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 3.049999999999997,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "right_rear_1_rear_washer",
+      "parts": [
+        "right_rear_1_rear_washer"
+      ],
+      "final_bounds_mm": [
+        -64.7,
+        -64.2,
+        -22.5,
+        -15.5,
+        54.5,
+        61.5
+      ],
+      "start_group_front_x_mm": -214.2,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 3.0479501308256225,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "right_rear_2_bolt",
+      "parts": [
+        "right_rear_2_bolt"
+      ],
+      "final_bounds_mm": [
+        -67.7,
+        -48.7,
+        -35.75,
+        -30.25,
+        79.25,
+        84.75
+      ],
+      "start_group_front_x_mm": -198.7,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 26.450000000000003,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "right_rear_2_rear_washer",
+      "parts": [
+        "right_rear_2_rear_washer"
+      ],
+      "final_bounds_mm": [
+        -64.7,
+        -64.2,
+        -36.5,
+        -29.5,
+        78.5,
+        85.5
+      ],
+      "start_group_front_x_mm": -214.2,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 25.777703543954416,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "right_rear_3_bolt",
+      "parts": [
+        "right_rear_3_bolt"
+      ],
+      "final_bounds_mm": [
+        -67.7,
+        -48.7,
+        -21.75,
+        -16.25,
+        79.25,
+        84.75
+      ],
+      "start_group_front_x_mm": -198.7,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 27.049999999999997,
+          "nominal_corridor_pass": true
+        }
+      ]
+    },
+    {
+      "group": "right_rear_3_rear_washer",
+      "parts": [
+        "right_rear_3_rear_washer"
+      ],
+      "final_bounds_mm": [
+        -64.7,
+        -64.2,
+        -22.5,
+        -15.5,
+        78.5,
+        85.5
+      ],
+      "start_group_front_x_mm": -214.2,
+      "checks": [
+        {
+          "target": "body_shroud",
+          "intersection_mm3": 0.0,
+          "distance_mm": 26.375936002348805,
+          "nominal_corridor_pass": true
+        }
+      ]
+    }
+  ],
+  "module_parts": 51,
+  "all_nominal_corridors_pass": true,
+  "manufacturing_release": false
+}
