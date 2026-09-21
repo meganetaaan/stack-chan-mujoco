@@ -1,0 +1,16 @@
+{
+  "question": "Can existing M3x16 envelopes seat against the 2 mm plate without changing support position?",
+  "method": "Read STEP bounds, move only outer washer/bolt/key to plate rear face; check intersections and axial stack.",
+  "stop": "One existing nominal assembly, eight fasteners; record any unresolved collision; no FE or dimension sweep.",
+  "criteria": {
+    "unintended_intersection_mm3": 0.01,
+    "minimum_nominal_thread_projection_mm": 1.0
+  },
+  "criteria_origin": "Existing CAD screening assumptions; not manufacturer guarantees.",
+  "limitations": [
+    "nominal dimensions",
+    "thread engagement and preload not verified",
+    "only plate/support/fastener subset",
+    "no tool motion or whole body clearance proof"
+  ]
+}
