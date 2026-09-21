@@ -1,0 +1,71 @@
+{
+  "converged_active_set": true,
+  "iterations": [
+    {
+      "iteration": 0,
+      "active_nodes": 1680,
+      "changed_nodes": 904
+    },
+    {
+      "iteration": 1,
+      "active_nodes": 776,
+      "changed_nodes": 443
+    },
+    {
+      "iteration": 2,
+      "active_nodes": 507,
+      "changed_nodes": 852
+    },
+    {
+      "iteration": 3,
+      "active_nodes": 1163,
+      "changed_nodes": 157
+    },
+    {
+      "iteration": 4,
+      "active_nodes": 1198,
+      "changed_nodes": 13
+    },
+    {
+      "iteration": 5,
+      "active_nodes": 1191,
+      "changed_nodes": 1
+    },
+    {
+      "iteration": 6,
+      "active_nodes": 1190,
+      "changed_nodes": 0
+    }
+  ],
+  "elapsed_seconds": 22.518657128000086,
+  "matrix_dofs": 19521,
+  "matrix_nonzeros": 786594,
+  "equilibrium_residual_N": 5.359008459293584e-13,
+  "mean_constraint_residual": 9.910303163860907e-18,
+  "gauge_force_sum_relative": 3.6434492116838405e-14,
+  "contact_total_N": 19.99999999999996,
+  "maximum_penetration_mm": 3.7480774820583928e-06,
+  "maximum_pressure_MPa": 3.7480774820583926,
+  "parts": {
+    "boss": {
+      "max_displacement_mm": 0.004279898302868121,
+      "max_absolute_principal_MPa": 2.4583471832475183
+    },
+    "spacer": {
+      "max_displacement_mm": 0.00021017613591341438,
+      "max_absolute_principal_MPa": 15.799564457944546
+    }
+  },
+  "gates": {
+    "active_set": true,
+    "equilibrium": true,
+    "mean_constraints": true,
+    "penetration": true,
+    "gauge_force": true
+  },
+  "joint_verified": false,
+  "source_sha256": {
+    "boss": "c57b1e0295d9e79c8bb72c8eb115036d2c181203d0e35bd688e4b9b557bbc572",
+    "spacer": "cabd55004f52ad1c584ab56d62329902205094b4ddd3f99932500fd895b0a00c"
+  }
+}
