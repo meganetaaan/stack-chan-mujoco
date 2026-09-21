@@ -1,14 +1,14 @@
 item,quantity_full_robot,minimum_test_quantity,status,purpose_or_blocker,evidence
-Tab5,1,0,retained_candidate,face; independent supply route to qualify,board/mechanical/prototype/bom.csv
+Tab5,1,0,retained_candidate,Face; candidate J9 pin1 GND pin2 SYS_VIN; mating orientation branch protection and actual revision pending,schematics/power/rc_supply_candidate.json
 XL330-M288-T,6,1,retained_candidate,single joint after bench electrical gate; not continuous stall rated,board/mechanical/prototype/bom.csv
 XC330-M288-T,6,1,retained_candidate,second actuator type qualification after first stage,board/mechanical/prototype/bom.csv
 Sole and yoke candidate,2 sets,1 set,unpowered_test_piece,print material and orientation must be recorded; strength not released,board/mechanical/prototype/foot_candidate/README.md
 NBK SLH-M2-10 screw,14,1,nominal_fit_candidate,Feet 2 + yaw mount plates 8 + yaw backing keepers 4; torque and anti-loosening pending,board/mechanical/prototype/yaw_support_candidate/revA/README_ja.md
 PTS A56202 external nut,10,1,nominal_fit_candidate,Feet 2 + yaw mount plates 8; thread tolerance preload and assembly access pending,board/mechanical/prototype/yaw_support_candidate/revA/README_ja.md
 SCW-SOLE-SPACER-01 revA,10,1,custom_candidate,"SUS304 proposed; OD5.95-6 ID2.3-2.35 thickness0.85-0.95; rounded edge candidate not manufacturing release; quantity: feet 2 + yaw mount plates 8, excludes spares/coupons",docs/prototype/mechanical/sole_spacer/specification.json
-Ultrafuse TPU95A sole,2,1,test_material_candidate,friction retention creep and print process unqualified,validation/tpu_retention_material_review_v1
-NP-F550 battery,1,0,hold,exact supplied pack current temperature and protection specification required,board/mechanical/prototype/bom.csv
-Pololu D42V55F5,unselected,1,candidate_for_bench,actual DC supply peak and thermal suitability unqualified; 9.63 A is motor-side setting sum,https://www.pololu.com/product/5571
+Ultrafuse TPU95A sole,not selected,0,historical_not_current_process,User process permits ABS/PETG; select purchased grip material or compatible sole construction; prior TPU tests retained as history,validation/tpu_retention_material_review_v1
+NP-F550 battery,not selected,0,historical_alternative,Superseded as primary candidate by compact 3S Tattu; do not add both battery masses,board/mechanical/prototype/bom.csv
+Pololu D42V55F5,unselected,1,candidate_for_bench,Alternative to UBEC; full model DC envelope9.834A not a measured hardware ceiling; thermal and transient suitability pending,https://www.pololu.com/product/5571
 Vishay AC10 5.1 ohm,2,2,evaluation_candidate,exact order code thermal mounting SOA of companion switch unresolved; 4.7 ohm card remains historical,validation/brake_51ohm_envelope_faults_v1
 360 ohm bleed resistor,2,2,candidate,CRCW1206e3 derived code needs purchasing verification and thermal check,schematics/power/passive_discharge_candidate.json
 INA180A1,2,1,candidate,shunt comparator latch and fault isolation not released,validation/brake_current_sensor_budget_v1
@@ -52,3 +52,10 @@ Manual rearm resistor set,14,14,selected_candidates_not_released,revH R1-R14; qu
 Murata GRM31C5C1H104JA01L local bypass capacitors,15,15,selected_candidate_not_released,revI C1-C15; 100nF 50V C0G 1206; placement and high-frequency decoupling unqualified,schematics/power/manual_rearm_capacitors.json
 74LVC1G17GV local raw button receiver,1,1,pin_candidate_not_released,revI U15; local PCB signal only; not an external cable input,schematics/power/manual_rearm_revI/README_ja.md
 Vishay TNPW06033K00BYEA local button pullup R15,1,1,selected_candidate_not_released,3k 0603 0.1 percent 10ppm; retains total +/-1 percent comparison; board temperature and stock pending,validation/manual_rearm_resistors_v2/README_ja.md
+Tattu TA-45C-850-3S1P-XT30,1,0,packaging_candidate,3S 850mAh 76g catalog; cell protection charging retention and leads pending,schematics/power/rc_supply_candidate.json
+HOBBYWING 30603000 5V version,2 proposed,1,electrical_candidate,Separate left/right outputs; supplier revision accuracy regeneration and switch behavior pending,schematics/power/rc_supply_candidate.json
+Battery tray revB PETG,1,1,unpowered_shape_candidate,STEP/STL plus guides; 7.837g solid-density estimate only; process and strength not released,board/mechanical/prototype/rc_battery_tray_revB/material_candidate.json
+Battery retention belt,1,0,unselected,10x1mm envelope only; exact belt buckle padding pressure and strength unresolved,validation/battery_retention_envelope_v1/README_ja.md
+SkyRC B6ACneo SK-100200,external equipment,0,accuracy_unqualified,Removed-pack balance charging candidate; voltage/current tolerance and adapter unresolved; not onboard mass,schematics/power/external_charger_candidate.json
+3S cell monitoring and protection,TBD,0,unselected,Pack voltage monitor is insufficient; sensing connector disconnection and cutoff recovery require design,schematics/power/aux_sequence_candidate.json
+Tab5 J9 mating harness,1,0,unselected,Logical pins known; connector retention keying current rating and cable routing not qualified,schematics/power/rc_supply_candidate.json
