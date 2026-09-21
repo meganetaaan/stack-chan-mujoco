@@ -1,0 +1,17 @@
+{
+  "scope": "Selected output-fed passive loads under valid 3.207..3.393V rail; all high-source voltages bounded by 3.393V.",
+  "resistance_tolerance_assumption": 0.01,
+  "paths": [
+    "U3 output R6",
+    "U8 output R7 with dual EN pulldowns or active clamp",
+    "U_MONITOR_RX output R_MONITOR_RX_OFF",
+    "Future MCU R_SEQUENCE_OFF"
+  ],
+  "stop": "One netlist-checked calculation; no IC internal or dynamic current model.",
+  "limits": [
+    "Output-stage supply current beyond delivered load excluded",
+    "Future MCU is not integrated; its resistor budget is reserved separately",
+    "Each upper bound combined independently, not a reachable single state",
+    "No external overvoltage or negative-voltage fault"
+  ]
+}
