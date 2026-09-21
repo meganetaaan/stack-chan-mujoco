@@ -1,0 +1,30 @@
+{
+  "base_parts": 98,
+  "added_parts": 13,
+  "total_parts": 111,
+  "numbered_and_EP_pin_entries": 371,
+  "added_references": [
+    "U_LOGIC_PROTECT",
+    "R_LOGIC_UV_TOP",
+    "R_LOGIC_UV_BOTTOM",
+    "R_LOGIC_OV_TOP",
+    "R_LOGIC_OV_BOTTOM",
+    "R_LOGIC_ILIM",
+    "R_LOGIC_INPUT_BLEED",
+    "C_LOGIC_PROTECT_IN_1",
+    "C_LOGIC_PROTECT_IN_2",
+    "C_LOGIC_PROTECT_OUT_1",
+    "C_LOGIC_PROTECT_OUT_2",
+    "U_LOGIC_LDO",
+    "C_LOGIC_LDO_OUT"
+  ],
+  "checks": {
+    "unique_references": true,
+    "base_parts_unchanged": true,
+    "RTN_separate_from_GND": true,
+    "protection_to_LDO_connected": true,
+    "logic_rail_connected": true
+  },
+  "electrical_qualification": false,
+  "check_scope": "Connectivity assembly only; no semiconductor behavior, ERC, transient or layout claim"
+}
