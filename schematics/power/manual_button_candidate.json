@@ -12,8 +12,16 @@
     20,
     80
   ],
-  "inverter": "unselected; logic-level compatibility pending",
+  "inverter": "SN74LVC1G04DBVR candidate; edge-rate and output-to-clock compatibility pending",
   "stop_path": "must not pass through debounce delay",
   "evidence": "validation/manual_button_debounce_v1/README.md",
-  "manufacturing_release": false
+  "manufacturing_release": false,
+  "inverter_pins": {
+    "1": "NC",
+    "2": "MAX6816 OUT",
+    "3": "GND",
+    "4": "PRESS to SN74HCS74 pin11",
+    "5": "LOGIC3V3"
+  },
+  "inverter_evidence": "validation/manual_button_inverter_v1/README.md"
 }

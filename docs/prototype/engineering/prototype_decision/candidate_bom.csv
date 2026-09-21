@@ -27,3 +27,4 @@ TPS70933DBVR sensor supply,2 additional to upstream AUX regulator,1,evaluation_c
 TPS259823ONRGE main eFuse,rail count TBD,1,evaluation_candidate,Forward overcurrent candidate only; reverse isolation manual rearm and current coordination pending,schematics/power/main_efuse_candidate.json
 SN74HCS74PW permission latch,1,1,evaluation_candidate,Direct single-FF wiring rejected; healthy release qualification POR debounce and default-off EN stage pending,schematics/power/manual_rearm_latch_candidate.json
 MAX6816EUS+T enable debounce,1,1,evaluation_candidate,Active-low output needs qualified inverter; UVLO transparent; separate stop path,schematics/power/manual_button_candidate.json
+SN74LVC1G04DBVR button inverter,1,1,evaluation_candidate,Static input margin conditional on logic rail; input edge-rate and clock compatibility pending,validation/manual_button_inverter_v1/README.md
