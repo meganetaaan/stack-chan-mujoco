@@ -40,9 +40,14 @@ add('C_BAT','C1206C105K3RACTU',{1:'BQ_BAT_HOLD',2:'CELL_B_MINUS'},effective_capa
 for i in range(3):
  add(f'C_REG18_{i}','C1206C105K3RACTU',{1:'BQ_REG18',2:'CELL_B_MINUS'},effective_capacitance_qualified=False)
 add('C_CP1','C1206C105K3RACTU',{1:'BQ_CP1',2:'BQ_BAT_HOLD'},effective_capacitance_qualified=False)
-add('R_SHUNT','WSLP25125L000FEA',{1:'CELL_B_MINUS',2:'PACK_RETURN'},kelvin_routing_required=True,thermal_qualified=False)
-add('R_SRP','TNPW0603100RBEEA',{1:'CELL_B_MINUS',2:'BQ_SRP'})
-add('R_SRN','TNPW0603100RBEEA',{1:'PACK_RETURN',2:'BQ_SRN'})
+# Manufacturer functional labels, not invented footprint pad numbers.
+# E terminals are separate Kelvin traces; do not merge them into current nets.
+add('R_SHUNT','WSK25125L000FEA',{'I1':'CELL_B_MINUS','I2':'PACK_RETURN','E1':'SHUNT_CELL_SENSE','E2':'SHUNT_PACK_SENSE'},
+    pin_label_source='Vishay 30108 Rev 11-Dec-2023 p3',footprint_pad_mapping_qualified=False,
+    resistance_ohm=0.005,tolerance_fraction=0.01,component_tcr_ppm_per_K=35,
+    rated_power_W_at_70C=1.0,kelvin_routing_required=True,thermal_qualified=False)
+add('R_SRP','TNPW0603100RBEEA',{1:'SHUNT_CELL_SENSE',2:'BQ_SRP'})
+add('R_SRN','TNPW0603100RBEEA',{1:'SHUNT_PACK_SENSE',2:'BQ_SRN'})
 add('C_CURRENT','C1206C104J3GACAUTO',{1:'BQ_SRP',2:'BQ_SRN'})
 assert len(parts)==50 and len({p['reference'] for p in parts})==50
 # Check that the obsolete 8-capacitor parallel-only filter was not also imported.

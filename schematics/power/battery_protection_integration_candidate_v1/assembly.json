@@ -451,11 +451,19 @@
     },
     {
       "reference": "R_SHUNT",
-      "part": "WSLP25125L000FEA",
+      "part": "WSK25125L000FEA",
       "pins": {
-        "1": "CELL_B_MINUS",
-        "2": "PACK_RETURN"
+        "I1": "CELL_B_MINUS",
+        "I2": "PACK_RETURN",
+        "E1": "SHUNT_CELL_SENSE",
+        "E2": "SHUNT_PACK_SENSE"
       },
+      "pin_label_source": "Vishay 30108 Rev 11-Dec-2023 p3",
+      "footprint_pad_mapping_qualified": false,
+      "resistance_ohm": 0.005,
+      "tolerance_fraction": 0.01,
+      "component_tcr_ppm_per_K": 35,
+      "rated_power_W_at_70C": 1.0,
       "kelvin_routing_required": true,
       "thermal_qualified": false
     },
@@ -463,7 +471,7 @@
       "reference": "R_SRP",
       "part": "TNPW0603100RBEEA",
       "pins": {
-        "1": "CELL_B_MINUS",
+        "1": "SHUNT_CELL_SENSE",
         "2": "BQ_SRP"
       }
     },
@@ -471,7 +479,7 @@
       "reference": "R_SRN",
       "part": "TNPW0603100RBEEA",
       "pins": {
-        "1": "PACK_RETURN",
+        "1": "SHUNT_PACK_SENSE",
         "2": "BQ_SRN"
       }
     },

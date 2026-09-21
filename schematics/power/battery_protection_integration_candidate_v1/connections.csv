@@ -152,11 +152,13 @@ C_REG18_2,1,BQ_REG18,candidate_connected
 C_REG18_2,2,CELL_B_MINUS,candidate_connected
 C_CP1,1,BQ_CP1,candidate_connected
 C_CP1,2,BQ_BAT_HOLD,candidate_connected
-R_SHUNT,1,CELL_B_MINUS,candidate_connected
-R_SHUNT,2,PACK_RETURN,candidate_connected
-R_SRP,1,CELL_B_MINUS,candidate_connected
+R_SHUNT,I1,CELL_B_MINUS,candidate_connected
+R_SHUNT,I2,PACK_RETURN,candidate_connected
+R_SHUNT,E1,SHUNT_CELL_SENSE,candidate_connected
+R_SHUNT,E2,SHUNT_PACK_SENSE,candidate_connected
+R_SRP,1,SHUNT_CELL_SENSE,candidate_connected
 R_SRP,2,BQ_SRP,candidate_connected
-R_SRN,1,PACK_RETURN,candidate_connected
+R_SRN,1,SHUNT_PACK_SENSE,candidate_connected
 R_SRN,2,BQ_SRN,candidate_connected
 C_CURRENT,1,BQ_SRP,candidate_connected
 C_CURRENT,2,BQ_SRN,candidate_connected
