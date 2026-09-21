@@ -1,0 +1,10 @@
+{
+ "baseline": "validation/sole_rounded_contact_v1",
+ "variant": "validation/sole_rounded_refine_v1/analysis",
+ "relative_pressure_change_max": 0.1,
+ "relative_stress_change_max": 0.1,
+ "relative_displacement_change_max": 0.05,
+ "scope": "Rounded-edge candidate mesh sensitivity; no material or assembly qualification",
+ "refinement": "global .5 to .35 mm, curvature 16 to 24, circle minimum 64 to 96; boundary size extension remains off",
+ "limitations": ["Two levels are not the three-level final structural criterion", "All peaks retained", "Local assumed 20 N preload only"]
+}
