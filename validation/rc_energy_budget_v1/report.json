@@ -1,0 +1,32 @@
+{
+  "planning_duration_s": 100.0,
+  "duration_basis": "10m at target threshold 0.10m/s; planning point, not new maximum duration",
+  "model_servo_power_W": 49.17,
+  "ideal_servo_energy_Wh": 1.3658333333333332,
+  "pack_nominal_energy_Wh": 9.434999999999999,
+  "efficiency_comparison": {
+    "value": 0.9,
+    "source": "https://hobbywing.oss-cn-shenzhen.aliyuncs.com/pdf/pdfen/UBEC10A2-6S.pdf",
+    "status": "Manufacturer efficiency statement without operating-condition bound; not guaranteed minimum",
+    "servo_battery_energy_Wh": 1.5175925925925924,
+    "fraction_of_nominal_pack_energy": 0.16084712163143536
+  },
+  "budget_equation": "E_usable_Wh >= 1.3658333333333332/eta + P_aux_battery_W/36 + E_other_Wh",
+  "definitions": {
+    "E_usable_Wh": "Energy deliverable before qualified per-cell cutoff, including load, temperature and pack age",
+    "eta": "Guaranteed energy-weighted conversion efficiency for the actual servo branch profile, including distribution loss",
+    "P_aux_battery_W": "Average battery-side Tab5 and control power over the 100-second planning interval",
+    "E_other_Wh": "Additional startup/shutdown energy outside that interval and explicitly chosen reserve, without double-counting"
+  },
+  "sources_sha256": {
+    "schematics/power/rc_supply_candidate.json": "c32ce91147551406c7191a6e3306902391651602bf4f0413505b506dbc5460f3",
+    "validation/model_dc_envelope_v2/report.json": "7600a7b78007ebd5b017c6c610b186ba1c53fc8b7213540da7324ceed9d9ea9a"
+  },
+  "limitations": [
+    "Conditional ideal bridge load envelope, not qualified hardware DC maximum",
+    "Nominal battery Wh is not usable energy",
+    "No claim of 20 trials on one charge",
+    "Current pulses, thermal limits, wiring and protection remain separate constraints"
+  ],
+  "qualified": false
+}
