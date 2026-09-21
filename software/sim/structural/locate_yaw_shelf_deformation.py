@@ -6,18 +6,18 @@ import numpy as np
 from skfem import Basis,ElementVector,ElementTetP2
 from skfem.io import from_meshio
 from elasticity import analyze,tetrahedralize
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--mesh',type=Path,default=Path('validation/yaw_shelf_compliance_v1/relief_3.msh'));p.add_argument('--step',type=Path,default=Path('validation/yaw_connector_shelf_relief_v2/left_yaw_fixed_support.step'));a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
 source=Path('validation/yaw_shelf_compliance_v1/plan.json');previous=json.loads(source.read_text())
 plan={'question':'Is deformation primarily in the rear wall or in the shelf/span, and is plate seat motion mostly rigid?',
- 'parent_plan_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),
+ 'step':str(a.step),'step_sha256':hashlib.sha256(a.step.read_bytes()).hexdigest(),'requested_mesh':str(a.mesh),'parent_plan_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),
  'stop':'One existing 3 mm mesh and archived load; energy partition and rigid-fit diagnostics only, no stress convergence or qualification.',
  'regions_x_mm':{'rear':[-100,-50],'middle':[-50,-30],'front':[-30,100]},
  'limits':['Region boundaries are diagnostic assumptions, not separate physical components.','Nodal rigid fit uses equal node weighting and is not a contact solution.','Energy partition is quadrature-point based; it is not a strength margin.']}
 (a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
-path=Path('validation/yaw_shelf_compliance_v1/relief_3.msh')
+path=a.mesh
 if path.exists(): mesh=from_meshio(meshio.read(path))
 else:
- path=a.out/'relief_3.msh';mesh=tetrahedralize('validation/yaw_connector_shelf_relief_v2/left_yaw_fixed_support.step',path,3)
+ path=a.out/'relief_3.msh';mesh=tetrahedralize(a.step,path,3)
 loaded=lambda x:(abs(x[2]-89)<1e-6)&(x[0]>=-37.5)&(x[0]<=11.6)&(x[1]>=9.5)&(x[1]<=42.5)
 r,d=analyze(mesh,lambda x:abs(x[0]+62.2)<1e-6,loaded,previous['origin_mm'],previous['source_case']['selected_wrench_N_Nmm'],1120,.35)
 basis=Basis(mesh,ElementVector(ElementTetP2()))
