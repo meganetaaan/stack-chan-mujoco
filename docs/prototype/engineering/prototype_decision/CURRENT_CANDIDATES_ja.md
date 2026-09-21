@@ -1,3 +1,9 @@
+## PACK/LD接続の追加（2026-09-22）
+
+電池保護の部分統合版を39部品・未接続24端子へ更新。
+主FET後から独立した10kΩでPACK/LDへ接続。LD内部電流源による主FET迂回給電を明記。
+局所給電・シャント・設定が未完成のため通電不可。製作HOLDを維持。
+
 ## 電池保護の部分統合（2026-09-22）
 
 `schematics/power/battery_protection_integration_candidate_v1`へBQ76942・直列入力C・主FET・ゲート網を

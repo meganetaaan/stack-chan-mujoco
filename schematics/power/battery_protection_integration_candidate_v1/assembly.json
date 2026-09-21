@@ -19,6 +19,8 @@
         "17": "CELL_B_MINUS",
         "43": "BQ76942_DSG_43",
         "45": "BQ76942_CHG_45",
+        "41": "BQ_LD",
+        "42": "BQ_PACK",
         "1": null,
         "3": null,
         "5": null,
@@ -51,8 +53,6 @@
         38,
         39,
         40,
-        41,
-        42,
         46,
         47
       ]
@@ -360,9 +360,25 @@
         "1": "FILTER_3_MID",
         "2": "CELL2_FILTERED"
       }
+    },
+    {
+      "reference": "R_LD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "BQ_LD"
+      }
+    },
+    {
+      "reference": "R_PACK",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "BQ_PACK"
+      }
     }
   ],
-  "part_count": 37,
+  "part_count": 39,
   "unresolved_BQ76942_pins": [
     18,
     20,
@@ -386,8 +402,6 @@
     38,
     39,
     40,
-    41,
-    42,
     46,
     47
   ],
@@ -409,7 +423,7 @@
     "battery fuse and reverse protection",
     "shunt and current filters",
     "BAT REG18 CP1 and optional LDO supply",
-    "PACK and LD input network",
+    "PACK/LD transient and reverse-polarity qualification",
     "configuration and startup inhibit",
     "temperature inputs and protection settings",
     "system/servo integration"
