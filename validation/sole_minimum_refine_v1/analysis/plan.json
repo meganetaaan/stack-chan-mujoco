@@ -1,0 +1,19 @@
+{
+  "mesh_directory": "validation/sole_minimum_refine_v1/mesh",
+  "scope": "Refine nominal boss bearing preload and locate unfiltered principal stress peaks.",
+  "mesh_mm": [
+    0.7,
+    0.5
+  ],
+  "force_N": 20,
+  "criteria": {
+    "displacement_mm": 0.2,
+    "principal_MPa": 5.6,
+    "relative_displacement": 0.05,
+    "relative_stress": 0.1
+  },
+  "limitations": [
+    "Bilateral normal support, not unilateral contact.",
+    "Rigid spacer, cropped boss, assumed isotropic PETG; no creep or walking load."
+  ]
+}
