@@ -1,0 +1,19 @@
+{
+  "manufacturer": "Alpha & Omega Semiconductor",
+  "part_number": "AO3400A",
+  "quantity_common_brake": 2,
+  "status": "evaluation_candidate_not_released",
+  "topology": "resistor from servo bus to drain; low-side source shunt candidate; gate driver unselected",
+  "source": "https://aosmd.com/res/data_sheets/AO3400A.pdf",
+  "source_revision": "Rev 3.1 July 2023",
+  "rds_max_ohm_at_2_5V_3A_25C": 0.048,
+  "qualification_remaining": [
+    "Actual driver and VGS including source shunt rise",
+    "Gate/control power loss while regenerative energy remains",
+    "Timed SOA and repetitive/board thermal qualification",
+    "MOS/resistor short and open faults; inductive VDS excursion",
+    "Package pin mapping and purchasing order code"
+  ],
+  "evidence": "validation/brake_mosfet_selection_v1/README.md",
+  "manufacturing_release": false
+}

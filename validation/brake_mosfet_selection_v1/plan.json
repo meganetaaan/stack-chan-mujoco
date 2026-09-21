@@ -1,0 +1,13 @@
+{
+  "question": "Select a real low-side brake MOSFET candidate and determine whether full-on loss alone can qualify it",
+  "method": "Manufacturer specification review and resistor-limited load-line calculation; no injected motor waveform",
+  "stop_condition": "Compute full-on comparison and maximum partial-conduction dissipation once; state gate-drive and SOA conditions before further simulation",
+  "inputs": {
+    "bus_limit_V": 6.0,
+    "resistor_envelope_source": "validation/brake_51ohm_envelope_faults_v1/plan.json",
+    "candidate": "Alpha & Omega AO3400A",
+    "rds_comparison_ohm": 0.048,
+    "rds_condition": "VGS=2.5 V, ID=3 A, TJ=25 C; comparison model, not full-temperature guarantee"
+  },
+  "acceptance": "No manufacturing release until actual gate drive, loss of control power, repetitive SOA and board thermal conditions are qualified"
+}

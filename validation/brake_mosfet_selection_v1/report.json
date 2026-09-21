@@ -1,0 +1,22 @@
+{
+  "candidate": "Alpha & Omega AO3400A",
+  "Rmin_ohm": 4.4271400000000005,
+  "full_on_comparison_current_A": 1.3407401779609127,
+  "full_on_comparison_mosfet_loss_W": 0.08628404279033568,
+  "partial_conduction_max_loss_W": 2.032915155156602,
+  "partial_conduction_max_loss_Vds_V": 3.0,
+  "partial_conduction_max_loss_Id_A": 0.6776383850522006,
+  "formula": "Pmos=Vds*(Vbus-Vds)/R; maximum at Vds=Vbus/2",
+  "assumptions": [
+    "Bus stays at or below 6 V",
+    "Series resistor remains intact",
+    "No inductive transient; shunt and wiring resistance omitted",
+    "48 milliohm is a comparison at a stated datasheet condition"
+  ],
+  "qualification": false,
+  "next_gate": "Actual gate drive and power-loss path; timed load line versus SOA and thermal boundary",
+  "source_sha256": {
+    "validation/brake_51ohm_envelope_faults_v1/plan.json": "b82513337ec20028b3aeb516702ee09fbe3273d365345e27f8e0c63aaef2d65a",
+    "validation/brake_mosfet_selection_v1/plan.json": "9b3b21ee934eb854b279646689b08e5adbbec457ea3b4b6862f9bcc93c69cdd4"
+  }
+}
