@@ -49,5 +49,11 @@
       "Total connected capacitance including MCU bypass",
       "Surge, reverse voltage, reflow and ripple requirements"
     ]
+  },
+  "startup_charge_requirement": {
+    "evidence": "validation/logic_startup_charge_v1/report.json",
+    "initial_output_charge_C": 9.4919175e-05,
+    "rule": "20mA continuous load target is not the input current-limit setting. Allocate net charging current and verify actual protection startup.",
+    "qualified": false
   }
 }

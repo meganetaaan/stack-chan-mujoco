@@ -1,0 +1,11 @@
+"""Charge-conservation constraints for logic-rail startup, not an LDO transient model."""
+import argparse,hashlib,json
+from pathlib import Path
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+cp=Path('validation/logic_output_capacitor_v1/report.json');lp=Path('validation/sequence_mcu_current_v1/report.json')
+c=json.loads(cp.read_text());l=json.loads(lp.read_text());cmax=c['initial_total_range_uF'][1]*1e-6;vmax=3.393;load=l['engineering_continuous_selection_target_A']
+plan={'question':'What charge and input-current headroom must the independent logic input protection allow?', 'scope':'Zero initial charge, initial capacitance envelope only, ideal LDO current transfer excluding ground current.', 'engineering_assumptions':{'target_voltage_V':vmax,'load_reservation_A':load,'one_reference_ramp_s':.001},'stop':'Charge, energy and one reference ramp only; no invented regulator waveform, current-limit or startup-time pass.', 'criterion':'A bounded current source must supply net capacitor charge in addition to load; continuous rating alone does not prove startup.'}
+(a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
+q=cmax*vmax
+r={'source_sha256':{str(f):hashlib.sha256(f.read_bytes()).hexdigest() for f in [cp,lp]},'initial_C_max_F':cmax,'charge_C':q,'stored_energy_J':.5*cmax*vmax*vmax,'reference_1ms_average_capacitor_current_A':q/.001,'reference_1ms_average_total_A':q/.001+load,'constant_current_startup_relation':'t >= Q/(Iavailable-Iload), only for Iavailable>Iload; real LDO/input dynamics may make startup longer.', 'at_20mA_source_and_20mA_load':'No guaranteed positive charging current; no finite guaranteed startup time from these bounds.', 'limits':['Not actual peak current or actual startup time','The 1ms point is illustrative, not a user or manufacturer requirement','MCU and missing receiver bypass, temperature and tolerance extensions remain','Input capacitor inrush and regulator ground current excluded','Fault-clearing I2t and current-limit behavior require actual protection components'],'qualified':False}
+(a.out/'report.json').write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r,indent=2))

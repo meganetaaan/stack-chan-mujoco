@@ -427,3 +427,7 @@ JST図面とメーカーSTEPの3端子断面を照合し、嵌合側が現行配
 ### 制御電源の出力容量候補
 
 `logic_supply_candidate.json`へT520A226M010ATE080の比較候補を記録。初期22 µF±20%と現15個の100 nF±5%の合計19.025..27.975 µF。メーカーESR条件は25℃/100 kHzで、温度全域・安定性は未確認。詳細`validation/logic_output_capacitor_v1`。正式BOMや現アセンブリは置換していない。
+
+### 制御電源の起動電荷
+
+`validation/logic_startup_charge_v1`で初期容量上限の充電電荷94.919 µCを算出。連続20 mA枠をそのまま入力電流制限に使わず、充電分の余裕を設ける選定条件をlogic_supply_candidate.jsonに反映した。1 msなら一定20 mA負荷と合わせ平均114.919 mAだが、例示であり実起動時間・ピーク電流・要求値ではない。

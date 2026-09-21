@@ -1,0 +1,21 @@
+{
+  "source_sha256": {
+    "validation/logic_output_capacitor_v1/report.json": "60a943a5a49cf7770bf390f391bea5ca9826eeca5ba351d333e17d1fa5f7420f",
+    "validation/sequence_mcu_current_v1/report.json": "f4cca9baf211f4d9b5d07cb0717fa7659c4f752927d5385e8cd303af09e76ff9"
+  },
+  "initial_C_max_F": 2.7974999999999996e-05,
+  "charge_C": 9.491917499999998e-05,
+  "stored_energy_J": 0.00016103038038749995,
+  "reference_1ms_average_capacitor_current_A": 0.09491917499999998,
+  "reference_1ms_average_total_A": 0.11491917499999998,
+  "constant_current_startup_relation": "t >= Q/(Iavailable-Iload), only for Iavailable>Iload; real LDO/input dynamics may make startup longer.",
+  "at_20mA_source_and_20mA_load": "No guaranteed positive charging current; no finite guaranteed startup time from these bounds.",
+  "limits": [
+    "Not actual peak current or actual startup time",
+    "The 1ms point is illustrative, not a user or manufacturer requirement",
+    "MCU and missing receiver bypass, temperature and tolerance extensions remain",
+    "Input capacitor inrush and regulator ground current excluded",
+    "Fault-clearing I2t and current-limit behavior require actual protection components"
+  ],
+  "qualified": false
+}
