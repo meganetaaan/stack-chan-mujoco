@@ -1,0 +1,51 @@
+{
+  "status": "selected_for_design_and_minimum_bench_evaluation_not_manufacturing_release",
+  "manufacturer": "Pololu",
+  "item": 5671,
+  "part": "D42V110F5",
+  "quantity": 2,
+  "topology": "one5Vrail_per_leg_shared_return_no_VOUT_parallel",
+  "output_V": 5,
+  "accuracy_fraction": 0.03,
+  "input_catalog_V": [
+    5,
+    60
+  ],
+  "input_min_subject_to_dropout": true,
+  "current_rating_typical_A_at42V": 11,
+  "current_not_guaranteed_at_robot_conditions": true,
+  "size_mm": [
+    31.8,
+    43.2,
+    9
+  ],
+  "catalog_mass_g_each": 15,
+  "manufacturer_status_observed": "Rationed (Active and Preferred)",
+  "sources": [
+    "https://www.pololu.com/product/5671",
+    "https://www.pololu.com/product/5671/specs"
+  ],
+  "verified_on": "2026-09-22",
+  "design_comparison_current_A_per_leg": 4.917,
+  "comparison_current_is_not_measured_or_guaranteed_DC_max": true,
+  "terminal_target_lower_V": 4.75,
+  "terminal_target_origin": "existing engineering5Vplusminus5percent allocation; not user requirement",
+  "static_wiring_drop_budget_V": 0.1,
+  "necessary_total_loop_resistance_ohm_before_transients": 0.02033760423022168,
+  "integration_constraints": [
+    "ENA pulled to VIN through1Mohm; use suitably rated sink interface, not raw MCU pin.",
+    "ENB mode-specific and internally coupled to ENA; do not repurpose as independent safety cutoff.",
+    "PG typical thresholds do not qualify servo terminal voltage or substitute independent OV/UV monitoring.",
+    "Reverse-input protection is not proof of regeneration absorption or disabled reverse-output isolation.",
+    "Separate downstream cutoff and no automatic fault restart remain required."
+  ],
+  "unresolved": [
+    "3S input/load/ambient thermal margin and dropout at selected cutoff",
+    "Current transients, output tolerance at terminals and wire budget",
+    "Reverse current/regeneration and protection timing",
+    "Mounts, exposed PCB isolation, connectors and harness",
+    "Replacement CAD/mass ledger; no automatic swap from UBEC dimensions"
+  ],
+  "formal_power_pointer_changed": false,
+  "manufacturing_release": false
+}
