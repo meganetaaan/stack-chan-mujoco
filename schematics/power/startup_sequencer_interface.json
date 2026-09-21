@@ -3,7 +3,7 @@
   "hardware_implemented": false,
   "inputs": {
     "ENABLE_PERMISSION": "U6 pin9; qualified manual permission, also clear acknowledgement",
-    "PG_CONDITIONED": "TPS3700 conditional receiver: pg_receiver_candidate.json; output Schmitt receiver and power validity not integrated",
+    "PG_CONDITIONED": "revG U13 pin4; TPS3700 plus 74LVC1G17 receiver; power-transition validity and downstream loading incomplete",
     "INDEPENDENT_HEALTH": "stop/power/monitor validity excluding expected pre-start PG low",
     "STARTUP_EXPIRED": "timer not selected; deadline must satisfy startup and fault-energy bounds"
   },
