@@ -2,12 +2,12 @@
 import argparse,collections,hashlib,json,os,subprocess
 from pathlib import Path
 import meshio,numpy as np
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--boss-mesh-dir',type=Path);p.add_argument('--spacer-mesh-dir',type=Path);p.add_argument('--opposite-anchors',action='store_true');p.add_argument('--reverse-contact',action='store_true');p.add_argument('--out',type=Path,required=True);p.add_argument('--mesh-mm',default='0.7');a=p.parse_args()
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--boss-mesh-dir',type=Path);p.add_argument('--spacer-mesh-dir',type=Path);p.add_argument('--fixed-anchor-points',action='store_true');p.add_argument('--opposite-anchors',action='store_true');p.add_argument('--reverse-contact',action='store_true');p.add_argument('--out',type=Path,required=True);p.add_argument('--mesh-mm',default='0.7');a=p.parse_args()
 root=Path(__file__).resolve().parents[3]
 if a.out.exists():p.error('new output required')
 a.out.mkdir(parents=True)
 paths={'BOSS':(a.boss_mesh_dir or root/'validation/sole_spacer_contact_mesh_v1/boss')/f'boss_{a.mesh_mm}.msh','SPACER':(a.spacer_mesh_dir or root/'validation/sole_spacer_contact_mesh_v1/spacer')/f'spacer_{a.mesh_mm}.msh'}
-plan={'scope':__doc__,'reverse_contact':a.reverse_contact,'opposite_anchors':a.opposite_anchors,'mesh_mm':float(a.mesh_mm),'force_each_N':20,'penalty_N_mm3':1e6,'material_assumptions':{'BOSS':{'E_MPa':1120,'poisson':.35},'SPACER':{'E_MPa':193000,'poisson':.3,'status':'Assumed metal elastic parameters; supplier/material certificate not validated'}},'source_sha256':{str(f.resolve().relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in paths.values()},'criteria':{'solver_completion':True,'relative_anchor_force':1e-4,'maximum_penetration_mm':.01},'limitations':['Cropped boss with free cut faces; spacer minimal anchors must be audited for parasitic reaction.','Balanced nominal forces substitute screw/nut elasticity and actual preload.','Single C3D4 mesh; no creep or walking loads.']}
+plan={'scope':__doc__,'fixed_anchor_points':a.fixed_anchor_points,'reverse_contact':a.reverse_contact,'opposite_anchors':a.opposite_anchors,'mesh_mm':float(a.mesh_mm),'force_each_N':20,'penalty_N_mm3':1e6,'material_assumptions':{'BOSS':{'E_MPa':1120,'poisson':.35},'SPACER':{'E_MPa':193000,'poisson':.3,'status':'Assumed metal elastic parameters; supplier/material certificate not validated'}},'source_sha256':{str(f.resolve().relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in paths.values()},'criteria':{'solver_completion':True,'relative_anchor_force':1e-4,'maximum_penetration_mm':.01},'limitations':['Cropped boss with free cut faces; spacer minimal anchors must be audited for parasitic reaction.','Balanced nominal forces substitute screw/nut elasticity and actual preload.','Single C3D4 mesh; no creep or walking loads.']}
 (a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
 lines=['*HEADING',__doc__];offset=0;eo=0;anchors=[];constraints=[];loads={};total_force=np.zeros(3);total_moment=np.zeros(3);node_xyz={}
 face_indices=[(0,1,2),(0,3,1),(1,3,2),(2,3,0)]
@@ -34,8 +34,11 @@ for name,path in paths.items():
    key=offset+int(n)+1;loads[key]=loads.get(key,0)+force*area/areas.sum()/3
  # Spacer has 3-2-1 constraints; boss only in-plane. Rotate targets 180 degrees for sensitivity.
  targets=[[32.1,6,-19.8],[37.9,6,-19.8],[35,8.9,-19.8]] if name=='SPACER' else [[31,2,-19],[39,2,-19]]
+ if a.fixed_anchor_points and name=='SPACER':targets=[[32.1,6,-19.85],[37.9,6,-19.85],[35,8.9,-19.85]]
+ if a.fixed_anchor_points and a.opposite_anchors:raise ValueError('Opposite fixed anchors not imprinted')
  if a.opposite_anchors:targets=[[70-q[0],12-q[1],q[2]] for q in targets]
  ids=[int(np.argmin(np.linalg.norm(xyz-q,axis=1)))+offset+1 for q in np.array(targets)]
+ if a.fixed_anchor_points and any(np.linalg.norm(xyz[n-offset-1]-q)>1e-7 for n,q in zip(ids,targets)):raise ValueError('Exact anchor missing from mesh')
  if len(set(ids))!=len(ids):raise ValueError('duplicate anchors')
  if name=='SPACER':constraints += [f'{ids[0]},1,3,0',f'{ids[1]},2,3,0',f'{ids[2]},3,3,0']
  else:constraints += [f'{ids[0]},1,2,0',f'{ids[1]},2,2,0']

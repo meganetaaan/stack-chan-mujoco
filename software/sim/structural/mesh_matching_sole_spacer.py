@@ -2,18 +2,21 @@
 import argparse,json,hashlib,math
 from pathlib import Path
 import gmsh,meshio,numpy as np
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--mesh-mm',type=float,default=.5);a=p.parse_args();root=Path(__file__).resolve().parents[3]
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--fixed-anchor-points',action='store_true');p.add_argument('--out',type=Path,required=True);p.add_argument('--mesh-mm',type=float,default=.5);a=p.parse_args();root=Path(__file__).resolve().parents[3]
 if a.out.exists() or not np.isfinite(a.mesh_mm) or a.mesh_mm<=0:p.error('new output and positive finite size required')
 a.out.mkdir(parents=True)
 paths={'BOSS':root/'validation/sole_lock_boss_screen_v1/boss.step','SPACER':root/'validation/sole_spacer_contact_geometry_v1/spacer.step'}
-plan={'scope':__doc__,'mesh_mm':a.mesh_mm,'source_sha256':{str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in paths.values()},'criteria':{'volume_error_mm3':1e-6,'matching_contact_triangle_coordinates':True,'patch_area_relative_error':.01},'limitations':['Mesh preparation only; equal interface coordinates are duplicated in exported parts, not bonded.','Local cropped geometry and nominal bearing shapes remain assumptions.']}
+plan={'scope':__doc__,'fixed_anchor_points':a.fixed_anchor_points,'mesh_mm':a.mesh_mm,'source_sha256':{str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in paths.values()},'criteria':{'volume_error_mm3':1e-6,'matching_contact_triangle_coordinates':True,'patch_area_relative_error':.01},'limitations':['Mesh preparation only; equal interface coordinates are duplicated in exported parts, not bonded.','Local cropped geometry and nominal bearing shapes remain assumptions.']}
 (a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n');gmsh.initialize()
 try:
  gmsh.option.setNumber('General.Terminal',0);original=[];volumes_before=[]
  for path in paths.values():
   v=[x for x in gmsh.model.occ.importShapes(str(path)) if x[0]==3];assert len(v)==1;original+=v;volumes_before.append(gmsh.model.occ.getMass(*v[0]))
  nut=gmsh.model.occ.addRectangle(33,4,-14.2,4,4);head=gmsh.model.occ.addDisk(35,6,-19.85,1.9,1.9)
- _,mapping=gmsh.model.occ.fragment(original,[(2,nut),(2,head)]);gmsh.model.occ.synchronize()
+ anchor_tools=[]
+ if a.fixed_anchor_points:
+  for q in [[32.1,6,-19.85],[37.9,6,-19.85],[35,8.9,-19.85]]:anchor_tools.append((0,gmsh.model.occ.addPoint(*q)))
+ _,mapping=gmsh.model.occ.fragment(original,[(2,nut),(2,head)]+anchor_tools);gmsh.model.occ.synchronize()
  vols=[]
  for items,before in zip(mapping[:2],volumes_before):
   v=[x for x in items if x[0]==3];assert len(v)==1 and abs(gmsh.model.occ.getMass(*v[0])-before)<1e-6;vols.append(v[0])

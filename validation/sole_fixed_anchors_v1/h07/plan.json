@@ -1,0 +1,34 @@
+{
+  "scope": "Local boss/spacer contact, minimum dimensional case; metal modulus is assumed.",
+  "fixed_anchor_points": true,
+  "reverse_contact": false,
+  "opposite_anchors": false,
+  "mesh_mm": 0.7,
+  "force_each_N": 20,
+  "penalty_N_mm3": 1000000.0,
+  "material_assumptions": {
+    "BOSS": {
+      "E_MPa": 1120,
+      "poisson": 0.35
+    },
+    "SPACER": {
+      "E_MPa": 193000,
+      "poisson": 0.3,
+      "status": "Assumed metal elastic parameters; supplier/material certificate not validated"
+    }
+  },
+  "source_sha256": {
+    "validation/sole_fixed_anchors_v1/mesh07/boss/boss_0.7.msh": "f29b751a6d609debfe754a640f41a20568404b3b38c611b1fc37ddbddb8d69cf",
+    "validation/sole_fixed_anchors_v1/mesh07/spacer/spacer_0.7.msh": "d57f80c4e20c5bc13cd8d148527bedb559b4a074e95fbbf909317f50faf5d3c4"
+  },
+  "criteria": {
+    "solver_completion": true,
+    "relative_anchor_force": 0.0001,
+    "maximum_penetration_mm": 0.01
+  },
+  "limitations": [
+    "Cropped boss with free cut faces; spacer minimal anchors must be audited for parasitic reaction.",
+    "Balanced nominal forces substitute screw/nut elasticity and actual preload.",
+    "Single C3D4 mesh; no creep or walking loads."
+  ]
+}
