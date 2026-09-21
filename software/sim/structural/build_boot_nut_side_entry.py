@@ -3,8 +3,9 @@ import argparse,hashlib,json
 from pathlib import Path
 import cadquery as cq
 p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True)
-a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
-plan={'question':__doc__,'slot_width_mm':4.4,'slot_z_mm':[-14.6,-12.8],'nut_envelope_mm':[4,4,1.2],
+p.add_argument('--slot-width-mm',type=float,default=4.4)
+a=p.parse_args();assert 4.4<=a.slot_width_mm<=4.6;a.out.mkdir(parents=True,exist_ok=False)
+plan={'question':__doc__,'slot_width_mm':a.slot_width_mm,'slot_z_mm':[-14.6,-12.8],'nut_envelope_mm':[4,4,1.2],
  'criteria':{'single_valid_solid':True,'bearing_floor_removed_volume_max_mm3':1e-8,'continuous_swept_overlap_max_mm3':.01},
  'stop':'One slot geometry at eight positions; preserve failed results instead of iterative widening.',
  'limits':['Nominal envelope; actual nut and print tolerances unqualified','Installed screw retains nut; loose nut may exit','Tool grip space not modeled','Removed side wall changes stiffness and needs structural evaluation']}
@@ -17,7 +18,7 @@ for side,sign in [('left',1),('right',-1)]:
   for direction in (-1,1):
    y=cy+direction*20.5;outside=cy+direction*30
    lo,hi=sorted([y,outside])
-   new=new.cut(cq.Solid.makeBox(4.4,hi-lo+2.2,1.8,cq.Vector(x-2.2,lo-(2.2 if direction>0 else 0),-14.6)))
+   new=new.cut(cq.Solid.makeBox(a.slot_width_mm,hi-lo+2.2,1.8,cq.Vector(x-a.slot_width_mm/2,lo-(2.2 if direction>0 else 0),-14.6)))
  new=new.clean();valid=new.isValid() and len(new.Solids())==1
  # All material below the nut seating plane must be unchanged.
  below=cq.Solid.makeBox(200,200,100,cq.Vector(-100,-100,-114.6))
