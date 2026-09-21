@@ -1,0 +1,48 @@
+{
+  "purpose": "Determine whether the side opening changes local seat compliance under the same nut-patch force",
+  "sources": {
+    "closed": {
+      "path": "validation/boot_low_head_candidate_v1/cad/left_boot_shell.step",
+      "sha256": "bd17f19ec7269c33183c59bec92a5b2abac3aeb16b34c5dba8ad7f9709b22473"
+    },
+    "side_entry": {
+      "path": "validation/boot_nut_side_entry_v2/left_boot_shell.step",
+      "sha256": "b4796a8a1df211a90b605df01e6493b4abdcd90547715731823e06e21402fb13"
+    }
+  },
+  "crop_mm": {
+    "x": [
+      -38,
+      -30
+    ],
+    "y": [
+      -18.5,
+      -10.5
+    ],
+    "z": [
+      -16,
+      -12.8
+    ]
+  },
+  "mesh_mm": [
+    1,
+    0.7
+  ],
+  "force_N": 1,
+  "young_MPa": 1120,
+  "poisson": 0.35,
+  "assumptions": [
+    "Normalized 1 N load, not actual preload or gait force",
+    "Unqualified isotropic PETG modulus used equally for both shapes",
+    "Floor facets selected by centroid within centered 4 mm square; discretization area measured",
+    "Cut boundaries free; bottom plane either fully clamped or bilateral normal support",
+    "Normal support nodal reactions are diagnostic, not a solved unilateral contact problem"
+  ],
+  "criteria": {
+    "area_relative_error_max": 0.05,
+    "equilibrium_error_N": 1e-07,
+    "compliance_mesh_relative_change_max": 0.05
+  },
+  "stopping_rule": "Run only two mesh sizes and two supports for both shapes; if area/compliance criteria fail, report unresolved and reconsider load patch or support, not automatic refinement",
+  "strength_acceptance": false
+}
