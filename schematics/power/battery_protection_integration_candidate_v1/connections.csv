@@ -15,6 +15,7 @@ U_CELL_PROTECT,43,BQ76942_DSG_43,candidate_connected
 U_CELL_PROTECT,45,BQ76942_CHG_45,candidate_connected
 U_CELL_PROTECT,41,BQ_LD,candidate_connected
 U_CELL_PROTECT,42,BQ_PACK,candidate_connected
+U_CELL_PROTECT,47,BQ_BAT_HOLD,candidate_connected
 U_CELL_PROTECT,1,,NC
 U_CELL_PROTECT,3,,NC
 U_CELL_PROTECT,5,,NC
@@ -46,7 +47,6 @@ U_CELL_PROTECT,38,,UNRESOLVED
 U_CELL_PROTECT,39,,UNRESOLVED
 U_CELL_PROTECT,40,,UNRESOLVED
 U_CELL_PROTECT,46,,UNRESOLVED
-U_CELL_PROTECT,47,,UNRESOLVED
 Q_CHG,1,CELL_POS_FUSED,candidate_connected
 Q_CHG,2,CELL_POS_FUSED,candidate_connected
 Q_CHG,3,CELL_POS_FUSED,candidate_connected
@@ -137,3 +137,10 @@ R_LD,1,PACK_POS_PROTECTED,candidate_connected
 R_LD,2,BQ_LD,candidate_connected
 R_PACK,1,PACK_POS_PROTECTED,candidate_connected
 R_PACK,2,BQ_PACK,candidate_connected
+R_BAT,1,CELL_POS_FUSED,candidate_connected
+R_BAT,2,BQ_BAT_DIODE_A,candidate_connected
+D_BAT,1,BQ_BAT_DIODE_A,candidate_connected
+D_BAT,2,,NC
+D_BAT,3,BQ_BAT_HOLD,candidate_connected
+C_BAT,1,BQ_BAT_HOLD,candidate_connected
+C_BAT,2,CELL_B_MINUS,candidate_connected

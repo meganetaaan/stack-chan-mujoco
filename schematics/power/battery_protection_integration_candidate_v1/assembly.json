@@ -21,6 +21,7 @@
         "45": "BQ76942_CHG_45",
         "41": "BQ_LD",
         "42": "BQ_PACK",
+        "47": "BQ_BAT_HOLD",
         "1": null,
         "3": null,
         "5": null,
@@ -53,8 +54,7 @@
         38,
         39,
         40,
-        46,
-        47
+        46
       ]
     },
     {
@@ -376,9 +376,36 @@
         "1": "PACK_POS_PROTECTED",
         "2": "BQ_PACK"
       }
+    },
+    {
+      "reference": "R_BAT",
+      "part": "TNPW1206100RBEEA",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "BQ_BAT_DIODE_A"
+      }
+    },
+    {
+      "reference": "D_BAT",
+      "part": "BAS116",
+      "pins": {
+        "1": "BQ_BAT_DIODE_A",
+        "2": null,
+        "3": "BQ_BAT_HOLD"
+      },
+      "ordering_suffix_pending": true
+    },
+    {
+      "reference": "C_BAT",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_BAT_HOLD",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false
     }
   ],
-  "part_count": 39,
+  "part_count": 42,
   "unresolved_BQ76942_pins": [
     18,
     20,
@@ -402,8 +429,7 @@
     38,
     39,
     40,
-    46,
-    47
+    46
   ],
   "source_sha256": {
     "bq76942_candidate.json": "df1ddf921600e383966b8f38bfb06fe5c95a7bfaca9319fcc9708f54980c9ed2",
@@ -422,7 +448,7 @@
     "cell tap and main connectors",
     "battery fuse and reverse protection",
     "shunt and current filters",
-    "BAT REG18 CP1 and optional LDO supply",
+    "BAT hold-up and input fault qualification; REG18 CP1 and optional LDO supply",
     "PACK/LD transient and reverse-polarity qualification",
     "configuration and startup inhibit",
     "temperature inputs and protection settings",
