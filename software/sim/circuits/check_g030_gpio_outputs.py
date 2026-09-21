@@ -30,5 +30,5 @@ assert len(trace)==2 and latch[0]&control==1<<11
 subprocess.run(['clang','--target=arm-none-eabi','-mcpu=cortex-m0plus','-mthumb','-ffreestanding','-std=c11','-Wall','-Wextra','-Werror','-Oz','-c',src,'-o',str(a.out/'outputs_arm.o')],check=True)
 r={'request_initial_latch_combinations':count,'invalid_requests_force_clear':True,'other_pins_preserved':True,'single_BSRR_update':True,
  'failed_write_returns_failure_and_attempts_clear':True,'host_arm_compile_pass':True,
- 'hardware_verified':False,'limits':['ODR is an output latch, not a physical pin observation','One BSRR write does not guarantee zero pin skew','Repeated write failure requires independent hardware cutoff','Caller must remember failures; no automatic retry to enable','Timer and MMIO adapter unimplemented']}
+ 'hardware_verified':False,'limits':['ODR is an output latch, not a physical pin observation','One BSRR write does not guarantee zero pin skew','Repeated write failure requires independent hardware cutoff','Caller must remember failures; no automatic retry to enable','Complete MCU boot, timing and electrical integration remain unverified']}
 (a.out/'report.json').write_text(json.dumps(r,indent=2)+'\n');print(count)

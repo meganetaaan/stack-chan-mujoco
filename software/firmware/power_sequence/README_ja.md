@@ -29,12 +29,16 @@ python3 software/sim/circuits/check_power_sequence_c.py --out /tmp/power-sequenc
 ```
 
 コンパイラ版・入力ハッシュ・残件はvalidation/power_sequence_c_v1/report.json。
-GPIO初期化のレジスタ操作コアはg030_gpio_init.cへ追加。実MMIOアダプター、クロック、ウォッチドッグ、起動コード、回路統合は未実装。
+GPIO初期化のレジスタ操作コアはg030_gpio_init.cへ追加。GPIOの実MMIOアダプターはg030_gpio_mmio.c。クロック、ウォッチドッグ、起動コード、回路統合は未実装。
 
 GPIO初期化は出力ラッチを読み戻してから出力化する。失敗時の順序検査はvalidation/g030_gpio_latch_failure_v1とg030_gpio_init_v2を参照。
 
-出力要求のレジスタ反映はg030_gpio_outputs.c。3端子を単一BSRRで更新するが、物理端子の観測・遅延保証ではない。書込み失敗を記憶する呼出し側はpower_runtime.cへ追加。実MMIO接続は未実装。
+出力要求のレジスタ反映はg030_gpio_outputs.c。3端子を単一BSRRで更新するが、物理端子の観測・遅延保証ではない。書込み失敗を記憶する呼出し側はpower_runtime.cへ追加。GPIO MMIOコールバックは実装済み。ボード起動処理への統合は未実装。
 
 power_runtime_bootは起動時専用。実CLR解除後の許可Low観測を要求し、IO故障は再起動まで解除しない。検査はvalidation/power_runtime_v1参照。
 
 起動期限はpower_deadline.cで実行処理へ接続した。既定の実時間値はなく、無効設定では起動しない。実時刻源・周波数誤差・期限選定・時計停止時の監視は未完了。
+
+GPIO MMIOの検査と前提はvalidation/g030_gpio_mmio_v1/README_ja.mdを参照。
+`power_g030_mmio_ok()`の異常を呼出し側が`io_fault`へ記憶する接続が必要。
+IDRの生値をそのまま資格済み観測へ変換してはならない。

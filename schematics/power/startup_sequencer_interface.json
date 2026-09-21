@@ -77,5 +77,8 @@
   "startup_deadline_core": "software/firmware/power_sequence/power_deadline.c",
   "startup_deadline_evidence": "validation/power_deadline_v2/report.json",
   "clear_driver_dc_proposal": "validation/sequence_clear_driver_v1/connection_proposal.json",
-  "clear_driver_dc_status": "G030 PA11 plus 10k R14 passes declared valid-rail DC comparison only; not integrated, transitions/reset/board leakage and whole sequencer still unqualified"
+  "clear_driver_dc_status": "G030 PA11 plus 10k R14 passes declared valid-rail DC comparison only; not integrated, transitions/reset/board leakage and whole sequencer still unqualified",
+  "gpio_mmio_adapter": "software/firmware/power_sequence/g030_gpio_mmio.c",
+  "gpio_mmio_evidence": "validation/g030_gpio_mmio_v1/report.json",
+  "gpio_mmio_status": "Host literal-address tests and Cortex-M0+ object build only; boot clocks, RTC/remap, qualified inputs and board integration incomplete"
 }
