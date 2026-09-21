@@ -1,0 +1,51 @@
+{
+  "source_sha256": {
+    "validation/shunt_stability_comparison_v1/report.json": "2ed011544e1efc14b2949fa3bb4efa7ef2eb63164e2cf31a357f1df89237a1b7"
+  },
+  "datasheet": {
+    "url": "https://www.analog.com/media/en/technical-documentation/data-sheets/4363fb.pdf",
+    "revision": "C",
+    "section": "Electrical Characteristics, page 4: current limit and foldback"
+  },
+  "resistance_min_conditional_ohm": 0.0078106535000000005,
+  "points": [
+    {
+      "case": "short_at_zero",
+      "VCC_V": 12.0,
+      "OUT_V": 0.0,
+      "sense_limit_V": 0.035,
+      "current_comparison_A": 4.481059107282125,
+      "MOSFET_VDS_V": 11.965,
+      "MOSFET_power_comparison_W": 53.61587221863062
+    },
+    {
+      "case": "foldback_at_one",
+      "VCC_V": 12.0,
+      "OUT_V": 1.0,
+      "sense_limit_V": 0.035,
+      "current_comparison_A": 4.481059107282125,
+      "MOSFET_VDS_V": 10.965,
+      "MOSFET_power_comparison_W": 49.1348131113485
+    },
+    {
+      "case": "full_limit_at_three",
+      "VCC_V": 12.0,
+      "OUT_V": 3.0,
+      "sense_limit_V": 0.055,
+      "current_comparison_A": 7.041664311443338,
+      "MOSFET_VDS_V": 8.945,
+      "MOSFET_power_comparison_W": 62.98768726586066
+    }
+  ],
+  "unqualified_ranges": [
+    "OUT between 1 and 3 V: do not interpolate the typical foldback curve into a guaranteed maximum.",
+    "VCC=5 V normal regulator operation and VCC=12.6 V regulator pass-through fault differ from the tabulated 12 V condition.",
+    "Sensing bias, shared copper, drift and actual assembly process remain outside the resistor-only calculation.",
+    "Current-limit timer differs from the overvoltage timer; series_clamp_timer_v3 is not the duration for these cases.",
+    "Startup capacitance charging, gate transient, repetition and initial mounting-base temperature require a time-resolved SOA check."
+  ],
+  "decision": "The OV comparison point does not bound all fault power. Do not qualify the FET or release the circuit from that point alone.",
+  "worst_case_fault_bound_verified": false,
+  "SOA_verified": false,
+  "manufacturing_release": false
+}
