@@ -1,0 +1,24 @@
+{
+  "part_number": "TPS259823ONRGE",
+  "status": "evaluation_candidate_not_released",
+  "role": "main forward-current circuit breaker; complete isolation not yet qualified",
+  "source": "https://www.ti.com/lit/ds/symlink/tps25982.pdf",
+  "source_revision": "SLVSEI3D May 2026",
+  "configuration": {
+    "RETRY_DLY": "GND for no auto-retry",
+    "EN_UVLO": "external default-low permission circuit TBD; never floating",
+    "ILIM": "TBD from actual DC load and wiring coordination",
+    "ITIMER": "TBD",
+    "dVdt": "TBD"
+  },
+  "ron_max_ohm_at_2A_specified_temperature": 0.0045,
+  "not_proven": [
+    "Reverse current and OUT biased with IN absent",
+    "Bidirectional isolation",
+    "Supply-loss and return manual rearm",
+    "6 V servo overvoltage protection",
+    "Inrush short-circuit thermal layout and final current setting"
+  ],
+  "evidence": "validation/main_efuse_selection_v1/README.md",
+  "manufacturing_release": false
+}
