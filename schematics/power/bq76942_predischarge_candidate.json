@@ -1,0 +1,44 @@
+{
+  "status": "exit_policy_candidate_hardware_not_selected",
+  "source": "https://www.ti.com/lit/ug/sluuby1b/sluuby1b.pdf",
+  "source_sections": [
+    "5.2.3.2.2",
+    "13.3.6.5",
+    "13.3.6.6"
+  ],
+  "register_candidates": {
+    "Predischarge Timeout": {
+      "address": "0x930E",
+      "value": 0,
+      "reason": "No elapsed-time transition to main DSG"
+    },
+    "Predischarge Stop Delta": {
+      "address": "0x930F",
+      "value": 50,
+      "nominal_delta_V": 0.5,
+      "origin": "engineering starting candidate, not user requirement",
+      "accuracy_qualified": false
+    }
+  },
+  "PDSG_EN": {
+    "required_for_candidate": true,
+    "write_authorized_by_artifact": false,
+    "reason": "hardware not implemented"
+  },
+  "independent_abort_required": true,
+  "abort_deadline_s": null,
+  "downstream_inhibit_required": [
+    "Tab5 input power",
+    "both servo regulator inputs or enable signals",
+    "other main-pack loads"
+  ],
+  "remaining": [
+    "PDSG switch and resistor selection with continuous-fault tolerance",
+    "load/capacitance budget while inhibited",
+    "LD/top-stack measurement error and residual-inrush limits",
+    "independent timeout must force BOTHOFF and hold downstream inhibits",
+    "watchdog/MCU failure behavior",
+    "precharge branch body diode and reverse paths"
+  ],
+  "manufacturing_release": false
+}
