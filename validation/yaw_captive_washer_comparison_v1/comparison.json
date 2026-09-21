@@ -1,0 +1,37 @@
+{
+  "part": "NBK SNSQS-M3-16",
+  "adopted": false,
+  "thread_strength_class": "A2-70",
+  "screw_material": "SUSXM7",
+  "washers_material": "SUS304",
+  "nominal_mm": {
+    "thread_length": 16,
+    "head_diameter": 5.5,
+    "head_height": 3,
+    "hex": 2.5,
+    "flat_washer_outer_diameter": 7,
+    "flat_washer_thickness": 0.5,
+    "spring_washer_T_approx": 0.7
+  },
+  "comparisons": [
+    {
+      "state": "spring compressed to nominal T",
+      "additional_stack_mm": 0.7,
+      "tip_projection_nominal_mm": 1.1,
+      "head_rear_x_nominal_mm": -68.4
+    },
+    {
+      "state": "free spring approximate 2T",
+      "additional_stack_mm": 1.4,
+      "tip_projection_nominal_mm": 0.4,
+      "head_rear_x_nominal_mm": -69.1
+    }
+  ],
+  "limits": [
+    "T and 2T approximate; not upper/lower guaranteed stack bounds",
+    "Spring flattening load and preload unknown",
+    "Do not reuse 580 MPa screening value for A2-70",
+    "Captive assembly solves loose-part handling but does not prove retained clamp load",
+    "Existing rear-driver geometry not automatically transferable"
+  ]
+}
