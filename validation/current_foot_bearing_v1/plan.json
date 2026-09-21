@@ -1,0 +1,13 @@
+{
+  "scope": "Measure opposing horizontal bearing faces in the current foot inventory.",
+  "inventory": "board/mechanical/prototype/foot_candidate/revE/inventory.json",
+  "inventory_sha256": "443966fe8c62ca005660f19a059eafb551b3ab64c9dd872a5307f465475fb27a",
+  "revision": "revE",
+  "criteria": {
+    "plane_match_mm": 1e-06,
+    "reported_area_min_mm2": 1e-08
+  },
+  "purpose": "Identify actual compressive load paths and nut bearing area before local structural analysis",
+  "not_strength_criteria": "Positive nominal area is not joint capacity, preload, friction or contact closure",
+  "stop_condition": "Each requested pair has a measured opposing-face intersection or an explicit missing bearing path"
+}
