@@ -1,0 +1,387 @@
+{
+  "sources_sha256": {
+    "validation/yaw_inertial_ledger_v2/report.json": "4e19164c326a99c2158c54fd64271022d7f052fe14d969496f33f2f6b83f50a0",
+    "schematics/power/rc_supply_candidate.json": "f9073158b24bef5bd7466d0d115ebb5581928b22c36c13661c688f7acb8e1461",
+    "board/mechanical/prototype/rc_battery_tray_revB/material_candidate.json": "2c38ad3de9b347a059d0b2621c6ec65ae649c7791e1cc84a265e8c301c1f5c24",
+    "board/mechanical/prototype/power_packaging_revA/report.json": "2dd13bd2bf6db2004c0ac3b64b23f05473e9cd30371036c965d41862fe8432da",
+    "validation/rc_battery_cad_v1_checked/battery_candidate.step": "5f3ece800a1715d5e12958fb7623d65ef4e9802fbacbb21010aa407bdb86b1b2",
+    "validation/dual_ubec_layout_v2/left.step": "8098b6a9e55037ef9c82e2a1cc79e1987e1ae32116e846b4565956ed7ff9ca32",
+    "validation/dual_ubec_layout_v2/right.step": "5a2142aa0126b9a8a2d6b0f86374fc5bad547a9530f61d7d4151f04e2c93b2ee",
+    "board/mechanical/prototype/rc_battery_tray_revB/tray.step": "3f522dd0c14ea083cc789f568ba4ed3b0c0bdc13f5e45c951a1ae59c602c5f46"
+  },
+  "frame": "base CAD coordinates; inherited yaw ledger frame",
+  "removed_old_allocations": {
+    "battery_2S_reservation": {
+      "mass_kg": 0.103,
+      "first_moment_kg_m": [
+        0.0029870000000000005,
+        1.4351171150686775e-19,
+        0.008239999999999999
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.0007143970133333334,
+          -2.7399733699377227e-21,
+          -0.00023895999999999998
+        ],
+        [
+          -2.7399733699377227e-21,
+          0.0007620867858333333,
+          -9.660755401696707e-21
+        ],
+        [
+          -0.00023895999999999998,
+          -9.660755401696707e-21,
+          0.00013277051916666668
+        ]
+      ]
+    },
+    "dedicated_5V_converter": {
+      "mass_kg": 0.02,
+      "first_moment_kg_m": [
+        -0.0008,
+        2.8797865626517216e-22,
+        0.00146
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.00010940455933617727,
+          -2.5118321195609077e-22,
+          5.8399999999999997e-05
+        ],
+        [
+          -2.5118321195609077e-22,
+          0.00013948644121225556,
+          -2.0167505271570334e-23
+        ],
+        [
+          5.8399999999999997e-05,
+          -2.0167505271570334e-23,
+          3.439766721509952e-05
+        ]
+      ]
+    },
+    "battery_tray": {
+      "mass_kg": 0.006903805017530213,
+      "first_moment_kg_m": [
+        0.00020021034550837612,
+        -3.947207005694509e-20,
+        0.0004256216982844032
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          3.226820906465576e-05,
+          8.898132364265622e-22,
+          -1.2343029250247696e-05
+        ],
+        [
+          8.898132364265622e-22,
+          3.255550556614892e-05,
+          2.005181158892811e-21
+        ],
+        [
+          -1.2343029250247696e-05,
+          2.005181158892811e-21,
+          1.224880247962426e-05
+        ]
+      ]
+    }
+  },
+  "added_candidate_allocations": {
+    "battery": {
+      "mass_kg": 0.076,
+      "first_moment_kg_m": [
+        0.0022040000000000002,
+        -3.600083194517841e-20,
+        0.00608
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.0005149,
+          1.0743998283639185e-21,
+          -0.00017632
+        ],
+        [
+          1.0743998283639185e-21,
+          0.0005590813333333334,
+          2.880066555614273e-21
+        ],
+        [
+          -0.00017632,
+          2.880066555614273e-21,
+          8.97813333333333e-05
+        ]
+      ]
+    },
+    "UBEC_left": {
+      "mass_kg": 0.036,
+      "first_moment_kg_m": [
+        -0.0009,
+        0.0011159999999999996,
+        0.003888
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.0004580986199999998,
+          2.7899999999999997e-05,
+          9.72e-05
+        ],
+        [
+          2.7899999999999997e-05,
+          0.0004484455799999999,
+          -0.00012052799999999998
+        ],
+        [
+          9.72e-05,
+          -0.00012052799999999998,
+          6.579869999999998e-05
+        ]
+      ]
+    },
+    "UBEC_right": {
+      "mass_kg": 0.036,
+      "first_moment_kg_m": [
+        -0.0009,
+        -0.0011159999999999998,
+        0.003888
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.00045809861999999984,
+          -2.79e-05,
+          9.72e-05
+        ],
+        [
+          -2.79e-05,
+          0.00044844557999999997,
+          0.000120528
+        ],
+        [
+          9.72e-05,
+          0.000120528,
+          6.579870000000002e-05
+        ]
+      ]
+    },
+    "tray": {
+      "mass_kg": 0.00783690925827692,
+      "first_moment_kg_m": [
+        0.0002272703684900305,
+        8.031264542296412e-20,
+        0.0005104463483814462
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          3.993769061149252e-05,
+          -3.2641946745570754e-21,
+          -1.4802944103061911e-05
+        ],
+        [
+          -3.2641946745570754e-21,
+          4.04828532969912e-05,
+          -5.4934571380727e-21
+        ],
+        [
+          -1.4802944103061911e-05,
+          -5.4934571380727e-21,
+          1.3733102845272292e-05
+        ]
+      ]
+    }
+  },
+  "added_part_details": [
+    {
+      "name": "battery",
+      "mass_kg": 0.076,
+      "com_m": [
+        0.029,
+        -4.736951571734001e-19,
+        0.08
+      ],
+      "inertia_com_kg_m2": [
+        [
+          2.8499999999999998e-05,
+          3.037570195374448e-23,
+          0.0
+        ],
+        [
+          3.037570195374448e-23,
+          8.765333333333334e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          2.586533333333333e-05
+        ]
+      ],
+      "distribution": "uniform CAD solid scaled to catalog mass"
+    },
+    {
+      "name": "UBEC_left",
+      "mass_kg": 0.036,
+      "com_m": [
+        -0.025,
+        0.030999999999999993,
+        0.10800000000000001
+      ],
+      "inertia_com_kg_m2": [
+        [
+          3.5986199999997843e-06,
+          3.853388713543388e-21,
+          -1.5413554854173552e-20
+        ],
+        [
+          3.853388713543388e-21,
+          6.041579999999864e-06,
+          -1.5413554854173552e-20
+        ],
+        [
+          -1.5413554854173552e-20,
+          -1.5413554854173552e-20,
+          8.70270000000002e-06
+        ]
+      ],
+      "distribution": "uniform CAD solid scaled to catalog mass"
+    },
+    {
+      "name": "UBEC_right",
+      "mass_kg": 0.036,
+      "com_m": [
+        -0.025,
+        -0.031,
+        0.10800000000000001
+      ],
+      "inertia_com_kg_m2": [
+        [
+          3.5986199999997843e-06,
+          0.0,
+          -1.5413554854173552e-20
+        ],
+        [
+          0.0,
+          6.041579999999864e-06,
+          0.0
+        ],
+        [
+          -1.5413554854173552e-20,
+          0.0,
+          8.702700000000006e-06
+        ]
+      ],
+      "distribution": "uniform CAD solid scaled to catalog mass"
+    },
+    {
+      "name": "tray",
+      "mass_kg": 0.00783690925827692,
+      "com_m": [
+        0.028999999999999974,
+        1.0247999916311681e-17,
+        0.06513363005222249
+      ],
+      "inertia_com_kg_m2": [
+        [
+          6.690466994507516e-06,
+          -9.351279572911179e-22,
+          1.655891537666321e-20
+        ],
+        [
+          -9.351279572911179e-22,
+          6.447889937953229e-07,
+          -2.6240300257803523e-22
+        ],
+        [
+          1.655891537666321e-20,
+          -2.6240300257803523e-22,
+          7.1422621590614114e-06
+        ]
+      ],
+      "distribution": "uniform PETG solid at typical candidate density"
+    }
+  ],
+  "delta_origin_terms": {
+    "mass_kg": 0.025933104240746713,
+    "first_moment_kg_m": [
+      -0.0017559399770183458,
+      -2.408554091803246e-19,
+      0.004240824650097045
+    ],
+    "inertia_origin_kg_m2": [
+      [
+        0.0006149651488773257,
+        -4.550983118107026e-21,
+        0.00019618008514718578
+      ],
+      [
+        -4.550983118107026e-21,
+        0.0005623266140185866,
+        1.5734811766071572e-20
+      ],
+      [
+        0.00019618008514718578,
+        1.5734811766071572e-20,
+        5.569484731721513e-05
+      ]
+    ]
+  },
+  "updated_fixed_terms": {
+    "mass_kg": 0.44626968465831873,
+    "first_moment_kg_m": [
+      0.00041627142269909075,
+      5.4558142365010275e-06,
+      0.03741859079649283
+    ],
+    "inertia_origin_kg_m2": [
+      [
+        0.00386339103180061,
+        -3.483537390001942e-07,
+        -0.00011984278870806768
+      ],
+      [
+        -3.483537390001942e-07,
+        0.004354306523031613,
+        -4.801116528120806e-07
+      ],
+      [
+        -0.00011984278870806768,
+        -4.801116528120806e-07,
+        0.0013730216264974874
+      ]
+    ]
+  },
+  "fixed_subtotal_com_m": [
+    0.0009327799691744784,
+    1.222537497853615e-05,
+    0.08384748523786004
+  ],
+  "fixed_subtotal_inertia_com_kg_m2": [
+    [
+      0.0007259362256707771,
+      -3.432646647648491e-07,
+      -8.493947673836268e-05
+    ],
+    [
+      -3.432646647648491e-07,
+      0.0012164634939563217,
+      -2.2655349156554117e-08
+    ],
+    [
+      -8.493947673836268e-05,
+      -2.2655349156554117e-08,
+      0.0013726332701532791
+    ]
+  ],
+  "itemized_reconstruction_pass": true,
+  "whole_base_complete": false,
+  "model_updated": false,
+  "manufacturing_release": false,
+  "remaining": [
+    "11 homogeneous solid density terms remain; nonuniform print needs different moments",
+    "20 screws have catalog mass but no qualified COM/inertia",
+    "8 nuts have no selected mass/COM/inertia",
+    "Remaining wires and hardware formerly covered by 25g must be itemized",
+    "Internal battery and converter mass distribution is not known; uniform solid is a comparison.",
+    "TTL, strap, all wiring and protection PCB/components still require allocation.",
+    "These are selected packaging candidates, not electrically qualified supplies."
+  ]
+}
