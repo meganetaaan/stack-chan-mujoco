@@ -1,0 +1,23 @@
+{
+  "question": "Can a separate 1 mm plate lower the case screw seat by 2 mm without moving servo or thinning its printed screw seat?",
+  "stop": "One nominal topology, both supports; verify solids, contact and holes; no strength claim.",
+  "design_assumptions": {
+    "metal_plate_mm": [
+      42,
+      30,
+      1
+    ],
+    "material_candidate": "SUS304, grade and manufacturing tolerance not released",
+    "pocket_side_gap_mm": 0.2,
+    "case_head_access_diameter_mm": 5,
+    "clearance_holes_mm": 2.3,
+    "plate_support_fasteners": "four M2 through-bolts per plate, exact bolt/nut/washer and preload TBD"
+  },
+  "limits": [
+    "Plate bending and support pull-through unverified",
+    "Screw head and tool dimensions provisional",
+    "Metal density 8000 kg/m3 assumed",
+    "No manufacturer screw insertion-depth guarantee",
+    "No assembled fastener envelopes"
+  ]
+}
