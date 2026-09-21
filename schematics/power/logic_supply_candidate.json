@@ -57,14 +57,15 @@
     "qualified": false
   },
   "input_protection_review": {
-    "family": "TPS26600",
+    "family": "TPS26601",
     "status": "functional_candidate_not_selected",
     "evidence": "validation/logic_input_protection_v1/README_ja.md",
     "required_design_decisions": [
       "External UVLO divider; default threshold exceeds 3S full charge",
       "External OVP suitable for TPS709 input limit",
-      "Explicit latch/retry and recovery configuration",
-      "3S current-limit and startup qualification"
+      "3S current-limit and startup qualification",
+      "Validate circuit-breaker startup charge against fault timer",
+      "Validate discharge for external power-cycle reset"
     ],
     "integrated": false,
     "divider_proposal": {
@@ -77,11 +78,20 @@
         "bottom_ohm": 10000
       },
       "top_connection": "BATTERY_RAW",
-      "bottom_connection": "TPS26600 RTN; reference routing and reverse-input behavior require verification",
+      "bottom_connection": "TPS26601 RTN; reference routing and reverse-input behavior require verification",
       "total_tolerance_budget": 0.01,
       "status": "nominal_static_candidate_not_integrated",
       "evidence": "validation/logic_input_window_v1/report.json",
       "battery_cell_protection": false
+    },
+    "part_candidate": "TPS26601RHFR",
+    "previous_family": "TPS26600",
+    "fault_mode": {
+      "MODE": "open",
+      "behavior": "Circuit breaker with latched overload shutdown; fast-trip includes internal restart before overload handling",
+      "recovery_candidate": "External input power cycle below POR reset level; discharge path pending",
+      "evidence": "validation/logic_fault_mode_v1/README_ja.md",
+      "qualified": false
     }
   }
 }
