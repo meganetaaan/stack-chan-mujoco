@@ -21,9 +21,10 @@
   "board_edge_tolerance": 0.3,
   "drill_guide_url": "https://www.pololu.com/file/0J2218/reg34c-drill.dxf",
   "drill_guide_sha256": "c7cbd3fda37bf437830d6c13a6db93bc9ff83f61b88f11353d4b6c8d3a35c5f3",
-  "mount_warning": "Asymmetric transverse offsets2.2/4.2mm in rounded drawing; do not center hole grid on board. Exact centers from DXF not yet extracted.",
+  "mount_warning": "Hole centers extracted in DXF view, not mapped to board top/bottom or robot. Preserve asymmetric short-edge offsets; validate orientation against STEP before mounting CAD.",
   "height_tolerance": null,
   "connector_hole_diameter": 2.18,
   "connector_pair_pitch": 5.0,
-  "connector_net_mapping_verified": false
+  "connector_net_mapping_verified": false,
+  "drill_coordinate_report": "validation/dual_pololu_drill_v1/report.json"
 }
