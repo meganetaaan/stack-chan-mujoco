@@ -1,0 +1,21 @@
+{
+  "question": "Can normal compression alone transfer the archived force and bending moments from plate to shelf?",
+  "source_sha256": {
+    "validation/yaw_shelf_compliance_v1/plan.json": "caa2663038bb7d3c9bcb3fb3a13f721133d99840c8c8ea9f44afa81521956f0f",
+    "validation/yaw_metal_seat_v4/report.json": "8056569d0d13c3303995657cefcdc4ec21507f9d36474d64e566017b27fb28c3"
+  },
+  "contact_outer_rectangle_xy_mm": [
+    -37.5,
+    11.6,
+    9.5,
+    42.5
+  ],
+  "compression_sign": "Positive Z is plate pressing into underside of shelf at Z89.",
+  "stop": "One archived resultant; reference-point shift, compression-only feasibility and minimum total tensile force lower bound. No parameter sweep.",
+  "limits": [
+    "Rectangle overestimates actual contact region by filling holes and relief; feasibility would not prove real contact.",
+    "Point bolt axes, rigid static normal balance only; no preload, compliance, friction, shear or torsion capacity.",
+    "Lower bound on total tensile transfer is not bolt preload, per-bolt maximum, safety factor or allowable.",
+    "No strength or manufacturing release."
+  ]
+}
