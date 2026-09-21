@@ -1,0 +1,23 @@
+{
+  "question": "Can a thicker front shelf reduce local bending without enlarging the envelope or blocking fixed hardware?",
+  "candidate": "Shelf addition X-7.9..11.6, Y=cy +/-18, Z87..89 mm; maintains the upper mounting plane.",
+  "relief": "Remove radius 2.7 mm vertical columns around plate screws 2/3 from added material only; retain original support",
+  "assumptions": {
+    "shelf_extra_thickness_mm": 2,
+    "front_extent_mm": 19.5,
+    "material": "printed ABS/PETG, grade and printing not qualified"
+  },
+  "criteria": [
+    "valid single solid",
+    "unchanged bounding box",
+    "added-material overlap with fixed assembly and manufacturer case/connectors <=0.01 mm3",
+    "reserved outer-port corridor distance >=1.3 mm"
+  ],
+  "stop": "One geometry, both sides; no parameter sweep or release.",
+  "limits": [
+    "No stiffness/strength evaluation yet",
+    "No full moving-assembly clearance",
+    "No physical tool or printing qualification",
+    "Rear idler is not in current build and is not introduced here"
+  ]
+}
