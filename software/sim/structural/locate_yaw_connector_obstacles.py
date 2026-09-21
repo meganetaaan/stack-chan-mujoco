@@ -17,10 +17,9 @@ for side,y in [('left',26),('right',-26)]:
   neighbours=sorted([{'part':name,'distance_mm':float(port.distance(shape))} for name,shape in shapes.items()],key=lambda x:x['distance_mm'])
   # Proposed 10 mm straight service corridor beyond the nominal outer face.
   # Bounding-box cross-section deliberately over-approximates the port.
-  direction=1 if idx==13 else -1
-  start_y=b.ymax if direction==1 else b.ymin-10
-  corridor=cq.Solid.makeBox(b.xlen,10,b.zlen,cq.Vector(b.xmin,start_y,b.zmin))
+  direction=[0,0,1]
+  corridor=cq.Solid.makeBox(b.xlen,b.ylen,10,cq.Vector(b.xmin,b.ymin,b.zmax))
   corridor_checks=[{'part':name,'overlap_mm3':float(corridor.intersect(shape).Volume()),'distance_mm':float(corridor.distance(shape))} for name,shape in shapes.items()]
-  rows.append({'side':side,'manufacturer_solid_index':idx,'bounds_min_mm':[b.xmin,b.ymin,b.zmin],'bounds_max_mm':[b.xmax,b.ymax,b.zmax],'structural_neighbours':neighbours,'corridor_direction_y':direction,'corridor_length_mm':10,'corridor_checks':corridor_checks})
-r={'source_sha256':sources,'rows':rows,'scope':'Nominal connector housing to eight structural parts only; fasteners and mating cable excluded.','corridor_status':'10 mm is a proposed service reservation, not a manufacturer insertion dimension; structural parts only', 'placement':'Same hypothesis as yaw_current_manufacturer_fit_v2','manufacturing_release':False}
+  rows.append({'side':side,'manufacturer_solid_index':idx,'bounds_min_mm':[b.xmin,b.ymin,b.zmin],'bounds_max_mm':[b.xmax,b.ymax,b.zmax],'structural_neighbours':neighbours,'corridor_direction_xyz':direction,'corridor_length_mm':10,'corridor_checks':corridor_checks})
+r={'source_sha256':sources,'rows':rows,'scope':'Nominal connector housing to eight structural parts only; fasteners and mating cable excluded.','corridor_status':'Corrected +Z approach direction: native +Z contains three board-tail pins, so native -Z is mating side. 10 mm remains a proposed service reservation, not manufacturer insertion dimension; structural parts only', 'placement':'Same hypothesis as yaw_current_manufacturer_fit_v2','manufacturing_release':False}
 a.out.mkdir(parents=True,exist_ok=False);(a.out/'report.json').write_text(json.dumps(r,indent=2)+'\n');print(json.dumps([{'side':x['side'],'port':x['manufacturer_solid_index'],'nearest':x['structural_neighbours'][:2]} for x in rows]))
