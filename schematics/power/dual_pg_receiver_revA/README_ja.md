@@ -16,3 +16,6 @@ LEFT/RIGHT_EFUSE_PGは各遮断ICのPG出力へ、LEFT/RIGHT_PG_CONDITIONEDは�
 
 主回路への統合、左右PGの出力仕様、入力断線・High固定、部分給電、合計消費電流、
 故障捕捉時間と独立UV/OV監視は未完了。ネット分離確認はERC・回路動作確認ではない。
+
+TPS25981の定常PGレベルとの比較は`validation/dual_pg_25981_dc_v1/`。
+High/Lowの条件付き分離は確認したが、電源遷移・故障捕捉の適合は未完了。
