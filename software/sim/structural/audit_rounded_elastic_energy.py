@@ -1,9 +1,12 @@
 """Compare full-volume elastic energy and verify saved force/displacement work identity."""
 from pathlib import Path
-import json,hashlib
+import json,hashlib,argparse
 import numpy as np,meshio
 cases=[('0.5','validation/sole_rounded_contact_v1','validation/sole_rounded_local_mesh_v1'),('0.35','validation/sole_rounded_refine_v1/analysis','validation/sole_rounded_refine_v1/mesh'),('0.25','validation/sole_rounded_third_mesh_v1/analysis','validation/sole_rounded_third_mesh_v1/mesh')]
-p=Path('validation/sole_rounded_energy_audit_v1');plan=json.loads((p/'plan.json').read_text());rows=[];hashes={}
+parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--source',type=Path,default=Path('validation/sole_rounded_energy_audit_v1'));args=parser.parse_args()
+p=args.source;plan=json.loads((p/'plan.json').read_text());rows=[];hashes={}
+if 'cases' in plan: cases=[(c['mesh_mm'],c['analysis'],c['mesh']) for c in plan['cases']]
+assert len(cases)>=2, 'At least two cases required'
 for h,folder,meshdir in cases:
  f=Path(folder)/'fields.npz';d=np.load(f);hashes[str(f)]=hashlib.sha256(f.read_bytes()).hexdigest();offset=0
  for part,E,nu,patch,sign in [('boss',1120,.35,'nut_bearing',-1),('spacer',193000,.3,'head_bearing',1)]:
@@ -13,5 +16,5 @@ for h,folder,meshdir in cases:
   F=np.zeros(3*n);F[2::3]=sign*20*w/w.sum();fc=d['contact_force_N'][offset:offset+3*n];fg=d['gauge_force_N'][offset:offset+3*n];work=float(u@(F+fc+fg));error=abs(2*energy-work)
   rows.append({'mesh_mm':h,'part':part,'volume_mm3':float(volume.sum()),'elastic_energy_Nmm':energy,'external_work_Nmm':float(u@F),'contact_work_Nmm':float(u@fc),'gauge_work_Nmm':float(u@fg),'absolute_identity_error_Nmm':error,'identity_gate':error<=plan['criteria']['absolute_work_identity_error_Nmm']});offset+=3*n
  assert offset==len(d['u_mm'])
-changes={part:[abs([r for r in rows if r['part']==part][i]['elastic_energy_Nmm']/[r for r in rows if r['part']==part][i-1]['elastic_energy_Nmm']-1) for i in [1,2]] for part in ['boss','spacer']}
+changes={part:[abs([r for r in rows if r['part']==part][i]['elastic_energy_Nmm']/[r for r in rows if r['part']==part][i-1]['elastic_energy_Nmm']-1) for i in range(1,len(cases))] for part in ['boss','spacer']}
 result={'rows':rows,'successive_relative_energy_changes':changes,'source_sha256':hashes,'joint_verified':False};(p/'report.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
