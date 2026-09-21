@@ -2,10 +2,10 @@ item,quantity_full_robot,minimum_test_quantity,status,purpose_or_blocker,evidenc
 Tab5,1,0,retained_candidate,Face; candidate J9 pin1 GND pin2 SYS_VIN; mating orientation branch protection and actual revision pending,schematics/power/rc_supply_candidate.json
 XL330-M288-T,6,1,retained_candidate,single joint after bench electrical gate; not continuous stall rated,board/mechanical/prototype/bom.csv
 XC330-M288-T,6,1,retained_candidate,second actuator type qualification after first stage,board/mechanical/prototype/bom.csv
-Sole and yoke candidate,2 sets,1 set,unpowered_test_piece,print material and orientation must be recorded; strength not released,board/mechanical/prototype/foot_candidate/README.md
+Sole and yoke candidate,2 sets,1 set,unpowered_test_piece,"Current split sole comparison; 7 parts per foot, not additional to revA; material and strength pending",board/mechanical/prototype/foot_candidate/revB/README_ja.md
 NBK SLH-M2-10 screw,14,1,nominal_fit_candidate,Feet 2 + yaw mount plates 8 + yaw backing keepers 4; torque and anti-loosening pending,board/mechanical/prototype/yaw_support_candidate/revA/README_ja.md
 PTS A56202 external nut,10,1,nominal_fit_candidate,Feet 2 + yaw mount plates 8; thread tolerance preload and assembly access pending,board/mechanical/prototype/yaw_support_candidate/revA/README_ja.md
-SCW-SOLE-SPACER-01 revA,10,1,custom_candidate,"SUS304 proposed; OD5.95-6 ID2.3-2.35 thickness0.85-0.95; rounded edge candidate not manufacturing release; quantity: feet 2 + yaw mount plates 8, excludes spares/coupons",docs/prototype/mechanical/sole_spacer/specification.json
+SCW-SOLE-SPACER-01 revA,8 in current split-sole comparison,1,custom_candidate,Yaw mount plates only; foot revB replaces the two sole spacers with clamp washers; old specification retained as history,docs/prototype/mechanical/sole_spacer/specification.json
 Ultrafuse TPU95A sole,not selected,0,comparison_material_unconfirmed,User permits ABS/PETG/TPU; available TPU grade unknown; compare retained sole and split contact construction; prior results do not qualify available material,validation/tpu_retention_material_review_v1
 NP-F550 battery,not selected,0,historical_alternative,Superseded as primary candidate by compact 3S Tattu; do not add both battery masses,board/mechanical/prototype/bom.csv
 Pololu D42V55F5,unselected,1,candidate_for_bench,Alternative to UBEC; full model DC envelope9.834A not a measured hardware ceiling; thermal and transient suitability pending,https://www.pololu.com/product/5571
@@ -38,7 +38,7 @@ TPS3808G01DBVR EN reset follower,1,1,conditional_candidate,revE separate cause p
 74LVC1G17GV clamp level buffer,1,1,conditional_candidate,Additional revE buffer on input5V; whole-interval threshold qualification pending,schematics/power/main_clamp_cause_candidate.json
 A5052P-H34 rear structural plate t2 mm,1,1,material_candidate_not_released,Stock form confirmed; thickness tolerance finished flatness fastening and strength pending,docs/prototype/mechanical/yaw_support/PLATE_MATERIAL_ja.md
 A5052P-H34 threaded backing plate t3 mm,2,1,material_candidate_not_released,Supplier stock tolerance +/-0.13 mm; effective thread engagement and pullout not qualified,docs/prototype/mechanical/yaw_support/PLATE_MATERIAL_ja.md
-TPS3700DDCR PG receiver,1,1,conditional_dc_candidate,revH U12; U13 receiver installed in candidate; sequencer and power-transition validity pending,schematics/power/pg_receiver_candidate.json
+TPS3700DDCR PG receiver,2 in revJ,0,conditional_dc_candidate,Left/right receivers replace legacy single channel; power-transition and source compatibility pending,schematics/power/manual_rearm_revJ/assembly.json
 Nexperia 74AUP1G06GW sequence clear sink,1,1,conditional_candidate,revH U14; driver and pulse timing incomplete,schematics/power/sequence_clear_sink_candidate.json
 B3U-1000P local enable button,1,1,pin_candidate_not_released,revI SW1 integrated locally; raw protection footprint and enclosure actuation pending,schematics/power/manual_rearm_revI/README_ja.md
 Yaw candidate body shroud,1,1,geometry_candidate_not_released,Current tool-access shroud; print material process and whole-body strength pending,board/mechanical/prototype/yaw_support_candidate/revA/README_ja.md
@@ -47,9 +47,9 @@ SUS304 yaw servo mount plate t1 mm,2,1,material_candidate_not_released,Metal sea
 Yaw rear M3 washer OD7 ID3.2 t0.5 mm,8,1,specification_only,Material part number bore chamfer and bolt underhead fit unresolved; do not substitute sole spacer,board/mechanical/prototype/yaw_support_candidate/revA/README_ja.md
 SN74HCS11PWR permission and release gates,1,1,conditional_candidate,revH U3; shared three-input gates; not a complete sequencer,schematics/power/manual_rearm_revH/assembly.json
 TPS3808G33DBVR release qualification timer,1,1,conditional_candidate,revH U5; separate from rail supervisor U7 and clamp-cause supervisor U9,schematics/power/manual_release_timer_candidate.json
-74LVC1G17GV PG receiver output buffer,1,1,conditional_candidate,revH U13; additional to U4 U8 U11; power transition validity pending,schematics/power/pg_receiver_candidate.json
-Manual rearm resistor set,14,14,selected_candidates_not_released,revH R1-R14; quantity and exact part candidates in generated BOM,validation/manual_rearm_bom_v1/bom.csv
-Murata GRM31C5C1H104JA01L local bypass capacitors,15,15,selected_candidate_not_released,revI C1-C15; 100nF 50V C0G 1206; placement and high-frequency decoupling unqualified,schematics/power/manual_rearm_capacitors.json
+74LVC1G17GV PG receiver output buffer,2 in revJ,0,conditional_candidate,Left/right receivers replace legacy single channel; power-transition and source compatibility pending,schematics/power/manual_rearm_revJ/assembly.json
+Manual rearm resistor set,18 excluding R15 in revJ,0,selected_candidates_not_released,Includes doubled PG resistors; R15 listed separately; do not add revH/revI sets,schematics/power/manual_rearm_revJ/assembly.json
+Murata GRM31C5C1H104JA01L local bypass capacitors,17 in revJ,0,selected_candidate_not_released,15 legacy capacitors minus 2 single-PG plus 4 dual-PG; additional alternative OVP capacitors not included,schematics/power/manual_rearm_revJ/assembly.json
 74LVC1G17GV local raw button receiver,1,1,pin_candidate_not_released,revI U15; local PCB signal only; not an external cable input,schematics/power/manual_rearm_revI/README_ja.md
 Vishay TNPW06033K00BYEA local button pullup R15,1,1,selected_candidate_not_released,3k 0603 0.1 percent 10ppm; retains total +/-1 percent comparison; board temperature and stock pending,validation/manual_rearm_resistors_v2/README_ja.md
 Tattu TA-45C-850-3S1P-XT30,1,0,packaging_candidate,3S 850mAh 76g catalog; cell protection charging retention and leads pending,schematics/power/rc_supply_candidate.json
@@ -59,3 +59,4 @@ Battery retention belt,1,0,unselected,10x1mm envelope only; exact belt buckle pa
 SkyRC B6ACneo SK-100200,external equipment,0,accuracy_unqualified,Removed-pack balance charging candidate; voltage/current tolerance and adapter unresolved; not onboard mass,schematics/power/external_charger_candidate.json
 3S cell monitoring and protection,TBD,0,unselected,Pack voltage monitor is insufficient; sensing connector disconnection and cutoff recovery require design,schematics/power/aux_sequence_candidate.json
 Tab5 J9 mating harness,1,0,unselected,Logical pins known; connector retention keying current rating and cable routing not qualified,schematics/power/rc_supply_candidate.json
+Sole clamp washer OD6 ID2.3 t0.3,2,0,geometry_only,Replaces foot bypass spacers in revB; manufactured part and material not selected,validation/sole_clamp_seat_v1/report.json
