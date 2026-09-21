@@ -1,0 +1,9 @@
+{
+ "scope": "Injected regeneration after battery disconnection with two 360-ohm bleed branches",
+ "regeneration_A": 1,
+ "pulse_s": [0.100001, 0.12],
+ "battery_disconnect_s": 0.0800005,
+ "basis": "Existing supply_regeneration_v2 uses a 1 A, 20 ms injection; reuse stress amplitude, not claim an EPIC4 measured shutdown",
+ "criteria": {"post_disconnect_bus_max_V": 6.0},
+ "limitations": ["No coupled motor shutdown model", "Ideal switching and behavioral brake/auxiliary circuits", "960 uF is assumed, not verified total capacitance", "Numerical voltage screen only; not thermal or fault qualification"]
+}
