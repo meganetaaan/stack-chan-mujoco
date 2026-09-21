@@ -1,0 +1,25 @@
+{
+  "part": "TPS259813LRPW",
+  "status": "comparison_not_selected",
+  "source": "https://www.ti.com/lit/ds/symlink/tps25981.pdf",
+  "revision": "SLVSGG6D September 2026",
+  "download_sha256": "8609249da4eb65da1d5398a4cbd5bc3ace4ca1f1f0205e41fbf3873d8e3f8e91",
+  "architecture": "Compare replacing LTC4365 plus TPS259823 stages with one adjustable OVLO/current-breaker stage; external reverse-blocking FET and downstream regeneration absorber still require design",
+  "OVLO_rising_range_V": [
+    1.176,
+    1.224
+  ],
+  "OVLO_leakage_max_abs_A": 1e-07,
+  "OVLO_response_typ_s": 1.2e-06,
+  "OVLO_response_max_s": null,
+  "timing_table_visually_checked_page": 9,
+  "manufacturing_release": false,
+  "pending": [
+    "5V fault transient bound; typical response is not maximum",
+    "External blocking FET and on/off reverse paths",
+    "Fault recovery by fault type; latch-off label is not universal manual-rearm proof",
+    "Current threshold and blanking timer",
+    "Output capacitance and stored/regenerative energy",
+    "Board assembly and thermal conditions"
+  ]
+}
