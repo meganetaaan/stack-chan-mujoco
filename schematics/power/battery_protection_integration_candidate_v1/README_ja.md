@@ -308,3 +308,12 @@ TI注文ページで品番Activeを確認したが、閲覧時に在庫なし表
 - [BAT46W](https://www.diodes.com/assets/Datasheets/BAT46W.pdf) Rev.20-2 November2023
 - [22nF仕様](https://search.kemet.com/component-documentation/download/specsheet/C0603C223K4RACTU)
 - [BQ7694202PFBR](https://www.ti.com/product/BQ76942/part-details/BQ7694202PFBR)
+
+
+## REG0直列抵抗の見直し（現候補）
+
+R_REG0を100Ωから22.1Ω（TNPW120622R1BEEA）へ変更。
+`validation/bq76942_reg0_feed_v1`の54条件比較により低電池時の電圧余裕を優先した。
+100Ω記載は旧候補。仮置き比較と仕様保証の範囲を分けており、REG0全体の合格ではない。
+短絡時抵抗損失は増えるため、制御電源分岐の故障遮断を追加するまで製作HOLD。
+部品数・未設計端子数は60部品・6端子のまま。

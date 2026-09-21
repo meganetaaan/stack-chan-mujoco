@@ -59,7 +59,7 @@ add('R_ALLOW_SER','TNPW06031K00BEEA',{1:'BQ_ALLOW_BMINUS',2:'BQ_BOTHOFF_N'})
 add('R_ALLOW_PD','TNPW060310K0BEEA',{1:'BQ_BOTHOFF_N',2:'CELL_B_MINUS'})
 # Dedicated preregulator feed; do not share the BAT hold-up diode.
 add('D_REG0','BAT46W-7-F',{'A':'CELL_POS_FUSED','K':'BQ_REG0_PRE_R'},footprint_pad_mapping_qualified=False)
-add('R_REG0','TNPW1206100RBEEA',{1:'BQ_REG0_PRE_R',2:'BQ_REG0_COLLECTOR'})
+add('R_REG0','TNPW120622R1BEEA',{1:'BQ_REG0_PRE_R',2:'BQ_REG0_COLLECTOR'})
 add('C_REG0','C1206C105K3RACTU',{1:'BQ_REG0_COLLECTOR',2:'CELL_B_MINUS'},effective_capacitance_qualified=False)
 add('Q_REG0','FCX495TA',{'B':'BQ_BREG','C':'BQ_REG0_COLLECTOR','E':'BQ_REGIN'},footprint_pad_mapping_qualified=False,thermal_qualified=False)
 add('C_REGIN','C0603C223K4RACTU',{1:'BQ_REGIN',2:'CELL_B_MINUS'},effective_capacitance_qualified=False)

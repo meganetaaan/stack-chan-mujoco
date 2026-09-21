@@ -1,0 +1,56 @@
+{
+  "scope": "DC candidate comparison, not circuit qualification",
+  "assumptions": {
+    "pack_V": [
+      9.0,
+      9.9438,
+      12.6
+    ],
+    "pack_origin": "3x manufacturer general 3V floor; 3x existing static CUV minimum; 3x4.2V full charge. Dynamic cell floor not qualified.",
+    "collector_current_A": [
+      0.01,
+      0.02,
+      0.045
+    ],
+    "current_origin": "comparison points, not measured control load or REG1 output current; BREG base and IC current use a separate feed",
+    "diode_drop_V": [
+      0.45,
+      1.0
+    ],
+    "diode_scope": "BAT46W 25C limits at 10mA and 250mA respectively; cross-product is sensitivity analysis, not guaranteed bounds at other currents/temperatures",
+    "regin_upper_V": 5.8,
+    "regin_scope": "TI 7.11 conditional upper regulation voltage, requires BAT>8V and suitable transistor",
+    "VCE_reserve_V": 1.0,
+    "VCE_origin": "engineering screening allowance; not a guaranteed FCX495 dropout specification",
+    "resistor_tolerance_fraction": 0.001,
+    "resistor_temperature_drift_included": false
+  },
+  "cases": 54,
+  "short_comparison": [
+    {
+      "R_ohm": 100.0,
+      "collector_short_zero_diode_drop_A": 0.12612612612612611,
+      "resistor_short_W": 1.589189189189189
+    },
+    {
+      "R_ohm": 47.0,
+      "collector_short_zero_diode_drop_A": 0.2683534598428215,
+      "resistor_short_W": 3.381253594019551
+    },
+    {
+      "R_ohm": 22.1,
+      "collector_short_zero_diode_drop_A": 0.5707064530593943,
+      "resistor_short_W": 7.1909013085483675
+    }
+  ],
+  "selection": "22.1 ohm as next feed candidate; separate branch fault protection required",
+  "unknowns": [
+    "actual local controller and interface load",
+    "cold diode drop",
+    "BREG headroom and base current",
+    "transistor gain and SOA over temperature",
+    "capacitor effective values and loop stability",
+    "branch short protection and PCB thermal path"
+  ],
+  "manufacturing_release": false
+}
