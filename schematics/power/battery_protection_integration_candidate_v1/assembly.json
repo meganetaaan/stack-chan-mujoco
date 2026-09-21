@@ -530,26 +530,142 @@
       }
     },
     {
-      "reference": "F_REG0",
-      "part": "0451.062MRSN",
+      "reference": "U_REG0_LIMIT",
+      "part": "TPS26600RHFR",
+      "pins": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "4": null,
+        "5": null,
+        "6": null,
+        "7": null,
+        "8": "CELL_POS_FUSED",
+        "9": "CELL_POS_FUSED",
+        "10": "REG0_UVLO",
+        "11": null,
+        "12": "REG0_OVP",
+        "13": "REG0_MODE",
+        "14": null,
+        "15": "REG0_PROTECT_RTN",
+        "16": null,
+        "17": "CELL_B_MINUS",
+        "18": null,
+        "19": "REG0_ILIM",
+        "20": null,
+        "21": null,
+        "22": null,
+        "23": "BQ_REG0_LIMITED",
+        "24": "BQ_REG0_LIMITED",
+        "EP": "REG0_PROTECT_RTN"
+      },
+      "intentionally_unused_open_pins": [
+        14,
+        18,
+        20,
+        22
+      ]
+    },
+    {
+      "reference": "R_REG0_UV_TOP",
+      "part": "TNPW060340K2BEEA",
       "pins": {
         "1": "CELL_POS_FUSED",
-        "2": "BQ_REG0_FUSED"
-      },
-      "coordination_qualified": false
+        "2": "REG0_UVLO"
+      }
+    },
+    {
+      "reference": "R_REG0_UV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "REG0_UVLO",
+        "2": "REG0_PROTECT_RTN"
+      }
+    },
+    {
+      "reference": "R_REG0_OV_TOP",
+      "part": "TNPW0603124KBEEA",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "REG0_OVP"
+      }
+    },
+    {
+      "reference": "R_REG0_OV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "REG0_OVP",
+        "2": "REG0_PROTECT_RTN"
+      }
+    },
+    {
+      "reference": "R_REG0_ILIM",
+      "part": "TNPW0603118KBEEA",
+      "pins": {
+        "1": "REG0_ILIM",
+        "2": "REG0_PROTECT_RTN"
+      }
+    },
+    {
+      "reference": "C_REG0_PROTECT_IN_1",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_REG0_PROTECT_IN_2",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_REG0_PROTECT_OUT_1",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_REG0_LIMITED",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_REG0_PROTECT_OUT_2",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_REG0_LIMITED",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "R_REG0_MODE",
+      "part": "TNPW0805402KBEEA",
+      "pins": {
+        "1": "REG0_MODE",
+        "2": "REG0_PROTECT_RTN"
+      }
     },
     {
       "reference": "D_REG0",
       "part": "BAT46W-7-F",
       "pins": {
-        "A": "BQ_REG0_FUSED",
+        "A": "BQ_REG0_LIMITED",
         "K": "BQ_REG0_PRE_R"
       },
       "footprint_pad_mapping_qualified": false
     },
     {
-      "reference": "R_REG0",
-      "part": "TNPW120622R1BEEA",
+      "reference": "R_REG0_0",
+      "part": "TNPW120644R2BEEA",
+      "pins": {
+        "1": "BQ_REG0_PRE_R",
+        "2": "BQ_REG0_COLLECTOR"
+      }
+    },
+    {
+      "reference": "R_REG0_1",
+      "part": "TNPW120644R2BEEA",
       "pins": {
         "1": "BQ_REG0_PRE_R",
         "2": "BQ_REG0_COLLECTOR"
@@ -594,7 +710,7 @@
       "effective_capacitance_qualified": false
     }
   ],
-  "part_count": 61,
+  "part_count": 72,
   "unresolved_BQ76942_pins": [
     22,
     25,
@@ -607,7 +723,7 @@
     "bq76942_candidate.json": "198d96f12042b26d7cdf329dbba4df3e3523ce0dba6961c450d492a0f847eb33",
     "bq76942_series_filter_candidate.json": "5d1ba5f53047c1c7889759401795a1ebb5d9908e0620ee99aef42dcd15901e2b",
     "bq76942_pack_fet_candidate.json": "2babc4c93e3b0a20dc8736bd80b585438b154ab1f3bb72cde1791a82167da984",
-    "bq76942_reg0_fuse_candidate.json": "643e75b2b0a21bf0fded99e6af188dcdbdf2b811a6236726cae46b41181853be"
+    "bq76942_reg0_limiter_candidate.json": "63c874eed128fcd14a15c2f91eb75213cc81839aa40b3eadcf85fb03e7cfa70c"
   },
   "external_ports": [
     "CELL_B_MINUS",

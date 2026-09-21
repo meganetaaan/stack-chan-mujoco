@@ -6,8 +6,8 @@ from collections import Counter
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[3]
 power=ROOT/'schematics/power'
-sources=['bq76942_candidate.json','bq76942_series_filter_candidate.json','bq76942_pack_fet_candidate.json','bq76942_reg0_fuse_candidate.json']
-a,c,q,fuse=[json.loads((power/s).read_text()) for s in sources]
+sources=['bq76942_candidate.json','bq76942_series_filter_candidate.json','bq76942_pack_fet_candidate.json','bq76942_reg0_limiter_candidate.json']
+a,c,q,limiter=[json.loads((power/s).read_text()) for s in sources]
 parts=[]
 def add(ref,part,pins,**extra):
  parts.append({'reference':ref,'part':part,'pins':{str(k):v for k,v in pins.items()},**extra})
@@ -58,14 +58,15 @@ for ref,net,location in [('TH_CELL','BQ_TS_CELL','battery exterior'),('TH_FET','
 add('R_ALLOW_SER','TNPW06031K00BEEA',{1:'BQ_ALLOW_BMINUS',2:'BQ_BOTHOFF_N'})
 add('R_ALLOW_PD','TNPW060310K0BEEA',{1:'BQ_BOTHOFF_N',2:'CELL_B_MINUS'})
 # Dedicated preregulator feed; do not share the BAT hold-up diode.
-add('F_REG0',fuse['part'],{1:'CELL_POS_FUSED',2:'BQ_REG0_FUSED'},coordination_qualified=False)
-add('D_REG0','BAT46W-7-F',{'A':'BQ_REG0_FUSED','K':'BQ_REG0_PRE_R'},footprint_pad_mapping_qualified=False)
-add('R_REG0','TNPW120622R1BEEA',{1:'BQ_REG0_PRE_R',2:'BQ_REG0_COLLECTOR'})
+for item in limiter['parts']:parts.append(item)
+add('D_REG0','BAT46W-7-F',{'A':'BQ_REG0_LIMITED','K':'BQ_REG0_PRE_R'},footprint_pad_mapping_qualified=False)
+for i in range(2):
+ add(f'R_REG0_{i}',limiter['feed_resistors']['part'],{1:'BQ_REG0_PRE_R',2:'BQ_REG0_COLLECTOR'})
 add('C_REG0','C1206C105K3RACTU',{1:'BQ_REG0_COLLECTOR',2:'CELL_B_MINUS'},effective_capacitance_qualified=False)
 add('Q_REG0','FCX495TA',{'B':'BQ_BREG','C':'BQ_REG0_COLLECTOR','E':'BQ_REGIN'},footprint_pad_mapping_qualified=False,thermal_qualified=False)
 add('C_REGIN','C0603C223K4RACTU',{1:'BQ_REGIN',2:'CELL_B_MINUS'},effective_capacitance_qualified=False)
 add('C_REG1','C1206C105K3RACTU',{1:'BQ_CTRL3V3',2:'CELL_B_MINUS'},effective_capacitance_qualified=False)
-assert len(parts)==61 and len({p['reference'] for p in parts})==61
+assert len(parts)==72 and len({p['reference'] for p in parts})==72
 # Check that the obsolete 8-capacitor parallel-only filter was not also imported.
 assert sum(p['part']==c['capacitor_part'] and p['reference'].startswith('C_F') for p in parts)==24
 out=power/'battery_protection_integration_candidate_v1';out.mkdir(exist_ok=True)

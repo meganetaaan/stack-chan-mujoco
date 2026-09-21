@@ -1,0 +1,147 @@
+{
+  "status": "current_limit_latch_candidate_not_qualified",
+  "source": "https://www.ti.com/lit/ds/symlink/tps2660.pdf",
+  "source_sections": [
+    "7.5",
+    "9.3.5.1.1",
+    "9.3.8"
+  ],
+  "parts": [
+    {
+      "reference": "U_REG0_LIMIT",
+      "part": "TPS26600RHFR",
+      "pins": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "4": null,
+        "5": null,
+        "6": null,
+        "7": null,
+        "8": "CELL_POS_FUSED",
+        "9": "CELL_POS_FUSED",
+        "10": "REG0_UVLO",
+        "11": null,
+        "12": "REG0_OVP",
+        "13": "REG0_MODE",
+        "14": null,
+        "15": "REG0_PROTECT_RTN",
+        "16": null,
+        "17": "CELL_B_MINUS",
+        "18": null,
+        "19": "REG0_ILIM",
+        "20": null,
+        "21": null,
+        "22": null,
+        "23": "BQ_REG0_LIMITED",
+        "24": "BQ_REG0_LIMITED",
+        "EP": "REG0_PROTECT_RTN"
+      },
+      "intentionally_unused_open_pins": [
+        14,
+        18,
+        20,
+        22
+      ]
+    },
+    {
+      "reference": "R_REG0_UV_TOP",
+      "part": "TNPW060340K2BEEA",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "REG0_UVLO"
+      }
+    },
+    {
+      "reference": "R_REG0_UV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "REG0_UVLO",
+        "2": "REG0_PROTECT_RTN"
+      }
+    },
+    {
+      "reference": "R_REG0_OV_TOP",
+      "part": "TNPW0603124KBEEA",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "REG0_OVP"
+      }
+    },
+    {
+      "reference": "R_REG0_OV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "REG0_OVP",
+        "2": "REG0_PROTECT_RTN"
+      }
+    },
+    {
+      "reference": "R_REG0_ILIM",
+      "part": "TNPW0603118KBEEA",
+      "pins": {
+        "1": "REG0_ILIM",
+        "2": "REG0_PROTECT_RTN"
+      }
+    },
+    {
+      "reference": "C_REG0_PROTECT_IN_1",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_REG0_PROTECT_IN_2",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_REG0_PROTECT_OUT_1",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_REG0_LIMITED",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_REG0_PROTECT_OUT_2",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_REG0_LIMITED",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "R_REG0_MODE",
+      "part": "TNPW0805402KBEEA",
+      "pins": {
+        "1": "REG0_MODE",
+        "2": "REG0_PROTECT_RTN"
+      }
+    }
+  ],
+  "mode": "current limiting with thermal latch-off; 402kohm MODE to RTN",
+  "feed_resistors": {
+    "part": "TNPW120644R2BEEA",
+    "count_parallel": 2,
+    "each_ohm": 44.2,
+    "equivalent_ohm": 22.1
+  },
+  "not_guaranteed": [
+    "3S current bounds at R_ILIM=118kohm",
+    "startup ramp and load",
+    "fast transient peak and latency",
+    "PCB thermal qualification"
+  ],
+  "forbidden_net_merge": [
+    "REG0_PROTECT_RTN",
+    "CELL_B_MINUS"
+  ],
+  "candidate_fuse_disposition": "F_REG0 not fitted in this alternative; earlier fuse-only candidate retained as failed coordination evidence",
+  "manufacturing_release": false
+}
