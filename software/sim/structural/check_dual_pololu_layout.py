@@ -5,8 +5,10 @@ import cadquery as cq
 p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
 specpath=Path('schematics/power/dual_pololu_candidate.json');spec=json.loads(specpath.read_text());placement=Path('validation/dual_ubec_layout_v2/report.json');centers=json.loads(placement.read_text())['centers_mm'];root=Path('validation/yaw_integrated_candidate_v7');ip=root/'inventory.json';sp=root/'yaw_support_candidate.step';paths=[specpath,placement,ip,sp]
 # Long edge follows X, matching old UBEC. Rounded metric dimensions are not tolerances.
-dims=[43.2,31.8,max(9.,.355*25.4)]
-plan={'question':'Can two catalog module envelopes replace old UBEC centers without fixed-part overlap?','centers_mm':centers,'dimensions_xyz_mm':dims,'dimension_source':'Pololu5671 metric footprint; height takes larger of9mm and0.355inch conversion','criterion_overlap_mm3':.01,'stop':'One orientation and placement; no search or mount design.','limits':['Catalog nominal dimensions, not guaranteed maxima','No wires, terminal blocks, insulation, mounts or thermal clearance','No dynamic or extraction clearance','Legacy UBEC boxes are removed, not additional obstacles'],'manufacturing_release':False}
+mechanical=Path('schematics/power/dual_pololu_mechanical.json');md=json.loads(mechanical.read_text());paths.append(mechanical)
+# Allow each opposite board edge its stated location tolerance.
+dims=[md['board_xy'][1]+2*md['board_edge_tolerance'],md['board_xy'][0]+2*md['board_edge_tolerance'],md['total_nominal_height']]
+plan={'question':'Can two catalog module envelopes replace old UBEC centers without fixed-part overlap?','centers_mm':centers,'dimensions_xyz_mm':dims,'dimension_source':'reg34c drawing: board edge tolerance expanded on both edges; total height6.1+1.57+1.8mm, height tolerance unknown','criterion_overlap_mm3':.01,'stop':'One orientation and placement; no search or mount design.','limits':['Board edge allowance included; height tolerance and mounting displacement not covered','No wires, terminal blocks, insulation, mounts or thermal clearance','No dynamic or extraction clearance','Legacy UBEC boxes are removed, not additional obstacles'],'manufacturing_release':False}
 (a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
 items=json.loads(ip.read_text())['parts'];solids=cq.importers.importStep(str(sp)).val().Solids();assert len(items)==len(solids)==52;targets={}
 for item,s in zip(items,solids):

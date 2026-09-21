@@ -19,3 +19,5 @@ v7固定52部品、既存3S電池・トレイ・Tab5・TTLと左右モジュー�
 LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bin/python software/sim/structural/check_dual_pololu_layout.py --out /tmp/dual-pololu-layout
 ```
 寸法出典はschematics/power/dual_pololu_candidate.json。確認条件と入力ハッシュはplan/report.json。
+
+訂正：メーカー断面図で公称全高9.47 mmを確認したため、v1の高さ予約は不足。現行スクリプトはv2用に更新済み。旧v1再現はコミットe600419を参照し、設計判断にはv2を使用する。
