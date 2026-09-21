@@ -1,0 +1,21 @@
+{
+  "question": "Effect of outer connector opening on metal plate elastic compliance.",
+  "scope": "Left plate only, linear unit-load comparison; not actual joint contact.",
+  "material_assumption": {
+    "young_MPa": 193000,
+    "poisson": 0.3
+  },
+  "boundary_assumption": "Top Z89 face patches within radius 2.5 mm of screw axes; centroid-selected facets. Support axes X=-34,8.1 Y=16,36; load axes X=-27.5,2.5 Y=18,34.",
+  "loads": "Unit Fz, Mx, My about (-12.5,26,89); N and N mm.",
+  "supports": [
+    "clamped",
+    "normal_z"
+  ],
+  "mesh_sizes_mm": [
+    1.5,
+    1.0
+  ],
+  "stop": "Exactly two shapes, two mesh sizes, two support assumptions and three unit loads. No stress-driven refinement.",
+  "numerical_criteria": "Force/moment assembly checked by solver; residual <1e-7 N; 2*energy/work within 1e-6; fine/coarse compliance change <=10% for quantitative comparison, otherwise inconclusive.",
+  "limits": "Patch area changes with mesh. No preload, unilateral contact, bolt flexibility, shelf deformation, fatigue, or material certification. No manufacturing release from this comparison."
+}
