@@ -419,3 +419,7 @@ JST図面とメーカーSTEPの3端子断面を照合し、嵌合側が現行配
 ### 起動MCUとLOGIC3V3の選定電流枠
 
 `validation/sequence_mcu_current_v1`とg030_controller.jsonに16 MHz/Range1/Flash/内部HSI16の未実装候補を記録。コア参考2.9 mAを足した小計9.877558 mAを基に、連続出力の暫定選定目標20 mAを設定。2倍を上方丸めしたCodexの枠で、残10.122442 mAは未集計負荷用。保証上限・ピーク電流・供給源合格ではなく、追加負荷を確認して見直す。
+
+### 制御電源の独立分岐・WSON候補
+
+`schematics/power/logic_supply_candidate.json`に独立LOGIC3V3用TPS70933DRVR案を追加。STOP_AUX3V3の1 kΩ入力経路は20 mA負荷へ共用不可。12.6 V/20 mA/周囲85℃の参考熱計算ではDBV124.846℃、DRV98.733℃（自己電流除外・基板条件未確認）となりDRVを選定候補とした。入力保護・容量・基板・全負荷・故障動作は未設計/未検証で、現アセンブリには未統合。

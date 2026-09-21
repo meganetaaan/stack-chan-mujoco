@@ -1,0 +1,25 @@
+{
+  "assumptions": {
+    "Vin_V": 12.6,
+    "Vout_V": 3.207,
+    "Iout_A": 0.02,
+    "Ta_C": 85
+  },
+  "load_path_power_W": 0.18786000000000003,
+  "excludes": "LDO ground current dissipation; actual board thermal resistance",
+  "rows": [
+    {
+      "package": "DBV",
+      "datasheet_theta_JA_C_per_W": 212.1,
+      "reference_Tj_C_at_Ta85": 124.845106,
+      "remaining_to_125_C": 0.15489399999999875
+    },
+    {
+      "package": "DRV",
+      "datasheet_theta_JA_C_per_W": 73.1,
+      "reference_Tj_C_at_Ta85": 98.732566,
+      "remaining_to_125_C": 26.267434
+    }
+  ],
+  "manufacturing_release": false
+}
