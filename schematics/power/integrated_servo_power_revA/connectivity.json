@@ -95,6 +95,28 @@
         "1": "RIGHT_REVERSE_GATE",
         "2": "GND"
       }
+    },
+    {
+      "reference": "LEFT_R_ILM",
+      "part": null,
+      "value_ohm": 1100,
+      "initial_tolerance_comparison": 0.001,
+      "status": "sizing_candidate_not_selected_part",
+      "pins": {
+        "1": "LEFT_ILM",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "RIGHT_R_ILM",
+      "part": null,
+      "value_ohm": 1100,
+      "initial_tolerance_comparison": 0.001,
+      "status": "sizing_candidate_not_selected_part",
+      "pins": {
+        "1": "RIGHT_ILM",
+        "2": "GND"
+      }
     }
   ],
   "source": "https://www.ti.com/lit/ds/symlink/tps25981.pdf",
@@ -108,7 +130,7 @@
   "electrical_qualification": false,
   "omitted": [
     "OVLO and UVLO dividers",
-    "ILM and ITIMER passives",
+    "ILM exact resistor selection and ITIMER passive",
     "Input/output capacitors and supply protection",
     "Enable and fault/PG connections to main logic"
   ],
@@ -121,5 +143,6 @@
     "source_table": "5-1, pages 4-5",
     "correction": "ILM pin9 and ITIMER pin10; prior map had these reversed",
     "source_sha256": "8609249da4eb65da1d5398a4cbd5bc3ace4ca1f1f0205e41fbf3873d8e3f8e91"
-  }
+  },
+  "current_limit_comparison": "validation/integrated_current_limit_v1/report.json"
 }

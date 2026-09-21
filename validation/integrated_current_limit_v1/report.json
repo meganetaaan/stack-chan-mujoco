@@ -1,0 +1,25 @@
+{
+  "rows": [
+    {
+      "RILM_nominal_ohm": 1100.0,
+      "nominal_limit_A": 5.986363636363636,
+      "comparison_min_limit_A": 5.3823449277994735,
+      "comparison_max_limit_A": 6.591591591591592,
+      "model_normal_margin_A": 0.4653449277994737,
+      "scalable_fast_trip_comparison_max_A": 15.951651651651652
+    }
+  ],
+  "per_leg_model_draw_A": 4.917,
+  "source_load_sha256": "7600a7b78007ebd5b017c6c610b186ba1c53fc8b7213540da7324ceed9d9ea9a",
+  "source": "https://www.ti.com/lit/ds/symlink/tps25981.pdf",
+  "resistor_initial_tolerance": 0.001,
+  "IC_accuracy_comparison_fraction": 0.1,
+  "assumptions": [
+    "6585/R nominal relation and +/-10 percent sizing comparison above 5A; not full characterization of selected variant",
+    "Initial resistor tolerance only, no lifetime drift",
+    "Fast-trip ratio maximum 242 percent from electrical table; not steady allowed load",
+    "Existing model load is not measured hardware peak"
+  ],
+  "manufacturing_release": false,
+  "coordination_qualified": false
+}
