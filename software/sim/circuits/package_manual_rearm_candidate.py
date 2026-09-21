@@ -1,0 +1,35 @@
+"""Package the current manual-rearm candidate and explicit unfinished interfaces."""
+import argparse,csv,hashlib,json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3]
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+files=['manual_button_candidate.json','manual_release_gate_candidate.json','manual_release_mr_buffer_candidate.json','manual_release_timer_candidate.json','manual_rearm_latch_candidate.json']
+data={f:json.loads((ROOT/'schematics/power'/f).read_text()) for f in files}
+parts=[]
+def add(ref,part,nets,source=None):
+ parts.append({'reference':ref,'part':part,'pins':{str(i):n for i,n in enumerate(nets,1)},'source':source})
+add('U1',data[files[0]]['part_number'],['GND','BUTTON_RAW','BUTTON_RELEASED','LOGIC3V3'],files[0])
+add('U2','SN74LVC1G04DBVR',[None,'BUTTON_RELEASED','GND','PRESS','LOGIC3V3'],files[0])
+add('U3',data[files[1]]['part_number'],['RESET_N','RAW_RELEASED_CONDITIONED','GND','GND','GND',None,'GND',None,'GND','GND','GND','RELEASE_CONDITION','BUTTON_RELEASED','LOGIC3V3'],files[1])
+add('U4',data[files[2]]['part_number'],[None,'RELEASE_CONDITION','GND','RELEASE_MR','LOGIC3V3'],files[2])
+add('U5',data[files[3]]['part_number'],['RELEASE_QUALIFIED','GND','RELEASE_MR','TIMER_CT','LOGIC3V3','LOGIC3V3'],files[3])
+add('U6',data[files[4]]['part_number'],['RESET_N','LOGIC3V3','RELEASE_QUALIFIED','LOGIC3V3','ARMED',None,'GND',None,'ENABLE_PERMISSION','LOGIC3V3','PRESS','ARMED','RESET_N','LOGIC3V3'],files[4])
+add('R1','100k value candidate; exact part/tolerance pending',['LOGIC3V3','TIMER_CT'])
+add('R2','100k value candidate; exact part/tolerance pending',['LOGIC3V3','RELEASE_QUALIFIED'])
+for i in range(1,7):add(f'C{i}','100nF local ceramic candidate; exact part pending',['LOGIC3V3','GND'])
+add('SW1','NO momentary enable button; part/contact characteristics pending',['BUTTON_RAW','GND'])
+ports={'LOGIC3V3':'upstream logic rail; power budget and independent supervision unfinished','GND':'common reference; physical return routing unfinished','RESET_N':'independent health-qualified clear input; low on stop/fault/invalid power; must not depend on button debounce/timer','RAW_RELEASED_CONDITIONED':'unfinished protected raw-input interface from BUTTON_RAW; not a direct wire','ENABLE_PERMISSION':'logic output only; physical default-off power stage unfinished'}
+report={'scope':__doc__,'parts':parts,'interfaces':ports,'source_sha256':{f:hashlib.sha256((ROOT/'schematics/power'/f).read_bytes()).hexdigest() for f in files},'part_count':len(parts),'pin_count':sum(len(x['pins']) for x in parts),'logical_composition_only':True,'electrical_qualification':False,'manufacturing_release':False}
+# Wiring invariants that prevent accidental inversion or delayed stop substitution.
+refs={x['reference']:x for x in parts}
+assert refs['U6']['pins']['1']==refs['U6']['pins']['13']=='RESET_N'
+assert refs['U5']['pins']['1']==refs['U6']['pins']['3']=='RELEASE_QUALIFIED'
+assert refs['U4']['pins']['4']==refs['U5']['pins']['3']=='RELEASE_MR'
+assert refs['U6']['pins']['11']==refs['U2']['pins']['4']=='PRESS'
+assert refs['U3']['pins']['2']!=refs['U1']['pins']['2']
+(a.out/'assembly.json').write_text(json.dumps(report,indent=2)+'\n')
+with (a.out/'connections.csv').open('w',newline='') as f:
+ w=csv.writer(f);w.writerow(['reference','part','pin','net'])
+ for x in parts:
+  for pin,net in x['pins'].items():w.writerow([x['reference'],x['part'],pin,net or 'NC'])
+print(json.dumps({k:report[k] for k in ['part_count','pin_count','electrical_qualification','manufacturing_release']}))
