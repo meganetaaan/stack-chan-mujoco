@@ -1,0 +1,75 @@
+{
+  "scope": "Compare MCU maximum leakage with the monitor receiver's 20 uA drive condition.",
+  "original_candidate": {
+    "part": "STM32C011F6P6",
+    "source": "https://www.st.com/resource/en/datasheet/stm32c011f4.pdf",
+    "revision": "DS13866 Rev 5",
+    "page": 60,
+    "finding": "Ilkg values are in Typ column; Max blank; footnote refers to Ilkg(Max). No maximum inferred.",
+    "guaranteed_input_load_available": false
+  },
+  "alternative": {
+    "part": "STM32G030F6P6",
+    "source": "https://www.st.com/resource/en/datasheet/stm32g030f6.pdf",
+    "revision": "DS12991 Rev 6",
+    "pages": [
+      1,
+      29,
+      61
+    ],
+    "standard_input_leakage_max_A": 7e-08,
+    "product_leakage_offset_A": 1e-05,
+    "conservative_pad_count": 44,
+    "whole_product_leakage_budget_A": 1.308e-05,
+    "conditions": [
+      "Every driven pad between GND and its VDDIO1",
+      "FT_e switchable diodes disabled; internal pulls disabled",
+      "All bonded logical pads must be accounted for; TSSOP20 includes multi-bonded pins",
+      "Common valid LOGIC3V3 for receiver and MCU; no power-off or overshoot claim"
+    ],
+    "not_drop_in": "Pin aliases, reset/power features and firmware differ from C011; no automatic substitution"
+  },
+  "design_assumptions": [
+    "Pull resistor total +/-1 percent; exact part unselected",
+    "Use entire product leakage on this path conservatively; no board leakage included"
+  ],
+  "rows": [
+    {
+      "pulldown_ohm": 220000,
+      "total_high_load_upper_A": 2.960892561983471e-05,
+      "margin_to_20uA_A": -9.60892561983471e-06,
+      "conditional_20uA_drive_check": false,
+      "receiver_only_off_voltage_V": 0.1111,
+      "off_voltage_scope": "Receiver Ioff only at VCC=0; excludes MCU/board leakage, not full off-state voltage"
+    },
+    {
+      "pulldown_ohm": 560000,
+      "total_high_load_upper_A": 1.9573506493506496e-05,
+      "margin_to_20uA_A": 4.26493506493506e-07,
+      "conditional_20uA_drive_check": true,
+      "receiver_only_off_voltage_V": 0.2828,
+      "off_voltage_scope": "Receiver Ioff only at VCC=0; excludes MCU/board leakage, not full off-state voltage"
+    },
+    {
+      "pulldown_ohm": 1000000,
+      "total_high_load_upper_A": 1.6716363636363636e-05,
+      "margin_to_20uA_A": 3.2836363636363658e-06,
+      "conditional_20uA_drive_check": true,
+      "receiver_only_off_voltage_V": 0.505,
+      "off_voltage_scope": "Receiver Ioff only at VCC=0; excludes MCU/board leakage, not full off-state voltage"
+    }
+  ],
+  "settled_logic_margins_V": {
+    "high_min": 0.8000000000000003,
+    "low_min": 0.7999999999999999
+  },
+  "decision": "C011 load remains unbounded by inspected table. G030 plus larger pulldown merits further pin/power review; existing 220k exceeds the selected drive condition.",
+  "not_proven": [
+    "MCU integration",
+    "Power-off, reset and transient behavior",
+    "Board leakage budget",
+    "Timer output loading and propagation",
+    "Other controller connections"
+  ],
+  "manufacturing_release": false
+}

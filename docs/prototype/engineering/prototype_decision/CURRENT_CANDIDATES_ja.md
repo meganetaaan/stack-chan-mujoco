@@ -58,3 +58,5 @@ EN停止回路: `integrated_enable_interface.json`へTPS259813L条件を定義�
 電源の統合状態モデルを`validation/power_sequence_model_v1`へ追加。左右電源と新しいCLR確認を含む6状態・6,144遷移を検査した。状態回路の実部品・配線・時間保証は未実装で、現行回路revIの欠落を理想信号で埋めた完成証跡にはしない。
 
 電源状態制御ICは`sequence_controller_candidate/controller.json`のSTM32C011F6P6を比較。入力11・出力3とSWD/NRSTを確保できるが、前段の駆動余裕・漏れ・電源遷移は未確認でrevIへ未統合。モデルの内部タイマーを不要な外部端子へ割り当てず、実CLRは2入力を確保した。
+
+制御IC受信負荷の比較は`validation/sequence_input_load_v1`。C011の最大漏れは確認できず、G030を代替比較。既存220 kΩでは保守的負荷約29.61 µAとなり20 µA規定を超える。抵抗変更には電源断・放電と別型番の端子機能確認が必要で、未統合。
