@@ -67,3 +67,5 @@ PG受信には`schematics/power/pg_receiver_candidate.json`のTPS3700案を追�
 要求ごとのタイマー初期化を `validation/clear_timer_freshness_v1/` で6系列確認。前回のDONE High、健全性喪失、CLR観測中断からの再利用を防ぐ状態条件を定義した。クロック・同期・実際の観測回路は未実装なので、回路タイミング保証とは区別する。
 
 CLR観測器の選定前照合は `validation/clear_low_observation_screen_v1/`。U14の0.11 V保証は20 µA負荷だが、現行R4だけで約34.3 µAとなり流用できない。R4を増やす案はHigh余裕も減らすため未採用。Low検出・クリア成立・High復帰を一緒に照合してから部品を選ぶ。
+
+クリア出力のTPS3700代替案は `sequence_clear_comparator_alternative.json`。静的比較は改善する可能性があるが、OUTBのUVLO時Hi-Z、起動450 µs、要求Lowしきい値、遅延条件が異なるため未採用。1.3 VのVOL規定点をUVLO中のOUTB保持保証に流用しない。
