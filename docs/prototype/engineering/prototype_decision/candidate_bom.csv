@@ -33,15 +33,20 @@ NBK SNS-M3-16 yaw rear main bolts,8,4,preferred_candidate_not_released,SCM435 bl
 Nexperia 74LVC1G17GV release MR buffer,1,1,preferred_schmitt_candidate,Unlimited input rise/fall; MR DC output checked; input threshold interval power sequencing and footprint pending,validation/manual_release_schmitt_buffer_v1/README_ja.md
 TPS3808G33DBVR manual rearm rail supervisor,1,1,pin_candidate_not_released,Separate from release timer; reset fanout transient and external fault sinks pending,schematics/power/manual_rearm_supervisor_candidate.json
 74LVC1G17GV main EN buffer,1,1,conditional_candidate,Separate from release MR buffer; brownout inhibit and command source incomplete,schematics/power/main_enable_driver_candidate.json
-TPS3808G33DBVR dedicated EN clamp,1,1,conditional_candidate,Additional supervisor on eFuse input 5V; transient and restart qualification pending,schematics/power/main_enable_clamp_candidate.json
+TPS3808G33DBVR clamp-cause rail supervisor,1,1,conditional_candidate,revH U9 drives RAIL_HEALTH_N; U10 drives main EN; transient and restart qualification pending,schematics/power/manual_rearm_revH/assembly.json
 TPS3808G01DBVR EN reset follower,1,1,conditional_candidate,revE separate cause path; command cancellation and transient qualification pending,schematics/power/main_clamp_cause_candidate.json
 74LVC1G17GV clamp level buffer,1,1,conditional_candidate,Additional revE buffer on input5V; whole-interval threshold qualification pending,schematics/power/main_clamp_cause_candidate.json
 A5052P-H34 rear structural plate t2 mm,1,1,material_candidate_not_released,Stock form confirmed; thickness tolerance finished flatness fastening and strength pending,docs/prototype/mechanical/yaw_support/PLATE_MATERIAL_ja.md
 A5052P-H34 threaded backing plate t3 mm,2,1,material_candidate_not_released,Supplier stock tolerance +/-0.13 mm; effective thread engagement and pullout not qualified,docs/prototype/mechanical/yaw_support/PLATE_MATERIAL_ja.md
-TPS3700DDCR PG receiver,1,1,conditional_dc_candidate,Separate from brake; sequencer Schmitt receiver and startup validity pending,schematics/power/pg_receiver_candidate.json
+TPS3700DDCR PG receiver,1,1,conditional_dc_candidate,revH U12; U13 receiver installed in candidate; sequencer and power-transition validity pending,schematics/power/pg_receiver_candidate.json
 Nexperia 74AUP1G06GW sequence clear sink,1,1,conditional_candidate,revH U14; driver and pulse timing incomplete,schematics/power/sequence_clear_sink_candidate.json
 B3U-1000P local enable button with 3k pullup,1,1,candidate_not_integrated,Contact current checked; raw receiver protection footprint and actuator pending,schematics/power/local_enable_button_candidate.json
 Yaw candidate body shroud,1,1,geometry_candidate_not_released,Current tool-access shroud; print material process and whole-body strength pending,board/mechanical/prototype/yaw_support_candidate/revA/README_ja.md
 Yaw fixed support keeper-v2,2,1,geometry_candidate_not_released,Current left/right supports; print material orientation and joint strength pending,board/mechanical/prototype/yaw_support_candidate/revA/README_ja.md
 SUS304 yaw servo mount plate t1 mm,2,1,material_candidate_not_released,Metal seat v4; tapping screw seating tolerances and strength pending,board/mechanical/prototype/yaw_support_candidate/revA/README_ja.md
 Yaw rear M3 washer OD7 ID3.2 t0.5 mm,8,1,specification_only,Material part number bore chamfer and bolt underhead fit unresolved; do not substitute sole spacer,board/mechanical/prototype/yaw_support_candidate/revA/README_ja.md
+SN74HCS11PWR permission and release gates,1,1,conditional_candidate,revH U3; shared three-input gates; not a complete sequencer,schematics/power/manual_rearm_revH/assembly.json
+TPS3808G33DBVR release qualification timer,1,1,conditional_candidate,revH U5; separate from rail supervisor U7 and clamp-cause supervisor U9,schematics/power/manual_release_timer_candidate.json
+74LVC1G17GV PG receiver output buffer,1,1,conditional_candidate,revH U13; additional to U4 U8 U11; power transition validity pending,schematics/power/pg_receiver_candidate.json
+Manual rearm resistor set,14,14,selected_candidates_not_released,revH R1-R14; quantity and exact part candidates in generated BOM,validation/manual_rearm_bom_v1/bom.csv
+Manual rearm local bypass capacitors,14,14,unselected,revH C1-C14 nominal 100nF; exact parts ratings effective capacitance and layout pending,validation/manual_rearm_bom_v1/bom.csv
