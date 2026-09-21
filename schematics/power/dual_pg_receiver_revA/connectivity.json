@@ -1,0 +1,197 @@
+{
+  "parts": [
+    {
+      "reference": "LEFT_U12",
+      "part": "TPS3700DDCR",
+      "pins": {
+        "1": "LEFT_PG_CONDITIONED_OD",
+        "2": "GND",
+        "3": "LEFT_PG_DIVIDED",
+        "4": "GND",
+        "5": "LOGIC3V3",
+        "6": null
+      },
+      "source": "pg_receiver_candidate.json",
+      "origin_reference": "U12"
+    },
+    {
+      "reference": "LEFT_U13",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "LEFT_PG_CONDITIONED_OD",
+        "3": "GND",
+        "4": "LEFT_PG_CONDITIONED",
+        "5": "LOGIC3V3"
+      },
+      "source": "pg_receiver_candidate.json",
+      "origin_reference": "U13"
+    },
+    {
+      "reference": "LEFT_R10",
+      "part": "TNPW0603150KBYEA",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "LEFT_EFUSE_PG"
+      },
+      "source": null,
+      "origin_reference": "R10"
+    },
+    {
+      "reference": "LEFT_R11",
+      "part": "TNPW08051M00BYEA",
+      "pins": {
+        "1": "LEFT_EFUSE_PG",
+        "2": "LEFT_PG_DIVIDED"
+      },
+      "source": null,
+      "origin_reference": "R11"
+    },
+    {
+      "reference": "LEFT_R12",
+      "part": "TNPW0603330KBYEA",
+      "pins": {
+        "1": "LEFT_PG_DIVIDED",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "R12"
+    },
+    {
+      "reference": "LEFT_R13",
+      "part": "TNPW060310K0BYEA",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "LEFT_PG_CONDITIONED_OD"
+      },
+      "source": null,
+      "origin_reference": "R13"
+    },
+    {
+      "reference": "LEFT_C12",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "C12"
+    },
+    {
+      "reference": "LEFT_C13",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "C13"
+    },
+    {
+      "reference": "RIGHT_U12",
+      "part": "TPS3700DDCR",
+      "pins": {
+        "1": "RIGHT_PG_CONDITIONED_OD",
+        "2": "GND",
+        "3": "RIGHT_PG_DIVIDED",
+        "4": "GND",
+        "5": "LOGIC3V3",
+        "6": null
+      },
+      "source": "pg_receiver_candidate.json",
+      "origin_reference": "U12"
+    },
+    {
+      "reference": "RIGHT_U13",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "RIGHT_PG_CONDITIONED_OD",
+        "3": "GND",
+        "4": "RIGHT_PG_CONDITIONED",
+        "5": "LOGIC3V3"
+      },
+      "source": "pg_receiver_candidate.json",
+      "origin_reference": "U13"
+    },
+    {
+      "reference": "RIGHT_R10",
+      "part": "TNPW0603150KBYEA",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "RIGHT_EFUSE_PG"
+      },
+      "source": null,
+      "origin_reference": "R10"
+    },
+    {
+      "reference": "RIGHT_R11",
+      "part": "TNPW08051M00BYEA",
+      "pins": {
+        "1": "RIGHT_EFUSE_PG",
+        "2": "RIGHT_PG_DIVIDED"
+      },
+      "source": null,
+      "origin_reference": "R11"
+    },
+    {
+      "reference": "RIGHT_R12",
+      "part": "TNPW0603330KBYEA",
+      "pins": {
+        "1": "RIGHT_PG_DIVIDED",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "R12"
+    },
+    {
+      "reference": "RIGHT_R13",
+      "part": "TNPW060310K0BYEA",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "RIGHT_PG_CONDITIONED_OD"
+      },
+      "source": null,
+      "origin_reference": "R13"
+    },
+    {
+      "reference": "RIGHT_C12",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "C12"
+    },
+    {
+      "reference": "RIGHT_C13",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "C13"
+    }
+  ],
+  "shared_nets": [
+    "GND",
+    "LOGIC3V3"
+  ],
+  "source_sha256": {
+    "schematics/power/manual_rearm_revI/assembly.json": "21b8febbb24b2ada320acc8c1a07a306dde948ad486910cfc3e489ea7f0e300a",
+    "schematics/power/manual_rearm_resistors_revI.json": "c21365918edd673ee4b393f595735a9b650afbfe38e49dba2693d72ea6b4f969",
+    "schematics/power/manual_rearm_capacitors.json": "068370e55e442ff57b1e9d8e0bf057d1b045799053913bf07aff9866b5461c05"
+  },
+  "manufacturing_release": false,
+  "electrical_qualification": false,
+  "scope": "Two PG receiver subcircuits only; replaces single receiver when integrated, not an addition to it",
+  "remaining": [
+    "Monitor power-transition validity",
+    "PG source pin compatibility for selected eFuse",
+    "Open-wire and stuck-high faults",
+    "Logic supply budget after duplication",
+    "Sequencer and independent source UV/OV monitors"
+  ]
+}
