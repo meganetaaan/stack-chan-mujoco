@@ -1,0 +1,113 @@
+{
+  "status": "functional_terminal_connectivity_only",
+  "parts": [
+    {
+      "ref": "U_OV_L",
+      "part": "LTC4365ITS8#TRMPBF",
+      "ports": {
+        "VIN": "UBEC_L",
+        "VOUT": "OV_OUT_L",
+        "GATE": "GATE_L",
+        "GND": "GND",
+        "OV": "OV_SENSE_L",
+        "UV": "UV_SENSE_L",
+        "SHDN": "PERMIT_L",
+        "FAULT": "FAULT_N_L"
+      }
+    },
+    {
+      "ref": "Q_IN_L",
+      "part": "SiSS80DN-T1-GE3",
+      "ports": {
+        "D": "UBEC_L",
+        "S": "COMMON_S_L",
+        "G": "GATE_L"
+      }
+    },
+    {
+      "ref": "Q_OUT_L",
+      "part": "SiSS80DN-T1-GE3",
+      "ports": {
+        "D": "OV_OUT_L",
+        "S": "COMMON_S_L",
+        "G": "GATE_L"
+      }
+    },
+    {
+      "ref": "U_OV_R",
+      "part": "LTC4365ITS8#TRMPBF",
+      "ports": {
+        "VIN": "UBEC_R",
+        "VOUT": "OV_OUT_R",
+        "GATE": "GATE_R",
+        "GND": "GND",
+        "OV": "OV_SENSE_R",
+        "UV": "UV_SENSE_R",
+        "SHDN": "PERMIT_R",
+        "FAULT": "FAULT_N_R"
+      }
+    },
+    {
+      "ref": "Q_IN_R",
+      "part": "SiSS80DN-T1-GE3",
+      "ports": {
+        "D": "UBEC_R",
+        "S": "COMMON_S_R",
+        "G": "GATE_R"
+      }
+    },
+    {
+      "ref": "Q_OUT_R",
+      "part": "SiSS80DN-T1-GE3",
+      "ports": {
+        "D": "OV_OUT_R",
+        "S": "COMMON_S_R",
+        "G": "GATE_R"
+      }
+    }
+  ],
+  "power_blocks": [
+    {
+      "side": "L",
+      "overcurrent_breaker": {
+        "input": "OV_OUT_L",
+        "output": "SERVO_L",
+        "part_candidate": "TPS259823ONRGE"
+      },
+      "regeneration_absorber": {
+        "input": "SERVO_L",
+        "return": "GND",
+        "part": null
+      }
+    },
+    {
+      "side": "R",
+      "overcurrent_breaker": {
+        "input": "OV_OUT_R",
+        "output": "SERVO_R",
+        "part_candidate": "TPS259823ONRGE"
+      },
+      "regeneration_absorber": {
+        "input": "SERVO_R",
+        "return": "GND",
+        "part": null
+      }
+    }
+  ],
+  "unresolved": [
+    "Package-pin mapping and footprints",
+    "OV/UV dividers and filtering",
+    "Gate damping/clamping and leakage budget",
+    "Default-off SHDN receiver",
+    "Startup-qualified permission and fault latch",
+    "Local decoupling and load capacitance",
+    "Per-leg regeneration absorber",
+    "eFuse current setting and startup monitor"
+  ],
+  "sources": [
+    "https://www.analog.com/media/en/technical-documentation/data-sheets/ltc4365.pdf",
+    "https://www.vishay.com/docs/77684/siss80dn.pdf"
+  ],
+  "not_a_spice_model": true,
+  "manufacturing_release": false
+}
