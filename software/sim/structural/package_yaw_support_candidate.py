@@ -2,7 +2,7 @@
 import argparse,hashlib,json
 from pathlib import Path
 import cadquery as cq
-ROOT=Path(__file__).resolve().parents[3];p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--moments',action='store_true');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+ROOT=Path(__file__).resolve().parents[3];p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--moments',action='store_true');p.add_argument('--rear-washer-dir',type=Path);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
 assy=cq.Assembly(name='yaw_support_candidate');rows=[];moments=[]
 if a.moments:
  import numpy as np
@@ -43,7 +43,11 @@ for side,cy in [('left',26),('right',-26)]:
  read(side+'_mount_plate',f'validation/yaw_metal_seat_v4/{side}_mount_plate.step')
  for z in [64,76]:read(f'{side}_{z}_keeper',f'validation/yaw_backing_keeper_v2/{side}_{z}_keeper_envelope.step',note='NBK SLH-M2-10 nominal; thread overlap intentional')
  for i in range(4):
-  for name in ['bolt','rear_washer']:read(f'{side}_rear_{i}_{name}',f'validation/inset_yaw_assembly_development_v1/inset_fasteners_staged_v2/{side}_{i}_{name}.step',(-.2,0,0),'M3 hardware envelope moved to 2 mm rear plate; inner nut/washer replaced by threaded plate')
+  for name in ['bolt','rear_washer']:
+   if name=='rear_washer' and a.rear_washer_dir:
+    read(f'{side}_rear_{i}_{name}',str(a.rear_washer_dir/f'{side}_rear_{i}_{name}.step'),note='SCW-YAW-REAR-WASHER-01 revA proposal; already in assembly coordinates')
+   else:
+    read(f'{side}_rear_{i}_{name}',f'validation/inset_yaw_assembly_development_v1/inset_fasteners_staged_v2/{side}_{i}_{name}.step',(-.2,0,0),'M3 hardware envelope moved to 2 mm rear plate; inner nut/washer replaced by threaded plate')
  for i,(x,y) in enumerate(( (x,y) for x in [-34,8.1] for y in [cy-10,cy+10])):
   def cyl(r,h,z):return cq.Solid.makeCylinder(r,h,cq.Vector(x,y,z))
   add(f'{side}_plate_{i}_screw',cyl(1.9,1.3,86.7).fuse(cyl(1,10,88)),note='NBK SLH-M2-10 nominal envelope')
