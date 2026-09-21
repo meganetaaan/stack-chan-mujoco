@@ -20,3 +20,5 @@ LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bi
 ```
 
 公差、締付け、脱落、変形時干渉、強度の合格を意味しない。製造リリースではない。
+
+追補: `validation/boot_screw_axial_budget_v1`で外装ねじ先端の天井余裕不足を検出。公称交差0でも、既存の各印刷面±0.2 mm仮定では最大0.2 mm食い込む。現行形状を公差適合として扱わず、先端逃げの設計が必要。
