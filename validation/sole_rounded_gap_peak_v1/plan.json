@@ -1,0 +1,18 @@
+{
+  "scope": "Bound linearized vertical gap over intersections of master/slave P1 triangles.",
+  "mesh_dir": "validation/sole_rounded_local_mesh_v1",
+  "source": "validation/sole_rounded_contact_v1",
+  "mesh_mm": "0.5",
+  "source_sha256": {
+    "validation/sole_rounded_contact_v1/fields.npz": "f0b42a124b2a5248f7246e2fa14eb9c0616c755c8b1aecab556029b85f736a81",
+    "validation/sole_rounded_local_mesh_v1/boss/boss_0.5.msh": "20a258593d193998ca3626019facc29071376fbf325d5b6f995b2cca087634ce",
+    "validation/sole_rounded_local_mesh_v1/spacer/spacer_0.5.msh": "8171516695fc11efdf1d3e086ed639b1c84670d7301931b52de6aec286747a6a"
+  },
+  "relative_area_coverage_tolerance": 1e-08,
+  "maximum_penetration_mm": 0.01,
+  "assumptions": [
+    "P1 displacement on initial planar triangles, vertical projection and small-displacement gap.",
+    "Finite rotation, curved CAD between facets and actual surface roughness excluded."
+  ],
+  "clipping_halfplane_tolerance_mm2": 1e-12
+}
