@@ -1,0 +1,26 @@
+{
+  "old_comparison_load_superposition_mm": 0.19928269048768177,
+  "old_direct_solve_mm": 0.19928269048768205,
+  "relative_difference": 1.4432899320127035e-15,
+  "worst_selected_case": {
+    "source": "validation/prototype_epic4_v1/actuator_fullbody_load_right_v1/trace.npz",
+    "side": "right",
+    "samples": 7000,
+    "displacement_upper_mm": 0.31644733227864114,
+    "principal_upper_MPa": 7.757361423058435,
+    "von_mises_upper_MPa": 5.320045999517024,
+    "selected_time_s": 3.0199999999997784,
+    "selected_wrench_N_Nmm": [
+      0.3684933267760049,
+      -1.5669809815618343,
+      7.610967008718026,
+      -274.341981485369,
+      -141.16941217037964,
+      -7.867198389243171
+    ],
+    "selected_actual_displacement_mm": 0.22013027289145443,
+    "bounded_within_criteria": false
+  },
+  "witness_to_old_comparison_ratio": 1.1046131119203315,
+  "note": "Worst of 38 selected samples, not proven maximum over 266000 samples. Same 3 mm linear FE mesh."
+}
