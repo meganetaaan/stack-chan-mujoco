@@ -1,0 +1,16 @@
+{
+  "question": "Which actual nominal face areas carry the plate joint compression load path in the current integrated CAD?",
+  "source_sha256": {
+    "validation/yaw_integrated_candidate_v4/inventory.json": "1192810d881e8db576fc9e8f808c01c4f0ff344339966e5e821f22d64fa63dc9",
+    "validation/yaw_integrated_candidate_v4/yaw_support_candidate.step": "621d0b9132992c530bc35ca0f7612f845ff4875d8c5765f1e7138945ed6fbd00"
+  },
+  "method": "Intersect coplanar horizontal faces of each adjacent pair; retain holes and reliefs. Export surface patches, not filled bounding rectangles.",
+  "numeric_plane_tolerance_mm": 1e-06,
+  "stop": "Two plate-shelf interfaces and three bearing interfaces per each of eight fasteners; no FE or geometry changes.",
+  "limits": [
+    "Nominal coincident faces only, not actual pressure-bearing contact under tolerance/load.",
+    "No bonded/tensile/friction capacity assigned to these patches.",
+    "Nut and screw are simplified CAD envelopes; actual chamfers/threads absent.",
+    "No preload, material allowable, plate bending or contact separation solved."
+  ]
+}
