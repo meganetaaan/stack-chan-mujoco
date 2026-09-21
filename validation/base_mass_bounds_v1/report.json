@@ -1,0 +1,93 @@
+{
+  "source_sha256": {
+    "validation/rear_washer_clearance_v1/report.json": "6094c7ea2b231243f862e55d2e861b9d5d34d383cb458ab1bad35f8ece31cd88",
+    "validation/screw_mass_distribution_bounds_v1/report.json": "aad08c6f1b01f242fcf15cf30108e887c1e868f0615ebda8d7f4488b4418f83d",
+    "board/mechanical/prototype/yaw_support_candidate/current.json": "cd74289ce2c8d916a828b80e7a57790375709db853b7cb17e02cd4c329226b72",
+    "board/mechanical/prototype/yaw_support_candidate/revB/inventory.json": "8e7de9c8d22e27ccc8fb360052a987c28704c93557a447dc2421cf322c17e666"
+  },
+  "frame": "base CAD origin; same frame as upstream ledgers",
+  "allocated_fixed_mass_kg": 0.6612288404413279,
+  "catalog_screws_mass_kg": 0.01236,
+  "partial_base_mass_kg": 0.6735888404413279,
+  "partial_base_com_bounds_m": {
+    "min": [
+      -0.004531219357413981,
+      -4.0183261372043195e-05,
+      0.07844664611809783
+    ],
+    "max": [
+      -0.0042346170564181666,
+      5.377316456656702e-05,
+      0.07856108981931696
+    ]
+  },
+  "partial_base_first_moment_bounds_kg_m": {
+    "min": [
+      -0.0030521787927457822,
+      -2.7066996432745378e-05,
+      0.05284078539520072
+    ],
+    "max": [
+      -0.002852390792745782,
+      3.622100356725458e-05,
+      0.052917873395200724
+    ]
+  },
+  "partial_base_origin_inertia_element_bounds_kg_m2": {
+    "min": [
+      [
+        0.005721513619698994,
+        -4.6880803523432854e-06,
+        0.0001702448756775562
+      ],
+      [
+        -4.6880803523432854e-06,
+        0.006174574740923535,
+        -3.7746803231758723e-06
+      ],
+      [
+        0.0001702448756775562,
+        -3.7746803231758723e-06,
+        0.0022307663500208902
+      ]
+    ],
+    "max": [
+      [
+        0.005736526318098994,
+        3.920752047656718e-06,
+        0.00018809114127755615
+      ],
+      [
+        3.920752047656718e-06,
+        0.006208977182123535,
+        2.8160388768241285e-06
+      ],
+      [
+        0.00018809114127755615,
+        2.8160388768241285e-06,
+        0.00225673804482089
+      ]
+    ]
+  },
+  "accounting": "Washer report already contains fixed retained payload, replacement payload, metal, printed base and eight rear washers. Add only 20 screws; do not add base_print_mass separately.",
+  "remaining": [
+    "8 nuts have no selected mass/COM/inertia",
+    "Remaining wires and hardware formerly covered by 25g must be itemized",
+    "Internal battery and converter mass distribution is not known; uniform solid is a comparison.",
+    "TTL, strap, all wiring and protection PCB/components still require allocation.",
+    "These are selected packaging candidates, not electrically qualified supplies."
+  ],
+  "limitations": [
+    "Nominal CAD domains are not proven manufactured containment envelopes; screw head and length tolerances need expansion.",
+    "Catalog mass has no guaranteed tolerance here.",
+    "No point estimate of screw COM or inertia assigned.",
+    "No MuJoCo inertia updated.",
+    "Fixed subtotal retains density and uniform-payload comparison assumptions; it is not measured mass.",
+    "These COM bounds apply only to the allocated subtotal, not the complete robot or base.",
+    "Elementwise inertia endpoints need not be jointly realizable; do not write them as a MuJoCo inertia.",
+    "Unallocated nuts, wiring and electronics are excluded, not assigned zero mass."
+  ],
+  "whole_base_complete": false,
+  "model_updated": false,
+  "manufacturing_release": false
+}
