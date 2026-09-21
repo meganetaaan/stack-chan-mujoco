@@ -1,0 +1,121 @@
+{
+  "source_sha256": {
+    "validation/model_dc_envelope_v2/report.json": "7600a7b78007ebd5b017c6c610b186ba1c53fc8b7213540da7324ceed9d9ea9a"
+  },
+  "sources": {
+    "contact": "https://www.jst-mfg.com/product/pdf/eng/eEH.pdf",
+    "efuse": "https://www.ti.com/lit/ds/symlink/tps25981.pdf"
+  },
+  "inputs": {
+    "EH_post_environment_contact_ohm": 0.02,
+    "efuse_comparison_ohm": 0.0084,
+    "historical_drop_budget_V": 0.1
+  },
+  "rows": [
+    {
+      "shared_current_A": 3.0,
+      "axis": "XL330-M288-T",
+      "branch_current_A": 0.752,
+      "loop_contact_count": 2,
+      "contact_drop_V": 0.03008,
+      "efuse_drop_comparison_V": 0.0252,
+      "residual_from_historical_0_10V_budget_V": 0.04472000000000001,
+      "max_remaining_series_loop_resistance_if_no_other_losses_ohm": 0.05946808510638299,
+      "budget_already_exceeded_without_wire": false,
+      "efuse_current_matches_3A_table_condition": true
+    },
+    {
+      "shared_current_A": 3.0,
+      "axis": "XL330-M288-T",
+      "branch_current_A": 0.752,
+      "loop_contact_count": 4,
+      "contact_drop_V": 0.06016,
+      "efuse_drop_comparison_V": 0.0252,
+      "residual_from_historical_0_10V_budget_V": 0.014640000000000007,
+      "max_remaining_series_loop_resistance_if_no_other_losses_ohm": 0.01946808510638299,
+      "budget_already_exceeded_without_wire": false,
+      "efuse_current_matches_3A_table_condition": true
+    },
+    {
+      "shared_current_A": 3.0,
+      "axis": "XC330-M288-T",
+      "branch_current_A": 0.887,
+      "loop_contact_count": 2,
+      "contact_drop_V": 0.035480000000000005,
+      "efuse_drop_comparison_V": 0.0252,
+      "residual_from_historical_0_10V_budget_V": 0.039319999999999994,
+      "max_remaining_series_loop_resistance_if_no_other_losses_ohm": 0.04432919954904171,
+      "budget_already_exceeded_without_wire": false,
+      "efuse_current_matches_3A_table_condition": true
+    },
+    {
+      "shared_current_A": 3.0,
+      "axis": "XC330-M288-T",
+      "branch_current_A": 0.887,
+      "loop_contact_count": 4,
+      "contact_drop_V": 0.07096000000000001,
+      "efuse_drop_comparison_V": 0.0252,
+      "residual_from_historical_0_10V_budget_V": 0.003839999999999996,
+      "max_remaining_series_loop_resistance_if_no_other_losses_ohm": 0.004329199549041709,
+      "budget_already_exceeded_without_wire": false,
+      "efuse_current_matches_3A_table_condition": true
+    },
+    {
+      "shared_current_A": 4.917,
+      "axis": "XL330-M288-T",
+      "branch_current_A": 0.752,
+      "loop_contact_count": 2,
+      "contact_drop_V": 0.03008,
+      "efuse_drop_comparison_V": 0.041302799999999994,
+      "residual_from_historical_0_10V_budget_V": 0.028617200000000016,
+      "max_remaining_series_loop_resistance_if_no_other_losses_ohm": 0.03805478723404258,
+      "budget_already_exceeded_without_wire": false,
+      "efuse_current_matches_3A_table_condition": false
+    },
+    {
+      "shared_current_A": 4.917,
+      "axis": "XL330-M288-T",
+      "branch_current_A": 0.752,
+      "loop_contact_count": 4,
+      "contact_drop_V": 0.06016,
+      "efuse_drop_comparison_V": 0.041302799999999994,
+      "residual_from_historical_0_10V_budget_V": -0.0014627999999999863,
+      "max_remaining_series_loop_resistance_if_no_other_losses_ohm": 0,
+      "budget_already_exceeded_without_wire": true,
+      "efuse_current_matches_3A_table_condition": false
+    },
+    {
+      "shared_current_A": 4.917,
+      "axis": "XC330-M288-T",
+      "branch_current_A": 0.887,
+      "loop_contact_count": 2,
+      "contact_drop_V": 0.035480000000000005,
+      "efuse_drop_comparison_V": 0.041302799999999994,
+      "residual_from_historical_0_10V_budget_V": 0.0232172,
+      "max_remaining_series_loop_resistance_if_no_other_losses_ohm": 0.0261749718151071,
+      "budget_already_exceeded_without_wire": false,
+      "efuse_current_matches_3A_table_condition": false
+    },
+    {
+      "shared_current_A": 4.917,
+      "axis": "XC330-M288-T",
+      "branch_current_A": 0.887,
+      "loop_contact_count": 4,
+      "contact_drop_V": 0.07096000000000001,
+      "efuse_drop_comparison_V": 0.041302799999999994,
+      "residual_from_historical_0_10V_budget_V": -0.012262799999999997,
+      "max_remaining_series_loop_resistance_if_no_other_losses_ohm": 0,
+      "budget_already_exceeded_without_wire": true,
+      "efuse_current_matches_3A_table_condition": false
+    }
+  ],
+  "limitations": [
+    "0.10 V derives from the earlier 4.85 V supply floor and 4.75 V terminal target; UBEC lower output is not established.",
+    "4.917 A and branch currents are conditional model envelopes, not measured hardware maxima.",
+    "Applying the 3 A eFuse RON table value at 4.917 A is a comparison assumption.",
+    "Wire, feeder, reverse blocking, solder joints and dynamic drops remain outside the calculation.",
+    "Negative budget is a design-screen failure at stated assumptions, not proof all real cables fail."
+  ],
+  "decision": "Do not prioritize the extra distribution EH connector. Preserve OEM servo crimp and evaluate a cut, strain-relieved soldered distribution end instead; circuit and routing remain unqualified.",
+  "manufacturing_release": false
+}
