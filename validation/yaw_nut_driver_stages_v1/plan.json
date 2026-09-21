@@ -1,0 +1,17 @@
+{
+  "question": "Can the selected tool approach axially after assembly, or while one support/plate is detached?",
+  "criterion_nominal_clearance_mm": 0.9,
+  "tool": "Catalog blade and handle cylinders, each swept continuously upwards; not a detailed purchased solid.",
+  "insertion_travel_mm": 41.099999999999994,
+  "stages": [
+    "all52parts",
+    "same-side support, plate and all four complete plate fasteners only"
+  ],
+  "intentional_exclusions": "Target screw and target nut excluded because socket cavity not specified; engagement and bottoming remain unverified. Washer remains included.",
+  "stop": "Eight axes, two stages; no geometry or clearance changes.",
+  "limits": [
+    "No hand, lower reaction tool, harness, Tab5 or battery beyond fixed assembly.",
+    "0.9 mm is existing engineering budget, not manufacturer tolerance.",
+    "Detached stage does not prove later support installation."
+  ]
+}
