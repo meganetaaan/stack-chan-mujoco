@@ -1,0 +1,28 @@
+Behavioral brake detector timing contract
+Vs aux 0 3.3
+Vcurrent current 0 PWL(0 0 .02 0 .020001 1.1 .04 1.1 .040001 0 .05 0 .050001 1.1 .0505 1.1 .050501 0 .07 0 .070001 1.1 .09 1.1 .090001 0 .1 0)
+Vgate gate 0 PWL(0 0 .019 0 .019001 3 .041 3 .041001 0 .1 0)
+Bsensor sensor 0 V=min(max(19.8*(V(current)*0.099+(-0.000692)),.005),V(aux)-.03)
+Rfilter sensor filtered 1000
+Cfilter filtered 0 1e-08
+Bcondition condition 0 V=(V(filtered)>0.612 && V(gate)<0.4) ? 1 : 0
+Btimer 0 timer I=(V(condition)>.5 && V(timer)<1.1) ? .001 : 0
+Ctimer timer 0 1u IC=0
+Breset reset 0 V=1-V(condition)
+Sreset timer 0 reset 0 RESET
+.model RESET SW(RON=1 ROFF=1e12 VT=.5 VH=.01)
+Blatch 0 latch I=(V(timer)>1) ? max(1-V(latch),0)/1000 : 0
+Clatch latch 0 1n IC=0
+Rhold latch 0 1e12
+.control
+set wr_singlescale
+set wr_vecnames
+tran 1u .1 0 1u uic
+meas tran pre_fault_latch MAX v(latch) FROM=0 TO=.0699
+meas tran latch_peak MAX v(latch) FROM=0 TO=.1
+meas tran detected FIND v(latch) AT=.072
+meas tran retained MIN v(latch) FROM=.092 TO=.1
+wrdata trace.dat v(current) v(gate) v(filtered) v(timer) v(latch)
+quit
+.endc
+.end

@@ -1,0 +1,41 @@
+{
+  "scope": "Behavioral sensor/filter/persistence/latch contract, independent of power-stage shutdown",
+  "sensor": {
+    "gain": 19.8,
+    "shunt_ohm": 0.099,
+    "input_offset_V": -0.000692,
+    "filter_tau_s": 1e-05,
+    "supply_V": 3.3
+  },
+  "threshold_V": 0.612,
+  "gate_off_max_V": 0.4,
+  "persistence_s": 0.001,
+  "test_windows_s": {
+    "normal_commanded_current": [
+      0.02,
+      0.04
+    ],
+    "short_unexpected_current": [
+      0.05,
+      0.0505
+    ],
+    "persistent_unexpected_current": [
+      0.07,
+      0.09
+    ]
+  },
+  "criteria": {
+    "pre_fault_latch_max_V": 0.01,
+    "latch_at_72ms_min_V": 0.9,
+    "latch_after_fault_clears_min_V": 0.9,
+    "latch_max_V": 1.01
+  },
+  "limitations": [
+    "Behavioral implementation without selected comparator, timer or latch IC",
+    "Filter time constant is a design assumption, not INA180 guaranteed delay",
+    "Sensor bias current and actual power-stage feedback excluded",
+    "No physical shutdown path or reset implementation",
+    "No proof of detection for all fault amplitudes"
+  ],
+  "latch_revision": "Replace constant charging source with first-order approach to 1 V to avoid numerical latch overshoot"
+}
