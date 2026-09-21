@@ -14,6 +14,10 @@ for part in r['parts']:
  changed.append({'reference':part['reference'],'previous_part':part['part']})
  part.update(part=s['part_number'],value_F=s['nominal_capacitance_F'],selection_source=str(spec))
 assert len(changed)==17
+for part in r['parts']:
+ if part['reference']=='C_STOP_OUT':
+  part['requirement']='Design target >=2.2uF effective retained; TPS70933 application guidance minimum 1.5uF, maximum 47uF, ESR 0..0.2 ohm. See schematics/power/stop_output_capacitor_requirements.json'
+
 r['scope']='Integrate existing 100 nF bypass selection at 17 additional references'
 r['source_sha256']={str(x):hashlib.sha256(x.read_bytes()).hexdigest() for x in (base,spec,Path(__file__))}
 r['integration_limitations'].append('Local 100nF capacitors now have ordering candidates; bulk and gate capacitors remain unselected. PCB return inductance and full rail stability not qualified.')

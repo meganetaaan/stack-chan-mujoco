@@ -1,0 +1,37 @@
+{
+  "reference": "C_STOP_OUT",
+  "regulator": "TPS70933DBVR",
+  "source": "https://www.ti.com/lit/ds/symlink/tps709.pdf",
+  "revision": "SBVS186H July 2021 section 8.1.1",
+  "manufacturer_application_guidance": {
+    "effective_capacitance_min_F": 1.5e-06,
+    "effective_capacitance_max_F": 4.7e-05,
+    "ESR_min_ohm": 0,
+    "ESR_max_ohm": 0.2,
+    "condition": "Output voltage >= 1.5 V"
+  },
+  "retained_design_target": {
+    "effective_capacitance_min_F": 2.2e-06,
+    "nominal_capacitance_F": 4.7e-06,
+    "classification": "Codex design margin, not manufacturer minimum"
+  },
+  "candidate": {
+    "family": "GRM31CR71H475KA12",
+    "nominal_F": 4.7e-06,
+    "rated_V": 50,
+    "initial_tolerance": 0.1,
+    "dielectric": "X7R",
+    "package": "1206",
+    "source": "https://www.murata.com/-/media/webrenewal/tool/library/common-pdf/static-model/component-list-s-mlcc-2506.ashx?cvid=20250805040438000000&la=ja-jp",
+    "status": "screening_family_only_exact_packaging_not_selected"
+  },
+  "qualification": false,
+  "remaining": [
+    "DC bias and temperature combined capacitance at actual rail",
+    "Ageing and assembly allowance",
+    "ESR over relevant frequency and temperature",
+    "Exact ordering suffix, procurement and footprint",
+    "Total connected rail capacitance and regulator transient verification"
+  ],
+  "correction": "Earlier requirement text incorrectly attributed 2.2uF effective minimum to TI. Preserve 2.2uF as a design target; do not relabel prior failures as passes."
+}

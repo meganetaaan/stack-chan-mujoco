@@ -788,7 +788,7 @@
         "1": "STOP_AUX3V3",
         "2": "GND"
       },
-      "requirement": "At least 2.2uF effective per TI; exact part and bias/temperature/ESR qualification pending"
+      "requirement": "Design target >=2.2uF effective retained; TPS70933 application guidance minimum 1.5uF, maximum 47uF, ESR 0..0.2 ohm. See schematics/power/stop_output_capacitor_requirements.json"
     },
     {
       "reference": "R_STOP_MIN_LOAD",
@@ -1087,7 +1087,7 @@
   "source_sha256": {
     "schematics/power/servo_power_rearm_integration_revJ/assembly.json": "57278605cab2826ed0773b163d959b05ad60e704621f66088c7bd2c0e287b245",
     "schematics/power/manual_rearm_capacitors.json": "068370e55e442ff57b1e9d8e0bf057d1b045799053913bf07aff9866b5461c05",
-    "/home/sskw/.codex/worktrees/prototype-epics-5-6/stackchan_r5a_rl_v4/software/sim/circuits/integrate_monitor_bypass.py": "1ad2ce5bf2b32e00d01de0a97b36221c24c26de6d01c4a39be9a9089b177407e"
+    "/home/sskw/.codex/worktrees/prototype-epics-5-6/stackchan_r5a_rl_v4/software/sim/circuits/integrate_monitor_bypass.py": "cab95e542b18cc770ea868e6c1266848ed38725e6921530a9bfc68b7fb9f2060"
   },
   "part_count": 94,
   "pin_count": 308,

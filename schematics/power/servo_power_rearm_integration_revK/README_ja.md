@@ -13,3 +13,7 @@ python3 software/sim/circuits/integrate_monitor_bypass.py --out /tmp/monitor-byp
 検査条件は対象17参照がLOGIC3V3またはSTOP_AUX3V3とGND間の100 nF用途であること。配線・部品数の同一性と、大容量入力/出力コンデンサおよびゲートコンデンサが無変更であることを確認した。
 
 1206の配置面積・接地経路・高周波インピーダンスはPCB設計で確認が必要。大容量品の実効容量・ESR・レギュレータ安定性、全電源過渡・故障試験は未確認。これらを小容量部品の選定で完了扱いにはしない。
+
+## 出力容量の要求出典訂正
+
+C_STOP_OUTの公称4.7 µFと実効2.2 µFの設計目標は維持。TI資料8.1.1が3.3 V出力に示す安定範囲は実効1.5〜47 µF、ESR 0〜0.2 Ωであり、旧文の「2.2 µF以上がTI要求」は誤りだった。要求文のみ訂正し、値・接続・型番未選定状態は変更しない。詳細と部品系列候補は `schematics/power/stop_output_capacitor_requirements.json`。

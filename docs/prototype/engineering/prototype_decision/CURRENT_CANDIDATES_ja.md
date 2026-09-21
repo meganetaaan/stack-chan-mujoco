@@ -72,3 +72,7 @@ G030代替の端子割当と共有端子の設定条件を`validation/g030_bonde
 ### 小容量コンデンサの統合更新
 
 現行電源入口はrevK。既存の100 nF候補を未反映17箇所へ統合し、同型番は計21個。統合候補の全94参照番号を `schematics/power/servo_power_rearm_integration_revK/candidate_bom.csv` に出力。大容量・ゲートコンデンサ、回路全体の適合は未完了。
+
+### 停止電源の出力容量条件
+
+TPS70933の出力コンデンサ条件の出典を訂正。メーカーの実効下限1.5 µFと設計目標2.2 µFを分離し、後者は維持。上限47 µF、ESR上限0.2 Ωも選定条件へ追加。4.7 µF・50 V・1206のMurata系列を候補化したが、DCバイアス・温度・ESR未確認のため実装BOMへの採用は保留。`schematics/power/stop_output_capacitor_requirements.json` を参照。
