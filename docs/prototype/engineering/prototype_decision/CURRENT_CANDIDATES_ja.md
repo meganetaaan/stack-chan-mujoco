@@ -34,3 +34,5 @@ revJのPG受信部はrevIの単一受信部を置換する。抵抗はR15を含�
 左右TPS259813L電源段とrevJのPG接続を`schematics/power/servo_power_rearm_integration_revA`へ統合（68部品・238端子）。EN_UVLO駆動、FLT捕捉、起動状態回路、変換器、回生等は未接続で、完成電源ではない。
 
 EN停止回路: `integrated_enable_interface.json`へTPS259813L条件を定義。旧TPS3808停止回路を変換器出力で無保護給電する案は、3S貫通故障12.6 Vが絶対最大7 Vを超えるため不適合。`enable_supply_fault_domain_v1`参照。
+
+電源接続統合の次候補は`servo_power_rearm_integration_revB`。停止監視を専用TPS70933のSTOP_AUX3V3へ移した71部品・247端子。サーボ変換器の出力に停止IC電源を依存させない。電流・熱・電源順序とEN駆動は未確認。
