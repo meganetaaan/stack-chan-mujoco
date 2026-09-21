@@ -1,0 +1,75 @@
+{
+  "samples": [
+    {
+      "time_s": 0.079,
+      "bus_V": 1.873165e-07,
+      "rail_V": 1.882388e-07,
+      "aux_V": 3.206773,
+      "en_V": 0.0164211,
+      "Cout_energy_J": 1.70082459962112e-17
+    },
+    {
+      "time_s": 0.081,
+      "bus_V": 1.110051e-07,
+      "rail_V": 1.115896e-07,
+      "aux_V": 3.137497,
+      "en_V": 9.995357e-06,
+      "Cout_energy_J": 5.9770746375167996e-18
+    },
+    {
+      "time_s": 0.1,
+      "bus_V": -1.928352e-08,
+      "rail_V": -1.927437e-08,
+      "aux_V": 0.8080279,
+      "en_V": 9.995377e-06,
+      "Cout_energy_J": 1.7832064267051198e-19
+    },
+    {
+      "time_s": 0.2,
+      "bus_V": -2.087682e-08,
+      "rail_V": -2.087461e-08,
+      "aux_V": 0.0005901045,
+      "en_V": 9.995376e-06,
+      "Cout_energy_J": 2.09159684473008e-19
+    },
+    {
+      "time_s": 1.0,
+      "bus_V": -2.087682e-08,
+      "rail_V": -2.087461e-08,
+      "aux_V": 4.774734e-29,
+      "en_V": 9.994584e-06,
+      "Cout_energy_J": 2.09159684473008e-19
+    }
+  ],
+  "numerical_checks_passed": true,
+  "fault_detector_measurements": {
+    "fault_latch_20ms": 0.9999865,
+    "fault_latch_max": 1.0,
+    "en_20ms": 0.0164211,
+    "drive_20ms": 0.0
+  },
+  "powered_measurements": {
+    "powered_bus_min": 1.873626e-07,
+    "powered_bus_max": 0.0001780751,
+    "powered_brake0_peak_W": 6.559824e-09,
+    "powered_brake0_peak_A": 3.849324e-05,
+    "powered_brake1_peak_W": 1.403879e-25,
+    "powered_brake1_peak_A": 1.780751e-13
+  },
+  "post_disconnect_absorber_measurements": {
+    "shunt0_energy_J": 0.00197639,
+    "shunt0_peak_W": 0.1138989,
+    "brake0_energy_J": 0.065264,
+    "brake0_peak_W": 4.071872,
+    "mos0_energy_J": 0.00147418,
+    "mos0_peak_W": 0.09197522,
+    "shunt1_energy_J": 4.22971e-20,
+    "shunt1_peak_W": 2.437569e-18,
+    "brake1_energy_J": 1.39673e-18,
+    "brake1_peak_W": 8.714282e-17,
+    "mos1_energy_J": 3.15492e-10,
+    "mos1_peak_W": 1.968377e-08
+  },
+  "bus_after_disconnect_max_V": 4.43664,
+  "protection_design_verified": false
+}
