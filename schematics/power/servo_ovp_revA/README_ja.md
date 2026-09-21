@@ -70,3 +70,7 @@ POWER_ENABLE_COMMANDを受ける構成候補で、合計12部品。起動資格�
 
 電源名を既存回路のLOGIC3V3へ統一した（旧記載AUX_3V3は同一電源の意図だった）。
 追加バッファを含む許可信号の接続負荷は`validation/servo_permission_fanout_v1/`。
+
+既存手動許可回路を含めた接続表は`validation/ovp_integration_v1/pins.csv`。
+全58部品・225端子の参照用で、未実装10インターフェースを別記した。
+生成成功を電気的な動作合格とは扱わない。

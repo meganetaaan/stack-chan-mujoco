@@ -1,0 +1,226 @@
+assembly,ref,part,pin,net
+manual,U1,MAX6816EUS+T,1,GND
+manual,U1,MAX6816EUS+T,2,BUTTON_RAW
+manual,U1,MAX6816EUS+T,3,BUTTON_RELEASED
+manual,U1,MAX6816EUS+T,4,LOGIC3V3
+manual,U2,SN74LVC1G04DBVR,1,NC
+manual,U2,SN74LVC1G04DBVR,2,BUTTON_RELEASED
+manual,U2,SN74LVC1G04DBVR,3,GND
+manual,U2,SN74LVC1G04DBVR,4,PRESS
+manual,U2,SN74LVC1G04DBVR,5,LOGIC3V3
+manual,U3,SN74HCS11PWR,1,RESET_N
+manual,U3,SN74HCS11PWR,2,RAW_RELEASED_CONDITIONED
+manual,U3,SN74HCS11PWR,3,ENABLE_PERMISSION
+manual,U3,SN74HCS11PWR,4,SEQUENCE_ENABLE_REQUEST
+manual,U3,SN74HCS11PWR,5,RESET_N
+manual,U3,SN74HCS11PWR,6,POWER_ENABLE_COMMAND
+manual,U3,SN74HCS11PWR,7,GND
+manual,U3,SN74HCS11PWR,8,NC
+manual,U3,SN74HCS11PWR,9,GND
+manual,U3,SN74HCS11PWR,10,GND
+manual,U3,SN74HCS11PWR,11,GND
+manual,U3,SN74HCS11PWR,12,RELEASE_CONDITION
+manual,U3,SN74HCS11PWR,13,BUTTON_RELEASED
+manual,U3,SN74HCS11PWR,14,LOGIC3V3
+manual,U4,74LVC1G17GV,1,NC
+manual,U4,74LVC1G17GV,2,RELEASE_CONDITION
+manual,U4,74LVC1G17GV,3,GND
+manual,U4,74LVC1G17GV,4,RELEASE_MR
+manual,U4,74LVC1G17GV,5,LOGIC3V3
+manual,U5,TPS3808G33DBVR,1,RELEASE_QUALIFIED
+manual,U5,TPS3808G33DBVR,2,GND
+manual,U5,TPS3808G33DBVR,3,RELEASE_MR
+manual,U5,TPS3808G33DBVR,4,TIMER_CT
+manual,U5,TPS3808G33DBVR,5,LOGIC3V3
+manual,U5,TPS3808G33DBVR,6,LOGIC3V3
+manual,U6,SN74HCS74PW,1,RESET_N
+manual,U6,SN74HCS74PW,2,LOGIC3V3
+manual,U6,SN74HCS74PW,3,RELEASE_QUALIFIED
+manual,U6,SN74HCS74PW,4,LOGIC3V3
+manual,U6,SN74HCS74PW,5,ARMED
+manual,U6,SN74HCS74PW,6,NC
+manual,U6,SN74HCS74PW,7,GND
+manual,U6,SN74HCS74PW,8,NC
+manual,U6,SN74HCS74PW,9,ENABLE_PERMISSION
+manual,U6,SN74HCS74PW,10,LOGIC3V3
+manual,U6,SN74HCS74PW,11,PRESS
+manual,U6,SN74HCS74PW,12,ARMED
+manual,U6,SN74HCS74PW,13,RESET_N
+manual,U6,SN74HCS74PW,14,LOGIC3V3
+manual,R1,100k value candidate; exact part/tolerance pending,1,LOGIC3V3
+manual,R1,100k value candidate; exact part/tolerance pending,2,TIMER_CT
+manual,R2,100k value candidate; exact part/tolerance pending,1,LOGIC3V3
+manual,R2,100k value candidate; exact part/tolerance pending,2,RELEASE_QUALIFIED
+manual,C1,100nF local ceramic candidate; exact part pending,1,LOGIC3V3
+manual,C1,100nF local ceramic candidate; exact part pending,2,GND
+manual,C2,100nF local ceramic candidate; exact part pending,1,LOGIC3V3
+manual,C2,100nF local ceramic candidate; exact part pending,2,GND
+manual,C3,100nF local ceramic candidate; exact part pending,1,LOGIC3V3
+manual,C3,100nF local ceramic candidate; exact part pending,2,GND
+manual,C4,100nF local ceramic candidate; exact part pending,1,LOGIC3V3
+manual,C4,100nF local ceramic candidate; exact part pending,2,GND
+manual,C5,100nF local ceramic candidate; exact part pending,1,LOGIC3V3
+manual,C5,100nF local ceramic candidate; exact part pending,2,GND
+manual,C6,100nF local ceramic candidate; exact part pending,1,LOGIC3V3
+manual,C6,100nF local ceramic candidate; exact part pending,2,GND
+manual,SW1,B3U-1000P,1,BUTTON_RAW
+manual,SW1,B3U-1000P,2,GND
+manual,U7,TPS3808G33DBVR,1,RESET_N
+manual,U7,TPS3808G33DBVR,2,GND
+manual,U7,TPS3808G33DBVR,3,RAIL_HEALTH_N
+manual,U7,TPS3808G33DBVR,4,SUPERVISOR_CT
+manual,U7,TPS3808G33DBVR,5,LOGIC3V3
+manual,U7,TPS3808G33DBVR,6,LOGIC3V3
+manual,R3,100k value candidate; exact part/tolerance pending,1,LOGIC3V3
+manual,R3,100k value candidate; exact part/tolerance pending,2,SUPERVISOR_CT
+manual,R4,100k value candidate; exact part/tolerance pending,1,LOGIC3V3
+manual,R4,100k value candidate; exact part/tolerance pending,2,RESET_N
+manual,C7,100nF local ceramic candidate; exact part pending,1,LOGIC3V3
+manual,C7,100nF local ceramic candidate; exact part pending,2,GND
+manual,U8,74LVC1G17GV,1,NC
+manual,U8,74LVC1G17GV,2,POWER_ENABLE_COMMAND
+manual,U8,74LVC1G17GV,3,GND
+manual,U8,74LVC1G17GV,4,ENABLE_BUFFER_OUT
+manual,U8,74LVC1G17GV,5,LOGIC3V3
+manual,R5,"39k pulldown; total +/-1% budget, part pending",1,MAIN_EFUSE_EN
+manual,R5,"39k pulldown; total +/-1% budget, part pending",2,GND
+manual,R6,"220k pulldown; total +/-1% budget, part pending",1,POWER_ENABLE_COMMAND
+manual,R6,"220k pulldown; total +/-1% budget, part pending",2,GND
+manual,C8,100nF local ceramic candidate; part pending,1,LOGIC3V3
+manual,C8,100nF local ceramic candidate; part pending,2,GND
+manual,R7,"4.7k series; total +/-1% budget, part pending",1,ENABLE_BUFFER_OUT
+manual,R7,"4.7k series; total +/-1% budget, part pending",2,MAIN_EFUSE_EN
+manual,U9,TPS3808G33DBVR,1,RAIL_HEALTH_N
+manual,U9,TPS3808G33DBVR,2,GND
+manual,U9,TPS3808G33DBVR,3,EFUSE_INPUT_5V
+manual,U9,TPS3808G33DBVR,4,CLAMP_CT
+manual,U9,TPS3808G33DBVR,5,LOGIC3V3
+manual,U9,TPS3808G33DBVR,6,EFUSE_INPUT_5V
+manual,R8,100k CT candidate; part pending,1,EFUSE_INPUT_5V
+manual,R8,100k CT candidate; part pending,2,CLAMP_CT
+manual,C9,100nF local ceramic candidate; part pending,1,EFUSE_INPUT_5V
+manual,C9,100nF local ceramic candidate; part pending,2,GND
+manual,U10,TPS3808G01DBVR,1,MAIN_EFUSE_EN
+manual,U10,TPS3808G01DBVR,2,GND
+manual,U10,TPS3808G01DBVR,3,CLAMP_MR_5V
+manual,U10,TPS3808G01DBVR,4,NC
+manual,U10,TPS3808G01DBVR,5,EFUSE_INPUT_5V
+manual,U10,TPS3808G01DBVR,6,EFUSE_INPUT_5V
+manual,U11,74LVC1G17GV,1,NC
+manual,U11,74LVC1G17GV,2,RAIL_HEALTH_N
+manual,U11,74LVC1G17GV,3,GND
+manual,U11,74LVC1G17GV,4,CLAMP_MR_5V
+manual,U11,74LVC1G17GV,5,EFUSE_INPUT_5V
+manual,R9,"10k cause pullup; total +/-1% budget, part pending",1,LOGIC3V3
+manual,R9,"10k cause pullup; total +/-1% budget, part pending",2,RAIL_HEALTH_N
+manual,C10,100nF local ceramic candidate; part pending,1,EFUSE_INPUT_5V
+manual,C10,100nF local ceramic candidate; part pending,2,GND
+manual,C11,100nF local ceramic candidate; part pending,1,EFUSE_INPUT_5V
+manual,C11,100nF local ceramic candidate; part pending,2,GND
+manual,U12,TPS3700DDCR,1,PG_CONDITIONED_OD
+manual,U12,TPS3700DDCR,2,GND
+manual,U12,TPS3700DDCR,3,PG_DIVIDED
+manual,U12,TPS3700DDCR,4,GND
+manual,U12,TPS3700DDCR,5,LOGIC3V3
+manual,U12,TPS3700DDCR,6,NC
+manual,U13,74LVC1G17GV,1,NC
+manual,U13,74LVC1G17GV,2,PG_CONDITIONED_OD
+manual,U13,74LVC1G17GV,3,GND
+manual,U13,74LVC1G17GV,4,PG_CONDITIONED
+manual,U13,74LVC1G17GV,5,LOGIC3V3
+manual,R10,150000 value candidate; exact part pending,1,LOGIC3V3
+manual,R10,150000 value candidate; exact part pending,2,MAIN_EFUSE_PG
+manual,R11,1000000 value candidate; exact part pending,1,MAIN_EFUSE_PG
+manual,R11,1000000 value candidate; exact part pending,2,PG_DIVIDED
+manual,R12,330000 value candidate; exact part pending,1,PG_DIVIDED
+manual,R12,330000 value candidate; exact part pending,2,GND
+manual,R13,10000 value candidate; exact part pending,1,LOGIC3V3
+manual,R13,10000 value candidate; exact part pending,2,PG_CONDITIONED_OD
+manual,C12,1e-07 value candidate; exact part pending,1,LOGIC3V3
+manual,C12,1e-07 value candidate; exact part pending,2,GND
+manual,C13,100nF local ceramic candidate; exact part pending,1,LOGIC3V3
+manual,C13,100nF local ceramic candidate; exact part pending,2,GND
+manual,U14,74AUP1G06GW,1,NC
+manual,U14,74AUP1G06GW,2,SEQUENCE_CLEAR_REQUEST
+manual,U14,74AUP1G06GW,3,GND
+manual,U14,74AUP1G06GW,4,RESET_N
+manual,U14,74AUP1G06GW,5,LOGIC3V3
+manual,R14,"100k input pullup; total +/-1% comparison, exact part pending",1,LOGIC3V3
+manual,R14,"100k input pullup; total +/-1% comparison, exact part pending",2,SEQUENCE_CLEAR_REQUEST
+manual,C14,100nF local ceramic candidate; exact part pending,1,LOGIC3V3
+manual,C14,100nF local ceramic candidate; exact part pending,2,GND
+manual,U15,74LVC1G17GV,1,NC
+manual,U15,74LVC1G17GV,2,BUTTON_RAW
+manual,U15,74LVC1G17GV,3,GND
+manual,U15,74LVC1G17GV,4,RAW_RELEASED_CONDITIONED
+manual,U15,74LVC1G17GV,5,LOGIC3V3
+manual,R15,3k local button pullup; total +/-1% budget; exact part pending,1,LOGIC3V3
+manual,R15,3k local button pullup; total +/-1% budget; exact part pending,2,BUTTON_RAW
+manual,C15,100nF local ceramic candidate; exact part pending,1,LOGIC3V3
+manual,C15,100nF local ceramic candidate; exact part pending,2,GND
+ovp,U_OV_L,LTC4365ITS8#TRMPBF,1,UBEC_L
+ovp,U_OV_L,LTC4365ITS8#TRMPBF,2,UV_SENSE_L
+ovp,U_OV_L,LTC4365ITS8#TRMPBF,3,OV_SENSE_L
+ovp,U_OV_L,LTC4365ITS8#TRMPBF,4,GND
+ovp,U_OV_L,LTC4365ITS8#TRMPBF,5,PERMIT_L
+ovp,U_OV_L,LTC4365ITS8#TRMPBF,6,FAULT_N_L
+ovp,U_OV_L,LTC4365ITS8#TRMPBF,7,OV_OUT_L
+ovp,U_OV_L,LTC4365ITS8#TRMPBF,8,GATE_L
+ovp,Q_IN_L,SiSS80DN-T1-GE3,1,COMMON_S_L
+ovp,Q_IN_L,SiSS80DN-T1-GE3,2,COMMON_S_L
+ovp,Q_IN_L,SiSS80DN-T1-GE3,3,COMMON_S_L
+ovp,Q_IN_L,SiSS80DN-T1-GE3,4,GATE_L
+ovp,Q_IN_L,SiSS80DN-T1-GE3,5,UBEC_L
+ovp,Q_IN_L,SiSS80DN-T1-GE3,6,UBEC_L
+ovp,Q_IN_L,SiSS80DN-T1-GE3,7,UBEC_L
+ovp,Q_IN_L,SiSS80DN-T1-GE3,8,UBEC_L
+ovp,Q_OUT_L,SiSS80DN-T1-GE3,1,COMMON_S_L
+ovp,Q_OUT_L,SiSS80DN-T1-GE3,2,COMMON_S_L
+ovp,Q_OUT_L,SiSS80DN-T1-GE3,3,COMMON_S_L
+ovp,Q_OUT_L,SiSS80DN-T1-GE3,4,GATE_L
+ovp,Q_OUT_L,SiSS80DN-T1-GE3,5,OV_OUT_L
+ovp,Q_OUT_L,SiSS80DN-T1-GE3,6,OV_OUT_L
+ovp,Q_OUT_L,SiSS80DN-T1-GE3,7,OV_OUT_L
+ovp,Q_OUT_L,SiSS80DN-T1-GE3,8,OV_OUT_L
+ovp,U_OV_R,LTC4365ITS8#TRMPBF,1,UBEC_R
+ovp,U_OV_R,LTC4365ITS8#TRMPBF,2,UV_SENSE_R
+ovp,U_OV_R,LTC4365ITS8#TRMPBF,3,OV_SENSE_R
+ovp,U_OV_R,LTC4365ITS8#TRMPBF,4,GND
+ovp,U_OV_R,LTC4365ITS8#TRMPBF,5,PERMIT_R
+ovp,U_OV_R,LTC4365ITS8#TRMPBF,6,FAULT_N_R
+ovp,U_OV_R,LTC4365ITS8#TRMPBF,7,OV_OUT_R
+ovp,U_OV_R,LTC4365ITS8#TRMPBF,8,GATE_R
+ovp,Q_IN_R,SiSS80DN-T1-GE3,1,COMMON_S_R
+ovp,Q_IN_R,SiSS80DN-T1-GE3,2,COMMON_S_R
+ovp,Q_IN_R,SiSS80DN-T1-GE3,3,COMMON_S_R
+ovp,Q_IN_R,SiSS80DN-T1-GE3,4,GATE_R
+ovp,Q_IN_R,SiSS80DN-T1-GE3,5,UBEC_R
+ovp,Q_IN_R,SiSS80DN-T1-GE3,6,UBEC_R
+ovp,Q_IN_R,SiSS80DN-T1-GE3,7,UBEC_R
+ovp,Q_IN_R,SiSS80DN-T1-GE3,8,UBEC_R
+ovp,Q_OUT_R,SiSS80DN-T1-GE3,1,COMMON_S_R
+ovp,Q_OUT_R,SiSS80DN-T1-GE3,2,COMMON_S_R
+ovp,Q_OUT_R,SiSS80DN-T1-GE3,3,COMMON_S_R
+ovp,Q_OUT_R,SiSS80DN-T1-GE3,4,GATE_R
+ovp,Q_OUT_R,SiSS80DN-T1-GE3,5,OV_OUT_R
+ovp,Q_OUT_R,SiSS80DN-T1-GE3,6,OV_OUT_R
+ovp,Q_OUT_R,SiSS80DN-T1-GE3,7,OV_OUT_R
+ovp,Q_OUT_R,SiSS80DN-T1-GE3,8,OV_OUT_R
+ovp,R_SHDN_L,TNPW0603100KBYEA,1,PERMIT_L
+ovp,R_SHDN_L,TNPW0603100KBYEA,2,GND
+ovp,R_SHDN_R,TNPW0603100KBYEA,1,PERMIT_R
+ovp,R_SHDN_R,TNPW0603100KBYEA,2,GND
+ovp,U_PERMIT_L,74LVC1G17GV,1,NC
+ovp,U_PERMIT_L,74LVC1G17GV,2,POWER_ENABLE_COMMAND
+ovp,U_PERMIT_L,74LVC1G17GV,3,GND
+ovp,U_PERMIT_L,74LVC1G17GV,4,PERMIT_L
+ovp,U_PERMIT_L,74LVC1G17GV,5,LOGIC3V3
+ovp,C_PERMIT_L,GRM31C5C1H104JA01L,1,LOGIC3V3
+ovp,C_PERMIT_L,GRM31C5C1H104JA01L,2,GND
+ovp,U_PERMIT_R,74LVC1G17GV,1,NC
+ovp,U_PERMIT_R,74LVC1G17GV,2,POWER_ENABLE_COMMAND
+ovp,U_PERMIT_R,74LVC1G17GV,3,GND
+ovp,U_PERMIT_R,74LVC1G17GV,4,PERMIT_R
+ovp,U_PERMIT_R,74LVC1G17GV,5,LOGIC3V3
+ovp,C_PERMIT_R,GRM31C5C1H104JA01L,1,LOGIC3V3
+ovp,C_PERMIT_R,GRM31C5C1H104JA01L,2,GND
