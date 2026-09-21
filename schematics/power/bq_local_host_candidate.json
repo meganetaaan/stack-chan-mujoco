@@ -68,12 +68,12 @@
     },
     {
       "reference": "R_BQ_HOST_NRST",
-      "part": "TNPW060310K0BEEA",
+      "part": "TNPW0603100KBEEA",
       "pins": {
         "1": "BQ_CTRL3V3",
         "2": "BQ_HOST_NRST"
       },
-      "value_ohm": 10000
+      "value_ohm": 100000
     },
     {
       "reference": "R_BQ_AUX_START_REQUEST_PD",
@@ -92,6 +92,45 @@
         "2": "CELL_B_MINUS"
       },
       "value_ohm": 10000
+    },
+    {
+      "reference": "U_BQ_HOST_SUP",
+      "part": "TPS3808G01DBVR",
+      "pins": {
+        "1": "BQ_HOST_NRST",
+        "2": "CELL_B_MINUS",
+        "3": "BQ_CTRL3V3",
+        "4": null,
+        "5": "BQ_HOST_SUP_SENSE",
+        "6": "BQ_CTRL3V3"
+      }
+    },
+    {
+      "reference": "R_BQ_HOST_SUP_TOP",
+      "part": "TNPW060357K6BEEA",
+      "value_ohm": 57600,
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_HOST_SUP_SENSE"
+      }
+    },
+    {
+      "reference": "R_BQ_HOST_SUP_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "BQ_HOST_SUP_SENSE",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_BQ_HOST_SUP",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      }
     }
   ],
   "pin_allocation": {
@@ -328,9 +367,33 @@
     "Select boot option bytes for main flash, retain NRST and SWD; record and verify programmed values",
     "Independent watchdog/fault gating must override stale-high MCU outputs; not implemented",
     "BQ REG1/REG0 load, added bulk capacitor startup and stability must be requalified",
-    "External supply-valid reset needed: do not assume this MCU has configurable BOR"
+    "External TPS3808 reset candidate connected; dynamic response and low-voltage output validity remain unqualified"
   ],
   "manufacturing_release": false,
   "firmware_implemented": false,
-  "reset_supervision_qualified": false
+  "reset_supervision_qualified": false,
+  "supervisor_candidate": {
+    "source": "https://www.ti.com/lit/ds/symlink/tps3808.pdf",
+    "revision": "SBVS050N August2026",
+    "sections": [
+      "5",
+      "6.5",
+      "6.6",
+      "7.3.1",
+      "7.3.4"
+    ],
+    "part": "TPS3808G01DBVR",
+    "nominal_threshold_V": 0.405,
+    "threshold_fraction": 0.02,
+    "hysteresis_fraction_max": 0.03,
+    "sense_current_abs_A": 2.5e-08,
+    "total_resistance_variation_allocation": 0.01,
+    "NRST_external_pullup_changed_from_ohm": 10000,
+    "NRST_external_pullup_ohm": 100000,
+    "reason": "10k external in parallel with MCU internal 25..55k fell below TPS3808 application minimum pullup; use100k",
+    "CT": "open:12..28ms only at manufacturer loading/test conditions; NRST100nF here not qualified",
+    "SENSE_filter": "no added capacitor yet; layout/noise and transient response require joint decision",
+    "reset_output_scope": "MCU reset only; no independent override of main FET or AUX request",
+    "dynamic_shutdown_qualified": false
+  }
 }
