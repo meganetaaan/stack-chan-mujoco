@@ -2,10 +2,20 @@
 import argparse,csv,hashlib,json,re
 from pathlib import Path
 root=Path(__file__).resolve().parents[3]
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
-paths=['board/mechanical/prototype/yaw_support_candidate/revA/inventory.json','docs/prototype/engineering/prototype_decision/candidate_bom.csv']
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--inventory',help='Explicit historical inventory; default is current.json');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+pointer='board/mechanical/prototype/yaw_support_candidate/current.json'
+selected=a.inventory or json.loads((root/pointer).read_text())['inventory']
+paths=[selected,'docs/prototype/engineering/prototype_decision/candidate_bom.csv']
+if not a.inventory:paths.append(pointer)
 parts=json.loads((root/paths[0]).read_text())['parts'];bom={r['item']:r for r in csv.DictReader((root/paths[1]).open())}
-rules=[('body_shroud','Yaw candidate body shroud',0),('rear_plate','A5052P-H34 rear structural plate t2 mm',0),('(left|right)_yaw_fixed_support','Yaw fixed support keeper-v2',0),('(left|right)_threaded_backing_plate','A5052P-H34 threaded backing plate t3 mm',0),('(left|right)_mount_plate','SUS304 yaw servo mount plate t1 mm',0),('(left|right)_(rear_[0-3]_bolt)','NBK SNS-M3-16 yaw rear main bolts',0),('(left|right)_rear_[0-3]_rear_washer','Yaw rear M3 washer OD7 ID3.2 t0.5 mm',0),('(left|right)_(plate_[0-3]_screw|64_keeper|76_keeper)','NBK SLH-M2-10 screw',2),('(left|right)_plate_[0-3]_washer','SCW-SOLE-SPACER-01 revA',2),('(left|right)_plate_[0-3]_nut','PTS A56202 external nut',2)]
+washers=[v for v in parts if v['name'].endswith('rear_washer')]
+assert len(washers)==8
+# Do not certify a new BOM against the old 3.2 mm bore assembly.
+assert all('SCW-YAW-REAR-WASHER-01' in v['note'] for v in washers), 'BOM washer differs from inventory revision'
+for part in parts:
+ if part.get('source'):
+  assert hashlib.sha256((root/part['source']).read_bytes()).hexdigest()==part['source_sha256'],part['name']
+rules=[('body_shroud','Yaw candidate body shroud',0),('rear_plate','A5052P-H34 rear structural plate t2 mm',0),('(left|right)_yaw_fixed_support','Yaw fixed support keeper-v2',0),('(left|right)_threaded_backing_plate','A5052P-H34 threaded backing plate t3 mm',0),('(left|right)_mount_plate','SUS304 yaw servo mount plate t1 mm',0),('(left|right)_(rear_[0-3]_bolt)','NBK SNS-M3-16 yaw rear main bolts',0),('(left|right)_rear_[0-3]_rear_washer','SCW-YAW-REAR-WASHER-01 revA',0),('(left|right)_(plate_[0-3]_screw|64_keeper|76_keeper)','NBK SLH-M2-10 screw',2),('(left|right)_plate_[0-3]_washer','SCW-SOLE-SPACER-01 revA',0),('(left|right)_plate_[0-3]_nut','PTS A56202 external nut',2)]
 coverage=[];seen=[]
 for pattern,item,feet in rules:
  names=[v['name'] for v in parts if re.fullmatch(pattern,v['name'])];assert names,item

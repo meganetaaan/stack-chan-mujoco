@@ -164,3 +164,7 @@ TPS70933メーカー非暗号化モデルの定常計算は実行できたが、
 ### ヨー支持組立 revB
 
 後部座金案を52部品の組立CADへ統合し、`board/mechanical/prototype/yaw_support_candidate/current.json` を追加。残り44部品の台帳はrevAと同一。`validation/rear_washer_stack_v1` ではねじ長さ・裏板厚さ・座金厚さの64端点条件で先端突き出し1.27〜2.33mmを確認した。他の積層公差、完全ねじ山、周辺隙間、締結強度は未確認。旧revA解析を更新後の合格証拠にはしない。
+
+### 現行ヨー部品表の整合
+
+`validation/yaw_bom_coverage_v2` にrevBの52部品／10品目の対応を確認。BOM後部座金を加工案へ変更し、足部で廃止済みの旧スペーサー共有数量を除いた。検査はcurrent.jsonを読み、旧revAと現行BOMの組合せを拒否する。初回失敗を保存。数量整合は製造承認・強度合格を意味しない。
