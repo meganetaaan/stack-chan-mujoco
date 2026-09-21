@@ -80,5 +80,8 @@
   "clear_driver_dc_status": "G030 PA11 plus 10k R14 passes declared valid-rail DC comparison only; not integrated, transitions/reset/board leakage and whole sequencer still unqualified",
   "gpio_mmio_adapter": "software/firmware/power_sequence/g030_gpio_mmio.c",
   "gpio_mmio_evidence": "validation/g030_gpio_mmio_v1/report.json",
-  "gpio_mmio_status": "Host literal-address tests and Cortex-M0+ object build only; boot clocks, RTC/remap, qualified inputs and board integration incomplete"
+  "gpio_mmio_status": "Host literal-address tests and Cortex-M0+ object build only; boot clocks, RTC/remap, qualified inputs and board integration incomplete",
+  "gpio_runtime_bridge": "software/firmware/power_sequence/g030_power_runtime.c",
+  "gpio_runtime_bridge_evidence": "validation/g030_power_runtime_v1/report.json",
+  "gpio_runtime_bridge_status": "Host fault injection and ARM object build only; full boot, input qualification, timebase and electrical integration incomplete"
 }

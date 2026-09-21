@@ -40,5 +40,5 @@ power_runtime_bootは起動時専用。実CLR解除後の許可Low観測を要�
 起動期限はpower_deadline.cで実行処理へ接続した。既定の実時間値はなく、無効設定では起動しない。実時刻源・周波数誤差・期限選定・時計停止時の監視は未完了。
 
 GPIO MMIOの検査と前提はvalidation/g030_gpio_mmio_v1/README_ja.mdを参照。
-`power_g030_mmio_ok()`の異常を呼出し側が`io_fault`へ記憶する接続が必要。
+`g030_power_runtime.c`でMMIOと実行処理を接続した。アクセス異常を`io_fault`へ保持し、検出した呼出し内で給電解除を要求する。検査はvalidation/g030_power_runtime_v1を参照。起動前のクロック・RTC・リマップ設定、外部抑止の保証は依然必要。
 IDRの生値をそのまま資格済み観測へ変換してはならない。

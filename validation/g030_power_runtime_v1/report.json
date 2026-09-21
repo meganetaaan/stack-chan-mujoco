@@ -1,0 +1,33 @@
+{
+  "fault_scenarios": 11,
+  "model_reads": 211,
+  "model_writes": 160,
+  "arm_object_build_pass": true,
+  "same_call_clear_on_reported_access_fault": true,
+  "fault_memory_survives_healthy_observations": true,
+  "hardware_verified": false,
+  "source_sha256": {
+    "software/firmware/power_sequence/g030_power_runtime.c": "d38179cdb0f75b3d41a26e9c03ce9fd70eb1f94c0bfd0bdd98ed234bf52b290f",
+    "software/firmware/power_sequence/g030_gpio_init.c": "c2edf89fdddcc62f53893a45559eb4fd53ae0eae7a5ae2701adc6f55523e1a98",
+    "software/firmware/power_sequence/g030_gpio_outputs.c": "e56d019a0a18fb45af04b18730b4e845777711614ddcf2ffdf41f77ced25002c",
+    "software/firmware/power_sequence/power_runtime.c": "3e826602eaea642af2ce93573845985390f6055b0e00a4a72e95ee47882c9b9e",
+    "software/firmware/power_sequence/power_deadline.c": "7553d79e84d989acfacee35a5c50f6fc1223250adae56a9d4629cfec62ae5b2f",
+    "software/firmware/power_sequence/power_sequence.c": "6d1c23af3fa8686ca6dcb0f2174fdec951fb0979d1ab782fc7f7f3f9909b2c6a",
+    "software/firmware/power_sequence/g030_power_runtime.h": "124af9777b5634e9b40629fd7bf92953f11724fd67dcc811771cb78b78c6fe0e",
+    "software/firmware/power_sequence/g030_gpio_init.h": "78864601911a73b3774f32e712346d3c58e785c2465d50fde125a37692874955",
+    "software/firmware/power_sequence/g030_gpio_outputs.h": "2d5064caef66e4a59364f2087d6cc6cda60d433d61102ea6f7eaae477ccd2769",
+    "software/firmware/power_sequence/power_runtime.h": "c5831f30f11f7b73183157672cadcb9df89f5d7a6d571c2e6f69feee679f4420",
+    "software/firmware/power_sequence/power_deadline.h": "e453a26e56c473060af023ec1c2e1775e804bdd8f560aa5dd33f6f28ff4ef095",
+    "software/firmware/power_sequence/power_sequence.h": "30912a4f7c2519913fc3fe5b0785a4aaad574a29ec60e6fd7b349673c5ce95a6",
+    "software/firmware/power_sequence/g030_gpio_mmio.c": "272b768b7e4ff9c2553c00e67c200eec15cde6ea547af26bf3e833d8b0cdf0f2",
+    "software/firmware/power_sequence/g030_gpio_mmio.h": "3b448c3c0157887d8189e97252b5fca44df781a6b6d5dde7d170178df8ba5fea",
+    "software/sim/circuits/tests/g030_power_runtime_host.c": "86413266e85ca9a9dd02705958d03a9a1995f32a535205a7b82c40d048779436",
+    "software/sim/circuits/check_g030_power_runtime.py": "9aa7a030526c3d978833b7a139d9275d3efe9efe4a0f1e6ff8ddb85c57ece295"
+  },
+  "limits": [
+    "Fault injection uses replacement callbacks; not a peripheral/bus electrical failure model.",
+    "A fault detected after an enable write can leave a transient enable pulse; independent hardware cutoff remains necessary.",
+    "No boot clock/RTC/remap setup, qualified input acquisition, actual timebase or watchdog.",
+    "No final linking, flashed image or real pin/timing verification."
+  ]
+}
