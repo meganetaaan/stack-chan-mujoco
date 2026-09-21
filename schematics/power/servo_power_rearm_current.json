@@ -14,7 +14,8 @@
     "13 monitor/default resistors assigned manufacturer ordering codes; nominal values unchanged",
     "21 local 100nF capacitors with selected ordering candidate",
     "Dedicated stop input 1k/BAS116/100k branch; conditional DC screen only",
-    "2.2uF WIMA film input candidate plus local 100nF C0G bypass"
+    "2.2uF WIMA film input candidate plus local 100nF C0G bypass",
+    "ITIMER pin10 intentionally open on both eFuses; external blanking capacitor not fitted"
   ],
   "manufacturing_release": false,
   "electrical_qualification": false,
@@ -26,5 +27,6 @@
     "Integrated transient and fault verification"
   ],
   "candidate_bom": "schematics/power/servo_power_rearm_integration_revM/candidate_bom.csv",
-  "stop_output_capacitor_requirements": "schematics/power/stop_output_capacitor_requirements.json"
+  "stop_output_capacitor_requirements": "schematics/power/stop_output_capacitor_requirements.json",
+  "itimer_selection": "schematics/power/itimer_selection.json"
 }

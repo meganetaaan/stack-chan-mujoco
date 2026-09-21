@@ -98,3 +98,5 @@ TPS70933メーカー非暗号化モデルの定常計算は実行できたが、
 基板の機械外形候補を `board/power/mechanical_outline_revA/` に作成。80×25 mm、4取付穴と各6 mm角の部品/配線禁止領域。KiCad読込みとSTEP出力・機構CAD体積照合を確認。回路・取付具は未完成。
 
 `board/power/placement_revA/` に入力フィルムコンデンサ1個を実配置。既存8群・基板との公称干渉なし、取付禁止領域外、KiCadの6穴とCAD体積を照合。98部品全体の配置配線は未完了。
+
+左右eFuseのITIMERを外付けコンデンサなし（意図的開放）へ選定。`schematics/power/itimer_selection.json` と `validation/itimer_open_selection_v1/` が最新の扱い。1.8 µs典型値を最大遮断時間として使用しない。通常時誤停止・故障エネルギーは未確認。
