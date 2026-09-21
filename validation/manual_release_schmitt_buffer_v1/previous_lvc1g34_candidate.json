@@ -1,0 +1,23 @@
+{
+  "part_number": "SN74LVC1G34DBVR",
+  "quantity": 1,
+  "role": "noninverting buffer for TPS3808 release-timer MR",
+  "status": "DC_interface_checked_dynamic_pending",
+  "pins": {
+    "1_NC": "NC",
+    "2_A": "SN74HCS11 pin12 RELEASE_CONDITION",
+    "3_GND": "GND",
+    "4_Y": "TPS3808 pin3 MR; no other push-pull drivers",
+    "5_VCC": "common LOGIC3V3 with local 100nF candidate"
+  },
+  "manufacturing_release": false,
+  "source": "https://www.ti.com/lit/ds/symlink/sn74lvc1g34.pdf",
+  "revision": "SCES519O October 2025",
+  "limits": [
+    "Input 10 ns/V maximum transition not yet verified",
+    "Not a power-on inhibit; independent clear/output inhibit mandatory",
+    "DC result assumes valid HCS input logic and common valid supply"
+  ],
+  "layout_candidate": "Place adjacent to HCS11 on same PCB; no added RC on input link; capacitance budget pending layout",
+  "edge_model_evidence": "validation/manual_release_ibis_review_v1/README_ja.md"
+}
