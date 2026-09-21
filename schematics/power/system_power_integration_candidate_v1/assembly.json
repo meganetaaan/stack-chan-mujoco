@@ -4,7 +4,8 @@
     "schematics/power/battery_protection_integration_candidate_v1/assembly.json": "81b554524ec82166c36094b8298dbce884f5bd7d29f968ce39b23d79f921aa6e",
     "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json": "ae0e95e3e893f5ee0d438a0a508cf269cf967984d22b3f6dedecb0916e6c577d",
     "schematics/power/logic_predischarge_inhibit_candidate.json": "6c1a2af4d04f3f393bd5211c139c78ff4d3b9ca4844122c98fa827cc7085a2db",
-    "schematics/power/aux_start_isolator_candidate.json": "debef7a7e54cbf58a93e67bda4266ee319685d56156a23d516c3139c901fb197"
+    "schematics/power/aux_start_isolator_candidate.json": "debef7a7e54cbf58a93e67bda4266ee319685d56156a23d516c3139c901fb197",
+    "schematics/power/stop_feed_candidate.json": "e0bbf0dcd442b947220ebd4b7bacd5630063950d3883abe89c947db39c2eefd0"
   },
   "bindings_SYS_to_BAT": {
     "GND": "PACK_RETURN",
@@ -12,7 +13,8 @@
     "DRIVE_BATTERY_PROTECTED": "PACK_POS_PROTECTED"
   },
   "system_overrides": [
-    "SYS__U_LOGIC_PROTECT pin14: floating to SYS__LOGIC_SHDN; default-low network added"
+    "SYS__U_LOGIC_PROTECT pin14: floating to SYS__LOGIC_SHDN; default-low network added",
+    "SYS__R_STOP_INPUT 1kohm replaced by2x1.5kohm parallel"
   ],
   "connectivity_authority": "parts[].pins and interconnects only; nested metadata is inherited source-local context",
   "parts": [
@@ -2517,19 +2519,6 @@
       "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
     },
     {
-      "reference": "SYS__R_STOP_INPUT",
-      "part": "TNPW12061K00BYEA",
-      "value_ohm": 1000,
-      "total_tolerance_budget": 0.01,
-      "pins": {
-        "1": "PACK_POS_PROTECTED",
-        "2": "SYS__STOP_INPUT_LIMITED"
-      },
-      "placement": "At battery branch entry before any downstream copper exposed to a short",
-      "source_reference": "R_STOP_INPUT",
-      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
-    },
-    {
       "reference": "SYS__D_STOP_REVERSE",
       "part": "BAS116",
       "ordering_suffix_pending": true,
@@ -3195,6 +3184,28 @@
       },
       "source_reference": "SYS__C_AUX_ISO_SECONDARY",
       "source_assembly": "schematics/power/aux_start_isolator_candidate.json"
+    },
+    {
+      "reference": "SYS__R_STOP_INPUT_0",
+      "part": "TNPW12061K50BEEA",
+      "value_ohm": 1500,
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "SYS__STOP_INPUT_LIMITED"
+      },
+      "source_reference": "parallel_0",
+      "source_assembly": "schematics/power/stop_feed_candidate.json"
+    },
+    {
+      "reference": "SYS__R_STOP_INPUT_1",
+      "part": "TNPW12061K50BEEA",
+      "value_ohm": 1500,
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "SYS__STOP_INPUT_LIMITED"
+      },
+      "source_reference": "parallel_1",
+      "source_assembly": "schematics/power/stop_feed_candidate.json"
     }
   ],
   "interconnects": [

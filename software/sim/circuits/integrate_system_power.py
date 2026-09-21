@@ -65,6 +65,19 @@ def compose():
         part = copy.deepcopy(original)
         part.update(source_reference=part['reference'], source_assembly=iso_path)
         parts.append(part)
+    feed_path = 'schematics/power/stop_feed_candidate.json'
+    raw = (ROOT / feed_path).read_bytes()
+    feed = json.loads(raw)
+    provenance[feed_path] = hashlib.sha256(raw).hexdigest()
+    old_feed = next(p for p in parts if p['reference'] == feed['supersedes_reference'])
+    assert old_feed['value_ohm'] == feed['old_nominal_ohm']
+    assert list(old_feed['pins'].values()) == feed['nets']
+    parts.remove(old_feed)
+    for number in range(feed['quantity']):
+        parts.append({'reference': 'SYS__R_STOP_INPUT_' + str(number),
+                      'part': feed['part_each'], 'value_ohm': feed['resistance_each_ohm'],
+                      'pins': dict(zip(['1','2'], feed['nets'])),
+                      'source_reference': 'parallel_' + str(number), 'source_assembly': feed_path})
     refs = [part['reference'] for part in parts]
     assert len(refs) == len(set(refs))
     byref = {part['reference']: part for part in parts}
@@ -83,7 +96,7 @@ def compose():
         'no_explicit_copper_parallel_servo_outputs': find('SYS__LEFT_SERVO_BUS') != find('SYS__RIGHT_SERVO_BUS'),
         'logic_and_stop_input_on_protected_positive':
             byref['SYS__U_LOGIC_PROTECT']['pins']['8'] == 'PACK_POS_PROTECTED'
-            and byref['SYS__R_STOP_INPUT']['pins']['1'] == 'PACK_POS_PROTECTED',
+            and byref['SYS__R_STOP_INPUT_0']['pins']['1'] == 'PACK_POS_PROTECTED',
         'both_regulator_inputs_on_protected_positive': all(
             byref[f'SYS__{side}_U_REGULATOR']['pins']['VIN'] == 'PACK_POS_PROTECTED'
             for side in ('LEFT', 'RIGHT')),
@@ -107,7 +120,7 @@ def compose():
     assembly = {
         'status': 'partial_system_connection_candidate', 'source_sha256': provenance,
         'bindings_SYS_to_BAT': BINDINGS,
-        'system_overrides': ['SYS__U_LOGIC_PROTECT pin14: floating to SYS__LOGIC_SHDN; default-low network added'],
+        'system_overrides': ['SYS__U_LOGIC_PROTECT pin14: floating to SYS__LOGIC_SHDN; default-low network added', 'SYS__R_STOP_INPUT 1kohm replaced by2x1.5kohm parallel'],
         'connectivity_authority': 'parts[].pins and interconnects only; nested metadata is inherited source-local context',
         'parts': parts, 'interconnects': traces,
         'unimplemented_design': required_design,

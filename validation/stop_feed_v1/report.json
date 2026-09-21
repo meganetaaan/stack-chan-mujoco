@@ -1,0 +1,255 @@
+{
+  "source_sha256": {
+    "schematics/power/stop_feed_candidate.json": "e0bbf0dcd442b947220ebd4b7bacd5630063950d3883abe89c947db39c2eefd0",
+    "validation/aux_start_isolator_v1/report.json": "3c305e41ec64e44eedef73ce29057e012c4c6f020df40811f153f32bad3418c8"
+  },
+  "assumptions": {
+    "load_A": 0.002977629557810054,
+    "load_qualified": false,
+    "pack_endpoints_V": [
+      9.0,
+      12.6
+    ],
+    "diode_drop_sensitivity_V": [
+      1.0,
+      1.25
+    ],
+    "diode_basis": "BAS116 max at10mA/150mA,25C pulsed; not whole temperature guarantee atactual current",
+    "ground_current_sensitivity_A": [
+      0.0,
+      0.00035
+    ],
+    "ground_current_basis": "TPS709350uA is typical at150mA, not maximum atactual load;0 is optimistic comparison",
+    "LDO_input_screen_reference_V": 4.8,
+    "reference_basis": "3.3V+1.5V load regulation characterization condition; not dropout threshold",
+    "additional_capacitor_charge_and_leakage_included": false
+  },
+  "rows": [
+    {
+      "network": "old1kohm",
+      "pack_V": 9.0,
+      "diode_drop_sensitivity_V": 1.0,
+      "ground_current_sensitivity_A": 0.0,
+      "LDO_input_V": 4.942173987746952,
+      "margin_to4_8V_reference_V": 0.14217398774695233,
+      "available_output_load_at_reference_A": 0.00311983198319832
+    },
+    {
+      "network": "old1kohm",
+      "pack_V": 9.0,
+      "diode_drop_sensitivity_V": 1.0,
+      "ground_current_sensitivity_A": 0.00035,
+      "LDO_input_V": 4.592243980747653,
+      "margin_to4_8V_reference_V": -0.2077560192523471,
+      "available_output_load_at_reference_A": 0.00276983198319832
+    },
+    {
+      "network": "old1kohm",
+      "pack_V": 9.0,
+      "diode_drop_sensitivity_V": 1.25,
+      "ground_current_sensitivity_A": 0.0,
+      "LDO_input_V": 4.694698735272199,
+      "margin_to4_8V_reference_V": -0.10530126472780044,
+      "available_output_load_at_reference_A": 0.0028723072307230723
+    },
+    {
+      "network": "old1kohm",
+      "pack_V": 9.0,
+      "diode_drop_sensitivity_V": 1.25,
+      "ground_current_sensitivity_A": 0.00035,
+      "LDO_input_V": 4.3447687282729,
+      "margin_to4_8V_reference_V": -0.4552312717270999,
+      "available_output_load_at_reference_A": 0.0025223072307230723
+    },
+    {
+      "network": "old1kohm",
+      "pack_V": 12.6,
+      "diode_drop_sensitivity_V": 1.0,
+      "ground_current_sensitivity_A": 0.0,
+      "LDO_input_V": 8.505817623383388,
+      "margin_to4_8V_reference_V": 3.705817623383388,
+      "available_output_load_at_reference_A": 0.006684188418841884
+    },
+    {
+      "network": "old1kohm",
+      "pack_V": 12.6,
+      "diode_drop_sensitivity_V": 1.0,
+      "ground_current_sensitivity_A": 0.00035,
+      "LDO_input_V": 8.155887616384089,
+      "margin_to4_8V_reference_V": 3.3558876163840887,
+      "available_output_load_at_reference_A": 0.006334188418841884
+    },
+    {
+      "network": "old1kohm",
+      "pack_V": 12.6,
+      "diode_drop_sensitivity_V": 1.25,
+      "ground_current_sensitivity_A": 0.0,
+      "LDO_input_V": 8.258342370908636,
+      "margin_to4_8V_reference_V": 3.4583423709086363,
+      "available_output_load_at_reference_A": 0.006436663666366636
+    },
+    {
+      "network": "old1kohm",
+      "pack_V": 12.6,
+      "diode_drop_sensitivity_V": 1.25,
+      "ground_current_sensitivity_A": 0.00035,
+      "LDO_input_V": 7.908412363909337,
+      "margin_to4_8V_reference_V": 3.108412363909337,
+      "available_output_load_at_reference_A": 0.006086663666366636
+    },
+    {
+      "network": "parallel1_5kohm",
+      "pack_V": 9.0,
+      "diode_drop_sensitivity_V": 1.0,
+      "ground_current_sensitivity_A": 0.0,
+      "LDO_input_V": 5.700825656075279,
+      "margin_to4_8V_reference_V": 0.9008256560752788,
+      "available_output_load_at_reference_A": 0.004175937593759376
+    },
+    {
+      "network": "parallel1_5kohm",
+      "pack_V": 9.0,
+      "diode_drop_sensitivity_V": 1.0,
+      "ground_current_sensitivity_A": 0.00035,
+      "LDO_input_V": 5.437713859969722,
+      "margin_to4_8V_reference_V": 0.6377138599697219,
+      "available_output_load_at_reference_A": 0.003825937593759376
+    },
+    {
+      "network": "parallel1_5kohm",
+      "pack_V": 9.0,
+      "diode_drop_sensitivity_V": 1.25,
+      "ground_current_sensitivity_A": 0.0,
+      "LDO_input_V": 5.452724009582533,
+      "margin_to4_8V_reference_V": 0.6527240095825331,
+      "available_output_load_at_reference_A": 0.003845904590459046
+    },
+    {
+      "network": "parallel1_5kohm",
+      "pack_V": 9.0,
+      "diode_drop_sensitivity_V": 1.25,
+      "ground_current_sensitivity_A": 0.00035,
+      "LDO_input_V": 5.189612213476977,
+      "margin_to4_8V_reference_V": 0.38961221347697705,
+      "available_output_load_at_reference_A": 0.003495904590459046
+    },
+    {
+      "network": "parallel1_5kohm",
+      "pack_V": 12.6,
+      "diode_drop_sensitivity_V": 1.0,
+      "ground_current_sensitivity_A": 0.0,
+      "LDO_input_V": 9.273489365570805,
+      "margin_to4_8V_reference_V": 4.4734893655708055,
+      "available_output_load_at_reference_A": 0.00892841284128413
+    },
+    {
+      "network": "parallel1_5kohm",
+      "pack_V": 12.6,
+      "diode_drop_sensitivity_V": 1.0,
+      "ground_current_sensitivity_A": 0.00035,
+      "LDO_input_V": 9.01037756946525,
+      "margin_to4_8V_reference_V": 4.21037756946525,
+      "available_output_load_at_reference_A": 0.00857841284128413
+    },
+    {
+      "network": "parallel1_5kohm",
+      "pack_V": 12.6,
+      "diode_drop_sensitivity_V": 1.25,
+      "ground_current_sensitivity_A": 0.0,
+      "LDO_input_V": 9.02538771907806,
+      "margin_to4_8V_reference_V": 4.22538771907806,
+      "available_output_load_at_reference_A": 0.008598379837983798
+    },
+    {
+      "network": "parallel1_5kohm",
+      "pack_V": 12.6,
+      "diode_drop_sensitivity_V": 1.25,
+      "ground_current_sensitivity_A": 0.00035,
+      "LDO_input_V": 8.762275922972504,
+      "margin_to4_8V_reference_V": 3.9622759229725046,
+      "available_output_load_at_reference_A": 0.008248379837983799
+    },
+    {
+      "network": "one_open",
+      "pack_V": 9.0,
+      "diode_drop_sensitivity_V": 1.0,
+      "ground_current_sensitivity_A": 0.0,
+      "LDO_input_V": 3.4363053352420936,
+      "margin_to4_8V_reference_V": -1.3636946647579062,
+      "available_output_load_at_reference_A": 0.002063726372637264
+    },
+    {
+      "network": "one_open",
+      "pack_V": 9.0,
+      "diode_drop_sensitivity_V": 1.0,
+      "ground_current_sensitivity_A": 0.00035,
+      "LDO_input_V": 2.914047463282684,
+      "margin_to4_8V_reference_V": -1.885952536717316,
+      "available_output_load_at_reference_A": 0.001713726372637264
+    },
+    {
+      "network": "one_open",
+      "pack_V": 9.0,
+      "diode_drop_sensitivity_V": 1.25,
+      "ground_current_sensitivity_A": 0.0,
+      "LDO_input_V": 3.190073429556375,
+      "margin_to4_8V_reference_V": -1.609926570443625,
+      "available_output_load_at_reference_A": 0.0018987098709870988
+    },
+    {
+      "network": "one_open",
+      "pack_V": 9.0,
+      "diode_drop_sensitivity_V": 1.25,
+      "ground_current_sensitivity_A": 0.00035,
+      "LDO_input_V": 2.6678155575969655,
+      "margin_to4_8V_reference_V": -2.1321844424030343,
+      "available_output_load_at_reference_A": 0.0015487098709870987
+    },
+    {
+      "network": "one_open",
+      "pack_V": 12.6,
+      "diode_drop_sensitivity_V": 1.0,
+      "ground_current_sensitivity_A": 0.0,
+      "LDO_input_V": 6.98204477711644,
+      "margin_to4_8V_reference_V": 2.18204477711644,
+      "available_output_load_at_reference_A": 0.00443996399639964
+    },
+    {
+      "network": "one_open",
+      "pack_V": 12.6,
+      "diode_drop_sensitivity_V": 1.0,
+      "ground_current_sensitivity_A": 0.00035,
+      "LDO_input_V": 6.4597869051570305,
+      "margin_to4_8V_reference_V": 1.6597869051570306,
+      "available_output_load_at_reference_A": 0.00408996399639964
+    },
+    {
+      "network": "one_open",
+      "pack_V": 12.6,
+      "diode_drop_sensitivity_V": 1.25,
+      "ground_current_sensitivity_A": 0.0,
+      "LDO_input_V": 6.7358128714307215,
+      "margin_to4_8V_reference_V": 1.9358128714307217,
+      "available_output_load_at_reference_A": 0.004274947494749474
+    },
+    {
+      "network": "one_open",
+      "pack_V": 12.6,
+      "diode_drop_sensitivity_V": 1.25,
+      "ground_current_sensitivity_A": 0.00035,
+      "LDO_input_V": 6.213554999471312,
+      "margin_to4_8V_reference_V": 1.4135549994713124,
+      "available_output_load_at_reference_A": 0.003924947494749475
+    }
+  ],
+  "downstream_short_at12_6V_zero_diode": {
+    "each_resistor_W": 0.1069090909090909,
+    "total_W": 0.2138181818181818,
+    "general_P70_W_each": 0.27,
+    "board_thermal_qualified": false
+  },
+  "one_open_normal_operation_qualified": false,
+  "one_short_current_limit_present": false,
+  "decision": "Prefer parallel1.5kohm feed for headroom and shared loss; cold/ramp/load/thermal/fault qualification still incomplete",
+  "manufacturing_release": false
+}

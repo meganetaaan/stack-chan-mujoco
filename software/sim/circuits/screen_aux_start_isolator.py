@@ -31,7 +31,7 @@ report={'source_sha256':{x:hashlib.sha256((root/x).read_bytes()).hexdigest() for
  'secondary_DC_addition_comparison_A':e['ISO_ICC2_DC_max_high_A']+secondary_load,
  'old_STOP_budget_is_conditional_A':old['conditional_DC_sum_A'],
  'updated_STOP_DC_comparison_A':old['conditional_DC_sum_A']+e['ISO_ICC2_DC_max_high_A']+secondary_load,
- 'STOP_1kohm_feed_drop_comparison_at_plus1percent_V':1010*(old['conditional_DC_sum_A']+e['ISO_ICC2_DC_max_high_A']+secondary_load),
+ 'STOP_feed_drop_comparison_at_plus1percent_V':(1/sum(1/parts['SYS__R_STOP_INPUT_'+str(i)]['value_ohm'] for i in range(2)))*1.01*(old['conditional_DC_sum_A']+e['ISO_ICC2_DC_max_high_A']+secondary_load),
  'functional_states':[
   {'primary':'valid','secondary':'valid','input':0,'output':0},
   {'primary':'valid','secondary':'valid','input':1,'output':1},
