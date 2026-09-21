@@ -1,0 +1,19 @@
+{
+  "question": "What loaded source voltage is necessary before unspecified feeder/cable/battery losses, and can the current UV monitor start from a 4.2V single-cell source?",
+  "source_sha256": {
+    "validation/oem_harness_headroom_v1/report.json": "d2200343fc440e11e46210a40d806f703612de252b322416a035a520d0cfae7d",
+    "schematics/power/source_window_monitor_revB/report.json": "be7a60cd94cfe53569488c5f471a97392ad48b3cfff56230983a0d4d3c9331d7",
+    "schematics/power/oem_servo_harness_candidate.json": "d81fcf882283f0358e9d7d44543372cbaa081c8d7f79e154d4fcf1eda80958fc"
+  },
+  "manufacturer_servo_min_V": 3.7,
+  "architecture_comparison_source_max_V": 4.2,
+  "classification": "3.7V servo minimum is a part constraint; 4.2V source is an unselected architecture assumption, not a selected cell specification.",
+  "stop": "Reuse only existing individual-branch two-contact comparison rows; no unknown resistance sweep or cutoff selection.",
+  "limits": [
+    "OEM cable loop resistance is unspecified",
+    "Shared current 4.917A is an old model bound, not measured or hardware limited",
+    "eFuse 8.4mohm maximum is specified at 3A; other currents remain comparison",
+    "Source voltage is loaded at distribution input, not open-circuit cell voltage",
+    "Battery internal resistance, feeder, fuse, reverse switch, solder, dynamics and temperature unallocated"
+  ]
+}
