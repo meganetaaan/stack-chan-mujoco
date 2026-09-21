@@ -1,0 +1,27 @@
+{
+  "decision": "Alpha Wire 3051 for stationary single-joint jig candidate only",
+  "source": "https://www.alphawire.com/disteAPI/SpecPDF/DownloadProductSpecPdf?productPartNumber=3051",
+  "nominal_dcr_ohm_m_at_20C": 0.053149606299212594,
+  "insulation_diameter_mm": [
+    1.5239999999999998,
+    1.6256
+  ],
+  "bend_radius_mm_from_max_diameter": 16.256,
+  "one_way_length_m": 0.25,
+  "length_status": "jig planning assumption, not measured CAD route",
+  "evaluation_current_A": 1,
+  "current_status": "comparison point, not hardware maximum or protection setting",
+  "wire_loop_ohm": 0.026574803149606297,
+  "contacts_loop_ohm": 0.04,
+  "nominal_wire_plus_post_environment_contact_drop_V": 0.0665748031496063,
+  "remaining_from_0_1V_budget_V": 0.033425196850393704,
+  "formula": "Vdrop=I*(2*L*nominal_DCR+2*post_environment_contact_R)",
+  "qualified": false,
+  "unaccounted": [
+    "DCR tolerance and temperature",
+    "common feeder and protection devices",
+    "ripple and actual DC peak",
+    "crimp process",
+    "dynamic flex lifetime"
+  ]
+}
