@@ -174,7 +174,11 @@ class ReviewTests(unittest.TestCase):
         self.refill = False
         self.assertEqual(self.invoke("--pcb", str(self.pcb)), 2)
         self.assertEqual(self.invoke("--pcb", str(self.pcb), "--zones-prefilled"), 0)
-        check = self.summaries()[-1]["checks"][0]
+        success_summary = next(
+            summary for summary in self.summaries()
+            if summary["checks"][0]["status"] == "PASS"
+        )
+        check = success_summary["checks"][0]
         self.assertEqual(check["zones"], "prefilled_by_caller")
         self.assertNotIn("--refill-zones", check["command"])
 
