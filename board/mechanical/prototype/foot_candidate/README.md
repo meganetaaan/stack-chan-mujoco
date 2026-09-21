@@ -28,3 +28,9 @@ LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bi
 ```
 
 外付けナット・10 mmねじについては、既存運動割当のもとでロール±0.34 radの連続隙間下限7.670 mmを確認（validation/external_nut_roll_bound_v1）。全身/ハーネス/公差変形の検証とは区別する。
+
+## 最新の分割足裏比較 revB
+
+[revB/README_ja.md](revB/README_ja.md)に、増厚座面と端部開放溝の組立STEP、
+接地層を分けた部品表、密度未適用の慣性データを保存。左右各7部品で42組の公称交差0。
+材料と強度は未確定の比較案であり、revAを含めて全品を製作・合算する指示ではない。
