@@ -1,0 +1,33 @@
+{
+  "question": "Effect of 3.7 V operation on the unchanged full-body current-position development probe",
+  "conditions": {
+    "voltage_V": 3.7,
+    "signs": [
+      1,
+      -1
+    ],
+    "duration_s": 7,
+    "model": "frozen r9",
+    "turn_inset_mm": 25.5,
+    "delay_s": 0.01,
+    "backlash_rad": 0.004363323129985824
+  },
+  "stop": "Exactly two probes, same defaults except voltage/sign. No retuning. Stop each on the existing simulator failure condition.",
+  "evaluation": [
+    "failure and completed duration",
+    "final yaw compared to stored 5V probes",
+    "electrical model power balance"
+  ],
+  "limits": [
+    "Not a 90deg/3s acceptance trial",
+    "Frozen mass/model, not latest manufacturing CAD",
+    "Ideal fixed 3.7V, no battery sag, protection or regeneration circuit",
+    "No voltage criterion changed, architecture not adopted"
+  ],
+  "source_sha256": {
+    "software/sim/actuator/run_probe.py": "b1841024ebf69a74fbdabc8a2216e1d9371f56988437907d502619b553241126",
+    "software/sim/actuator/fixtures.py": "d0726f1020e9c1d4503946247c8eb208102232ac963062bb0c394a51643628dd",
+    "software/sim/actuator/drive.py": "a4614a236e829d55fda90a88dddeb018b21d461fa199f35c6ac790b0d3440f55",
+    "software/sim/actuator/catalog.json": "1ceb656e7f2530a2862b8c18544eddc2e89df1ebd0754a68dcad0a8ca9019ae6"
+  }
+}
