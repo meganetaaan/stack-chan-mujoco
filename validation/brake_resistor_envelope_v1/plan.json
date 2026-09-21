@@ -1,0 +1,16 @@
+{
+ "scope": "Screen resistance tolerance, temperature and endurance-change sensitivity for AC10 candidate",
+ "source": "https://www.vishay.com/docs/28730/ac_ac-at_ac-ni.pdf",
+ "source_revision": "05-Dec-2024",
+ "source_pages": [1,9],
+ "nominal_ohm": 4.7,
+ "initial_tolerance_fraction": 0.05,
+ "TCR_per_K_min": -0.00008,
+ "reference_temperature_C_assumed": 25,
+ "wire_temperature_C_assumed": 200,
+ "endurance_change_fraction": 0.05,
+ "endurance_change_absolute_ohm": 0.1,
+ "bus_bound_V": 6,
+ "criteria": {"conditional_P70_W": 8.4},
+ "limitations": ["200 C wire temperature is sensitivity assumption, not calculated enclosure temperature", "Endurance test change is an envelope scenario, not a lifetime guarantee", "Initial tolerance plus endurance variation conservatively added relative to nominal before temperature factor", "Linear TCR extrapolation needs confirmation over selected temperature range", "Temperature of ambient 70 C distinct from assumed wire temperature"]
+}
