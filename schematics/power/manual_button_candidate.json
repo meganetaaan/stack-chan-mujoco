@@ -1,0 +1,19 @@
+{
+  "part_number": "MAX6816EUS+T",
+  "quantity": 1,
+  "status": "evaluation_candidate_not_released",
+  "pins": {
+    "1_GND": "GND",
+    "2_IN": "NO enable button to GND; internal pullup",
+    "3_OUT": "active-low pressed; inverter required before positive-edge clock",
+    "4_VCC": "upstream LOGIC3V3"
+  },
+  "debounce_range_ms": [
+    20,
+    80
+  ],
+  "inverter": "unselected; logic-level compatibility pending",
+  "stop_path": "must not pass through debounce delay",
+  "evidence": "validation/manual_button_debounce_v1/README.md",
+  "manufacturing_release": false
+}
