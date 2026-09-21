@@ -62,5 +62,36 @@
     "External UBEC switch is not proven physical or bidirectional isolation",
     "Do not parallel two separate UBEC outputs"
   ],
-  "manufacturing_release": false
+  "manufacturing_release": false,
+  "tab5_supply": {
+    "status": "HV input candidate; connector and circuit qualification pending",
+    "source": "https://docs.m5stack.com/en/core/Tab5",
+    "manufacturer_external_input_range_V": [
+      6,
+      24
+    ],
+    "candidate_path": "Protected 3S branch to HV input; separate from servo UBEC output",
+    "M5Bus_HVIN_pins": [
+      25,
+      27,
+      29
+    ],
+    "M5Bus_GND_pins": [
+      1,
+      3,
+      5
+    ],
+    "pins_status": "Manufacturer logical pinmap only; not a released harness drawing",
+    "battery_contacts_used": false,
+    "servo_power_from_Tab5": false,
+    "pending": [
+      "HV input schematic topology and actual board revision",
+      "Mating connector orientation, current rating, retention and CAD access",
+      "Input branch fuse reverse protection and transient voltage",
+      "Startup and maximum input current",
+      "USB simultaneous connection and backfeed",
+      "Shutdown and restart sequencing"
+    ],
+    "release": false
+  }
 }
