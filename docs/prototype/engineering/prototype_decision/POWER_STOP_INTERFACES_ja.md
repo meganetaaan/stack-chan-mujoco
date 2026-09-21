@@ -59,3 +59,7 @@ PG受信には`schematics/power/pg_receiver_candidate.json`のTPS3700案を追�
 ## revIの追加負荷
 
 `validation/manual_rearm_supply_v2/`でU15とR15を追加し、全15抵抗の集計対象を照合した。3.3 V系のIC参照値は76.4 µA、抵抗独立上界は2.868568 mA。旧revH値を現行容量として使わない。内部負荷・入力条件・未完成監視等が残るため保証総電流は未確定、通電保留を維持する。
+
+## クリア保持時間の候補
+
+`clear_hold_timer_candidate.json`でTPS3808G01のCT開放遅延を候補化した。実CLR Lowの観測が入力条件で、U14の論理要求を代用しない。前回のDONE Highを再利用しないため、各要求前にDONE Lowを観測する条件を追加。観測・再初期化回路は未実装なのでrevIへは未統合、#24の完了証拠とはしない。詳細は `validation/clear_hold_timer_candidate_v1/`。

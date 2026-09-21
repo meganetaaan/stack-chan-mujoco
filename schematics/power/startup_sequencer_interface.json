@@ -29,9 +29,11 @@
     "Minimum clear pulse and race analysis required",
     "CLEAR completion requires healthy power, ARMED Low, ENABLE_PERMISSION Low, reset assertion observed, and minimum hold completed",
     "Do not assign latch outputs Low in sequencer model as a substitute for hardware acknowledgement",
-    "Clear release must meet CLR-to-next-clock recovery/setup requirement"
+    "Clear release must meet CLR-to-next-clock recovery/setup requirement",
+    "Per-request timer arming requires observed CLEAR_HOLD_DONE Low before accepting a fresh completion; prior High is not acknowledgement of a new request"
   ],
   "evidence": "validation/sequence_clear_completion_v1/README_ja.md",
   "manufacturing_release": false,
-  "previous_settled_logic_evidence": "validation/sequence_clear_handshake_v1/README_ja.md"
+  "previous_settled_logic_evidence": "validation/sequence_clear_handshake_v1/README_ja.md",
+  "clear_hold_timer_candidate": "schematics/power/clear_hold_timer_candidate.json"
 }
