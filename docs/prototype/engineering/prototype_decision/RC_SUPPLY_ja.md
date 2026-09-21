@@ -199,3 +199,8 @@ AC電源内蔵なので、外部DC/PD電源を別選定する部品点数を減�
 配置検討用の統合STEPは`board/mechanical/prototype/power_packaging_revA/`。
 8群・全28組の静的体積干渉なしとSTEP読戻しを確認した。
 これは配線・固定・保護基板・全身動作を含む完成組立ではない。
+
+セル保護の実部品候補BQ7791500を照合した結果は
+[CELL_PROTECTION_SCREEN_ja.md](CELL_PROTECTION_SCREEN_ja.md)。
+3S対応だけでは採用せず、充電制御との役割分担、最低電圧、負極遮断の外部接続、
+保護協調を設計完了条件として残す。製作リリース判定は変更しない。
