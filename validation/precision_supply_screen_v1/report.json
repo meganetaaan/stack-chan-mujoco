@@ -1,0 +1,33 @@
+{
+  "candidate": "TPSM63610RDFR x2, isolated left/right 5V outputs",
+  "source": "https://www.ti.com/lit/ds/symlink/tpsm63610.pdf",
+  "revision": "SLVSGU1A December 2023",
+  "continuous_nameplate_A": 8,
+  "peak_nameplate_A": 10,
+  "reference_range_V": [
+    0.985,
+    1.015
+  ],
+  "divider_ohm": [
+    100000.0,
+    25000.0
+  ],
+  "initial_resistor_tolerance": 0.001,
+  "FB_bias_comparison_A": 5e-08,
+  "divider_only_output_range_V": [
+    4.912122872127873,
+    5.088133128128127
+  ],
+  "remaining_drop_to_4_75V": 0.16212287212787313,
+  "remaining_after_existing_branch_and_efuse_comparison_V": 0.07342156897826684,
+  "per_leg_model_draw_A": 4.917,
+  "manufacturing_release": false,
+  "pending": [
+    "Exact resistor total tolerance and drift",
+    "Line/load regulation, ripple, load steps and dropout at selected 2S minimum",
+    "PCB thermal design and enclosure cooling",
+    "Reverse current, input absent, per-rail regeneration and protection",
+    "Input/output capacitors effective values, layout and complete BOM"
+  ],
+  "decision": "Retain dual-module precision alternative; not single-module 12-axis continuous supply"
+}
