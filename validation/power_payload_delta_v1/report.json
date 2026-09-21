@@ -1,0 +1,142 @@
+{
+  "scope": "partial replacement estimate, not new robot mass or COM",
+  "removed": {
+    "battery_2S_reservation": {
+      "mass_kg": 0.103,
+      "first_moment_kg_m": [
+        0.0029870000000000005,
+        1.4351171150686775e-19,
+        0.008239999999999999
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.0007143970133333334,
+          -2.7399733699377227e-21,
+          -0.00023895999999999998
+        ],
+        [
+          -2.7399733699377227e-21,
+          0.0007620867858333333,
+          -9.660755401696707e-21
+        ],
+        [
+          -0.00023895999999999998,
+          -9.660755401696707e-21,
+          0.00013277051916666668
+        ]
+      ]
+    },
+    "dedicated_5V_converter": {
+      "mass_kg": 0.02,
+      "first_moment_kg_m": [
+        -0.0008,
+        2.8797865626517216e-22,
+        0.00146
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.00010940455933617727,
+          -2.5118321195609077e-22,
+          5.8399999999999997e-05
+        ],
+        [
+          -2.5118321195609077e-22,
+          0.00013948644121225556,
+          -2.0167505271570334e-23
+        ],
+        [
+          5.8399999999999997e-05,
+          -2.0167505271570334e-23,
+          3.439766721509952e-05
+        ]
+      ]
+    },
+    "battery_tray": {
+      "mass_kg": 0.006903805017530213,
+      "first_moment_kg_m": [
+        0.00020021034550837612,
+        -3.947207005694509e-20,
+        0.0004256216982844032
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          3.226820906465576e-05,
+          8.898132364265622e-22,
+          -1.2343029250247696e-05
+        ],
+        [
+          8.898132364265622e-22,
+          3.255550556614892e-05,
+          2.005181158892811e-21
+        ],
+        [
+          -1.2343029250247696e-05,
+          2.005181158892811e-21,
+          1.224880247962426e-05
+        ]
+      ]
+    }
+  },
+  "added": [
+    {
+      "name": "battery",
+      "mass_kg": 0.076,
+      "com_m": [
+        0.029,
+        0,
+        0.08
+      ],
+      "basis": "catalog mass; COM assumed geometric center"
+    },
+    {
+      "name": "tray_revB",
+      "mass_kg": 0.00783690925827692,
+      "com_m": [
+        0.02899999999999997,
+        1.0247999916311681e-17,
+        0.06513363005222249
+      ],
+      "basis": "uniform solid at typical PETG density, not printed mass"
+    },
+    {
+      "name": "UBEC_left",
+      "mass_kg": 0.036,
+      "com_m": [
+        -0.025,
+        0.031,
+        0.108
+      ],
+      "basis": "catalog mass; entire mass assigned to case center; wire mass distribution unknown"
+    },
+    {
+      "name": "UBEC_right",
+      "mass_kg": 0.036,
+      "com_m": [
+        -0.025,
+        -0.031,
+        0.108
+      ],
+      "basis": "catalog mass; entire mass assigned to case center; wire mass distribution unknown"
+    }
+  ],
+  "delta_mass_kg": 0.025933104240746713,
+  "delta_first_moment_kg_m": [
+    -0.0017559399770183458,
+    -1.0432762010618783e-19,
+    0.004240824650097043
+  ],
+  "sources_sha256": {
+    "validation/yaw_inertial_ledger_v2/report.json": "4e19164c326a99c2158c54fd64271022d7f052fe14d969496f33f2f6b83f50a0",
+    "schematics/power/rc_supply_candidate.json": "c32ce91147551406c7191a6e3306902391651602bf4f0413505b506dbc5460f3",
+    "board/mechanical/prototype/rc_battery_tray_revB/material_candidate.json": "2c38ad3de9b347a059d0b2621c6ec65ae649c7791e1cc84a265e8c301c1f5c24",
+    "board/mechanical/prototype/rc_battery_tray_revB/tray.step": "3f522dd0c14ea083cc789f568ba4ed3b0c0bdc13f5e45c951a1ae59c602c5f46",
+    "validation/dual_ubec_layout_v2/report.json": "6233405a073b1051eba78d41919a5830c123844a15723c8adbfa720fc47459d3"
+  },
+  "excluded": [
+    "New wiring mounts protection and real strap",
+    "TTL replacement",
+    "Actual battery/UBEC COM and inertia",
+    "Printed voids and process variation"
+  ],
+  "model_updated": false
+}
