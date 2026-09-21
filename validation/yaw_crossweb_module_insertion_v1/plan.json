@@ -1,0 +1,18 @@
+{
+  "question": "Can the revised support groups and rear plate be inserted from the rear before servos/electronics/legs?",
+  "method": "Per-group axis-aligned bounding box swept continuously 150 mm in -X from final pose; tests the whole corridor, no angle/time sampling.",
+  "sequence": [
+    "Attach both support groups to rear plate using the eight rear main screws and washers outside the body.",
+    "Translate the resulting 51-part module together into the empty shroud.",
+    "Install body corner fasteners afterwards; torque, hand space and body fastener access remain unverified."
+  ],
+  "criterion_intersection_mm3": 0.01,
+  "contact_policy": "Intended final rail/plate contact allowed at zero distance; no positive manufacturing clearance claimed.",
+  "stop": "Three group corridors and 16 rear-hardware corridors, sharing one 150 mm X translation; no size or angle sweep.",
+  "limits": [
+    "No servo, Tab5, battery, wires, legs or moving couplers installed during these steps",
+    "Hand/grip/jig space, gravity stability, tools and tightening not verified",
+    "No tolerance or misalignment coverage",
+    "No manufacturing release"
+  ]
+}

@@ -20,8 +20,11 @@ for side,cy in [('left',26),('right',-26)]:
  old=cq.importers.importStep(str(path)).val();web=cq.Solid.makeBox(3.6,36,10,cq.Vector(8,cy-18,78));new=old.fuse(web).clean();added=new.cut(old)
  before=old.BoundingBox();after=new.BoundingBox();delta=max(abs(getattr(before,k)-getattr(after,k)) for k in ['xmin','xmax','ymin','ymax','zmin','zmax'])
  collisions=[]
- overlap=added.intersect(fixed).Volume()
- if overlap>.01:collisions.append({'part':'fixed_assembly','added_overlap_mm3':overlap})
+ members=fixed.Solids();assert len(members)==len(parts)
+ for item,solid in zip(parts,members):
+  assert abs(solid.Volume()-item['volume_mm3'])<1e-5
+  overlap=added.intersect(solid).Volume()
+  if overlap>.01:collisions.append({'part':item['name'],'added_overlap_mm3':overlap})
  placed=cq.Compound.makeCompound([solids[i].rotate((0,0,0),(1,1,0),180).translate((-5,cy,68.5)) for i in [0,1,2,13,14]])
  servo_overlap=added.intersect(placed).Volume();servo_gap=added.distance(placed)
  dy=8 if side=='left' else -8;corridor=cq.Solid.makeBox(9.5,3.8,10,cq.Vector(-18.75,cy+dy-1.9,87));gap=new.distance(corridor)

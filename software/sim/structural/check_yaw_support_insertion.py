@@ -3,8 +3,8 @@ import argparse,hashlib,json
 from pathlib import Path
 import numpy as np
 import cadquery as cq
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--as-module',action='store_true');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
-base=Path('validation/yaw_integrated_candidate_v2');paths=[base/n for n in ['inventory.json','geometric_moments.json','yaw_support_candidate.step']]
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--as-module',action='store_true');p.add_argument('--candidate',type=Path,default=Path('validation/yaw_integrated_candidate_v2'));a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+base=a.candidate;paths=[base/n for n in ['inventory.json','geometric_moments.json','yaw_support_candidate.step']]
 plan={'question':'Can the revised support groups and rear plate be inserted from the rear before servos/electronics/legs?',
  'method':'Per-group axis-aligned bounding box swept continuously 150 mm in -X from final pose; tests the whole corridor, no angle/time sampling.',
  'sequence':['Insert left/right 17-part support groups in either order, rear plate absent.','Insert empty rear structural plate, supports held in final pose.','Install rear main screws/washers and body corner hardware afterwards; tightening/access outside this check.'],
