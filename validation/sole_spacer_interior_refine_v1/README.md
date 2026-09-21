@@ -16,3 +16,9 @@ OPENBLAS_NUM_THREADS=1 .venv-engineering/bin/python software/sim/structural/prob
 ```
 
 保存済み解析の比較は `software/sim/structural/compare_sparse_sole_reports.py --source validation/sole_spacer_interior_refine_v1`。再生成先についてはcomparison_plan.jsonのvariantを対応させる。
+
+## 最終結果とこの調査の終了
+
+2026-09-21：実行済みケースが完了。平衡残差2.32e-9 N、接触合力20.000000003 N。内部0.125→0.08 mmで圧力0.753%、boss応力0.412%/変位0.0253%、spacer応力1.053%/変位2.760%の変化となり、事前の比較基準は満たした。
+
+この結果は固定された外面・仮定20 N・等方P1モデル内の内部メッシュ感度の確認に限定される。外面も含む全体収束、実材料/予圧/歩行での固定部破損・脱落・干渉の保証ではない。ユーザー指示により本細分化系列をここで終了し、追加の細分化や変形エネルギー診断は自動継続しない。次の判断はdocs/prototype/engineering/prototype_decision/DECISION_ja.mdの故障モード・実寸・保持試験に従う。

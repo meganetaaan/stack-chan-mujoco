@@ -11,3 +11,5 @@ OPENBLAS_NUM_THREADS=1 .venv-engineering/bin/python software/sim/structural/audi
 ```
 
 既定の従来3ケースでも変更後のスクリプトを実行し、既存report.jsonと同一の結果を確認した。新しい内部細分化のreport.json生成までは本比較は未完了。
+
+2026-09-21：ユーザーの設計判断優先指示に基づき、この追加エネルギー診断は未実施のまま保留。必要な寸法選択を左右する不確実性が特定されない限り実行しない。メッシュ系列の最終比較結果はsole_spacer_interior_refine_v1へ保存済み。
