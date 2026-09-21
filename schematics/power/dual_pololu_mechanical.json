@@ -21,10 +21,14 @@
   "board_edge_tolerance": 0.3,
   "drill_guide_url": "https://www.pololu.com/file/0J2218/reg34c-drill.dxf",
   "drill_guide_sha256": "c7cbd3fda37bf437830d6c13a6db93bc9ff83f61b88f11353d4b6c8d3a35c5f3",
-  "mount_warning": "Hole centers extracted in DXF view, not mapped to board top/bottom or robot. Preserve asymmetric short-edge offsets; validate orientation against STEP before mounting CAD.",
+  "mount_warning": "DXF local XY aligns with STEP XY; PCB underside Z=0, top Z=1.5748. Robot transform not yet applied. Preserve asymmetric hole offsets.",
   "height_tolerance": null,
   "connector_hole_diameter": 2.18,
   "connector_pair_pitch": 5.0,
   "connector_net_mapping_verified": false,
-  "drill_coordinate_report": "validation/dual_pololu_drill_v1/report.json"
+  "drill_coordinate_report": "validation/dual_pololu_drill_v1/report.json",
+  "step_source": "https://www.pololu.com/file/0J2219/d42v110fx-step-down-voltage-regulator.step",
+  "step_sha256": "ef086976c6ac9be62aca7c31dce3efcd014115ec4a11c5a3cd1e24d4e67463a4",
+  "step_mount_space_report": "validation/dual_pololu_mount_space_v1/report.json",
+  "step_variant_warning": "Common STEP top components are 8.0mm vs 5V drawing 6.1mm. Not a verified variant-specific component model."
 }

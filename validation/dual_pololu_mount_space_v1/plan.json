@@ -1,0 +1,8 @@
+{
+  "question": "Do four M2 mounting reservations clear the manufacturer model around its verified mounting holes?",
+  "input": "https://www.pololu.com/file/0J2219/d42v110fx-step-down-voltage-regulator.step",
+  "criteria": {"maximum_overlap_mm3": 0.000001, "minimum_component_clearance_mm": 0.5},
+  "assumptions": {"spacer_outer_diameter_mm": 4.0, "spacer_inner_diameter_mm": 2.2, "spacer_height_mm": 3.0, "head_diameter_mm": 3.8, "head_height_mm": 1.3},
+  "stop": "One nominal reservation evaluation. Do not optimize dimensions to pass. Select actual hardware and account tolerances before release.",
+  "limits": ["0.5 mm is an engineering screening allowance, not user requirement or electrical clearance certification", "Spacer dimensions are design reservations, not selected hardware", "Model may represent other output-voltage variants; compare height to 5V drawing", "Thread engagement, preload, PCB copper clearance, insulation, tool and harness access not evaluated"]
+}
