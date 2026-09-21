@@ -30,5 +30,15 @@
     "Raise battery cutoff without accounting for required usable energy and battery specification"
   ],
   "next_decision": "Define battery/source and supported load-step conditions before further converter simulation",
-  "manufacturing_release": false
+  "manufacturing_release": false,
+  "current_stack_review": {
+    "evidence": "validation/precision_supply_current_stack_v1",
+    "status": "reopened_for_design_comparison_not_adopted",
+    "nominal_output_V": 5,
+    "criteria_unchanged": true,
+    "XC_static_residual_V": 0.065693939282637,
+    "input_context": "Current3S pack candidate; minimum loaded converter-pin voltage remains unqualified",
+    "mode_constraint": "Reference table bound applies toFPWM; do not transfer toAuto without evidence",
+    "next": "Resolve source voltage envelope and mode, then effective capacitance and PCB thermal/layout; no ideal-source transient pass"
+  }
 }
