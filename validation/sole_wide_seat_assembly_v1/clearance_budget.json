@@ -1,0 +1,25 @@
+{
+  "scope": "Nominal geometric clearance budget; no tolerance or deformation certification",
+  "floor": {
+    "nominal_head_recess_mm": 0.8,
+    "required_remaining_recess_mm": 0.2,
+    "available_total_adverse_stack_mm": 0.6,
+    "unallocated_terms": [
+      "sole thickness error",
+      "spacer thickness error",
+      "head height error",
+      "loaded sole compression",
+      "wear"
+    ]
+  },
+  "radial": {
+    "sole_hole_radius_mm": 3.2,
+    "spacer_outer_radius_mm": 3,
+    "spacer_hole_radius_mm": 1.15,
+    "screw_envelope_radius_mm": 1,
+    "yoke_hole_radius_mm": 1.15,
+    "nominal_clearance_sum_mm": 0.5,
+    "note": "Sum of three radial clearances; ignores screw bending, TPU deformation and hole tolerance."
+  },
+  "status": "Requirements budget only; actual tolerance values and strength remain unverified"
+}
