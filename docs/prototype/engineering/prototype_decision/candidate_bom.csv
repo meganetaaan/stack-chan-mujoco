@@ -32,3 +32,4 @@ NBK SNS-M3-16 yaw rear main bolts,8,4,preferred_candidate_not_released,SCM435 bl
 Nexperia 74LVC1G17GV release MR buffer,1,1,preferred_schmitt_candidate,Unlimited input rise/fall; MR DC output checked; input threshold interval power sequencing and footprint pending,validation/manual_release_schmitt_buffer_v1/README_ja.md
 TPS3808G33DBVR manual rearm rail supervisor,1,1,pin_candidate_not_released,Separate from release timer; reset fanout transient and external fault sinks pending,schematics/power/manual_rearm_supervisor_candidate.json
 74LVC1G17GV main EN buffer,1,1,conditional_candidate,Separate from release MR buffer; brownout inhibit and command source incomplete,schematics/power/main_enable_driver_candidate.json
+TPS3808G33DBVR dedicated EN clamp,1,1,conditional_candidate,Additional supervisor on eFuse input 5V; transient and restart qualification pending,schematics/power/main_enable_clamp_candidate.json

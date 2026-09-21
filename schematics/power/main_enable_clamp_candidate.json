@@ -1,0 +1,17 @@
+{
+  "part_number": "TPS3808G33DBVR",
+  "role": "dedicated EN clamp; separate from RESET_N rail supervisor",
+  "pins": {
+    "1_RESET": "MAIN_EFUSE_EN, clamp only; never RESET_N",
+    "2_GND": "GND",
+    "3_MR": "EFUSE_INPUT_5V; no external stop connection yet",
+    "4_CT": "100k to EFUSE_INPUT_5V",
+    "5_SENSE": "LOGIC3V3 at U8/latch rail",
+    "6_VDD": "EFUSE_INPUT_5V upstream of eFuse, NOT raw 2S battery; local100nF candidate"
+  },
+  "series_resistor": "4.7k between U8 pin4 and MAIN_EFUSE_EN; total +/-1% budget; exact part pending",
+  "release_delay": "180..420ms; does not replace new manual-request qualification",
+  "source": "https://www.ti.com/lit/ds/symlink/tps3808.pdf",
+  "evidence": "validation/main_enable_clamp_v1/README_ja.md",
+  "manufacturing_release": false
+}
