@@ -6,7 +6,7 @@
   "pins": {
     "1_RESET": "RELEASE_QUALIFIED_NAMED_HIGH; open drain pullup 100k to LOGIC3V3; to SN74HCS74 pin3",
     "2_GND": "GND",
-    "3_MR": "RELEASE_CONDITION = HEALTHY AND RAW_RELEASED AND DEBOUNCED_RELEASED; physical gate TBD",
+    "3_MR": "RELEASE_CONDITION; see manual_release_gate_candidate.json (direct drive not qualified)",
     "4_CT": "100k resistor to LOGIC3V3; not direct wire",
     "5_SENSE": "LOGIC3V3 at latch supply",
     "6_VDD": "LOGIC3V3; 100nF local ceramic decoupling candidate"
