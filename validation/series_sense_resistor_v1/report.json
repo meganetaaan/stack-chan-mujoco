@@ -1,0 +1,48 @@
+{
+  "source_sha256": {
+    "validation/series_clamp_sizing_v1/report.json": "cf4c9c763980fd26b3c581869fd553794ec215b8c9783f4cb5ff651e37623a17"
+  },
+  "candidate": {
+    "manufacturer": "Vishay Dale",
+    "candidate_part": "WSLP25128L200FEA",
+    "part_basis": "Constructed from manufacturer ordering table; availability not verified.",
+    "source": "https://www.vishay.com/docs/30122/wslp.pdf",
+    "source_revision": "09-Sep-2024",
+    "resistance_ohm": 0.0082,
+    "initial_tolerance_fraction": 0.01,
+    "component_TCR_abs_ppm_K": 75,
+    "TCR_characterized_temperature_C": [
+      -55,
+      155
+    ],
+    "resistance_reference_temperature_C": 25,
+    "rated_power_at_70C_W": 3.0,
+    "quantity": 2,
+    "status": "candidate_not_integrated"
+  },
+  "temperature_scope": "Component temperature screening over datasheet TCR interval; not robot ambient requirement or computed resistor temperature.",
+  "resistance_range_ohm": [
+    0.0080388495,
+    0.0083627495
+  ],
+  "current_limit_comparison_A": [
+    5.381005373890488,
+    6.8417750574880145
+  ],
+  "normal_model_current_A": 4.917,
+  "normal_model_below_min_limit": true,
+  "normal_drop_max_V": 0.041119639291500004,
+  "normal_loss_max_W": 0.20218526639630552,
+  "limit_loss_max_W": 0.3762976281618408,
+  "below_P70_rating": true,
+  "updated_pass_FET_power_comparison_W": 50.0479007574651,
+  "old_total_1percent_allocation_supported": false,
+  "remaining": [
+    "Part ordering code and procurement availability need confirmation.",
+    "Board thermal conditions and power derating above 70C unverified; 3W comparison is not thermal qualification.",
+    "Ageing solder shift and sense trace parasitics not included; Kelvin routing required.",
+    "LT4363 sense threshold applicability at all operating states remains unresolved.",
+    "Update timer/SOA comparison with increased current before integrating branch."
+  ],
+  "manufacturing_release": false
+}
