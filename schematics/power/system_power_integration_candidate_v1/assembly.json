@@ -1,7 +1,7 @@
 {
   "status": "partial_system_connection_candidate",
   "source_sha256": {
-    "schematics/power/battery_protection_integration_candidate_v1/assembly.json": "cf48f7375bda26fe5f0123ec4e99884dc0d3064b957f8f0a0f70f95adda21d2c",
+    "schematics/power/battery_protection_integration_candidate_v1/assembly.json": "9819f6a5bdb35d165aebc229fcfaaa381f6240e6ebce733e3d5764e22ab67db2",
     "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json": "ae0e95e3e893f5ee0d438a0a508cf269cf967984d22b3f6dedecb0916e6c577d",
     "schematics/power/logic_predischarge_inhibit_candidate.json": "01c3f3adf65ec1edfac83e04b40a3176ce22d50080907501d62cac375829e5e7"
   },
@@ -907,10 +907,10 @@
         "4": "BQ_CTRL3V3",
         "5": "CELL_B_MINUS",
         "6": "BQ_HOST_NRST",
-        "7": "BQ_ALLOW_BMINUS",
-        "8": "BQ_AUX_START_REQUEST",
+        "7": "BQ_MAIN_REQUEST_RAW",
+        "8": "BQ_AUX_REQUEST_RAW",
         "9": "BQ_ALERT_N",
-        "10": null,
+        "10": "BQ_ARM_EDGE",
         "11": null,
         "12": null,
         "13": null,
@@ -1039,6 +1039,177 @@
         "2": "CELL_B_MINUS"
       },
       "source_reference": "C_BQ_HOST_SUP",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__U_BQ_WD",
+      "part": "TPS3431SDRBR",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_WD_CWD",
+        "3": "BQ_CTRL3V3",
+        "4": "CELL_B_MINUS",
+        "5": "BQ_CTRL3V3",
+        "6": "BQ_HOST_HEARTBEAT",
+        "7": "BQ_HOST_NRST",
+        "8": null,
+        "EP": "CELL_B_MINUS"
+      },
+      "source_reference": "U_BQ_WD",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_WD",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07,
+      "source_reference": "C_BQ_WD",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_BQ_WD_CWD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_WD_CWD"
+      },
+      "value_ohm": 10000,
+      "source_reference": "R_BQ_WD_CWD",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__U_BQ_RESET_BUFFER",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "BQ_HOST_NRST",
+        "3": "CELL_B_MINUS",
+        "4": "BQ_RESET_VALID_N",
+        "5": "BQ_CTRL3V3"
+      },
+      "source_reference": "U_BQ_RESET_BUFFER",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_RESET_BUFFER",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07,
+      "source_reference": "C_BQ_RESET_BUFFER",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__U_BQ_PERMIT_LATCH",
+      "part": "SN74LVC1G74DCTR",
+      "pins": {
+        "1": "BQ_ARM_EDGE",
+        "2": "BQ_CTRL3V3",
+        "3": null,
+        "4": "CELL_B_MINUS",
+        "5": "BQ_LATCH_PERMIT",
+        "6": "BQ_RESET_VALID_N",
+        "7": "BQ_CTRL3V3",
+        "8": "BQ_CTRL3V3"
+      },
+      "source_reference": "U_BQ_PERMIT_LATCH",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_PERMIT_LATCH",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07,
+      "source_reference": "C_BQ_PERMIT_LATCH",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__U_BQ_MAIN_GATE",
+      "part": "SN74LVC1G08DBVR",
+      "pins": {
+        "1": "BQ_MAIN_REQUEST_RAW",
+        "2": "BQ_LATCH_PERMIT",
+        "3": "CELL_B_MINUS",
+        "4": "BQ_ALLOW_BMINUS",
+        "5": "BQ_CTRL3V3"
+      },
+      "source_reference": "U_BQ_MAIN_GATE",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_MAIN_GATE",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07,
+      "source_reference": "C_BQ_MAIN_GATE",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__U_BQ_AUX_GATE",
+      "part": "SN74LVC1G08DBVR",
+      "pins": {
+        "1": "BQ_AUX_REQUEST_RAW",
+        "2": "BQ_LATCH_PERMIT",
+        "3": "CELL_B_MINUS",
+        "4": "BQ_AUX_START_REQUEST",
+        "5": "BQ_CTRL3V3"
+      },
+      "source_reference": "U_BQ_AUX_GATE",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_AUX_GATE",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07,
+      "source_reference": "C_BQ_AUX_GATE",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_MAIN_REQUEST_RAW_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_MAIN_REQUEST_RAW",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000,
+      "source_reference": "R_MAIN_REQUEST_RAW_PD",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_AUX_REQUEST_RAW_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_AUX_REQUEST_RAW",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000,
+      "source_reference": "R_AUX_REQUEST_RAW_PD",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_ARM_EDGE_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_ARM_EDGE",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000,
+      "source_reference": "R_ARM_EDGE_PD",
       "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
     },
     {
@@ -3028,7 +3199,7 @@
     },
     {
       "issue": 21,
-      "gap": "Local host reset/watchdog/firmware and cross-domain LOGIC_START_ALLOW driver remain unimplemented"
+      "gap": "Local host supervisor/watchdog/latch connected; analog qualification, rearm firmware and cross-domain LOGIC_START_ALLOW driver incomplete"
     },
     {
       "issue": 24,
@@ -3044,7 +3215,7 @@
     },
     {
       "issue": 24,
-      "gap": "Independent default-off and watchdog drivers for both regulator ALLOW ports and BQ BOTHOFF"
+      "gap": "Regulator ALLOW drivers and full qualification of BQ watchdog/latch inhibit path"
     },
     {
       "issue": 24,

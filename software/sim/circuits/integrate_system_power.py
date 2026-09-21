@@ -89,11 +89,11 @@ def compose():
     required_design = [
         {'issue': 21, 'gap': 'Main battery connector, fuse/disconnect/reverse protection before CELL_POS_FUSED'},
         {'issue': 21, 'gap': 'Tab5 protected input branch and independent default-off inhibit; Tab5 is absent from this netlist'},
-        {'issue': 21, 'gap': 'Local host reset/watchdog/firmware and cross-domain LOGIC_START_ALLOW driver remain unimplemented'},
+        {'issue': 21, 'gap': 'Local host supervisor/watchdog/latch connected; analog qualification, rearm firmware and cross-domain LOGIC_START_ALLOW driver incomplete'},
         {'issue': 24, 'gap': 'External PDSG switch/resistor, independent abort and TS2 wake/PCHG disposition'},
         {'issue': 22, 'gap': 'Predischarge budget includes automatic-start logic/stop branches, both disabled regulators, capacitors and Tab5 leakage'},
         {'issue': 23, 'gap': 'Complete startup/reset/brownout sequence with raw comparator outputs qualified before motor enable'},
-        {'issue': 24, 'gap': 'Independent default-off and watchdog drivers for both regulator ALLOW ports and BQ BOTHOFF'},
+        {'issue': 24, 'gap': 'Regulator ALLOW drivers and full qualification of BQ watchdog/latch inhibit path'},
         {'issue': 24, 'gap': 'Main/eFuse thresholds, inrush, regeneration, short-circuit energy, thermal and recovery qualification'},
     ]
     assembly = {

@@ -20,10 +20,10 @@
         "4": "BQ_CTRL3V3",
         "5": "CELL_B_MINUS",
         "6": "BQ_HOST_NRST",
-        "7": "BQ_ALLOW_BMINUS",
-        "8": "BQ_AUX_START_REQUEST",
+        "7": "BQ_MAIN_REQUEST_RAW",
+        "8": "BQ_AUX_REQUEST_RAW",
         "9": "BQ_ALERT_N",
-        "10": null,
+        "10": "BQ_ARM_EDGE",
         "11": null,
         "12": null,
         "13": null,
@@ -189,8 +189,8 @@
     },
     "7": {
       "port": "PA0",
-      "role": "see_signal_assignment",
-      "signal": "BQ_ALLOW_BMINUS",
+      "role": "output_initial_low",
+      "signal": "BQ_MAIN_REQUEST_RAW",
       "selected_gpio": "PA0",
       "bonded_gpios": [
         "PA0"
@@ -199,8 +199,8 @@
     },
     "8": {
       "port": "PA1",
-      "role": "see_signal_assignment",
-      "signal": "BQ_AUX_START_REQUEST",
+      "role": "output_initial_low",
+      "signal": "BQ_AUX_REQUEST_RAW",
       "selected_gpio": "PA1",
       "bonded_gpios": [
         "PA1"
@@ -219,8 +219,8 @@
     },
     "10": {
       "port": "PA3",
-      "role": "unused_analog_no_pull",
-      "signal": null,
+      "role": "output_initial_low",
+      "signal": "BQ_ARM_EDGE",
       "selected_gpio": "PA3",
       "bonded_gpios": [
         "PA3"
@@ -365,7 +365,7 @@
     "AUX request requires separate domain-crossing driver; never directly connect to SYS__LOGIC_START_ALLOW",
     "Use a B-minus referenced or isolated debug interface; external programmer must not inject power or bypass shunt through PACK_RETURN",
     "Select boot option bytes for main flash, retain NRST and SWD; record and verify programmed values",
-    "Independent watchdog/fault gating must override stale-high MCU outputs; not implemented",
+    "Watchdog/latch gates connected by bq_host_watchdog_candidate; analog timing and rearm protocol unqualified",
     "BQ REG1/REG0 load, added bulk capacitor startup and stability must be requalified",
     "External TPS3808 reset candidate connected; dynamic response and low-voltage output validity remain unqualified"
   ],

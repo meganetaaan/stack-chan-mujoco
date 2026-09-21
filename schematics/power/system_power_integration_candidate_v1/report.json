@@ -1,11 +1,11 @@
 {
   "source_sha256": {
-    "schematics/power/battery_protection_integration_candidate_v1/assembly.json": "cf48f7375bda26fe5f0123ec4e99884dc0d3064b957f8f0a0f70f95adda21d2c",
+    "schematics/power/battery_protection_integration_candidate_v1/assembly.json": "9819f6a5bdb35d165aebc229fcfaaa381f6240e6ebce733e3d5764e22ab67db2",
     "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json": "ae0e95e3e893f5ee0d438a0a508cf269cf967984d22b3f6dedecb0916e6c577d",
     "schematics/power/logic_predischarge_inhibit_candidate.json": "01c3f3adf65ec1edfac83e04b40a3176ce22d50080907501d62cac375829e5e7"
   },
-  "parts": 209,
-  "populated_pin_connections": 603,
+  "parts": 223,
+  "populated_pin_connections": 651,
   "explicit_trace_count": 4,
   "connection_checks": {
     "no_explicit_copper_short_across_shunt": true,
@@ -51,7 +51,7 @@
     },
     {
       "issue": 21,
-      "gap": "Local host reset/watchdog/firmware and cross-domain LOGIC_START_ALLOW driver remain unimplemented"
+      "gap": "Local host supervisor/watchdog/latch connected; analog qualification, rearm firmware and cross-domain LOGIC_START_ALLOW driver incomplete"
     },
     {
       "issue": 24,
@@ -67,7 +67,7 @@
     },
     {
       "issue": 24,
-      "gap": "Independent default-off and watchdog drivers for both regulator ALLOW ports and BQ BOTHOFF"
+      "gap": "Regulator ALLOW drivers and full qualification of BQ watchdog/latch inhibit path"
     },
     {
       "issue": 24,

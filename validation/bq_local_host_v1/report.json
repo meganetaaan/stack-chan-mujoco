@@ -1,7 +1,7 @@
 {
   "source_sha256": {
-    "schematics/power/bq_local_host_candidate.json": "deb72359d27b819bd8f6466364a99a26974c894ff889bba83b074eb87e3fc018",
-    "schematics/power/system_power_integration_candidate_v1/assembly.json": "7cd70bd24a6d3a64eb96b82ce33a50907486f31f4c6152169960dbef3bc4499e"
+    "schematics/power/bq_local_host_candidate.json": "48e303c4b32f609effa72fa125f05d048a84531d1d616074f86d3cc13a9cb7b4",
+    "schematics/power/system_power_integration_candidate_v1/assembly.json": "8bee8e74837aba3ee144fdfe2a7ea3f636c61543ed8329feeef58e5670f08e19"
   },
   "checks": {
     "all_20_package_pins_disposed": true,
@@ -11,14 +11,14 @@
     "host_on_pre_main_fet_reg1": true,
     "host_reference_bminus": true,
     "alert_pa2_pin9": true,
-    "allow_pa0_uses_existing_series_inhibit_network": true,
+    "allow_pa0_via_gate_and_series_inhibit": true,
     "nrst_and_debug_not_enable_outputs": true,
     "sda_bonded_pb8_inactive": true,
     "scl_bonded_others_inactive": true,
     "aux_cross_domain_not_directly_wired": true
   },
   "scope": "Package pin and named-net inspection only. GPIO initialization, currents, levels, reset and fault timing not verified.",
-  "system_part_count": 209,
+  "system_part_count": 223,
   "host_local_parts_added": 11,
   "host_operating_supply_V": [
     2.0,
@@ -31,6 +31,7 @@
   "supply_range_overlap_only": true,
   "supply_startup_qualified": false,
   "firmware_implemented": false,
-  "independent_fault_cutoff_implemented": false,
+  "fault_gate_connected": true,
+  "independent_fault_cutoff_qualified": false,
   "manufacturing_release": false
 }
