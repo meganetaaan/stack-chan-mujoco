@@ -26,3 +26,5 @@ inventory.jsonに元STEP・SHA-256・各部品体積を保存。組立STEPは同
 ```sh
 LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bin/python software/sim/structural/package_foot_candidate.py --out outputs/foot_candidate_new
 ```
+
+外付けナット・10 mmねじについては、既存運動割当のもとでロール±0.34 radの連続隙間下限7.670 mmを確認（validation/external_nut_roll_bound_v1）。全身/ハーネス/公差変形の検証とは区別する。
