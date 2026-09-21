@@ -1,0 +1,27 @@
+{
+  "status": "conditional_connection_proposal_not_integrated",
+  "controller": "STM32G030F6P6",
+  "package_pin": 16,
+  "gpio": "PA11",
+  "net": "SEQUENCE_CLEAR_REQUEST",
+  "receiver": {
+    "reference": "U14",
+    "pin": 2,
+    "part": "74AUP1G06GW"
+  },
+  "replace_R14": {
+    "part": "TNPW060310K0BYEA",
+    "value_ohm": 10000,
+    "total_tolerance_budget": 0.01,
+    "pins": {
+      "1": "LOGIC3V3",
+      "2": "SEQUENCE_CLEAR_REQUEST"
+    }
+  },
+  "conditions": [
+    "Internal pulls disabled, valid common supply",
+    "Preload GPIO output data High before selecting output mode; reset tri-state treated separately",
+    "Actual reset/power, input edge rate, board leakage and total supply budget still need verification"
+  ],
+  "manufacturing_release": false
+}
