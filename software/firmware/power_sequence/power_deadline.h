@@ -10,6 +10,7 @@ struct power_deadline {
  * independent supervision. Initialization is for boot/configuration only. */
 void power_deadline_init(struct power_deadline *timer,uint32_t limit_ticks);
 int power_deadline_update(struct power_deadline *timer,int run,uint32_t now);
+/* Missing/invalid timer latches a runtime fault in every phase. */
 uint8_t power_runtime_timed_step(struct power_runtime *ctx,struct power_deadline *timer,
     uint32_t now,uint16_t observations,p_gpio_read read,p_gpio_write write);
 #endif

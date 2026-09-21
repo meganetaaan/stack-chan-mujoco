@@ -29,5 +29,18 @@ for now,pg in ((100,0),(109,0),(110,24)):
  trace.append(dict(tick=now,output=out,state=ctx.state))
 assert trace[0]['output']&1 and trace[1]['output']&1
 assert not trace[2]['output']&1 and ctx.state==0  # Timeout wins simultaneous PG.
+# Invalid timer configuration must inhibit every phase and remain latched even
+# if the caller repairs the timer object without a new boot.
+invalid_cases=[]
+for phase in range(6):
+ for limit in (None,0,0x80000000,0xffffffff):
+  ctx=Ctx(phase,0);t=Timer();init(ctypes.byref(t),limit or 0)
+  ptr=None if limit is None else ctypes.byref(t)
+  out=f(ctypes.byref(ctx),ptr,200,127,R(lambda p,r:latch[0]),W(write))
+  assert out==2 and ctx.state==0 and ctx.fault==1, (phase,limit,out,ctx.state,ctx.fault)
+  init(ctypes.byref(t),10)
+  out=f(ctypes.byref(ctx),ctypes.byref(t),201,127,R(lambda p,r:latch[0]),W(write))
+  assert out==2 and ctx.fault==1
+  invalid_cases.append(dict(phase=phase,limit=limit,clear_and_sticky=True))
 subprocess.run(['clang','--target=arm-none-eabi','-mcpu=cortex-m0plus','-mthumb','-ffreestanding','-std=c11','-Wall','-Wextra','-Werror','-Oz','-c',str(sources[0]),'-o',str(a.out/'deadline_arm.o')],check=True)
-(a.out/'report.json').write_text(json.dumps({'invalid_limits_rejected':True,'wraparound_and_backward_tick_checked':True,'expiry_sticky_until_run_reset':True,'timeout_wins_pg_trace':trace,'host_arm_compile_pass':True,'real_limit_selected':False,'hardware_timebase_verified':False,'limits':['Less than 2^31 ticks between updates','Clock stall not detectable from this clock alone','Real clock frequency/tolerance and safe startup deadline unselected']},indent=2)+'\n');print('Deadline and runtime checks passed')
+(a.out/'report.json').write_text(json.dumps({'invalid_timer_runtime_cases':invalid_cases,'invalid_limits_rejected':True,'wraparound_and_backward_tick_checked':True,'expiry_sticky_until_run_reset':True,'timeout_wins_pg_trace':trace,'host_arm_compile_pass':True,'real_limit_selected':False,'hardware_timebase_verified':False,'limits':['Less than 2^31 ticks between updates','Clock stall not detectable from this clock alone','Real clock frequency/tolerance and safe startup deadline unselected']},indent=2)+'\n');print('Deadline and runtime checks passed')

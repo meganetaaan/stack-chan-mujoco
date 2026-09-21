@@ -20,6 +20,9 @@ int power_deadline_update(struct power_deadline *t,int run,uint32_t now) {
 }
 uint8_t power_runtime_timed_step(struct power_runtime *ctx,struct power_deadline *timer,
     uint32_t now,uint16_t in,p_gpio_read read,p_gpio_write write) {
+    /* Configuration failure is independent of the startup phase. */
+    if(ctx && (!timer || !timer->limit_ticks ||
+               timer->limit_ticks>=UINT32_C(0x80000000))) ctx->io_fault=1;
     int run=ctx && ctx->state==POWER_START && !ctx->io_fault;
     int expired=power_deadline_update(timer,run,now);
     in=(uint16_t)(in&~P_IN_STARTUP_EXPIRED);
