@@ -20,5 +20,12 @@
     "Inrush short-circuit thermal layout and final current setting"
   ],
   "evidence": "validation/main_efuse_selection_v1/README.md",
-  "manufacturing_release": false
+  "manufacturing_release": false,
+  "status_interface": {
+    "pin_13_PG": "EFUSE_PG, separate pullup/receiver and startup-aware monitor pending",
+    "dedicated_fault_output": false,
+    "forbidden_connection": "Do not wire PG directly to manual-rearm RESET_N: disabled PG prevents startup",
+    "sequence": "Fresh qualified request starts a bounded startup interval; PG establishes RUN; PG loss in RUN or startup timeout cancels permission; independent stop wins in all states",
+    "evidence": "validation/main_efuse_pg_interface_v1/README_ja.md"
+  }
 }
