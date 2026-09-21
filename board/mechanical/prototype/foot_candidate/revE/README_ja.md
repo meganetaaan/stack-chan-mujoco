@@ -14,3 +14,5 @@ revDの外装を幅4.6 mmの `validation/boot_nut_side_entry_v2` へ置換した
 LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bin/python software/sim/structural/export_current_foot_inventory.py --include-boot-hardware --boot-dir validation/boot_nut_side_entry_v2 --out /tmp/foot-revE
 .venv-engineering/bin/python software/sim/structural/calculate_foot_rigid_inertia.py --inventory board/mechanical/prototype/foot_candidate/revE/inventory.json --out /tmp/foot-rigid-revE
 ```
+
+外装ねじの工具軸確認: `validation/boot_driver_access_v1`。Wera 05118064001の軸包絡は足裏除去時に8箇所とも交差0。接地層を装着すると全箇所で通過を妨げるため、外装締結後に足裏を取り付ける。柄・手・トルクは未確認。
