@@ -1583,7 +1583,7 @@
         "VIN": "DRIVE_BATTERY_PROTECTED",
         "GND": "GND",
         "VOUT": "LEFT_REGULATOR_OUT",
-        "ENA": null,
+        "ENA": "LEFT_REGULATOR_ENA",
         "ENB": null,
         "PFM": null,
         "PG": null
@@ -1601,7 +1601,7 @@
         "VIN": "DRIVE_BATTERY_PROTECTED",
         "GND": "GND",
         "VOUT": "RIGHT_REGULATOR_OUT",
-        "ENA": null,
+        "ENA": "RIGHT_REGULATOR_ENA",
         "ENB": null,
         "PFM": null,
         "PG": null
@@ -1649,6 +1649,38 @@
         "2": "GND"
       },
       "status": "candidate_thermal_resistance_envelope_not_qualified"
+    },
+    {
+      "reference": "LEFT_R_REG_EN_PD",
+      "part": "TNPW06032K21BEEA",
+      "pins": {
+        "1": "LEFT_REGULATOR_ENA",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "LEFT_R_REG_EN_SER",
+      "part": "TNPW0603100RBEEA",
+      "pins": {
+        "1": "LEFT_REGULATOR_ALLOW",
+        "2": "LEFT_REGULATOR_ENA"
+      }
+    },
+    {
+      "reference": "RIGHT_R_REG_EN_PD",
+      "part": "TNPW06032K21BEEA",
+      "pins": {
+        "1": "RIGHT_REGULATOR_ENA",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "RIGHT_R_REG_EN_SER",
+      "part": "TNPW0603100RBEEA",
+      "pins": {
+        "1": "RIGHT_REGULATOR_ALLOW",
+        "2": "RIGHT_REGULATOR_ENA"
+      }
     }
   ],
   "interfaces": {
@@ -1683,8 +1715,8 @@
     "schematics/power/servo_power_rearm_integration_revM/assembly.json": "345add726fd60b9dbf7351ced3864b2f8eebcbd65653f029af9b759e4c27b5a5",
     "validation/sequence_clear_edge_v1/report.json": "e8865f8509b692f672b2f639539926bf7fc01626d27bd83423df51509f84925c"
   },
-  "part_count": 117,
-  "pin_count": 393,
+  "part_count": 121,
+  "pin_count": 401,
   "logical_composition_only": true,
   "electrical_qualification": false,
   "manufacturing_release": false,
@@ -1763,14 +1795,20 @@
     "inputs": {
       "base": "schematics/power/servo_power_pololu_integration_candidate_v1/assembly.json",
       "resistor": "schematics/power/passive_discharge_candidate.json",
-      "old_plan": "validation/passive_discharge_candidate_v2/plan.json"
+      "old_plan": "validation/passive_discharge_candidate_v2/plan.json",
+      "inhibit": "schematics/power/pololu_startup_inhibit_candidate.json"
     },
     "source_sha256": {
       "base": "fcb8eca4df08618248da5f1b3bef8bc5ef00ea726ae2b6c937d410f8b2709169",
       "resistor": "e7bfd7f52b56fcba4059ea4811e7f7efd79e0c5009097249aad192a6b63804cd",
-      "old_plan": "09961a17bc961fbd0e2b0ac7cfa597e499ebdc88ac3bb4beb6bcb8dbfcdd8919"
+      "old_plan": "09961a17bc961fbd0e2b0ac7cfa597e499ebdc88ac3bb4beb6bcb8dbfcdd8919",
+      "inhibit": "0eddf5f630de55cc982bfc789a8246ac57de0e646fdfad1b52fc3b85edf366fa"
     },
-    "base_parts_unchanged": true,
+    "base_parts_unchanged": false,
+    "base_changes": [
+      "LEFT_U_REGULATOR ENA",
+      "RIGHT_U_REGULATOR ENA"
+    ],
     "current_pointer_changed": false,
     "previous_candidate_integration": {
       "inputs": {

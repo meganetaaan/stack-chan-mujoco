@@ -1,6 +1,6 @@
 # 左右サーボバスの常設放電候補
 
-既存113部品を保持し、各脚の逆流防止FETよりサーボ側へ360Ωを2個並列、左右計4個追加した。117部品・393接続項目。左右V+は接続せずGNDのみ共通とする。機能接続/BOM候補であり、製造ネットリスト・PCB・保護合格ではない。正式currentポインタは変更しない。
+既存113部品の各モジュールENA接続を変更し、常設放電抵抗4個と起動禁止用抵抗4個を追加した。121部品・401接続項目。左右V+は接続せずGNDのみ共通とする。機能接続/BOM候補であり、製造ネットリスト・PCB・保護合格ではない。正式currentポインタは変更しない。
 
 選定比較品は既存 `CRCW1206360RFKEA`。メーカー品番体系による候補で、在庫/調達確定ではない。[Vishay資料20035 Rev14-Apr-2026](https://www.vishay.com/docs/20035/dcrcwe3.pdf)では1206の定格0.25W、許容膜温度155°C。実基板の熱条件を満たして初めて定格が適用できる。初期±1%と100ppm/Kだけで長期抵抗範囲を保証しない。
 
@@ -38,3 +38,28 @@
 ```sh
 python software/sim/circuits/integrate_dual_servo_discharge.py --out schematics/power/servo_power_pololu_discharge_candidate_v1
 ```
+
+
+## 予備充電中のモジュール起動禁止候補
+
+PololuのENAはVINへ1MΩでプルアップされ、ENBもVINへ1MΩ、ENA–ENB間に10kΩがある。
+従来のENA開放は初期ONとなる。各モジュールに2.21kΩのENA–GND抵抗を追加し、
+各ALLOWから100Ω経由でENAを駆動する候補へ変更した。
+制御配線断線時も抵抗が残るよう、プルダウンはモジュールENA_1の近くへ置く。
+既存座標表ではENA_1=(26.67,2.54)mm。PFM/ENBは開放のまま。
+
+100Ω=TNPW0603100RBEEA、2.21kΩ=TNPW06032K21BEEA。
+LEFT/RIGHT_REGULATOR_ALLOWは未接続の制御ポートであり、完成した許可回路ではない。
+信号の基準はこのサーボ回路のGND（上位ではPACK_RETURN）。BQのCELL_B_MINUSへ短絡しない。
+電源喪失時はLow/高インピーダンス、初期化中はLow、電池設定・予備充電・主FET確認後に許可する。
+ENAによる停止だけをサーボの独立遮断や逆流阻止の代わりにはしない。
+
+内部2経路を含む公称DC計算でVIN=12.6V・ALLOW開放時ENA≈55mV。
+ALLOW=3.3VならENA≈3.159V、ドライバー電流≈1.411mA/脚。
+公称抵抗計算のみであり、公開ページにLowしきい値の数値保証がないためOFF成立を合格にしない。
+無給電モジュールへの注入、電圧上昇中の挙動、抵抗公差、制御回路との適合も残る。
+停止時の2モジュール合計約0.2504mAはメーカーの典型式による参考値であり上限ではない。
+
+この変更はサーボ側のみ。Tab5と他の下流負荷の予備充電中禁止は未完成。
+再現：`python3 software/sim/circuits/screen_pololu_startup_inhibit.py`
+出典：[Pololu #5671 接続仕様](https://www.pololu.com/product/5671)。
