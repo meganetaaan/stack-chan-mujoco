@@ -1,0 +1,58 @@
+{
+  "status": "protected_battery_comparison_not_released",
+  "manufacturer": "Keeppower",
+  "model": "P2150R",
+  "source_url": "https://www.keeppower.com.cn/products_detail.php?id=654",
+  "reviewed_date": "2026-09-22",
+  "configuration_comparison": "One protected 1S battery for servo supply; external contacts/holder/STOP and Tab5 supply not included",
+  "capacity_mAh": {
+    "nominal": 5000,
+    "minimum": 4900
+  },
+  "voltage_V": {
+    "nominal": 3.7,
+    "maximum": 4.2,
+    "cutoff": 2.5
+  },
+  "continuous_discharge_A": 15,
+  "standard_charge_A": 2.5,
+  "charge_method": "CC-CV",
+  "temperature_C": {
+    "charge": [
+      10,
+      45
+    ],
+    "discharge": [
+      -20,
+      60
+    ],
+    "storage": [
+      0,
+      25
+    ]
+  },
+  "dimensions_max_mm": {
+    "diameter": 21.6,
+    "height": 74.5
+  },
+  "mass_g": 70,
+  "mass_classification": "manufacturer listed weight; not specified as maximum",
+  "built_in_protections": [
+    "overcharge",
+    "overdischarge",
+    "overcurrent",
+    "short circuit"
+  ],
+  "package_limits": [
+    "Protected battery envelope includes internal protection, but excludes external holder/contacts/connector/leads",
+    "Nominal CAD placement only; no dynamic clearance, tolerance allocation, extraction or retention proof"
+  ],
+  "unresolved": [
+    "Protection thresholds/tolerances/delays and release behavior unspecified on product page",
+    "Loaded voltage and usable capacity above servo minimum not guaranteed",
+    "Regenerative charging acceptance not specified by standard CC-CV charge current",
+    "Contact resistance/current rating and shock retention unselected",
+    "Independent servo stop, low voltage monitoring, transient handling and Tab5 supply unfinished"
+  ],
+  "manufacturing_release": false
+}
