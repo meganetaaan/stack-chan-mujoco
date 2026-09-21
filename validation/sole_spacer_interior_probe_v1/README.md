@@ -16,3 +16,9 @@ OPENBLAS_NUM_THREADS=1 .venv-engineering/bin/python software/sim/structural/prob
 ```
 
 保存結果の比較: `.venv-engineering/bin/python software/sim/structural/compare_sparse_sole_reports.py --source validation/sole_spacer_interior_probe_v1`。再生成した解析には比較planのvariantを別フォルダで変更する。
+
+## 全外面の追加照合
+
+四面体の面を列挙し、1要素だけに属する面を外面として抽出して比較した。boss9,086面、spacer34,490面の全三角形座標が小数10桁丸めで一致。全ての四面体面の共有数が2以下であることも確認。full_boundary_comparison.jsonに記録した。先の物理タグ面のみの結果も履歴として保持する。
+
+この確認により、今回の比較で外面の形状近似や分割を変えていないことを示す。内部の四面体分割は非入れ子であり、変位が必ず一方向に収束するとは仮定しない。力学解の収束・要素品質・実CAD精度をこの一致検査で代替しない。
