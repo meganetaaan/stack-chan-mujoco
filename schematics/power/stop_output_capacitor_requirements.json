@@ -22,16 +22,22 @@
     "initial_tolerance": 0.1,
     "dielectric": "X7R",
     "package": "1206",
-    "source": "https://www.murata.com/-/media/webrenewal/tool/library/common-pdf/static-model/component-list-s-mlcc-2506.ashx?cvid=20250805040438000000&la=ja-jp",
-    "status": "screening_family_only_exact_packaging_not_selected"
+    "source": "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM31CR71H475KA12-01A.pdf",
+    "status": "exact_ordering_candidate_not_qualified",
+    "part_number": "GRM31CR71H475KA12L",
+    "source_date": "2026-06-25",
+    "source_sha256": "79e4b038591e12555fe8f014db5554725d20cce3ec127846d34c20e27e53d3da",
+    "temperature_change_fraction_no_bias": 0.15,
+    "package_quantity": 2000
   },
   "qualification": false,
   "remaining": [
     "DC bias and temperature combined capacitance at actual rail",
     "Ageing and assembly allowance",
     "ESR over relevant frequency and temperature",
-    "Exact ordering suffix, procurement and footprint",
+    "Procurement and footprint",
     "Total connected rail capacitance and regulator transient verification"
   ],
-  "correction": "Earlier requirement text incorrectly attributed 2.2uF effective minimum to TI. Preserve 2.2uF as a design target; do not relabel prior failures as passes."
+  "correction": "Earlier requirement text incorrectly attributed 2.2uF effective minimum to TI. Preserve 2.2uF as a design target; do not relabel prior failures as passes.",
+  "screening_evidence": "validation/stop_output_capacitor_v1/report.json"
 }
