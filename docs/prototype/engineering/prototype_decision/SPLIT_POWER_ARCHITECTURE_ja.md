@@ -63,3 +63,6 @@ PWM・突入・故障・Tab5・補助回路・変換器損失を含まない。
 証跡：`validation/model_dc_envelope_v2/`、`validation/precision_supply_screen_v1/`、
 `schematics/power/precision_supply_adoption_gate.json`、
 `schematics/power/split_servo_harness_revA/`、`validation/split_servo_harness_check_v1/`。
+
+電池遮断・左右駆動停止・USB接続の経路別の扱いは`POWER_DISCONNECT_SCOPE_ja.md`。
+電池保護と5V側eFuseを同じ機能として数えず、全電源状態の逆給電を統合回路で確認する。
