@@ -21,3 +21,7 @@ RESETの電源投入時保証は電圧・負荷・電源傾斜条件に依存す
 `python3 software/sim/circuits/package_manual_rearm_candidate.py --supervisor --out <未作成ディレクトリ>`。接続表と入力仕様SHA256を生成する。revAは旧候補として保存する。生信号処理、出力段、受動部品実型番は未確定。
 
 [TI TPS3808 SBVS050N](https://www.ti.com/lit/ds/symlink/tps3808.pdf)、2026-09-21確認。
+
+## 共通クリア線の負荷予算
+
+`validation/manual_rearm_reset_fanout_v1/`に漏れ電流の端点比較を追加。外部故障出力のOff漏れ5 µAではHigh比較値が約2.37 Vとなる。任意の出力追加は不可。0.8 V起動条件ではプルアップ以外の電流予算は6.92 µAだが、定格外のHCS入力電流を通常規定で代用できず、起動適合は未確認。
