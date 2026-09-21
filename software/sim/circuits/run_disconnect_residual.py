@@ -5,6 +5,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[3]
 p = argparse.ArgumentParser(description=__doc__)
 p.add_argument('--out', type=Path, required=True)
+p.add_argument('--shunt-ohms',type=float,default=0.)
 p.add_argument('--brake-fault',choices=['none','primary_open','secondary_open','both_open','primary_stuck_on','secondary_stuck_on','both_stuck_on'],default='none')
 p.add_argument('--brake-ohms',type=float,default=4.935,help='Resistance of each active regeneration absorption branch')
 p.add_argument('--bleed-ohms', type=float, default=0., help='Resistance of each of two permanent bleed branches; zero disables them')
@@ -13,6 +14,7 @@ p.add_argument('--regen-start-s',type=float,default=.1)
 p.add_argument('--regen-a', type=float, default=0., help='Injected return current for 20 ms from regen-start-s, 1 us edges')
 p.add_argument('--cout-uf', type=float, default=800.)
 a = p.parse_args()
+assert np.isfinite(a.shunt_ohms) and a.shunt_ohms>=0
 assert np.isfinite(a.brake_ohms) and a.brake_ohms>0
 assert np.isfinite(a.bleed_ohms) and a.bleed_ohms >= 0
 assert np.isfinite(a.regen_start_s) and .08 <= a.regen_start_s < .979999
@@ -21,7 +23,7 @@ assert np.isfinite(a.cout_uf) and a.cout_uf > 0
 a.out.mkdir(parents=True, exist_ok=False)
 base = ROOT/'validation/coupled_power_ldo_development_v1/coupled_power_startup_continuous_v2/coupled.cir'
 plan = {'scope': __doc__, 'source_sha256': hashlib.sha256(base.read_bytes()).hexdigest(),
-        'active_brake_each_ohm':a.brake_ohms,'brake_fault':a.brake_fault,'bleed_each_ohm': a.bleed_ohms, 'open_bleeds': a.open_bleeds, 'Cout_uF': a.cout_uf,
+        'low_side_shunt_ohm':a.shunt_ohms,'active_brake_each_ohm':a.brake_ohms,'brake_fault':a.brake_fault,'bleed_each_ohm': a.bleed_ohms, 'open_bleeds': a.open_bleeds, 'Cout_uF': a.cout_uf,
         'regeneration_A': a.regen_a, 'regeneration_window_s': [a.regen_start_s,a.regen_start_s+.02],
         'battery_V': 7.4, 'disconnect_s': .08, 'stop_s': 1., 'motor_current_A': 0.,
         'measurements_s': [.079, .081, .1, .2, 1.],
@@ -60,7 +62,14 @@ for branch,label in [(0,'primary_stuck_on'),(1,'secondary_stuck_on')]:
     if a.brake_fault in [label,'both_stuck_on']:
         net,n=re.subn(r'^Sbrake'+str(branch)+r' drain'+str(branch)+r' 0 gate'+str(branch)+r' 0 SMOS'+str(branch)+r'$',f'Rstuckbrake{branch} drain{branch} 0 .1',net,flags=re.M)
         assert n==1
+if a.shunt_ohms:
+    for branch in range(2):
+        net=net.replace(f'Sbrake{branch} drain{branch} 0 gate{branch} 0 SMOS{branch}',f'Sbrake{branch} drain{branch} source{branch} gate{branch} source{branch} SMOS{branch}')
+        for prefix in ['Ropenbrake','Rstuckbrake']:
+            net=net.replace(f'{prefix}{branch} drain{branch} 0 ',f'{prefix}{branch} drain{branch} source{branch} ')
+        net+=f'Rshunt{branch} source{branch} 0 {a.shunt_ohms:.12g}\n'
 vectors = 'v(vin) v(rail) v(bus) v(aux) v(en) i(Lout) i(Vbattery) v(drain0) v(drain1) v(gate0) v(gate1)'
+if a.shunt_ohms:vectors+=' v(source0) v(source1)'
 measures = [('powered_bus_min','meas tran powered_bus_min MIN v(bus) FROM=.05 TO=.079'),('powered_bus_max','meas tran powered_bus_max MAX v(bus) FROM=.05 TO=.079'),('bus_after_disconnect_max', 'meas tran bus_after_disconnect_max MAX v(bus) FROM=.08 TO=1')]
 for index, t in enumerate(plan['measurements_s']):
     for field, expr in [('bus','v(bus)'), ('rail','v(rail)'), ('en','v(en)'), ('aux','v(aux)')]:
@@ -72,7 +81,12 @@ for branch in range(2):
     resistance=float(match.group(1))
     net += f'let brake_current{branch} = (v(bus)-v(drain{branch}))/{resistance:.12g}\n'
     net += f'let brake_power{branch} = brake_current{branch}*brake_current{branch}*{resistance:.12g}\n'
-    net += f'let mos_power{branch} = v(drain{branch})*brake_current{branch}\n'
+    source_expr=f'v(source{branch})' if a.shunt_ohms else '0'
+    net += f'let mos_power{branch} = (v(drain{branch})-({source_expr}))*brake_current{branch}\n'
+    if a.shunt_ohms:
+        net+=f'let shunt_power{branch} = ({source_expr})*brake_current{branch}\n'
+        for metric,op in [('energy_J','INTEG'),('peak_W','MAX')]:
+            key=f'shunt{branch}_{metric}';measures.append((key,f'meas tran {key} {op} shunt_power{branch} FROM=0 TO=1'))
     measures.append((f'powered_brake{branch}_peak_W', f'meas tran powered_brake{branch}_peak_W MAX brake_power{branch} FROM=.05 TO=.079'))
     measures.append((f'powered_brake{branch}_peak_A', f'meas tran powered_brake{branch}_peak_A MAX brake_current{branch} FROM=.05 TO=.079'))
     for part in ['brake','mos']:
@@ -97,6 +111,6 @@ data = np.loadtxt(a.out/'display_trace.dat', skiprows=1)
 assert np.isfinite(data).all() and abs(data[-1,0]-1.) < 1e-6
 samples = [{'time_s':t, **{f'{k}_V':values[f'{k}_{i}'] for k in ['bus','rail','aux','en']},
             'Cout_energy_J': .5*a.cout_uf*1e-6*values[f'rail_{i}']**2} for i,t in enumerate(plan['measurements_s'])]
-report = {'samples':samples, 'numerical_checks_passed':True, 'powered_measurements':{k:v for k,v in values.items() if k.startswith('powered_')}, 'post_disconnect_absorber_measurements':{k:v for k,v in values.items() if k.startswith(('brake','mos'))}, 'bus_after_disconnect_max_V':values['bus_after_disconnect_max'], 'protection_design_verified':False}
+report = {'samples':samples, 'numerical_checks_passed':True, 'powered_measurements':{k:v for k,v in values.items() if k.startswith('powered_')}, 'post_disconnect_absorber_measurements':{k:v for k,v in values.items() if k.startswith(('brake','mos','shunt'))}, 'bus_after_disconnect_max_V':values['bus_after_disconnect_max'], 'protection_design_verified':False}
 (a.out/'report.json').write_text(json.dumps(report, indent=2)+'\n')
 print(json.dumps(report, indent=2))
