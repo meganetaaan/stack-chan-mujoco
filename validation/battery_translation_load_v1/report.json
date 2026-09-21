@@ -1,0 +1,46 @@
+{
+  "status": "estimated_force_only_not_strength_acceptance",
+  "mass_kg": 0.076,
+  "battery_center_base_m": [
+    0.029,
+    0,
+    0.08
+  ],
+  "method": "two second-order gradients of transformed center; discard two endpoints each side",
+  "limitations": [
+    "Frozen original mass motion, not updated full-body dynamics",
+    "Sampling and differentiation can miss or distort impact peaks",
+    "Rotational inertia moment and preload absent",
+    "No stop or fall qualification"
+  ],
+  "cases": [
+    {
+      "source": "validation/prototype_epic4_v1/actuator_fullbody_load_left_v1/trace.npz",
+      "sha256": "9c4907b6a9b2439f5ca86cce73f32895f634534c34fb6e3dc7f0edecd2efdc19",
+      "dt_min_s": 0.0009999999999998899,
+      "dt_max_s": 0.001000000000000334,
+      "peak_index": 15,
+      "peak_time_s": 0.016000000000000007,
+      "peak_force_norm_N": 1.6614890401416933,
+      "simultaneous_force_base_N": [
+        0.16063963739762488,
+        -0.0006634993470899257,
+        -1.6537050212103552
+      ]
+    },
+    {
+      "source": "validation/prototype_epic4_v1/actuator_fullbody_load_right_v1/trace.npz",
+      "sha256": "476c5748e833fbee6226b92f3498da8581ebec770425ba713b8512912be28ec9",
+      "dt_min_s": 0.0009999999999998899,
+      "dt_max_s": 0.001000000000000334,
+      "peak_index": 15,
+      "peak_time_s": 0.016000000000000007,
+      "peak_force_norm_N": 1.6614890401416933,
+      "simultaneous_force_base_N": [
+        0.16063963739762488,
+        -0.0006634993470899257,
+        -1.6537050212103552
+      ]
+    }
+  ]
+}
