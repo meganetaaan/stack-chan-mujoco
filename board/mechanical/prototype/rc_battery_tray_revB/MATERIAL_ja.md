@@ -20,3 +20,7 @@ TDSの層間接着18±4MPa、印刷試験片の引張降伏47±2/50±1MPaは異�
 追加の応力解析を行う前にこれらの荷重方向と接触条件を確定する。
 
 一次資料: https://prusament.com/wp-content/uploads/2022/10/PETG_Prusament_TDS_2021_10_EN.pdf
+
+6軸方向の幾何比較は`validation/tray_print_orientation_v1/`。
+Z−（取付姿勢から上下反転）をスライサー確認の第一候補とした。
+支持痕が電池接触面へ与える影響と層方向の強度は未確認なので、製造方向は未確定。
