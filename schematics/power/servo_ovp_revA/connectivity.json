@@ -245,7 +245,7 @@
         "2": "POWER_ENABLE_COMMAND",
         "3": "GND",
         "4": "PERMIT_L",
-        "5": "AUX_3V3"
+        "5": "LOGIC3V3"
       },
       "role": "Dedicated output receiver; does not implement startup qualification or fault latching",
       "source": "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf"
@@ -255,7 +255,7 @@
       "part": "GRM31C5C1H104JA01L",
       "value_F": 1e-07,
       "pin_nets": {
-        "1": "AUX_3V3",
+        "1": "LOGIC3V3",
         "2": "GND"
       },
       "role": "Local receiver decoupling; reuse existing candidate; placement unqualified"
@@ -276,7 +276,7 @@
         "2": "POWER_ENABLE_COMMAND",
         "3": "GND",
         "4": "PERMIT_R",
-        "5": "AUX_3V3"
+        "5": "LOGIC3V3"
       },
       "role": "Dedicated output receiver; does not implement startup qualification or fault latching",
       "source": "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf"
@@ -286,7 +286,7 @@
       "part": "GRM31C5C1H104JA01L",
       "value_F": 1e-07,
       "pin_nets": {
-        "1": "AUX_3V3",
+        "1": "LOGIC3V3",
         "2": "GND"
       },
       "role": "Local receiver decoupling; reuse existing candidate; placement unqualified"
@@ -351,6 +351,6 @@
   },
   "external_interfaces": {
     "POWER_ENABLE_COMMAND": "Existing manually gated sequencer command; sequencer remains unimplemented",
-    "AUX_3V3": "Existing auxiliary logic rail; all power states not qualified"
+    "LOGIC3V3": "Existing auxiliary logic rail; all power states not qualified"
   }
 }

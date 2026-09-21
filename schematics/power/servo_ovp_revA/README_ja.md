@@ -67,3 +67,6 @@ ADI直接配布の取得は再度失敗。TI技術フォーラムで配布され
 専用SHDN受信バッファ74LVC1G17GVを左右各1個、局所100nFを各1個追加。
 POWER_ENABLE_COMMANDを受ける構成候補で、合計12部品。起動資格確認をバッファに
 代行させるものではない。静的漏れ比較は`validation/servo_shdn_bias_v1/`参照。
+
+電源名を既存回路のLOGIC3V3へ統一した（旧記載AUX_3V3は同一電源の意図だった）。
+追加バッファを含む許可信号の接続負荷は`validation/servo_permission_fanout_v1/`。
