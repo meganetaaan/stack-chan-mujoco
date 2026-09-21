@@ -1,0 +1,35 @@
+{
+  "method": "nominal geometry arithmetic with two independent boundary position errors",
+  "boundary_error_each_mm": 0.2,
+  "error_basis": "Codex initial provisional assumption; not measured process capability or diameter tolerance",
+  "rows": [
+    {
+      "quantity": "stem_radial_gap",
+      "nominal_mm": 0.2,
+      "worst_case_mm": -0.2
+    },
+    {
+      "quantity": "head_entry_radial_gap",
+      "nominal_mm": 0.2,
+      "worst_case_mm": -0.2
+    },
+    {
+      "quantity": "head_axial_gap",
+      "nominal_mm": 0.2,
+      "worst_case_mm": -0.2
+    },
+    {
+      "quantity": "head_slot_overlap",
+      "nominal_mm": 1.0,
+      "worst_case_mm": 0.6
+    }
+  ],
+  "assembly_clearance_guaranteed": false,
+  "retention_strength_verified": false,
+  "source_sha256": {
+    "software/sim/structural/build_sole_retention.py": "62355323f6687df4526a4e38b04f3f6b8db6f155133c804afa5168210b6488fc",
+    "software/sim/structural/build_keyhole_sole_retention.py": "b53ddd5779b6ba354641f87a65209bd50007d701113bcddf96125dd8a3582290",
+    "validation/sole_wide_seat_v1/build_sole_slide_lock.py": "a15dfced5ddd289dfa2e64d2e6e5bd963841f9846a6271872ddc9532c7901706",
+    "docs/prototype/engineering/PLAN_ja.md": "8904d639a830d2308c3d5ea643589256e64c83af96e3b7e62fc5de5656098d0d"
+  }
+}
