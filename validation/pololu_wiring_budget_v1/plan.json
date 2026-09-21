@@ -1,0 +1,29 @@
+{
+  "question": "Does the current 5V module/protection/contact stack leave enough voltage for a specified feeder, before committing to wire routing?",
+  "user_requirement": "Manufacturable prototype design; no specified wire gauge or 4.75V terminal target",
+  "inherited_engineering_target_V": 4.75,
+  "criteria_change": false,
+  "method": "DC series-drop accounting at existing model comparison currents, not hardware or transient qualification",
+  "efuse_comparison_ohm": 0.0084,
+  "efuse_limitation": "Table maximum specified at3A; applying at4.917A is an unqualified comparison",
+  "reverse_fet_comparison_ohm": 0.003,
+  "reverse_fet_limitation": "25C VGS2.5V table value; actual gate bias and hot resistance unqualified",
+  "EH_contact_ohm_each": 0.020,
+  "contacts_each_branch_loop": 2,
+  "wire_comparison": {
+    "manufacturer": "Alpha Wire",
+    "series": "3079",
+    "status": "comparison_only_not_BOM_selection",
+    "source": "https://www.alphawire.com/products/wire/hook-up-wire/premium/3079",
+    "AWG": 14,
+    "nominal_DCR_ohm_per_1000ft_at20C": 2.8,
+    "OD_inch": 0.138,
+    "OD_tolerance_inch": 0.004,
+    "bend_radius_diameters": 5,
+    "one_way_lengths_mm": [0,50,100],
+    "length_basis": "Design comparisons only; not extracted from CAD routes",
+    "resistance_maximum_guaranteed": false
+  },
+  "unmodelled_losses": ["OEM branch wire", "PCB copper", "solder joints", "other interfaces", "hot resistance increase", "dynamic droop"],
+  "stopping_condition": "Calculate residual for both motor types and lengths; reject routes with negative comparison budget; positive residual does not pass unknown losses. Do not run speculative transient simulation or adjust voltage target."
+}
