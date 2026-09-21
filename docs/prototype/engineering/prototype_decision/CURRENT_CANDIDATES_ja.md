@@ -1,3 +1,10 @@
+## セル保護の接続境界（2026-09-22追加）
+
+[BATTERY_PROTECTION_BOUNDARY_ja.md](BATTERY_PROTECTION_BOUNDARY_ja.md) と
+`schematics/power/battery_protection_boundary_candidate.json` に上位接続案を追加。
+停止制御のBATTERY_RAWは駆動遮断前・セル保護後とする。全負荷の戻りはPACK_RETURNであり、
+セル側B−とは区別する。既存117部品回路への実装・部品選定は未完了、製作HOLDを維持。
+
 # 現在の比較候補と製作判定
 
 現時点で通電試作を許可する完成構成はない。次の資料は候補の所在で、全てを合算した製造BOMではない。
