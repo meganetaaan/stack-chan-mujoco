@@ -228,6 +228,68 @@
       },
       "role": "Local SHDN pull-down; driven receiver still pending",
       "source": "schematics/power/manual_rearm_resistors_revI.json"
+    },
+    {
+      "ref": "U_PERMIT_L",
+      "part": "74LVC1G17GV",
+      "package": "SOT753",
+      "pin_functions": {
+        "1": "NC",
+        "2": "A",
+        "3": "GND",
+        "4": "Y",
+        "5": "VCC"
+      },
+      "pin_nets": {
+        "1": null,
+        "2": "POWER_ENABLE_COMMAND",
+        "3": "GND",
+        "4": "PERMIT_L",
+        "5": "AUX_3V3"
+      },
+      "role": "Dedicated output receiver; does not implement startup qualification or fault latching",
+      "source": "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf"
+    },
+    {
+      "ref": "C_PERMIT_L",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pin_nets": {
+        "1": "AUX_3V3",
+        "2": "GND"
+      },
+      "role": "Local receiver decoupling; reuse existing candidate; placement unqualified"
+    },
+    {
+      "ref": "U_PERMIT_R",
+      "part": "74LVC1G17GV",
+      "package": "SOT753",
+      "pin_functions": {
+        "1": "NC",
+        "2": "A",
+        "3": "GND",
+        "4": "Y",
+        "5": "VCC"
+      },
+      "pin_nets": {
+        "1": null,
+        "2": "POWER_ENABLE_COMMAND",
+        "3": "GND",
+        "4": "PERMIT_R",
+        "5": "AUX_3V3"
+      },
+      "role": "Dedicated output receiver; does not implement startup qualification or fault latching",
+      "source": "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf"
+    },
+    {
+      "ref": "C_PERMIT_R",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pin_nets": {
+        "1": "AUX_3V3",
+        "2": "GND"
+      },
+      "role": "Local receiver decoupling; reuse existing candidate; placement unqualified"
     }
   ],
   "power_blocks": [
@@ -286,5 +348,9 @@
       "page": 2,
       "view": "TOP VIEW TS8, not DDB"
     }
+  },
+  "external_interfaces": {
+    "POWER_ENABLE_COMMAND": "Existing manually gated sequencer command; sequencer remains unimplemented",
+    "AUX_3V3": "Existing auxiliary logic rail; all power states not qualified"
   }
 }

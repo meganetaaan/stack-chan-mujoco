@@ -63,3 +63,7 @@ ADI直接配布の取得は再度失敗。TI技術フォーラムで配布され
 左右SHDNへ100kΩの局所プルダウン各1個を追加（TNPW0603100KBYEA）。
 候補は8部品・52端子となった。受信回路はまだ未設計。
 `validation/servo_shdn_bias_v1/`は漏れ予算の静的比較であり、初期OFFの保証ではない。
+
+専用SHDN受信バッファ74LVC1G17GVを左右各1個、局所100nFを各1個追加。
+POWER_ENABLE_COMMANDを受ける構成候補で、合計12部品。起動資格確認をバッファに
+代行させるものではない。静的漏れ比較は`validation/servo_shdn_bias_v1/`参照。
