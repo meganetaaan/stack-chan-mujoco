@@ -16,16 +16,17 @@ if current.get('capacitor_selection'):
 
 for part in assembly['parts']:
  ref=part['reference']
- if ref.startswith('R'):
+ if ref.startswith('R') and ref in overlay:
   selected=overlay[ref];key=(selected['part_number'],f"{selected['value_ohm']} ohm",'selected_candidate_not_released')
+ elif ref.startswith('R'):key=('UNSELECTED',part['part'],'exact_resistor_part_pending')
  elif ref.startswith('U'):key=(part['part'],'IC','selected_candidate_not_released')
  elif ref.startswith('C'):key=(caps['part_number'],'100 nF nominal local bypass',caps['status']) if caps else ('UNSELECTED','100 nF nominal local bypass','part_rating_tolerance_effective_capacitance_pending')
- elif ref=='SW1':key=('UNSELECTED','Normally open momentary switch','B3U-1000P separate candidate not integrated')
+ elif ref=='SW1':key=(part['part'],'Local normally open momentary switch','selected_candidate_not_released') if part['part']=='B3U-1000P' else ('UNSELECTED','Normally open momentary switch','part_pending')
  else:raise ValueError(ref)
  groups[key].append(ref)
-assert set(overlay)=={p['reference'] for p in assembly['parts'] if p['reference'].startswith('R')}
+assert set(overlay)<={p['reference'] for p in assembly['parts'] if p['reference'].startswith('R')}
 rows=[{'part_number':k[0],'description':k[1],'quantity':len(refs),'references':' '.join(refs),'status':k[2]} for k,refs in groups.items()]
-assert sum(r['quantity'] for r in rows)==assembly['part_count']==43
+assert sum(r['quantity'] for r in rows)==assembly['part_count']
 with (a.out/'bom.csv').open('w',newline='') as f:w=csv.DictWriter(f,fieldnames=rows[0],lineterminator='\n');w.writeheader();w.writerows(rows)
-report={'source_sha256':{x:hashlib.sha256((root/x).read_bytes()).hexdigest() for x in paths},'assembly_parts':assembly['part_count'],'bom_quantity':sum(r['quantity'] for r in rows),'selected_candidate_quantity':sum(r['quantity'] for r in rows if r['part_number']!='UNSELECTED'),'unselected_quantity':sum(r['quantity'] for r in rows if r['part_number']=='UNSELECTED'),'scope':'Manual rearm revH only; excludes main power path, brake, sequencer, raw button interface and independent stop','manufacturing_release':False,'electrical_qualification':False}
+report={'source_sha256':{x:hashlib.sha256((root/x).read_bytes()).hexdigest() for x in paths},'assembly_parts':assembly['part_count'],'bom_quantity':sum(r['quantity'] for r in rows),'selected_candidate_quantity':sum(r['quantity'] for r in rows if r['part_number']!='UNSELECTED'),'unselected_quantity':sum(r['quantity'] for r in rows if r['part_number']=='UNSELECTED'),'scope':'Manual rearm assembly only; excludes main power path, brake, sequencer and independent stop','manufacturing_release':False,'electrical_qualification':False}
 (a.out/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))

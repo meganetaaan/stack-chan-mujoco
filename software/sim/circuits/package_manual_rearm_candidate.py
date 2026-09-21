@@ -2,7 +2,8 @@
 import argparse,csv,hashlib,json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[3]
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--supervisor',action='store_true');p.add_argument('--en-driver',action='store_true');p.add_argument('--en-clamp',action='store_true');p.add_argument('--clamp-cause',action='store_true');p.add_argument('--permission-gate',action='store_true');p.add_argument('--pg-receiver',action='store_true');p.add_argument('--clear-sink',action='store_true');a=p.parse_args();
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--supervisor',action='store_true');p.add_argument('--en-driver',action='store_true');p.add_argument('--en-clamp',action='store_true');p.add_argument('--clamp-cause',action='store_true');p.add_argument('--permission-gate',action='store_true');p.add_argument('--pg-receiver',action='store_true');p.add_argument('--clear-sink',action='store_true');p.add_argument('--local-button',action='store_true');a=p.parse_args();
+if a.local_button and not a.clear_sink: p.error('--local-button requires --clear-sink')
 if a.clear_sink and not a.pg_receiver: p.error('--clear-sink requires --pg-receiver')
 if a.pg_receiver and not a.permission_gate: p.error('--pg-receiver requires --permission-gate')
 if a.permission_gate and not a.clamp_cause: p.error('--permission-gate requires --clamp-cause')
@@ -17,6 +18,7 @@ if a.en_clamp: files.append('main_enable_clamp_candidate.json')
 if a.clamp_cause: files.append('main_clamp_cause_candidate.json')
 if a.pg_receiver: files.append('pg_receiver_candidate.json')
 if a.clear_sink: files.append('sequence_clear_sink_candidate.json')
+if a.local_button: files.append('local_enable_button_candidate.json')
 data={f:json.loads((ROOT/'schematics/power'/f).read_text()) for f in files}
 parts=[]
 def add(ref,part,nets,source=None):
@@ -70,6 +72,12 @@ if a.clear_sink:
  add('U14',sink['part_number'],[sink['pins'][str(i)] for i in range(1,6)],'sequence_clear_sink_candidate.json')
  add('R14','100k input pullup; total +/-1% comparison, exact part pending',['LOGIC3V3','SEQUENCE_CLEAR_REQUEST'])
  add('C14','100nF local ceramic candidate; exact part pending',['LOGIC3V3','GND'])
+if a.local_button:
+ button=data['local_enable_button_candidate.json']
+ next(x for x in parts if x['reference']=='SW1')['part']=button['switch']
+ add('U15','74LVC1G17GV',[button['receiver_pins'][str(i)] for i in range(1,6)],'local_enable_button_candidate.json')
+ add('R15','3k local button pullup; total +/-1% budget; exact part pending',['LOGIC3V3','BUTTON_RAW'])
+ add('C15','100nF local ceramic candidate; exact part pending',['LOGIC3V3','GND'])
 ports={'LOGIC3V3':'upstream logic rail; power budget and independent supervision unfinished','GND':'common reference; physical return routing unfinished','RESET_N':'independent health-qualified clear input; low on stop/fault/invalid power; must not depend on button debounce/timer','RAW_RELEASED_CONDITIONED':'unfinished protected raw-input interface from BUTTON_RAW; not a direct wire','ENABLE_PERMISSION':'logic output only; physical default-off power stage unfinished'}
 if a.supervisor: ports['RESET_N']='U7 open-drain rail reset plus external stop/fault sinks; sink components, fanout and fail-state behavior unfinished; never push-pull drive'
 if a.en_driver:
@@ -85,6 +93,9 @@ if a.pg_receiver:
 if a.clear_sink:
  ports['SEQUENCE_CLEAR_REQUEST']='active high U14 input; weak default asserted; actual sequencer driver and clear width unfinished'
  ports['RESET_N']='U7 and U14 open-drain outputs; independent external stop/fault sinks and physical clear acknowledgement unfinished'
+if a.local_button:
+ ports.pop('RAW_RELEASED_CONDITIONED')
+ ports['BUTTON_RAW']='local PCB-only switch node; do not expose as external cable input; protection/layout unfinished'
 report={'scope':__doc__,'parts':parts,'interfaces':ports,'source_sha256':{f:hashlib.sha256((ROOT/'schematics/power'/f).read_bytes()).hexdigest() for f in files},'part_count':len(parts),'pin_count':sum(len(x['pins']) for x in parts),'logical_composition_only':True,'electrical_qualification':False,'manufacturing_release':False}
 report['assembly_overrides'] = ['U8 pin4 routed through R7 to MAIN_EFUSE_EN; overrides direct output in individual driver candidate'] if a.en_clamp else []
 if a.clamp_cause: report['assembly_overrides'] += ['U9 RESET goes to RAIL_HEALTH_N instead of EN; U7 MR receives RAIL_HEALTH_N instead of LOGIC3V3; U11 level buffer and U10 reset follower drive EN']
@@ -119,6 +130,10 @@ if a.pg_receiver:
 if a.clear_sink:
  assert refs['U14']['pins']['4']==refs['U6']['pins']['1']==refs['U6']['pins']['13']=='RESET_N'
  assert refs['U14']['pins']['2']==refs['R14']['pins']['2']=='SEQUENCE_CLEAR_REQUEST'
+if a.local_button:
+ assert refs['SW1']['pins']['1']==refs['U15']['pins']['2']==refs['R15']['pins']['2']==refs['U1']['pins']['2']=='BUTTON_RAW'
+ assert refs['U15']['pins']['4']==refs['U3']['pins']['2']=='RAW_RELEASED_CONDITIONED'
+ assert refs['SW1']['pins']['2']=='GND'
 (a.out/'assembly.json').write_text(json.dumps(report,indent=2)+'\n')
 with (a.out/'connections.csv').open('w',newline='') as f:
  w=csv.writer(f);w.writerow(['reference','part','pin','net'])

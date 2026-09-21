@@ -1,7 +1,7 @@
 {
-  "candidate_revision": "manual_rearm_revH",
-  "assembly": "schematics/power/manual_rearm_revH/assembly.json",
-  "readme": "schematics/power/manual_rearm_revH/README_ja.md",
+  "candidate_revision": "manual_rearm_revI",
+  "assembly": "schematics/power/manual_rearm_revI/assembly.json",
+  "readme": "schematics/power/manual_rearm_revI/README_ja.md",
   "manufacturing_release": false,
   "electrical_qualification": false,
   "confirmed_scope": [
@@ -9,12 +9,12 @@
     "Settled permission cancellation even with sequence request high",
     "Static output-load comparisons",
     "PG receiver pin map; conditional DC comparisons only",
-    "U14 open-drain clear sink and static load comparison"
+    "U14 open-drain clear sink and static load comparison",
+    "Local button and raw Schmitt receiver pin map; not enclosure or ESD qualification"
   ],
   "open_interfaces": [
     "SEQUENCE_ENABLE_REQUEST: actual startup/PG sequencer",
     "RESET_N: external stop/fault sinks",
-    "RAW_RELEASED_CONDITIONED: button raw interface",
     "SEQUENCE_CLEAR_REQUEST: actual sequencer driver; U14 sink now defined"
   ],
   "remaining": [
@@ -22,13 +22,14 @@
     "Unpowered and partial-power behavior",
     "Fault pulse capture and propagation",
     "Exact passives and complete power path",
-    "PG receiver power-transition validity and open-wire fault handling"
+    "PG receiver power-transition validity and open-wire fault handling",
+    "Local button footprint, raw-node protection and R15 exact part"
   ],
   "historical_failure": "validation/dual_supervisor_recovery_v1/README_ja.md",
   "sequencer_interface": "schematics/power/startup_sequencer_interface.json",
   "resistor_selection": "schematics/power/manual_rearm_resistors.json",
   "resistor_bom": "validation/manual_rearm_resistors_v1/resistor_bom.csv",
-  "quantity_bom": "validation/manual_rearm_bom_v2/bom.csv",
-  "quantity_bom_report": "validation/manual_rearm_bom_v2/report.json",
+  "quantity_bom": "validation/manual_rearm_bom_v3/bom.csv",
+  "quantity_bom_report": "validation/manual_rearm_bom_v3/report.json",
   "capacitor_selection": "schematics/power/manual_rearm_capacitors.json"
 }
