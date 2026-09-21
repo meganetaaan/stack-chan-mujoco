@@ -29,4 +29,4 @@ python3 software/sim/circuits/check_power_sequence_c.py --out /tmp/power-sequenc
 ```
 
 コンパイラ版・入力ハッシュ・残件はvalidation/power_sequence_c_v1/report.json。
-GPIO初期化、クロック、ウォッチドッグ、起動コード、回路統合は未実装。
+GPIO初期化のレジスタ操作コアはg030_gpio_init.cへ追加。実MMIOアダプター、クロック、ウォッチドッグ、起動コード、回路統合は未実装。
