@@ -85,13 +85,36 @@
     "battery_contacts_used": false,
     "servo_power_from_Tab5": false,
     "pending": [
-      "HV input schematic topology and actual board revision",
+      "Actual board revision matches verified schematic; component reverse-path qualification",
       "Mating connector orientation, current rating, retention and CAD access",
       "Input branch fuse reverse protection and transient voltage",
       "Startup and maximum input current",
       "USB simultaneous connection and backfeed",
       "Shutdown and restart sequencing"
     ],
-    "release": false
+    "release": false,
+    "schematic_pin_mapping": {
+      "source_sha256": "13cf3fd9954d39aa198e57b1bb94ec56af7d49107c80a245acc5bd90ac8ea329",
+      "page_1based": 4,
+      "BUS1": {
+        "25": "SYS_VIN",
+        "27": "SYS_VIN",
+        "29": "SYS_VIN",
+        "1": "GND",
+        "3": "GND",
+        "5": "GND",
+        "30": "VBAT_OUT, not SYS_BAT_2S"
+      },
+      "J9": {
+        "1": "GND",
+        "2": "SYS_VIN",
+        "4": "GND"
+      },
+      "J7": {
+        "1": "GND",
+        "2": "SYS_VIN"
+      }
+    },
+    "preferred_connector_candidate": "J9 GPIO_EXT pins 1 GND / 2 SYS_VIN, pending mating orientation and mechanical access"
   }
 }
