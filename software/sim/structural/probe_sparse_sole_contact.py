@@ -3,7 +3,7 @@ import argparse,json,hashlib,time
 from pathlib import Path
 import numpy as np,meshio
 from scipy.sparse import block_diag,bmat,csr_matrix,diags
-from scipy.sparse.linalg import spsolve
+from unilateral_contact import solve
 from skfem import Basis,ElementVector,ElementTetP1,asm
 from skfem.io import from_meshio
 from skfem.models.elasticity import linear_elasticity,lame_parameters
@@ -26,10 +26,7 @@ for name,E,nu,patch,loadpatch,sign in [('boss',1120,.35,'spacer_contact','nut_be
 K=block_diag(Ks,format='csr');C=block_diag(Cs,format='csr');F=np.concatenate(Fs);boss,spacer=parts
 ids=np.flatnonzero(boss['contactw']);lookup={tuple(np.round(spacer['xyz'][i],9)):i for i in np.flatnonzero(spacer['contactw'])};other=np.array([lookup[tuple(np.round(boss['xyz'][i],9))] for i in ids]);assert np.allclose(boss['contactw'][ids],spacer['contactw'][other],rtol=1e-8,atol=1e-10)
 n=len(ids);B=csr_matrix((np.r_[np.ones(n),-np.ones(n)],(np.r_[np.arange(n),np.arange(n)],np.r_[3*ids+2,spacer['offset']+3*other+2])),shape=(n,len(F)));area=boss['contactw'][ids];active=np.ones(n,dtype=bool);history=[];start=time.monotonic();converged=False
-for it in range(plan['max_iterations']):
- H=K+B.T@diags(plan['penalty_N_mm3']*area*active)@B;A=bmat([[H,C.T],[C,None]],format='csc');sol=spsolve(A,np.r_[F,np.zeros(C.shape[0])]);assert np.isfinite(sol).all();u=sol[:len(F)];multipliers=sol[len(F):];gap=B@u;next_active=gap<0;history.append({'iteration':it,'active_nodes':int(active.sum()),'changed_nodes':int(np.sum(active!=next_active))})
- if np.array_equal(active,next_active):converged=True;break
- active=next_active
+solution=solve(K,C,F,B,area,plan['penalty_N_mm3'],max_iterations=plan['max_iterations']);u=solution['u'];multipliers=solution['multipliers'];gap=solution['gap'];history=solution['history'];converged=solution['converged'];A=solution['matrix']
 pressure=np.maximum(-plan['penalty_N_mm3']*gap,0);contact_force=B.T@(area*pressure);gauge_force=-C.T@multipliers;residual=K@u-F-contact_force-gauge_force;results={};arrays={'u_mm':u,'pressure_MPa':pressure,'gap_mm':gap,'contact_area_mm2':area,'gauge_force_N':gauge_force,'multipliers':multipliers,'contact_coordinates_mm':boss['xyz'][ids]}
 for item,Kp in zip(parts,Ks):
  o=item['offset'];basis=item['basis'];up=u[o:o+basis.N];g=basis.interpolate(up).grad;strain=(g+g.swapaxes(0,1))/2;stress=2*item['mu']*strain+item['lam']*np.einsum('iieq->eq',strain)[None,None]*np.eye(3)[:,:,None,None];eig=np.linalg.eigvalsh(np.moveaxis(stress,(0,1),(-2,-1)));results[item['name']]={'max_displacement_mm':float(np.linalg.norm(up.reshape(-1,3),axis=1).max()),'max_absolute_principal_MPa':float(abs(eig).max())};arrays[item['name']+'_stress_MPa']=stress
