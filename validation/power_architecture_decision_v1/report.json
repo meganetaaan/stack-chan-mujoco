@@ -1,0 +1,53 @@
+{
+  "scope": "Two frozen full-body turn traces only; not all motions or hardware maxima",
+  "rows": [
+    {
+      "turn": "left",
+      "leg": "left",
+      "peak_draw_A": 0.42465691167392877,
+      "peak_regeneration_A": 0.024681491864978315,
+      "peak_net_draw_A": 0.42465691167392877,
+      "source_sha256": "9f05eb80ed081c2fd27128883a48fdbd1485984e72503718cf52ae41fcf3eabe"
+    },
+    {
+      "turn": "left",
+      "leg": "right",
+      "peak_draw_A": 0.3359619574888692,
+      "peak_regeneration_A": 0.01896468424551623,
+      "peak_net_draw_A": 0.3359619574888692,
+      "source_sha256": "9f05eb80ed081c2fd27128883a48fdbd1485984e72503718cf52ae41fcf3eabe"
+    },
+    {
+      "turn": "right",
+      "leg": "left",
+      "peak_draw_A": 0.3386652431782489,
+      "peak_regeneration_A": 0.018696738846002484,
+      "peak_net_draw_A": 0.3386652431782489,
+      "source_sha256": "82822803b318c522aa937fce304f590ee1e469543ba51658330da98c6a049229"
+    },
+    {
+      "turn": "right",
+      "leg": "right",
+      "peak_draw_A": 0.424766817756567,
+      "peak_regeneration_A": 0.024443728747834955,
+      "peak_net_draw_A": 0.424766817756567,
+      "source_sha256": "82822803b318c522aa937fce304f590ee1e469543ba51658330da98c6a049229"
+    }
+  ],
+  "motor_limit_sum_A": 9.629999999999999,
+  "per_leg_motor_limit_sum_A": 4.8149999999999995,
+  "voltage_budget": {
+    "source_min_V": 4.85,
+    "normal_load_min_V": 4.75,
+    "remaining_drop_V": 0.09999999999999964,
+    "per_leg_loop_resistance_ceiling_at_motor_sum_ohm": 0.020768431983385183
+  },
+  "limitations": [
+    "Motor current sum is not DC supply peak or hardware protection guarantee",
+    "Resistance ceiling leaves no allowance for ripple, dynamic droop, idle or auxiliary currents; necessary screening only",
+    "Current traces use existing approximate motor and ideal bridge model",
+    "Split outputs must not be connected together by servo power cables",
+    "Regeneration must be handled on each isolated output rail"
+  ],
+  "qualified": false
+}
