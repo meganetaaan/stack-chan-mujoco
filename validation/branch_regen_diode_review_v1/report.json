@@ -1,0 +1,44 @@
+{
+  "candidate": "PMEG3050EP across branch protection; anode downstream, cathode common bus",
+  "comparison_current_A": 1,
+  "diode_vf_max_at_1A_25C_V": 0.275,
+  "wire_and_contacts_comparison_drop_V": 0.0665748031496063,
+  "maximum_bus_budget_at_this_comparison_V": 5.658425196850393,
+  "rows": [
+    {
+      "archived_brake_state": "none",
+      "branch_protection_state": "open; reverse diode conducting",
+      "conditional_terminal_budget_V": 5.966461803149607,
+      "remaining_to_6V_V": 0.03353819685039294,
+      "arithmetic_screen_pass": true
+    },
+    {
+      "archived_brake_state": "primary_open",
+      "branch_protection_state": "open; reverse diode conducting",
+      "conditional_terminal_budget_V": 6.008162803149607,
+      "remaining_to_6V_V": -0.008162803149606823,
+      "arithmetic_screen_pass": false
+    },
+    {
+      "archived_brake_state": "secondary_open",
+      "branch_protection_state": "open; reverse diode conducting",
+      "conditional_terminal_budget_V": 5.966461803149607,
+      "remaining_to_6V_V": 0.03353819685039294,
+      "arithmetic_screen_pass": true
+    },
+    {
+      "archived_brake_state": "both_open",
+      "branch_protection_state": "open; reverse diode conducting",
+      "conditional_terminal_budget_V": 20.666274803149605,
+      "remaining_to_6V_V": -14.666274803149605,
+      "arithmetic_screen_pass": false
+    }
+  ],
+  "decision": "Do not promote this combination to manufacturing BOM",
+  "electrical_protection_verified": false,
+  "source_sha256": {
+    "validation/brake_51ohm_envelope_faults_v1/report.json": "66adc3bd3c697e2e22fd87eb036ad20034a7d2f86c12e4e11725f13242559baa",
+    "validation/servo_wire_selection_v1/report.json": "aa522f50d8bcb7a8acab71cd6e6ec13a93bc8d214af443f3241b0297bd5c7dd8",
+    "validation/branch_regen_diode_review_v1/plan.json": "5d77c197dd63c96e2c6498013653d08b94e09319327c90668bfae20449d6d40f"
+  }
+}

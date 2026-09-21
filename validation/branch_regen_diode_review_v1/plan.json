@@ -1,0 +1,15 @@
+{
+  "question": "Can a reverse diode across branch protection reuse the existing common brake candidate without exceeding the servo 6 V constraint?",
+  "method": "One component datasheet review and algebraic voltage budget using archived brake and wire results; no new motor assumptions or transient simulation",
+  "stop_condition": "Evaluate archived four brake states once at the existing 1 A comparison point; reject promotion if voltage budget is negative or fault path incomplete",
+  "criteria": {
+    "servo_terminal_max_V": 6.0,
+    "budget_nonnegative": true
+  },
+  "limits": [
+    "1 A is a comparison point, not established hardware maximum",
+    "Datasheet forward drop maximum applies only at its stated junction temperature",
+    "Archived brake waveform is behavioral, not a guaranteed implemented clamp",
+    "Branch protection open plus brake path open is a combined fault, retained explicitly rather than described as a single fault"
+  ]
+}
