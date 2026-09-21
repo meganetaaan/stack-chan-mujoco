@@ -11,3 +11,7 @@
 HCS11とMRバッファを同じ基板上で隣接配置し、出力へ追加RCを置かない候補とする。実際の入力容量・配線容量を含む一つの配線案で、3.0〜3.6 Vのモデルコーナーを評価する。入力の10 ns/V制限、過大振幅、しきい値の複数横断を確認し、成立または修正必要箇所を判断した時点で終了する。モデル解析結果は机上根拠とし、#49のオシロスコープ確認と区別する。
 
 再現：TI公式配布 https://www.ti.com/lit/zip/sclm156 を取得し、`python3 software/sim/circuits/inspect_hcs11_ibis_edges.py --archive <zip> --out <未作成ディレクトリ>`。配布ファイルのSHA256をreport.jsonに保存。製品ページ：https://www.ti.com/product/SN74HCS11 （2026-09-21確認）。今回配布ZIPそのものはリポジトリへ再配布せず、取得先と読取り処理・結果を保存する。
+
+## 後続のモデル選択判断
+
+`validation/manual_release_spice_model_audit_v1/`で別配布の簡易SPICEモデルを監査した。出力抵抗による2 V／50 pF立上り予測がデータシート上限と整合しないため、エッジ合否用途には使用しない。IBISモデルによる実負荷評価は引き続き未実施。

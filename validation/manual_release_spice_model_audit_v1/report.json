@@ -1,0 +1,66 @@
+{
+  "archive_sha256": "a5ba55d9efadc499767df606182c3717aa1593432e210eb883590901f97b1175",
+  "method": "Exact first-order RC solution of vendor resistive output plus 0.01ohm enabled switch and external 50pF; internal output source switches ideally. Propagation delay does not change 10-90% edge time.",
+  "rows": [
+    {
+      "supply_V": 2,
+      "edge": "rising",
+      "output_resistance_ohm": 1500.01,
+      "derived_transition_ns": 164.79294191250514,
+      "datasheet_typical_ns": 9,
+      "datasheet_maximum_ns": 17,
+      "within_datasheet_maximum": false
+    },
+    {
+      "supply_V": 2,
+      "edge": "falling",
+      "output_resistance_ohm": 60.01,
+      "derived_transition_ns": 6.592772344297326,
+      "datasheet_typical_ns": 9,
+      "datasheet_maximum_ns": 17,
+      "within_datasheet_maximum": true
+    },
+    {
+      "supply_V": 4.5,
+      "edge": "rising",
+      "output_resistance_ohm": 20.01,
+      "derived_transition_ns": 2.198323189624888,
+      "datasheet_typical_ns": 5,
+      "datasheet_maximum_ns": 8,
+      "within_datasheet_maximum": true
+    },
+    {
+      "supply_V": 4.5,
+      "edge": "falling",
+      "output_resistance_ohm": 18.01,
+      "derived_transition_ns": 1.9786007318912662,
+      "datasheet_typical_ns": 5,
+      "datasheet_maximum_ns": 8,
+      "within_datasheet_maximum": true
+    },
+    {
+      "supply_V": 6,
+      "edge": "rising",
+      "output_resistance_ohm": 15.394615384615399,
+      "derived_transition_ns": 1.6912713640857617,
+      "datasheet_typical_ns": 4,
+      "datasheet_maximum_ns": 7,
+      "within_datasheet_maximum": true
+    },
+    {
+      "supply_V": 6,
+      "edge": "falling",
+      "output_resistance_ohm": 16.9330769230769,
+      "derived_transition_ns": 1.860288639265467,
+      "datasheet_typical_ns": 4,
+      "datasheet_maximum_ns": 7,
+      "within_datasheet_maximum": true
+    }
+  ],
+  "suitable_for_edge_acceptance": false,
+  "limits": [
+    "Output-stage analytic audit, not full PSpice execution",
+    "Generic vendor model states typical 25C behavior only",
+    "Input clamp/current/power behavior not audited"
+  ]
+}
