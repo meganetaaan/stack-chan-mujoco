@@ -14,9 +14,10 @@ INA180A1,2,1,candidate,shunt comparator latch and fault isolation not released,v
 0.1 ohm shunt,2,1,specification_only,part number pulse rating tolerance and Kelvin layout unresolved,validation/brake_shunt_insertion_v1
 TPS70933DBVR,1,1,candidate,auxiliary supply; effective capacitance and pin level review pending,schematics/power/aux_sequence_candidate.json
 TPS3840PL30 and TPS3700,1 each,1 each,candidate,sequence only; not complete battery or fault protection,schematics/power/aux_sequence_candidate.json
-AO3400A brake MOSFET and gate drive,2 MOSFETs for common brake; driver TBD,1 branch,evaluation_candidate,MOSFET candidate only; actual gate driver SOA temperature and control-power-loss behavior unqualified,schematics/power/brake_mosfet_candidate.json
+AO3400A brake MOSFET and gate drive,2 MOSFETs for common brake,1 branch,evaluation_candidate,MOSFET candidate only; actual gate driver SOA temperature and control-power-loss behavior unqualified,schematics/power/brake_mosfet_candidate.json
 Fuse reverse protection physical disconnect latch reset,TBD,1 bench chain,unselected,DC interrupt current wiring coordination and no automatic restart required,docs/prototype/engineering/prototype_decision/DECISION_ja.md
 Connectors harness and fasteners,TBD,1 test harness,unselected,wire current temperature voltage drop mating and strain relief required,docs/prototype/engineering/prototype_decision/DECISION_ja.md
 Current limited bench supply and independent disconnect,external equipment,1 set,select_before_power,5 V supply plus regeneration sink or qualified external clamp; no assumed sink capability,docs/prototype/engineering/prototype_decision/TEST_PLAN_ja.md
 JST EHR-3 and SEH-001T-P0.6,12 housings and 36 contacts,1 housing and 3 contacts,candidate_not_released,Individual supply branch; AWG22 wire part and crimp tool unresolved; retain existing servo header,schematics/power/servo_connector_candidate.json
 Alpha Wire 3051 AWG22,not selected for robot,250 mm per conductor planning length,stationary_jig_candidate,exact ordering code crimp process resistance upper bound pending; not dynamic flex qualified,validation/servo_wire_selection_v1
+UCC27517DBVR gate driver,2,1,evaluation_candidate,Load-side bus powered; comparator reference gate network and startup qualification pending,schematics/power/brake_gate_driver_candidate.json
