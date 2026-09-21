@@ -4,6 +4,7 @@ import csv
 import hashlib
 import json
 from pathlib import Path
+from assembly_net_aliases import net_aliases
 import xml.etree.ElementTree as ET
 
 root = Path(__file__).resolve().parents[3]
@@ -11,13 +12,16 @@ p = argparse.ArgumentParser(description=__doc__)
 p.add_argument('--netlist', type=Path, required=True)
 p.add_argument('--schematic', type=Path, required=True)
 p.add_argument('--out', type=Path, required=True)
+p.add_argument('--assembly')
+p.add_argument('--bom')
 a = p.parse_args()
 current_path = root / 'schematics/power/manual_rearm_current.json'
 current = json.loads(current_path.read_text())
-assembly_path = root / current['assembly']
-bom_path = root / current['quantity_bom']
+assembly_path = root / (a.assembly or current['assembly'])
+bom_path = root / (a.bom or current['quantity_bom'])
 assembly = json.loads(assembly_path.read_text())
-expected = {(part['reference'], pin): net for part in assembly['parts']
+aliases = net_aliases(assembly)
+expected = {(part['reference'], pin): aliases.get(net, net) for part in assembly['parts']
             for pin, net in part['pins'].items()}
 values = {ref: row['part_number'] for row in csv.DictReader(bom_path.open())
           for ref in row['references'].split()}
