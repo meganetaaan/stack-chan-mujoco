@@ -1,3 +1,10 @@
+## セルUV候補の棄却（2026-09-22）
+
+[CELL_PROTECTION_SCREEN_ja.md](CELL_PROTECTION_SCREEN_ja.md)にメーカーの負荷中3.0V/セル下限を反映。
+BQ7791500（2.9V公称）とBQ7791508（3.0V公称）は検出誤差だけでも必要条件を満たさず、
+単独UV保護として不採用。3.0Vより高いしきい値と遮断余裕を持てる部品へ選び直す。
+既存の低側接続境界案は比較案として維持し、製作HOLD。
+
 ## セル保護の接続境界（2026-09-22追加）
 
 [BATTERY_PROTECTION_BOUNDARY_ja.md](BATTERY_PROTECTION_BOUNDARY_ja.md) と
