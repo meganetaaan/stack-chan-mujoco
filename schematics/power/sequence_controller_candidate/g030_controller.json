@@ -262,5 +262,25 @@
     "Receiver resistance remains 220k in revI; conditional load comparison does not authorize automatic replacement"
   ],
   "manufacturing_release": false,
-  "hardware_implemented": false
+  "hardware_implemented": false,
+  "power_estimate_configuration": {
+    "status": "engineering_candidate_not_implemented",
+    "hclk_Hz": 16000000,
+    "voltage_range": 1,
+    "execution": "Flash with prefetch and cache",
+    "clock_source": "Internal HSI16; oscillator contribution still to be budgeted",
+    "reference_core_current_A": 0.0029,
+    "reference_conditions": "DS12991 Rev6 Table25: 3.6V, 85C, all peripherals disabled, analog I/O; characterization maximum, not production tested",
+    "logic_rail_continuous_selection_target_A": 0.02,
+    "target_rationale": "Round upward from twice the 9.878mA core plus passive plus static-IC reference subtotal. Engineering selection reserve, not measured or qualified load.",
+    "remaining": [
+      "HSI and enabled peripheral currents",
+      "Digital input intermediate-level current",
+      "MAX6816 internal pullup",
+      "Reset/debug/boot/update states",
+      "Dynamic peak current and decoupling",
+      "Supply accuracy and thermal qualification"
+    ],
+    "evidence": "validation/sequence_mcu_current_v1/README_ja.md"
+  }
 }

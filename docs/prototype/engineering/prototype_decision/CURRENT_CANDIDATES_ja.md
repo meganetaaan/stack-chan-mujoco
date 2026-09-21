@@ -415,3 +415,7 @@ JST図面とメーカーSTEPの3端子断面を照合し、嵌合側が現行配
 ### 残るロジックICの静止電流
 
 `validation/logic_ic_current_review_v2`でU2/U14/U_MONITOR_RXのメーカー条件を確認し、全9種類21個の監視・ロジックICを電源ピンで集計。条件付き参考計上はLOGIC3V3 93.8 µA、STOP_AUX3V3 48 µA。抵抗分込み参考値約6.978/0.916 mAだが、全状態保証値ではなくMCU・ボタン内部抵抗・動的電流等は未算入。供給源は未判定。
+
+### 起動MCUとLOGIC3V3の選定電流枠
+
+`validation/sequence_mcu_current_v1`とg030_controller.jsonに16 MHz/Range1/Flash/内部HSI16の未実装候補を記録。コア参考2.9 mAを足した小計9.877558 mAを基に、連続出力の暫定選定目標20 mAを設定。2倍を上方丸めしたCodexの枠で、残10.122442 mAは未集計負荷用。保証上限・ピーク電流・供給源合格ではなく、追加負荷を確認して見直す。
