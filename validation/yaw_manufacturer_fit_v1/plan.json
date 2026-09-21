@@ -1,0 +1,14 @@
+{
+  "question": "Does actual servo CAD fit the support in its final pose, prerequisite to insertion-path work?",
+  "mapping": "Rotate manufacturer CAD 180 degrees about (1,1,0): (x,y,z)->(y,x,-z); translate to (-5,+/-26,68.5) mm. Front horn face z=6.5 maps to robot z=62.",
+  "mapping_status": "Design orientation hypothesis; validate bounding envelope against frozen case; not physical calibration.",
+  "stop": "One final pose per side; do not run insertion sweeps if final fit fails.",
+  "intersection_limit_mm3": 0.01,
+  "criterion_source": "Existing geometric screening assumption; not contact strength.",
+  "limitations": [
+    "no screw interfaces or wiring",
+    "manufacturer nominal CAD",
+    "no insertion-path proof",
+    "no support strength"
+  ]
+}
