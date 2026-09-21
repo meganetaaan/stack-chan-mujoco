@@ -1,0 +1,16 @@
+{
+  "question": "Can a rigid frictionless zero-gap rail materially resolve the archived displacement shortfall without tensile support?",
+  "assumptions": [
+    "Same archived load, E1120MPa nu0.35 and rear clamp",
+    "Rigid rail, zero gap, nodal contact on previously sampled footprint",
+    "No friction, preload, real body flexibility or manufacturing gaps"
+  ],
+  "stop": "One existing mesh, max500 QP iterations; require nonpenetration and nonnegative reactions; no refinement",
+  "checks_before_solve": {
+    "gap_min_mm": -1e-07,
+    "reaction_min_N": -1e-09,
+    "max_complementarity_Nmm": 1e-07,
+    "free_residual_N": 1e-07
+  },
+  "manufacturing_release": false
+}
