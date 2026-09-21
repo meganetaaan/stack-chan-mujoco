@@ -1,12 +1,12 @@
 {
   "part_number": "SN74HCS11PWR",
-  "status": "topology_candidate_direct_connection_not_qualified",
+  "status": "buffered_output_candidate_raw_input_pending",
   "quantity": 1,
   "pins": {
     "1_1A": "HEALTHY conditioned logic; independent clear remains separate",
     "2_1B": "RAW_RELEASED conditioned input; do not directly attach external MAX6816 IN without interface review",
     "13_1C": "DEBOUNCED_RELEASED from MAX6816 OUT; threshold compatibility pending",
-    "12_1Y": "RELEASE_CONDITION -> TPS3808 MR; drive capability at rail range pending",
+    "12_1Y": "RELEASE_CONDITION -> SN74LVC1G34 pin2; buffered MR output per manual_release_mr_buffer_candidate.json",
     "3_2A": "GND unused",
     "4_2B": "GND unused",
     "5_2C": "GND unused",
