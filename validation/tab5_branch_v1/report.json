@@ -1,0 +1,35 @@
+{
+  "source_sha256": "bef640baae2f34fbcbea9c8b5b30c848a9b8a897d14a69215eb69fff95338507",
+  "formula": "Vin relative to RTN = Vthreshold*(1+Rtop/Rbottom)+Ileak*Rtop",
+  "assumptions": [
+    "resistor total allocation +/-1%; process/aging not qualified",
+    "datasheet section7.5 limits screened; heading uses Vin24V",
+    "RTN-to-PACK_RETURN offset omitted, not a guarantee at 3S"
+  ],
+  "divider_screen": {
+    "UV_rise": {
+      "minimum_V": 8.125485746534654,
+      "maximum_V": 8.779575147474748,
+      "corners": 16
+    },
+    "UV_fall": {
+      "minimum_V": 7.468048122772278,
+      "maximum_V": 8.063373127272728,
+      "corners": 16
+    },
+    "OV_rise": {
+      "minimum_V": 15.378436871287128,
+      "maximum_V": 16.734392686868688,
+      "corners": 16
+    },
+    "OV_fall": {
+      "minimum_V": 14.26030815841584,
+      "maximum_V": 15.369342181818181,
+      "corners": 16
+    }
+  },
+  "static_headroom_before_wiring_and_switch_V": 1.4680481227722781,
+  "scope": "Only static divider selection; no load/inrush/thermal/response-delay/restart proof",
+  "branch_operational": false,
+  "manufacturing_release": false
+}

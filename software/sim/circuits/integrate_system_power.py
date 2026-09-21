@@ -78,6 +78,14 @@ def compose():
                       'part': feed['part_each'], 'value_ohm': feed['resistance_each_ohm'],
                       'pins': dict(zip(['1','2'], feed['nets'])),
                       'source_reference': 'parallel_' + str(number), 'source_assembly': feed_path})
+    tab5_path = 'schematics/power/tab5_input_branch_candidate.json'
+    raw = (ROOT / tab5_path).read_bytes()
+    tab5 = json.loads(raw)
+    provenance[tab5_path] = hashlib.sha256(raw).hexdigest()
+    for original in tab5['parts']:
+        part = copy.deepcopy(original)
+        part.update(source_reference=part['reference'], source_assembly=tab5_path)
+        parts.append(part)
     refs = [part['reference'] for part in parts]
     assert len(refs) == len(set(refs))
     byref = {part['reference']: part for part in parts}
@@ -104,6 +112,12 @@ def compose():
             byref['BAT__U_CELL_PROTECT']['pins']['17'] == 'CELL_B_MINUS'
             and byref['SYS__U_LOGIC_PROTECT']['pins']['17'] == 'PACK_RETURN',
     }
+    checks.update({
+        'tab5_input_on_protected_pack': all(byref['TAB5__U_PROTECT']['pins'][p] == 'PACK_POS_PROTECTED' for p in ['8', '9']),
+        'tab5_output_separate_from_servo_rails': all(find('TAB5_SYS_VIN') != find(n) for n in ['SYS__LEFT_SERVO_BUS', 'SYS__RIGHT_SERVO_BUS']),
+        'tab5_rtn_not_copper_merged_to_ground': find('TAB5_PROTECT_RTN') != find('PACK_RETURN'),
+        'tab5_shutdown_pulldown_to_ground': byref['TAB5__R_SHDN_PD']['pins'] == {'1': 'TAB5_SHDN', '2': 'PACK_RETURN'},
+    })
     assert all(checks.values()), checks
     unresolved = {p['reference']: p['unresolved_pins'] for p in parts if p.get('unresolved_pins')}
     missing_parts = [p['reference'] for p in parts if not p.get('part')]
@@ -114,7 +128,7 @@ def compose():
 
     required_design = [
         {'issue': 21, 'gap': 'Main battery connector, fuse/disconnect/reverse protection before CELL_POS_FUSED'},
-        {'issue': 21, 'gap': 'Tab5 protected input branch and independent default-off inhibit; Tab5 is absent from this netlist'},
+        {'issue': 21, 'gap': 'Tab5 branch candidate connected; ILIM, ramp, harness, allow driver and restart inhibition remain unselected'},
         {'issue': 21, 'gap': 'Local host supervisor/watchdog/latch connected; AUX crossing connected; analog qualification and rearm firmware incomplete'},
         {'issue': 24, 'gap': 'External PDSG switch/resistor, independent abort and TS2 wake/PCHG disposition'},
         {'issue': 22, 'gap': 'Predischarge budget includes automatic-start logic/stop branches, both disabled regulators, capacitors and Tab5 leakage'},
@@ -141,7 +155,7 @@ def compose():
         'placeholder_part_references': placeholder_parts,
         'ordering_suffix_pending_references': suffix_pending,
         'selection_audit_scope': 'Empty fields, descriptive placeholders and explicit suffix flags; other populated fields are not automatically qualified order codes',
-        'tab5_branch_present': False, 'battery_host_present': 'BAT__U_BQ_HOST' in byref, 'system_sequencer_present': False,
+        'tab5_branch_present': True, 'tab5_branch_qualified': False, 'battery_host_present': 'BAT__U_BQ_HOST' in byref, 'system_sequencer_present': False,
         'predischarge_hardware_present': False,
         'unimplemented_design': required_design,
         'decision': 'HOLD: incomplete design, not eligible for manufacturing or Issue closure',

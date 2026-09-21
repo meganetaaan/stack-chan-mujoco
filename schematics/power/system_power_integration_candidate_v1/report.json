@@ -4,10 +4,11 @@
     "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json": "ae0e95e3e893f5ee0d438a0a508cf269cf967984d22b3f6dedecb0916e6c577d",
     "schematics/power/logic_predischarge_inhibit_candidate.json": "6c1a2af4d04f3f393bd5211c139c78ff4d3b9ca4844122c98fa827cc7085a2db",
     "schematics/power/aux_start_isolator_candidate.json": "debef7a7e54cbf58a93e67bda4266ee319685d56156a23d516c3139c901fb197",
-    "schematics/power/stop_feed_candidate.json": "e0bbf0dcd442b947220ebd4b7bacd5630063950d3883abe89c947db39c2eefd0"
+    "schematics/power/stop_feed_candidate.json": "e0bbf0dcd442b947220ebd4b7bacd5630063950d3883abe89c947db39c2eefd0",
+    "schematics/power/tab5_input_branch_candidate.json": "bef640baae2f34fbcbea9c8b5b30c848a9b8a897d14a69215eb69fff95338507"
   },
-  "parts": 227,
-  "populated_pin_connections": 664,
+  "parts": 240,
+  "populated_pin_connections": 700,
   "explicit_trace_count": 4,
   "connection_checks": {
     "no_explicit_copper_short_across_shunt": true,
@@ -15,7 +16,11 @@
     "no_explicit_copper_parallel_servo_outputs": true,
     "logic_and_stop_input_on_protected_positive": true,
     "both_regulator_inputs_on_protected_positive": true,
-    "bq_reference_separate_from_system_reference": true
+    "bq_reference_separate_from_system_reference": true,
+    "tab5_input_on_protected_pack": true,
+    "tab5_output_separate_from_servo_rails": true,
+    "tab5_rtn_not_copper_merged_to_ground": true,
+    "tab5_shutdown_pulldown_to_ground": true
   },
   "check_scope": "Explicit net naming/copper only; no component conduction, leakage, transient, ground offset, layout or fault proof",
   "logic_inhibit_driver_present": true,
@@ -37,7 +42,9 @@
     "SYS__LEFT_R_OV_TOP",
     "SYS__LEFT_R_OV_BOTTOM",
     "SYS__RIGHT_R_OV_TOP",
-    "SYS__RIGHT_R_OV_BOTTOM"
+    "SYS__RIGHT_R_OV_BOTTOM",
+    "TAB5__R_ILIM",
+    "TAB5__C_DVDT"
   ],
   "placeholder_part_references": [
     "SYS__R1",
@@ -57,7 +64,8 @@
     "SYS__D_STOP_REVERSE"
   ],
   "selection_audit_scope": "Empty fields, descriptive placeholders and explicit suffix flags; other populated fields are not automatically qualified order codes",
-  "tab5_branch_present": false,
+  "tab5_branch_present": true,
+  "tab5_branch_qualified": false,
   "battery_host_present": true,
   "system_sequencer_present": false,
   "predischarge_hardware_present": false,
@@ -68,7 +76,7 @@
     },
     {
       "issue": 21,
-      "gap": "Tab5 protected input branch and independent default-off inhibit; Tab5 is absent from this netlist"
+      "gap": "Tab5 branch candidate connected; ILIM, ramp, harness, allow driver and restart inhibition remain unselected"
     },
     {
       "issue": 21,
