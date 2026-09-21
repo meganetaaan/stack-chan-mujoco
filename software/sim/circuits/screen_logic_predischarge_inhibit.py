@@ -29,7 +29,8 @@ report = {
  'high_drive_min_assumed_V': 3.0,
  'high_SHDN_min_ignoring_internal_pullup_V': 3.0 * rd*(1-tol)/(rd*(1-tol)+rs*(1+tol)),
  'high_drive_load_at_3_6V_max_ignoring_internal_pullup_A': 3.6/((rd+rs)*(1-tol)),
- 'host_not_selected_and_partial_power_not_qualified': True,
+ 'driver_connected_but_partial_power_not_qualified': True,
+ 'driver_voltage_scope': 'Standalone3.0V drive sensitivity retained; actual ISO7710 path screened separately in aux_start_isolator_v1',
  'rejected_combination': {
    'classification': 'conditional incompatibility with existing design load budget, not measured behavior',
    'logic_continuous_design_target_A': load,

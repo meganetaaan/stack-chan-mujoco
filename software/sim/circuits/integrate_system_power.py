@@ -57,6 +57,14 @@ def compose():
                       'part': spec['part'], 'value_ohm': spec['ohm'],
                       'pins': dict(zip(['1', '2'], ends)),
                       'source_reference': suffix, 'source_assembly': inhibit_path})
+    iso_path = 'schematics/power/aux_start_isolator_candidate.json'
+    raw = (ROOT / iso_path).read_bytes()
+    iso = json.loads(raw)
+    provenance[iso_path] = hashlib.sha256(raw).hexdigest()
+    for original in iso['parts']:
+        part = copy.deepcopy(original)
+        part.update(source_reference=part['reference'], source_assembly=iso_path)
+        parts.append(part)
     refs = [part['reference'] for part in parts]
     assert len(refs) == len(set(refs))
     byref = {part['reference']: part for part in parts}
@@ -89,7 +97,7 @@ def compose():
     required_design = [
         {'issue': 21, 'gap': 'Main battery connector, fuse/disconnect/reverse protection before CELL_POS_FUSED'},
         {'issue': 21, 'gap': 'Tab5 protected input branch and independent default-off inhibit; Tab5 is absent from this netlist'},
-        {'issue': 21, 'gap': 'Local host supervisor/watchdog/latch connected; analog qualification, rearm firmware and cross-domain LOGIC_START_ALLOW driver incomplete'},
+        {'issue': 21, 'gap': 'Local host supervisor/watchdog/latch connected; AUX crossing connected; analog qualification and rearm firmware incomplete'},
         {'issue': 24, 'gap': 'External PDSG switch/resistor, independent abort and TS2 wake/PCHG disposition'},
         {'issue': 22, 'gap': 'Predischarge budget includes automatic-start logic/stop branches, both disabled regulators, capacitors and Tab5 leakage'},
         {'issue': 23, 'gap': 'Complete startup/reset/brownout sequence with raw comparator outputs qualified before motor enable'},
@@ -110,7 +118,7 @@ def compose():
         'populated_pin_connections': sum(v is not None for p in parts for v in p['pins'].values()),
         'explicit_trace_count': len(traces), 'connection_checks': checks,
         'check_scope': 'Explicit net naming/copper only; no component conduction, leakage, transient, ground offset, layout or fault proof',
-        'logic_inhibit_driver_present': False,
+        'logic_inhibit_driver_present': True, 'logic_inhibit_driver_qualified': False,
         'unresolved_pins': unresolved, 'unselected_part_references': missing_parts,
         'tab5_branch_present': False, 'battery_host_present': 'BAT__U_BQ_HOST' in byref, 'system_sequencer_present': False,
         'predischarge_hardware_present': False,

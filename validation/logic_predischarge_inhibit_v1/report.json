@@ -1,8 +1,8 @@
 {
   "source_sha256": {
-    "schematics/power/logic_predischarge_inhibit_candidate.json": "01c3f3adf65ec1edfac83e04b40a3176ce22d50080907501d62cac375829e5e7",
+    "schematics/power/logic_predischarge_inhibit_candidate.json": "6c1a2af4d04f3f393bd5211c139c78ff4d3b9ca4844122c98fa827cc7085a2db",
     "schematics/power/logic_supply_candidate.json": "0874d185d9674afac612b6a82035f5767dfcd4a5804aa7628dedeefc2b746f15",
-    "schematics/power/system_power_integration_candidate_v1/assembly.json": "8bee8e74837aba3ee144fdfe2a7ea3f636c61543ed8329feeef58e5670f08e19"
+    "schematics/power/system_power_integration_candidate_v1/assembly.json": "300d14a0ed2f56c3aa0ab03fd3296b14cfaa03e875b016750339256c6aaa70fc"
   },
   "resistor_total_variation_allocation": 0.01,
   "pull_down_sink_at_0_4V_min_A": 3.9603960396039605e-05,
@@ -10,7 +10,8 @@
   "high_drive_min_assumed_V": 3.0,
   "high_SHDN_min_ignoring_internal_pullup_V": 2.722273143904675,
   "high_drive_load_at_3_6V_max_ignoring_internal_pullup_A": 0.00033057851239669424,
-  "host_not_selected_and_partial_power_not_qualified": true,
+  "driver_connected_but_partial_power_not_qualified": true,
+  "driver_voltage_scope": "Standalone3.0V drive sensitivity retained; actual ISO7710 path screened separately in aux_start_isolator_v1",
   "rejected_combination": {
     "classification": "conditional incompatibility with existing design load budget, not measured behavior",
     "logic_continuous_design_target_A": 0.02,

@@ -1,11 +1,12 @@
 {
   "source_sha256": {
-    "schematics/power/battery_protection_integration_candidate_v1/assembly.json": "9819f6a5bdb35d165aebc229fcfaaa381f6240e6ebce733e3d5764e22ab67db2",
+    "schematics/power/battery_protection_integration_candidate_v1/assembly.json": "81b554524ec82166c36094b8298dbce884f5bd7d29f968ce39b23d79f921aa6e",
     "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json": "ae0e95e3e893f5ee0d438a0a508cf269cf967984d22b3f6dedecb0916e6c577d",
-    "schematics/power/logic_predischarge_inhibit_candidate.json": "01c3f3adf65ec1edfac83e04b40a3176ce22d50080907501d62cac375829e5e7"
+    "schematics/power/logic_predischarge_inhibit_candidate.json": "6c1a2af4d04f3f393bd5211c139c78ff4d3b9ca4844122c98fa827cc7085a2db",
+    "schematics/power/aux_start_isolator_candidate.json": "debef7a7e54cbf58a93e67bda4266ee319685d56156a23d516c3139c901fb197"
   },
-  "parts": 223,
-  "populated_pin_connections": 651,
+  "parts": 226,
+  "populated_pin_connections": 662,
   "explicit_trace_count": 4,
   "connection_checks": {
     "no_explicit_copper_short_across_shunt": true,
@@ -16,7 +17,8 @@
     "bq_reference_separate_from_system_reference": true
   },
   "check_scope": "Explicit net naming/copper only; no component conduction, leakage, transient, ground offset, layout or fault proof",
-  "logic_inhibit_driver_present": false,
+  "logic_inhibit_driver_present": true,
+  "logic_inhibit_driver_qualified": false,
   "unresolved_pins": {
     "BAT__U_CELL_PROTECT": [
       22,
@@ -51,7 +53,7 @@
     },
     {
       "issue": 21,
-      "gap": "Local host supervisor/watchdog/latch connected; analog qualification, rearm firmware and cross-domain LOGIC_START_ALLOW driver incomplete"
+      "gap": "Local host supervisor/watchdog/latch connected; AUX crossing connected; analog qualification and rearm firmware incomplete"
     },
     {
       "issue": 24,

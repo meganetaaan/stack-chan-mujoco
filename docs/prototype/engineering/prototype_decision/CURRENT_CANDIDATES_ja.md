@@ -1,3 +1,11 @@
+## BQから通常制御電源への起動許可を接続（2026-09-22）
+
+ISO7710FDR＋両側バイパスを追加、全体226部品。
+STOP_AUX3V3から出力側へ給電し、LOGIC3V3がOFFでも許可を渡す構成。
+信号経路でCELL_B_MINUSとPACK_RETURNを直結しない。
+増分負荷込みのSTOP系条件付きDC比較は約2.978mA。過渡・全負荷・復帰は未合格。
+製作HOLD。validation/aux_start_isolator_v1/README_ja.md参照。
+
 ## BQ側のCPU監視と禁止保持を接続（2026-09-22）
 
 TPS3431・許可記憶ラッチ・主/補助ANDゲートを追加。電池保護100部品・全体223部品。
