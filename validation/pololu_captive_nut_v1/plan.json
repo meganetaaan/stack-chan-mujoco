@@ -1,0 +1,7 @@
+{
+  "question": "Can side-loaded M2 nuts and M2x12 screws fit within bracket rails without cutting the upper load-bearing layer?",
+  "criteria": {"maximum_unintended_overlap_mm3": 0.01, "minimum_other_part_clearance_mm": 0.5, "minimum_geometric_tip_protrusion_mm": 0.4, "upper_layer_loss_mm3": 0.000001},
+  "criterion_origin": "0.5mm previous nominal screen; one pitch protrusion is engineering geometry screen, not effective thread or strength approval",
+  "stop": "One specified pocket and fastener selection; retain failure if interference, disconnected geometry or protrusion fails. No strength simulation.",
+  "limits": ["Nut is ideal AF4 hexagonal prism with cylindrical bore, excludes chamfer and thread", "Screw shaft is diameter2mm reservation; thread contact intentional", "Board insulation, dimensional tolerances, nut insertion sweep, hands and tools excluded", "Side-open slot must later prove retention during assembly and resistance to rotation"]
+}
