@@ -1,5 +1,5 @@
 {
-  "status": "functional_terminal_connectivity_only",
+  "status": "package_terminal_connectivity_candidate_incomplete_circuit",
   "parts": [
     {
       "ref": "U_OV_L",
@@ -13,6 +13,27 @@
         "UV": "UV_SENSE_L",
         "SHDN": "PERMIT_L",
         "FAULT": "FAULT_N_L"
+      },
+      "package": "TS8 TSOT-23",
+      "pin_functions": {
+        "1": "VIN",
+        "2": "UV",
+        "3": "OV",
+        "4": "GND",
+        "5": "SHDN",
+        "6": "FAULT",
+        "7": "VOUT",
+        "8": "GATE"
+      },
+      "pin_nets": {
+        "1": "UBEC_L",
+        "2": "UV_SENSE_L",
+        "3": "OV_SENSE_L",
+        "4": "GND",
+        "5": "PERMIT_L",
+        "6": "FAULT_N_L",
+        "7": "OV_OUT_L",
+        "8": "GATE_L"
       }
     },
     {
@@ -87,6 +108,27 @@
         "UV": "UV_SENSE_R",
         "SHDN": "PERMIT_R",
         "FAULT": "FAULT_N_R"
+      },
+      "package": "TS8 TSOT-23",
+      "pin_functions": {
+        "1": "VIN",
+        "2": "UV",
+        "3": "OV",
+        "4": "GND",
+        "5": "SHDN",
+        "6": "FAULT",
+        "7": "VOUT",
+        "8": "GATE"
+      },
+      "pin_nets": {
+        "1": "UBEC_R",
+        "2": "UV_SENSE_R",
+        "3": "OV_SENSE_R",
+        "4": "GND",
+        "5": "PERMIT_R",
+        "6": "FAULT_N_R",
+        "7": "OV_OUT_R",
+        "8": "GATE_R"
       }
     },
     {
@@ -199,6 +241,12 @@
     "fet_source_sha256": "8338535c7ba22d94046c0cc69bf9685e393bc486f181c9e5d306861e8c8899de",
     "fet_page": 1,
     "fet_view": "manufacturer bottom view; footprint top-view geometry still unverified",
-    "controller": "Functional names only; package pin mapping pending visual verification"
+    "controller": {
+      "status": "TS8 visually checked against manufacturer RevA hosted by TI; current RevB visual cross-check pending",
+      "source": "https://e2e.ti.com/cfs-file/__key/communityserver-discussions-components-files/196/LTC4365.pdf",
+      "sha256": "d05d9a3a9f0e719c43fd1e28e3f0a5de324e1d452403a38b7f1051ced96aee35",
+      "page": 2,
+      "view": "TOP VIEW TS8, not DDB"
+    }
   }
 }
