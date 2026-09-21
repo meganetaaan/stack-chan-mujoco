@@ -423,3 +423,7 @@ JST図面とメーカーSTEPの3端子断面を照合し、嵌合側が現行配
 ### 制御電源の独立分岐・WSON候補
 
 `schematics/power/logic_supply_candidate.json`に独立LOGIC3V3用TPS70933DRVR案を追加。STOP_AUX3V3の1 kΩ入力経路は20 mA負荷へ共用不可。12.6 V/20 mA/周囲85℃の参考熱計算ではDBV124.846℃、DRV98.733℃（自己電流除外・基板条件未確認）となりDRVを選定候補とした。入力保護・容量・基板・全負荷・故障動作は未設計/未検証で、現アセンブリには未統合。
+
+### 制御電源の出力容量候補
+
+`logic_supply_candidate.json`へT520A226M010ATE080の比較候補を記録。初期22 µF±20%と現15個の100 nF±5%の合計19.025..27.975 µF。メーカーESR条件は25℃/100 kHzで、温度全域・安定性は未確認。詳細`validation/logic_output_capacitor_v1`。正式BOMや現アセンブリは置換していない。

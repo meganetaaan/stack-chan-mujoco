@@ -5,14 +5,49 @@
   "source": "https://www.ti.com/lit/gpn/tps709",
   "source_revision": "SBVS186H July 2021",
   "role": "Dedicated LOGIC3V3 regulator; independent of STOP_AUX3V3 branch",
-  "pins": {"1": "LOGIC3V3", "2": null, "3": "GND", "4": null, "5": null, "6": "LOGIC_PROTECTED_INPUT", "EP": "GND"},
+  "pins": {
+    "1": "LOGIC3V3",
+    "2": null,
+    "3": "GND",
+    "4": null,
+    "5": null,
+    "6": "LOGIC_PROTECTED_INPUT",
+    "EP": "GND"
+  },
   "enable": "EN intentionally floating per Table5-1; do not connect to 3S battery voltage",
   "input_architecture": "Separate branch upstream of servo cutoff, with reverse polarity and branch fault protection still to be designed; LOGIC_PROTECTED_INPUT is not an implemented net",
-  "continuous_design_target_A": 0.020,
+  "continuous_design_target_A": 0.02,
   "temperature_reference_C": 85,
   "selection_reason": "DRV thermal reference provides substantially more headroom than DBV at 12.6V and 20mA; actual exposed-pad layout required",
   "capacitors": "Local input/output capacitor selection pending; use TPS709 stability and effective-capacitance requirements, not nominal value alone",
-  "remaining": ["Protected input branch, battery undervoltage and disconnect behavior", "Output capacitor and minimum-load requirements", "Full load and transient budget", "DC accuracy across line/load and startup", "PCB thermal path and assembly process for exposed pad", "Integrated fault and reverse-current verification"],
+  "remaining": [
+    "Protected input branch, battery undervoltage and disconnect behavior",
+    "Output capacitor and minimum-load requirements",
+    "Full load and transient budget",
+    "DC accuracy across line/load and startup",
+    "PCB thermal path and assembly process for exposed pad",
+    "Integrated fault and reverse-current verification"
+  ],
   "manufacturing_release": false,
-  "evidence": "validation/logic_supply_package_v1/README_ja.md"
+  "evidence": "validation/logic_supply_package_v1/README_ja.md",
+  "output_capacitor_candidate": {
+    "part": "T520A226M010ATE080",
+    "nominal_F": 2.2e-05,
+    "initial_tolerance": 0.2,
+    "rated_V": 10,
+    "temperature_C": [
+      -55,
+      105
+    ],
+    "ESR_ohm_at_100kHz_25C": 0.08,
+    "leakage_A_at_25C_5min": 2.2e-05,
+    "source": "https://search.kemet.com/download/specsheet/T520A226M010ATE080",
+    "status": "screened_candidate_not_selected_for_manufacturing",
+    "remaining": [
+      "Temperature-dependent capacitance and ESR limits",
+      "TPS709 stability across frequency/temperature with this capacitor technology",
+      "Total connected capacitance including MCU bypass",
+      "Surge, reverse voltage, reflow and ripple requirements"
+    ]
+  }
 }
