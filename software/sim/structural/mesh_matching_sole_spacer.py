@@ -2,11 +2,11 @@
 import argparse,json,hashlib,math
 from pathlib import Path
 import gmsh,meshio,numpy as np
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--fixed-anchor-points',action='store_true');p.add_argument('--out',type=Path,required=True);p.add_argument('--mesh-mm',type=float,default=.5);a=p.parse_args();root=Path(__file__).resolve().parents[3]
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--optimize-tets',action='store_true');p.add_argument('--fixed-anchor-points',action='store_true');p.add_argument('--out',type=Path,required=True);p.add_argument('--mesh-mm',type=float,default=.5);a=p.parse_args();root=Path(__file__).resolve().parents[3]
 if a.out.exists() or not np.isfinite(a.mesh_mm) or a.mesh_mm<=0:p.error('new output and positive finite size required')
 a.out.mkdir(parents=True)
 paths={'BOSS':root/'validation/sole_lock_boss_screen_v1/boss.step','SPACER':root/'validation/sole_spacer_contact_geometry_v1/spacer.step'}
-plan={'scope':__doc__,'fixed_anchor_points':a.fixed_anchor_points,'mesh_mm':a.mesh_mm,'source_sha256':{str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in paths.values()},'criteria':{'volume_error_mm3':1e-6,'matching_contact_triangle_coordinates':True,'patch_area_relative_error':.01},'limitations':['Mesh preparation only; equal interface coordinates are duplicated in exported parts, not bonded.','Local cropped geometry and nominal bearing shapes remain assumptions.']}
+plan={'scope':__doc__,'optimize_tets':a.optimize_tets,'fixed_anchor_points':a.fixed_anchor_points,'mesh_mm':a.mesh_mm,'source_sha256':{str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in paths.values()},'criteria':{'volume_error_mm3':1e-6,'matching_contact_triangle_coordinates':True,'patch_area_relative_error':.01},'limitations':['Mesh preparation only; equal interface coordinates are duplicated in exported parts, not bonded.','Local cropped geometry and nominal bearing shapes remain assumptions.']}
 (a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n');gmsh.initialize()
 try:
  gmsh.option.setNumber('General.Terminal',0);original=[];volumes_before=[]
@@ -30,7 +30,9 @@ try:
  for name,v in zip(paths,vols):
   g=gmsh.model.addPhysicalGroup(3,[v[1]]);gmsh.model.setPhysicalName(3,g,name)
  used=set.union(*boundaries);gmsh.model.occ.remove([(2,t) for d,t in gmsh.model.getEntities(2) if t not in used],recursive=False);gmsh.model.occ.synchronize()
- gmsh.option.setNumber('Mesh.MeshSizeMin',a.mesh_mm);gmsh.option.setNumber('Mesh.MeshSizeMax',a.mesh_mm);gmsh.option.setNumber('Mesh.MinimumCirclePoints',32);gmsh.option.setNumber('Mesh.MshFileVersion',2.2);gmsh.model.mesh.generate(3);gmsh.write(str(a.out/'combined.msh'))
+ gmsh.option.setNumber('Mesh.MeshSizeMin',a.mesh_mm);gmsh.option.setNumber('Mesh.MeshSizeMax',a.mesh_mm);gmsh.option.setNumber('Mesh.MinimumCirclePoints',32);gmsh.option.setNumber('Mesh.MshFileVersion',2.2);gmsh.model.mesh.generate(3)
+ if a.optimize_tets:gmsh.model.mesh.optimize('Netgen')
+ gmsh.write(str(a.out/'combined.msh'))
 finally:gmsh.finalize()
 m=meshio.read(a.out/'combined.msh');reports=[];contact_keys=[]
 for name,contactname,loadname,filename in [('BOSS','spacer_contact','nut_bearing','boss'),('SPACER','boss_contact','head_bearing','spacer')]:
