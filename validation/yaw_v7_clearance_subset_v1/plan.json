@@ -1,0 +1,11 @@
+{
+  "question": "Is every v7 fixed solid contained in its v6 counterpart so that removing material cannot decrease rigid moving-to-fixed distance?",
+  "method": "Check unchanged inventory and bidirectional CAD differences for50parts; positive-volume CAD difference new minus old for2supports; confirm each prior fixed-assembly hash.",
+  "cad_volume_tolerance_mm3": 1e-06,
+  "stop": "One subset check; no new angle sampling or geometry changes.",
+  "limits": [
+    "Numerical B-rep set comparison, not formal exact-arithmetic proof.",
+    "Only original yaw coupler/cradle moving group and fixed assembly.",
+    "Deformation/tolerance allowances remain separate requirements; stronger flex cannot be ruled out by set inclusion."
+  ]
+}
