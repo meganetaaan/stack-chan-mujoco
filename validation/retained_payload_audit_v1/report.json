@@ -1,0 +1,70 @@
+{
+  "source_sha256": "4e19164c326a99c2158c54fd64271022d7f052fe14d969496f33f2f6b83f50a0",
+  "rows": [
+    {
+      "allocation": "Tab5",
+      "mass_kg": 0.1184,
+      "status": "retained_nominal",
+      "required_action": "Check actual mounted accessories and datum; retain device nominal separately"
+    },
+    {
+      "allocation": "battery_2S_reservation",
+      "mass_kg": 0.103,
+      "status": "replace_after_selection",
+      "required_action": "Actual pack, BMS and location; do not add selected pack atop reservation"
+    },
+    {
+      "allocation": "dedicated_5V_converter",
+      "mass_kg": 0.02,
+      "status": "replace_after_selection",
+      "required_action": "Selected converter count, PCB and protection components; dual supplies are not covered by this single allocation"
+    },
+    {
+      "allocation": "TTL_interface",
+      "mass_kg": 0.012,
+      "status": "replace_after_selection",
+      "required_action": "Selected signal interface, PCB and location"
+    },
+    {
+      "allocation": "battery_tray",
+      "mass_kg": 0.006903805017530213,
+      "status": "process_and_geometry_pending",
+      "required_action": "Selected pack fit and print process"
+    },
+    {
+      "allocation": "battery_strap_envelope",
+      "mass_kg": 0.0012,
+      "status": "hardware_pending",
+      "required_action": "Exact retaining strap and routing"
+    },
+    {
+      "allocation": "left_yaw_motor_case",
+      "mass_kg": 0.017331575446373825,
+      "status": "assembly_boundary_pending",
+      "required_action": "Reconcile catalog servo mass and geometric motor envelope without double counting"
+    },
+    {
+      "allocation": "right_yaw_motor_case",
+      "mass_kg": 0.017331575446373825,
+      "status": "assembly_boundary_pending",
+      "required_action": "Reconcile catalog servo mass and geometric motor envelope without double counting"
+    },
+    {
+      "allocation": "left_battery_screw_envelope",
+      "mass_kg": 0.0003,
+      "status": "hardware_pending",
+      "required_action": "Actual screw length and mass"
+    },
+    {
+      "allocation": "right_battery_screw_envelope",
+      "mass_kg": 0.0003,
+      "status": "hardware_pending",
+      "required_action": "Actual screw length and mass"
+    }
+  ],
+  "electrical_payload_reservations_to_replace_kg": 0.135,
+  "rule": "Subtract each old mass, first moment and inertia before adding selected replacements; do not use mass-only delta for off-center payloads",
+  "complete_payload_qualified": false,
+  "load_regeneration_allowed": false,
+  "historical_model_changed": false
+}
