@@ -40,5 +40,122 @@
     "pack-local supply and programming connector",
     "shutdown and long-term leakage"
   ],
-  "manufacturing_release": false
+  "manufacturing_release": false,
+  "cell_input_map": {
+    "scope": "IC-side sense nets only; cell tap connector order unverified; RC values and parts pending",
+    "source": "BQ76942 datasheet Rev.B Table 16-3 and Table 6-1; TRM Rev.B 13.3.2.19",
+    "pins": [
+      {
+        "signal": "VC0",
+        "pin": 16,
+        "sense_net": "CELL0_FILTERED",
+        "physical_stack_tap": 0
+      },
+      {
+        "signal": "VC1",
+        "pin": 15,
+        "sense_net": "CELL1_FILTERED",
+        "physical_stack_tap": 1
+      },
+      {
+        "signal": "VC2",
+        "pin": 14,
+        "sense_net": "CELL2_FILTERED",
+        "physical_stack_tap": 2
+      },
+      {
+        "signal": "VC3",
+        "pin": 13,
+        "sense_net": "CELL2_FILTERED",
+        "physical_stack_tap": 2
+      },
+      {
+        "signal": "VC4",
+        "pin": 12,
+        "sense_net": "CELL2_FILTERED",
+        "physical_stack_tap": 2
+      },
+      {
+        "signal": "VC5",
+        "pin": 10,
+        "sense_net": "CELL2_FILTERED",
+        "physical_stack_tap": 2
+      },
+      {
+        "signal": "VC6",
+        "pin": 8,
+        "sense_net": "CELL2_FILTERED",
+        "physical_stack_tap": 2
+      },
+      {
+        "signal": "VC7",
+        "pin": 6,
+        "sense_net": "CELL2_FILTERED",
+        "physical_stack_tap": 2
+      },
+      {
+        "signal": "VC8",
+        "pin": 4,
+        "sense_net": "CELL2_FILTERED",
+        "physical_stack_tap": 2
+      },
+      {
+        "signal": "VC9",
+        "pin": 2,
+        "sense_net": "CELL2_FILTERED",
+        "physical_stack_tap": 2
+      },
+      {
+        "signal": "VC10",
+        "pin": 48,
+        "sense_net": "CELL3_FILTERED",
+        "physical_stack_tap": 3
+      }
+    ],
+    "direct_short_group": [
+      "VC2",
+      "VC3",
+      "VC4",
+      "VC5",
+      "VC6",
+      "VC7",
+      "VC8",
+      "VC9"
+    ],
+    "filtered_inputs": [
+      "VC0",
+      "VC1",
+      "VC2",
+      "VC10"
+    ],
+    "VC0_rule": "Local RC connection to VSS pin17 on PCB before cell attachment; do not leave floating",
+    "active_IC_cell_channels": [
+      1,
+      2,
+      10
+    ],
+    "physical_to_IC_cell_channels": {
+      "1": 1,
+      "2": 2,
+      "3": 10
+    },
+    "vcell_mode": {
+      "address": "0x9304",
+      "width_bytes": 2,
+      "value_hex": "0x0203",
+      "default_0x0000_means": "all cell inputs; not none",
+      "status": "candidate setting only; no hardware writes"
+    },
+    "NC_pins_left_open": [
+      1,
+      3,
+      5,
+      7,
+      9,
+      11,
+      19,
+      44
+    ],
+    "balancing": "disabled initial candidate; external balance charging retained; explicit config bits pending"
+  }
 }
