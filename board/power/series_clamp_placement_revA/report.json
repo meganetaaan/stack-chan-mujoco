@@ -1,0 +1,44 @@
+{
+  "source_sha256": {
+    "board/power/placement_revA/power_placement.kicad_pcb": "1c6d1e931705d14b6aa896a2bb33157879a9d6d2d8dc88a2e4b6726dd889d9f3"
+  },
+  "placements": [
+    {
+      "side": "L",
+      "center_mm": [
+        70,
+        62.5
+      ],
+      "pad_size_mm": [
+        1.65,
+        3.18
+      ],
+      "pad_gap_mm": 4.06,
+      "power_trace_width_mm": 2,
+      "sense_trace_width_mm": 0.2
+    },
+    {
+      "side": "R",
+      "center_mm": [
+        110,
+        62.5
+      ],
+      "pad_size_mm": [
+        1.65,
+        3.18
+      ],
+      "pad_gap_mm": 4.06,
+      "power_trace_width_mm": 2,
+      "sense_trace_width_mm": 0.2
+    }
+  ],
+  "datasheet": "https://www.vishay.com/docs/30122/wslp.pdf",
+  "status": "Alternative LT4363 layout study, not current revM protection board",
+  "limits": [
+    "Trace stubs have open ends; controller MOSFET connectors and remaining circuit unplaced.",
+    "Two-terminal shunt: Kelvin trace separation does not remove shared pad/terminal resistance.",
+    "Trace width and pad pickup need electrical/thermal extraction and assembly review.",
+    "No whole-board DRC or manufacturing release."
+  ],
+  "manufacturing_release": false
+}
