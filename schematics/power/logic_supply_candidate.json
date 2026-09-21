@@ -91,7 +91,14 @@
       "behavior": "Circuit breaker with latched overload shutdown; fast-trip includes internal restart before overload handling",
       "recovery_candidate": "External input power cycle below POR reset level; discharge path pending",
       "evidence": "validation/logic_fault_mode_v1/README_ja.md",
-      "qualified": false
+      "qualified": false,
+      "startup_timer_review": {
+        "evidence": "validation/logic_startup_timer_v1/report.json",
+        "tCB_nominal_s": 0.004,
+        "tCB_min_s": null,
+        "tCB_max_s": null,
+        "status": "startup_not_qualified; do not infer output charging slope from upstream dVdT"
+      }
     }
   }
 }
