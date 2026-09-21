@@ -20,8 +20,10 @@ if a.packaging_report:
 rows=[]
 for name,path in paths.items():
  s=cq.importers.importStep(str(path)).val()
- rows.append({'part':name,'initial_actual_overlap_mm3':tab.intersect(s).Volume(),'swept_box_overlap_mm3':sweep.intersect(s).Volume(),'distance_to_swept_box_mm':sweep.distance(s)})
-r={'direction':'base +X','travel_mm':travel,'initial_bbox_mm':[b.xmin,b.xmax,b.ymin,b.ymax,b.zmin,b.zmax],'method':'Bounding prism encloses all Tab5 poses over straight translation; overlap would require exact shape analysis, no overlap proves nominal volume clearance for included parts','rows':rows,'sources_sha256':{str(x):hashlib.sha256(x.read_bytes()).hexdigest() for x in [tabpath,*paths.values()]},'assembly_procedure_qualified':False,'pending':['Actual mounting screws and threaded depth','Tool access and removal order','Tab5 power/data cable disconnection and slack','Hand support and removal of accessories','Nominal geometry tolerances, deformation and omitted mounts/wires']}
+ solids=s.Solids()
+ checks=[{'solid_index':i,'initial_actual_overlap_mm3':tab.intersect(solid).Volume(),'swept_box_overlap_mm3':sweep.intersect(solid).Volume(),'distance_to_swept_box_mm':sweep.distance(solid)} for i,solid in enumerate(solids)]
+ rows.append({'part':name,'initial_actual_overlap_mm3':sum(c['initial_actual_overlap_mm3'] for c in checks),'swept_box_overlap_mm3':sum(c['swept_box_overlap_mm3'] for c in checks),'distance_to_swept_box_mm':min(c['distance_to_swept_box_mm'] for c in checks),'solid_checks':checks})
+r={'direction':'base +X','travel_mm':travel,'initial_bbox_mm':[b.xmin,b.xmax,b.ymin,b.ymax,b.zmin,b.zmax],'intersection_aggregation':'Sum over individual solids; positive overlap may be counted twice where parts overlap; zero requires all parts clear', 'method':'Bounding prism encloses all Tab5 poses over straight translation; overlap would require exact shape analysis, no overlap proves nominal volume clearance for included parts','rows':rows,'sources_sha256':{str(x):hashlib.sha256(x.read_bytes()).hexdigest() for x in [tabpath,*paths.values()]},'assembly_procedure_qualified':False,'pending':['Actual mounting screws and threaded depth','Tool access and removal order','Tab5 power/data cable disconnection and slack','Hand support and removal of accessories','Nominal geometry tolerances, deformation and omitted mounts/wires']}
 if a.packaging_report:
  r['packaging_report']=str(a.packaging_report)
  r['sources_sha256'][str(a.packaging_report)]=hashlib.sha256(a.packaging_report.read_bytes()).hexdigest()
