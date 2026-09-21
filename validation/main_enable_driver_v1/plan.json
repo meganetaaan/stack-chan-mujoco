@@ -1,0 +1,11 @@
+{
+  "question": "Can a 74LVC1G17 output drive eFuse EN with a passive pulldown?",
+  "stop": "Static powered and zero-supply comparison, then identify the unqualified intermediate supply interval",
+  "assumptions": [
+    "LOGIC3V3 3.207..3.393V",
+    "39k output and 220k input pulldowns with provisional total +/-1% budgets",
+    "TPS25982 EN leakage 0.1uA used bidirectionally as conservative comparison at its specified test conditions",
+    "Nexperia Ioff 2uA at VCC=0 and VI or VO=5.5V is a published test point, not a brownout model"
+  ],
+  "acceptance": "Powered levels must meet EN thresholds within output load rating; no full default-off claim without intermediate-rail and transient evidence"
+}
