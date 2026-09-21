@@ -13,7 +13,7 @@ def add(ref,part,pins,**extra):
  parts.append({'reference':ref,'part':part,'pins':{str(k):v for k,v in pins.items()},**extra})
 bq_pins={str(p['pin']):p['sense_net'] for p in a['cell_input_map']['pins']}
 bq_pins.update({'17':'CELL_B_MINUS','43':'BQ76942_DSG_43','45':'BQ76942_CHG_45','41':'BQ_LD','42':'BQ_PACK','47':'BQ_BAT_HOLD','24':'BQ_REG18','46':'BQ_CP1','18':'BQ_SRP','20':'BQ_SRN'})
-bq_pins.update({'21':'BQ_TS_CELL','23':'BQ_TS_FET'})
+bq_pins.update({'21':'BQ_TS_CELL','23':'BQ_TS_FET','30':'BQ_BOTHOFF_N','29':'CELL_B_MINUS','33':'CELL_B_MINUS'})
 for pin in a['cell_input_map']['NC_pins_left_open']:bq_pins[str(pin)]=None
 # Unused optional functions, per datasheet Table16-3; not silicon NC.
 unused_open=[28,31,32,34,35,38]
@@ -53,11 +53,15 @@ add('C_CURRENT','C1206C104J3GACAUTO',{1:'BQ_SRP',2:'BQ_SRN'})
 for ref,net,location in [('TH_CELL','BQ_TS_CELL','battery exterior'),('TH_FET','BQ_TS_FET','main protection FET region')]:
  add(ref,'103AT-2',{1:net,2:'CELL_B_MINUS'},location_candidate=location,
      mounting_qualified=False,protection_threshold_qualified=False)
-assert len(parts)==52 and len({p['reference'] for p in parts})==52
+# Active-low BOTHOFF: local pulldown holds inhibit if the external allow wire opens.
+# The source must be a qualified CELL_B_MINUS-referenced control domain.
+add('R_ALLOW_SER','TNPW06031K00BEEA',{1:'BQ_ALLOW_BMINUS',2:'BQ_BOTHOFF_N'})
+add('R_ALLOW_PD','TNPW060310K0BEEA',{1:'BQ_BOTHOFF_N',2:'CELL_B_MINUS'})
+assert len(parts)==54 and len({p['reference'] for p in parts})==54
 # Check that the obsolete 8-capacitor parallel-only filter was not also imported.
 assert sum(p['part']==c['capacitor_part'] and p['reference'].startswith('C_F') for p in parts)==24
 out=power/'battery_protection_integration_candidate_v1';out.mkdir(exist_ok=True)
-assembly={'status':'partial_connection_candidate','parts':parts,'part_count':len(parts),'unresolved_BQ76942_pins':unresolved,'source_sha256':{s:hashlib.sha256((power/s).read_bytes()).hexdigest() for s in sources},'external_ports':['CELL_B_MINUS','CELL1_TAP','CELL2_TAP','CELL3_TAP','CELL_POS_FUSED','PACK_POS_PROTECTED','PACK_RETURN'],'missing_stages':['cell tap and main connectors','battery fuse and reverse protection','current threshold, shunt thermal/pulse and sense-routing qualification','BAT hold-up and input faults; REG18/CP1 effective capacitance and startup; optional LDO supply','PACK/LD transient and reverse-polarity qualification','configuration and startup inhibit','thermistor attachment, harness, fault response and temperature protection settings','system/servo integration'],'temperature_configuration_candidate':{'TS1':{'address':'0x92FD','value':'0x07','role':'cell temperature'},'TS3':{'address':'0x92FF','value':'0x0F','role':'FET temperature'},'source':'TI SLUUBY1B tables 13-9/13-11 and memory map','applied_to_hardware':False,'full_protection_configuration':False},'electrically_operational':False,'manufacturing_release':False}
+assembly={'status':'partial_connection_candidate','parts':parts,'part_count':len(parts),'unresolved_BQ76942_pins':unresolved,'source_sha256':{s:hashlib.sha256((power/s).read_bytes()).hexdigest() for s in sources},'external_ports':['CELL_B_MINUS','CELL1_TAP','CELL2_TAP','CELL3_TAP','CELL_POS_FUSED','PACK_POS_PROTECTED','PACK_RETURN','BQ_ALLOW_BMINUS'],'missing_stages':['cell tap and main connectors','battery fuse and reverse protection','current threshold, shunt thermal/pulse and sense-routing qualification','BAT hold-up and input faults; REG18/CP1 effective capacitance and startup; optional LDO supply','PACK/LD transient and reverse-polarity qualification','configuration before allow; independent control supply and driver; cold-start and reset qualification','thermistor attachment, harness, fault response and temperature protection settings','system/servo integration'],'temperature_configuration_candidate':{'TS1':{'address':'0x92FD','value':'0x07','role':'cell temperature'},'TS3':{'address':'0x92FF','value':'0x0F','role':'FET temperature'},'source':'TI SLUUBY1B tables 13-9/13-11 and memory map','applied_to_hardware':False,'full_protection_configuration':False},'startup_inhibit_candidate':{'DFETOFF_config':{'address':'0x92FB','value':'0xC2','active_level':'low','function':'BOTHOFF'},'CFETOFF_config':{'address':'0x92FA','value':'0x00'},'RST_SHUT':'unused tied to VSS; not emergency stop','effective_before_configuration':False,'external_allow_driver_qualified':False,'control_reference':'CELL_B_MINUS'},'electrically_operational':False,'manufacturing_release':False}
 (out/'assembly.json').write_text(json.dumps(assembly,indent=2)+'\n')
 with (out/'bom.csv').open('w') as f:
  w=csv.writer(f,lineterminator='\n');w.writerow(['part_or_type','quantity','references'])

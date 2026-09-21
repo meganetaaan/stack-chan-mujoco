@@ -28,6 +28,9 @@
         "20": "BQ_SRN",
         "21": "BQ_TS_CELL",
         "23": "BQ_TS_FET",
+        "30": "BQ_BOTHOFF_N",
+        "29": "CELL_B_MINUS",
+        "33": "CELL_B_MINUS",
         "1": null,
         "3": null,
         "5": null,
@@ -50,9 +53,6 @@
         25,
         26,
         27,
-        29,
-        30,
-        33,
         39,
         40
       ],
@@ -512,17 +512,30 @@
       "location_candidate": "main protection FET region",
       "mounting_qualified": false,
       "protection_threshold_qualified": false
+    },
+    {
+      "reference": "R_ALLOW_SER",
+      "part": "TNPW06031K00BEEA",
+      "pins": {
+        "1": "BQ_ALLOW_BMINUS",
+        "2": "BQ_BOTHOFF_N"
+      }
+    },
+    {
+      "reference": "R_ALLOW_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_BOTHOFF_N",
+        "2": "CELL_B_MINUS"
+      }
     }
   ],
-  "part_count": 52,
+  "part_count": 54,
   "unresolved_BQ76942_pins": [
     22,
     25,
     26,
     27,
-    29,
-    30,
-    33,
     39,
     40
   ],
@@ -538,7 +551,8 @@
     "CELL3_TAP",
     "CELL_POS_FUSED",
     "PACK_POS_PROTECTED",
-    "PACK_RETURN"
+    "PACK_RETURN",
+    "BQ_ALLOW_BMINUS"
   ],
   "missing_stages": [
     "cell tap and main connectors",
@@ -546,7 +560,7 @@
     "current threshold, shunt thermal/pulse and sense-routing qualification",
     "BAT hold-up and input faults; REG18/CP1 effective capacitance and startup; optional LDO supply",
     "PACK/LD transient and reverse-polarity qualification",
-    "configuration and startup inhibit",
+    "configuration before allow; independent control supply and driver; cold-start and reset qualification",
     "thermistor attachment, harness, fault response and temperature protection settings",
     "system/servo integration"
   ],
@@ -564,6 +578,22 @@
     "source": "TI SLUUBY1B tables 13-9/13-11 and memory map",
     "applied_to_hardware": false,
     "full_protection_configuration": false
+  },
+  "startup_inhibit_candidate": {
+    "DFETOFF_config": {
+      "address": "0x92FB",
+      "value": "0xC2",
+      "active_level": "low",
+      "function": "BOTHOFF"
+    },
+    "CFETOFF_config": {
+      "address": "0x92FA",
+      "value": "0x00"
+    },
+    "RST_SHUT": "unused tied to VSS; not emergency stop",
+    "effective_before_configuration": false,
+    "external_allow_driver_qualified": false,
+    "control_reference": "CELL_B_MINUS"
   },
   "electrically_operational": false,
   "manufacturing_release": false
