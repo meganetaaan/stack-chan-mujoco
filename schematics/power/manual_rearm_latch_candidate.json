@@ -1,24 +1,25 @@
 {
   "part_number": "SN74HCS74PW",
-  "status": "part_candidate_direct_single_ff_wiring_rejected",
+  "status": "two_ff_pin_candidate_not_released",
   "quantity": 1,
   "pins": {
     "1_1CLR": "RESET_N; supervisor/fault/stop logic TBD",
-    "2_1D": "TBD qualified rearm state; direct LOGIC3V3 implementation rejected",
-    "3_1CLK": "TBD; direct delayed PRESS edge alone is insufficient",
+    "2_1D": "LOGIC3V3",
+    "3_1CLK": "qualified release timer completion rising edge",
     "4_1PRE": "LOGIC3V3",
-    "5_1Q": "ENABLE_PERMISSION; physical default-off output stage TBD",
+    "5_1Q": "ARMED -> pin12_2D",
     "6_1Qn": "NC",
     "7_GND": "GND",
     "8_2Qn": "NC",
-    "9_2Q": "NC",
+    "9_2Q": "ENABLE_PERMISSION; default-off output stage TBD",
     "10_2PRE": "LOGIC3V3",
-    "11_2CLK": "GND",
-    "12_2D": "GND",
-    "13_2CLR": "GND",
+    "11_2CLK": "debounced inverted PRESS; interface TBD",
+    "12_2D": "ARMED from pin5_1Q",
+    "13_2CLR": "RESET_N; same stop-priority clear as pin1",
     "14_VCC": "upstream monitored LOGIC3V3"
   },
-  "evidence": "validation/manual_rearm_part_review_v1/README.md",
+  "evidence": "validation/manual_rearm_two_ff_v1/README.md",
   "manufacturing_release": false,
-  "blocking_evidence": "validation/manual_rearm_delayed_press_v1/README.md"
+  "historical_failure": "validation/manual_rearm_delayed_press_v1/README.md",
+  "remaining": "MR logic, timer variant, signal levels, POR, simultaneous edge timing, physical EN stage"
 }
