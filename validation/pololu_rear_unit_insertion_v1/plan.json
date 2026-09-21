@@ -1,0 +1,9 @@
+{
+ "question":"Can the assembled power/rear-plate unit translate straight forward into the body from the rear?",
+ "motion":{"translation_axis":"X", "offsets_mm":[-70,-50,-30,-20,-10,0]},
+ "stage":"Existing rear plate and eight rear bolts/eight rear washers removed. Other fixed mechanism retained and temporarily supported. Power unit includes43 mounting parts plus two conservative module envelopes.",
+ "criteria":{"maximum_overlap_mm3":0.01,"minimum_unintended_gap_mm":0.5},
+ "stop":"Stop at first sampled pose with a CAD overlap/clearance failure. A passing sample grid cannot prove continuous insertion; if no failure is found, continuous bounds are required.",
+ "intentional_contacts":"Rear plate may touch body shroud, yaw supports and backing plates at final pose only; overlap remains forbidden.",
+ "limits":["Module envelopes are not physical solids; their overlap alone is inconclusive", "No temporary support jig, hands, wires, gravity or deformation", "Fixed nut/thread CAD is idealized", "This evaluates one straight insertion route, not all possible assembly sequences"]
+}

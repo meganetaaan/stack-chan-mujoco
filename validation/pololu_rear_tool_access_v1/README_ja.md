@@ -33,3 +33,5 @@ LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bi
 製作リリース=false、Issue未完了。
 
 追記: `validation/pololu_nut_insertion_v2`で、工程2のナット挿入へ後板M3締結16部品と他のM2ナット7個を追加して確認した。全8経路の公称形状は通過。造形公差・仮保持・手工具・工程4の機体装着は未確認のまま。
+
+追記: `validation/pololu_rear_unit_insertion_v1`で工程4の単純な後方水平挿入は不採用となった。最終位置の30 mm手前で台座と既存ヨー固定ねじが衝突する。工程1〜3の公称確認は、工程4まで成立した製造手順を意味しない。
