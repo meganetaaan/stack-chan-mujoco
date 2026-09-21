@@ -1,0 +1,22 @@
+{
+  "question": "Can a front transverse web tie the front shelf edge without enlarging the envelope or blocking fixed hardware?",
+  "candidate": "Web X12..13.6, Y=cy +/-18, Z78..89 mm. Upper 1 mm joins existing shelf outside plate pocket.",
+  "assumptions": {
+    "web_thickness_mm": 1.6,
+    "web_drop_below_shelf_mm": 10,
+    "material": "printed ABS/PETG, grade and printing not qualified"
+  },
+  "criteria": [
+    "valid single solid",
+    "unchanged bounding box",
+    "added-material overlap with fixed assembly and manufacturer case/connectors <=0.01 mm3",
+    "reserved outer-port corridor distance >=1.3 mm"
+  ],
+  "stop": "One geometry, both sides; no parameter sweep or release.",
+  "limits": [
+    "No stiffness/strength evaluation yet",
+    "No full moving-assembly clearance",
+    "No physical tool or printing qualification",
+    "Rear idler is not in current build and is not introduced here"
+  ]
+}
