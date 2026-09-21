@@ -1,3 +1,9 @@
+## 次のセル保護設計対象（2026-09-22）
+
+[BQ76942_CANDIDATE_ja.md](BQ76942_CANDIDATE_ja.md)：BQ76942PFBRを詳細設計対象へ選定。
+CUVコード66（3.3396V）は仮置きで、全温度域誤差を控除した静的余裕314.6mV。
+高側遮断・設定工程が必要。前回の低側案は比較用であり、製造回路には未統合。HOLD継続。
+
 ## セルUV候補の棄却（2026-09-22）
 
 [CELL_PROTECTION_SCREEN_ja.md](CELL_PROTECTION_SCREEN_ja.md)にメーカーの負荷中3.0V/セル下限を反映。

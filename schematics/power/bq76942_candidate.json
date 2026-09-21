@@ -1,0 +1,44 @@
+{
+  "status": "preferred_next_cell_protection_design_candidate_not_qualified",
+  "part": "BQ76942PFBR",
+  "quantity": 1,
+  "sources": {
+    "datasheet": "https://www.ti.com/lit/ds/symlink/bq76942.pdf",
+    "trm": "https://www.ti.com/lit/ug/sluuby1b/sluuby1b.pdf"
+  },
+  "series_cells": 3,
+  "topology": "high_side_external_CHG_DSG_NMOS; low_side_current_shunt; not pin-compatible with BQ77915",
+  "configuration_strategy": "Prototype register configuration with drive inhibited until readback; qualified production image may use OTP. No OTP programming authorized by this artifact.",
+  "cuv_comparison": {
+    "origin": "engineering_initial_candidate_not_user_requirement",
+    "threshold_code": 66,
+    "step_V": 0.0506,
+    "nominal_V": 3.3396,
+    "negative_accuracy_bound_V": 0.025,
+    "accuracy_scope": "Datasheet 7.26, -40 to 85C, nominal 1.518 to 3.542V; typical accuracy not used",
+    "static_min_V": 3.3146,
+    "general_battery_floor_V": 3.0,
+    "remaining_dynamic_budget_V": 0.3146,
+    "delay_code": null,
+    "qualified": false
+  },
+  "configuration_requirements": [
+    "Explicit 3-cell input wiring and Vcell Mode mask",
+    "Enable CUV and autonomous DSG reaction",
+    "Select detection delay and recovery policy",
+    "Verify configuration readback before drive permission",
+    "No default or erased configuration may authorize drive",
+    "Protect against reset and loss of configuration",
+    "Qualify overcurrent short-circuit temperature and open-wire settings independently"
+  ],
+  "remaining_hardware": [
+    "3S cell input pin mapping and RC filters",
+    "external CHG/DSG FETs and gate networks",
+    "shunt and Kelvin routing",
+    "fuse coordination",
+    "reverse polarity and USB backfeed",
+    "pack-local supply and programming connector",
+    "shutdown and long-term leakage"
+  ],
+  "manufacturing_release": false
+}
