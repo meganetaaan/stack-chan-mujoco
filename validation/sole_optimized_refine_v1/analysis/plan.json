@@ -1,0 +1,17 @@
+{
+  "scope": "Small-strain P1 frictionless contact with lumped penalty and mean-mode multipliers.",
+  "force_N": 20,
+  "penalty_N_mm3": 1000000.0,
+  "max_iterations": 80,
+  "criteria": {
+    "equilibrium_residual_N": 1e-07,
+    "constraint_residual": 1e-08,
+    "maximum_penetration_mm": 0.01,
+    "relative_gauge_force_sum": 0.0001
+  },
+  "limitations": [
+    "Small strain, initial normals, node-lumped matching contact; different formulation from CalculiX surface contact.",
+    "Isotropic assumed material E=1120/193000 MPa, nu=.35/.3; not certified.",
+    "Local preload only, no creep, friction or walking loads."
+  ]
+}
