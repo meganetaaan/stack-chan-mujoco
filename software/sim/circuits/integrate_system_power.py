@@ -86,6 +86,14 @@ def compose():
         part = copy.deepcopy(original)
         part.update(source_reference=part['reference'], source_assembly=tab5_path)
         parts.append(part)
+    inlet_path = 'schematics/power/battery_inlet_candidate.json'
+    raw = (ROOT / inlet_path).read_bytes()
+    inlet = json.loads(raw)
+    provenance[inlet_path] = hashlib.sha256(raw).hexdigest()
+    for original in inlet['parts']:
+        part = copy.deepcopy(original)
+        part.update(source_reference=part['reference'], source_assembly=inlet_path)
+        parts.append(part)
     refs = [part['reference'] for part in parts]
     assert len(refs) == len(set(refs))
     byref = {part['reference']: part for part in parts}
@@ -127,7 +135,7 @@ def compose():
     suffix_pending = [p['reference'] for p in parts if p.get('ordering_suffix_pending')]
 
     required_design = [
-        {'issue': 21, 'gap': 'Main battery connector, fuse/disconnect/reverse protection before CELL_POS_FUSED'},
+        {'issue': 21, 'gap': 'Battery inlet/fuse candidates added; load/fault coordination, wiring, full disconnect and reverse protection unresolved'},
         {'issue': 21, 'gap': 'Tab5 branch candidate connected; ILIM, ramp, harness, allow driver and restart inhibition remain unselected'},
         {'issue': 21, 'gap': 'Local host supervisor/watchdog/latch connected; AUX crossing connected; analog qualification and rearm firmware incomplete'},
         {'issue': 24, 'gap': 'External PDSG switch/resistor, independent abort and TS2 wake/PCHG disposition'},

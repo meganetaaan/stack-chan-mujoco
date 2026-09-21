@@ -1,0 +1,62 @@
+{
+  "source_sha256": {
+    "schematics/power/battery_inlet_candidate.json": "768f2d0a5190264e15848e1c802d384d6fd9fb85d9bd0c13c72a36e2f8b0e648",
+    "validation/pololu_wiring_budget_v1/report.json": "3d5a6b057f63be4f8669e262ec3bf4ea6d10689af29484ed17cf7b72f5e804c4"
+  },
+  "purpose": "Expose remaining Tab5/auxiliary budget before finalizing 10A fuse",
+  "servo_nominal_power_W_including_bleeds": 49.44777777777777,
+  "rows": [
+    {
+      "battery_V": 9,
+      "assumed_efficiency": 0.8,
+      "servo_input_A": 6.8677469135802465,
+      "remaining_A_at_typical_40C_fuse_recommendation": 1.7322530864197532
+    },
+    {
+      "battery_V": 9,
+      "assumed_efficiency": 0.9,
+      "servo_input_A": 6.104663923182441,
+      "remaining_A_at_typical_40C_fuse_recommendation": 2.4953360768175585
+    },
+    {
+      "battery_V": 9,
+      "assumed_efficiency": 0.95,
+      "servo_input_A": 5.783365821962313,
+      "remaining_A_at_typical_40C_fuse_recommendation": 2.8166341780376865
+    },
+    {
+      "battery_V": 12.6,
+      "assumed_efficiency": 0.8,
+      "servo_input_A": 4.9055335097001755,
+      "remaining_A_at_typical_40C_fuse_recommendation": 3.694466490299824
+    },
+    {
+      "battery_V": 12.6,
+      "assumed_efficiency": 0.9,
+      "servo_input_A": 4.360474230844601,
+      "remaining_A_at_typical_40C_fuse_recommendation": 4.2395257691553985
+    },
+    {
+      "battery_V": 12.6,
+      "assumed_efficiency": 0.95,
+      "servo_input_A": 4.130975587115938,
+      "remaining_A_at_typical_40C_fuse_recommendation": 4.469024412884061
+    }
+  ],
+  "assumptions": [
+    "5V nominal only, not maximum module voltage",
+    "9V and12.6V comparison inputs, no wire drop",
+    "80/90/95% sensitivity values, not guaranteed converter efficiency",
+    "4.917A per leg is model envelope, not measured stall bound",
+    "8.6A manufacturer typical 40C recommendation is not guaranteed installed ampacity"
+  ],
+  "remaining_budget_must_cover": [
+    "Tab5 including startup",
+    "logic and STOP auxiliary",
+    "battery-control and other losses"
+  ],
+  "short_circuit_current_A": null,
+  "wire_thermal_withstand_A2s": null,
+  "decision": "10A remains a candidate; full load and protection coordination unproven",
+  "manufacturing_release": false
+}

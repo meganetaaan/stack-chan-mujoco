@@ -5,10 +5,11 @@
     "schematics/power/logic_predischarge_inhibit_candidate.json": "6c1a2af4d04f3f393bd5211c139c78ff4d3b9ca4844122c98fa827cc7085a2db",
     "schematics/power/aux_start_isolator_candidate.json": "debef7a7e54cbf58a93e67bda4266ee319685d56156a23d516c3139c901fb197",
     "schematics/power/stop_feed_candidate.json": "e0bbf0dcd442b947220ebd4b7bacd5630063950d3883abe89c947db39c2eefd0",
-    "schematics/power/tab5_input_branch_candidate.json": "bef640baae2f34fbcbea9c8b5b30c848a9b8a897d14a69215eb69fff95338507"
+    "schematics/power/tab5_input_branch_candidate.json": "bef640baae2f34fbcbea9c8b5b30c848a9b8a897d14a69215eb69fff95338507",
+    "schematics/power/battery_inlet_candidate.json": "768f2d0a5190264e15848e1c802d384d6fd9fb85d9bd0c13c72a36e2f8b0e648"
   },
-  "parts": 240,
-  "populated_pin_connections": 700,
+  "parts": 243,
+  "populated_pin_connections": 704,
   "explicit_trace_count": 4,
   "connection_checks": {
     "no_explicit_copper_short_across_shunt": true,
@@ -72,7 +73,7 @@
   "unimplemented_design": [
     {
       "issue": 21,
-      "gap": "Main battery connector, fuse/disconnect/reverse protection before CELL_POS_FUSED"
+      "gap": "Battery inlet/fuse candidates added; load/fault coordination, wiring, full disconnect and reverse protection unresolved"
     },
     {
       "issue": 21,
