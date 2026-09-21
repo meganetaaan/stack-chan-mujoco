@@ -21,6 +21,7 @@ def main():
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--step-deg', type=float, default=.25)
     p.add_argument('--include-cradle', action='store_true')
+    p.add_argument('--fixed-assembly',type=Path,help='Test a complete fixed assembly STEP instead of support variants')
     p.add_argument('--joint-limits', action='store_true', help='Cover full model yaw limits instead of recorded interval')
     p.add_argument('--support-dir',type=Path,help='Directory with revised left/right support STEP files')
     a=p.parse_args()
@@ -41,10 +42,10 @@ def main():
                   assumed_deflection_per_part_mm=.2)
     plan=dict(scope=__doc__, include_cradle=a.include_cradle, angle_scope='model joint limits' if a.joint_limits else 'recorded interval', criteria=criteria, step_deg=a.step_deg,
               source_sha256={str(f.relative_to(ROOT)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [scene,*paths]},
-              limitations=['Only yaw coupler versus its fixed support, not the full assembly',
+              limitations=[('Moving group versus specified fixed assembly only; not full robot' if a.fixed_assembly else 'Only yaw coupler versus its fixed support, not the full assembly'),
                            ('Model yaw limits covered; excursions beyond limits not covered' if a.joint_limits else 'Recorded angle interval assumes continuous interpolation; unrecorded excursions not covered'),
                            'Deflection allowances are requirements, not proof of actual worst-case deformation',
-                           'No fastener/harness/tool shapes in this pair study'])
+                           ('Only fasteners present in fixed assembly included; no harness/tools' if a.fixed_assembly else 'No fastener/harness/tool shapes in this pair study')])
     (a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
     results=[]
     for side,sign in [('left',1),('right',-1)]:
@@ -69,8 +70,10 @@ def main():
         # Every angle lies within half a grid interval of a sample. A point's
         # chord displacement is <= radius * angle_difference (radians).
         sampling_bound=radius*float(np.diff(angles).max())/2
-        for variant,path in [('original',design/'cad'/f'{side}_yaw_fixed_support.step'),
-                             ('ribbed_connection',(a.support_dir.resolve() if a.support_dir else ROOT/'validation/yaw_connection_development_v1/yaw_connection_v1')/f'{side}_yaw_fixed_support.step')]:
+        variants=[('fixed_assembly',a.fixed_assembly.resolve())] if a.fixed_assembly else [
+            ('original',design/'cad'/f'{side}_yaw_fixed_support.step'),
+            ('ribbed_connection',(a.support_dir.resolve() if a.support_dir else ROOT/'validation/yaw_connection_development_v1/yaw_connection_v1')/f'{side}_yaw_fixed_support.step')]
+        for variant,path in variants:
             fixed=cq.importers.importStep(str(path)).val()
             rows=[]
             for angle in angles:
