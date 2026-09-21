@@ -1,0 +1,241 @@
+{
+  "controller_source": "https://www.analog.com/media/en/technical-documentation/data-sheets/4363fb.pdf",
+  "revision": "C",
+  "scope": "Alternative two-branch series clamp; not integrated into current revM and not ready to energize.",
+  "parts": [
+    {
+      "ref": "U_L",
+      "part": "LT4363IMS-1#PBF",
+      "pins": {
+        "1": "L_FB",
+        "2": "L_SHUNT_LOW",
+        "3": "L_SHUNT_HIGH",
+        "4": "L_GATE",
+        "5": "L_SOURCE_5V",
+        "6": "L_SHDN_PORT",
+        "7": "GND",
+        "8": "L_UV_PORT",
+        "9": "GND",
+        "10": "L_FLT_PORT",
+        "11": "L_ENOUT_PORT",
+        "12": "L_TMR"
+      },
+      "pin_roles": {
+        "1": "FB",
+        "2": "OUT",
+        "3": "SNS",
+        "4": "GATE",
+        "5": "VCC",
+        "6": "SHDN",
+        "7": "GND",
+        "8": "UV",
+        "9": "GND",
+        "10": "FLT",
+        "11": "ENOUT",
+        "12": "TMR"
+      }
+    },
+    {
+      "ref": "Q_L",
+      "part": "PSMN2R4-30YLD",
+      "pins": {
+        "1": "L_SHUNT_HIGH",
+        "2": "L_SHUNT_HIGH",
+        "3": "L_SHUNT_HIGH",
+        "4": "L_GATE",
+        "mb": "L_SOURCE_5V"
+      },
+      "status": "SOA unverified; illustrative topology only"
+    },
+    {
+      "ref": "RS_L1",
+      "part": "WSLF25124L000FEA",
+      "pins": {
+        "1": "L_SHUNT_HIGH",
+        "2": "L_SHUNT_MID"
+      },
+      "value_ohm": 0.004
+    },
+    {
+      "ref": "RS_L2",
+      "part": "WSLF25124L000FEA",
+      "pins": {
+        "1": "L_SHUNT_MID",
+        "2": "L_SHUNT_LOW"
+      },
+      "value_ohm": 0.004
+    },
+    {
+      "ref": "RFBH_L",
+      "part": null,
+      "pins": {
+        "1": "L_SHUNT_LOW",
+        "2": "L_FB"
+      },
+      "value_ohm": 33200,
+      "total_tolerance_allocation": 0.01
+    },
+    {
+      "ref": "RFBL_L",
+      "part": null,
+      "pins": {
+        "1": "L_FB",
+        "2": "GND"
+      },
+      "value_ohm": 10000,
+      "total_tolerance_allocation": 0.01
+    },
+    {
+      "ref": "CTMR_L",
+      "part": null,
+      "pins": {
+        "1": "L_TMR",
+        "2": "GND"
+      },
+      "value_F": 1.2e-08,
+      "status": "capacitance proposal; actual part and timing bound pending"
+    },
+    {
+      "ref": "CVCC_L",
+      "part": null,
+      "pins": {
+        "1": "L_SOURCE_5V",
+        "2": "GND"
+      },
+      "value_F": 1e-07,
+      "status": "bypass proposal; actual part and input transient pending"
+    },
+    {
+      "ref": "U_R",
+      "part": "LT4363IMS-1#PBF",
+      "pins": {
+        "1": "R_FB",
+        "2": "R_SHUNT_LOW",
+        "3": "R_SHUNT_HIGH",
+        "4": "R_GATE",
+        "5": "R_SOURCE_5V",
+        "6": "R_SHDN_PORT",
+        "7": "GND",
+        "8": "R_UV_PORT",
+        "9": "GND",
+        "10": "R_FLT_PORT",
+        "11": "R_ENOUT_PORT",
+        "12": "R_TMR"
+      },
+      "pin_roles": {
+        "1": "FB",
+        "2": "OUT",
+        "3": "SNS",
+        "4": "GATE",
+        "5": "VCC",
+        "6": "SHDN",
+        "7": "GND",
+        "8": "UV",
+        "9": "GND",
+        "10": "FLT",
+        "11": "ENOUT",
+        "12": "TMR"
+      }
+    },
+    {
+      "ref": "Q_R",
+      "part": "PSMN2R4-30YLD",
+      "pins": {
+        "1": "R_SHUNT_HIGH",
+        "2": "R_SHUNT_HIGH",
+        "3": "R_SHUNT_HIGH",
+        "4": "R_GATE",
+        "mb": "R_SOURCE_5V"
+      },
+      "status": "SOA unverified; illustrative topology only"
+    },
+    {
+      "ref": "RS_R1",
+      "part": "WSLF25124L000FEA",
+      "pins": {
+        "1": "R_SHUNT_HIGH",
+        "2": "R_SHUNT_MID"
+      },
+      "value_ohm": 0.004
+    },
+    {
+      "ref": "RS_R2",
+      "part": "WSLF25124L000FEA",
+      "pins": {
+        "1": "R_SHUNT_MID",
+        "2": "R_SHUNT_LOW"
+      },
+      "value_ohm": 0.004
+    },
+    {
+      "ref": "RFBH_R",
+      "part": null,
+      "pins": {
+        "1": "R_SHUNT_LOW",
+        "2": "R_FB"
+      },
+      "value_ohm": 33200,
+      "total_tolerance_allocation": 0.01
+    },
+    {
+      "ref": "RFBL_R",
+      "part": null,
+      "pins": {
+        "1": "R_FB",
+        "2": "GND"
+      },
+      "value_ohm": 10000,
+      "total_tolerance_allocation": 0.01
+    },
+    {
+      "ref": "CTMR_R",
+      "part": null,
+      "pins": {
+        "1": "R_TMR",
+        "2": "GND"
+      },
+      "value_F": 1.2e-08,
+      "status": "capacitance proposal; actual part and timing bound pending"
+    },
+    {
+      "ref": "CVCC_R",
+      "part": null,
+      "pins": {
+        "1": "R_SOURCE_5V",
+        "2": "GND"
+      },
+      "value_F": 1e-07,
+      "status": "bypass proposal; actual part and input transient pending"
+    }
+  ],
+  "ports_per_branch": [
+    "SOURCE_5V",
+    "SHUNT_LOW",
+    "SHDN_PORT",
+    "UV_PORT",
+    "FLT_PORT",
+    "ENOUT_PORT"
+  ],
+  "checks": {
+    "pin7_variant_ground": true,
+    "sense_across_two_resistors": true,
+    "source_supply_and_gate_path": true
+  },
+  "interface_constraints": [
+    "SHDN and UV ports require defined drivers/dividers before use; never leave this draft as a working circuit.",
+    "FLT and ENOUT are outputs requiring selected pullups/receivers; they are not interchangeable with existing PG.",
+    "VCC follows regulator source, not battery; changing this alters timer behavior.",
+    "Single pass FET body diode allows reverse load-to-source current; separate reverse blocking and downstream regeneration absorption still required.",
+    "Kelvin SNS/OUT connections must follow layout error budget."
+  ],
+  "missing": [
+    "UV divider and fail-safe SHDN interface",
+    "FLT/ENOUT receiver and rearm integration",
+    "Gate damping/stability review",
+    "Input/output capacitors and transients",
+    "FET SOA and timer maximum",
+    "Reverse blocking and regeneration integration"
+  ],
+  "electrical_qualification": false,
+  "manufacturing_release": false
+}
