@@ -2,12 +2,13 @@
 import argparse,json,hashlib,math
 from pathlib import Path
 import gmsh,meshio,numpy as np
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--circle-points',type=int,default=32);p.add_argument('--no-boundary-extension',action='store_true');p.add_argument('--curvature-points',type=int,default=0);p.add_argument('--spacer-step',type=Path);p.add_argument('--contact-extensions',action='store_true');p.add_argument('--optimize-tets',action='store_true');p.add_argument('--fixed-anchor-points',action='store_true');p.add_argument('--out',type=Path,required=True);p.add_argument('--mesh-mm',type=float,default=.5);a=p.parse_args();root=Path(__file__).resolve().parents[3]
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--spacer-interior-mm',type=float);p.add_argument('--circle-points',type=int,default=32);p.add_argument('--no-boundary-extension',action='store_true');p.add_argument('--curvature-points',type=int,default=0);p.add_argument('--spacer-step',type=Path);p.add_argument('--contact-extensions',action='store_true');p.add_argument('--optimize-tets',action='store_true');p.add_argument('--fixed-anchor-points',action='store_true');p.add_argument('--out',type=Path,required=True);p.add_argument('--mesh-mm',type=float,default=.5);a=p.parse_args();root=Path(__file__).resolve().parents[3]
+if a.spacer_interior_mm is not None and (not np.isfinite(a.spacer_interior_mm) or a.spacer_interior_mm<=0):p.error('positive finite spacer interior size required')
 if a.circle_points<3 or a.curvature_points<0:p.error('circle points >=3 and curvature points >=0 required')
 if a.out.exists() or not np.isfinite(a.mesh_mm) or a.mesh_mm<=0:p.error('new output and positive finite size required')
 a.out.mkdir(parents=True)
 paths={'BOSS':root/'validation/sole_lock_boss_screen_v1/boss.step','SPACER':(a.spacer_step.resolve() if a.spacer_step else root/'validation/sole_spacer_contact_geometry_v1/spacer.step')}
-plan={'scope':__doc__,'curvature_points':a.curvature_points,'circle_points':a.circle_points,'boundary_size_extension':not a.no_boundary_extension,'contact_extensions':a.contact_extensions,'optimize_tets':a.optimize_tets,'fixed_anchor_points':a.fixed_anchor_points,'mesh_mm':a.mesh_mm,'source_sha256':{str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in paths.values()},'criteria':{'volume_error_mm3':1e-6,'matching_contact_triangle_coordinates':True,'patch_area_relative_error':.01},'limitations':['Mesh preparation only; equal interface coordinates are duplicated in exported parts, not bonded.','Local cropped geometry and nominal bearing shapes remain assumptions.']}
+plan={'scope':__doc__,'spacer_interior_mm':a.spacer_interior_mm,'curvature_points':a.curvature_points,'circle_points':a.circle_points,'boundary_size_extension':not a.no_boundary_extension,'contact_extensions':a.contact_extensions,'optimize_tets':a.optimize_tets,'fixed_anchor_points':a.fixed_anchor_points,'mesh_mm':a.mesh_mm,'source_sha256':{str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in paths.values()},'criteria':{'volume_error_mm3':1e-6,'matching_contact_triangle_coordinates':True,'patch_area_relative_error':.01},'limitations':['Mesh preparation only; equal interface coordinates are duplicated in exported parts, not bonded.','Local cropped geometry and nominal bearing shapes remain assumptions.']}
 (a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n');gmsh.initialize()
 try:
  gmsh.option.setNumber('General.Terminal',0);original=[];volumes_before=[]
@@ -41,6 +42,9 @@ try:
  for name,v in zip(paths,vols):
   g=gmsh.model.addPhysicalGroup(3,[v[1]]);gmsh.model.setPhysicalName(3,g,name)
  used=set.union(*boundaries);gmsh.model.occ.remove([(2,t) for d,t in gmsh.model.getEntities(2) if t not in used],recursive=False);gmsh.model.occ.synchronize()
+ if a.spacer_interior_mm is not None:
+  uniform=gmsh.model.mesh.field.add('MathEval');gmsh.model.mesh.field.setString(uniform,'F',str(a.spacer_interior_mm))
+  restricted=gmsh.model.mesh.field.add('Restrict');gmsh.model.mesh.field.setNumber(restricted,'InField',uniform);gmsh.model.mesh.field.setNumbers(restricted,'VolumesList',[vols[1][1]]);gmsh.model.mesh.field.setNumber(restricted,'IncludeBoundary',0);gmsh.model.mesh.field.setNumber(restricted,'IncludeEmbedded',0);gmsh.model.mesh.field.setAsBackgroundMesh(restricted)
  gmsh.option.setNumber('Mesh.MeshSizeMin',min(a.mesh_mm,.005) if a.curvature_points else a.mesh_mm);gmsh.option.setNumber('Mesh.MeshSizeFromCurvature',a.curvature_points);gmsh.option.setNumber('Mesh.MeshSizeMax',a.mesh_mm);gmsh.option.setNumber('Mesh.MinimumCirclePoints',a.circle_points);gmsh.option.setNumber('Mesh.MeshSizeExtendFromBoundary',0 if a.no_boundary_extension else 1);gmsh.option.setNumber('Mesh.MshFileVersion',2.2);print('Generating mesh',flush=True);gmsh.model.mesh.generate(3);print('Mesh generated',flush=True)
  if a.optimize_tets:
   print('Optimizing tetrahedra',flush=True);gmsh.model.mesh.optimize('Netgen');print('Optimization complete',flush=True)
