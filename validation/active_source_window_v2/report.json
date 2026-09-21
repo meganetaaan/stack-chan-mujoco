@@ -1,0 +1,46 @@
+{
+  "source_sha256": {
+    "schematics/power/servo_power_rearm_current.json": "f4aeddf182a24ac1cbd8181c8dfb77b01463fcc8a9d07f952bfd2eb51e12fff1",
+    "schematics/power/servo_power_rearm_integration_revM/assembly.json": "345add726fd60b9dbf7351ced3864b2f8eebcbd65653f029af9b759e4c27b5a5",
+    "schematics/power/source_window_monitor_revB/plan.json": "e3ab33fe95b3ce2dea1d27531b715b55eafd35e8214b74c7f573e2a7c9b94c1e",
+    "schematics/power/source_window_monitor_revB/report.json": "be7a60cd94cfe53569488c5f471a97392ad48b3cfff56230983a0d4d3c9331d7",
+    "validation/integrated_ov_divider_v1/report.json": "ed68808fcca985cd77fd67ba82002bd47a0adae148d1d9b1ddcbe31e9860d0c6",
+    "schematics/power/pol_module_screen.json": "94326a764b691cab8516316df850a4f3ec50176c4f4dfc599981dcdbc31d2cfe"
+  },
+  "active_revision": "servo_power_rearm_integration_revM",
+  "divider_values_match_current": true,
+  "normal_source_target_V": [
+    4.75,
+    5.25
+  ],
+  "static_earliest_OV_trip_comparison_V": 5.362365318251749,
+  "source_monitor_OV_recovery_min_only_V": 5.316445737623762,
+  "historical_trip_not_current_V": 5.175695280672328,
+  "module_typical_symmetric_step_comparison_V": 0.45,
+  "rows": [
+    {
+      "distribution_drop_assumption_V": 0.0,
+      "minimum_setpoint_V": 5.2,
+      "maximum_setpoint_from_normal_target_V": 4.8,
+      "exclusive_maximum_setpoint_from_static_trip_V": 4.912365318251749,
+      "normal_target_window_nonempty": false,
+      "static_trip_window_nonempty": false
+    },
+    {
+      "distribution_drop_assumption_V": 0.1,
+      "minimum_setpoint_V": 5.3,
+      "maximum_setpoint_from_normal_target_V": 4.8,
+      "exclusive_maximum_setpoint_from_static_trip_V": 4.912365318251749,
+      "normal_target_window_nonempty": false,
+      "static_trip_window_nonempty": false
+    }
+  ],
+  "manufacturing_release": false,
+  "remaining_fault_limits": [
+    "5.25V is existing normal rail target, not guaranteed regulator output",
+    "12.6V is 3S charged-pack feedthrough comparison, not a complete surge bound",
+    "Leakage limit applies at pin0.5..1.5V; computed 12.6V case extrapolates and is diagnostic only",
+    "Resistor lifetime drift excluded",
+    "OVLO timing maximum absent; no 6V transient guarantee"
+  ]
+}
