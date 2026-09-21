@@ -32,3 +32,5 @@ revJのPG受信部はrevIの単一受信部を置換する。抵抗はR15を含�
 現行足部をrevEへ統合した。`board/mechanical/prototype/foot_candidate/current.json`を入口とする。上記の「revDはv1」「v2未統合」は履歴となる。幅4.6 mm外装を含む30部品の交差0、硬質部慣性は`foot_rigid_inertia_v2`へ更新。
 
 左右TPS259813L電源段とrevJのPG接続を`schematics/power/servo_power_rearm_integration_revA`へ統合（68部品・238端子）。EN_UVLO駆動、FLT捕捉、起動状態回路、変換器、回生等は未接続で、完成電源ではない。
+
+EN停止回路: `integrated_enable_interface.json`へTPS259813L条件を定義。旧TPS3808停止回路を変換器出力で無保護給電する案は、3S貫通故障12.6 Vが絶対最大7 Vを超えるため不適合。`enable_supply_fault_domain_v1`参照。

@@ -31,3 +31,5 @@ PG配線の局所DC比較は `validation/dual_pg_25981_dc_v1` にある。今回
 ```sh
 .venv-engineering/bin/python software/sim/circuits/integrate_servo_power_and_rearm.py --out /tmp/servo-power-rearm
 ```
+
+追加制約: `validation/enable_supply_fault_domain_v1`。旧U10のEFUSE_INPUT_5Vを無保護で変換器出力へ割り当てると、3S入力貫通故障で絶対最大定格を超える。EN接続前に停止回路の電源ドメインを設計する。

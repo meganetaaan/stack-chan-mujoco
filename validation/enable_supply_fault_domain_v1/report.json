@@ -1,0 +1,15 @@
+{
+  "case": "Conditional mapping of legacy stop clamp supply onto servo converter output during 3S feedthrough fault",
+  "existing_connection": "U10 TPS3808G01DBVR pins 5 and 6 connect to EFUSE_INPUT_5V; integration revA does not map this external net to either converter output",
+  "fault_voltage_V": 12.6,
+  "fault_voltage_basis": "Selected 3S candidate at 4.2 V per cell; converter feedthrough is an existing fault scenario, not a claim that it occurs in normal operation",
+  "TPS3808_recommended_supply_max_V": 6.5,
+  "TPS3808_absolute_supply_and_sense_max_V": 7.0,
+  "absolute_rating_excess_V": 5.6,
+  "source": "https://www.ti.com/lit/ds/symlink/tps3808.pdf",
+  "source_revision": "SBVS050N August 2026",
+  "sections": ["6.1", "6.3"],
+  "decision": "Reject direct unprotected mapping; provide independently protected supply or replace with suitable wider-voltage stop architecture",
+  "design_not_simulation": true,
+  "manufacturing_release": false
+}
