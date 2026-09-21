@@ -1,0 +1,234 @@
+{
+  "status": "pin_level_candidate_not_integrated_or_released",
+  "source": "https://www.ti.com/lit/gpn/tps2660",
+  "revision": "SLVSDG2G December 2019 sections 6, 7.3, 9.3, 10.4",
+  "ic": {
+    "ref": "U_LOGIC_PROTECT",
+    "part": "TPS26601RHFR",
+    "package": "RHF VQFN24",
+    "pins": {
+      "1": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "2": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "3": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "4": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "5": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "6": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "7": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "8": {
+        "name": "IN",
+        "net": "BATTERY_RAW",
+        "disposition": "connected"
+      },
+      "9": {
+        "name": "IN",
+        "net": "BATTERY_RAW",
+        "disposition": "connected"
+      },
+      "10": {
+        "name": "UVLO",
+        "net": "LOGIC_UVLO",
+        "disposition": "connected"
+      },
+      "11": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "12": {
+        "name": "OVP",
+        "net": "LOGIC_OVP",
+        "disposition": "connected"
+      },
+      "13": {
+        "name": "MODE",
+        "net": null,
+        "disposition": "intentional_open",
+        "reason": "Open selects TPS26601 latched circuit breaker"
+      },
+      "14": {
+        "name": "SHDN",
+        "net": null,
+        "disposition": "intentional_open",
+        "reason": "Internal pullup; external reset not implemented"
+      },
+      "15": {
+        "name": "RTN",
+        "net": "LOGIC_PROTECT_RTN",
+        "disposition": "connected"
+      },
+      "16": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "17": {
+        "name": "GND",
+        "net": "GND",
+        "disposition": "connected"
+      },
+      "18": {
+        "name": "IMON",
+        "net": null,
+        "disposition": "intentional_open",
+        "reason": "Unused monitor"
+      },
+      "19": {
+        "name": "ILIM",
+        "net": "LOGIC_ILIM",
+        "disposition": "connected"
+      },
+      "20": {
+        "name": "dVdT",
+        "net": null,
+        "disposition": "intentional_open",
+        "reason": "Default ramp candidate; not qualified for downstream LDO startup"
+      },
+      "21": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "22": {
+        "name": "FLT",
+        "net": null,
+        "disposition": "intentional_open",
+        "reason": "Unused diagnostic output; not a substitute for rail supervisor"
+      },
+      "23": {
+        "name": "OUT",
+        "net": "LOGIC_PROTECTED_INPUT",
+        "disposition": "connected"
+      },
+      "24": {
+        "name": "OUT",
+        "net": "LOGIC_PROTECTED_INPUT",
+        "disposition": "connected"
+      },
+      "EP": {
+        "name": "PowerPAD",
+        "net": "LOGIC_PROTECT_RTN",
+        "disposition": "connected",
+        "layout": "Multiple vias to dedicated RTN plane; pin 15 must also be connected"
+      }
+    }
+  },
+  "resistors": [
+    {
+      "ref": "R_LOGIC_UV_TOP",
+      "value_ohm": 40200,
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "LOGIC_UVLO"
+      },
+      "part": null,
+      "status": "nominal_only_not_manufacturing_selected"
+    },
+    {
+      "ref": "R_LOGIC_UV_BOTTOM",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "LOGIC_UVLO",
+        "2": "LOGIC_PROTECT_RTN"
+      },
+      "part": null,
+      "status": "nominal_only_not_manufacturing_selected"
+    },
+    {
+      "ref": "R_LOGIC_OV_TOP",
+      "value_ohm": 124000,
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "LOGIC_OVP"
+      },
+      "part": null,
+      "status": "nominal_only_not_manufacturing_selected"
+    },
+    {
+      "ref": "R_LOGIC_OV_BOTTOM",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "LOGIC_OVP",
+        "2": "LOGIC_PROTECT_RTN"
+      },
+      "part": null,
+      "status": "nominal_only_not_manufacturing_selected"
+    },
+    {
+      "ref": "R_LOGIC_ILIM",
+      "value_ohm": 120000,
+      "pins": {
+        "1": "LOGIC_ILIM",
+        "2": "LOGIC_PROTECT_RTN"
+      },
+      "part": null,
+      "status": "nominal_only_not_manufacturing_selected"
+    }
+  ],
+  "interfaces": {
+    "input": "BATTERY_RAW upstream of servo cutoff; pack protection is separate",
+    "output": "LOGIC_PROTECTED_INPUT to TPS70933DRVR pin 6",
+    "ground": "GND to TPS709 pin 3 and EP; not to protection RTN"
+  },
+  "forbidden_net_merges": [
+    [
+      "LOGIC_PROTECT_RTN",
+      "GND"
+    ]
+  ],
+  "unimplemented": [
+    {
+      "ref": "C_LOGIC_PROTECT_IN",
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "GND"
+      },
+      "requirement": "TPS2660 input bypass >=0.1uF effective; voltage/transient/reverse qualification and actual part pending"
+    },
+    {
+      "ref": "C_LOGIC_PROTECT_OUT",
+      "pins": {
+        "1": "LOGIC_PROTECTED_INPUT",
+        "2": "GND"
+      },
+      "requirement": "Must satisfy both TPS2660 output bypass and TPS709 local input bypass; actual part and effective capacitance pending"
+    }
+  ],
+  "release_blockers": [
+    "120kohm is recommended upper limit: positive resistor tolerance exceeds it; select derated nominal and reassess current thresholds before release",
+    "Input/output capacitors and voltage/transient ratings unresolved",
+    "Default ramp and downstream regulator startup not qualified",
+    "External power-cycle discharge/reset not implemented",
+    "Battery cell protection not supplied by this branch",
+    "Reverse-input and backfeed paths through complete system not verified",
+    "Not merged into revM assembly or KiCad; no PCB thermal/layout verification"
+  ],
+  "manufacturing_release": false
+}
