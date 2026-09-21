@@ -1,0 +1,47 @@
+{
+  "scope": "B-rep yaw coupler/support clearance over continuous recorded angle ranges.\n\nThe between-sample lower bound assumes rigid single-axis rotation; deformation\nand manufacturing allowances are separately subtracted, not modeled as loads.\n",
+  "results": [
+    {
+      "side": "left",
+      "variant": "fixed_assembly",
+      "angle_range_rad": [
+        -0.261799387799149,
+        0.261799387799149
+      ],
+      "sample_count": 31,
+      "radial_bound_mm": 31.38470965295043,
+      "sampling_miss_bound_mm": 0.2738832591132163,
+      "minimum_sampled_distance_mm": 2.082322496386766,
+      "minimum_angle_rad": 0.261799387799149,
+      "residual_lower_bound_mm": 1.0084392372735498,
+      "passed_screen": true,
+      "cad_sha256": {
+        "software/sim/mujoco/assets/r9_fast_turn_v1/cad/left_yaw_coupler.step": "6ef8b119b380a3ee3b22798ee80e2c9d43f27b99efbd497168e901af7c291585",
+        "software/sim/mujoco/assets/r8_yaw_offset_flange_v1/cad/left_fixed_roll_cradle.step": "f8d4da2e44356afe1a9d773131566f6448a53cdf6c481bd0326f543e94f1ed52",
+        "validation/yaw_integrated_candidate_v1/yaw_support_candidate.step": "85469dd2e3b211531c55cd5805b250f43113bf904be3759cdccedce5235589a8"
+      }
+    },
+    {
+      "side": "right",
+      "variant": "fixed_assembly",
+      "angle_range_rad": [
+        -0.261799387799149,
+        0.261799387799149
+      ],
+      "sample_count": 31,
+      "radial_bound_mm": 31.38470965295043,
+      "sampling_miss_bound_mm": 0.2738832591132163,
+      "minimum_sampled_distance_mm": 2.082322496386766,
+      "minimum_angle_rad": -0.261799387799149,
+      "residual_lower_bound_mm": 1.0084392372735498,
+      "passed_screen": true,
+      "cad_sha256": {
+        "software/sim/mujoco/assets/r9_fast_turn_v1/cad/right_yaw_coupler.step": "1b1e309ebbbdf5f4b2d33a6ed9d4b7c2ce9a4e16f173cc5c4a8a9300670f175a",
+        "software/sim/mujoco/assets/r8_yaw_offset_flange_v1/cad/right_fixed_roll_cradle.step": "d2d22efbe2febf07dbf403d68567dc77732d7a8db9c423ff8714f20307ada17f",
+        "validation/yaw_integrated_candidate_v1/yaw_support_candidate.step": "85469dd2e3b211531c55cd5805b250f43113bf904be3759cdccedce5235589a8"
+      }
+    }
+  ],
+  "passed_screen": true,
+  "assembly_clearance_verified": false
+}

@@ -2,7 +2,7 @@
 import argparse,hashlib,json
 from pathlib import Path
 import cadquery as cq
-ROOT=Path(__file__).resolve().parents[3];p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--moments',action='store_true');p.add_argument('--rear-washer-dir',type=Path);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+ROOT=Path(__file__).resolve().parents[3];p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--moments',action='store_true');p.add_argument('--rear-washer-dir',type=Path);p.add_argument('--support-dir',type=Path);p.add_argument('--plate-dir',type=Path);p.add_argument('--plate-washer-dir',type=Path);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
 assy=cq.Assembly(name='yaw_support_candidate');rows=[];moments=[]
 if a.moments:
  import numpy as np
@@ -39,8 +39,8 @@ read('body_shroud','validation/yaw_tool_access_v1/body_shroud.step')
 read('rear_plate','validation/rear_joint_assembly_development_v1/rear_joint_inset2_v1/rear_structural_plate.step')
 for side,cy in [('left',26),('right',-26)]:
  for name in ['yaw_fixed_support','threaded_backing_plate']:
-  read(side+'_'+name,f'validation/yaw_backing_keeper_v2/{side}_{name}.step')
- read(side+'_mount_plate',f'validation/yaw_metal_seat_v4/{side}_mount_plate.step')
+  read(side+'_'+name,str(a.support_dir/f'{side}_{name}.step') if name=='yaw_fixed_support' and a.support_dir else f'validation/yaw_backing_keeper_v2/{side}_{name}.step')
+ read(side+'_mount_plate',str(a.plate_dir/f'{side}_mount_plate.step') if a.plate_dir else f'validation/yaw_metal_seat_v4/{side}_mount_plate.step')
  for z in [64,76]:read(f'{side}_{z}_keeper',f'validation/yaw_backing_keeper_v2/{side}_{z}_keeper_envelope.step',note='NBK SLH-M2-10 nominal; thread overlap intentional')
  for i in range(4):
   for name in ['bolt','rear_washer']:
@@ -51,7 +51,10 @@ for side,cy in [('left',26),('right',-26)]:
  for i,(x,y) in enumerate(( (x,y) for x in [-34,8.1] for y in [cy-10,cy+10])):
   def cyl(r,h,z):return cq.Solid.makeCylinder(r,h,cq.Vector(x,y,z))
   add(f'{side}_plate_{i}_screw',cyl(1.9,1.3,86.7).fuse(cyl(1,10,88)),note='NBK SLH-M2-10 nominal envelope')
-  add(f'{side}_plate_{i}_washer',cyl(3,.9,91).cut(cyl(1.15,.9,91)),note='SCW-SOLE-SPACER-01 nominal rigid-washer candidate')
+  if a.plate_washer_dir:
+   read(f'{side}_plate_{i}_washer',str(a.plate_washer_dir/f'{side}_{x}_{y}_washer.step'),note='SCW-YAW-PLATE-WASHER-01 A-candidate; comparison only')
+  else:
+   add(f'{side}_plate_{i}_washer',cyl(3,.9,91).cut(cyl(1.15,.9,91)),note='SCW-SOLE-SPACER-01 nominal rigid-washer candidate')
   add(f'{side}_plate_{i}_nut',cyl(2.829,1.2,91.9).cut(cyl(1,1.2,91.9)),note='PTS A56202 circumcircle envelope, not square CAD')
 assy.save(str(a.out/'yaw_support_candidate.step'))
 report={'scope':__doc__,'parts':rows,'part_count':len(rows),'solid_count':sum(r['solids'] for r in rows),'omitted':['servo and horn hardware','case PHS M2x8 TAP screws','rear-plate-to-body corner hardware','legs','battery/electronics/harness','tools'],'manufacturing_release':False,'full_interference_verified':False,'strength_verified':False}
