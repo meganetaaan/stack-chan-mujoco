@@ -8,7 +8,7 @@ p.add_argument('--out', type=Path, required=True)
 p.add_argument('--bleed-ohms', type=float, default=0., help='Resistance of each of two permanent bleed branches; zero disables them')
 p.add_argument('--open-bleeds', type=int, choices=[0,1,2], default=0)
 p.add_argument('--regen-start-s',type=float,default=.1)
-p.add_argument('--regen-a', type=float, default=0., help='Injected return current from 100 to 120 ms, 1 us edges')
+p.add_argument('--regen-a', type=float, default=0., help='Injected return current for 20 ms from regen-start-s, 1 us edges')
 p.add_argument('--cout-uf', type=float, default=800.)
 a = p.parse_args()
 assert np.isfinite(a.bleed_ohms) and a.bleed_ohms >= 0
@@ -46,12 +46,23 @@ net = net.replace('Cout rail 0 800u', f'Cout rail 0 {a.cout_uf:.12g}u')
 if a.bleed_ohms:
     for branch in range(2-a.open_bleeds):
         net += f'Rbleed{branch} rail 0 {a.bleed_ohms:.12g}\n'
-vectors = 'v(vin) v(rail) v(bus) v(aux) v(en) i(Lout) i(Vbattery)'
+vectors = 'v(vin) v(rail) v(bus) v(aux) v(en) i(Lout) i(Vbattery) v(drain0) v(drain1) v(gate0) v(gate1)'
 measures = [('bus_after_disconnect_max', 'meas tran bus_after_disconnect_max MAX v(bus) FROM=.08 TO=1')]
 for index, t in enumerate(plan['measurements_s']):
     for field, expr in [('bus','v(bus)'), ('rail','v(rail)'), ('en','v(en)'), ('aux','v(aux)')]:
         measures.append((f'{field}_{index}', f'meas tran {field}_{index} FIND {expr} AT={t}'))
 net += f'.save {vectors}\n.control\nset wr_singlescale\nset wr_vecnames\ntran 100u 1 0 1u uic\n'
+for branch in range(2):
+    match=re.search(r'^Rbrake'+str(branch)+r' bus drain'+str(branch)+r' ([0-9.eE+-]+)$',net,re.M)
+    assert match
+    resistance=float(match.group(1))
+    net += f'let brake_current{branch} = (v(bus)-v(drain{branch}))/{resistance:.12g}\n'
+    net += f'let brake_power{branch} = brake_current{branch}*brake_current{branch}*{resistance:.12g}\n'
+    net += f'let mos_power{branch} = v(drain{branch})*brake_current{branch}\n'
+    for part in ['brake','mos']:
+        for metric,operation in [('energy_J','INTEG'),('peak_W','MAX')]:
+            key=f'{part}{branch}_{metric}'
+            measures.append((key,f'meas tran {key} {operation} {part}_power{branch} FROM=.08 TO=1'))
 net += '\n'.join(line for _, line in measures)
 net += f'\nlinearize {vectors}\nwrdata display_trace.dat {vectors}\nquit\n.endc\n.end\n'
 (a.out/'disconnect.cir').write_text(net)
@@ -62,7 +73,7 @@ r.check_returncode()
 log = (a.out/'ngspice.log').read_text()
 values = {}
 for key, _ in measures:
-    found = re.search(r'^'+key+r'\s*=\s*([-+0-9.eE]+)', log, re.M)
+    found = re.search(r'^'+key+r'\s*=\s*([-+0-9.eE]+)', log, re.M|re.I)
     assert found, key
     values[key] = float(found.group(1))
 assert all(np.isfinite(v) for v in values.values())
@@ -70,6 +81,6 @@ data = np.loadtxt(a.out/'display_trace.dat', skiprows=1)
 assert np.isfinite(data).all() and abs(data[-1,0]-1.) < 1e-6
 samples = [{'time_s':t, **{f'{k}_V':values[f'{k}_{i}'] for k in ['bus','rail','aux','en']},
             'Cout_energy_J': .5*a.cout_uf*1e-6*values[f'rail_{i}']**2} for i,t in enumerate(plan['measurements_s'])]
-report = {'samples':samples, 'numerical_checks_passed':True, 'bus_after_disconnect_max_V':values['bus_after_disconnect_max'], 'protection_design_verified':False}
+report = {'samples':samples, 'numerical_checks_passed':True, 'post_disconnect_absorber_measurements':{k:v for k,v in values.items() if k.startswith(('brake','mos'))}, 'bus_after_disconnect_max_V':values['bus_after_disconnect_max'], 'protection_design_verified':False}
 (a.out/'report.json').write_text(json.dumps(report, indent=2)+'\n')
 print(json.dumps(report, indent=2))
