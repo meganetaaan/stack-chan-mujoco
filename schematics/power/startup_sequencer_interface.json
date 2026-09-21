@@ -2,14 +2,17 @@
   "status": "interface_and_settled_logic_only",
   "hardware_implemented": false,
   "inputs": {
-    "ENABLE_PERMISSION": "U6 pin9; qualified manual permission, also clear acknowledgement",
+    "ENABLE_PERMISSION": "U6 pin9; qualified manual permission; one of two clear acknowledgements",
     "PG_CONDITIONED": "revG U13 pin4; TPS3700 plus 74LVC1G17 receiver; power-transition validity and downstream loading incomplete",
     "INDEPENDENT_HEALTH": "stop/power/monitor validity excluding expected pre-start PG low",
-    "STARTUP_EXPIRED": "timer not selected; deadline must satisfy startup and fault-energy bounds"
+    "STARTUP_EXPIRED": "timer not selected; deadline must satisfy startup and fault-energy bounds",
+    "ARMED": "U6 pin5; release-qualified memory; must also be observed Low before clear completion",
+    "CLEAR_HOLD_DONE": "unimplemented timing qualification at both actual U6 CLR pins; not instant acknowledgement",
+    "RESET_LOW_OBSERVED": "unimplemented valid observation of actual reset assertion; invalidate after each new clear request"
   },
   "outputs": {
     "SEQUENCE_ENABLE_REQUEST": "revF U3 pin4; true only START/RUN and healthy",
-    "SEQUENCE_CLEAR_REQUEST": "concrete sink to RESET_N not designed; assert CLEAR until permission-low acknowledgement"
+    "SEQUENCE_CLEAR_REQUEST": "sink to RESET_N not designed; hold until both latch outputs Low and actual minimum clear width qualified"
   },
   "states": [
     "OFF",
@@ -23,8 +26,12 @@
     "Fault memory does not continuously hold latch clear after acknowledgement",
     "No PG-only automatic recovery",
     "No direct PG/EN to RESET_N",
-    "Minimum clear pulse and race analysis required"
+    "Minimum clear pulse and race analysis required",
+    "CLEAR completion requires healthy power, ARMED Low, ENABLE_PERMISSION Low, reset assertion observed, and minimum hold completed",
+    "Do not assign latch outputs Low in sequencer model as a substitute for hardware acknowledgement",
+    "Clear release must meet CLR-to-next-clock recovery/setup requirement"
   ],
-  "evidence": "validation/sequence_clear_handshake_v1/README_ja.md",
-  "manufacturing_release": false
+  "evidence": "validation/sequence_clear_completion_v1/README_ja.md",
+  "manufacturing_release": false,
+  "previous_settled_logic_evidence": "validation/sequence_clear_handshake_v1/README_ja.md"
 }
