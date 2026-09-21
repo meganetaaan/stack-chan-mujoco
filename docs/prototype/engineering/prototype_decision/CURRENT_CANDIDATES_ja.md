@@ -4,7 +4,7 @@
 
 | 対象 | 現在参照する比較案 | 主な未完了事項 |
 |---|---|---|
-| 足部 | board/mechanical/prototype/foot_candidate/revC | 材料・ワッシャ実品・締付け・強度・公差 |
+| 足部 | board/mechanical/prototype/foot_candidate/revD | 材料・ワッシャ実品・締付け・強度・公差 |
 | 電池と変換器 | schematics/power/rc_supply_candidate.json | 出力過渡、セル保護、取付け、給電保護 |
 | 変換器の代替 | schematics/power/pol_module_screen.json | 電圧窓が未成立。UBECへ追加する部品ではない |
 | 既存2段保護案 | schematics/power/servo_ovp_candidate.json | OVP分圧、過渡、回生、故障記憶 |
@@ -24,3 +24,5 @@ revJのPG受信部はrevIの単一受信部を置換する。抵抗はR15を含�
 訂正: 外装ねじ先端の天井干渉判定は既存穴を無視した誤判定だった。`validation/boot_tip_relief_v1`で元CADの8箇所を検査し、軸上の交差0を確認。逃げ追加案は不採用。径方向公差と有効ねじかかりは未確認。
 
 外装ねじ穴: `validation/boot_bore_clearance_v1`で16箇所の通過穴径2.3 mmを確認。既存の印刷面誤差仮定では通過を保証できない。大径化は頭受け面積を減らすため、2.3 mm仕上げ後加工を優先比較するが、封入ナットを傷つけない工具・加工深さ・公差の設計が必要。
+
+足部revDは外装ナットを横挿入する比較案。ナット挿入前に穴仕上げできる。8経路の公称連続掃引と30部品の静的交差を確認したが、開口公差・工具空間・壁開口後の強度は未確認。revCの慣性値を転用しない。

@@ -5,11 +5,12 @@ import cadquery as cq
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--out',type=Path,required=True)
 p.add_argument('--include-boot-hardware',action='store_true',help='Include four boot screws and four captive nuts per foot')
+p.add_argument('--boot-dir',type=Path,default=Path('validation/boot_low_head_candidate_v1/cad'))
 a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
 rows=[];checks=[]
 for side in ['left','right']:
     sources={
-      'boot':f'validation/boot_low_head_candidate_v1/cad/{side}_boot_shell.step',
+      'boot':str(a.boot_dir/f'{side}_boot_shell.step'),
       'yoke':f'validation/sole_recessed_seat_v3/{side}_yoke.step',
       'holder':f'validation/sole_recessed_seat_v3/{side}_holder_envelope.step',
       'contact_layer':f'validation/sole_contact_split_v1/{side}_contact_layer.step',
