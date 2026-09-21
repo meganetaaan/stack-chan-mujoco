@@ -1,0 +1,49 @@
+{
+  "scope": "RC 10%-90% rise and zero-volt sink current; no MCU fall-time or logic-level qualification",
+  "source": "TI BQ76942 Rev B sections7.27/7.28",
+  "source_rise_definition": "10% to90%, NOT I2C common30% to70%",
+  "pullup_ohm": 2210,
+  "resistance_total_design_allocation_fraction": 0.01,
+  "allocation_scope": "engineering allowance including tolerance/temperature/process; not a measured resistance bound",
+  "rows": [
+    {
+      "C_F": 5e-11,
+      "rise_10_90_s": 2.4522124895360875e-07,
+      "within_100k_rise_spec": true,
+      "within_400k_rise_spec": true
+    },
+    {
+      "C_F": 1e-10,
+      "rise_10_90_s": 4.904424979072175e-07,
+      "within_100k_rise_spec": true,
+      "within_400k_rise_spec": false
+    },
+    {
+      "C_F": 2e-10,
+      "rise_10_90_s": 9.80884995814435e-07,
+      "within_100k_rise_spec": true,
+      "within_400k_rise_spec": false
+    },
+    {
+      "C_F": 4e-10,
+      "rise_10_90_s": 1.96176999162887e-06,
+      "within_100k_rise_spec": false,
+      "within_400k_rise_spec": false
+    }
+  ],
+  "C_max_100k_F": 2.038975015964422e-10,
+  "C_max_400k_F": 6.116925047893266e-11,
+  "max_current_per_I2C_line_A_at3V6": 0.0016454134101192923,
+  "all_three_lines_low_current_A_at3V6": 0.0036544631838749484,
+  "minimum_pullup_ohm_spec": 1500,
+  "pullup_above_minimum": true,
+  "remaining": [
+    "total bus capacitance after PCB/host selection",
+    "MCU sink/high/low thresholds",
+    "BQ VOL at3.3V; 5V table conditions cannot be copied",
+    "fall time, setup, hold and clock duty at receiver",
+    "CRC, timeout and reset handling",
+    "power-off backfeed and reference-domain routing"
+  ],
+  "manufacturing_release": false
+}

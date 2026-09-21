@@ -31,6 +31,9 @@
         "30": "BQ_BOTHOFF_N",
         "29": "CELL_B_MINUS",
         "33": "CELL_B_MINUS",
+        "25": "BQ_ALERT_N",
+        "26": "BQ_SCL",
+        "27": "BQ_SDA",
         "1": null,
         "3": null,
         "5": null,
@@ -50,9 +53,6 @@
       },
       "unresolved_pins": [
         22,
-        25,
-        26,
-        27,
         39,
         40
       ],
@@ -708,14 +708,35 @@
         "2": "CELL_B_MINUS"
       },
       "effective_capacitance_qualified": false
+    },
+    {
+      "reference": "R_BQ_SCL",
+      "part": "TNPW06032K21BEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_SCL"
+      }
+    },
+    {
+      "reference": "R_BQ_SDA",
+      "part": "TNPW06032K21BEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_SDA"
+      }
+    },
+    {
+      "reference": "R_BQ_ALERT",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_ALERT_N"
+      }
     }
   ],
-  "part_count": 72,
+  "part_count": 75,
   "unresolved_BQ76942_pins": [
     22,
-    25,
-    26,
-    27,
     39,
     40
   ],
@@ -734,7 +755,10 @@
     "PACK_POS_PROTECTED",
     "PACK_RETURN",
     "BQ_ALLOW_BMINUS",
-    "BQ_CTRL3V3"
+    "BQ_CTRL3V3",
+    "BQ_SCL",
+    "BQ_SDA",
+    "BQ_ALERT_N"
   ],
   "missing_stages": [
     "cell tap and main connectors",
@@ -792,6 +816,20 @@
     "MCU_load_budget_qualified": false,
     "cold_start_qualified": false,
     "shutdown_cuts_control_supply": true
+  },
+  "communications_candidate": {
+    "clock_Hz": 100000,
+    "I2C_CRC_required": true,
+    "pullup_ohm": 2210,
+    "bus_capacitance_allocation_F": 1e-10,
+    "allocation_origin": "engineering PCB budget, not measured",
+    "ALERT_config": {
+      "address": "0x92FC",
+      "value": "0x82",
+      "function": "active-low open-drain"
+    },
+    "domain_reference": "CELL_B_MINUS",
+    "host_interface_qualified": false
   },
   "electrically_operational": false,
   "manufacturing_release": false

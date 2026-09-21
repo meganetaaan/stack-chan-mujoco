@@ -25,6 +25,9 @@ U_CELL_PROTECT,23,BQ_TS_FET,candidate_connected
 U_CELL_PROTECT,30,BQ_BOTHOFF_N,candidate_connected
 U_CELL_PROTECT,29,CELL_B_MINUS,candidate_connected
 U_CELL_PROTECT,33,CELL_B_MINUS,candidate_connected
+U_CELL_PROTECT,25,BQ_ALERT_N,candidate_connected
+U_CELL_PROTECT,26,BQ_SCL,candidate_connected
+U_CELL_PROTECT,27,BQ_SDA,candidate_connected
 U_CELL_PROTECT,1,,NC
 U_CELL_PROTECT,3,,NC
 U_CELL_PROTECT,5,,NC
@@ -42,9 +45,6 @@ U_CELL_PROTECT,35,BQ_CTRL3V3,candidate_connected
 U_CELL_PROTECT,36,BQ_REGIN,candidate_connected
 U_CELL_PROTECT,37,BQ_BREG,candidate_connected
 U_CELL_PROTECT,22,,UNRESOLVED
-U_CELL_PROTECT,25,,UNRESOLVED
-U_CELL_PROTECT,26,,UNRESOLVED
-U_CELL_PROTECT,27,,UNRESOLVED
 U_CELL_PROTECT,39,,UNRESOLVED
 U_CELL_PROTECT,40,,UNRESOLVED
 Q_CHG,1,CELL_POS_FUSED,candidate_connected
@@ -230,3 +230,9 @@ C_REGIN,1,BQ_REGIN,candidate_connected
 C_REGIN,2,CELL_B_MINUS,candidate_connected
 C_REG1,1,BQ_CTRL3V3,candidate_connected
 C_REG1,2,CELL_B_MINUS,candidate_connected
+R_BQ_SCL,1,BQ_CTRL3V3,candidate_connected
+R_BQ_SCL,2,BQ_SCL,candidate_connected
+R_BQ_SDA,1,BQ_CTRL3V3,candidate_connected
+R_BQ_SDA,2,BQ_SDA,candidate_connected
+R_BQ_ALERT,1,BQ_CTRL3V3,candidate_connected
+R_BQ_ALERT,2,BQ_ALERT_N,candidate_connected
