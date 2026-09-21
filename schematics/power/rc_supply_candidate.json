@@ -69,6 +69,22 @@
       "servo_connection_gate": "Verify 5V output with servos disconnected before initial connection",
       "independent_OVP": "Required; candidate TPS259823ONRGE internal 7.6V OVLO is insufficient",
       "qualified": false
+    },
+    "output_envelope_review": {
+      "reviewed_date": "2026-09-21",
+      "current_product_manual": "https://oss.hobbywing.com/pdf/pdfen/UBEC10A2-6S.pdf",
+      "manual_identifier": "HW-SM817DUL_10A-UBEC_140905",
+      "normal_output_max_V": null,
+      "ripple_max_V": null,
+      "startup_overshoot_max_V": null,
+      "load_release_overshoot_max_V": null,
+      "shoot_through_threshold_V": null,
+      "shoot_through_delay_s": null,
+      "finding": "Not specified in reviewed official product page and its linked manual; not evidence of absent protection",
+      "comparison_95k3_divider_required_normal_max_V_exclusive": 5.175695280672328,
+      "comparison_only": true,
+      "decision": "UBEC remains unqualified for this OVP window; do not choose divider values assuming ideal 5V output",
+      "next_selection_gate": "Prefer a candidate with documented output accuracy and transient/OV protection conditions; retain UBEC as physical evaluation alternative"
     }
   },
   "integration_rules": [
