@@ -31,3 +31,5 @@ curl -L https://www.pololu.com/file/0J2219/d42v110fx-step-down-voltage-regulator
 LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bin/python software/sim/structural/check_pololu_rear_tool_access.py /tmp/pololu-reg34c.step --out validation/pololu_rear_tool_access_v1
 ```
 製作リリース=false、Issue未完了。
+
+追記: `validation/pololu_nut_insertion_v2`で、工程2のナット挿入へ後板M3締結16部品と他のM2ナット7個を追加して確認した。全8経路の公称形状は通過。造形公差・仮保持・手工具・工程4の機体装着は未確認のまま。
