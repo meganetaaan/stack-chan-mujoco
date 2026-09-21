@@ -1,0 +1,92 @@
+{
+  "traces": [
+    {
+      "U7_threshold": 3.0239499999999997,
+      "U9_threshold": 3.1160499999999995,
+      "events": [
+        {
+          "event": "enabled",
+          "U9_cause_healthy": true,
+          "clear_permission": false,
+          "permission": true,
+          "EN_after_sequencer_honors_permission": true
+        },
+        {
+          "event": "settled_dip",
+          "U9_cause_healthy": false,
+          "clear_permission": true,
+          "permission": false,
+          "EN_after_sequencer_honors_permission": false
+        },
+        {
+          "event": "recovered_no_press",
+          "U9_cause_healthy": true,
+          "clear_permission": false,
+          "permission": false,
+          "EN_after_sequencer_honors_permission": false
+        },
+        {
+          "event": "qualified_new_press",
+          "U9_cause_healthy": true,
+          "clear_permission": false,
+          "permission": true,
+          "EN_after_sequencer_honors_permission": true
+        }
+      ]
+    },
+    {
+      "U7_threshold": 3.1160499999999995,
+      "U9_threshold": 3.0239499999999997,
+      "events": [
+        {
+          "event": "enabled",
+          "U9_cause_healthy": true,
+          "clear_permission": false,
+          "permission": true,
+          "EN_after_sequencer_honors_permission": true
+        },
+        {
+          "event": "settled_dip",
+          "U9_cause_healthy": true,
+          "clear_permission": true,
+          "permission": false,
+          "EN_after_sequencer_honors_permission": false
+        },
+        {
+          "event": "recovered_no_press",
+          "U9_cause_healthy": true,
+          "clear_permission": false,
+          "permission": false,
+          "EN_after_sequencer_honors_permission": false
+        },
+        {
+          "event": "qualified_new_press",
+          "U9_cause_healthy": true,
+          "clear_permission": false,
+          "permission": true,
+          "EN_after_sequencer_honors_permission": true
+        }
+      ]
+    }
+  ],
+  "static_comparisons": {
+    "cause_high_lower_V": 3.19387,
+    "cause_low_sink_upper_A": 0.0003921987012987013,
+    "cause_low_upper_V": 0.4,
+    "U7_MR_low_limit_V": 0.9621,
+    "U11_output_load_upper_A": 7.5e-05,
+    "U11_high_lower_V": 4.65,
+    "U10_MR_high_upper_requirement_V": 3.675,
+    "U11_low_upper_V": 0.1,
+    "U10_MR_low_lower_requirement_V": 1.425
+  },
+  "electrical_qualification": false,
+  "open_items": [
+    "U11 input thresholds across full supply interval",
+    "Full source5V supply loss and reverse-bias paths",
+    "U9 to U7 pulse width and delay; U10 clamp response",
+    "Actual sequencer must cancel POWER_ENABLE_COMMAND on permission loss",
+    "External stop/fault integration and passive exact parts"
+  ],
+  "retained_permission_counterexample_removed_in_settled_logic": true
+}

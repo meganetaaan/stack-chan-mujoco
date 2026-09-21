@@ -1,0 +1,38 @@
+{
+  "part_number": "TPS3808G01DBVR",
+  "level_buffer_part": "74LVC1G17GV",
+  "role": "separate rail-fault cause from EN state and relay cause to latch reset",
+  "cause_net": "RAIL_HEALTH_N: U9 RESET, 10k to LOGIC3V3, U7 MR, U11 A",
+  "level_buffer_pins": {
+    "1": "NC",
+    "2": "RAIL_HEALTH_N",
+    "3": "GND",
+    "4": "CLAMP_MR_5V",
+    "5": "EFUSE_INPUT_5V"
+  },
+  "follower_pins": {
+    "1": "MAIN_EFUSE_EN",
+    "2": "GND",
+    "3": "CLAMP_MR_5V",
+    "4": "NC (fixed open-CT delay)",
+    "5": "EFUSE_INPUT_5V",
+    "6": "EFUSE_INPUT_5V"
+  },
+  "follower_CT_open_delay_ms": [
+    12,
+    28
+  ],
+  "sources": [
+    "https://www.ti.com/lit/ds/symlink/tps3808.pdf",
+    "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf"
+  ],
+  "status": "candidate_static_and_settled_logic_only",
+  "pending": [
+    "Threshold coverage over actual 5V interval",
+    "Propagation and short pulse capture",
+    "Both power domains collapsing",
+    "Control sequencer clears command when permission clears",
+    "Passive exact parts and load budgeting"
+  ],
+  "manufacturing_release": false
+}
