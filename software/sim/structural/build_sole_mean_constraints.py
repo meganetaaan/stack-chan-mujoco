@@ -27,7 +27,7 @@ for name,tets in parts.items():
  _,_,piv=qr(C,pivoting=True,mode='economic');dep=piv[:len(selected)];D=np.linalg.solve(C[:,dep],C);err=float(np.max(abs(D[:,dep]-np.eye(len(dep)))));assert err<1e-10
  for i,col in enumerate(dep):
   coeff=D[i].copy();coeff[dep]=0;coeff[col]=1;cols=[int(col)]+[int(j) for j in np.flatnonzero(coeff) if j!=col];equations+=['*EQUATION',str(len(cols))]
-  terms=[f'{ids[j//3]},{j%3+1},{coeff[j]:.16g}' for j in cols]
+  terms=[f'{ids[j//3]},{j%3+1},{coeff[j]:.12e}' for j in cols]
   equations += [','.join(terms[k:k+4]) for k in range(0,len(terms),4)]
  reports.append({'part':name,'nodes':len(ids),'equations':len(dep),'rigid_mode_rank':rank,'pivot_identity_error':err,'dependent_dofs':[[int(ids[j//3]),int(j%3+1)] for j in dep],'volume_centroid_mm':center.tolist()})
  arrays[name+'_node_ids']=ids;arrays[name+'_matrix']=C;arrays[name+'_reduced_matrix']=D
