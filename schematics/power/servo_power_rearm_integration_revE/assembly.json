@@ -766,36 +766,39 @@
     },
     {
       "reference": "R_STOP_MIN_LOAD",
-      "part": null,
+      "part": "TNPW060330K1BYEA",
       "value_ohm": 30100.0,
       "total_tolerance_budget": 0.01,
       "pins": {
         "1": "STOP_AUX3V3",
         "2": "GND"
       },
-      "note": "Minimum loading; exact resistor and temperature budget pending"
+      "note": "Minimum loading; exact resistor and temperature budget pending",
+      "selection_source": "schematics/power/stop_enable_resistors.json"
     },
     {
       "reference": "LEFT_R_EN_PULLDOWN",
-      "part": null,
+      "part": "TNPW060378K7BYEA",
       "value_ohm": 78700,
       "total_tolerance_budget": 0.01,
       "pins": {
         "1": "LEFT_EN_LOCAL",
         "2": "GND"
       },
-      "placement": "At eFuse EN pin and local ground, after monitored trace; no shared remote pulldown"
+      "placement": "At eFuse EN pin and local ground, after monitored trace; no shared remote pulldown",
+      "selection_source": "schematics/power/stop_enable_resistors.json"
     },
     {
       "reference": "RIGHT_R_EN_PULLDOWN",
-      "part": null,
+      "part": "TNPW060378K7BYEA",
       "value_ohm": 78700,
       "total_tolerance_budget": 0.01,
       "pins": {
         "1": "RIGHT_EN_LOCAL",
         "2": "GND"
       },
-      "placement": "At eFuse EN pin and local ground, after monitored trace; no shared remote pulldown"
+      "placement": "At eFuse EN pin and local ground, after monitored trace; no shared remote pulldown",
+      "selection_source": "schematics/power/stop_enable_resistors.json"
     }
   ],
   "interfaces": {
@@ -821,7 +824,8 @@
     "STOP_AUX3V3": "Dedicated stop-monitor supply, separate from LOGIC3V3; load and power sequence unqualified"
   },
   "source_sha256": {
-    "schematics/power/servo_power_rearm_integration_revD/assembly.json": "d7e5b5ed2e1b6be17940731f3dcb3c98fdecef28402763ecf2706e3d3c19d028"
+    "schematics/power/servo_power_rearm_integration_revD/assembly.json": "d7e5b5ed2e1b6be17940731f3dcb3c98fdecef28402763ecf2706e3d3c19d028",
+    "schematics/power/stop_enable_resistors.json": "a90d96166b1b9673b4aeadf3605a91a2494b7dbf864a28519846bd21b8c4f3c7"
   },
   "part_count": 73,
   "pin_count": 251,

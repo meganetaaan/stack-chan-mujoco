@@ -21,8 +21,16 @@ assert min(x['high_min_V'] for x in rows)>1.224
 assert max(x['drive_A'] for x in rows)<100e-6
 open_node_max=79487*.1e-6
 assert open_node_max<.45
+catalog_path=Path('schematics/power/stop_enable_resistors.json')
+catalog=json.loads(catalog_path.read_text())
+byref={p['reference']:p for p in r['parts']}
+for selection in catalog['parts']:
+ part=byref[selection['reference']]
+ assert part['value_ohm']==selection['value_ohm']
+ part['part']=selection['part_number']
+ part['selection_source']=str(catalog_path)
 r['scope']=__doc__;r['part_count']=len(r['parts']);r['pin_count']=sum(len(x['pins']) for x in r['parts'])
-r['source_sha256']={str(src):hashlib.sha256(src.read_bytes()).hexdigest()}
+r['source_sha256']={str(q):hashlib.sha256(q.read_bytes()).hexdigest() for q in (src,catalog_path)}
 r['integration_limitations']+=['Local EN pull-downs replace R5; earlier 39k calculations are historical','Open trace analysis is settled leakage only; discharge timing and pin/pulldown ground faults unqualified']
 r['manufacturing_release']=False
 (a.out/'assembly.json').write_text(json.dumps(r,indent=2)+'\n')
