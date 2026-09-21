@@ -25,7 +25,7 @@
     }
   },
   "driver": "BQ76942 CHG45 and DSG43 through unselected gate networks; high overdrive candidate",
-  "pin_number_mapping_verified": false,
+  "pin_number_mapping_verified": true,
   "normal_gate_screen": "BQ76942 high overdrive 10..13V relative BAT for BAT>=8V under table conditions; source-relative transient VGS still unqualified",
   "fixed_current_comparison_not_load_requirement": [
     {
@@ -40,7 +40,7 @@
     }
   ],
   "unresolved": [
-    "physical source gate drain pad mapping",
+    "CAD footprint pad numbering and exposed drain pad mapping",
     "gate resistor and source clamp parts",
     "charge pump capacitor and transient load",
     "hot RDSon and PCB thermal path",
@@ -49,5 +49,47 @@
     "reverse polarity and USB injection",
     "pack-local supply and loss of gate drive"
   ],
-  "manufacturing_release": false
+  "manufacturing_release": false,
+  "pin_mapping_evidence": {
+    "method": "visual inspection of manufacturer PDF page1 Top View",
+    "source_sha256": "2e43c4a2ac82af8a089be0a9e413282326f8d7857254ac07390b458deca854e0",
+    "source_pins": [
+      1,
+      2,
+      3
+    ],
+    "gate_pin": 4,
+    "drain_pins": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "exposed_pad": "drain; numeric CAD pad identifier not assigned by this review",
+    "PCB_footprint_verified": false
+  },
+  "pin_connections": {
+    "Q_CHG": {
+      "1": "CELL_POS_FUSED",
+      "2": "CELL_POS_FUSED",
+      "3": "CELL_POS_FUSED",
+      "4": "CHG_GATE",
+      "5": "PACK_FET_MID",
+      "6": "PACK_FET_MID",
+      "7": "PACK_FET_MID",
+      "8": "PACK_FET_MID",
+      "exposed_drain_pad": "PACK_FET_MID"
+    },
+    "Q_DSG": {
+      "1": "PACK_POS_PROTECTED",
+      "2": "PACK_POS_PROTECTED",
+      "3": "PACK_POS_PROTECTED",
+      "4": "DSG_GATE",
+      "5": "PACK_FET_MID",
+      "6": "PACK_FET_MID",
+      "7": "PACK_FET_MID",
+      "8": "PACK_FET_MID",
+      "exposed_drain_pad": "PACK_FET_MID"
+    }
+  }
 }

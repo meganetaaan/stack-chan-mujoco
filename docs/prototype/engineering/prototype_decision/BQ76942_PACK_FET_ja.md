@@ -11,7 +11,9 @@ CSD18540Q5BTをCHG/DSG各1個、計2個の詳細設計候補とする。
 `CELL_POS_FUSED → Q_CHG source / drain → 共通drain → Q_DSG drain / source → PACK_POS_PROTECTED`
 
 各NMOSのボディダイオードはsourceからdrainへ向く。
-パッケージ端子番号は未照合なので、製造用ネットリストへまだ取り込まない。
+パッケージ端子はメーカーTop Viewと照合済み（1/2/3=S、4=G、5/6/7/8と露出パッド=D）。
+`validation/bq76942_pack_fet_pinmap_v1`へ端子接続表と理想電流経路検査を保存。
+CADフットプリント照合とゲート網は未完了で、製造用ネットリストにはまだ取り込まない。
 BQ76942 CHG(45)・DSG(43)は未選定のゲート網を介してそれぞれのgateへ接続する。
 
 | CHG | DSG | 放電方向 | 充電方向 |

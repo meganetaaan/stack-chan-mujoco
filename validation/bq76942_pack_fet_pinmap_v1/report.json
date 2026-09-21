@@ -1,0 +1,30 @@
+{
+  "scope": "ideal graph; excludes leakage, breakdown, parasitic paths and actual gate states",
+  "states": [
+    {
+      "CHG_ON": false,
+      "DSG_ON": false,
+      "discharge_path_exists": false,
+      "charge_path_exists": false
+    },
+    {
+      "CHG_ON": false,
+      "DSG_ON": true,
+      "discharge_path_exists": true,
+      "charge_path_exists": false
+    },
+    {
+      "CHG_ON": true,
+      "DSG_ON": false,
+      "discharge_path_exists": false,
+      "charge_path_exists": true
+    },
+    {
+      "CHG_ON": true,
+      "DSG_ON": true,
+      "discharge_path_exists": true,
+      "charge_path_exists": true
+    }
+  ],
+  "manufacturing_release": false
+}
