@@ -7,14 +7,14 @@
   "pins": {
     "1_VDD": "servo bus downstream of source disconnect; local bypass to bus ground; not AUX3V3",
     "2_GND": "bus ground, Kelvin return; not top of current shunt",
-    "3_IN+": "bus-powered brake comparator output; actual part and input bias unselected",
+    "3_IN+": "TPS3700DDCR OUTA with bus pullup; see brake_detector_candidate.json; input load qualification pending",
     "4_IN-": "bus ground; do not use source-stop signal to disable regeneration absorption",
     "5_OUT": "series gate resistor to AO3400A gate; value unselected"
   },
   "external_gate_source_pulldown": "required; value and dynamic discharge verification pending",
   "local_bypass": "required; effective capacitance and part unselected",
   "remaining": [
-    "Comparator/reference supply and cold start",
+    "TPS3700 bus-powered candidate selected; cold start, divider parts and output interface unqualified",
     "Supply routing drop versus 0.10 V startup margin",
     "Real gate waveform, ringing, resistance, repetitive SOA and thermal layout",
     "Shunt tolerance and return inductance",
