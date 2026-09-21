@@ -1,0 +1,35 @@
+{
+  "status": "controller_selected_for_design_comparison_not_released",
+  "controller": "LTC4365ITS8#TRMPBF",
+  "source": "https://www.analog.com/media/en/technical-documentation/data-sheets/ltc4365.pdf",
+  "revision": "Rev. B",
+  "role": "Per-leg input OV/UV controlled disconnection with external back-to-back N-MOSFETs",
+  "quantity": 2,
+  "connection_order": [
+    "UBEC 5V output",
+    "LTC4365-controlled MOSFET pair",
+    "overcurrent circuit breaker candidate",
+    "leg servo bus with regeneration absorber on this downstream bus"
+  ],
+  "normal_input_operating_range_V": [
+    2.5,
+    34
+  ],
+  "SHDN": "Default off; asserted only by startup-qualified manual permission; receiver and resistor implementation pending",
+  "FAULT": "Status only; not directly connected to the same permission reset because shutdown itself asserts FAULT",
+  "recovery": "Normal variant has nominal 36ms automatic recovery; not manual-rearm qualification",
+  "external_FETs": null,
+  "OV_divider": null,
+  "UV_divider": null,
+  "pending": [
+    "Actual FET on-resistance at minimum gate drive and maximum junction temperature",
+    "FET gate charge versus guaranteed sink current and propagation",
+    "OV/UV threshold tolerance and hysteresis with actual resistors",
+    "Startup already-overvoltage and powered voltage-step behavior",
+    "Output overshoot including source impedance and wiring inductance",
+    "Off-state reverse leakage and output-biased states",
+    "Per-leg downstream regeneration clamp and energy capacity",
+    "Connection to existing manual-rearm without startup deadlock"
+  ],
+  "manufacturing_release": false
+}
