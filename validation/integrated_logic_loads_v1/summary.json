@@ -1,0 +1,23 @@
+{
+  "assembly_sha256": "d92788de105a78fd34dab4d0ccdb1c078a7cbb766d57b59b0416f66d2c28bba8",
+  "logic_reference_A": 0.009899557927436842,
+  "polymer_leakage_reference_A_at_25C_5min": 2.2e-05,
+  "engineering_continuous_target_A": 0.02,
+  "unallocated_reference_margin_A": 0.010100442072563158,
+  "battery_side_resistor_reference_A_at_12p6V": 0.0004757837037197208,
+  "complete_current_budget": false,
+  "excluded": [
+    "MCU peripheral and dynamic currents; MCU remains unimplemented",
+    "MAX6816 internal switch pullup load",
+    "All capacitor leakage outside specified reference conditions",
+    "Logic intermediate input/dynamic currents and board leakage",
+    "TPS26601 bias/ILIM current and TPS709 ground current",
+    "Whole-robot UBEC, servo, STOP and Tab5 supply current"
+  ],
+  "rules": [
+    "Battery-side resistor current is not LOGIC3V3 output load",
+    "IC supply bias is not automatically equal to current through protected pass FET",
+    "Reference sum is not a guaranteed simultaneous-state upper bound",
+    "20mA target is not an input current limit or validated peak"
+  ]
+}

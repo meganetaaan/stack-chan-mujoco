@@ -1,0 +1,471 @@
+{
+  "source_sha256": "d92788de105a78fd34dab4d0ccdb1c078a7cbb766d57b59b0416f66d2c28bba8",
+  "rails": {
+    "LOGIC3V3": {
+      "direct_resistors": [
+        {
+          "reference": "R1",
+          "resistance_ohm": 100000.0,
+          "value_source": "unselected nominal value in assembly description",
+          "other_net": "TIMER_CT",
+          "conditional_current_upper_A": 3.427272727272727e-05
+        },
+        {
+          "reference": "R2",
+          "resistance_ohm": 100000.0,
+          "value_source": "unselected nominal value in assembly description",
+          "other_net": "RELEASE_QUALIFIED",
+          "conditional_current_upper_A": 3.427272727272727e-05
+        },
+        {
+          "reference": "R3",
+          "resistance_ohm": 100000.0,
+          "value_source": "unselected nominal value in assembly description",
+          "other_net": "SUPERVISOR_CT",
+          "conditional_current_upper_A": 3.427272727272727e-05
+        },
+        {
+          "reference": "R4",
+          "resistance_ohm": 100000.0,
+          "value_source": "unselected nominal value in assembly description",
+          "other_net": "RESET_N",
+          "conditional_current_upper_A": 3.427272727272727e-05
+        },
+        {
+          "reference": "R9",
+          "resistance_ohm": 10000.0,
+          "value_source": "unselected nominal value in assembly description",
+          "other_net": "RAIL_HEALTH_N",
+          "conditional_current_upper_A": 0.0003427272727272727
+        },
+        {
+          "reference": "R14",
+          "resistance_ohm": 1000,
+          "value_source": "assembly value or explicit ordering-code mapping",
+          "other_net": "SEQUENCE_CLEAR_REQUEST",
+          "conditional_current_upper_A": 0.003427272727272727
+        },
+        {
+          "reference": "R15",
+          "resistance_ohm": 3000.0,
+          "value_source": "unselected nominal value in assembly description",
+          "other_net": "BUTTON_RAW",
+          "conditional_current_upper_A": 0.0011424242424242423
+        },
+        {
+          "reference": "LEFT_R10",
+          "resistance_ohm": 150000,
+          "value_source": "assembly value or explicit ordering-code mapping",
+          "other_net": "LEFT_PG_SOURCE",
+          "conditional_current_upper_A": 2.2848484848484846e-05
+        },
+        {
+          "reference": "LEFT_R13",
+          "resistance_ohm": 10000,
+          "value_source": "assembly value or explicit ordering-code mapping",
+          "other_net": "LEFT_PG_CONDITIONED_OD",
+          "conditional_current_upper_A": 0.0003427272727272727
+        },
+        {
+          "reference": "RIGHT_R10",
+          "resistance_ohm": 150000,
+          "value_source": "assembly value or explicit ordering-code mapping",
+          "other_net": "RIGHT_PG_SOURCE",
+          "conditional_current_upper_A": 2.2848484848484846e-05
+        },
+        {
+          "reference": "RIGHT_R13",
+          "resistance_ohm": 10000,
+          "value_source": "assembly value or explicit ordering-code mapping",
+          "other_net": "RIGHT_PG_CONDITIONED_OD",
+          "conditional_current_upper_A": 0.0003427272727272727
+        }
+      ],
+      "conditional_resistor_subtotal_A": 0.005780666666666667,
+      "other_connected_parts_not_budgeted": [
+        {
+          "reference": "U1",
+          "part": "MAX6816EUS+T",
+          "connected_pins": [
+            "4"
+          ]
+        },
+        {
+          "reference": "U2",
+          "part": "SN74LVC1G04DBVR",
+          "connected_pins": [
+            "5"
+          ]
+        },
+        {
+          "reference": "U3",
+          "part": "SN74HCS11PWR",
+          "connected_pins": [
+            "14"
+          ]
+        },
+        {
+          "reference": "U4",
+          "part": "74LVC1G17GV",
+          "connected_pins": [
+            "5"
+          ]
+        },
+        {
+          "reference": "U5",
+          "part": "TPS3808G33DBVR",
+          "connected_pins": [
+            "5",
+            "6"
+          ]
+        },
+        {
+          "reference": "U6",
+          "part": "SN74HCS74PW",
+          "connected_pins": [
+            "2",
+            "4",
+            "10",
+            "14"
+          ]
+        },
+        {
+          "reference": "C1",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "C2",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "C3",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "C4",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "C5",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "C6",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "U7",
+          "part": "TPS3808G33DBVR",
+          "connected_pins": [
+            "5",
+            "6"
+          ]
+        },
+        {
+          "reference": "C7",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "U8",
+          "part": "74LVC1G17GV",
+          "connected_pins": [
+            "5"
+          ]
+        },
+        {
+          "reference": "C8",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "U9",
+          "part": "TPS3808G33DBVR",
+          "connected_pins": [
+            "5"
+          ]
+        },
+        {
+          "reference": "U14",
+          "part": "74AUP1G06GW",
+          "connected_pins": [
+            "5"
+          ]
+        },
+        {
+          "reference": "C14",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "U15",
+          "part": "74LVC1G17GV",
+          "connected_pins": [
+            "5"
+          ]
+        },
+        {
+          "reference": "C15",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "LEFT_U12",
+          "part": "TPS3700DDCR",
+          "connected_pins": [
+            "5"
+          ]
+        },
+        {
+          "reference": "LEFT_U13",
+          "part": "74LVC1G17GV",
+          "connected_pins": [
+            "5"
+          ]
+        },
+        {
+          "reference": "LEFT_C12",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "LEFT_C13",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "RIGHT_U12",
+          "part": "TPS3700DDCR",
+          "connected_pins": [
+            "5"
+          ]
+        },
+        {
+          "reference": "RIGHT_U13",
+          "part": "74LVC1G17GV",
+          "connected_pins": [
+            "5"
+          ]
+        },
+        {
+          "reference": "RIGHT_C12",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "RIGHT_C13",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "U_MONITOR_RX",
+          "part": "SN74AUP1T50DCKR",
+          "connected_pins": [
+            "5"
+          ]
+        },
+        {
+          "reference": "C_MONITOR_RX",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "U_LOGIC_LDO",
+          "part": "TPS70933DRVR",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "C_LOGIC_LDO_OUT",
+          "part": "T520A226M010ATE080",
+          "connected_pins": [
+            "1"
+          ]
+        }
+      ]
+    },
+    "STOP_AUX3V3": {
+      "direct_resistors": [
+        {
+          "reference": "R8",
+          "resistance_ohm": 100000.0,
+          "value_source": "unselected nominal value in assembly description",
+          "other_net": "CLAMP_CT",
+          "conditional_current_upper_A": 3.427272727272727e-05
+        },
+        {
+          "reference": "R_STOP_MIN_LOAD",
+          "resistance_ohm": 30100.0,
+          "value_source": "assembly value or explicit ordering-code mapping",
+          "other_net": "GND",
+          "conditional_current_upper_A": 0.00011386288130474176
+        },
+        {
+          "reference": "LEFT_R_WINDOW_PULLUP",
+          "resistance_ohm": 10000,
+          "value_source": "assembly value or explicit ordering-code mapping",
+          "other_net": "LEFT_SOURCE_WINDOW_OD",
+          "conditional_current_upper_A": 0.0003427272727272727
+        },
+        {
+          "reference": "RIGHT_R_WINDOW_PULLUP",
+          "resistance_ohm": 10000,
+          "value_source": "assembly value or explicit ordering-code mapping",
+          "other_net": "RIGHT_SOURCE_WINDOW_OD",
+          "conditional_current_upper_A": 0.0003427272727272727
+        },
+        {
+          "reference": "R_MONITOR_START",
+          "resistance_ohm": 100000,
+          "value_source": "assembly value or explicit ordering-code mapping",
+          "other_net": "MONITOR_START_READY_OD",
+          "conditional_current_upper_A": 3.427272727272727e-05
+        }
+      ],
+      "conditional_resistor_subtotal_A": 0.0008678628813047417,
+      "other_connected_parts_not_budgeted": [
+        {
+          "reference": "U9",
+          "part": "TPS3808G33DBVR",
+          "connected_pins": [
+            "3",
+            "6"
+          ]
+        },
+        {
+          "reference": "C9",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "U10",
+          "part": "TPS3808G01DBVR",
+          "connected_pins": [
+            "5",
+            "6"
+          ]
+        },
+        {
+          "reference": "U11",
+          "part": "74LVC1G17GV",
+          "connected_pins": [
+            "5"
+          ]
+        },
+        {
+          "reference": "C10",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "C11",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "U_STOP_LDO",
+          "part": "TPS70933DBVR",
+          "connected_pins": [
+            "5"
+          ]
+        },
+        {
+          "reference": "C_STOP_OUT",
+          "part": null,
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "LEFT_U_WINDOW",
+          "part": "TPS3700DDCR",
+          "connected_pins": [
+            "5"
+          ]
+        },
+        {
+          "reference": "LEFT_C_WINDOW",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "RIGHT_U_WINDOW",
+          "part": "TPS3700DDCR",
+          "connected_pins": [
+            "5"
+          ]
+        },
+        {
+          "reference": "RIGHT_C_WINDOW",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        },
+        {
+          "reference": "U_MONITOR_START",
+          "part": "TPS3808G33DBVR",
+          "connected_pins": [
+            "3",
+            "5",
+            "6"
+          ]
+        },
+        {
+          "reference": "C_MONITOR_START",
+          "part": "GRM31C5C1H104JA01L",
+          "connected_pins": [
+            "1"
+          ]
+        }
+      ]
+    }
+  },
+  "complete_current_budget": false,
+  "manufacturing_release": false
+}

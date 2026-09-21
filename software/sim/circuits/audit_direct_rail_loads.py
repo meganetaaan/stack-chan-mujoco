@@ -1,8 +1,8 @@
 """Enumerate directly rail-connected resistor loads without claiming a full rail budget."""
 import argparse,hashlib,json,re
 from pathlib import Path
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
-path=Path('schematics/power/servo_power_clear_pullup_candidate_v1/assembly.json');data=json.loads(path.read_text())
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--assembly',type=Path,default=Path('schematics/power/servo_power_clear_pullup_candidate_v1/assembly.json'));a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+path=a.assembly;data=json.loads(path.read_text())
 # Explicit known ordering-code values, not a generic part-number decoder.
 values={'TNPW0603150KBYEA':150000,'TNPW060310K0BYEA':10000}
 plan={'scope':'Direct LOGIC3V3 and STOP_AUX3V3 resistor branches only. Non-rail terminal clamped to 0 V for simultaneous conditional upper subtotal.', 'rail_max_V':3.393,'assumed_total_resistance_tolerance':.01,'limits':['Not a realistic simultaneous operating state or complete rail upper bound.','IC supply currents, output-driven resistors, internal button pullup, capacitive transients, MCU and board leakage excluded.','1% is an engineering allocation including resistors whose exact parts remain unselected.','No negative-voltage fault currents covered.'], 'stop':'One inventory extraction and subtotal; no unknown-IC simulation.'}

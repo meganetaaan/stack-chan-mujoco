@@ -1,8 +1,8 @@
 """Reference allocations only; datasheet conditions in logic_ic_current_review_v1/v2."""
 import json,hashlib,argparse
 from pathlib import Path
-parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--out',type=Path,required=True);args=parser.parse_args()
-p=Path('schematics/power/servo_power_clear_pullup_candidate_v1/assembly.json');a=json.loads(p.read_text())
+parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--out',type=Path,required=True);parser.add_argument('--assembly',type=Path,default=Path('schematics/power/servo_power_clear_pullup_candidate_v1/assembly.json'));args=parser.parse_args()
+p=args.assembly;a=json.loads(p.read_text())
 types={'MAX6816EUS+T':('4',20),'SN74LVC1G04DBVR':('5',10),'SN74HCS11PWR':('14',2),'SN74HCS74PW':('14',2),'74LVC1G17GV':('5',4),'TPS3808G33DBVR':('6',6),'TPS3808G01DBVR':('6',6),'TPS3700DDCR':('5',13),'74AUP1G06GW':('5',.9),'SN74AUP1T50DCKR':('5',.9)}
 rows=[];totals={}
 for x in a['parts']:
