@@ -1,0 +1,68 @@
+{
+  "case": {
+    "source": "validation/prototype_epic4_v1/actuator_fullbody_load_right_v1/trace.npz",
+    "side": "right",
+    "samples": 7000,
+    "displacement_upper_mm": 0.31644733227864114,
+    "principal_upper_MPa": 7.757361423058435,
+    "von_mises_upper_MPa": 5.320045999517024,
+    "selected_time_s": 3.0199999999997784,
+    "selected_wrench_N_Nmm": [
+      0.3684933267760049,
+      -1.5669809815618343,
+      7.610967008718026,
+      -274.341981485369,
+      -141.16941217037964,
+      -7.867198389243171
+    ],
+    "selected_actual_displacement_mm": 0.22013027289145443,
+    "bounded_within_criteria": false
+  },
+  "regions": [
+    {
+      "x_min_mm": null,
+      "x_max_mm": -50,
+      "energy_Nmm": 0.19008005196037359,
+      "fraction": 0.17903887346253092
+    },
+    {
+      "x_min_mm": -50,
+      "x_max_mm": -30,
+      "energy_Nmm": 0.21445984593925907,
+      "fraction": 0.20200251853843934
+    },
+    {
+      "x_min_mm": -30,
+      "x_max_mm": -10,
+      "energy_Nmm": 0.21121657121175805,
+      "fraction": 0.19894763588477543
+    },
+    {
+      "x_min_mm": -10,
+      "x_max_mm": null,
+      "energy_Nmm": 0.44591269962448915,
+      "fraction": 0.42001097211425426
+    }
+  ],
+  "strain_energy_Nmm": 1.06166916873588,
+  "external_work_Nmm": 2.123338337472565,
+  "energy_balance_relative_error": 3.7914116290949096e-13,
+  "max_displacement_mm": 0.22013027289145443,
+  "max_displacement_location_mm": [
+    11.6,
+    20.912500000000005,
+    90.43048611111111
+  ],
+  "source_sha256": {
+    "validation/yaw_current_archive_envelope_v1/report.json": "8f9ea2f06db5fd560289b32898ac828da76f18f0caf1aa6c9435dde268b95041",
+    "validation/yaw_current_archive_envelope_v1/support.msh": "f2ee84abcfb974ee098de7e3b179a72e018ab266014c72d373a7c1f9f2930261",
+    "validation/yaw_current_archive_envelope_v1/unit_0.npz": "e2626046f5994a6a69caeb0750e2c638213d9e76bf036382aa7d67c2549738de",
+    "validation/yaw_current_archive_envelope_v1/unit_1.npz": "0ac1a8f5e5e836d076ee300bf8b5136fa75724d93f17a6af8a71817ede6c2285",
+    "validation/yaw_current_archive_envelope_v1/unit_2.npz": "ece304dad1ebfe965c53eb9c17ef4b9d2fd0c85bc66aeedc95be0999d88d7572",
+    "validation/yaw_current_archive_envelope_v1/unit_3.npz": "1a0fb66ef677485151e10152ac28edc84e92316b449b344b1db8e0c14f018a7a",
+    "validation/yaw_current_archive_envelope_v1/unit_4.npz": "0c11e051ac69543e63f1f2ce7ef382aaba17feede968d6b76617218560126d73",
+    "validation/yaw_current_archive_envelope_v1/unit_5.npz": "63467fc89159afbccb430174044bf12586e19f5790ca950f4a4942e0951db855",
+    "software/sim/structural/diagnose_yaw_strain_energy.py": "20dd9fd17dca05aada654c04b81ecbfae7a2132fcbcb4decb538962427ab675c"
+  },
+  "manufacturing_release": false
+}
