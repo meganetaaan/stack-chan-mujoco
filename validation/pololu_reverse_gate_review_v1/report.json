@@ -1,0 +1,36 @@
+{
+  "assembly_sha256": "fcb8eca4df08618248da5f1b3bef8bc5ef00ea726ae2b6c937d410f8b2709169",
+  "topology_checks_pass": true,
+  "rows": [
+    {
+      "side": "LEFT",
+      "gate_net": "LEFT_REVERSE_GATE",
+      "source_net": "LEFT_INTERNAL_OUT",
+      "drain_net": "LEFT_SERVO_BUS",
+      "driver_net": "LEFT_DVDT",
+      "VGS_expression": "LEFT_REVERSE_GATE minus LEFT_INTERNAL_OUT",
+      "VDS_expression": "LEFT_SERVO_BUS minus LEFT_INTERNAL_OUT",
+      "gate_R_selected": false,
+      "gate_C_selected": false
+    },
+    {
+      "side": "RIGHT",
+      "gate_net": "RIGHT_REVERSE_GATE",
+      "source_net": "RIGHT_INTERNAL_OUT",
+      "drain_net": "RIGHT_SERVO_BUS",
+      "driver_net": "RIGHT_DVDT",
+      "VGS_expression": "RIGHT_REVERSE_GATE minus RIGHT_INTERNAL_OUT",
+      "VDS_expression": "RIGHT_SERVO_BUS minus RIGHT_INTERNAL_OUT",
+      "gate_R_selected": false,
+      "gate_C_selected": false
+    }
+  ],
+  "review_scope": "TPS25981 RevD sections6.1/6.3/6.5/7.3.8/7.3.9 and Figure7-7/7-8; SiSS80DN RevB static/gate ratings",
+  "guaranteed_loaded_DVDT_minus_OUT_min_V": null,
+  "guaranteed_loaded_DVDT_minus_OUT_max_V": null,
+  "reason": "No quantitative external-driver loaded steady-state VGS limits identified in reviewed datasheet sections. Internal PG gate annotation and capacitor rating are not such limits.",
+  "external_gate_turnoff_bound_s": null,
+  "rds_on_value_promoted_to_qualified": false,
+  "lower_resistance_substitution_allowed_by_this_review": false,
+  "manufacturing_release": false
+}
