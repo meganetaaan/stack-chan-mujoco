@@ -1,0 +1,20 @@
+{
+  "baseline": "validation/sole_spacer_interior_probe_v1/analysis",
+  "variant": "validation/sole_spacer_interior_refine_v1/analysis",
+  "relative_pressure_change_max": 0.1,
+  "relative_stress_change_max": 0.1,
+  "relative_displacement_change_max": 0.05,
+  "scope": "Interior-only spacer mesh sensitivity at retained coarse boundary discretization",
+  "mesh_settings": {
+    "global_mm": 0.5,
+    "curvature_points": 16,
+    "circle_points": 64,
+    "spacer_interior_mm": 0.08,
+    "boundary_extension": false
+  },
+  "required_before_solve": "Compare all physical boundary triangle coordinates against baseline; do not claim isolation if different",
+  "limitations": [
+    "This controlled comparison does not replace final three-mesh convergence",
+    "All material, contact and load assumptions retained"
+  ]
+}
