@@ -1,0 +1,104 @@
+{
+  "source_sha256": {
+    "validation/yaw_connector_obstacles_v3/report.json": "dd564d07f1fd3384f5b79d6e774ae82caf5ca06d82c04e4002af66b9713d7f52",
+    "board/mechanical/prototype/yaw_support_candidate/current.json": "cd74289ce2c8d916a828b80e7a57790375709db853b7cb17e02cd4c329226b72",
+    "board/mechanical/prototype/yaw_support_candidate/revB/inventory.json": "8e7de9c8d22e27ccc8fb360052a987c28704c93557a447dc2421cf322c17e666",
+    "validation/yaw_backing_keeper_v2/left_yaw_fixed_support.step": "5c045bed574086b4ab9d864a4eebea20826b68bb61b33b86e9e9942aaf5e0e5d",
+    "validation/yaw_metal_seat_v4/left_mount_plate.step": "9c6ff5af3490d4f9e4f5d61835667468322d4190fbda4878528507f9f4c21d52",
+    "validation/yaw_backing_keeper_v2/right_yaw_fixed_support.step": "f827128361d2db76a1307d2d2ec44b625b57944a57def7babd2d08ca54ce9e87",
+    "validation/yaw_metal_seat_v4/right_mount_plate.step": "7bd1788cfade1b1e10a7e5b6b4503428ffe2af61331464165626ac7b3ca40b82"
+  },
+  "rows": [
+    {
+      "side": "left",
+      "port": 13,
+      "neighbour": "left_yaw_fixed_support",
+      "PCB_plane_z_mm": 78.9,
+      "mated_top_z_mm": 87.0,
+      "overlap_mm3": 0.0,
+      "distance_mm": 2.0,
+      "allocated_residual_mm": 1.2,
+      "passes_allocated_screen": true
+    },
+    {
+      "side": "left",
+      "port": 13,
+      "neighbour": "left_mount_plate",
+      "PCB_plane_z_mm": 78.9,
+      "mated_top_z_mm": 87.0,
+      "overlap_mm3": 0.0,
+      "distance_mm": 1.0,
+      "allocated_residual_mm": 0.19999999999999996,
+      "passes_allocated_screen": false
+    },
+    {
+      "side": "left",
+      "port": 14,
+      "neighbour": "left_yaw_fixed_support",
+      "PCB_plane_z_mm": 78.9,
+      "mated_top_z_mm": 87.0,
+      "overlap_mm3": 0.0,
+      "distance_mm": 2.0,
+      "allocated_residual_mm": 1.2,
+      "passes_allocated_screen": true
+    },
+    {
+      "side": "left",
+      "port": 14,
+      "neighbour": "left_mount_plate",
+      "PCB_plane_z_mm": 78.9,
+      "mated_top_z_mm": 87.0,
+      "overlap_mm3": 0.0,
+      "distance_mm": 1.0,
+      "allocated_residual_mm": 0.19999999999999996,
+      "passes_allocated_screen": false
+    },
+    {
+      "side": "right",
+      "port": 13,
+      "neighbour": "right_yaw_fixed_support",
+      "PCB_plane_z_mm": 78.9,
+      "mated_top_z_mm": 87.0,
+      "overlap_mm3": 0.0,
+      "distance_mm": 2.0,
+      "allocated_residual_mm": 1.2,
+      "passes_allocated_screen": true
+    },
+    {
+      "side": "right",
+      "port": 13,
+      "neighbour": "right_mount_plate",
+      "PCB_plane_z_mm": 78.9,
+      "mated_top_z_mm": 87.0,
+      "overlap_mm3": 0.0,
+      "distance_mm": 1.0,
+      "allocated_residual_mm": 0.19999999999999996,
+      "passes_allocated_screen": false
+    },
+    {
+      "side": "right",
+      "port": 14,
+      "neighbour": "right_yaw_fixed_support",
+      "PCB_plane_z_mm": 78.9,
+      "mated_top_z_mm": 87.0,
+      "overlap_mm3": 0.0,
+      "distance_mm": 2.0,
+      "allocated_residual_mm": 1.2,
+      "passes_allocated_screen": true
+    },
+    {
+      "side": "right",
+      "port": 14,
+      "neighbour": "right_mount_plate",
+      "PCB_plane_z_mm": 78.9,
+      "mated_top_z_mm": 87.0,
+      "overlap_mm3": 0.0,
+      "distance_mm": 1.0,
+      "allocated_residual_mm": 0.19999999999999996,
+      "passes_allocated_screen": false
+    }
+  ],
+  "decision": "Nominal housing fits but allocated clearance screen fails. Resolve cable exit and local relief before adopting this routing.",
+  "full_fit_qualified": false,
+  "manufacturing_release": false
+}
