@@ -15,3 +15,7 @@ SHDNは内部プルアップを利用する開放候補（資料Figure48、出�
 ## 抵抗選定の更新
 
 RILIMを118kΩへ変更し、分圧4本も含む発注コード候補を `resistor_bom.csv` に記録。メーカー型番規則による候補で、在庫確認・購入はしていない。検算と温度条件の限界は `validation/logic_branch_resistors_v1/README_ja.md` を参照。旧120kΩのIC評価点を保証値として転用しない。その他の未成立事項は変わらない。
+
+## バイパス候補の更新
+
+初版で未選定だった入力・出力バイパスを各100nF C0G×2へ具体化。`capacitor_bom.csv` と `validation/logic_branch_bypass_v1` を参照。25〜125℃での容量検算のみ確認済みで、全温度・過渡・レイアウトは未検証。

@@ -1,0 +1,41 @@
+{
+  "criterion_before_calculation": "Each local pair >=0.1uF including initial tolerance and specified 25..125C temperature coefficient",
+  "rows": [
+    {
+      "net": "BATTERY_RAW",
+      "references": [
+        "C_LOGIC_PROTECT_IN_1",
+        "C_LOGIC_PROTECT_IN_2"
+      ],
+      "C_25_to_125C_F": [
+        1.8942999999999997e-07,
+        2.1062999999999997e-07
+      ],
+      "exceeds_0p1uF": true,
+      "charge_at_12p6V_C": 2.6539379999999995e-06,
+      "stored_energy_at_12p6V_J": 1.6719809399999996e-05
+    },
+    {
+      "net": "LOGIC_PROTECTED_INPUT",
+      "references": [
+        "C_LOGIC_PROTECT_OUT_1",
+        "C_LOGIC_PROTECT_OUT_2"
+      ],
+      "C_25_to_125C_F": [
+        1.8942999999999997e-07,
+        2.1062999999999997e-07
+      ],
+      "exceeds_0p1uF": true,
+      "charge_at_12p6V_C": 2.6539379999999995e-06,
+      "stored_energy_at_12p6V_J": 1.6719809399999996e-05
+    }
+  ],
+  "qualified": false,
+  "limits": [
+    "Temperature coefficient cited only for 25..125C; cold capacitance not qualified",
+    "No DC bias/process/aging/PCB parasitic verification",
+    "50V rating is not a system surge clamp",
+    "Upstream pair is outside eFuse inrush control",
+    "Downstream charging and LDO output charging are separate loads; no inferred shared ramp"
+  ]
+}

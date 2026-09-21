@@ -19,7 +19,7 @@
   "continuous_design_target_A": 0.02,
   "temperature_reference_C": 85,
   "selection_reason": "DRV thermal reference provides substantially more headroom than DBV at 12.6V and 20mA; actual exposed-pad layout required",
-  "capacitors": "Local input/output capacitor selection pending; use TPS709 stability and effective-capacitance requirements, not nominal value alone",
+  "capacitors": "Input: two GRM31C5C1H104JA01L in parallel on LOGIC_PROTECTED_INPUT, shared with protection output subject to close PCB placement. Output: separate polymer candidate below. Both unqualified for full conditions.",
   "remaining": [
     "Protected input branch, battery undervoltage and disconnect behavior",
     "Output capacitor and minimum-load requirements",
@@ -108,6 +108,7 @@
       "evidence": "validation/logic_branch_resistors_v1/report.json",
       "thresholds_qualified": false,
       "supersedes": "120kohm test-point proposal; old calculations retained as history only"
-    }
+    },
+    "bypass_candidate_evidence": "validation/logic_branch_bypass_v1/report.json"
   }
 }

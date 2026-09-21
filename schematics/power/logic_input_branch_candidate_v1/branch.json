@@ -269,27 +269,10 @@
       "GND"
     ]
   ],
-  "unimplemented": [
-    {
-      "ref": "C_LOGIC_PROTECT_IN",
-      "pins": {
-        "1": "BATTERY_RAW",
-        "2": "GND"
-      },
-      "requirement": "TPS2660 input bypass >=0.1uF effective; voltage/transient/reverse qualification and actual part pending"
-    },
-    {
-      "ref": "C_LOGIC_PROTECT_OUT",
-      "pins": {
-        "1": "LOGIC_PROTECTED_INPUT",
-        "2": "GND"
-      },
-      "requirement": "Must satisfy both TPS2660 output bypass and TPS709 local input bypass; actual part and effective capacitance pending"
-    }
-  ],
+  "unimplemented": [],
   "release_blockers": [
     "118kohm replaces 120kohm; actual current threshold bounds and startup require reevaluation; process/aging within 1% allocation pending",
-    "Input/output capacitors and voltage/transient ratings unresolved",
+    "Four local C0G capacitors selected as candidates; cold capacitance, transient voltage and layout unresolved",
     "Default ramp and downstream regulator startup not qualified",
     "External power-cycle discharge/reset not implemented",
     "Battery cell protection not supplied by this branch",
@@ -297,5 +280,68 @@
     "Not merged into revM assembly or KiCad; no PCB thermal/layout verification"
   ],
   "manufacturing_release": false,
-  "resistor_evidence": "validation/logic_branch_resistors_v1/report.json"
+  "resistor_evidence": "validation/logic_branch_resistors_v1/report.json",
+  "capacitors": [
+    {
+      "ref": "C_LOGIC_PROTECT_IN_1",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "dielectric": "C0G",
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "GND"
+      },
+      "placement": "Adjacent to TPS26601 IN/GND",
+      "status": "candidate_not_transient_qualified",
+      "source": "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM31C5C1H104JA01-01A.pdf"
+    },
+    {
+      "ref": "C_LOGIC_PROTECT_IN_2",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "dielectric": "C0G",
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "GND"
+      },
+      "placement": "Adjacent to TPS26601 IN/GND",
+      "status": "candidate_not_transient_qualified",
+      "source": "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM31C5C1H104JA01-01A.pdf"
+    },
+    {
+      "ref": "C_LOGIC_PROTECT_OUT_1",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "dielectric": "C0G",
+      "pins": {
+        "1": "LOGIC_PROTECTED_INPUT",
+        "2": "GND"
+      },
+      "placement": "Adjacent to TPS26601 OUT and TPS709 IN; short shared supply trace required",
+      "status": "candidate_not_transient_qualified",
+      "source": "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM31C5C1H104JA01-01A.pdf"
+    },
+    {
+      "ref": "C_LOGIC_PROTECT_OUT_2",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "dielectric": "C0G",
+      "pins": {
+        "1": "LOGIC_PROTECTED_INPUT",
+        "2": "GND"
+      },
+      "placement": "Adjacent to TPS26601 OUT and TPS709 IN; short shared supply trace required",
+      "status": "candidate_not_transient_qualified",
+      "source": "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM31C5C1H104JA01-01A.pdf"
+    }
+  ],
+  "bypass_evidence": "validation/logic_branch_bypass_v1/report.json"
 }
