@@ -1,0 +1,126 @@
+{
+  "status": "nominal_envelope_screen_only",
+  "dimensions_mm": [
+    43.1,
+    32.3,
+    12.5
+  ],
+  "centers_mm": [
+    [
+      -25,
+      25,
+      108
+    ],
+    [
+      -25,
+      -25,
+      108
+    ]
+  ],
+  "checks": [
+    {
+      "module": "left",
+      "part": "yaw",
+      "overlap_mm3": 0.0,
+      "distance_mm": 3.75
+    },
+    {
+      "module": "left",
+      "part": "tray",
+      "overlap_mm3": 0.0,
+      "distance_mm": 34.39454898672172
+    },
+    {
+      "module": "left",
+      "part": "battery",
+      "overlap_mm3": 0.0,
+      "distance_mm": 22.486996242272998
+    },
+    {
+      "module": "left",
+      "part": "Tab5",
+      "overlap_mm3": 0.0,
+      "distance_mm": 55.45
+    },
+    {
+      "module": "left",
+      "part": "TTL",
+      "overlap_mm3": 195.53373852123553,
+      "distance_mm": 0.0
+    },
+    {
+      "module": "left",
+      "part": "battery_lift",
+      "overlap_mm3": 0.0,
+      "distance_mm": 21.45
+    },
+    {
+      "module": "left",
+      "part": "battery_forward",
+      "overlap_mm3": 0.0,
+      "distance_mm": 21.45
+    },
+    {
+      "module": "right",
+      "part": "yaw",
+      "overlap_mm3": 0.0,
+      "distance_mm": 3.75
+    },
+    {
+      "module": "right",
+      "part": "tray",
+      "overlap_mm3": 0.0,
+      "distance_mm": 34.39454898672172
+    },
+    {
+      "module": "right",
+      "part": "battery",
+      "overlap_mm3": 0.0,
+      "distance_mm": 22.486996242272998
+    },
+    {
+      "module": "right",
+      "part": "Tab5",
+      "overlap_mm3": 0.0,
+      "distance_mm": 55.45
+    },
+    {
+      "module": "right",
+      "part": "TTL",
+      "overlap_mm3": 195.5337385212377,
+      "distance_mm": 0.0
+    },
+    {
+      "module": "right",
+      "part": "battery_lift",
+      "overlap_mm3": 0.0,
+      "distance_mm": 21.45
+    },
+    {
+      "module": "right",
+      "part": "battery_forward",
+      "overlap_mm3": 0.0,
+      "distance_mm": 21.45
+    },
+    {
+      "module": "left",
+      "part": "right",
+      "overlap_mm3": 0.0,
+      "distance_mm": 17.700000000000003
+    }
+  ],
+  "sources_sha256": {
+    "board/mechanical/prototype/yaw_support_candidate/revA/yaw_support_candidate.step": "519382141db1040e813441babe6fa07309a2e03d24ed6e363ce9435e10975934",
+    "board/mechanical/prototype/rc_battery_tray_revB/tray.step": "3f522dd0c14ea083cc789f568ba4ed3b0c0bdc13f5e45c951a1ae59c602c5f46",
+    "validation/rc_battery_cad_v1_checked/battery_candidate.step": "5f3ece800a1715d5e12958fb7623d65ef4e9802fbacbb21010aa407bdb86b1b2",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/Tab5.step": "bc4f282fb78ac58e92fb8d285a9dbfc7935f2d268dff3be77e88dda248214376",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/TTL_interface.step": "794de1700aeede7d532a71870434be0b163ab272a86df6ccb92f675f903760c4"
+  },
+  "excluded": [
+    "UBEC leads switches connectors mounting retention",
+    "Thermal airflow and insulation clearances",
+    "Complete new protection board and harness",
+    "Legacy converter removed in proposed replacement"
+  ],
+  "release": false
+}
