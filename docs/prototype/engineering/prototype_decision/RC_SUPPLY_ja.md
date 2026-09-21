@@ -21,3 +21,7 @@
 3SをTab5やサーボへ直結しない。従来の2S向け監視・補助回路も電圧定格を再照合する。
 
 一次資料と値は`schematics/power/rc_supply_candidate.json`。
+
+搭載の初期照合は`validation/rc_battery_envelope_v1/`。
+候補を22×60×30mmの向きで旧中心へ置くと、旧予約から厚さが1.5mm増える。
+空洞・トレイとの実干渉は未検証で、旧取付部の流用は承認しない。

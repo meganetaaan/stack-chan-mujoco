@@ -1,0 +1,135 @@
+{
+  "sources_sha256": {
+    "board/mechanical/prototype/robot.json": "5b1ea47d5823623989a14b76003a99b720fbd2b3c7a45f19124cd418401d0b45",
+    "schematics/power/rc_supply_candidate.json": "3635e6264604c42203523bbeff5bb187372922d1a385d4d0eb16159a125fd471"
+  },
+  "old_reservation_size_mm": [
+    20.5,
+    70.4,
+    38.4
+  ],
+  "old_center_base_mm": [
+    29.000000000000004,
+    1.3933175874453181e-15,
+    80.0
+  ],
+  "orientations": [
+    {
+      "oriented_size_mm": [
+        22,
+        30,
+        60
+      ],
+      "exceeds_reservation_by_axis_mm": [
+        1.5,
+        0,
+        21.6
+      ],
+      "inside_old_reservation": false
+    },
+    {
+      "oriented_size_mm": [
+        22,
+        60,
+        30
+      ],
+      "exceeds_reservation_by_axis_mm": [
+        1.5,
+        0,
+        0
+      ],
+      "inside_old_reservation": false
+    },
+    {
+      "oriented_size_mm": [
+        30,
+        22,
+        60
+      ],
+      "exceeds_reservation_by_axis_mm": [
+        9.5,
+        0,
+        21.6
+      ],
+      "inside_old_reservation": false
+    },
+    {
+      "oriented_size_mm": [
+        30,
+        60,
+        22
+      ],
+      "exceeds_reservation_by_axis_mm": [
+        9.5,
+        0,
+        0
+      ],
+      "inside_old_reservation": false
+    },
+    {
+      "oriented_size_mm": [
+        60,
+        22,
+        30
+      ],
+      "exceeds_reservation_by_axis_mm": [
+        39.5,
+        0,
+        0
+      ],
+      "inside_old_reservation": false
+    },
+    {
+      "oriented_size_mm": [
+        60,
+        30,
+        22
+      ],
+      "exceeds_reservation_by_axis_mm": [
+        39.5,
+        0,
+        0
+      ],
+      "inside_old_reservation": false
+    }
+  ],
+  "minimum_total_extension_orientation": {
+    "oriented_size_mm": [
+      22,
+      60,
+      30
+    ],
+    "exceeds_reservation_by_axis_mm": [
+      1.5,
+      0,
+      0
+    ],
+    "inside_old_reservation": false
+  },
+  "candidate_bounds_at_old_center_mm": [
+    [
+      18.000000000000004,
+      40.0
+    ],
+    [
+      -30.0,
+      30.0
+    ],
+    [
+      65.0,
+      95.0
+    ]
+  ],
+  "candidate_nominal_mass_kg": 0.076,
+  "old_reservation_mass_kg": 0.103,
+  "nominal_mass_delta_kg": -0.026999999999999996,
+  "cavity_fit_verified": false,
+  "manufacturing_release": false,
+  "decision": "Old reservation is too thin for every axis-aligned orientation; check actual tray/cavity and replacement retention before adoption",
+  "excluded": [
+    "Leads and connectors",
+    "Pack dimensional tolerance and swelling allowance",
+    "Padding and strap clearance",
+    "Actual body/tray collisions and extraction path"
+  ]
+}
