@@ -1,0 +1,237 @@
+{
+  "source_sha256": {
+    "software/sim/mujoco/assets/r9_fast_turn_v1/models/scene.xml": "b79bc86618c58c44088fb9211c1807a09c27ea8f623152243a86b7959e74b434",
+    "schematics/power/split_servo_harness_revA/connections.csv": "cd8e12692c32a65acdee115f6e3938b9ae8ebc9b26a3758f077717c8040505a0"
+  },
+  "branches": [
+    {
+      "servo": "left_hip_yaw",
+      "motor_case_geom": "vis_left_yaw_motor_case",
+      "case_owner_body": "base",
+      "crossed_joints_from_base": [],
+      "conductor_count": 3,
+      "connector_local_position_m": null
+    },
+    {
+      "servo": "left_hip_roll",
+      "motor_case_geom": "vis_left_hip_roll_motor",
+      "case_owner_body": "left_hip_yaw",
+      "crossed_joints_from_base": [
+        "left_hip_yaw"
+      ],
+      "conductor_count": 3,
+      "connector_local_position_m": null
+    },
+    {
+      "servo": "left_hip_pitch",
+      "motor_case_geom": "vis_left_hip_pitch_motor",
+      "case_owner_body": "left_hip_roll",
+      "crossed_joints_from_base": [
+        "left_hip_yaw",
+        "left_hip_roll"
+      ],
+      "conductor_count": 3,
+      "connector_local_position_m": null
+    },
+    {
+      "servo": "left_knee",
+      "motor_case_geom": "vis_left_knee_motor",
+      "case_owner_body": "left_hip_pitch",
+      "crossed_joints_from_base": [
+        "left_hip_yaw",
+        "left_hip_roll",
+        "left_hip_pitch"
+      ],
+      "conductor_count": 3,
+      "connector_local_position_m": null
+    },
+    {
+      "servo": "left_ankle_pitch",
+      "motor_case_geom": "vis_left_ankle_pitch_motor",
+      "case_owner_body": "left_knee",
+      "crossed_joints_from_base": [
+        "left_hip_yaw",
+        "left_hip_roll",
+        "left_hip_pitch",
+        "left_knee"
+      ],
+      "conductor_count": 3,
+      "connector_local_position_m": null
+    },
+    {
+      "servo": "left_ankle_roll",
+      "motor_case_geom": "vis_left_ankle_roll_motor",
+      "case_owner_body": "left_ankle_pitch",
+      "crossed_joints_from_base": [
+        "left_hip_yaw",
+        "left_hip_roll",
+        "left_hip_pitch",
+        "left_knee",
+        "left_ankle_pitch"
+      ],
+      "conductor_count": 3,
+      "connector_local_position_m": null
+    },
+    {
+      "servo": "right_hip_yaw",
+      "motor_case_geom": "vis_right_yaw_motor_case",
+      "case_owner_body": "base",
+      "crossed_joints_from_base": [],
+      "conductor_count": 3,
+      "connector_local_position_m": null
+    },
+    {
+      "servo": "right_hip_roll",
+      "motor_case_geom": "vis_right_hip_roll_motor",
+      "case_owner_body": "right_hip_yaw",
+      "crossed_joints_from_base": [
+        "right_hip_yaw"
+      ],
+      "conductor_count": 3,
+      "connector_local_position_m": null
+    },
+    {
+      "servo": "right_hip_pitch",
+      "motor_case_geom": "vis_right_hip_pitch_motor",
+      "case_owner_body": "right_hip_roll",
+      "crossed_joints_from_base": [
+        "right_hip_yaw",
+        "right_hip_roll"
+      ],
+      "conductor_count": 3,
+      "connector_local_position_m": null
+    },
+    {
+      "servo": "right_knee",
+      "motor_case_geom": "vis_right_knee_motor",
+      "case_owner_body": "right_hip_pitch",
+      "crossed_joints_from_base": [
+        "right_hip_yaw",
+        "right_hip_roll",
+        "right_hip_pitch"
+      ],
+      "conductor_count": 3,
+      "connector_local_position_m": null
+    },
+    {
+      "servo": "right_ankle_pitch",
+      "motor_case_geom": "vis_right_ankle_pitch_motor",
+      "case_owner_body": "right_knee",
+      "crossed_joints_from_base": [
+        "right_hip_yaw",
+        "right_hip_roll",
+        "right_hip_pitch",
+        "right_knee"
+      ],
+      "conductor_count": 3,
+      "connector_local_position_m": null
+    },
+    {
+      "servo": "right_ankle_roll",
+      "motor_case_geom": "vis_right_ankle_roll_motor",
+      "case_owner_body": "right_ankle_pitch",
+      "crossed_joints_from_base": [
+        "right_hip_yaw",
+        "right_hip_roll",
+        "right_hip_pitch",
+        "right_knee",
+        "right_ankle_pitch"
+      ],
+      "conductor_count": 3,
+      "connector_local_position_m": null
+    }
+  ],
+  "joint_crossings": {
+    "left_hip_yaw": {
+      "branches": [
+        "left_hip_roll",
+        "left_hip_pitch",
+        "left_knee",
+        "left_ankle_pitch",
+        "left_ankle_roll"
+      ],
+      "conductors": 15
+    },
+    "left_hip_roll": {
+      "branches": [
+        "left_hip_pitch",
+        "left_knee",
+        "left_ankle_pitch",
+        "left_ankle_roll"
+      ],
+      "conductors": 12
+    },
+    "left_hip_pitch": {
+      "branches": [
+        "left_knee",
+        "left_ankle_pitch",
+        "left_ankle_roll"
+      ],
+      "conductors": 9
+    },
+    "left_knee": {
+      "branches": [
+        "left_ankle_pitch",
+        "left_ankle_roll"
+      ],
+      "conductors": 6
+    },
+    "left_ankle_pitch": {
+      "branches": [
+        "left_ankle_roll"
+      ],
+      "conductors": 3
+    },
+    "right_hip_yaw": {
+      "branches": [
+        "right_hip_roll",
+        "right_hip_pitch",
+        "right_knee",
+        "right_ankle_pitch",
+        "right_ankle_roll"
+      ],
+      "conductors": 15
+    },
+    "right_hip_roll": {
+      "branches": [
+        "right_hip_pitch",
+        "right_knee",
+        "right_ankle_pitch",
+        "right_ankle_roll"
+      ],
+      "conductors": 12
+    },
+    "right_hip_pitch": {
+      "branches": [
+        "right_knee",
+        "right_ankle_pitch",
+        "right_ankle_roll"
+      ],
+      "conductors": 9
+    },
+    "right_knee": {
+      "branches": [
+        "right_ankle_pitch",
+        "right_ankle_roll"
+      ],
+      "conductors": 6
+    },
+    "right_ankle_pitch": {
+      "branches": [
+        "right_ankle_roll"
+      ],
+      "conductors": 3
+    }
+  },
+  "assumptions": [
+    "Distribution and host interface are on base.",
+    "Routes follow the model body ancestry without an alternative external bypass."
+  ],
+  "limits": [
+    "Motor mesh ownership follows the current model; verify against real connector and mounting drawings.",
+    "Joint label is not automatically the body carrying its motor connector.",
+    "No connector positions, geometric route, bend radius, length, clearance, fatigue or mass qualification.",
+    "Crossing counts include DATA per existing star-harness proposal; changing topology requires electrical review."
+  ],
+  "manufacturing_release": false
+}
