@@ -1,0 +1,51 @@
+{
+  "source_sha256": "6129e46b939a71bf02b9051a734c7facc1d43ede9ec0ded441dbad2be9e6d71e",
+  "gpio_mode_contract": {
+    "PB7": "input",
+    "PB8": "analog",
+    "PC14": "input",
+    "PB9": "analog",
+    "PC15": "input",
+    "PA0": "input",
+    "PA1": "input",
+    "PA2": "input",
+    "PA3": "input",
+    "PA4": "input",
+    "PA5": "input",
+    "PA6": "input",
+    "PA7": "input",
+    "PA8": "output",
+    "PB0": "analog",
+    "PB1": "analog",
+    "PB2": "analog",
+    "PA11": "output",
+    "PA12": "output",
+    "PA13": "debug",
+    "PA14": "debug",
+    "PA15": "analog",
+    "PB6": "analog",
+    "PB3": "analog",
+    "PB4": "analog",
+    "PB5": "analog"
+  },
+  "injected_alias_conflicts_rejected": [
+    "PB8",
+    "PB9",
+    "PB0",
+    "PB1",
+    "PB2",
+    "PA15",
+    "PB3",
+    "PB4",
+    "PB5"
+  ],
+  "spare_pin_all_bonded_ports_analog": true,
+  "pin_ownership_pass": true,
+  "implementation_verified": false,
+  "manufacturing_release": false,
+  "limits": [
+    "Checks the intended mode contract, not register writes or ROM boot behavior",
+    "Pulls, analog switches, RTC domain and boot option bytes require implementation",
+    "No substitute for input/output electrical or partial-power verification"
+  ]
+}

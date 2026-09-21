@@ -60,3 +60,5 @@ EN停止回路: `integrated_enable_interface.json`へTPS259813L条件を定義�
 電源状態制御ICは`sequence_controller_candidate/controller.json`のSTM32C011F6P6を比較。入力11・出力3とSWD/NRSTを確保できるが、前段の駆動余裕・漏れ・電源遷移は未確認でrevIへ未統合。モデルの内部タイマーを不要な外部端子へ割り当てず、実CLRは2入力を確保した。
 
 制御IC受信負荷の比較は`validation/sequence_input_load_v1`。C011の最大漏れは確認できず、G030を代替比較。既存220 kΩでは保守的負荷約29.61 µAとなり20 µA規定を超える。抵抗変更には電源断・放電と別型番の端子機能確認が必要で、未統合。
+
+G030代替の端子割当と共有端子の設定条件を`validation/g030_bonded_pins_v1`で確認。未使用9ポートの誤った出力設定を拒否する検査を追加。RTC保持設定とC011との差があり、ファームウェア・実回路への統合は未完了。
