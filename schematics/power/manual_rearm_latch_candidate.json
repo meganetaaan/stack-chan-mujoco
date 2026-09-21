@@ -5,7 +5,7 @@
   "pins": {
     "1_1CLR": "RESET_N; supervisor/fault/stop logic TBD",
     "2_1D": "LOGIC3V3",
-    "3_1CLK": "qualified release timer completion rising edge",
+    "3_1CLK": "TPS3808G33DBVR RESET rising edge; see manual_release_timer_candidate.json",
     "4_1PRE": "LOGIC3V3",
     "5_1Q": "ARMED -> pin12_2D",
     "6_1Qn": "NC",
@@ -21,5 +21,5 @@
   "evidence": "validation/manual_rearm_two_ff_v1/README.md",
   "manufacturing_release": false,
   "historical_failure": "validation/manual_rearm_delayed_press_v1/README.md",
-  "remaining": "MR logic, timer variant, signal levels, POR, simultaneous edge timing, physical EN stage"
+  "remaining": "MR physical gate, independent clear, rail dip margin, signal levels, POR, simultaneous edge timing, physical EN stage"
 }
