@@ -1,0 +1,157 @@
+{
+  "sources_sha256": {
+    "outputs/rounded_sole_fine_v1/models/scene.xml": "c4ef84bdac3377ba7752dadbb26677916b7b79c99b4e3c032f1dfe32c3199dbe",
+    "validation/rear_bolt_tip_neighbors_v1/report.json": "fdadd2ed9237732bcf4ecdee2a2c8c1fdc90903324ffec780f0bb819beca40f8"
+  },
+  "axes": {
+    "left": {
+      "pivot_mm": [
+        -5.000000000000001,
+        26.0,
+        62.0
+      ],
+      "range_rad": [
+        -0.261799387799149,
+        0.261799387799149
+      ],
+      "radius_upper_bound_mm": 31.016124838541646,
+      "displacement_bound_mm": 8.096833345193193
+    },
+    "right": {
+      "pivot_mm": [
+        -5.000000000000001,
+        -26.0,
+        62.0
+      ],
+      "range_rad": [
+        -0.261799387799149,
+        0.261799387799149
+      ],
+      "radius_upper_bound_mm": 31.016124838541646,
+      "displacement_bound_mm": 8.096833345193193
+    }
+  },
+  "checks": [
+    {
+      "bolt": "left_main_0",
+      "coupler": "left_yaw_coupler",
+      "neutral_distance_mm": 14.45337330867782,
+      "continuous_clearance_lower_bound_mm": 6.356539963484627,
+      "separation_proven": true
+    },
+    {
+      "bolt": "left_main_1",
+      "coupler": "left_yaw_coupler",
+      "neutral_distance_mm": 14.453373308677818,
+      "continuous_clearance_lower_bound_mm": 6.356539963484625,
+      "separation_proven": true
+    },
+    {
+      "bolt": "left_main_2",
+      "coupler": "left_yaw_coupler",
+      "neutral_distance_mm": 29.760712357065714,
+      "continuous_clearance_lower_bound_mm": 21.66387901187252,
+      "separation_proven": true
+    },
+    {
+      "bolt": "left_main_3",
+      "coupler": "left_yaw_coupler",
+      "neutral_distance_mm": 29.7607123570657,
+      "continuous_clearance_lower_bound_mm": 21.663879011872506,
+      "separation_proven": true
+    },
+    {
+      "bolt": "right_main_0",
+      "coupler": "left_yaw_coupler",
+      "neutral_distance_mm": 48.77802341152266,
+      "continuous_clearance_lower_bound_mm": 40.681190066329464,
+      "separation_proven": true
+    },
+    {
+      "bolt": "right_main_1",
+      "coupler": "left_yaw_coupler",
+      "neutral_distance_mm": 35.68094489916826,
+      "continuous_clearance_lower_bound_mm": 27.584111553975067,
+      "separation_proven": true
+    },
+    {
+      "bolt": "right_main_2",
+      "coupler": "left_yaw_coupler",
+      "neutral_distance_mm": 55.73501667059183,
+      "continuous_clearance_lower_bound_mm": 47.63818332539864,
+      "separation_proven": true
+    },
+    {
+      "bolt": "right_main_3",
+      "coupler": "left_yaw_coupler",
+      "neutral_distance_mm": 44.644409389476834,
+      "continuous_clearance_lower_bound_mm": 36.547576044283645,
+      "separation_proven": true
+    },
+    {
+      "bolt": "left_main_0",
+      "coupler": "right_yaw_coupler",
+      "neutral_distance_mm": 35.68094489916826,
+      "continuous_clearance_lower_bound_mm": 27.584111553975067,
+      "separation_proven": true
+    },
+    {
+      "bolt": "left_main_1",
+      "coupler": "right_yaw_coupler",
+      "neutral_distance_mm": 48.77802341152266,
+      "continuous_clearance_lower_bound_mm": 40.681190066329464,
+      "separation_proven": true
+    },
+    {
+      "bolt": "left_main_2",
+      "coupler": "right_yaw_coupler",
+      "neutral_distance_mm": 44.64440938947684,
+      "continuous_clearance_lower_bound_mm": 36.547576044283645,
+      "separation_proven": true
+    },
+    {
+      "bolt": "left_main_3",
+      "coupler": "right_yaw_coupler",
+      "neutral_distance_mm": 55.73501667059183,
+      "continuous_clearance_lower_bound_mm": 47.63818332539864,
+      "separation_proven": true
+    },
+    {
+      "bolt": "right_main_0",
+      "coupler": "right_yaw_coupler",
+      "neutral_distance_mm": 14.45337330867782,
+      "continuous_clearance_lower_bound_mm": 6.356539963484627,
+      "separation_proven": true
+    },
+    {
+      "bolt": "right_main_1",
+      "coupler": "right_yaw_coupler",
+      "neutral_distance_mm": 14.45337330867782,
+      "continuous_clearance_lower_bound_mm": 6.356539963484627,
+      "separation_proven": true
+    },
+    {
+      "bolt": "right_main_2",
+      "coupler": "right_yaw_coupler",
+      "neutral_distance_mm": 29.760712357065714,
+      "continuous_clearance_lower_bound_mm": 21.66387901187252,
+      "separation_proven": true
+    },
+    {
+      "bolt": "right_main_3",
+      "coupler": "right_yaw_coupler",
+      "neutral_distance_mm": 29.7607123570657,
+      "continuous_clearance_lower_bound_mm": 21.663879011872506,
+      "separation_proven": true
+    }
+  ],
+  "minimum_lower_bound_mm": 6.356539963484625,
+  "all_pairs_separated": true,
+  "whole_robot_dynamic_clearance_verified": false,
+  "manufacturing_release": false,
+  "limits": [
+    "Only couplers versus protruding tips",
+    "Nominal axis and lateral placement; no tilt deflection or manufacturing error",
+    "Frozen model joint limits; not controller tracking or stop qualification"
+  ]
+}

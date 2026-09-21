@@ -1,0 +1,10 @@
+{
+  "criterion": "Strictly positive continuous nominal clearance lower bound for each tip/coupler pair.",
+  "method": "distance(q) >= distance(0) - 2*R*sin(max_abs_angle/2); R bounds all CAD points via bounding-box corners.",
+  "stop": "16 pairs over both declared yaw joint ranges; no discretized sweep if bound proves separation.",
+  "limits": [
+    "Only couplers versus protruding tips",
+    "Nominal axis and lateral placement; no tilt deflection or manufacturing error",
+    "Frozen model joint limits; not controller tracking or stop qualification"
+  ]
+}
