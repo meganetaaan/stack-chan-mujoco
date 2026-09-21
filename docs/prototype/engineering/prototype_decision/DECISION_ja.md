@@ -1,3 +1,7 @@
+> 最新状態は[Issue照合](ISSUE_STATUS_ja.md)と[現行候補索引](CURRENT_CANDIDATES_ja.md)を参照。
+> 電源の最新統合候補はsystem_power_integration_candidate_v1（227参照、製作HOLD）。
+> 以下には初期判断と旧構成の比較が含まれる。旧candidate_bom.csvや旧変換器を最新全機BOMとして使用しない。
+
 # #5・#6 試作移行判断（2026-09-21）
 
 ## 結論

@@ -1,0 +1,129 @@
+{
+  "date": "2026-09-22",
+  "source_commit_before_audit": "886ded55e195d2efc56b53ecd512abc4c9204c95",
+  "requirements_snapshot": "issue_requirements_snapshot_20260922.json",
+  "issues": {
+    "17": {
+      "github_state": "OPEN",
+      "original_acceptance_text": "実部品図面と整合するCAD・締結表・荷重経路図を作成。支持部の解析用境界条件が定義される。",
+      "assessment": "incomplete",
+      "evidence_scope_and_gap": "Complete manufactured joint dimensions, fastening and load-path boundary conditions not established by52-part candidate inventory.",
+      "evidence": {
+        "validation/yaw_integrated_candidate_v7/README_ja.md": "01b9155f04fa855b6e9ee65367eeef63044c9537289f39afb0a58fb8fc4451e2",
+        "validation/yaw_integrated_candidate_v7/inventory.json": "cb7444e4ae2f07ba0e5b2f523791ba08fd2eb63f6fb3e9cff5eeb39d95a773ba"
+      }
+    },
+    "18": {
+      "github_state": "OPEN",
+      "original_acceptance_text": "最悪荷重で許容値以内。メッシュ感度、変位、応力、接触条件、弱点と対策を保存。過去のCAD非交差を強度証明に使わない。",
+      "assessment": "incomplete",
+      "evidence_scope_and_gap": "Whole-robot mass/COM/inertia absent; latest whole-robot loads and actual print-process allowables unproven. Local numerical checks insufficient.",
+      "evidence": {
+        "validation/pololu_mass_ledger_v1/report.json": "38d41d61da99288376a7d4382327fc826ead02789629465c3d62cecafa2e65c1",
+        "docs/prototype/engineering/prototype_decision/DECISION_ja.md": "b49b24c88d7e695642fd444507b25703fa6ae788ae947c09eab7ed990f480873"
+      }
+    },
+    "19": {
+      "github_state": "OPEN",
+      "original_acceptance_text": "公差と解析変位を考慮した最小隙間を算出。離散検査の場合は刻みと見逃し限界を記録し、近接箇所を細分化する。",
+      "assessment": "incomplete",
+      "evidence_scope_and_gap": "v7 README explicitly excludes reuse of v6 moving clearance; rear-unit insertion is not whole-body motion with wiring/tolerance/deflection.",
+      "evidence": {
+        "validation/yaw_integrated_candidate_v7/README_ja.md": "01b9155f04fa855b6e9ee65367eeef63044c9537289f39afb0a58fb8fc4451e2",
+        "validation/pololu_rear_unit_lift_v1/report.json": "83f127bc0ba1e0720932bdf953492fad7b2377e14529b1395e14addfaf9c7931"
+      }
+    },
+    "20": {
+      "github_state": "OPEN",
+      "original_acceptance_text": "CAD、図面、部品表、造形方向、組立順を出力。足裏摩擦・搭載位置のばらつきをMuJoCoへ渡せる。",
+      "assessment": "incomplete",
+      "evidence_scope_and_gap": "FootrevE remains candidate; full PCB mounting/fixtures/drawings/print directions and whole-robot inertia interface incomplete.",
+      "evidence": {
+        "board/mechanical/prototype/foot_candidate/current.json": "15ff47e05c484e8e8a9b5fd7010152ad04815df04ffbd3b5b4bb18add7f63ff6",
+        "board/mechanical/prototype/foot_candidate/revE/README_ja.md": "68360c0b8629d7d5da29a0c776c493f85de08195ff7946d8e6b3253a0f6c0869",
+        "validation/pololu_mass_ledger_v1/report.json": "38d41d61da99288376a7d4382327fc826ead02789629465c3d62cecafa2e65c1"
+      }
+    },
+    "21": {
+      "github_state": "OPEN",
+      "original_acceptance_text": "ブロック図、動作モード表、電流/電力予算、部品選定根拠を保存。未確認のTab5出力からサーボを給電可能と仮定しない。",
+      "assessment": "incomplete",
+      "evidence_scope_and_gap": "Main connector/fuse/reverse protection, Tab5 branch, precharge and complete current/power budget incomplete.",
+      "evidence": {
+        "schematics/power/system_power_integration_candidate_v1/report.json": "c6ce99d60f61ec9a6e192ca4cb579109d20a3d48fc5a8f7b96d3a666652ef30b",
+        "schematics/power/system_power_integration_candidate_v1/bom.csv": "fb75d310c9e5d3a6e6373e2ed987a307508bafc448c0cf93a289495e4dfa396f"
+      }
+    },
+    "22": {
+      "github_state": "OPEN",
+      "original_acceptance_text": "入力と実行コマンドから各レールの電圧・電流・損失を再生成できる。モデルの省略・適用範囲を記録。",
+      "assessment": "incomplete",
+      "evidence_scope_and_gap": "Connected JSON and static models do not regenerate every rail V/I/loss of current topology.",
+      "evidence": {
+        "schematics/power/system_power_integration_candidate_v1/report.json": "c6ce99d60f61ec9a6e192ca4cb579109d20a3d48fc5a8f7b96d3a666652ef30b",
+        "validation/stop_feed_v1/report.json": "a2959b33d89c15b402265f791dd224c0d9285b8f8b68dde599553eec6c465105"
+      }
+    },
+    "23": {
+      "github_state": "OPEN",
+      "original_acceptance_text": "電圧・電流・推定発熱の合否レポートを出力し、制御系リセットや過電圧を生じない設計余裕を示す。",
+      "assessment": "incomplete",
+      "evidence_scope_and_gap": "No proof of current topology under full12-axis plusTab5 startup/walk/stop/low-battery/tolerance cases.",
+      "evidence": {
+        "schematics/power/system_power_integration_candidate_v1/report.json": "c6ce99d60f61ec9a6e192ca4cb579109d20a3d48fc5a8f7b96d3a666652ef30b",
+        "validation/aux_start_isolator_v1/report.json": "3c305e41ec64e44eedef73ce29057e012c4c6f020df40811f153f32bad3418c8"
+      }
+    },
+    "24": {
+      "github_state": "OPEN",
+      "original_acceptance_text": "異常ケースごとの検出・遮断条件、残留エネルギー、復帰条件を記録。専用ICの内部挙動を模擬できない部分は実機試験項目へ引き継ぐ。",
+      "assessment": "incomplete",
+      "evidence_scope_and_gap": "Unselected components and missing external protection/rearm remain design gaps, not eligible for internal-IC physical-test exception.",
+      "evidence": {
+        "schematics/power/system_power_integration_candidate_v1/report.json": "c6ce99d60f61ec9a6e192ca4cb579109d20a3d48fc5a8f7b96d3a666652ef30b",
+        "validation/bq_watchdog_latch_v1/report.json": "194e196d4d4d8433938a037b2f26a4046cc83d3701006151ac259e230035df74"
+      }
+    }
+  },
+  "epic_assessment": {
+    "5": "incomplete; original mechanics acceptance not proven",
+    "6": "incomplete; original whole-system power acceptance not proven"
+  },
+  "power_current_candidate": "schematics/power/system_power_integration_candidate_v1/assembly.json",
+  "power_selection": {
+    "parts": 227,
+    "unselected_part_references": [
+      "SYS__LEFT_R_GATE",
+      "SYS__LEFT_C_GATE",
+      "SYS__RIGHT_R_GATE",
+      "SYS__RIGHT_C_GATE",
+      "SYS__LEFT_R_ILM",
+      "SYS__RIGHT_R_ILM",
+      "SYS__LEFT_R_OV_TOP",
+      "SYS__LEFT_R_OV_BOTTOM",
+      "SYS__RIGHT_R_OV_TOP",
+      "SYS__RIGHT_R_OV_BOTTOM"
+    ],
+    "placeholder_part_references": [
+      "SYS__R1",
+      "SYS__R2",
+      "SYS__R3",
+      "SYS__R4",
+      "SYS__R6",
+      "SYS__R7",
+      "SYS__R8",
+      "SYS__R9",
+      "SYS__R15"
+    ],
+    "ordering_suffix_pending_references": [
+      "BAT__D_GS_CHG",
+      "BAT__D_GS_DSG",
+      "BAT__D_BAT",
+      "SYS__D_STOP_REVERSE"
+    ]
+  },
+  "whole_robot_mass_evidence": "validation/pololu_mass_ledger_v1/report.json",
+  "manufacturing_release": false,
+  "close_issues": [],
+  "scope_note": "This is a current-state evidence audit, not a numerical rerun or exhaustive validation of every historical artifact."
+}

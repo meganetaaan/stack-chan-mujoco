@@ -107,6 +107,11 @@ def compose():
     assert all(checks.values()), checks
     unresolved = {p['reference']: p['unresolved_pins'] for p in parts if p.get('unresolved_pins')}
     missing_parts = [p['reference'] for p in parts if not p.get('part')]
+    placeholder_parts = [p['reference'] for p in parts if any(
+        marker in str(p.get('part', '')).lower()
+        for marker in ('candidate', 'pending', 'unselected', 'unknown'))]
+    suffix_pending = [p['reference'] for p in parts if p.get('ordering_suffix_pending')]
+
     required_design = [
         {'issue': 21, 'gap': 'Main battery connector, fuse/disconnect/reverse protection before CELL_POS_FUSED'},
         {'issue': 21, 'gap': 'Tab5 protected input branch and independent default-off inhibit; Tab5 is absent from this netlist'},
@@ -133,6 +138,9 @@ def compose():
         'check_scope': 'Explicit net naming/copper only; no component conduction, leakage, transient, ground offset, layout or fault proof',
         'logic_inhibit_driver_present': True, 'logic_inhibit_driver_qualified': False,
         'unresolved_pins': unresolved, 'unselected_part_references': missing_parts,
+        'placeholder_part_references': placeholder_parts,
+        'ordering_suffix_pending_references': suffix_pending,
+        'selection_audit_scope': 'Empty fields, descriptive placeholders and explicit suffix flags; other populated fields are not automatically qualified order codes',
         'tab5_branch_present': False, 'battery_host_present': 'BAT__U_BQ_HOST' in byref, 'system_sequencer_present': False,
         'predischarge_hardware_present': False,
         'unimplemented_design': required_design,
@@ -152,9 +160,13 @@ def main():
         (args.out / (name + '.json')).write_text(json.dumps(value, indent=2) + '\n')
     with (args.out / 'bom.csv').open('w', newline='') as stream:
         writer = csv.writer(stream, lineterminator='\n')
-        writer.writerow(['reference', 'part', 'source_assembly', 'source_reference'])
+        writer.writerow(['reference', 'part', 'source_assembly', 'source_reference', 'selection_status'])
         for part in assembly['parts']:
-            writer.writerow([part['reference'], part.get('part'), part['source_assembly'], part['source_reference']])
+            status = ('missing' if not part.get('part') else
+                      'placeholder' if part['reference'] in report['placeholder_part_references'] else
+                      'ordering_suffix_pending' if part.get('ordering_suffix_pending') else
+                      'candidate_not_procurement_qualified')
+            writer.writerow([part['reference'], part.get('part'), part['source_assembly'], part['source_reference'], status])
     with (args.out / 'connections.csv').open('w', newline='') as stream:
         writer = csv.writer(stream, lineterminator='\n')
         writer.writerow(['reference', 'pin', 'net'])
