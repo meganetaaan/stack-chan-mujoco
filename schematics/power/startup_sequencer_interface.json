@@ -1,0 +1,30 @@
+{
+  "status": "interface_and_settled_logic_only",
+  "hardware_implemented": false,
+  "inputs": {
+    "ENABLE_PERMISSION": "U6 pin9; qualified manual permission, also clear acknowledgement",
+    "PG_CONDITIONED": "eFuse PG receiver not designed",
+    "INDEPENDENT_HEALTH": "stop/power/monitor validity excluding expected pre-start PG low",
+    "STARTUP_EXPIRED": "timer not selected; deadline must satisfy startup and fault-energy bounds"
+  },
+  "outputs": {
+    "SEQUENCE_ENABLE_REQUEST": "revF U3 pin4; true only START/RUN and healthy",
+    "SEQUENCE_CLEAR_REQUEST": "concrete sink to RESET_N not designed; assert CLEAR until permission-low acknowledgement"
+  },
+  "states": [
+    "OFF",
+    "START",
+    "RUN",
+    "CLEAR",
+    "WAIT_NEW_PRESS"
+  ],
+  "constraints": [
+    "Independent health invalid holds inhibition",
+    "Fault memory does not continuously hold latch clear after acknowledgement",
+    "No PG-only automatic recovery",
+    "No direct PG/EN to RESET_N",
+    "Minimum clear pulse and race analysis required"
+  ],
+  "evidence": "validation/sequence_clear_handshake_v1/README_ja.md",
+  "manufacturing_release": false
+}

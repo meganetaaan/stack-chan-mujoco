@@ -1,0 +1,13 @@
+{
+  "question": "Can the sequencer cancel permission and still allow a new manual request without PG/clear deadlock?",
+  "acceptance": [
+    "Fault drops request and clears permission",
+    "Clear request releases only after permission-low acknowledgement",
+    "Release of clear never erases fault waiting state or grants enable",
+    "New qualified press is required after recovery",
+    "Persistent independent unhealthy input inhibits every mode"
+  ],
+  "stop": "Finite Boolean state/transition exploration and concrete traces; no timer value or circuit timing inference",
+  "assembly_sha256": "33f1d2dc265258200335c64f84eb1ff0d4a7e2821b24e71692e25c42cbc02b12",
+  "scope": "Design reference only. CLEAR acknowledgement and pulse width require real hardware implementation."
+}
