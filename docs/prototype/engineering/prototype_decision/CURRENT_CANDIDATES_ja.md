@@ -64,3 +64,7 @@ EN停止回路: `integrated_enable_interface.json`へTPS259813L条件を定義�
 G030代替の端子割当と共有端子の設定条件を`validation/g030_bonded_pins_v1`で確認。未使用9ポートの誤った出力設定を拒否する検査を追加。RTC保持設定とC011との差があり、ファームウェア・実回路への統合は未完了。
 
 電源シーケンスCコアを`software/firmware/power_sequence`へ追加。参照モデル6,144入力遷移と一致し、不正符号536ケースを検査、Cortex-M0+向けコンパイルを確認。GPIO・実タイマー・起動コード・非同期停止は未実装で、書込み可能な完成ファームウェアではない。
+
+### 監視抵抗の選定更新
+
+電源回路の現行入口 `schematics/power/servo_power_rearm_current.json` はrevJを指す。監視・既定状態用抵抗13個をメーカー注文表の型番候補へ具体化した。値・配線・総合公差予算は変更せず、条件付き電力比較は通過。調達・実装熱・経時変化は未確認。詳細は `schematics/power/servo_power_rearm_integration_revJ/README_ja.md`。
