@@ -1,0 +1,30 @@
+{
+  "status": "candidate_not_coordinated",
+  "reference": "F_REG0",
+  "part": "0451.062MRSN",
+  "source": "https://www.littelfuse.com/assetdocs/fuse-451-and-453-datasheet?assetguid=533cd5cc-956c-4243-867f-6ab5a62f6ba1",
+  "source_revision": "GD. 12/01/25",
+  "rated_current_A": 0.062,
+  "opening_spec": {
+    "at_rated_fraction": 2,
+    "max_s": 5,
+    "scope": "manufacturer series table; not a claimed delay for every fault current or ambient"
+  },
+  "nominal_cold_resistance_ohm": 5.5,
+  "cold_resistance_conditions": "10% rated current, 25C; nominal not maximum",
+  "nominal_melting_I2t_A2s": 0.00019,
+  "I2t_scope": "nominal calculated at 8ms; not maximum total clearing integral",
+  "interrupting_spec": "50A at125VAC/VDC, 300A at32VDC; source prospective fault current not established",
+  "continuous_standard_derating_fraction": 0.75,
+  "temperature_derating_additional": true,
+  "remaining": [
+    "resistor and diode survival until clearing",
+    "warm fuse voltage drop",
+    "startup inrush and cycling",
+    "actual controller load at temperature",
+    "source fault current vs interrupt rating",
+    "BREG alternative feed during REG0 fault",
+    "gate shutdown after control supply is lost"
+  ],
+  "manufacturing_release": false
+}

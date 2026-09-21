@@ -530,10 +530,19 @@
       }
     },
     {
+      "reference": "F_REG0",
+      "part": "0451.062MRSN",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "BQ_REG0_FUSED"
+      },
+      "coordination_qualified": false
+    },
+    {
       "reference": "D_REG0",
       "part": "BAT46W-7-F",
       "pins": {
-        "A": "CELL_POS_FUSED",
+        "A": "BQ_REG0_FUSED",
         "K": "BQ_REG0_PRE_R"
       },
       "footprint_pad_mapping_qualified": false
@@ -585,7 +594,7 @@
       "effective_capacitance_qualified": false
     }
   ],
-  "part_count": 60,
+  "part_count": 61,
   "unresolved_BQ76942_pins": [
     22,
     25,
@@ -597,7 +606,8 @@
   "source_sha256": {
     "bq76942_candidate.json": "198d96f12042b26d7cdf329dbba4df3e3523ce0dba6961c450d492a0f847eb33",
     "bq76942_series_filter_candidate.json": "5d1ba5f53047c1c7889759401795a1ebb5d9908e0620ee99aef42dcd15901e2b",
-    "bq76942_pack_fet_candidate.json": "2babc4c93e3b0a20dc8736bd80b585438b154ab1f3bb72cde1791a82167da984"
+    "bq76942_pack_fet_candidate.json": "2babc4c93e3b0a20dc8736bd80b585438b154ab1f3bb72cde1791a82167da984",
+    "bq76942_reg0_fuse_candidate.json": "643e75b2b0a21bf0fded99e6af188dcdbdf2b811a6236726cae46b41181853be"
   },
   "external_ports": [
     "CELL_B_MINUS",
