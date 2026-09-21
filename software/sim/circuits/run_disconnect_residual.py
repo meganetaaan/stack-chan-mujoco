@@ -5,6 +5,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[3]
 p = argparse.ArgumentParser(description=__doc__)
 p.add_argument('--out', type=Path, required=True)
+p.add_argument('--brake-fault',choices=['none','primary_open','secondary_open','both_open'],default='none')
 p.add_argument('--brake-ohms',type=float,default=4.935,help='Resistance of each active regeneration absorption branch')
 p.add_argument('--bleed-ohms', type=float, default=0., help='Resistance of each of two permanent bleed branches; zero disables them')
 p.add_argument('--open-bleeds', type=int, choices=[0,1,2], default=0)
@@ -20,7 +21,7 @@ assert np.isfinite(a.cout_uf) and a.cout_uf > 0
 a.out.mkdir(parents=True, exist_ok=False)
 base = ROOT/'validation/coupled_power_ldo_development_v1/coupled_power_startup_continuous_v2/coupled.cir'
 plan = {'scope': __doc__, 'source_sha256': hashlib.sha256(base.read_bytes()).hexdigest(),
-        'active_brake_each_ohm':a.brake_ohms,'bleed_each_ohm': a.bleed_ohms, 'open_bleeds': a.open_bleeds, 'Cout_uF': a.cout_uf,
+        'active_brake_each_ohm':a.brake_ohms,'brake_fault':a.brake_fault,'bleed_each_ohm': a.bleed_ohms, 'open_bleeds': a.open_bleeds, 'Cout_uF': a.cout_uf,
         'regeneration_A': a.regen_a, 'regeneration_window_s': [a.regen_start_s,a.regen_start_s+.02],
         'battery_V': 7.4, 'disconnect_s': .08, 'stop_s': 1., 'motor_current_A': 0.,
         'measurements_s': [.079, .081, .1, .2, 1.],
@@ -51,6 +52,10 @@ if a.bleed_ohms:
 for branch in range(2):
     net,n=re.subn(r'^Rbrake'+str(branch)+r' bus drain'+str(branch)+r' [0-9.eE+-]+$',f'Rbrake{branch} bus drain{branch} {a.brake_ohms:.12g}',net,flags=re.M)
     assert n==1
+for branch,label in [(0,'primary_open'),(1,'secondary_open')]:
+    if a.brake_fault in [label,'both_open']:
+        net,n=re.subn(r'^Sbrake'+str(branch)+r' drain'+str(branch)+r' 0 gate'+str(branch)+r' 0 SMOS'+str(branch)+r'$',f'Ropenbrake{branch} drain{branch} 0 1e12',net,flags=re.M)
+        assert n==1
 vectors = 'v(vin) v(rail) v(bus) v(aux) v(en) i(Lout) i(Vbattery) v(drain0) v(drain1) v(gate0) v(gate1)'
 measures = [('bus_after_disconnect_max', 'meas tran bus_after_disconnect_max MAX v(bus) FROM=.08 TO=1')]
 for index, t in enumerate(plan['measurements_s']):
