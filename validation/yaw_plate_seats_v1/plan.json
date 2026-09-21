@@ -1,0 +1,16 @@
+{
+  "question": "Do the washer and underside screw head have complete nominal bearing footprints, with no fastener overlap?",
+  "stop": "Eight joints, fixed planar 0.01 mm footprint prism; no mesh/load analysis.",
+  "method": "Intersect bearing annulus extruded 0.01 mm into the receiving solid; volume/depth gives section area for this planar region.",
+  "criteria": {
+    "maximum_unintended_overlap_mm3": 0.01,
+    "maximum_missing_nominal_bearing_area_mm2": 0.001
+  },
+  "criteria_origin": "Numerical full-seat geometry checks, not material strength acceptance.",
+  "limits": [
+    "Nominal geometry only",
+    "No pressure distribution, flatness, preload or creep",
+    "No real screw underhead fillet",
+    "No positive retention or stiffness proof from bearing area alone"
+  ]
+}
