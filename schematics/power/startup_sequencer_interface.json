@@ -1,5 +1,5 @@
 {
-  "status": "interface_and_settled_logic_only",
+  "status": "integrated_sampled_state_model_only_hardware_unimplemented",
   "hardware_implemented": false,
   "inputs": {
     "ENABLE_PERMISSION": "U6 pin9; qualified manual permission; one of two clear acknowledgements",
@@ -54,5 +54,8 @@
   "monitor_startup_timer": "schematics/power/servo_power_rearm_integration_revG/integration_report.json",
   "monitor_startup_receiver_screen": "validation/monitor_ready_receiver_v1/report.json",
   "monitor_startup_receiver": "schematics/power/servo_power_rearm_integration_revH/assembly.json",
-  "sequence_request_default": "schematics/power/servo_power_rearm_integration_revI/integration_report.json"
+  "sequence_request_default": "schematics/power/servo_power_rearm_integration_revI/integration_report.json",
+  "integrated_state_model": "software/sim/circuits/power_sequence_model.py",
+  "integrated_state_model_evidence": "validation/power_sequence_model_v1/report.json",
+  "model_state_mapping": "Initial OFF is implemented as CLEAR until independent clear acknowledgements; WAIT_NEW_PRESS and CLEAR each have two protocol substates"
 }
