@@ -88,3 +88,7 @@ TPS70933の出力コンデンサ条件の出典を訂正。メーカーの実効
 現行電源revMは98部品317ピン。停止電源入力に2.2 µF WIMAフィルム候補と100 nF C0G直近バイパスを選定。公称入力容量は維持し、フィルム高さ13 mmの配置は未確認。初期容量範囲・RC比較は `schematics/power/servo_power_rearm_integration_revM/selection_report.json`。起動期限の証明ではない。
 
 TPS70933メーカー非暗号化モデルの定常計算は実行できたが、直列抵抗付き起動過渡はngspice互換環境で完了せず。通常/Gear2の失敗記録を `validation/tps709_model_compatibility_v1/` に保存。同じ数値設定の追加試行は打切り。実回路の起動失敗という判定ではない。
+
+### 電源基板の配置空間
+
+横置き案・ねじ先端に触れる縦置き案を不採用とし、`validation/power_board_reservation_v3/` の縦置き80×25 mm・部品奥行16 mmを配置空間候補とする。公称非干渉、最小隙間1 mm。フィルム品の公称13 mm高さを置ける空間はあるが、98部品の配置配線・固定具・公差を含む完成PCBの搭載は未証明。
