@@ -132,3 +132,7 @@ TPS70933メーカー非暗号化モデルの定常計算は実行できたが、
 ### 精密な直列クランプの設定候補
 
 `validation/series_clamp_sizing_v1` にLT4363IMS-1#PBF、帰還33.2k/10k、検出8.2mΩの比較を保存。電圧5.285～5.737V、電流5.433～6.775Aで静的比較を通るが、試験点の適用範囲は未確定。12.6V故障流入ではMOSFET負担約49.56Wとなり、次は線形SOAとタイマーの成立を判断する。現行構成には未統合。
+
+### 直列MOSFET候補の条件
+
+`schematics/power/series_mosfet_candidates.json` に高温SOAを掲載する2候補を記録。`validation/series_mosfet_selection_v1` の熱抵抗比較は固定ベース温度の計算のみでSOA未判定。オン抵抗の保証に必要なVGS7Vと低入力時の制御ICゲート駆動の適合が未確認のため未採用。タイマーを先に仮決めしない。
