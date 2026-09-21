@@ -20,3 +20,6 @@ LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bi
 
 材料・ワッシャ型番・締付け・強度・造形条件は未確定。製造リリースではない。
 MuJoCoの質量・慣性への反映も未完了。
+
+剛性3部品にPETG候補密度を適用した比較は`validation/foot_rigid_inertia_v1/`。
+片足約50.39gだが、接地材・締結品・サーボ等を含む足全体の値ではない。
