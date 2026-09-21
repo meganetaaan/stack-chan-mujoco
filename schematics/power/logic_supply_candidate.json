@@ -66,6 +66,22 @@
       "Explicit latch/retry and recovery configuration",
       "3S current-limit and startup qualification"
     ],
-    "integrated": false
+    "integrated": false,
+    "divider_proposal": {
+      "UVLO": {
+        "top_ohm": 40200,
+        "bottom_ohm": 10000
+      },
+      "OVP": {
+        "top_ohm": 124000,
+        "bottom_ohm": 10000
+      },
+      "top_connection": "BATTERY_RAW",
+      "bottom_connection": "TPS26600 RTN; reference routing and reverse-input behavior require verification",
+      "total_tolerance_budget": 0.01,
+      "status": "nominal_static_candidate_not_integrated",
+      "evidence": "validation/logic_input_window_v1/report.json",
+      "battery_cell_protection": false
+    }
   }
 }
