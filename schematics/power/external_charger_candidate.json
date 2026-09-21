@@ -1,0 +1,26 @@
+{
+  "status": "selection_candidate_not_purchase_or_charge_release",
+  "part": "SkyRC B6ACneo SK-100200",
+  "source": "https://www.skyrc.com/b6acneo",
+  "intended_use": "Charge a removed and electrically disconnected 3S LiPo pack in balance mode",
+  "manufacturer_AC_input_V": [100, 240],
+  "manufacturer_AC_charge_power_W": 60,
+  "manufacturer_LiPo_series_range": [1, 6],
+  "selected_charge_current_A": null,
+  "selected_cell_end_voltage_V": null,
+  "reason": "Integrated AC input avoids adding a separate DC or USB-PD supply to the charging BOM",
+  "connections_to_finalize": [
+    "Charger main output to candidate XT30 pack with polarity verified",
+    "Pack balance connector exact series, pin order and mating lead",
+    "Region-appropriate manufacturer AC cord"
+  ],
+  "remaining": [
+    "Read matching instruction manual and freeze version",
+    "Check pack manufacturer charge current and termination limits",
+    "Check charger accuracy against pack limits",
+    "Select adapter and connector parts",
+    "Document setup and disconnect sequence"
+  ],
+  "on_robot_mass_included": false,
+  "robot_power_supply_mode_qualified": false
+}
