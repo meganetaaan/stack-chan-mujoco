@@ -1,0 +1,39 @@
+{
+  "model": "stiff rail, ideal released driver, lumped RC, zero leakage",
+  "user_requirement": "defined stop and no unintended restart",
+  "design_assumptions": {
+    "rail_V": 3.207,
+    "pullup_max_ohm": 101000.0,
+    "scenario_capacitances_not_measured": true
+  },
+  "manufacturer_lvc_edge_limit_s_per_V": 1e-08,
+  "local_slope_cap_limit_F": 1.195049504950495e-13,
+  "rows": [
+    {
+      "assumed_total_capacitance_F": 1e-12,
+      "logic_band_crossing_s": 6.97145648852396e-08,
+      "average_s_per_V": 5.809547073769967e-08,
+      "local_s_per_V_at_VIH": 8.367854183927093e-08
+    },
+    {
+      "assumed_total_capacitance_F": 5e-12,
+      "logic_band_crossing_s": 3.4857282442619795e-07,
+      "average_s_per_V": 2.904773536884983e-07,
+      "local_s_per_V_at_VIH": 4.183927091963546e-07
+    },
+    {
+      "assumed_total_capacitance_F": 1e-11,
+      "logic_band_crossing_s": 6.971456488523959e-07,
+      "average_s_per_V": 5.809547073769966e-07,
+      "local_s_per_V_at_VIH": 8.367854183927092e-07
+    }
+  ],
+  "qualification": false,
+  "decision": "Do not rely on 100k pullup directly driving LVC1G06 during driver release; design input conditioning before substitution",
+  "limits": [
+    "Illustrative capacitances are not production minima/maxima",
+    "Local slope screen is not a substitute for manufacturer waveform definition",
+    "Rail ramps, leakage, coupling and brownout excluded",
+    "No automatic proof of hardware failure or current AUP qualification"
+  ]
+}
