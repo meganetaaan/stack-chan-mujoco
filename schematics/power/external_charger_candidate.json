@@ -1,5 +1,5 @@
 {
-  "status": "hold_voltage_specification_conflict",
+  "status": "adjustable_voltage_confirmed_accuracy_unqualified",
   "part": "SkyRC B6ACneo SK-100200",
   "source": "https://www.skyrc.com/b6acneo",
   "intended_use": "Charge a removed and electrically disconnected 3S LiPo pack in balance mode",
@@ -21,7 +21,7 @@
     "Region-appropriate manufacturer AC cord"
   ],
   "remaining": [
-    "Resolve 4.22V table versus pack 4.2V limit and obtain actual regulation tolerance",
+    "Obtain actual voltage and current regulation tolerance for selected settings",
     "Check pack manufacturer charge current and termination limits",
     "Check charger accuracy against pack limits",
     "Select adapter and connector parts",
@@ -35,5 +35,12 @@
   "pack_general_charge_ceiling_A": 0.85,
   "pack_general_max_cell_voltage_V": 4.2,
   "charger_manual_LiPo_max_charge_voltage_V": 4.22,
-  "voltage_conflict": "4.22V in charger standard-battery table exceeds 4.2V pack general limit; not a measured charger output or confirmed tolerance"
+  "voltage_conflict": "4.22V is not a mandatory fixed termination: manual p15 shows adjustable lower settings. Actual regulation error remains unspecified.",
+  "documented_terminal_voltage_examples_V": [
+    4.18,
+    4.19,
+    4.2,
+    4.21,
+    4.22
+  ]
 }
