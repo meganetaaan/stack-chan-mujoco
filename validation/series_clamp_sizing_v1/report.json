@@ -1,0 +1,25 @@
+{
+  "clamp_comparison_V": [
+    5.284953782178218,
+    5.7367239191919195
+  ],
+  "DC_voltage_screen_pass": true,
+  "limit_comparison_A": [
+    5.43347017628592,
+    6.775067750677507
+  ],
+  "normal_model_per_leg_A": 4.917,
+  "model_load_screen_pass": true,
+  "sense_loss_at_limit_max_W": 0.37262872628726285,
+  "pass_FET_power_requirement_comparison_W": 49.55993372507982,
+  "energy_requirement_J_per_ms_at_comparison_power": 0.04955993372507982,
+  "qualified": false,
+  "decision": "Proceed to pass-FET SOA and timing selection; no integration or manufacturing release yet.",
+  "remaining": [
+    "Select MOSFET with applicable linear SOA at hot initial temperature, not only low RDS(on).",
+    "Select sense resistor and timer from actual energy/time limits; no arbitrary shutdown time.",
+    "Verify gate drive at low input, reverse current path, rail drop and startup.",
+    "Keep load-side regeneration absorption: a series clamp cannot absorb energy injected downstream.",
+    "Check fault latching and manual rearm interface; do not assume existing eFuse PG/FLT wiring is compatible."
+  ]
+}
