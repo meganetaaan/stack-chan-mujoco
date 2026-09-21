@@ -1,6 +1,6 @@
 {
-  "revision": "servo_power_rearm_integration_revJ",
-  "assembly": "schematics/power/servo_power_rearm_integration_revJ/assembly.json",
+  "revision": "servo_power_rearm_integration_revK",
+  "assembly": "schematics/power/servo_power_rearm_integration_revK/assembly.json",
   "status": "integrated_comparison_not_released",
   "includes": [
     "Dual TPS259813L stages",
@@ -11,7 +11,8 @@
     "Dedicated monitor startup-delay supervisor; qualification incomplete",
     "SN74AUP1T50 monitor-ready receiver with output pulldown; operating envelope conditional",
     "Local default-low resistor on sequence enable request",
-    "13 monitor/default resistors assigned manufacturer ordering codes; nominal values unchanged"
+    "13 monitor/default resistors assigned manufacturer ordering codes; nominal values unchanged",
+    "21 local 100nF capacitors with selected ordering candidate"
   ],
   "manufacturing_release": false,
   "electrical_qualification": false,
@@ -21,5 +22,6 @@
     "Regeneration and discharge integration",
     "Unselected passives and complete current/thermal budget",
     "Integrated transient and fault verification"
-  ]
+  ],
+  "candidate_bom": "schematics/power/servo_power_rearm_integration_revK/candidate_bom.csv"
 }

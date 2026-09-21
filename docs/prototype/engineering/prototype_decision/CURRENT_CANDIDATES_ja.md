@@ -68,3 +68,7 @@ G030代替の端子割当と共有端子の設定条件を`validation/g030_bonde
 ### 監視抵抗の選定更新
 
 電源回路の現行入口 `schematics/power/servo_power_rearm_current.json` はrevJを指す。監視・既定状態用抵抗13個をメーカー注文表の型番候補へ具体化した。値・配線・総合公差予算は変更せず、条件付き電力比較は通過。調達・実装熱・経時変化は未確認。詳細は `schematics/power/servo_power_rearm_integration_revJ/README_ja.md`。
+
+### 小容量コンデンサの統合更新
+
+現行電源入口はrevK。既存の100 nF候補を未反映17箇所へ統合し、同型番は計21個。統合候補の全94参照番号を `schematics/power/servo_power_rearm_integration_revK/candidate_bom.csv` に出力。大容量・ゲートコンデンサ、回路全体の適合は未完了。
