@@ -55,5 +55,17 @@
     "initial_output_charge_C": 9.4919175e-05,
     "rule": "20mA continuous load target is not the input current-limit setting. Allocate net charging current and verify actual protection startup.",
     "qualified": false
+  },
+  "input_protection_review": {
+    "family": "TPS26600",
+    "status": "functional_candidate_not_selected",
+    "evidence": "validation/logic_input_protection_v1/README_ja.md",
+    "required_design_decisions": [
+      "External UVLO divider; default threshold exceeds 3S full charge",
+      "External OVP suitable for TPS709 input limit",
+      "Explicit latch/retry and recovery configuration",
+      "3S current-limit and startup qualification"
+    ],
+    "integrated": false
   }
 }
