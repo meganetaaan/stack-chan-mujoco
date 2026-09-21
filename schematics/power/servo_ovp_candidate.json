@@ -38,7 +38,18 @@
       "Startup SOA and inductive turnoff stress",
       "Off-state diode and leakage paths",
       "PCB thermal and reflow assembly"
-    ]
+    ],
+    "dynamic_spec_review": {
+      "Ciss_typ_per_device_pF": 6450,
+      "Ciss_conditions": "VDS10V VGS0V f1MHz; typical only",
+      "Qg_max_per_device_nC_at_4_5V": 55,
+      "Qg_conditions": "VDS10V VGS4.5V ID10A; not actual circuit charge bound",
+      "two_device_Qg_comparison_nC": 110,
+      "controller_timing_test_capacitance_nF": 2.2,
+      "controller_timing_directly_applicable": false,
+      "decision": "Do not reuse controller 2.2nF timing or MOSFET resistive-driver switching times; qualify combined gate circuit",
+      "SHDN_is_fast_fault_path": false
+    }
   },
   "OV_divider": null,
   "UV_divider": null,
