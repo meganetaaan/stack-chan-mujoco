@@ -2,7 +2,7 @@
   "status": "evaluation_candidate_not_released",
   "regulator": "TPS70933DBVR",
   "quantity": 2,
-  "input": "SERVO_BUS downstream of source disconnect",
+  "input": "protected input upstream of main source disconnect; voltage compatibility pending",
   "outputs": [
     "SENSE3V3_A",
     "SENSE3V3_B"
@@ -15,6 +15,7 @@
   ],
   "required_validity": "Use real supervisor and settling qualification; missing validity must inhibit source enable or request stop",
   "capacitors": "unselected; effective values and stability must satisfy regulator specification",
-  "evidence": "validation/brake_sensor_supply_review_v1/README.md",
-  "manufacturing_release": false
+  "evidence": "validation/brake_sensor_startup_dependency_v1/README.md",
+  "manufacturing_release": false,
+  "historical_rejected_input": "SERVO_BUS downstream: cold-start dependency deadlock with monitor-valid-before-enable requirement"
 }

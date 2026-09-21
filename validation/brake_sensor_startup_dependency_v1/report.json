@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "sensor_supply": "servo_bus",
+      "reachable": [
+        "manual_enable_request",
+        "protected_input_available"
+      ],
+      "trace": [],
+      "can_reach_main_source_closed": false
+    },
+    {
+      "sensor_supply": "protected_upstream",
+      "reachable": [
+        "main_source_closed",
+        "manual_enable_request",
+        "protected_input_available",
+        "sensor_supply_available",
+        "sensor_valid_after_settling",
+        "servo_bus_available"
+      ],
+      "trace": [
+        [
+          "sensor_supply_available"
+        ],
+        [
+          "sensor_valid_after_settling"
+        ],
+        [
+          "main_source_closed"
+        ],
+        [
+          "servo_bus_available"
+        ]
+      ],
+      "can_reach_main_source_closed": true
+    }
+  ],
+  "electrical_startup_verified": false,
+  "decision": "Move sensor LDO inputs upstream of main disconnect; keep brake detector and gate driver downstream"
+}
