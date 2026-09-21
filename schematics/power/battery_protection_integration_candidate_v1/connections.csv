@@ -18,6 +18,8 @@ U_CELL_PROTECT,42,BQ_PACK,candidate_connected
 U_CELL_PROTECT,47,BQ_BAT_HOLD,candidate_connected
 U_CELL_PROTECT,24,BQ_REG18,candidate_connected
 U_CELL_PROTECT,46,BQ_CP1,candidate_connected
+U_CELL_PROTECT,18,BQ_SRP,candidate_connected
+U_CELL_PROTECT,20,BQ_SRN,candidate_connected
 U_CELL_PROTECT,1,,NC
 U_CELL_PROTECT,3,,NC
 U_CELL_PROTECT,5,,NC
@@ -26,8 +28,6 @@ U_CELL_PROTECT,9,,NC
 U_CELL_PROTECT,11,,NC
 U_CELL_PROTECT,19,,NC
 U_CELL_PROTECT,44,,NC
-U_CELL_PROTECT,18,,UNRESOLVED
-U_CELL_PROTECT,20,,UNRESOLVED
 U_CELL_PROTECT,21,,UNRESOLVED
 U_CELL_PROTECT,22,,UNRESOLVED
 U_CELL_PROTECT,23,,UNRESOLVED
@@ -152,3 +152,11 @@ C_REG18_2,1,BQ_REG18,candidate_connected
 C_REG18_2,2,CELL_B_MINUS,candidate_connected
 C_CP1,1,BQ_CP1,candidate_connected
 C_CP1,2,BQ_BAT_HOLD,candidate_connected
+R_SHUNT,1,CELL_B_MINUS,candidate_connected
+R_SHUNT,2,PACK_RETURN,candidate_connected
+R_SRP,1,CELL_B_MINUS,candidate_connected
+R_SRP,2,BQ_SRP,candidate_connected
+R_SRN,1,PACK_RETURN,candidate_connected
+R_SRN,2,BQ_SRN,candidate_connected
+C_CURRENT,1,BQ_SRP,candidate_connected
+C_CURRENT,2,BQ_SRN,candidate_connected

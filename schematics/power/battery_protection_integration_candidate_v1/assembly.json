@@ -24,6 +24,8 @@
         "47": "BQ_BAT_HOLD",
         "24": "BQ_REG18",
         "46": "BQ_CP1",
+        "18": "BQ_SRP",
+        "20": "BQ_SRN",
         "1": null,
         "3": null,
         "5": null,
@@ -34,8 +36,6 @@
         "44": null
       },
       "unresolved_pins": [
-        18,
-        20,
         21,
         22,
         23,
@@ -439,12 +439,44 @@
         "2": "BQ_BAT_HOLD"
       },
       "effective_capacitance_qualified": false
+    },
+    {
+      "reference": "R_SHUNT",
+      "part": "WSLP25125L000FEA",
+      "pins": {
+        "1": "CELL_B_MINUS",
+        "2": "PACK_RETURN"
+      },
+      "kelvin_routing_required": true,
+      "thermal_qualified": false
+    },
+    {
+      "reference": "R_SRP",
+      "part": "TNPW0603100RBEEA",
+      "pins": {
+        "1": "CELL_B_MINUS",
+        "2": "BQ_SRP"
+      }
+    },
+    {
+      "reference": "R_SRN",
+      "part": "TNPW0603100RBEEA",
+      "pins": {
+        "1": "PACK_RETURN",
+        "2": "BQ_SRN"
+      }
+    },
+    {
+      "reference": "C_CURRENT",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "BQ_SRP",
+        "2": "BQ_SRN"
+      }
     }
   ],
-  "part_count": 46,
+  "part_count": 50,
   "unresolved_BQ76942_pins": [
-    18,
-    20,
     21,
     22,
     23,
@@ -476,12 +508,13 @@
     "CELL2_TAP",
     "CELL3_TAP",
     "CELL_POS_FUSED",
-    "PACK_POS_PROTECTED"
+    "PACK_POS_PROTECTED",
+    "PACK_RETURN"
   ],
   "missing_stages": [
     "cell tap and main connectors",
     "battery fuse and reverse protection",
-    "shunt and current filters",
+    "current threshold, shunt thermal/pulse and sense-routing qualification",
     "BAT hold-up and input faults; REG18/CP1 effective capacitance and startup; optional LDO supply",
     "PACK/LD transient and reverse-polarity qualification",
     "configuration and startup inhibit",
