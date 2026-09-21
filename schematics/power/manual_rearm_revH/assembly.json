@@ -1,0 +1,492 @@
+{
+  "scope": "Package the current manual-rearm candidate and explicit unfinished interfaces.",
+  "parts": [
+    {
+      "reference": "U1",
+      "part": "MAX6816EUS+T",
+      "pins": {
+        "1": "GND",
+        "2": "BUTTON_RAW",
+        "3": "BUTTON_RELEASED",
+        "4": "LOGIC3V3"
+      },
+      "source": "manual_button_candidate.json"
+    },
+    {
+      "reference": "U2",
+      "part": "SN74LVC1G04DBVR",
+      "pins": {
+        "1": null,
+        "2": "BUTTON_RELEASED",
+        "3": "GND",
+        "4": "PRESS",
+        "5": "LOGIC3V3"
+      },
+      "source": "manual_button_candidate.json"
+    },
+    {
+      "reference": "U3",
+      "part": "SN74HCS11PWR",
+      "pins": {
+        "1": "RESET_N",
+        "2": "RAW_RELEASED_CONDITIONED",
+        "3": "ENABLE_PERMISSION",
+        "4": "SEQUENCE_ENABLE_REQUEST",
+        "5": "RESET_N",
+        "6": "POWER_ENABLE_COMMAND",
+        "7": "GND",
+        "8": null,
+        "9": "GND",
+        "10": "GND",
+        "11": "GND",
+        "12": "RELEASE_CONDITION",
+        "13": "BUTTON_RELEASED",
+        "14": "LOGIC3V3"
+      },
+      "source": "manual_release_gate_candidate.json"
+    },
+    {
+      "reference": "U4",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "RELEASE_CONDITION",
+        "3": "GND",
+        "4": "RELEASE_MR",
+        "5": "LOGIC3V3"
+      },
+      "source": "manual_release_mr_buffer_candidate.json"
+    },
+    {
+      "reference": "U5",
+      "part": "TPS3808G33DBVR",
+      "pins": {
+        "1": "RELEASE_QUALIFIED",
+        "2": "GND",
+        "3": "RELEASE_MR",
+        "4": "TIMER_CT",
+        "5": "LOGIC3V3",
+        "6": "LOGIC3V3"
+      },
+      "source": "manual_release_timer_candidate.json"
+    },
+    {
+      "reference": "U6",
+      "part": "SN74HCS74PW",
+      "pins": {
+        "1": "RESET_N",
+        "2": "LOGIC3V3",
+        "3": "RELEASE_QUALIFIED",
+        "4": "LOGIC3V3",
+        "5": "ARMED",
+        "6": null,
+        "7": "GND",
+        "8": null,
+        "9": "ENABLE_PERMISSION",
+        "10": "LOGIC3V3",
+        "11": "PRESS",
+        "12": "ARMED",
+        "13": "RESET_N",
+        "14": "LOGIC3V3"
+      },
+      "source": "manual_rearm_latch_candidate.json"
+    },
+    {
+      "reference": "R1",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "TIMER_CT"
+      },
+      "source": null
+    },
+    {
+      "reference": "R2",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "RELEASE_QUALIFIED"
+      },
+      "source": null
+    },
+    {
+      "reference": "C1",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "C2",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "C3",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "C4",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "C5",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "C6",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "SW1",
+      "part": "NO momentary enable button; part/contact characteristics pending",
+      "pins": {
+        "1": "BUTTON_RAW",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "U7",
+      "part": "TPS3808G33DBVR",
+      "pins": {
+        "1": "RESET_N",
+        "2": "GND",
+        "3": "RAIL_HEALTH_N",
+        "4": "SUPERVISOR_CT",
+        "5": "LOGIC3V3",
+        "6": "LOGIC3V3"
+      },
+      "source": "manual_rearm_supervisor_candidate.json"
+    },
+    {
+      "reference": "R3",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "SUPERVISOR_CT"
+      },
+      "source": null
+    },
+    {
+      "reference": "R4",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "RESET_N"
+      },
+      "source": null
+    },
+    {
+      "reference": "C7",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "U8",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "POWER_ENABLE_COMMAND",
+        "3": "GND",
+        "4": "ENABLE_BUFFER_OUT",
+        "5": "LOGIC3V3"
+      },
+      "source": "main_enable_driver_candidate.json"
+    },
+    {
+      "reference": "R5",
+      "part": "39k pulldown; total +/-1% budget, part pending",
+      "pins": {
+        "1": "MAIN_EFUSE_EN",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "R6",
+      "part": "220k pulldown; total +/-1% budget, part pending",
+      "pins": {
+        "1": "POWER_ENABLE_COMMAND",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "C8",
+      "part": "100nF local ceramic candidate; part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "R7",
+      "part": "4.7k series; total +/-1% budget, part pending",
+      "pins": {
+        "1": "ENABLE_BUFFER_OUT",
+        "2": "MAIN_EFUSE_EN"
+      },
+      "source": null
+    },
+    {
+      "reference": "U9",
+      "part": "TPS3808G33DBVR",
+      "pins": {
+        "1": "RAIL_HEALTH_N",
+        "2": "GND",
+        "3": "EFUSE_INPUT_5V",
+        "4": "CLAMP_CT",
+        "5": "LOGIC3V3",
+        "6": "EFUSE_INPUT_5V"
+      },
+      "source": "main_enable_clamp_candidate.json"
+    },
+    {
+      "reference": "R8",
+      "part": "100k CT candidate; part pending",
+      "pins": {
+        "1": "EFUSE_INPUT_5V",
+        "2": "CLAMP_CT"
+      },
+      "source": null
+    },
+    {
+      "reference": "C9",
+      "part": "100nF local ceramic candidate; part pending",
+      "pins": {
+        "1": "EFUSE_INPUT_5V",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "U10",
+      "part": "TPS3808G01DBVR",
+      "pins": {
+        "1": "MAIN_EFUSE_EN",
+        "2": "GND",
+        "3": "CLAMP_MR_5V",
+        "4": null,
+        "5": "EFUSE_INPUT_5V",
+        "6": "EFUSE_INPUT_5V"
+      },
+      "source": "main_clamp_cause_candidate.json"
+    },
+    {
+      "reference": "U11",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "RAIL_HEALTH_N",
+        "3": "GND",
+        "4": "CLAMP_MR_5V",
+        "5": "EFUSE_INPUT_5V"
+      },
+      "source": "main_clamp_cause_candidate.json"
+    },
+    {
+      "reference": "R9",
+      "part": "10k cause pullup; total +/-1% budget, part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "RAIL_HEALTH_N"
+      },
+      "source": null
+    },
+    {
+      "reference": "C10",
+      "part": "100nF local ceramic candidate; part pending",
+      "pins": {
+        "1": "EFUSE_INPUT_5V",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "C11",
+      "part": "100nF local ceramic candidate; part pending",
+      "pins": {
+        "1": "EFUSE_INPUT_5V",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "U12",
+      "part": "TPS3700DDCR",
+      "pins": {
+        "1": "PG_CONDITIONED_OD",
+        "2": "GND",
+        "3": "PG_DIVIDED",
+        "4": "GND",
+        "5": "LOGIC3V3",
+        "6": null
+      },
+      "source": "pg_receiver_candidate.json"
+    },
+    {
+      "reference": "U13",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "PG_CONDITIONED_OD",
+        "3": "GND",
+        "4": "PG_CONDITIONED",
+        "5": "LOGIC3V3"
+      },
+      "source": "pg_receiver_candidate.json"
+    },
+    {
+      "reference": "R10",
+      "part": "150000 value candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "MAIN_EFUSE_PG"
+      },
+      "source": null
+    },
+    {
+      "reference": "R11",
+      "part": "1000000 value candidate; exact part pending",
+      "pins": {
+        "1": "MAIN_EFUSE_PG",
+        "2": "PG_DIVIDED"
+      },
+      "source": null
+    },
+    {
+      "reference": "R12",
+      "part": "330000 value candidate; exact part pending",
+      "pins": {
+        "1": "PG_DIVIDED",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "R13",
+      "part": "10000 value candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "PG_CONDITIONED_OD"
+      },
+      "source": null
+    },
+    {
+      "reference": "C12",
+      "part": "1e-07 value candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "C13",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "U14",
+      "part": "74AUP1G06GW",
+      "pins": {
+        "1": null,
+        "2": "SEQUENCE_CLEAR_REQUEST",
+        "3": "GND",
+        "4": "RESET_N",
+        "5": "LOGIC3V3"
+      },
+      "source": "sequence_clear_sink_candidate.json"
+    },
+    {
+      "reference": "R14",
+      "part": "100k input pullup; total +/-1% comparison, exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "SEQUENCE_CLEAR_REQUEST"
+      },
+      "source": null
+    },
+    {
+      "reference": "C14",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    }
+  ],
+  "interfaces": {
+    "LOGIC3V3": "upstream logic rail; power budget and independent supervision unfinished",
+    "GND": "common reference; physical return routing unfinished",
+    "RESET_N": "U7 and U14 open-drain outputs; independent external stop/fault sinks and physical clear acknowledgement unfinished",
+    "RAW_RELEASED_CONDITIONED": "unfinished protected raw-input interface from BUTTON_RAW; not a direct wire",
+    "ENABLE_PERMISSION": "logic output only; physical default-off power stage unfinished",
+    "MAIN_EFUSE_EN": "TPS259823 pin6; conditional driver, brownout/default-off qualification incomplete",
+    "EFUSE_INPUT_5V": "input side of eFuse; must remain within supervisor supply rating, never raw battery",
+    "SEQUENCE_ENABLE_REQUEST": "unfinished startup/PG sequencer output; hardware gate also requires retained permission and RESET_N",
+    "MAIN_EFUSE_PG": "TPS259823 pin13; conditional analog receiver, open-wire fault coverage unfinished",
+    "PG_CONDITIONED": "U13 pin4 output to unfinished startup sequencer; invalid during power transitions",
+    "SEQUENCE_CLEAR_REQUEST": "active high U14 input; weak default asserted; actual sequencer driver and clear width unfinished"
+  },
+  "source_sha256": {
+    "manual_button_candidate.json": "bd30d6a5fd4cee682893d6ce5c88e8b36ebc5aff75039715f0b2efb181d5770a",
+    "manual_release_gate_candidate.json": "2e46dda7c0a7234aeee0d9462c6c5f4af5bb917b56a60012b52aa21134f7c086",
+    "manual_release_mr_buffer_candidate.json": "c03274ae6c13f0254c0a249b6b00bece74e2c36bc4231d72ac6bf2f560655544",
+    "manual_release_timer_candidate.json": "6bf15a55a465f1f3990ca1a3f4761ebff67aa26f3fd96eeb6a57ba2106a4905c",
+    "manual_rearm_latch_candidate.json": "d15a62a8bab81f61e3cb920e6ef0ac55ea152932b18ff9e77a70aa8c6bbe79f9",
+    "manual_rearm_supervisor_candidate.json": "c8cf20ba5d10f88436329bcccdc081c9820faaeb0ff3371a09dc238f20bd201b",
+    "main_enable_driver_candidate.json": "c8adcb621fed71cdc51289d5428412f7576c2999f07883aaf9720dc796d0d0f2",
+    "main_enable_clamp_candidate.json": "386669a76021b8a4bc5ffb0dc282ada0b5ee50e0e6e384a31861c5c87c28e350",
+    "main_clamp_cause_candidate.json": "79bd6ff4c3e2433bd67ca06af6644b768880534ea166acbfe936b075c30aceb8",
+    "pg_receiver_candidate.json": "37dfeb7fe65a8c4f0c39029212a4f4a0d7d3c716bcb471d5078d495c9b2435ef",
+    "sequence_clear_sink_candidate.json": "32392c7c6330171bcd51609e7f743d1cbb508e4e71afb372cabc09c5d9b07866"
+  },
+  "part_count": 43,
+  "pin_count": 150,
+  "logical_composition_only": true,
+  "electrical_qualification": false,
+  "manufacturing_release": false,
+  "assembly_overrides": [
+    "U8 pin4 routed through R7 to MAIN_EFUSE_EN; overrides direct output in individual driver candidate",
+    "U9 RESET goes to RAIL_HEALTH_N instead of EN; U7 MR receives RAIL_HEALTH_N instead of LOGIC3V3; U11 level buffer and U10 reset follower drive EN",
+    "U3 unused second AND gate: pins3,4,5 accept ENABLE_PERMISSION, SEQUENCE_ENABLE_REQUEST, RESET_N; pin6 drives U8 input POWER_ENABLE_COMMAND"
+  ]
+}

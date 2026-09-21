@@ -1,0 +1,41 @@
+{
+  "part_number": "74AUP1G06GW",
+  "manufacturer": "Nexperia",
+  "revision": "Rev12 November 2024",
+  "package": "TSSOP5 SOT353-1",
+  "source": "https://assets.nexperia.com/documents/data-sheet/74AUP1G06.pdf",
+  "pins": {
+    "1": null,
+    "2": "SEQUENCE_CLEAR_REQUEST",
+    "3": "GND",
+    "4": "RESET_N",
+    "5": "LOGIC3V3"
+  },
+  "input_pullup_ohm": 100000,
+  "input_pullup_tolerance_comparison": 0.01,
+  "input_assert_high_V_min": 2.0,
+  "input_release_low_V_max": 0.9,
+  "input_edge_ns_per_V_max": 200,
+  "logic_supply_V": [
+    3.207,
+    3.393
+  ],
+  "off_output_leak_A_max_125C": 7.5e-07,
+  "poweroff_leak_A_max_125C": 7.5e-07,
+  "low_output_comparison": {
+    "vol_V_max": 0.36,
+    "test_supply_V": 3.0,
+    "test_sink_A": 0.0027,
+    "temperature_C_max": 125
+  },
+  "status": "conditional_sink_candidate",
+  "manufacturing_release": false,
+  "pending": [
+    "Actual sequencer driver current and edge rate",
+    "RESET_N threshold and fanout across rail",
+    "Input open transition and actual capacitance",
+    "Power loss is high impedance rather than forced clear; independent rail inhibition required",
+    "Clear hold and recovery timing at both latch CLR pins",
+    "Exact passives and footprint"
+  ]
+}

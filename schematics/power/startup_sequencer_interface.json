@@ -12,7 +12,7 @@
   },
   "outputs": {
     "SEQUENCE_ENABLE_REQUEST": "revF U3 pin4; true only START/RUN and healthy",
-    "SEQUENCE_CLEAR_REQUEST": "sink to RESET_N not designed; hold until both latch outputs Low and actual minimum clear width qualified"
+    "SEQUENCE_CLEAR_REQUEST": "revH U14 pin2 active High; driver not implemented; hold until complete clear contract satisfied"
   },
   "states": [
     "OFF",

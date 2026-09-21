@@ -1,19 +1,21 @@
 {
-  "candidate_revision": "manual_rearm_revG",
-  "assembly": "schematics/power/manual_rearm_revG/assembly.json",
-  "readme": "schematics/power/manual_rearm_revG/README_ja.md",
+  "candidate_revision": "manual_rearm_revH",
+  "assembly": "schematics/power/manual_rearm_revH/assembly.json",
+  "readme": "schematics/power/manual_rearm_revH/README_ja.md",
   "manufacturing_release": false,
   "electrical_qualification": false,
   "confirmed_scope": [
     "Candidate pin map",
     "Settled permission cancellation even with sequence request high",
     "Static output-load comparisons",
-    "PG receiver pin map; conditional DC comparisons only"
+    "PG receiver pin map; conditional DC comparisons only",
+    "U14 open-drain clear sink and static load comparison"
   ],
   "open_interfaces": [
     "SEQUENCE_ENABLE_REQUEST: actual startup/PG sequencer",
     "RESET_N: external stop/fault sinks",
-    "RAW_RELEASED_CONDITIONED: button raw interface"
+    "RAW_RELEASED_CONDITIONED: button raw interface",
+    "SEQUENCE_CLEAR_REQUEST: actual sequencer driver; U14 sink now defined"
   ],
   "remaining": [
     "Rail-wide static levels",

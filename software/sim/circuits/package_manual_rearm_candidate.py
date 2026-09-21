@@ -2,7 +2,8 @@
 import argparse,csv,hashlib,json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[3]
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--supervisor',action='store_true');p.add_argument('--en-driver',action='store_true');p.add_argument('--en-clamp',action='store_true');p.add_argument('--clamp-cause',action='store_true');p.add_argument('--permission-gate',action='store_true');p.add_argument('--pg-receiver',action='store_true');a=p.parse_args();
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--supervisor',action='store_true');p.add_argument('--en-driver',action='store_true');p.add_argument('--en-clamp',action='store_true');p.add_argument('--clamp-cause',action='store_true');p.add_argument('--permission-gate',action='store_true');p.add_argument('--pg-receiver',action='store_true');p.add_argument('--clear-sink',action='store_true');a=p.parse_args();
+if a.clear_sink and not a.pg_receiver: p.error('--clear-sink requires --pg-receiver')
 if a.pg_receiver and not a.permission_gate: p.error('--pg-receiver requires --permission-gate')
 if a.permission_gate and not a.clamp_cause: p.error('--permission-gate requires --clamp-cause')
 if a.clamp_cause and not a.en_clamp: p.error('--clamp-cause requires --en-clamp')
@@ -15,6 +16,7 @@ if a.en_driver: files.append('main_enable_driver_candidate.json')
 if a.en_clamp: files.append('main_enable_clamp_candidate.json')
 if a.clamp_cause: files.append('main_clamp_cause_candidate.json')
 if a.pg_receiver: files.append('pg_receiver_candidate.json')
+if a.clear_sink: files.append('sequence_clear_sink_candidate.json')
 data={f:json.loads((ROOT/'schematics/power'/f).read_text()) for f in files}
 parts=[]
 def add(ref,part,nets,source=None):
@@ -63,6 +65,11 @@ if a.pg_receiver:
   value=str(passive.get('value_ohm',passive.get('value_F')))
   add(ref,value+' value candidate; exact part pending',[passive['from'],passive['to']])
  add('C13','100nF local ceramic candidate; exact part pending',['LOGIC3V3','GND'])
+if a.clear_sink:
+ sink=data['sequence_clear_sink_candidate.json']
+ add('U14',sink['part_number'],[sink['pins'][str(i)] for i in range(1,6)],'sequence_clear_sink_candidate.json')
+ add('R14','100k input pullup; total +/-1% comparison, exact part pending',['LOGIC3V3','SEQUENCE_CLEAR_REQUEST'])
+ add('C14','100nF local ceramic candidate; exact part pending',['LOGIC3V3','GND'])
 ports={'LOGIC3V3':'upstream logic rail; power budget and independent supervision unfinished','GND':'common reference; physical return routing unfinished','RESET_N':'independent health-qualified clear input; low on stop/fault/invalid power; must not depend on button debounce/timer','RAW_RELEASED_CONDITIONED':'unfinished protected raw-input interface from BUTTON_RAW; not a direct wire','ENABLE_PERMISSION':'logic output only; physical default-off power stage unfinished'}
 if a.supervisor: ports['RESET_N']='U7 open-drain rail reset plus external stop/fault sinks; sink components, fanout and fail-state behavior unfinished; never push-pull drive'
 if a.en_driver:
@@ -75,6 +82,9 @@ if a.permission_gate:
 if a.pg_receiver:
  ports['MAIN_EFUSE_PG']='TPS259823 pin13; conditional analog receiver, open-wire fault coverage unfinished'
  ports['PG_CONDITIONED']='U13 pin4 output to unfinished startup sequencer; invalid during power transitions'
+if a.clear_sink:
+ ports['SEQUENCE_CLEAR_REQUEST']='active high U14 input; weak default asserted; actual sequencer driver and clear width unfinished'
+ ports['RESET_N']='U7 and U14 open-drain outputs; independent external stop/fault sinks and physical clear acknowledgement unfinished'
 report={'scope':__doc__,'parts':parts,'interfaces':ports,'source_sha256':{f:hashlib.sha256((ROOT/'schematics/power'/f).read_bytes()).hexdigest() for f in files},'part_count':len(parts),'pin_count':sum(len(x['pins']) for x in parts),'logical_composition_only':True,'electrical_qualification':False,'manufacturing_release':False}
 report['assembly_overrides'] = ['U8 pin4 routed through R7 to MAIN_EFUSE_EN; overrides direct output in individual driver candidate'] if a.en_clamp else []
 if a.clamp_cause: report['assembly_overrides'] += ['U9 RESET goes to RAIL_HEALTH_N instead of EN; U7 MR receives RAIL_HEALTH_N instead of LOGIC3V3; U11 level buffer and U10 reset follower drive EN']
@@ -106,6 +116,9 @@ if a.pg_receiver:
  assert refs['U12']['pins']['3']==refs['R11']['pins']['2']==refs['R12']['pins']['1']=='PG_DIVIDED'
  assert refs['U12']['pins']['5']==refs['U13']['pins']['5']=='LOGIC3V3'
  assert all(net!='RESET_N' for ref in ['U12','U13'] for net in refs[ref]['pins'].values())
+if a.clear_sink:
+ assert refs['U14']['pins']['4']==refs['U6']['pins']['1']==refs['U6']['pins']['13']=='RESET_N'
+ assert refs['U14']['pins']['2']==refs['R14']['pins']['2']=='SEQUENCE_CLEAR_REQUEST'
 (a.out/'assembly.json').write_text(json.dumps(report,indent=2)+'\n')
 with (a.out/'connections.csv').open('w',newline='') as f:
  w=csv.writer(f);w.writerow(['reference','part','pin','net'])
