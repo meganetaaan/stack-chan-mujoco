@@ -1,0 +1,24 @@
+{
+  "status": "component_specification_review_not_system_qualification",
+  "schematic_sha256": "13cf3fd9954d39aa198e57b1bb94ec56af7d49107c80a245acc5bd90ac8ea329",
+  "references": ["U33", "U34"],
+  "part_on_schematic": "MAX40200AUK+",
+  "package": "SOT23-5",
+  "sources": [
+    "https://www.analog.com/media/en/technical-documentation/data-sheets/max40200.pdf",
+    "https://ez.analog.com/power/a/documents/DO1659/what-is-the-max40200-maximum-current"
+  ],
+  "supply_operating_range_V": [1.5, 5.5],
+  "all_pin_absolute_max_V": 6,
+  "SOT23_continuous_current_absolute_max_A": 1.0,
+  "guaranteed_system_available_current_A": null,
+  "interpretation": "ORing after HV buck, not raw 3S protection. 1A absolute maximum is not a continuous design rating or servo supply budget.",
+  "unresolved": [
+    "PRE_5V and USB rail worst-case voltages including transients",
+    "Tab5 peak current and PCB thermal environment",
+    "Reverse leakage over applicable states and temperature",
+    "Parallel charging path D16/D17 and charger behavior",
+    "Internal part faults and external supply shutdown behavior"
+  ],
+  "USB_simultaneous_operation_qualified": false
+}
