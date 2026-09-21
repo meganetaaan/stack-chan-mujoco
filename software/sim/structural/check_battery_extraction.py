@@ -2,10 +2,10 @@
 import argparse,hashlib,json
 from pathlib import Path
 import cadquery as cq
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--tray',type=Path,default=Path('board/mechanical/prototype/rc_battery_tray_revA/tray.step'));a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
 placementpath=Path('validation/rc_battery_envelope_v1/report.json');r=json.loads(placementpath.read_text());dims=r['minimum_total_extension_orientation']['oriented_size_mm'];center=r['old_center_base_mm']
 base=Path('software/sim/mujoco/assets/r9_fast_turn_v1/cad')
-paths={'yaw_assembly':Path('board/mechanical/prototype/yaw_support_candidate/revA/yaw_support_candidate.step'),'new_tray':Path('board/mechanical/prototype/rc_battery_tray_revA/tray.step')}
+paths={'yaw_assembly':Path('board/mechanical/prototype/yaw_support_candidate/revA/yaw_support_candidate.step'),'new_tray':a.tray}
 for n in ('Tab5','dedicated_5V_converter','TTL_interface','left_yaw_motor_case','right_yaw_motor_case'):paths[n]=base/(n+'.step')
 paths['body_shroud']=Path('validation/yaw_tool_access_v1/body_shroud.step')
 shapes={n:cq.importers.importStep(str(path)).val() for n,path in paths.items()}
