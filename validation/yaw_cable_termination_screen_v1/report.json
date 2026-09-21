@@ -1,0 +1,58 @@
+{
+  "sources": {
+    "cable": "https://www.igus.co.uk/flexible-cable/news/cf98-plus-cf99-plus",
+    "motion": "https://www.igus.com/product/CF98_PLUS",
+    "terminal": "https://www.jst-mfg.com/product/pdf/eng/eEH.pdf"
+  },
+  "terminal": {
+    "part": "SEH-001T-P0.6",
+    "conductor_area_mm2": [
+      0.05,
+      0.33
+    ],
+    "AWG": [
+      30,
+      22
+    ],
+    "insulation_OD_mm": [
+      1,
+      1.9
+    ]
+  },
+  "candidates": [
+    {
+      "part": "CF98.PLUS.02.03INI",
+      "cores": 3,
+      "area_per_core_mm2": 0.25,
+      "jacket_OD_mm": 5,
+      "catalog_weight_g_m": 29,
+      "area_in_metric_terminal_range": true,
+      "individual_core_insulation_OD_mm": null,
+      "direct_crimp_qualified": false
+    },
+    {
+      "part": "CF98.PLUS.03.04INI",
+      "cores": 4,
+      "area_per_core_mm2": 0.34,
+      "area_in_metric_terminal_range": false,
+      "direct_crimp_qualified": false,
+      "reason": "Declared 0.34 mm2 exceeds listed 0.33 mm2; AWG22 is also listed, so resolve strand construction and nominal-size convention before declaring compatibility."
+    }
+  ],
+  "yaw_packaging_comparison": {
+    "cables_per_side": 5,
+    "diameter_each_mm": 5,
+    "total_circle_area_mm2": 98.17477042468103,
+    "area_equivalent_circle_diameter_mm": 11.180339887498949,
+    "single_row_width_without_spacing_mm": 25,
+    "interpretation": "Geometric comparison only; equal-area diameter is a lower bound, not a realizable packed bundle diameter or passage design."
+  },
+  "decision": "Prioritize three-core 0.25 mm2 candidate for routing comparison; no cable or direct crimp released.",
+  "remaining": [
+    "Individual core insulation diameter and strand/crimp compatibility",
+    "Current-temperature and resistance data at required length",
+    "Actual bending/torsion mode and applicable lifetime conditions",
+    "Clamps, breakout and route clearance at all joint limits"
+  ],
+  "manufacturing_release": false
+}
