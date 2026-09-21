@@ -197,8 +197,7 @@
   },
   "source_sha256": {
     "schematics/power/manual_rearm_revI/assembly.json": "21b8febbb24b2ada320acc8c1a07a306dde948ad486910cfc3e489ea7f0e300a",
-    "schematics/power/manual_rearm_resistors.json": "cc941a89b1fd50dee298f6ef08aade826fe16791676dfb2d1b0e98e3f2f3e794",
-    "schematics/power/local_enable_button_candidate.json": "c0a3346d7a63ac89de119b2ebd8cdd34f8e9afa44f81542b3e8a1a7d2408a323"
+    "schematics/power/manual_rearm_resistors_revI.json": "c21365918edd673ee4b393f595735a9b650afbfe38e49dba2693d72ea6b4f969"
   },
   "method": "Each external resistor treated as full rail to ground for conservative comparison, even if states are mutually exclusive or series paths double counted",
   "important_exception": "U11 VCC=EFUSE_INPUT_5V but High input comes from LOGIC3V3. Quiescent 4uA specification at rail inputs does not bound this condition. Published deltaICC at VCC-0.6V is not a guarantee at the actual level.",

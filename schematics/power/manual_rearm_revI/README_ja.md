@@ -17,3 +17,5 @@ python3 software/sim/circuits/package_manual_rearm_candidate.py --supervisor --e
 生成物は組立接続表であり基板配線済みデータではない。起動監視・外部停止・U11電源境界などの未完了項目は残る。
 
 組立ファイルに結び付けた接点電流比較は `validation/local_enable_button_revI_v1/`。BUTTON_RAWの全接続を照合し、旧比較と同じ16端点の数値を再現した。ボタンの使用温度と入力漏れ試験条件の制約を明記している。
+
+R15は後続の `manual_rearm_resistors_revI.json` でTNPW06033K00BYEA候補へ具体化済み。上記の未選定記述は接続統合時点の経緯であり、現行BOMはv4を参照する。回路適合・製造リリースの判断は変わらない。

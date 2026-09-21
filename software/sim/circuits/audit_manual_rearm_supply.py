@@ -9,7 +9,7 @@ if a.current:
 assembly,spec=[json.loads((root/x).read_text()) for x in paths]
 resistors=list(spec['resistors'])
 refs={x['reference']:x for x in assembly['parts']}
-if a.current and 'R15' in refs:
+if a.current and 'R15' in refs and not any(r['reference']=='R15' for r in resistors):
     local_path='schematics/power/local_enable_button_candidate.json';paths.append(local_path)
     local=json.loads((root/local_path).read_text())
     assert refs['R15']['pins']=={'1':'LOGIC3V3','2':'BUTTON_RAW'}

@@ -1,8 +1,10 @@
 """Attach manufacturer-coded resistor candidates to revH without changing connectivity."""
 import argparse,csv,hashlib,json,re
 from pathlib import Path
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--current',action='store_true');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
 root=Path(__file__).resolve().parents[3];spec_path=root/'schematics/power/manual_rearm_resistors.json';assembly_path=root/'schematics/power/manual_rearm_revH/assembly.json'
+if a.current:
+ current=json.loads((root/'schematics/power/manual_rearm_current.json').read_text());spec_path=root/current['resistor_selection'];assembly_path=root/current['assembly']
 d=json.loads(spec_path.read_text());assembly=json.loads(assembly_path.read_text());refs={x['reference']:x for x in assembly['parts']};rows=[]
 temp=max(abs(t-d['reference_temperature_C']) for t in d['comparison_temperature_C'])
 for r in d['resistors']:
