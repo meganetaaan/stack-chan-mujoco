@@ -15,3 +15,5 @@ python3 software/sim/circuits/package_manual_rearm_candidate.py --supervisor --e
 ```
 
 生成物は組立接続表であり基板配線済みデータではない。起動監視・外部停止・U11電源境界などの未完了項目は残る。
+
+組立ファイルに結び付けた接点電流比較は `validation/local_enable_button_revI_v1/`。BUTTON_RAWの全接続を照合し、旧比較と同じ16端点の数値を再現した。ボタンの使用温度と入力漏れ試験条件の制約を明記している。
