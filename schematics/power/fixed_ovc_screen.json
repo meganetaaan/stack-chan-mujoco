@@ -1,0 +1,22 @@
+{
+  "candidate": "TPS259472x, OVCSEL open",
+  "status": "rejected_for_6V_servo_rail",
+  "source": "https://www.ti.com/lit/ds/symlink/tps25947.pdf",
+  "source_revision": "SLVSFC9C May 2026",
+  "source_sections": ["6.3", "6.5"],
+  "servo_voltage_max_V": 6.0,
+  "normal_source_target_V": [4.75, 5.25],
+  "OVC_threshold_V": [5.25, 5.74, 6.2],
+  "clamping_output_at_10mA_V": [5.0, 5.68, 6.12],
+  "continuous_current_max_A": 5.5,
+  "current_at_TJ_max_C": 125,
+  "RON_max_at_3A_ohm": 0.045,
+  "alternative_OVCSEL_ground": {
+    "threshold_V": [3.65, 3.88, 4.1],
+    "clamping_output_at_10mA_V": [3.2, 3.82, 4.2],
+    "compatible_with_existing_5V_rail": false
+  },
+  "decision_basis": "The maximum clamp threshold and even the specified 10mA clamp output exceed 6V. Do not use nominal 5.7V as a maximum or extend the 10mA result to full load.",
+  "further_simulation_for_this_configuration": false,
+  "manufacturing_release": false
+}
