@@ -1,0 +1,10 @@
+{
+  "question": "Can both modules and the screened spacer/head reservations occupy the existing candidate locations?",
+  "criterion_overlap_mm3": 0.01,
+  "criterion_nominal_clearance_mm": 0.5,
+  "criteria_origin": "Engineering screening, not user specification; unchanged 0.5 mm mount-space allowance",
+  "placement": "Keep layout_v2 bottom component plane and board XY center. STEP long edge along robot X, component side +Z. This is a proposed robot transform.",
+  "envelope": "Union AABB of tolerance-expanded board XY, common STEP, four spacers and heads; component height max includes the taller common STEP",
+  "stop": "One placement, conservative envelopes. If collision occurs report it; do not move modules or reduce allowance to force a pass.",
+  "limits": ["No terminal blocks, wires, heat airflow, fastener shafts/nuts, base brackets, installation sweep or dynamic leg sweep", "Board XY edge tolerance included; component/height and assembly tolerances unknown", "Generic STEP does not certify 5V component placement", "Fixed assemblies only; not mounting strength or production release"]
+}
