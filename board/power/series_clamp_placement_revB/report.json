@@ -1,0 +1,61 @@
+{
+  "source_sha256": {
+    "board/power/placement_revA/power_placement.kicad_pcb": "1c6d1e931705d14b6aa896a2bb33157879a9d6d2d8dc88a2e4b6726dd889d9f3",
+    "validation/shunt_stability_comparison_v1/report.json": "2ed011544e1efc14b2949fa3bb4efa7ef2eb63164e2cf31a357f1df89237a1b7"
+  },
+  "parts": [
+    {
+      "reference": "R_SENSE_L1",
+      "center_mm": [
+        66.4,
+        62.5
+      ]
+    },
+    {
+      "reference": "R_SENSE_L2",
+      "center_mm": [
+        73.6,
+        62.5
+      ]
+    },
+    {
+      "reference": "R_SENSE_R1",
+      "center_mm": [
+        106.4,
+        62.5
+      ]
+    },
+    {
+      "reference": "R_SENSE_R2",
+      "center_mm": [
+        113.6,
+        62.5
+      ]
+    }
+  ],
+  "pad_dimensions_mm": {
+    "length": 1.8,
+    "width": 3.4,
+    "gap": 3.4
+  },
+  "interconnect_model": {
+    "rho20_ohm_m": 1.724e-08,
+    "alpha_per_K": 0.00393,
+    "temperature_C": 150,
+    "length_m": 0.002,
+    "width_m": 0.0034,
+    "copper_thickness_m": 3.5e-05,
+    "resistance_ohm": 0.00043778010084033616
+  },
+  "remaining_error_after_trace_only_V": 0.00257005838466807,
+  "trace_only_screen_pass": true,
+  "limits": [
+    "Uniform rectangular copper segment only; pad spreading terminal pickup solder contacts and etch tolerances excluded.",
+    "Copper parameters and thickness are comparison inputs, not manufacturing guarantees.",
+    "At temperature150C this is resistance calculation, not proof of acceptable board/component temperature.",
+    "Controller MOSFET connectors and most circuit not placed; outer stubs unconnected.",
+    "Two-resistor alternative; current revM protection design unchanged."
+  ],
+  "layout_qualified": false,
+  "manufacturing_release": false
+}
