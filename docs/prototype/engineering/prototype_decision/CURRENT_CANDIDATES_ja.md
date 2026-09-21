@@ -36,3 +36,5 @@ revJのPG受信部はrevIの単一受信部を置換する。抵抗はR15を含�
 EN停止回路: `integrated_enable_interface.json`へTPS259813L条件を定義。旧TPS3808停止回路を変換器出力で無保護給電する案は、3S貫通故障12.6 Vが絶対最大7 Vを超えるため不適合。`enable_supply_fault_domain_v1`参照。
 
 電源接続統合の次候補は`servo_power_rearm_integration_revB`。停止監視を専用TPS70933のSTOP_AUX3V3へ移した71部品・247端子。サーボ変換器の出力に停止IC電源を依存させない。電流・熱・電源順序とEN駆動は未確認。
+
+電源統合revCでSTOP_AUX3V3へ30.1 kΩ最低負荷を追加。既存電圧区間・抵抗総合±1%仮定で最低105.49 µAを確保し、TPS709の負荷変動規定下限100 µAへ対応する。72部品・249端子。総電流・熱・電源遷移は未確認。
