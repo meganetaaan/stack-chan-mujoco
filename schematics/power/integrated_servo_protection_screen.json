@@ -21,5 +21,19 @@
     "Current threshold and blanking timer",
     "Output capacitance and stored/regenerative energy",
     "Board assembly and thermal conditions"
-  ]
+  ],
+  "fault_interface_review": {
+    "source_pages": [
+      20,
+      21,
+      27,
+      28
+    ],
+    "UV_OV_fault_latched_in_summary": false,
+    "UV_OV_FLT_status_in_summary": "H (not asserted)",
+    "OV_auto_recovery_explicit_variant": "TPS259814x in sections 7.3.2 and Figure 7-3",
+    "candidate_813_variant_caveat": "Comparison table includes 813, but OVLO/PG descriptive sections explicitly name 814; do not silently extend all behavior",
+    "FLT_only_manual_rearm_sufficient": false,
+    "design_requirement": "Independent voltage-fault memory or validated PG loss capture qualified by startup/run state; do not reset permission from startup PG-low unconditionally"
+  }
 }
