@@ -18,6 +18,7 @@ int power_g030_gpio_init(p_gpio_read r,p_gpio_write w) {
         if((r(p,P_MODER)&fields(pins[p]))!=fields(pins[p])) return 0;
     /* Safe data before any output mode: EN=0, CLEAR=1, qualifier=0. */
     w(0,P_BSRR,(1u<<11)|((1u<<8|1u<<12)<<16));
+    if((r(0,P_ODR)&outputs)!=(1u<<11)) return 0;
     for(unsigned p=0;p<3;p++) {
         update(r,w,p,P_PUPDR,fields(pins[p]),0);
         update(r,w,p,P_OSPEEDR,fields(pins[p]),0);
