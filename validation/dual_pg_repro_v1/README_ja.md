@@ -1,0 +1,12 @@
+# 左右PG受信案の再現性修正
+
+revB追加時に生成器が常にプルアップを送信側へ配置するようになり、
+revAの記載コマンドでもrevBを生成する問題があった。
+--source-pullupsでrevBを明示選択し、指定なしはrevAを生成するよう修正した。
+
+両方を新規出力先へ生成し、保存済みconnectivity.jsonの全構造とpins.csvの全行が
+それぞれ一致することを確認。CSVの改行形式は比較から除外した。
+部品仕様や回路の電気的成立を確認したものではない。
+
+revBのinterconnectsは導通する配線である。pins.csvだけではその接続を表現できないので、
+後続の回路図・ネットリスト化ではconnectivity.jsonのinterconnectsも読み込むこと。

@@ -13,6 +13,6 @@ eFuse端子とプルアップの間の断線、High固定、GND断線、入力�
 時定数と電源遷移の適合は未評価。PCB実配線の検査前であり、全断線対応とは扱わない。
 
 ```sh
-.venv-engineering/bin/python software/sim/circuits/export_dual_pg_receiver.py --out /tmp/dual-pg-revB
+.venv-engineering/bin/python software/sim/circuits/export_dual_pg_receiver.py --source-pullups --out /tmp/dual-pg-revB
 .venv-engineering/bin/python software/sim/circuits/check_pg_trace_open.py --out /tmp/pg-open
 ```
