@@ -1,11 +1,11 @@
 {
   "part_number": "SN74HCS74PW",
-  "status": "pin_level_evaluation_candidate_not_released",
+  "status": "part_candidate_direct_single_ff_wiring_rejected",
   "quantity": 1,
   "pins": {
     "1_1CLR": "RESET_N; supervisor/fault/stop logic TBD",
-    "2_1D": "LOGIC3V3",
-    "3_1CLK": "debounced PRESS; circuit TBD",
+    "2_1D": "TBD qualified rearm state; direct LOGIC3V3 implementation rejected",
+    "3_1CLK": "TBD; direct delayed PRESS edge alone is insufficient",
     "4_1PRE": "LOGIC3V3",
     "5_1Q": "ENABLE_PERMISSION; physical default-off output stage TBD",
     "6_1Qn": "NC",
@@ -19,5 +19,6 @@
     "14_VCC": "upstream monitored LOGIC3V3"
   },
   "evidence": "validation/manual_rearm_part_review_v1/README.md",
-  "manufacturing_release": false
+  "manufacturing_release": false,
+  "blocking_evidence": "validation/manual_rearm_delayed_press_v1/README.md"
 }

@@ -1,5 +1,7 @@
 # 手動再許可ラッチの実部品候補
 
+**更新：下記のD=High直接接続はデバウンス遅延反例で不合格。`../manual_rearm_delayed_press_v1/README.md`を参照。部品検討の履歴として保存する。**
+
 SN74HCS74PWの片側Dフリップフロップを評価候補にする。[TI資料](https://www.ti.com/lit/ds/symlink/sn74hcs74.pdf)、SCLS782D、§5/6/8。給電範囲2–6 V、正エッジでDを取り込み、CLRは非同期LowでQを解除する。Schmitt入力はゆっくりした入力に対応するが、機械接点のバウンス除去そのものではない。
 
 ## 論理接続候補

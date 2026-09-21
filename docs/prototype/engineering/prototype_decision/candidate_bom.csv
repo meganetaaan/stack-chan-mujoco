@@ -25,5 +25,5 @@ TPS3700DDCR brake detector,2 additional to battery monitor,1,evaluation_candidat
 TNPW0603127KBYEA and TNPW060310K0BYEA,2 each,1 each,evaluation_candidate,Derived order codes; 0.1 percent 10ppm divider; board leakage actual temperature and ordering confirmation pending,validation/brake_divider_parts_v1/README.md
 TPS70933DBVR sensor supply,2 additional to upstream AUX regulator,1,evaluation_candidate,Dedicated sensor rails fed upstream of main disconnect; capacitors validity monitor and default-off isolation pending,schematics/power/brake_sensor_supply_candidate.json
 TPS259823ONRGE main eFuse,rail count TBD,1,evaluation_candidate,Forward overcurrent candidate only; reverse isolation manual rearm and current coordination pending,schematics/power/main_efuse_candidate.json
-SN74HCS74PW permission latch,1,1,evaluation_candidate,POR asynchronous reset debounce and default-off EN stage pending,schematics/power/manual_rearm_latch_candidate.json
+SN74HCS74PW permission latch,1,1,evaluation_candidate,Direct single-FF wiring rejected; healthy release qualification POR debounce and default-off EN stage pending,schematics/power/manual_rearm_latch_candidate.json
 MAX6816EUS+T enable debounce,1,1,evaluation_candidate,Active-low output needs qualified inverter; UVLO transparent; separate stop path,schematics/power/manual_button_candidate.json
