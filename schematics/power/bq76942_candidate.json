@@ -159,7 +159,7 @@
     "balancing": "disabled initial candidate; external balance charging retained; explicit config bits pending"
   },
   "cell_input_filter_candidate": {
-    "status": "parts_candidate_not_qualified_for_fault_or_transient",
+    "status": "hold_single_capacitor_short_leaves_unisolated_cell_discharge",
     "resistor": {
       "part": "TNPW060322R1BEEA",
       "resistance_ohm": 22.1,
@@ -234,6 +234,7 @@
       "Board area for eight 1206 capacitors not allocated",
       "DC bias and complete operating envelope not qualified from typical graphs",
       "Harness connector pin order unverified"
-    ]
+    ],
+    "fault_review": "validation/bq76942_filter_short_v1/report.json"
   }
 }
