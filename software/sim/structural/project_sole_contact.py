@@ -5,13 +5,16 @@ import meshio,numpy as np
 from scipy.sparse import csr_matrix,save_npz
 from skfem.io import from_meshio
 
-def project(boss,spacer):
+def project(boss,spacer, sample_barycentric=None):
     bm=boss.p.T;sm=spacer.p.T
     master=boss.facets[:,np.r_[boss.boundaries['spacer_contact'],boss.boundaries['contact_extension']]].T
     slave=spacer.facets[:,np.r_[spacer.boundaries['boss_contact'],spacer.boundaries['contact_extension']]].T
     assert np.allclose(bm[master,2],-19,atol=1e-8)
     mt=bm[master,:2];mat=np.stack([mt[:,1]-mt[:,0],mt[:,2]-mt[:,0]],axis=2);inv=np.linalg.inv(mat)
     qweights=np.array([[2/3,1/6,1/6],[1/6,2/3,1/6],[1/6,1/6,2/3]])
+    if sample_barycentric is not None:
+        qweights=np.asarray(sample_barycentric,dtype=float)
+        if qweights.ndim!=2 or qweights.shape[1]!=3 or np.any(qweights<0) or not np.allclose(qweights.sum(axis=1),1):raise ValueError("Invalid barycentric samples")
     rows=[];cols=[];vals=[];gaps=[];areas=[];positions=[];err=[];mom=[];offset=3*len(bm)
     for tri in slave:
         x=sm[tri];delta=x[1:,:2]-x[0,:2];area=abs(np.linalg.det(delta))/2
@@ -24,7 +27,7 @@ def project(boss,spacer):
             row=len(gaps)
             for n,v in zip(master[j],w):rows.append(row);cols.append(3*int(n)+2);vals.append(float(v))
             for n,v in zip(tri,sw):rows.append(row);cols.append(offset+3*int(n)+2);vals.append(float(-v))
-            gaps.append(max(0,gap));areas.append(area/3);positions.append(q);err.append(max(abs(w.sum()-1),np.max(abs(target[:2]-q[:2]))));mom.append(np.linalg.norm(np.cross(target-q,[0,0,1])))
+            gaps.append(max(0,gap));areas.append(area/len(qweights));positions.append(q);err.append(max(abs(w.sum()-1),np.max(abs(target[:2]-q[:2]))));mom.append(np.linalg.norm(np.cross(target-q,[0,0,1])))
     B=csr_matrix((vals,(rows,cols)),shape=(len(gaps),3*(len(bm)+len(sm))))
     r={'quadrature_points':len(gaps),'projected_area_mm2':float(sum(areas)),'initial_gap_min_mm':float(min(gaps)),'initial_gap_max_mm':float(max(gaps)),'positive_gap_points':int(np.sum(np.array(gaps)>1e-8)),'maximum_partition_or_xy_error':float(max(err)),'maximum_unit_force_moment_imbalance_mm':float(max(mom)),'maximum_unit_force_imbalance':float(abs(np.asarray(B.sum(axis=1))).max()),'scope':'Three points per slave triangle, projected area and initial vertical normals; no finite sliding or contact solve'}
     assert max(err)<1e-8 and max(mom)<1e-8
