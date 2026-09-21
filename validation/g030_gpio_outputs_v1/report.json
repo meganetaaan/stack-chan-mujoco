@@ -1,0 +1,16 @@
+{
+  "request_initial_latch_combinations": 2048,
+  "invalid_requests_force_clear": true,
+  "other_pins_preserved": true,
+  "single_BSRR_update": true,
+  "failed_write_returns_failure_and_attempts_clear": true,
+  "host_arm_compile_pass": true,
+  "hardware_verified": false,
+  "limits": [
+    "ODR is an output latch, not a physical pin observation",
+    "One BSRR write does not guarantee zero pin skew",
+    "Repeated write failure requires independent hardware cutoff",
+    "Caller must remember failures; no automatic retry to enable",
+    "Timer and MMIO adapter unimplemented"
+  ]
+}
