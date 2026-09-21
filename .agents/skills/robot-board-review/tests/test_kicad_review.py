@@ -34,6 +34,7 @@ class ReviewTests(unittest.TestCase):
         self.fail_kind = None
         self.timeout_kind = None
         self.mutate = False
+        self.dependency_mutate_path = None
 
     def fake_run(self, command, **kwargs):
         self.calls.append(command)
@@ -57,6 +58,8 @@ class ReviewTests(unittest.TestCase):
             report.write_text("{}", encoding="utf-8")
         if self.mutate:
             Path(command[-1]).write_text("changed", encoding="utf-8")
+        if self.dependency_mutate_path is not None:
+            self.dependency_mutate_path.write_text("changed", encoding="utf-8")
         code = 3 if command[1] == self.fail_kind else self.native_exit
         return subprocess.CompletedProcess(command, code, "mock stdout", "mock stderr")
 
@@ -84,13 +87,33 @@ class ReviewTests(unittest.TestCase):
 
     def test_missing_cli_is_not_success(self):
         with patch.object(review.shutil, "which", return_value=None), redirect_stderr(io.StringIO()):
-            self.assertEqual(review.main(["--pcb", str(self.pcb)]), 2)
+            self.assertEqual(review.main([
+                "--schematic", str(self.sch), "--pcb", str(self.pcb),
+                "--output-dir", str(self.out),
+            ]), 2)
+        summary = self.summaries()[0]
+        self.assertEqual(summary["exit_code"], 2)
+        self.assertIn("preflight_error", summary)
+        self.assertEqual(
+            [check["status"] for check in summary["checks"]],
+            ["NOT_CHECKED", "NOT_CHECKED"],
+        )
+        for check in summary["checks"]:
+            log = Path(check["log"])
+            self.assertTrue(log.is_file())
+            self.assertIn("NOT_CHECKED", log.read_text(encoding="utf-8"))
+        self.assertTrue((next(self.out.glob("*/preflight.log"))).is_file())
 
     def test_unsupported_cli_is_not_success(self):
         with patch.object(review.shutil, "which", return_value="/mock/kicad-cli"), \
              patch.object(review.subprocess, "run", return_value=subprocess.CompletedProcess([], 0, "9.0.0", "")), \
              redirect_stderr(io.StringIO()):
-            self.assertEqual(review.main(["--pcb", str(self.pcb)]), 2)
+            self.assertEqual(review.main([
+                "--pcb", str(self.pcb), "--output-dir", str(self.out),
+            ]), 2)
+        summary = self.summaries()[0]
+        self.assertEqual(summary["checks"][0]["status"], "NOT_CHECKED")
+        self.assertIn("Unsupported KiCad", summary["checks"][0]["error"])
 
     def test_both_checks_include_warnings_exclusions_and_do_not_save_or_infer_parity(self):
         self.assertEqual(self.invoke("--schematic", str(self.sch), "--pcb", str(self.pcb)), 0)
@@ -151,7 +174,7 @@ class ReviewTests(unittest.TestCase):
         self.refill = False
         self.assertEqual(self.invoke("--pcb", str(self.pcb)), 2)
         self.assertEqual(self.invoke("--pcb", str(self.pcb), "--zones-prefilled"), 0)
-        check = self.summaries()[0]["checks"][0]
+        check = self.summaries()[-1]["checks"][0]
         self.assertEqual(check["zones"], "prefilled_by_caller")
         self.assertNotIn("--refill-zones", check["command"])
 
@@ -167,6 +190,37 @@ class ReviewTests(unittest.TestCase):
     def test_input_change_is_not_success(self):
         self.mutate = True
         self.assertEqual(self.invoke("--pcb", str(self.pcb)), 2)
+
+    def test_hierarchical_and_rule_dependencies_are_snapshotted(self):
+        child = self.root / "child.kicad_sch"
+        project = self.sch.with_suffix(".kicad_pro")
+        rules = self.sch.with_suffix(".kicad_dru")
+        self.sch.write_text('(property "Sheetfile" "child.kicad_sch")', encoding="utf-8")
+        child.write_text("child", encoding="utf-8")
+        project.write_text("project", encoding="utf-8")
+        rules.write_text("rules", encoding="utf-8")
+
+        self.assertEqual(self.invoke("--schematic", str(self.sch)), 0)
+        check = self.summaries()[0]["checks"][0]
+        expected = {str(path.resolve()) for path in (self.sch, child, project, rules)}
+        self.assertEqual(set(check["dependencies"]), expected)
+        self.assertEqual(set(check["dependency_sha256"]), expected)
+
+    def test_change_to_any_hierarchical_dependency_is_not_success(self):
+        child = self.root / "child.kicad_sch"
+        project = self.sch.with_suffix(".kicad_pro")
+        rules = self.sch.with_suffix(".kicad_dru")
+        self.sch.write_text('(property "Sheetfile" "child.kicad_sch")', encoding="utf-8")
+        child.write_text("child", encoding="utf-8")
+        project.write_text("project", encoding="utf-8")
+        rules.write_text("rules", encoding="utf-8")
+
+        for dependency in (child, project, rules):
+            with self.subTest(dependency=dependency.name):
+                self.dependency_mutate_path = dependency
+                self.assertEqual(self.invoke("--schematic", str(self.sch)), 2)
+                check = self.summaries()[-1]["checks"][0]
+                self.assertIn("Review dependency", check["error"])
 
 
 if __name__ == "__main__":
