@@ -1,10 +1,11 @@
 {
   "source_sha256": {
     "schematics/power/battery_protection_integration_candidate_v1/assembly.json": "e407b8eca4951c07c2fb3a3edd96203772e83c46a59e7ddca393416ab2ab7c4e",
-    "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json": "ae0e95e3e893f5ee0d438a0a508cf269cf967984d22b3f6dedecb0916e6c577d"
+    "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json": "ae0e95e3e893f5ee0d438a0a508cf269cf967984d22b3f6dedecb0916e6c577d",
+    "schematics/power/logic_predischarge_inhibit_candidate.json": "01c3f3adf65ec1edfac83e04b40a3176ce22d50080907501d62cac375829e5e7"
   },
-  "parts": 196,
-  "populated_pin_connections": 564,
+  "parts": 198,
+  "populated_pin_connections": 569,
   "explicit_trace_count": 4,
   "connection_checks": {
     "no_explicit_copper_short_across_shunt": true,
@@ -15,6 +16,7 @@
     "bq_reference_separate_from_system_reference": true
   },
   "check_scope": "Explicit net naming/copper only; no component conduction, leakage, transient, ground offset, layout or fault proof",
+  "logic_inhibit_driver_present": false,
   "unresolved_pins": {
     "BAT__U_CELL_PROTECT": [
       22,
@@ -48,7 +50,7 @@
     },
     {
       "issue": 21,
-      "gap": "BQ local controller on BQ_CTRL3V3/CELL_B_MINUS and qualified cross-domain interface to system sequencer"
+      "gap": "BQ local controller and qualified cross-domain LOGIC_START_ALLOW driver independent of the disabled system logic supply"
     },
     {
       "issue": 24,

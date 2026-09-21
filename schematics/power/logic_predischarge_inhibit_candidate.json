@@ -1,0 +1,29 @@
+{
+  "status": "default_off_logic_branch_candidate_driver_not_implemented",
+  "source": "https://www.ti.com/lit/ds/symlink/tps2660.pdf",
+  "source_revision": "SLVSDG2G December 2019",
+  "source_sections": ["7.5", "9.3.5.7"],
+  "target_reference": "SYS__U_LOGIC_PROTECT",
+  "target_pin": "14",
+  "net": "SYS__LOGIC_SHDN",
+  "reference_ground": "PACK_RETURN",
+  "ground_basis": "7.5 states voltages referenced to GND unless noted; SHDN is not a UVLO/OVP divider return",
+  "pulldown": {"part": "TNPW060310K0BEEA", "ohm": 10000},
+  "series": {"part": "TNPW06031K00BEEA", "ohm": 1000},
+  "control_port": "SYS__LOGIC_START_ALLOW",
+  "control_driver": null,
+  "requirements": [
+    "Independent of SYS__LOGIC3V3: its downstream sequencer cannot enable its own supply",
+    "Translate BQ-local permission to PACK_RETURN domain without shunt bypass or unpowered injection",
+    "Default low or high impedance until predischarge and main path confirmed",
+    "Do not interpret SHDN alone as main battery protection or emergency motor cutoff"
+  ],
+  "datasheet_screen_values": {
+    "SHDN_sink_requirement_A_at_0_4V": 0.00001,
+    "application_enable_min_V": 1.0,
+    "Iq_on_A_typ_at24V": 0.0003,
+    "Iq_off_A_typ_at24V": 0.00002,
+    "Iq_off_A_max_at24V": 0.000033
+  },
+  "manufacturing_release": false
+}

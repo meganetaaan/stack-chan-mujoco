@@ -2,13 +2,17 @@
   "status": "partial_system_connection_candidate",
   "source_sha256": {
     "schematics/power/battery_protection_integration_candidate_v1/assembly.json": "e407b8eca4951c07c2fb3a3edd96203772e83c46a59e7ddca393416ab2ab7c4e",
-    "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json": "ae0e95e3e893f5ee0d438a0a508cf269cf967984d22b3f6dedecb0916e6c577d"
+    "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json": "ae0e95e3e893f5ee0d438a0a508cf269cf967984d22b3f6dedecb0916e6c577d",
+    "schematics/power/logic_predischarge_inhibit_candidate.json": "01c3f3adf65ec1edfac83e04b40a3176ce22d50080907501d62cac375829e5e7"
   },
   "bindings_SYS_to_BAT": {
     "GND": "PACK_RETURN",
     "BATTERY_RAW": "PACK_POS_PROTECTED",
     "DRIVE_BATTERY_PROTECTED": "PACK_POS_PROTECTED"
   },
+  "system_overrides": [
+    "SYS__U_LOGIC_PROTECT pin14: floating to SYS__LOGIC_SHDN; default-low network added"
+  ],
   "connectivity_authority": "parts[].pins and interconnects only; nested metadata is inherited source-local context",
   "parts": [
     {
@@ -2263,7 +2267,7 @@
         "11": null,
         "12": "SYS__LOGIC_OVP",
         "13": null,
-        "14": null,
+        "14": "SYS__LOGIC_SHDN",
         "15": "SYS__LOGIC_PROTECT_RTN",
         "16": null,
         "17": "PACK_RETURN",
@@ -2815,6 +2819,28 @@
       },
       "source_reference": "RIGHT_R_REG_EN_SER",
       "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R_LOGIC_SHDN_PD",
+      "part": "TNPW060310K0BEEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "SYS__LOGIC_SHDN",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "PD",
+      "source_assembly": "schematics/power/logic_predischarge_inhibit_candidate.json"
+    },
+    {
+      "reference": "SYS__R_LOGIC_SHDN_SER",
+      "part": "TNPW06031K00BEEA",
+      "value_ohm": 1000,
+      "pins": {
+        "1": "SYS__LOGIC_START_ALLOW",
+        "2": "SYS__LOGIC_SHDN"
+      },
+      "source_reference": "SER",
+      "source_assembly": "schematics/power/logic_predischarge_inhibit_candidate.json"
     }
   ],
   "interconnects": [
@@ -2858,7 +2884,7 @@
     },
     {
       "issue": 21,
-      "gap": "BQ local controller on BQ_CTRL3V3/CELL_B_MINUS and qualified cross-domain interface to system sequencer"
+      "gap": "BQ local controller and qualified cross-domain LOGIC_START_ALLOW driver independent of the disabled system logic supply"
     },
     {
       "issue": 24,

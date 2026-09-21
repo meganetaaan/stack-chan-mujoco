@@ -1,0 +1,38 @@
+{
+  "source_sha256": {
+    "schematics/power/logic_predischarge_inhibit_candidate.json": "01c3f3adf65ec1edfac83e04b40a3176ce22d50080907501d62cac375829e5e7",
+    "schematics/power/logic_supply_candidate.json": "0874d185d9674afac612b6a82035f5767dfcd4a5804aa7628dedeefc2b746f15",
+    "schematics/power/system_power_integration_candidate_v1/assembly.json": "cad0bf1e43d373ab97738bfdb902f606d0da8261945bf6d528321fb25ca95ce1"
+  },
+  "resistor_total_variation_allocation": 0.01,
+  "pull_down_sink_at_0_4V_min_A": 3.9603960396039605e-05,
+  "datasheet_sink_requirement_A_at_0_4V": 1e-05,
+  "high_drive_min_assumed_V": 3.0,
+  "high_SHDN_min_ignoring_internal_pullup_V": 2.722273143904675,
+  "high_drive_load_at_3_6V_max_ignoring_internal_pullup_A": 0.00033057851239669424,
+  "host_not_selected_and_partial_power_not_qualified": true,
+  "rejected_combination": {
+    "classification": "conditional incompatibility with existing design load budget, not measured behavior",
+    "logic_continuous_design_target_A": 0.02,
+    "illustrative_precharge_R_ohm": 100,
+    "candidate_stop_delta_V": 0.5,
+    "logic_alone_steady_voltage_drop_V": 2.0,
+    "strict_R_upper_bound_ohm_logic_alone": 25.0,
+    "steady_load_limit_A_for_100ohm": 0.005,
+    "claim": "Cannot accept 100ohm while allowing this load during precharge; equality gives only asymptotic arrival"
+  },
+  "still_on_or_unknown_during_predischarge": [
+    "STOP_AUX3V3 branch including LDO, monitors, pullups and charge current",
+    "TPS26601 input quiescent current, dividers and 100k input bleed",
+    "Both disabled Pololu regulators: typical shutdown current is not a guaranteed maximum",
+    "Pololu input capacitors, eFuse input/output leakage and downstream backfeed",
+    "BQ PACK/LD sensing and load-detection state; PDSG hardware",
+    "Unimplemented Tab5 input branch, inhibit and USB/backfeed policy",
+    "Unimplemented cross-domain driver loading and all startup capacitor currents"
+  ],
+  "logic_branch_off_leakage_guaranteed_A": null,
+  "whole_predischarge_load_bound_A": null,
+  "precharge_R_selected_ohm": null,
+  "electrical_qualification": false,
+  "manufacturing_release": false
+}

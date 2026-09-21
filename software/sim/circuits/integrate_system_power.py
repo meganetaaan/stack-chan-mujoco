@@ -42,6 +42,21 @@ def compose():
             trace.update(name=domain + '__' + original['name'],
                          **{'from': net(original['from']), 'to': net(original['to'])})
             traces.append(trace)
+    inhibit_path = 'schematics/power/logic_predischarge_inhibit_candidate.json'
+    raw = (ROOT / inhibit_path).read_bytes()
+    inhibit = json.loads(raw)
+    provenance[inhibit_path] = hashlib.sha256(raw).hexdigest()
+    target = next(p for p in parts if p['reference'] == inhibit['target_reference'])
+    assert target['pins'][inhibit['target_pin']] is None
+    target['pins'][inhibit['target_pin']] = inhibit['net']
+    for suffix, spec, ends in [
+        ('PD', inhibit['pulldown'], [inhibit['net'], inhibit['reference_ground']]),
+        ('SER', inhibit['series'], [inhibit['control_port'], inhibit['net']]),
+    ]:
+        parts.append({'reference': 'SYS__R_LOGIC_SHDN_' + suffix,
+                      'part': spec['part'], 'value_ohm': spec['ohm'],
+                      'pins': dict(zip(['1', '2'], ends)),
+                      'source_reference': suffix, 'source_assembly': inhibit_path})
     refs = [part['reference'] for part in parts]
     assert len(refs) == len(set(refs))
     byref = {part['reference']: part for part in parts}
@@ -74,7 +89,7 @@ def compose():
     required_design = [
         {'issue': 21, 'gap': 'Main battery connector, fuse/disconnect/reverse protection before CELL_POS_FUSED'},
         {'issue': 21, 'gap': 'Tab5 protected input branch and independent default-off inhibit; Tab5 is absent from this netlist'},
-        {'issue': 21, 'gap': 'BQ local controller on BQ_CTRL3V3/CELL_B_MINUS and qualified cross-domain interface to system sequencer'},
+        {'issue': 21, 'gap': 'BQ local controller and qualified cross-domain LOGIC_START_ALLOW driver independent of the disabled system logic supply'},
         {'issue': 24, 'gap': 'External PDSG switch/resistor, independent abort and TS2 wake/PCHG disposition'},
         {'issue': 22, 'gap': 'Predischarge budget includes automatic-start logic/stop branches, both disabled regulators, capacitors and Tab5 leakage'},
         {'issue': 23, 'gap': 'Complete startup/reset/brownout sequence with raw comparator outputs qualified before motor enable'},
@@ -84,6 +99,7 @@ def compose():
     assembly = {
         'status': 'partial_system_connection_candidate', 'source_sha256': provenance,
         'bindings_SYS_to_BAT': BINDINGS,
+        'system_overrides': ['SYS__U_LOGIC_PROTECT pin14: floating to SYS__LOGIC_SHDN; default-low network added'],
         'connectivity_authority': 'parts[].pins and interconnects only; nested metadata is inherited source-local context',
         'parts': parts, 'interconnects': traces,
         'unimplemented_design': required_design,
@@ -94,6 +110,7 @@ def compose():
         'populated_pin_connections': sum(v is not None for p in parts for v in p['pins'].values()),
         'explicit_trace_count': len(traces), 'connection_checks': checks,
         'check_scope': 'Explicit net naming/copper only; no component conduction, leakage, transient, ground offset, layout or fault proof',
+        'logic_inhibit_driver_present': False,
         'unresolved_pins': unresolved, 'unselected_part_references': missing_parts,
         'tab5_branch_present': False, 'controller_present': False,
         'predischarge_hardware_present': False,
