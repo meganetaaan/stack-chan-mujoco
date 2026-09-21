@@ -1,0 +1,41 @@
+{
+  "status": "cell_comparison_only_not_selected_pack",
+  "manufacturer": "Molicel",
+  "model": "INR-18650-P30B",
+  "configuration_comparison": "1S1P, servo supply only; Tab5 supply unresolved",
+  "source_url": "https://www.molicel.com/wp-content/uploads/Product-Data-Sheet-of-INR-18650-P30B-80111-1.pdf",
+  "source_sha256": "9d5dd80c32f2dc7306396e9f3bf2a752fe8ce55a9a78c003a2abd461c9535c7a",
+  "version": "1.0",
+  "reviewed_date": "2026-09-22",
+  "capacity_mAh": {
+    "typical": 3000,
+    "minimum": 2900
+  },
+  "voltage_V": {
+    "nominal": 3.6,
+    "charge": 4.2,
+    "discharge_endpoint": 2.5
+  },
+  "continuous_discharge_A": 30,
+  "continuous_discharge_condition": "80 C cutoff; not unrestricted robot continuous current",
+  "discharge_ambient_range_C": [
+    -40,
+    60
+  ],
+  "DC_impedance_typical_ohm": 0.017,
+  "DC_impedance_condition": "50% SOC, not maximum or full-life bound",
+  "dimensions_max_mm": {
+    "diameter": 18.6,
+    "height": 65.2
+  },
+  "mass_max_g": 47,
+  "curve_conditions": "23 C; charge CC/CV 3A/4.2V to 60mA; discharge constant current to 2.5V",
+  "source_caveat": "Reference information, not performance guarantee/warranty; application-specific information requires supplier confirmation",
+  "unresolved": [
+    "Protected pack/contacts/connector/charger not selected",
+    "Available capacity above loaded servo voltage requirement not guaranteed",
+    "Battery thermal/short circuit/regen acceptance and source disconnect not designed",
+    "Mount and Tab5 supply not designed"
+  ],
+  "manufacturing_release": false
+}
