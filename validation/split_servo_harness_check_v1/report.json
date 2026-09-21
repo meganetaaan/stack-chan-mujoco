@@ -1,0 +1,33 @@
+{
+  "connection_table_pass": true,
+  "errors": [],
+  "fault_injection_errors": {
+    "left_branch_on_right_rail": [
+      "wrong net: ('left_hip_yaw', 2)"
+    ],
+    "power_data_swap": [
+      "wrong net: ('left_hip_yaw', 2)",
+      "wrong net: ('left_hip_yaw', 3)"
+    ],
+    "missing_return": [
+      "terminal inventory mismatch"
+    ],
+    "duplicate_terminal": [
+      "duplicate terminal: ('left_hip_yaw', 1)"
+    ],
+    "wrong_servo_id": [
+      "servo ID mismatch: left_hip_yaw"
+    ],
+    "shared_connector_name": [
+      "connector shared by joints: J_left_hip_yaw",
+      "connector inventory mismatch"
+    ]
+  },
+  "all_injected_faults_detected": true,
+  "source_hashes": {
+    "schematics/power/split_servo_harness_revA/connections.csv": "cd8e12692c32a65acdee115f6e3938b9ae8ebc9b26a3758f077717c8040505a0",
+    "board/mechanical/prototype/joints.json": "157f531e2821249cbab85b17b0ed5674b27239a4708c1f27c49aa937d1b1c392"
+  },
+  "physical_wiring_verified": false,
+  "electrical_qualification": false
+}

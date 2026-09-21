@@ -30,3 +30,6 @@ DATAは左右別区間としたが、ホスト接続・片側無給電時の逆�
 CAD上の可動範囲と曲げ半径、組立図の確認。現状はいずれも完了扱いにしない。
 
 再現：`python3 software/sim/circuits/build_split_servo_harness.py --out NEW_DIRECTORY`
+
+接続表の独立検査は`validation/split_servo_harness_check_v1/`。
+36端子を照合し6種類の誤割当を検出した。実配線の導通試験とは別の証跡である。
