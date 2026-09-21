@@ -14,6 +14,7 @@ p.add_argument('--schematic', type=Path, required=True)
 p.add_argument('--out', type=Path, required=True)
 p.add_argument('--assembly')
 p.add_argument('--bom')
+p.add_argument('--allow-unselected',action='store_true',help='Compare explicit UNSELECTED values; not selection completion')
 a = p.parse_args()
 current_path = root / 'schematics/power/manual_rearm_current.json'
 current = json.loads(current_path.read_text())
@@ -23,8 +24,11 @@ assembly = json.loads(assembly_path.read_text())
 aliases = net_aliases(assembly)
 expected = {(part['reference'], pin): aliases.get(net, net) for part in assembly['parts']
             for pin, net in part['pins'].items()}
-values = {ref: row['part_number'] for row in csv.DictReader(bom_path.open())
-          for ref in row['references'].split()}
+values = {ref: row.get('part_number',row.get('part')) for row in csv.DictReader(bom_path.open())
+          for ref in row.get('references',row.get('reference','')).split()}
+unselected = sorted(ref for ref,value in values.items() if not value)
+assert not unselected or a.allow_unselected, ('Missing selected parts',unselected)
+values = {ref:value or 'UNSELECTED' for ref,value in values.items()}
 xml = ET.parse(a.netlist).getroot()
 actual_values = {c.attrib['ref']: c.findtext('value')
                  for c in xml.findall('./components/comp')}
@@ -54,6 +58,8 @@ report = {
     'native_readback_connectivity_matches': True,
     'components': len(values), 'connected_pins': connected, 'declared_nc_pins': nc,
     'electrical_qualification': False,
+    'unselected_references': unselected,
+    'all_part_numbers_assigned': not unselected,
     'limitations': ['Generic passive pin symbols; no electrical ERC qualification',
                    'No footprints; no board release',
                    'Sequencer and protection design remain incomplete'],
