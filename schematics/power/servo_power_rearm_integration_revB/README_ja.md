@@ -24,3 +24,5 @@ TPS709（A/B付きではない）のDBV端子は1 IN、2 GND、3 EN、4 NC、5 O
 ```sh
 .venv-engineering/bin/python software/sim/circuits/add_stop_aux_supply.py --out /tmp/servo-power-rearm-revB
 ```
+
+U11→U10 MRの静的出力条件は`validation/stop_aux_mr_levels_v1`で確認。指定電源区間でHigh/Low最小余裕0.8621 V、MR吸込み上限48.47 µA。入力論理・電源遷移・停止応答は対象外。
