@@ -4,7 +4,7 @@
 
 | 対象 | 現在参照する比較案 | 主な未完了事項 |
 |---|---|---|
-| 足部 | board/mechanical/prototype/foot_candidate/revD | 材料・ワッシャ実品・締付け・強度・公差 |
+| 足部 | board/mechanical/prototype/foot_candidate/revE | 材料・ワッシャ実品・締付け・強度・公差 |
 | 電池と変換器 | schematics/power/rc_supply_candidate.json | 出力過渡、セル保護、取付け、給電保護 |
 | 変換器の代替 | schematics/power/pol_module_screen.json | 電圧窓が未成立。UBECへ追加する部品ではない |
 | 既存2段保護案 | schematics/power/servo_ovp_candidate.json | OVP分圧、過渡、回生、故障記憶 |
@@ -28,3 +28,5 @@ revJのPG受信部はrevIの単一受信部を置換する。抵抗はR15を含�
 足部revDは外装ナットを横挿入する比較案。ナット挿入前に穴仕上げできる。8経路の公称連続掃引と30部品の静的交差を確認したが、開口公差・工具空間・壁開口後の強度は未確認。revCの慣性値を転用しない。
 
 外装ナットの寸法候補はPTS A56202を8個（外付け足裏・ヨー用10個とは別）。幅4.6 mmの局所比較v2は既存公差仮定で幅・高さの総隙間各0.2 mm。統合revDはv1のため、v2採用時には差し替えが必要。最低注文数500個、強度・工具空間・質量は未確定。
+
+現行足部をrevEへ統合した。`board/mechanical/prototype/foot_candidate/current.json`を入口とする。上記の「revDはv1」「v2未統合」は履歴となる。幅4.6 mm外装を含む30部品の交差0、硬質部慣性は`foot_rigid_inertia_v2`へ更新。

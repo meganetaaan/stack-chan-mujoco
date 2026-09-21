@@ -3,8 +3,9 @@ import argparse,hashlib,json
 from pathlib import Path
 import numpy as np
 p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True)
+p.add_argument('--inventory',type=Path,default=Path('board/mechanical/prototype/foot_candidate/revB/inventory.json'))
 a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
-ip=Path('board/mechanical/prototype/foot_candidate/revB/inventory.json')
+ip=a.inventory
 mp=Path('board/mechanical/prototype/rc_battery_tray_revB/material_candidate.json')
 inv=json.loads(ip.read_text());mat=json.loads(mp.read_text());rho=mat['typical_density_g_cm3']
 rows=[];groups=[]
