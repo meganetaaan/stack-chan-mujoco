@@ -65,3 +65,5 @@ PG受信には`schematics/power/pg_receiver_candidate.json`のTPS3700案を追�
 `clear_hold_timer_candidate.json`でTPS3808G01のCT開放遅延を候補化した。実CLR Lowの観測が入力条件で、U14の論理要求を代用しない。前回のDONE Highを再利用しないため、各要求前にDONE Lowを観測する条件を追加。観測・再初期化回路は未実装なのでrevIへは未統合、#24の完了証拠とはしない。詳細は `validation/clear_hold_timer_candidate_v1/`。
 
 要求ごとのタイマー初期化を `validation/clear_timer_freshness_v1/` で6系列確認。前回のDONE High、健全性喪失、CLR観測中断からの再利用を防ぐ状態条件を定義した。クロック・同期・実際の観測回路は未実装なので、回路タイミング保証とは区別する。
+
+CLR観測器の選定前照合は `validation/clear_low_observation_screen_v1/`。U14の0.11 V保証は20 µA負荷だが、現行R4だけで約34.3 µAとなり流用できない。R4を増やす案はHigh余裕も減らすため未採用。Low検出・クリア成立・High復帰を一緒に照合してから部品を選ぶ。
