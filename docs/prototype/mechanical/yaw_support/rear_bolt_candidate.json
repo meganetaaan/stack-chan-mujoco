@@ -1,0 +1,50 @@
+{
+  "manufacturer": "NBK",
+  "part": "SNS-M3-16",
+  "quantity_yaw_main": 8,
+  "status": "preferred candidate; not manufacturing release",
+  "material": "SCM435",
+  "finish": "black oxide",
+  "property_class": "12.9",
+  "thread_pitch_mm": 0.5,
+  "length_mm": {
+    "nominal": 16,
+    "min": 15.65,
+    "max": 16.35
+  },
+  "head_diameter_mm": {
+    "nominal": 5.5,
+    "min": 5.32,
+    "max_plain": 5.5,
+    "max_knurled": 5.68
+  },
+  "head_height_mm": {
+    "min": 2.86,
+    "max": 3
+  },
+  "socket": {
+    "nominal_af_mm": 2.5,
+    "min_af_mm": 2.52,
+    "max_af_mm": 2.58,
+    "minimum_depth_mm": 1.3
+  },
+  "underhead": {
+    "da_max_mm": 3.6,
+    "r_min_mm": 0.1,
+    "r_max_derived_mm": 0.3,
+    "derivation": "(da_max 3.6 - ds_max 3.0)/2"
+  },
+  "existing_analysis": {
+    "property_class": "8.8",
+    "proof_stress_MPa": 580,
+    "treatment": "retain previous lower screening value; no recalculated pass or joint capacity increase"
+  },
+  "pending": [
+    "washer bore/chamfer clearance for underhead fillet",
+    "threaded backing plate grade and effective engagement",
+    "length and stack tolerance integration",
+    "driver effective tip length and torque suitability",
+    "preload and creep; corrosion handling",
+    "update nominal CAD with dimensional envelopes"
+  ]
+}
