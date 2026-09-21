@@ -17,7 +17,7 @@
     "MONITOR_START_READY_LOGIC": "revH buffered timer output; requires valid receiver supply/temperature, subsequent qualification and inhibit; not direct enable"
   },
   "outputs": {
-    "SEQUENCE_ENABLE_REQUEST": "revF U3 pin4; true only START/RUN and healthy",
+    "SEQUENCE_ENABLE_REQUEST": "U3 pin4 with revI local 10 kohm pulldown; actual driver absent; true only START/RUN and healthy; driver load budget in revI report",
     "SEQUENCE_CLEAR_REQUEST": "revH U14 pin2 active High; driver not implemented; hold until complete clear contract satisfied"
   },
   "states": [
@@ -53,5 +53,6 @@
   "source_window_integration": "schematics/power/servo_power_rearm_integration_revF/assembly.json",
   "monitor_startup_timer": "schematics/power/servo_power_rearm_integration_revG/integration_report.json",
   "monitor_startup_receiver_screen": "validation/monitor_ready_receiver_v1/report.json",
-  "monitor_startup_receiver": "schematics/power/servo_power_rearm_integration_revH/assembly.json"
+  "monitor_startup_receiver": "schematics/power/servo_power_rearm_integration_revH/assembly.json",
+  "sequence_request_default": "schematics/power/servo_power_rearm_integration_revI/integration_report.json"
 }
