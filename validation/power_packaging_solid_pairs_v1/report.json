@@ -1,0 +1,2752 @@
+{
+  "input_report": "board/mechanical/prototype/power_packaging_revA/report.json",
+  "input_report_sha256": "2dd13bd2bf6db2004c0ac3b64b23f05473e9cd30371036c965d41862fe8432da",
+  "sources_sha256": {
+    "board/mechanical/prototype/yaw_support_candidate/revA/yaw_support_candidate.step": "519382141db1040e813441babe6fa07309a2e03d24ed6e363ce9435e10975934",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/Tab5.step": "bc4f282fb78ac58e92fb8d285a9dbfc7935f2d268dff3be77e88dda248214376",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/TTL_interface.step": "794de1700aeede7d532a71870434be0b163ab272a86df6ccb92f675f903760c4",
+    "validation/rc_battery_cad_v1_checked/battery_candidate.step": "5f3ece800a1715d5e12958fb7623d65ef4e9802fbacbb21010aa407bdb86b1b2",
+    "board/mechanical/prototype/rc_battery_tray_revB/tray.step": "3f522dd0c14ea083cc789f568ba4ed3b0c0bdc13f5e45c951a1ae59c602c5f46",
+    "validation/battery_retention_envelope_v1/strap_envelope.step": "7417630ce80042009f5e98ac1377b7b96f4093cdc451f7872f89d8f832c66ddf",
+    "validation/dual_ubec_layout_v2/left.step": "8098b6a9e55037ef9c82e2a1cc79e1987e1ae32116e846b4565956ed7ff9ca32",
+    "validation/dual_ubec_layout_v2/right.step": "5a2142aa0126b9a8a2d6b0f86374fc5bad547a9530f61d7d4151f04e2c93b2ee"
+  },
+  "checks": [
+    {
+      "a": "yaw_structure",
+      "b": "Tab5",
+      "overlap_mm3": 0.0,
+      "distance_mm": 0.3999999999999986,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 0.3999999999999986
+        },
+        {
+          "left_solid": 1,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 114.2
+        },
+        {
+          "left_solid": 2,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 40.4
+        },
+        {
+          "left_solid": 3,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 102.5
+        },
+        {
+          "left_solid": 4,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 40.4
+        },
+        {
+          "left_solid": 5,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 101.9
+        },
+        {
+          "left_solid": 6,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 101.9
+        },
+        {
+          "left_solid": 7,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 100.7
+        },
+        {
+          "left_solid": 8,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 116.2
+        },
+        {
+          "left_solid": 9,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 100.7
+        },
+        {
+          "left_solid": 10,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 116.2
+        },
+        {
+          "left_solid": 11,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 100.7
+        },
+        {
+          "left_solid": 12,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 116.2
+        },
+        {
+          "left_solid": 13,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 100.7
+        },
+        {
+          "left_solid": 14,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 116.2
+        },
+        {
+          "left_solid": 15,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 84.1
+        },
+        {
+          "left_solid": 16,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 83.0
+        },
+        {
+          "left_solid": 17,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 83.17099999999999
+        },
+        {
+          "left_solid": 18,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 84.1
+        },
+        {
+          "left_solid": 19,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 83.0
+        },
+        {
+          "left_solid": 20,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 83.17099999999999
+        },
+        {
+          "left_solid": 21,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 42.0
+        },
+        {
+          "left_solid": 22,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 40.9
+        },
+        {
+          "left_solid": 23,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 41.071
+        },
+        {
+          "left_solid": 24,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 42.0
+        },
+        {
+          "left_solid": 25,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 40.9
+        },
+        {
+          "left_solid": 26,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 41.071
+        },
+        {
+          "left_solid": 27,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 40.4
+        },
+        {
+          "left_solid": 28,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 102.5
+        },
+        {
+          "left_solid": 29,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 40.4
+        },
+        {
+          "left_solid": 30,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 101.9
+        },
+        {
+          "left_solid": 31,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 101.9
+        },
+        {
+          "left_solid": 32,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 100.7
+        },
+        {
+          "left_solid": 33,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 116.2
+        },
+        {
+          "left_solid": 34,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 100.7
+        },
+        {
+          "left_solid": 35,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 116.2
+        },
+        {
+          "left_solid": 36,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 100.7
+        },
+        {
+          "left_solid": 37,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 116.2
+        },
+        {
+          "left_solid": 38,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 100.7
+        },
+        {
+          "left_solid": 39,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 116.2
+        },
+        {
+          "left_solid": 40,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 84.1
+        },
+        {
+          "left_solid": 41,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 83.0
+        },
+        {
+          "left_solid": 42,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 83.17099999999999
+        },
+        {
+          "left_solid": 43,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 84.1
+        },
+        {
+          "left_solid": 44,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 83.0
+        },
+        {
+          "left_solid": 45,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 83.17099999999999
+        },
+        {
+          "left_solid": 46,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 42.0
+        },
+        {
+          "left_solid": 47,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 40.9
+        },
+        {
+          "left_solid": 48,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 41.071
+        },
+        {
+          "left_solid": 49,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 42.0
+        },
+        {
+          "left_solid": 50,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 40.9
+        },
+        {
+          "left_solid": 51,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 41.071
+        }
+      ]
+    },
+    {
+      "a": "yaw_structure",
+      "b": "TTL",
+      "overlap_mm3": 0.0,
+      "distance_mm": 3.9567376267830134,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 10.200000000000003
+        },
+        {
+          "left_solid": 1,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 31.700000000000003
+        },
+        {
+          "left_solid": 2,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 5.0
+        },
+        {
+          "left_solid": 3,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 22.626386491371406
+        },
+        {
+          "left_solid": 4,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 7.0
+        },
+        {
+          "left_solid": 5,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 39.20283993266061
+        },
+        {
+          "left_solid": 6,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 30.558468706885527
+        },
+        {
+          "left_solid": 7,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 41.42701971592274
+        },
+        {
+          "left_solid": 8,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 48.74816834801996
+        },
+        {
+          "left_solid": 9,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 45.820444039326674
+        },
+        {
+          "left_solid": 10,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 52.376096688712586
+        },
+        {
+          "left_solid": 11,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 23.17100695211036
+        },
+        {
+          "left_solid": 12,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 35.89590315105208
+        },
+        {
+          "left_solid": 13,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 30.09833891020205
+        },
+        {
+          "left_solid": 14,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 40.27254687100292
+        },
+        {
+          "left_solid": 15,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 4.520797289396147
+        },
+        {
+          "left_solid": 16,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 4.812942860062533
+        },
+        {
+          "left_solid": 17,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 3.9567376267830134
+        },
+        {
+          "left_solid": 18,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 23.324383174612816
+        },
+        {
+          "left_solid": 19,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 21.714956085097434
+        },
+        {
+          "left_solid": 20,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 21.69012443079633
+        },
+        {
+          "left_solid": 21,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 32.8956392584874
+        },
+        {
+          "left_solid": 22,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 31.166496838601994
+        },
+        {
+          "left_solid": 23,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 31.201699870631902
+        },
+        {
+          "left_solid": 24,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 40.38902971653857
+        },
+        {
+          "left_solid": 25,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 38.70656719177868
+        },
+        {
+          "left_solid": 26,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 38.76842474384061
+        },
+        {
+          "left_solid": 27,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 5.0
+        },
+        {
+          "left_solid": 28,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 22.626386491371406
+        },
+        {
+          "left_solid": 29,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 7.0
+        },
+        {
+          "left_solid": 30,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 39.20283993266061
+        },
+        {
+          "left_solid": 31,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 30.558468706885527
+        },
+        {
+          "left_solid": 32,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 45.820444039326674
+        },
+        {
+          "left_solid": 33,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 52.37609668871259
+        },
+        {
+          "left_solid": 34,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 41.42701971592274
+        },
+        {
+          "left_solid": 35,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 48.74816834801996
+        },
+        {
+          "left_solid": 36,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 30.09833891020205
+        },
+        {
+          "left_solid": 37,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 40.27254687100293
+        },
+        {
+          "left_solid": 38,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 23.17100695211036
+        },
+        {
+          "left_solid": 39,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 35.89590315105208
+        },
+        {
+          "left_solid": 40,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 23.324383174612816
+        },
+        {
+          "left_solid": 41,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 21.714956085097434
+        },
+        {
+          "left_solid": 42,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 21.69012443079633
+        },
+        {
+          "left_solid": 43,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 4.520797289396147
+        },
+        {
+          "left_solid": 44,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 4.812942860062533
+        },
+        {
+          "left_solid": 45,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 3.9567376267830134
+        },
+        {
+          "left_solid": 46,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 40.38902971653857
+        },
+        {
+          "left_solid": 47,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 38.70656719177868
+        },
+        {
+          "left_solid": 48,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 38.76842474384061
+        },
+        {
+          "left_solid": 49,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 32.8956392584874
+        },
+        {
+          "left_solid": 50,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 31.166496838601994
+        },
+        {
+          "left_solid": 51,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 31.201699870631902
+        }
+      ]
+    },
+    {
+      "a": "yaw_structure",
+      "b": "battery",
+      "overlap_mm3": 0.0,
+      "distance_mm": 6.4,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 28.206382256503584
+        },
+        {
+          "left_solid": 1,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 80.2
+        },
+        {
+          "left_solid": 2,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 6.4
+        },
+        {
+          "left_solid": 3,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 68.5
+        },
+        {
+          "left_solid": 4,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 6.4
+        },
+        {
+          "left_solid": 5,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 67.9
+        },
+        {
+          "left_solid": 6,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 67.9
+        },
+        {
+          "left_solid": 7,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 66.92637746060966
+        },
+        {
+          "left_solid": 8,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 82.27447963980082
+        },
+        {
+          "left_solid": 9,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 66.97979307733347
+        },
+        {
+          "left_solid": 10,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 82.3029743585185
+        },
+        {
+          "left_solid": 11,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 66.7
+        },
+        {
+          "left_solid": 12,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 82.2
+        },
+        {
+          "left_solid": 13,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 66.71686443471395
+        },
+        {
+          "left_solid": 14,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 82.2
+        },
+        {
+          "left_solid": 15,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 50.1
+        },
+        {
+          "left_solid": 16,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 49.0
+        },
+        {
+          "left_solid": 17,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 49.171
+        },
+        {
+          "left_solid": 18,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 50.4450093132096
+        },
+        {
+          "left_solid": 19,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 49.3450093132096
+        },
+        {
+          "left_solid": 20,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 49.5160093132096
+        },
+        {
+          "left_solid": 21,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 8.0
+        },
+        {
+          "left_solid": 22,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 6.9
+        },
+        {
+          "left_solid": 23,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 7.071
+        },
+        {
+          "left_solid": 24,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 9.676268828944842
+        },
+        {
+          "left_solid": 25,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 8.576268828944842
+        },
+        {
+          "left_solid": 26,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 8.747268828944842
+        },
+        {
+          "left_solid": 27,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 6.4
+        },
+        {
+          "left_solid": 28,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 68.5
+        },
+        {
+          "left_solid": 29,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 6.4
+        },
+        {
+          "left_solid": 30,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 67.9
+        },
+        {
+          "left_solid": 31,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 67.9
+        },
+        {
+          "left_solid": 32,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 66.97979307733347
+        },
+        {
+          "left_solid": 33,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 82.3029743585185
+        },
+        {
+          "left_solid": 34,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 66.92637746060966
+        },
+        {
+          "left_solid": 35,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 82.27447963980082
+        },
+        {
+          "left_solid": 36,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 66.71686443471395
+        },
+        {
+          "left_solid": 37,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 82.2
+        },
+        {
+          "left_solid": 38,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 66.7
+        },
+        {
+          "left_solid": 39,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 82.2
+        },
+        {
+          "left_solid": 40,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 50.4450093132096
+        },
+        {
+          "left_solid": 41,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 49.3450093132096
+        },
+        {
+          "left_solid": 42,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 49.5160093132096
+        },
+        {
+          "left_solid": 43,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 50.1
+        },
+        {
+          "left_solid": 44,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 49.0
+        },
+        {
+          "left_solid": 45,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 49.171
+        },
+        {
+          "left_solid": 46,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 9.676268828944842
+        },
+        {
+          "left_solid": 47,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 8.576268828944842
+        },
+        {
+          "left_solid": 48,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 8.747268828944842
+        },
+        {
+          "left_solid": 49,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 8.0
+        },
+        {
+          "left_solid": 50,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 6.9
+        },
+        {
+          "left_solid": 51,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 7.071
+        }
+      ]
+    },
+    {
+      "a": "yaw_structure",
+      "b": "tray",
+      "overlap_mm3": 0.0,
+      "distance_mm": 0.0,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 0.0
+        },
+        {
+          "left_solid": 1,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 76.75
+        },
+        {
+          "left_solid": 2,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 15.576905982896603
+        },
+        {
+          "left_solid": 3,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 65.54008315527224
+        },
+        {
+          "left_solid": 4,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 15.576905982896603
+        },
+        {
+          "left_solid": 5,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 65.7
+        },
+        {
+          "left_solid": 6,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 65.73043435121969
+        },
+        {
+          "left_solid": 7,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 64.28695435311896
+        },
+        {
+          "left_solid": 8,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 79.32094616177999
+        },
+        {
+          "left_solid": 9,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 64.627520207123
+        },
+        {
+          "left_solid": 10,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 80.02646349146978
+        },
+        {
+          "left_solid": 11,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 64.73906715735838
+        },
+        {
+          "left_solid": 12,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 79.62993096157312
+        },
+        {
+          "left_solid": 13,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 64.93869064898534
+        },
+        {
+          "left_solid": 14,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 80.19128132665529
+        },
+        {
+          "left_solid": 15,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 49.555215134358775
+        },
+        {
+          "left_solid": 16,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 49.93084844925
+        },
+        {
+          "left_solid": 17,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 50.42905761196453
+        },
+        {
+          "left_solid": 18,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 49.959882665149706
+        },
+        {
+          "left_solid": 19,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 50.27734462980831
+        },
+        {
+          "left_solid": 20,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 50.76520201074864
+        },
+        {
+          "left_solid": 21,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 14.877163708180404
+        },
+        {
+          "left_solid": 22,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 18.603494295427407
+        },
+        {
+          "left_solid": 23,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 19.517598238512857
+        },
+        {
+          "left_solid": 24,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 15.244699194152826
+        },
+        {
+          "left_solid": 25,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 18.84702350589877
+        },
+        {
+          "left_solid": 26,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 19.757534239248645
+        },
+        {
+          "left_solid": 27,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 15.576905982896603
+        },
+        {
+          "left_solid": 28,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 65.54008315527224
+        },
+        {
+          "left_solid": 29,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 15.576905982896603
+        },
+        {
+          "left_solid": 30,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 65.7
+        },
+        {
+          "left_solid": 31,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 65.73043435121969
+        },
+        {
+          "left_solid": 32,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 64.627520207123
+        },
+        {
+          "left_solid": 33,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 80.02646349146978
+        },
+        {
+          "left_solid": 34,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 64.28695435311896
+        },
+        {
+          "left_solid": 35,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 79.32094616177999
+        },
+        {
+          "left_solid": 36,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 64.93869064898534
+        },
+        {
+          "left_solid": 37,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 80.19128132665529
+        },
+        {
+          "left_solid": 38,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 64.73906715735838
+        },
+        {
+          "left_solid": 39,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 79.62993096157312
+        },
+        {
+          "left_solid": 40,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 49.959882665149706
+        },
+        {
+          "left_solid": 41,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 50.27734462980831
+        },
+        {
+          "left_solid": 42,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 50.76520201074864
+        },
+        {
+          "left_solid": 43,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 49.555215134358775
+        },
+        {
+          "left_solid": 44,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 49.93084844925
+        },
+        {
+          "left_solid": 45,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 50.42905761196453
+        },
+        {
+          "left_solid": 46,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 15.244699194152826
+        },
+        {
+          "left_solid": 47,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 18.84702350589877
+        },
+        {
+          "left_solid": 48,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 19.757534239248645
+        },
+        {
+          "left_solid": 49,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 14.877163708180404
+        },
+        {
+          "left_solid": 50,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 18.603494295427407
+        },
+        {
+          "left_solid": 51,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 19.517598238512857
+        }
+      ]
+    },
+    {
+      "a": "yaw_structure",
+      "b": "strap",
+      "overlap_mm3": 0.0,
+      "distance_mm": 4.386342439892263,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 24.14560001325293
+        },
+        {
+          "left_solid": 1,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 77.0
+        },
+        {
+          "left_solid": 2,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 4.386342439892263
+        },
+        {
+          "left_solid": 3,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 66.06125944909013
+        },
+        {
+          "left_solid": 4,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 5.5217750769114105
+        },
+        {
+          "left_solid": 5,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 67.72067631085797
+        },
+        {
+          "left_solid": 6,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 67.72067631085797
+        },
+        {
+          "left_solid": 7,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 64.8585667162823
+        },
+        {
+          "left_solid": 8,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 79.79073825834068
+        },
+        {
+          "left_solid": 9,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 68.9468787874047
+        },
+        {
+          "left_solid": 10,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 82.81898868752974
+        },
+        {
+          "left_solid": 11,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 64.71862174057789
+        },
+        {
+          "left_solid": 12,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 79.69473006416422
+        },
+        {
+          "left_solid": 13,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 68.80770305714324
+        },
+        {
+          "left_solid": 14,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 82.71184921158516
+        },
+        {
+          "left_solid": 15,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 48.12439404930359
+        },
+        {
+          "left_solid": 16,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 47.02439404930359
+        },
+        {
+          "left_solid": 17,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 47.195394049303594
+        },
+        {
+          "left_solid": 18,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 55.91383917367882
+        },
+        {
+          "left_solid": 19,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 54.81383917367883
+        },
+        {
+          "left_solid": 20,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 54.98483917367883
+        },
+        {
+          "left_solid": 21,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 10.979829191413993
+        },
+        {
+          "left_solid": 22,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 9.879829191413993
+        },
+        {
+          "left_solid": 23,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 10.050829191413992
+        },
+        {
+          "left_solid": 24,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 29.815768948584555
+        },
+        {
+          "left_solid": 25,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 28.71576894858455
+        },
+        {
+          "left_solid": 26,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 28.886768948584553
+        },
+        {
+          "left_solid": 27,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 4.386342439892263
+        },
+        {
+          "left_solid": 28,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 66.06125944909013
+        },
+        {
+          "left_solid": 29,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 5.5217750769114105
+        },
+        {
+          "left_solid": 30,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 67.72067631085797
+        },
+        {
+          "left_solid": 31,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 67.72067631085797
+        },
+        {
+          "left_solid": 32,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 68.9468787874047
+        },
+        {
+          "left_solid": 33,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 82.81898868752974
+        },
+        {
+          "left_solid": 34,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 64.8585667162823
+        },
+        {
+          "left_solid": 35,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 79.79073825834068
+        },
+        {
+          "left_solid": 36,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 68.80770305714324
+        },
+        {
+          "left_solid": 37,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 82.71184921158516
+        },
+        {
+          "left_solid": 38,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 64.71862174057789
+        },
+        {
+          "left_solid": 39,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 79.69473006416422
+        },
+        {
+          "left_solid": 40,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 55.91383917367882
+        },
+        {
+          "left_solid": 41,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 54.81383917367882
+        },
+        {
+          "left_solid": 42,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 54.98483917367883
+        },
+        {
+          "left_solid": 43,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 48.12439404930359
+        },
+        {
+          "left_solid": 44,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 47.02439404930359
+        },
+        {
+          "left_solid": 45,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 47.19539404930359
+        },
+        {
+          "left_solid": 46,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 29.815768948584555
+        },
+        {
+          "left_solid": 47,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 28.71576894858455
+        },
+        {
+          "left_solid": 48,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 28.886768948584553
+        },
+        {
+          "left_solid": 49,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 10.979829191413993
+        },
+        {
+          "left_solid": 50,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 9.879829191413993
+        },
+        {
+          "left_solid": 51,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 10.050829191413992
+        }
+      ]
+    },
+    {
+      "a": "yaw_structure",
+      "b": "UBEC_left",
+      "overlap_mm3": 0.0,
+      "distance_mm": 3.75,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 11.808347620479088
+        },
+        {
+          "left_solid": 1,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 15.650000000000006
+        },
+        {
+          "left_solid": 2,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 10.75
+        },
+        {
+          "left_solid": 3,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 16.237764624479567
+        },
+        {
+          "left_solid": 4,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 12.75
+        },
+        {
+          "left_solid": 5,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 36.90237119752605
+        },
+        {
+          "left_solid": 6,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 24.975688178706907
+        },
+        {
+          "left_solid": 7,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 42.30466877307988
+        },
+        {
+          "left_solid": 8,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 43.94980090967421
+        },
+        {
+          "left_solid": 9,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 42.30466877307988
+        },
+        {
+          "left_solid": 10,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 43.94980090967421
+        },
+        {
+          "left_solid": 11,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 18.37620744332192
+        },
+        {
+          "left_solid": 12,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 23.991352608804704
+        },
+        {
+          "left_solid": 13,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 18.37620744332192
+        },
+        {
+          "left_solid": 14,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 23.991352608804704
+        },
+        {
+          "left_solid": 15,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 3.75
+        },
+        {
+          "left_solid": 16,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 9.849999999999994
+        },
+        {
+          "left_solid": 17,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 8.650000000000006
+        },
+        {
+          "left_solid": 18,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 3.75
+        },
+        {
+          "left_solid": 19,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 9.849999999999994
+        },
+        {
+          "left_solid": 20,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 8.650000000000006
+        },
+        {
+          "left_solid": 21,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 11.196651285094129
+        },
+        {
+          "left_solid": 22,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 13.043197460745578
+        },
+        {
+          "left_solid": 23,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 12.283254495450304
+        },
+        {
+          "left_solid": 24,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 11.196651285094129
+        },
+        {
+          "left_solid": 25,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 13.043197460745578
+        },
+        {
+          "left_solid": 26,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 12.283254495450304
+        },
+        {
+          "left_solid": 27,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 25.252425626066103
+        },
+        {
+          "left_solid": 28,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 33.980693047670464
+        },
+        {
+          "left_solid": 29,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 27.486087389805046
+        },
+        {
+          "left_solid": 30,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 54.72443598103264
+        },
+        {
+          "left_solid": 31,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 47.407070997442155
+        },
+        {
+          "left_solid": 32,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 63.37231261813856
+        },
+        {
+          "left_solid": 33,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 63.824812432150516
+        },
+        {
+          "left_solid": 34,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 53.85915723601102
+        },
+        {
+          "left_solid": 35,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 54.739783604533635
+        },
+        {
+          "left_solid": 36,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 50.31163362618476
+        },
+        {
+          "left_solid": 37,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 51.39161198401972
+        },
+        {
+          "left_solid": 38,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 37.75164094255606
+        },
+        {
+          "left_solid": 39,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 39.81613892627682
+        },
+        {
+          "left_solid": 40,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 49.99084916262175
+        },
+        {
+          "left_solid": 41,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 48.853300809668944
+        },
+        {
+          "left_solid": 42,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 48.79384121997366
+        },
+        {
+          "left_solid": 43,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 30.084630627614494
+        },
+        {
+          "left_solid": 44,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 29.54056532972922
+        },
+        {
+          "left_solid": 45,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 29.325738541424666
+        },
+        {
+          "left_solid": 46,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 51.28252178106482
+        },
+        {
+          "left_solid": 47,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 50.12261087250108
+        },
+        {
+          "left_solid": 48,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 50.069082578949086
+        },
+        {
+          "left_solid": 49,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 32.160613005455296
+        },
+        {
+          "left_solid": 50,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 31.519836399638585
+        },
+        {
+          "left_solid": 51,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 31.33000527003407
+        }
+      ]
+    },
+    {
+      "a": "yaw_structure",
+      "b": "UBEC_right",
+      "overlap_mm3": 0.0,
+      "distance_mm": 3.75,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 11.808347620479088
+        },
+        {
+          "left_solid": 1,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 15.650000000000006
+        },
+        {
+          "left_solid": 2,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 25.252425626066103
+        },
+        {
+          "left_solid": 3,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 33.980693047670464
+        },
+        {
+          "left_solid": 4,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 27.486087389805046
+        },
+        {
+          "left_solid": 5,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 54.72443598103264
+        },
+        {
+          "left_solid": 6,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 47.407070997442155
+        },
+        {
+          "left_solid": 7,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 53.85915723601102
+        },
+        {
+          "left_solid": 8,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 54.739783604533635
+        },
+        {
+          "left_solid": 9,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 63.37231261813856
+        },
+        {
+          "left_solid": 10,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 63.824812432150516
+        },
+        {
+          "left_solid": 11,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 37.75164094255607
+        },
+        {
+          "left_solid": 12,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 39.81613892627682
+        },
+        {
+          "left_solid": 13,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 50.31163362618476
+        },
+        {
+          "left_solid": 14,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 51.39161198401972
+        },
+        {
+          "left_solid": 15,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 30.084630627614494
+        },
+        {
+          "left_solid": 16,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 29.54056532972922
+        },
+        {
+          "left_solid": 17,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 29.325738541424666
+        },
+        {
+          "left_solid": 18,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 49.99084916262175
+        },
+        {
+          "left_solid": 19,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 48.853300809668944
+        },
+        {
+          "left_solid": 20,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 48.79384121997366
+        },
+        {
+          "left_solid": 21,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 32.160613005455296
+        },
+        {
+          "left_solid": 22,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 31.519836399638585
+        },
+        {
+          "left_solid": 23,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 31.33000527003407
+        },
+        {
+          "left_solid": 24,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 51.28252178106482
+        },
+        {
+          "left_solid": 25,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 50.12261087250108
+        },
+        {
+          "left_solid": 26,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 50.069082578949086
+        },
+        {
+          "left_solid": 27,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 10.75
+        },
+        {
+          "left_solid": 28,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 16.237764624479567
+        },
+        {
+          "left_solid": 29,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 12.75
+        },
+        {
+          "left_solid": 30,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 36.90237119752605
+        },
+        {
+          "left_solid": 31,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 24.975688178706907
+        },
+        {
+          "left_solid": 32,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 42.30466877307988
+        },
+        {
+          "left_solid": 33,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 43.94980090967421
+        },
+        {
+          "left_solid": 34,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 42.30466877307988
+        },
+        {
+          "left_solid": 35,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 43.94980090967421
+        },
+        {
+          "left_solid": 36,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 18.37620744332192
+        },
+        {
+          "left_solid": 37,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 23.991352608804704
+        },
+        {
+          "left_solid": 38,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 18.37620744332192
+        },
+        {
+          "left_solid": 39,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 23.991352608804704
+        },
+        {
+          "left_solid": 40,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 3.75
+        },
+        {
+          "left_solid": 41,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 9.849999999999994
+        },
+        {
+          "left_solid": 42,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 8.650000000000006
+        },
+        {
+          "left_solid": 43,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 3.75
+        },
+        {
+          "left_solid": 44,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 9.849999999999994
+        },
+        {
+          "left_solid": 45,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 8.650000000000006
+        },
+        {
+          "left_solid": 46,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 11.196651285094129
+        },
+        {
+          "left_solid": 47,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 13.043197460745578
+        },
+        {
+          "left_solid": 48,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 12.283254495450304
+        },
+        {
+          "left_solid": 49,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 11.196651285094129
+        },
+        {
+          "left_solid": 50,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 13.043197460745578
+        },
+        {
+          "left_solid": 51,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 12.283254495450304
+        }
+      ]
+    },
+    {
+      "a": "Tab5",
+      "b": "TTL",
+      "overlap_mm3": 0.0,
+      "distance_mm": 77.5,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 77.5
+        }
+      ]
+    },
+    {
+      "a": "Tab5",
+      "b": "battery",
+      "overlap_mm3": 0.0,
+      "distance_mm": 12.0,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 12.0
+        }
+      ]
+    },
+    {
+      "a": "Tab5",
+      "b": "tray",
+      "overlap_mm3": 0.0,
+      "distance_mm": 8.549999999999997,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 8.549999999999997
+        }
+      ]
+    },
+    {
+      "a": "Tab5",
+      "b": "strap",
+      "overlap_mm3": 0.0,
+      "distance_mm": 8.799999999999997,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 8.799999999999997
+        }
+      ]
+    },
+    {
+      "a": "Tab5",
+      "b": "UBEC_left",
+      "overlap_mm3": 0.0,
+      "distance_mm": 55.45,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 55.45
+        }
+      ]
+    },
+    {
+      "a": "Tab5",
+      "b": "UBEC_right",
+      "overlap_mm3": 0.0,
+      "distance_mm": 55.45,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 55.45
+        }
+      ]
+    },
+    {
+      "a": "TTL",
+      "b": "battery",
+      "overlap_mm3": 0.0,
+      "distance_mm": 43.51149273467873,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 43.51149273467873
+        }
+      ]
+    },
+    {
+      "a": "TTL",
+      "b": "tray",
+      "overlap_mm3": 0.0,
+      "distance_mm": 46.435465971604074,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 46.435465971604074
+        }
+      ]
+    },
+    {
+      "a": "TTL",
+      "b": "strap",
+      "overlap_mm3": 0.0,
+      "distance_mm": 40.3,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 40.3
+        }
+      ]
+    },
+    {
+      "a": "TTL",
+      "b": "UBEC_left",
+      "overlap_mm3": 0.0,
+      "distance_mm": 2.8499999999999996,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 2.8499999999999996
+        }
+      ]
+    },
+    {
+      "a": "TTL",
+      "b": "UBEC_right",
+      "overlap_mm3": 0.0,
+      "distance_mm": 2.8499999999999996,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 2.8499999999999996
+        }
+      ]
+    },
+    {
+      "a": "battery",
+      "b": "tray",
+      "overlap_mm3": 0.0,
+      "distance_mm": 0.0,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 0.0
+        }
+      ]
+    },
+    {
+      "a": "battery",
+      "b": "strap",
+      "overlap_mm3": 0.0,
+      "distance_mm": 0.0,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 0.0
+        }
+      ]
+    },
+    {
+      "a": "battery",
+      "b": "UBEC_left",
+      "overlap_mm3": 0.0,
+      "distance_mm": 22.486996242272998,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 22.486996242272998
+        }
+      ]
+    },
+    {
+      "a": "battery",
+      "b": "UBEC_right",
+      "overlap_mm3": 0.0,
+      "distance_mm": 22.486996242272998,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 22.486996242272998
+        }
+      ]
+    },
+    {
+      "a": "tray",
+      "b": "strap",
+      "overlap_mm3": 0.0,
+      "distance_mm": 0.0,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 0.0
+        }
+      ]
+    },
+    {
+      "a": "tray",
+      "b": "UBEC_left",
+      "overlap_mm3": 0.0,
+      "distance_mm": 34.5994942159564,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 34.5994942159564
+        }
+      ]
+    },
+    {
+      "a": "tray",
+      "b": "UBEC_right",
+      "overlap_mm3": 0.0,
+      "distance_mm": 34.5994942159564,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 34.5994942159564
+        }
+      ]
+    },
+    {
+      "a": "strap",
+      "b": "UBEC_left",
+      "overlap_mm3": 0.0,
+      "distance_mm": 21.520861971584687,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 21.520861971584687
+        }
+      ]
+    },
+    {
+      "a": "strap",
+      "b": "UBEC_right",
+      "overlap_mm3": 0.0,
+      "distance_mm": 21.520861971584687,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 21.520861971584687
+        }
+      ]
+    },
+    {
+      "a": "UBEC_left",
+      "b": "UBEC_right",
+      "overlap_mm3": 0.0,
+      "distance_mm": 29.7,
+      "solid_pairs": [
+        {
+          "left_solid": 0,
+          "right_solid": 0,
+          "overlap_mm3": 0.0,
+          "distance_mm": 29.7
+        }
+      ]
+    }
+  ],
+  "comparison": [
+    {
+      "a": "yaw_structure",
+      "b": "Tab5",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "yaw_structure",
+      "b": "TTL",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "yaw_structure",
+      "b": "battery",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "yaw_structure",
+      "b": "tray",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "yaw_structure",
+      "b": "strap",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "yaw_structure",
+      "b": "UBEC_left",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "yaw_structure",
+      "b": "UBEC_right",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "Tab5",
+      "b": "TTL",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "Tab5",
+      "b": "battery",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "Tab5",
+      "b": "tray",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "Tab5",
+      "b": "strap",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "Tab5",
+      "b": "UBEC_left",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "Tab5",
+      "b": "UBEC_right",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "TTL",
+      "b": "battery",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "TTL",
+      "b": "tray",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "TTL",
+      "b": "strap",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "TTL",
+      "b": "UBEC_left",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "TTL",
+      "b": "UBEC_right",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "battery",
+      "b": "tray",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "battery",
+      "b": "strap",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "battery",
+      "b": "UBEC_left",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "battery",
+      "b": "UBEC_right",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "tray",
+      "b": "strap",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "tray",
+      "b": "UBEC_left",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "tray",
+      "b": "UBEC_right",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "strap",
+      "b": "UBEC_left",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "strap",
+      "b": "UBEC_right",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    },
+    {
+      "a": "UBEC_left",
+      "b": "UBEC_right",
+      "old_overlap_mm3": 0.0,
+      "new_overlap_mm3": 0.0,
+      "distance_change_mm": 0.0
+    }
+  ],
+  "nominal_cross_group_overlap_free": true,
+  "scope": "Cross-group solid pairs only; internal yaw joints and full motion excluded",
+  "volume_meaning": "Sum can double-count overlapping parts; use individual zero-intersection checks",
+  "manufacturing_release": false
+}

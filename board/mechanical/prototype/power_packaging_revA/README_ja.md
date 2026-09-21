@@ -19,3 +19,9 @@ LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bi
 ```
 
 入力パスとハッシュ、全組合せはreport.jsonを参照。
+
+## 干渉結果の再検証
+
+`validation/power_packaging_solid_pairs_v1/`で、組立compoundへの一括演算を避け、
+群間385組の個別ソリッド対を検査した。全対で交差0を再確認。
+現在の群間干渉の根拠はこちらを参照する。元の形状・STEPは変更していない。
