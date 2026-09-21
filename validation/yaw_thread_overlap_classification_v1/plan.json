@@ -1,0 +1,23 @@
+{
+  "question": "Are all remaining overlaps solely the documented thread-envelope/pilot annuli?",
+  "criteria_before_calculation": {
+    "unexplained_volume_mm3": 1e-06,
+    "missing_expected_volume_mm3": 1e-06,
+    "analytic_volume_error_mm3": 1e-06
+  },
+  "source_dimensions": {
+    "backing_x_mm": [
+      -53.5,
+      -50.5
+    ],
+    "M3_shaft_radius_mm": 1.5,
+    "M3_pilot_radius_mm": 1.25,
+    "M2_shaft_radius_mm": 1,
+    "M2_pilot_radius_mm": 0.8
+  },
+  "limits": [
+    "Threads absent in CAD: matching annuli explain overlap but do not qualify threads",
+    "No stripping, preload, tolerance, effective engagement or assembly torque proof"
+  ],
+  "stop": "Classify existing positive-volume pairs only; do not modify CAD or general overlap threshold"
+}

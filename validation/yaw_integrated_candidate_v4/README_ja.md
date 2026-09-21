@@ -22,3 +22,7 @@ LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bi
 ```
 
 全組合せを検査したことと、全組合せの干渉が成立したことは区別する。残存12組の分類が未完である。
+
+## 残存重なりの分類結果
+
+`validation/yaw_thread_overlap_classification_v1` で上記12組を生成元と照合した。全てタップ下穴と外径円柱で表現したねじの環状差分であり、期待形状との両方向Boolean差分・解析体積一致を確認した。現在の名目静止CADでは未説明の正体積干渉は残らない。実ねじ加工/締結強度/工具/公差/全身動作は別途未検証で、変形基準の未達も変わらない。
