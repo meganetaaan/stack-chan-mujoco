@@ -2,7 +2,7 @@ item,quantity_full_robot,minimum_test_quantity,status,purpose_or_blocker,evidenc
 Tab5,1,0,retained_candidate,Face; candidate J9 pin1 GND pin2 SYS_VIN; mating orientation branch protection and actual revision pending,schematics/power/rc_supply_candidate.json
 XL330-M288-T,6,1,retained_candidate,single joint after bench electrical gate; not continuous stall rated,board/mechanical/prototype/bom.csv
 XC330-M288-T,6,1,retained_candidate,second actuator type qualification after first stage,board/mechanical/prototype/bom.csv
-Sole and yoke candidate,2 sets,1 set,unpowered_test_piece,"Current split sole comparison; 7 parts per foot, not additional to revA; material and strength pending",board/mechanical/prototype/foot_candidate/revB/README_ja.md
+Sole and yoke candidate,2 sets,1 set,unpowered_test_piece,"Current split sole comparison; 15 parts per foot including boot hardware, not additional to earlier revisions; material and strength pending",board/mechanical/prototype/foot_candidate/revC/README_ja.md
 NBK SLH-M2-10 screw,14,1,nominal_fit_candidate,Feet 2 + yaw mount plates 8 + yaw backing keepers 4; torque and anti-loosening pending,board/mechanical/prototype/yaw_support_candidate/revA/README_ja.md
 PTS A56202 external nut,10,1,nominal_fit_candidate,Feet 2 + yaw mount plates 8; thread tolerance preload and assembly access pending,board/mechanical/prototype/yaw_support_candidate/revA/README_ja.md
 SCW-SOLE-SPACER-01 revA,8 in current split-sole comparison,1,custom_candidate,Yaw mount plates only; foot revB replaces the two sole spacers with clamp washers; old specification retained as history,docs/prototype/mechanical/sole_spacer/specification.json
@@ -60,3 +60,5 @@ SkyRC B6ACneo SK-100200,external equipment,0,accuracy_unqualified,Removed-pack b
 3S cell monitoring and protection,TBD,0,unselected,Pack voltage monitor is insufficient; sensing connector disconnection and cutoff recovery require design,schematics/power/aux_sequence_candidate.json
 Tab5 J9 mating harness,1,0,unselected,Logical pins known; connector retention keying current rating and cable routing not qualified,schematics/power/rc_supply_candidate.json
 Sole clamp washer OD6 ID2.3 t0.3,2,0,geometry_only,Replaces foot bypass spacers in revB; manufactured part and material not selected,validation/sole_clamp_seat_v1/report.json
+NBK SLH-M2-6 boot screw,8,4,nominal_fit_candidate,Boot attachment only; distinct from sole slide lock; 0.15 g catalog mass each; torque and tolerance pending,validation/boot_low_head_candidate_v1/source_review.json
+Boot captive square nut envelope 4x4x1.2 mm,8,4,geometry_only,Boot attachment only; actual part mass tolerance thread and insertion qualification pending,board/mechanical/prototype/foot_candidate/revC/README_ja.md

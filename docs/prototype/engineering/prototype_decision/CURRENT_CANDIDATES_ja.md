@@ -4,7 +4,7 @@
 
 | 対象 | 現在参照する比較案 | 主な未完了事項 |
 |---|---|---|
-| 足部 | board/mechanical/prototype/foot_candidate/revB | 材料・ワッシャ実品・締付け・強度・公差 |
+| 足部 | board/mechanical/prototype/foot_candidate/revC | 材料・ワッシャ実品・締付け・強度・公差 |
 | 電池と変換器 | schematics/power/rc_supply_candidate.json | 出力過渡、セル保護、取付け、給電保護 |
 | 変換器の代替 | schematics/power/pol_module_screen.json | 電圧窓が未成立。UBECへ追加する部品ではない |
 | 既存2段保護案 | schematics/power/servo_ovp_candidate.json | OVP分圧、過渡、回生、故障記憶 |
@@ -18,3 +18,5 @@ revJのPG受信部はrevIの単一受信部を置換する。抵抗はR15を含�
 
 これらの数量修正は部品適合や製作許可ではない。任意の代替候補を混ぜて
 質量・電圧降下・熱を合算しない。構成確定後に全体の質量と回路を更新する。
+
+足部revCは外装固定ねじ8本と封入ナット8個を組立CADへ追加。revBの7部品/足は締結品を網羅していなかった。片足15部品の静的公称交差は0だが、完全な足部慣性・工具接近・締結強度は未確認。

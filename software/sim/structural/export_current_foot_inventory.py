@@ -4,6 +4,7 @@ from pathlib import Path
 import cadquery as cq
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--out',type=Path,required=True)
+p.add_argument('--include-boot-hardware',action='store_true',help='Include four boot screws and four captive nuts per foot')
 a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
 rows=[];checks=[]
 for side in ['left','right']:
@@ -16,6 +17,12 @@ for side in ['left','right']:
       'screw':f'validation/sole_external_nut_v1/{side}_screw.step',
       'nut':f'validation/sole_external_nut_v1/{side}_nut.step',
     }
+    if a.include_boot_hardware:
+        sign=1 if side=='left' else -1
+        for x in (-34,36):
+            for y in (sign*6-20.5,sign*6+20.5):
+                for hardware in ('screw','nut'):
+                    sources[f'boot_{x}_{y}_{hardware}']=f'validation/captive_boot_hardware_development_v1/{side}_{x}_{y}_{hardware}.step'
     assembly=cq.Assembly(name=side+'_foot_comparison')
     parts={}
     for name,filename in sources.items():
@@ -32,7 +39,7 @@ for side in ['left','right']:
     assembly.export(str(a.out/f'{side}_foot.step'))
 report={'parts':rows,'pair_checks':checks,'manufacturing_release':False,
  'removed':'Old bypass spacer and monolithic TPU sole; do not include alongside replacements',
- 'scope':'Seven-part comparison per foot, excludes servo/horn hardware and harness',
+ 'scope':('Fifteen-part comparison per foot including boot fastening envelopes' if a.include_boot_hardware else 'Seven-part comparison per foot') + ', excludes servo/horn hardware and harness',
  'conversion':'For uniform density rho in g/cm3: mass_kg=volume_mm3*rho*1e-6; inertia_kg_m2=volume_inertia_mm5*rho*1e-12. COM is local CAD coordinates.',
  'model_updated':False}
 (a.out/'inventory.json').write_text(json.dumps(report,indent=2)+'\n')
