@@ -1,3 +1,10 @@
+## 電池保護の部分統合（2026-09-22）
+
+`schematics/power/battery_protection_integration_candidate_v1`へBQ76942・直列入力C・主FET・ゲート網を
+37部品の候補BOM/接続表として統合。旧並列Cは含めない。
+ICの未設計26端子をUNRESOLVEDとして明示。電源・シャント・設定等が未完成で通電不可。
+次はこのassemblyの局所給電とPACK/LDを埋める。製作HOLD、Issue未完了。
+
 ## 次のセル保護設計対象（2026-09-22）
 
 [BQ76942_CANDIDATE_ja.md](BQ76942_CANDIDATE_ja.md)：BQ76942PFBRを詳細設計対象へ選定。

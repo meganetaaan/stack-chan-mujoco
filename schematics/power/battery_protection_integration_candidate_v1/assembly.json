@@ -1,0 +1,419 @@
+{
+  "status": "partial_connection_candidate",
+  "parts": [
+    {
+      "reference": "U_CELL_PROTECT",
+      "part": "BQ76942PFBR",
+      "pins": {
+        "16": "CELL0_FILTERED",
+        "15": "CELL1_FILTERED",
+        "14": "CELL2_FILTERED",
+        "13": "CELL2_FILTERED",
+        "12": "CELL2_FILTERED",
+        "10": "CELL2_FILTERED",
+        "8": "CELL2_FILTERED",
+        "6": "CELL2_FILTERED",
+        "4": "CELL2_FILTERED",
+        "2": "CELL2_FILTERED",
+        "48": "CELL3_FILTERED",
+        "17": "CELL_B_MINUS",
+        "43": "BQ76942_DSG_43",
+        "45": "BQ76942_CHG_45",
+        "1": null,
+        "3": null,
+        "5": null,
+        "7": null,
+        "9": null,
+        "11": null,
+        "19": null,
+        "44": null
+      },
+      "unresolved_pins": [
+        18,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        46,
+        47
+      ]
+    },
+    {
+      "reference": "Q_CHG",
+      "part": "CSD18540Q5BT",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "CELL_POS_FUSED",
+        "3": "CELL_POS_FUSED",
+        "4": "CHG_GATE",
+        "5": "PACK_FET_MID",
+        "6": "PACK_FET_MID",
+        "7": "PACK_FET_MID",
+        "8": "PACK_FET_MID",
+        "exposed_drain_pad": "PACK_FET_MID"
+      }
+    },
+    {
+      "reference": "Q_DSG",
+      "part": "CSD18540Q5BT",
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "PACK_POS_PROTECTED",
+        "3": "PACK_POS_PROTECTED",
+        "4": "DSG_GATE",
+        "5": "PACK_FET_MID",
+        "6": "PACK_FET_MID",
+        "7": "PACK_FET_MID",
+        "8": "PACK_FET_MID",
+        "exposed_drain_pad": "PACK_FET_MID"
+      }
+    },
+    {
+      "reference": "R_GATE_CHG",
+      "part": "TNPW06031K00BEEA",
+      "pins": {
+        "1": "BQ76942_CHG_45",
+        "2": "CHG_GATE"
+      }
+    },
+    {
+      "reference": "R_GS_CHG",
+      "part": "TNPW08051M00BEEA",
+      "pins": {
+        "1": "CHG_GATE",
+        "2": "CELL_POS_FUSED"
+      }
+    },
+    {
+      "reference": "D_GS_CHG",
+      "part": "BZT52H-C16",
+      "pins": {
+        "1": "CHG_GATE",
+        "2": "CELL_POS_FUSED"
+      },
+      "ordering_suffix_pending": true
+    },
+    {
+      "reference": "R_GATE_DSG",
+      "part": "TNPW06031K00BEEA",
+      "pins": {
+        "1": "BQ76942_DSG_43",
+        "2": "DSG_GATE"
+      }
+    },
+    {
+      "reference": "R_GS_DSG",
+      "part": "TNPW08051M00BEEA",
+      "pins": {
+        "1": "DSG_GATE",
+        "2": "PACK_POS_PROTECTED"
+      }
+    },
+    {
+      "reference": "D_GS_DSG",
+      "part": "BZT52H-C16",
+      "pins": {
+        "1": "DSG_GATE",
+        "2": "PACK_POS_PROTECTED"
+      },
+      "ordering_suffix_pending": true
+    },
+    {
+      "reference": "R_CELL_0",
+      "part": "TNPW060322R1BEEA",
+      "pins": {
+        "1": "CELL_B_MINUS",
+        "2": "CELL0_FILTERED"
+      }
+    },
+    {
+      "reference": "R_CELL_1",
+      "part": "TNPW060322R1BEEA",
+      "pins": {
+        "1": "CELL1_TAP",
+        "2": "CELL1_FILTERED"
+      }
+    },
+    {
+      "reference": "R_CELL_2",
+      "part": "TNPW060322R1BEEA",
+      "pins": {
+        "1": "CELL2_TAP",
+        "2": "CELL2_FILTERED"
+      }
+    },
+    {
+      "reference": "R_CELL_3",
+      "part": "TNPW060322R1BEEA",
+      "pins": {
+        "1": "CELL3_TAP",
+        "2": "CELL3_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F0_0",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL0_FILTERED",
+        "2": "FILTER_0_MID"
+      }
+    },
+    {
+      "reference": "C_F0_1",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL0_FILTERED",
+        "2": "FILTER_0_MID"
+      }
+    },
+    {
+      "reference": "C_F0_2",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL0_FILTERED",
+        "2": "FILTER_0_MID"
+      }
+    },
+    {
+      "reference": "C_F0_3",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_0_MID",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_F0_4",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_0_MID",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_F0_5",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_0_MID",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_F1_0",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL1_FILTERED",
+        "2": "FILTER_1_MID"
+      }
+    },
+    {
+      "reference": "C_F1_1",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL1_FILTERED",
+        "2": "FILTER_1_MID"
+      }
+    },
+    {
+      "reference": "C_F1_2",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL1_FILTERED",
+        "2": "FILTER_1_MID"
+      }
+    },
+    {
+      "reference": "C_F1_3",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_1_MID",
+        "2": "CELL0_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F1_4",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_1_MID",
+        "2": "CELL0_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F1_5",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_1_MID",
+        "2": "CELL0_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F2_0",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL2_FILTERED",
+        "2": "FILTER_2_MID"
+      }
+    },
+    {
+      "reference": "C_F2_1",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL2_FILTERED",
+        "2": "FILTER_2_MID"
+      }
+    },
+    {
+      "reference": "C_F2_2",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL2_FILTERED",
+        "2": "FILTER_2_MID"
+      }
+    },
+    {
+      "reference": "C_F2_3",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_2_MID",
+        "2": "CELL1_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F2_4",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_2_MID",
+        "2": "CELL1_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F2_5",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_2_MID",
+        "2": "CELL1_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F3_0",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL3_FILTERED",
+        "2": "FILTER_3_MID"
+      }
+    },
+    {
+      "reference": "C_F3_1",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL3_FILTERED",
+        "2": "FILTER_3_MID"
+      }
+    },
+    {
+      "reference": "C_F3_2",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL3_FILTERED",
+        "2": "FILTER_3_MID"
+      }
+    },
+    {
+      "reference": "C_F3_3",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_3_MID",
+        "2": "CELL2_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F3_4",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_3_MID",
+        "2": "CELL2_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F3_5",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_3_MID",
+        "2": "CELL2_FILTERED"
+      }
+    }
+  ],
+  "part_count": 37,
+  "unresolved_BQ76942_pins": [
+    18,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    46,
+    47
+  ],
+  "source_sha256": {
+    "bq76942_candidate.json": "df1ddf921600e383966b8f38bfb06fe5c95a7bfaca9319fcc9708f54980c9ed2",
+    "bq76942_series_filter_candidate.json": "5d1ba5f53047c1c7889759401795a1ebb5d9908e0620ee99aef42dcd15901e2b",
+    "bq76942_pack_fet_candidate.json": "2babc4c93e3b0a20dc8736bd80b585438b154ab1f3bb72cde1791a82167da984"
+  },
+  "external_ports": [
+    "CELL_B_MINUS",
+    "CELL1_TAP",
+    "CELL2_TAP",
+    "CELL3_TAP",
+    "CELL_POS_FUSED",
+    "PACK_POS_PROTECTED"
+  ],
+  "missing_stages": [
+    "cell tap and main connectors",
+    "battery fuse and reverse protection",
+    "shunt and current filters",
+    "BAT REG18 CP1 and optional LDO supply",
+    "PACK and LD input network",
+    "configuration and startup inhibit",
+    "temperature inputs and protection settings",
+    "system/servo integration"
+  ],
+  "electrically_operational": false,
+  "manufacturing_release": false
+}
