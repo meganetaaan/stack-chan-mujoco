@@ -16,7 +16,6 @@
     "Reverse current and OUT biased with IN absent",
     "Bidirectional isolation",
     "Supply-loss and return manual rearm",
-    "6 V servo overvoltage protection",
     "Inrush short-circuit thermal layout and final current setting"
   ],
   "evidence": "validation/main_efuse_selection_v1/README.md",
@@ -39,5 +38,13 @@
     "status": "comparison_only_effective_capacitance_and_startup_load_pending",
     "source": "https://www.murata.com/-/media/webrenewal/tool/library/common-pdf/static-model/component-list-s-mlcc-2506.ashx?cvid=20250805040438000000&la=ja-jp",
     "evidence": "validation/main_efuse_slew_candidate_v1/README_ja.md"
+  },
+  "internal_overvoltage_review": {
+    "nominal_trip_V": 7.6,
+    "source_table": "TPS25982 SLVSEI3D table 4 and section 7.3.2",
+    "protects_6V_servo_limit": false,
+    "decision": "Not suitable as sole servo overvoltage protection; external detection and disconnection required",
+    "recovery": "Internal OVLO attempts restart when input returns to range; external permission must prevent automatic drive restart",
+    "manufacturing_release": false
   }
 }

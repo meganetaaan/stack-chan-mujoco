@@ -52,7 +52,24 @@
     "manufacturer_part_number": "30603000",
     "part_number_source": "https://www.hobbywing.com/en/products/ubec-10a-2-6s152",
     "part_number_verified_date": "2026-09-21",
-    "procurement_status": "Manufacturer part number identified; supplier revision and 5V capability not confirmed"
+    "procurement_status": "Manufacturer part number identified; supplier revision and 5V capability not confirmed",
+    "setting_control": {
+      "required_DIP_state": [
+        0,
+        0,
+        0
+      ],
+      "orientation": "Front panel, left to right DIP1 DIP2 DIP3 per manufacturer manual",
+      "other_outputs_V": [
+        6.0,
+        7.4,
+        8.4
+      ],
+      "mechanical_guard": "Required design work; do not modify internal electronics",
+      "servo_connection_gate": "Verify 5V output with servos disconnected before initial connection",
+      "independent_OVP": "Required; candidate TPS259823ONRGE internal 7.6V OVLO is insufficient",
+      "qualified": false
+    }
   },
   "integration_rules": [
     "3S is a design alternative, not a user requirement",
