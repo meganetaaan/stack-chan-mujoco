@@ -2,12 +2,13 @@
 import argparse,json,hashlib
 from pathlib import Path
 import cadquery as cq
-ROOT=Path(__file__).resolve().parents[3];p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
-plan={'question':'Can a separate 1 mm plate lower the case screw seat by 2 mm without moving servo or thinning its printed screw seat?', 'stop':'One nominal topology, both supports; verify solids, contact and holes; no strength claim.', 'design_assumptions':{'metal_plate_mm':[42,30,1],'material_candidate':'SUS304, grade and manufacturing tolerance not released','pocket_side_gap_mm':.2,'case_head_access_diameter_mm':5,'clearance_holes_mm':2.3,'plate_support_fasteners':'four M2 through-bolts per plate, exact bolt/nut/washer and preload TBD'}, 'limits':['Plate bending and support pull-through unverified','Screw head and tool dimensions provisional','Metal density 8000 kg/m3 assumed','No manufacturer screw insertion-depth guarantee','No assembled fastener envelopes']};(a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n');rows=[]
+ROOT=Path(__file__).resolve().parents[3];p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--wide-plate',action='store_true');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+width,depth,x0=(45,33,-35) if a.wide_plate else (42,30,-33.5)
+plan={'question':'Can a separate 1 mm plate lower the case screw seat by 2 mm without moving servo or thinning its printed screw seat?', 'stop':'One nominal topology, both supports; verify solids, contact and holes; no strength claim.', 'design_assumptions':{'metal_plate_mm':[width,depth,1],'material_candidate':'SUS304, grade and manufacturing tolerance not released','pocket_side_gap_mm':.2,'case_head_access_diameter_mm':5,'clearance_holes_mm':2.3,'plate_support_fasteners':'four M2 through-bolts per plate, exact bolt/nut/washer and preload TBD'}, 'limits':['Plate bending and support pull-through unverified','Screw head and tool dimensions provisional','Metal density 8000 kg/m3 assumed','No manufacturer screw insertion-depth guarantee','No assembled fastener envelopes']};(a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n');rows=[]
 for side,cy in [('left',26),('right',-26)]:
  src=ROOT/f'validation/yaw_case_mount_v2/{side}_yaw_fixed_support.step';support=cq.importers.importStep(str(src)).val();old=support.Volume()
- plate=cq.Solid.makeBox(42,30,1,cq.Vector(-33.5,cy-15,88))
- support=support.cut(cq.Solid.makeBox(42.4,30.4,1,cq.Vector(-33.7,cy-15.2,88)))
+ plate=cq.Solid.makeBox(width,depth,1,cq.Vector(x0,cy-depth/2,88))
+ support=support.cut(cq.Solid.makeBox(width+.4,depth+.4,1,cq.Vector(x0-.2,cy-depth/2-.2,88)))
  case_axes=[(x,y) for x in [-27.5,2.5] for y in [cy-8,cy+8]]
  mounting_axes=[(x,y) for x in [-31.5,6.5] for y in [cy-13,cy+13]]
  for x,y in case_axes:
