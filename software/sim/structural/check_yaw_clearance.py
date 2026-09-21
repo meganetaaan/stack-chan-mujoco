@@ -21,6 +21,7 @@ def main():
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--step-deg', type=float, default=.25)
     p.add_argument('--include-cradle', action='store_true')
+    p.add_argument('--joint-limits', action='store_true', help='Cover full model yaw limits instead of recorded interval')
     p.add_argument('--support-dir',type=Path,help='Directory with revised left/right support STEP files')
     a=p.parse_args()
     if not np.isfinite(a.step_deg) or a.step_deg<=0 or a.step_deg>5:
@@ -38,10 +39,10 @@ def main():
     assert all(x.shape[1]==7+len(joints) for x in q)
     criteria=dict(residual_clearance_min_mm=.5, tolerance_per_part_mm=.2,
                   assumed_deflection_per_part_mm=.2)
-    plan=dict(scope=__doc__, include_cradle=a.include_cradle, criteria=criteria, step_deg=a.step_deg,
+    plan=dict(scope=__doc__, include_cradle=a.include_cradle, angle_scope='model joint limits' if a.joint_limits else 'recorded interval', criteria=criteria, step_deg=a.step_deg,
               source_sha256={str(f.relative_to(ROOT)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [scene,*paths]},
               limitations=['Only yaw coupler versus its fixed support, not the full assembly',
-                           'Recorded angle interval assumes continuous interpolation; unrecorded excursions not covered',
+                           ('Model yaw limits covered; excursions beyond limits not covered' if a.joint_limits else 'Recorded angle interval assumes continuous interpolation; unrecorded excursions not covered'),
                            'Deflection allowances are requirements, not proof of actual worst-case deformation',
                            'No fastener/harness/tool shapes in this pair study'])
     (a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
@@ -50,6 +51,9 @@ def main():
         column=indices[side+'_hip_yaw']
         lo=min(float(x[:,column].min()) for x in q)
         hi=max(float(x[:,column].max()) for x in q)
+        if a.joint_limits:
+            assert ET.parse(scene).find('compiler').get('angle')=='radian'
+            lo,hi=map(float,next(j for j in joints if j.get('name')==side+'_hip_yaw').get('range').split())
         angles=np.linspace(lo,hi,max(2,int(np.ceil(np.rad2deg(hi-lo)/a.step_deg))+1))
         moving_path=design/'cad'/f'{side}_yaw_coupler.step'
         moving=cq.importers.importStep(str(moving_path)).val()
