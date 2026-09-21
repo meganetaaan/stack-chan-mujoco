@@ -1,0 +1,660 @@
+{
+  "source_sha256": {
+    "validation/rear_washer_stack_v1/report.json": "d2c774d97def92d7832027de60bd00891f2585ff4f184c2025c7e59870054b8f",
+    "board/mechanical/prototype/power_packaging_revA/report.json": "2dd13bd2bf6db2004c0ac3b64b23f05473e9cd30371036c965d41862fe8432da",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/Tab5.step": "bc4f282fb78ac58e92fb8d285a9dbfc7935f2d268dff3be77e88dda248214376",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/TTL_interface.step": "794de1700aeede7d532a71870434be0b163ab272a86df6ccb92f675f903760c4",
+    "validation/rc_battery_cad_v1_checked/battery_candidate.step": "5f3ece800a1715d5e12958fb7623d65ef4e9802fbacbb21010aa407bdb86b1b2",
+    "board/mechanical/prototype/rc_battery_tray_revB/tray.step": "3f522dd0c14ea083cc789f568ba4ed3b0c0bdc13f5e45c951a1ae59c602c5f46",
+    "validation/battery_retention_envelope_v1/strap_envelope.step": "7417630ce80042009f5e98ac1377b7b96f4093cdc451f7872f89d8f832c66ddf",
+    "validation/dual_ubec_layout_v2/left.step": "8098b6a9e55037ef9c82e2a1cc79e1987e1ae32116e846b4565956ed7ff9ca32",
+    "validation/dual_ubec_layout_v2/right.step": "5a2142aa0126b9a8a2d6b0f86374fc5bad547a9530f61d7d4151f04e2c93b2ee",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/left_yaw_motor_case.step": "a82aabd631e3af8414ffddfe3e576e7186486cf85e2ebf9f848fd15f766c5d76",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/left_yaw_coupler.step": "6ef8b119b380a3ee3b22798ee80e2c9d43f27b99efbd497168e901af7c291585",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/right_yaw_motor_case.step": "819ae1ed7b2d831e63622910c40e03a010744a411be503e253caf2344d8834ce",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/right_yaw_coupler.step": "1b1e309ebbbdf5f4b2d33a6ed9d4b7c2ce9a4e16f173cc5c4a8a9300670f175a",
+    "validation/rear_washer_clearance_v1/left_rear_0_rear_washer.step": "edb81329e9845b89a1ede837ecf6dc9cac71c1c9282c0422ae9f43b9df0f87cc",
+    "validation/rear_washer_clearance_v1/left_rear_1_rear_washer.step": "7dfa865032deb8f2aea94a59319989e49991d8df4ca2786cabf54fcfb1381870",
+    "validation/rear_washer_clearance_v1/left_rear_2_rear_washer.step": "157607ea1841e66bb7c1f5dd5f6fdb45f55a09f0ea0c8eafe7786c8e1b2b437b",
+    "validation/rear_washer_clearance_v1/left_rear_3_rear_washer.step": "2f987de81367f13c31ccfa4259bb324a288c457fc3a7d436d4863955d120ebdc",
+    "validation/rear_washer_clearance_v1/right_rear_0_rear_washer.step": "652a69015bcc168bdb7f5d3868948adeae5eb7ff23c9781c3fcc95dfdbfeb531",
+    "validation/rear_washer_clearance_v1/right_rear_1_rear_washer.step": "a92e1f839dfbadfc35af0e11240e7fd84d05465e581968448dc1c3e9eac06545",
+    "validation/rear_washer_clearance_v1/right_rear_2_rear_washer.step": "11ada339399c15c66b12f566d26fc27a328325c21aa0981016302ab6a635606d",
+    "validation/rear_washer_clearance_v1/right_rear_3_rear_washer.step": "75b5a169ed7424471aac1f7d0c388f3d6ca1e30ba62b7896d999d25e198606d2"
+  },
+  "checks": [
+    {
+      "bolt": "left_main_0",
+      "neighbor": "Tab5",
+      "distance_mm": 100.30000000000001,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_0",
+      "neighbor": "TTL",
+      "distance_mm": 41.25252250200975,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_0",
+      "neighbor": "battery",
+      "distance_mm": 66.52773857572494,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_0",
+      "neighbor": "tray",
+      "distance_mm": 63.89344645579858,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_0",
+      "neighbor": "strap",
+      "distance_mm": 64.46699680061451,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_0",
+      "neighbor": "UBEC_left",
+      "distance_mm": 42.2862270721803,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_0",
+      "neighbor": "UBEC_right",
+      "distance_mm": 53.844673071468755,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_0",
+      "neighbor": "left_yaw_motor_case",
+      "distance_mm": 19.58800653461192,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_0",
+      "neighbor": "left_yaw_coupler",
+      "distance_mm": 14.45337330867782,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_0",
+      "neighbor": "right_yaw_motor_case",
+      "distance_mm": 39.02064312917652,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_0",
+      "neighbor": "right_yaw_coupler",
+      "distance_mm": 35.68094489916826,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_1",
+      "neighbor": "Tab5",
+      "distance_mm": 100.30000000000001,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_1",
+      "neighbor": "TTL",
+      "distance_mm": 45.6615716874262,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_1",
+      "neighbor": "battery",
+      "distance_mm": 66.58147400502942,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_1",
+      "neighbor": "tray",
+      "distance_mm": 64.22831438020224,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_1",
+      "neighbor": "strap",
+      "distance_mm": 68.57865626071334,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_1",
+      "neighbor": "UBEC_left",
+      "distance_mm": 42.2862270721803,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_1",
+      "neighbor": "UBEC_right",
+      "distance_mm": 63.36000320842067,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_1",
+      "neighbor": "left_yaw_motor_case",
+      "distance_mm": 19.588006534611925,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_1",
+      "neighbor": "left_yaw_coupler",
+      "distance_mm": 14.453373308677818,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_1",
+      "neighbor": "right_yaw_motor_case",
+      "distance_mm": 51.54801233753659,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_1",
+      "neighbor": "right_yaw_coupler",
+      "distance_mm": 48.77802341152266,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_2",
+      "neighbor": "Tab5",
+      "distance_mm": 100.30000000000001,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_2",
+      "neighbor": "TTL",
+      "distance_mm": 22.857623954014596,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_2",
+      "neighbor": "battery",
+      "distance_mm": 66.30000000000001,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_2",
+      "neighbor": "tray",
+      "distance_mm": 64.34832411496791,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_2",
+      "neighbor": "strap",
+      "distance_mm": 64.32619994994263,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_2",
+      "neighbor": "UBEC_left",
+      "distance_mm": 18.333712117299033,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_2",
+      "neighbor": "UBEC_right",
+      "distance_mm": 37.73097393197892,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_2",
+      "neighbor": "left_yaw_motor_case",
+      "distance_mm": 18.800000000000004,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_2",
+      "neighbor": "left_yaw_coupler",
+      "distance_mm": 29.760712357065714,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_2",
+      "neighbor": "right_yaw_motor_case",
+      "distance_mm": 38.41471072388806,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_2",
+      "neighbor": "right_yaw_coupler",
+      "distance_mm": 44.64440938947684,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_3",
+      "neighbor": "Tab5",
+      "distance_mm": 100.30000000000001,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_3",
+      "neighbor": "TTL",
+      "distance_mm": 29.85598430324948,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_3",
+      "neighbor": "battery",
+      "distance_mm": 66.31696615497425,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_3",
+      "neighbor": "tray",
+      "distance_mm": 64.54140952291496,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_3",
+      "neighbor": "strap",
+      "distance_mm": 68.43873172407567,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_3",
+      "neighbor": "UBEC_left",
+      "distance_mm": 18.333712117299047,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_3",
+      "neighbor": "UBEC_right",
+      "distance_mm": 50.29612786423467,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_3",
+      "neighbor": "left_yaw_motor_case",
+      "distance_mm": 18.800000000000004,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_3",
+      "neighbor": "left_yaw_coupler",
+      "distance_mm": 29.7607123570657,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_3",
+      "neighbor": "right_yaw_motor_case",
+      "distance_mm": 51.085125036550515,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "left_main_3",
+      "neighbor": "right_yaw_coupler",
+      "distance_mm": 55.73501667059183,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_0",
+      "neighbor": "Tab5",
+      "distance_mm": 100.30000000000001,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_0",
+      "neighbor": "TTL",
+      "distance_mm": 45.6615716874262,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_0",
+      "neighbor": "battery",
+      "distance_mm": 66.58147400502942,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_0",
+      "neighbor": "tray",
+      "distance_mm": 64.22831438020222,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_0",
+      "neighbor": "strap",
+      "distance_mm": 68.57865626071334,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_0",
+      "neighbor": "UBEC_left",
+      "distance_mm": 63.36000320842067,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_0",
+      "neighbor": "UBEC_right",
+      "distance_mm": 42.2862270721803,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_0",
+      "neighbor": "left_yaw_motor_case",
+      "distance_mm": 51.54801233753658,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_0",
+      "neighbor": "left_yaw_coupler",
+      "distance_mm": 48.77802341152266,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_0",
+      "neighbor": "right_yaw_motor_case",
+      "distance_mm": 19.58800653461192,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_0",
+      "neighbor": "right_yaw_coupler",
+      "distance_mm": 14.45337330867782,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_1",
+      "neighbor": "Tab5",
+      "distance_mm": 100.30000000000001,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_1",
+      "neighbor": "TTL",
+      "distance_mm": 41.25252250200975,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_1",
+      "neighbor": "battery",
+      "distance_mm": 66.52773857572494,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_1",
+      "neighbor": "tray",
+      "distance_mm": 63.89344645579858,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_1",
+      "neighbor": "strap",
+      "distance_mm": 64.46699680061451,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_1",
+      "neighbor": "UBEC_left",
+      "distance_mm": 53.844673071468755,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_1",
+      "neighbor": "UBEC_right",
+      "distance_mm": 42.2862270721803,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_1",
+      "neighbor": "left_yaw_motor_case",
+      "distance_mm": 39.02064312917652,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_1",
+      "neighbor": "left_yaw_coupler",
+      "distance_mm": 35.68094489916826,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_1",
+      "neighbor": "right_yaw_motor_case",
+      "distance_mm": 19.58800653461192,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_1",
+      "neighbor": "right_yaw_coupler",
+      "distance_mm": 14.45337330867782,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_2",
+      "neighbor": "Tab5",
+      "distance_mm": 100.30000000000001,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_2",
+      "neighbor": "TTL",
+      "distance_mm": 29.855984303249475,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_2",
+      "neighbor": "battery",
+      "distance_mm": 66.31696615497425,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_2",
+      "neighbor": "tray",
+      "distance_mm": 64.54140952291498,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_2",
+      "neighbor": "strap",
+      "distance_mm": 68.43873172407567,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_2",
+      "neighbor": "UBEC_left",
+      "distance_mm": 50.29612786423466,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_2",
+      "neighbor": "UBEC_right",
+      "distance_mm": 18.333712117299033,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_2",
+      "neighbor": "left_yaw_motor_case",
+      "distance_mm": 51.085125036550515,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_2",
+      "neighbor": "left_yaw_coupler",
+      "distance_mm": 55.73501667059183,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_2",
+      "neighbor": "right_yaw_motor_case",
+      "distance_mm": 18.800000000000004,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_2",
+      "neighbor": "right_yaw_coupler",
+      "distance_mm": 29.760712357065714,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_3",
+      "neighbor": "Tab5",
+      "distance_mm": 100.30000000000001,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_3",
+      "neighbor": "TTL",
+      "distance_mm": 22.857623954014603,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_3",
+      "neighbor": "battery",
+      "distance_mm": 66.30000000000001,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_3",
+      "neighbor": "tray",
+      "distance_mm": 64.34832411496791,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_3",
+      "neighbor": "strap",
+      "distance_mm": 64.32619994994263,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_3",
+      "neighbor": "UBEC_left",
+      "distance_mm": 37.73097393197893,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_3",
+      "neighbor": "UBEC_right",
+      "distance_mm": 18.333712117299047,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_3",
+      "neighbor": "left_yaw_motor_case",
+      "distance_mm": 38.41471072388806,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_3",
+      "neighbor": "left_yaw_coupler",
+      "distance_mm": 44.644409389476834,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_3",
+      "neighbor": "right_yaw_motor_case",
+      "distance_mm": 18.800000000000004,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    },
+    {
+      "bolt": "right_main_3",
+      "neighbor": "right_yaw_coupler",
+      "distance_mm": 29.7607123570657,
+      "overlap_mm3": 0.0,
+      "screen_pass": true
+    }
+  ],
+  "failures": [],
+  "nearest": {
+    "bolt": "left_main_1",
+    "neighbor": "left_yaw_coupler",
+    "distance_mm": 14.453373308677818,
+    "overlap_mm3": 0.0,
+    "screen_pass": true
+  },
+  "manufacturing_release": false,
+  "dynamic_clearance_verified": false,
+  "limits": [
+    "Neutral pose only; yaw coupler rotation not swept",
+    "No lateral hole tolerance or bolt tilt",
+    "Backing plate and support mating parts excluded; this is exposed-tip clearance only",
+    "No cables or motor internal geometry",
+    "No minimum manufactured clearance certified"
+  ]
+}
