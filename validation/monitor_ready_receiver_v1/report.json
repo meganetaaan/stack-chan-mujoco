@@ -1,0 +1,74 @@
+{
+  "scope": "Compare real Schmitt receiver leakage and partial-power limits before integration.",
+  "rows": [
+    {
+      "manufacturer": "Nexperia",
+      "part": "74LVC1G17GV",
+      "source": "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf",
+      "revision": "16.1, 2024-09-03",
+      "input_leakage_spec_A": 1e-06,
+      "Ioff_spec_A": 2e-06,
+      "conditional_input_high_min_V": 3.0757,
+      "conditional_output_off_with_100k_pulldown_V": 0.20199999999999999,
+      "input_threshold_guaranteed_for_entire_3V207_to_3V393_interval": false,
+      "qualification": false
+    },
+    {
+      "manufacturer": "TI",
+      "part": "SN74LVC1G17DBVR",
+      "source": "https://www.ti.com/lit/ds/symlink/sn74lvc1g17.pdf",
+      "revision": "SCES351Y, October 2025",
+      "input_leakage_spec_A": 5e-06,
+      "Ioff_spec_A": 1e-05,
+      "conditional_input_high_min_V": 2.6717,
+      "conditional_output_off_with_100k_pulldown_V": 1.01,
+      "input_threshold_guaranteed_for_entire_3V207_to_3V393_interval": false,
+      "qualification": false
+    }
+  ],
+  "assumptions": [
+    "100 kohm resistor total +/-1 percent; exact resistor unselected",
+    "Existing conditional STOP_AUX lower bound 3.207 V",
+    "TPS3808 released-output leakage upper 300 nA applied to operating point",
+    "Input leakage specified at 0 or 5.5 V used as operating-point comparison",
+    "Output-off estimate excludes downstream leakage and applies at VCC=0 only"
+  ],
+  "decision": "Prefer Nexperia for further receiver design because of lower leakage; do not integrate as qualified",
+  "reason_not_qualified": "Both datasheets list Schmitt thresholds at discrete VCC values; no interpolation used as a guaranteed bound across actual rail interval",
+  "proposed_receiver": {
+    "part": "74LVC1G17GV",
+    "pins": {
+      "1": null,
+      "2": "MONITOR_START_READY_OD",
+      "3": "GND",
+      "4": "MONITOR_START_READY_LOGIC",
+      "5": "LOGIC3V3"
+    },
+    "output_pulldown_ohm": 100000,
+    "bypass_F": 1e-07
+  },
+  "fault_cases": [
+    {
+      "case": "STOP_AUX valid, LOGIC3V3 zero",
+      "finding": "Input tolerates powered source; output high impedance plus Ioff, not actively Low; external pulldown required"
+    },
+    {
+      "case": "LOGIC3V3 between zero and recommended minimum",
+      "finding": "Ioff at VCC=0 does not guarantee behavior across ramp; separate inhibition required"
+    },
+    {
+      "case": "Both rails valid",
+      "finding": "Leakage budget calculated; thresholds and actual capacitance still require closure"
+    },
+    {
+      "case": "STOP_AUX short dip",
+      "finding": "Buffer cannot restore lost timer qualification; revG limitation remains"
+    }
+  ],
+  "next_design_exit_conditions": [
+    "Guaranteed receiver input levels across selected supply range",
+    "Worst total input capacitance/loading compatible with TPS3808 delay specification",
+    "Actual inhibition path valid throughout partial supply ramps; no reliance on Ioff away from zero"
+  ],
+  "manufacturing_release": false
+}
