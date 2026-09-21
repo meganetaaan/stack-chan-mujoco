@@ -9,8 +9,8 @@
     "ARMED": "U6 pin5; release-qualified memory; must also be observed Low before clear completion",
     "CLEAR_HOLD_DONE": "unimplemented timing qualification at both actual U6 CLR pins; not instant acknowledgement",
     "RESET_LOW_OBSERVED": "unimplemented valid observation of actual reset assertion; invalidate after each new clear request",
-    "LEFT_SOURCE_VOLTAGE_VALID": "Unimplemented independent UV/OV qualification upstream of left servo switch, including monitor power validity",
-    "RIGHT_SOURCE_VOLTAGE_VALID": "Unimplemented independent UV/OV qualification upstream of right servo switch, including monitor power validity",
+    "LEFT_SOURCE_VOLTAGE_VALID": "Qualified status not implemented; raw LEFT_SOURCE_WINDOW_OD now exists in servo_power_rearm_integration_revF; require monitor supply validity and startup wait before accepting",
+    "RIGHT_SOURCE_VOLTAGE_VALID": "Qualified status not implemented; raw RIGHT_SOURCE_WINDOW_OD now exists in servo_power_rearm_integration_revF; require monitor supply validity and startup wait before accepting",
     "LEFT_PG_VALID": "Unimplemented qualified left switch status; distinguish startup low from RUN failure",
     "RIGHT_PG_VALID": "Unimplemented qualified right switch status; distinguish startup low from RUN failure"
   },
@@ -46,6 +46,7 @@
   "previous_settled_logic_evidence": "validation/sequence_clear_handshake_v1/README_ja.md",
   "clear_hold_timer_candidate": "schematics/power/clear_hold_timer_candidate.json",
   "timer_freshness_evidence": "validation/clear_timer_freshness_v1/README_ja.md",
-  "split_supply_status": "Dual PG receiver candidate exists in revB and is integrated into manual_rearm_revJ; independent voltage monitors, capture timing and startup hardware logic remain unimplemented",
-  "dual_pg_receiver_candidate": "schematics/power/dual_pg_receiver_revB/connectivity.json"
+  "split_supply_status": "Dual PG receivers and source-window circuits integrated; qualified source status, startup sequencer and fault timing unimplemented",
+  "dual_pg_receiver_candidate": "schematics/power/dual_pg_receiver_revB/connectivity.json",
+  "source_window_integration": "schematics/power/servo_power_rearm_integration_revF/assembly.json"
 }

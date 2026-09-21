@@ -42,3 +42,5 @@ EN停止回路: `integrated_enable_interface.json`へTPS259813L条件を定義�
 電源統合revDで共通MAIN_EFUSE_ENを左右TPS259813Lの1番端子へ接続。定常High下限2.765 V、停止クランプ電流上限0.730 mA未満を確認。電源順序・コマンド生成・独立UV監視・故障時停止は未確認。
 
 電源統合revEはR5を左右IC直近の78.7 kΩ各1個へ置換。EN分岐の断線時にIC側のプルダウンを残す配置を要求する。73部品・251端子。定常漏れ計算7.95 mV以下で、停止時間・GND故障等は未確認。
+
+電源統合の現行入口を`schematics/power/servo_power_rearm_current.json`へ追加。revFは左右電圧窓を含む87部品・287端子。生の電圧監視出力は、起動資格付け前のためEN/RESETへ直結しない。状態回路・電源有効性・過渡確認は未完了。
