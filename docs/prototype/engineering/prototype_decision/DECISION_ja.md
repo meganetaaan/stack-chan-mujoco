@@ -12,6 +12,8 @@
 
 現行構成一覧は `CURRENT_CANDIDATES_ja.md`、Issue条件との照合は `ISSUE_STATUS_ja.md`。本書の後半に保存した旧候補の数値を現行設計の合格根拠へ転用しない。
 
+LT4363直列保護代替案は`schematics/power/series_clamp_selection_gate.json`の条件を解消するまで詳細統合を保留。故障の時間・電流包絡とMOSFETの線形SOAを確認できておらず、典型計算の追加では採用根拠を補えない。現行revMも未認定の比較案である。
+
 電池・充電器・Tab5給電・3S化の確認状況は `RC_SUPPLY_ja.md` を参照。
 ユーザーが指定したABS/PETG/TPU・電池選定委任は `BUILD_CONSTRAINTS_ja.md`。
 電池トレイの最新形状候補は `board/mechanical/prototype/rc_battery_tray_revB/`。
@@ -55,7 +57,7 @@
 正本は同フォルダの `candidate_bom.csv`。これは調達・製造リリースBOMではなく、試験片と全身候補を分離した一覧。従来 `board/mechanical/prototype/bom.csv` の質量予約と、途中候補の質量を足し合わせて完成機重量として使わない。
 
 - 試験片：現行の統合比較は `board/mechanical/prototype/foot_candidate/revE/`（左右30部品、幅4.6 mmの外装ナット横挿入v2を統合）。revAのスペーサー付き足裏を現行正本として使わない。接地層・ワッシャ・締結・工具・強度は未確定。試験片の製作はこの未確認事項を調べるためのもので、全身駆動への承認ではない。
-- ヨー支持の統合候補：`board/mechanical/prototype/yaw_support_candidate/revA/`。支持keeper v2、取付板v4、ねじ付き背面板を52部品の組立に固定。全干渉・強度未確認で、製造リリースではない。旧内側ナット方式はこの候補へ混在させない。
+- ヨー支持の統合候補：`board/mechanical/prototype/yaw_support_candidate/revB/`。支持keeper v2、取付板v4、ねじ付き背面板、拡大穴の背面ワッシャ候補を52部品の組立に固定。全干渉・強度未確認で、製造リリースではない。旧内側ナット方式はこの候補へ混在させない。
 - 全身候補：現行12軸とTab5を維持。外部5 Vサーボ電源とTab5給電を分離する構成を試験用の第一候補にする。信号GND/USB等の逆給電経路を確認する。電池自立構成は別の適合判定を要する。
 - 電池→変換器→サーボの完成回路は未発行。ブレーキ抵抗、MOSFET、遮断器、保護IC、配線を一つの実部品回路へまとめる前に、シミュレーション上の保護合格を主張しない。
 

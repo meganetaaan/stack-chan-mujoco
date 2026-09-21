@@ -1,0 +1,33 @@
+{
+  "candidate": "LT4363IMS-1#PBF with PSMN2R4-30YLD and two WSLF25124L000FEA per leg",
+  "assembly": "schematics/power/series_clamp_stage_revD/assembly.json",
+  "status": "on_hold_pending_operating_envelope_evidence",
+  "manufacturing_release": false,
+  "primary_candidate_unchanged": "schematics/power/servo_power_rearm_current.json",
+  "source": {
+    "url": "https://www.analog.com/media/en/technical-documentation/data-sheets/4363fb.pdf",
+    "revision": "C",
+    "reviewed_sections": [
+      "Electrical Characteristics page 4",
+      "Fault Timer Operation in Overcurrent page 12"
+    ]
+  },
+  "verified_distinctions": [
+    "Overcurrent warning does not switch to the OV warning charging current.",
+    "Application equation uses total 0.875 V timer swing; actual time depends on VCC-OUT and current regulation history.",
+    "Electrical-table OC timer current magnitude at delta VDS 0.5 V is min/typ/max 5/9/13 uA, and at 80 V 190/250/310 uA, at specified test conditions.",
+    "The application-text 8..260 uA approximation is not the electrical-table guaranteed envelope.",
+    "The 2.5 us OC propagation maximum is for a sense step 0 to 150 mV at OUT=0, not total latched-fault shutdown time."
+  ],
+  "resume_conditions": [
+    "Establish a defensible timer-current and sensing envelope at actual 5 V operation and 12.6 V fault, including the foldback transition.",
+    "Select CTMR with total tolerance/leakage and establish initial timer voltage and gate discharge contribution.",
+    "Verify time-resolved linear SOA at applicable initial temperature for short, soft-short, OV and startup cases."
+  ],
+  "work_to_stop": [
+    "Further passive/PCB integration of this alternative solely to advance a provisional candidate",
+    "Unknown-parameter sweeps presented as qualification"
+  ],
+  "not_a_rejection_of_part": "Published evidence is insufficient for this design qualification; no claim of measured failure.",
+  "epic_6_complete": false
+}

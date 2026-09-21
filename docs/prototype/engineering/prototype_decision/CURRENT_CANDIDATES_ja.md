@@ -4,12 +4,15 @@
 
 | 対象 | 現在参照する比較案 | 主な未完了事項 |
 |---|---|---|
+| ヨー支持 | board/mechanical/prototype/yaw_support_candidate/current.json（revB） | 全荷重・締結・造形・全身干渉 |
 | 足部 | board/mechanical/prototype/foot_candidate/revE | 材料・ワッシャ実品・締付け・強度・公差 |
 | 電池と変換器 | schematics/power/rc_supply_candidate.json | 出力過渡、セル保護、取付け、給電保護 |
 | 変換器の代替 | schematics/power/pol_module_screen.json | 電圧窓が未成立。UBECへ追加する部品ではない |
 | 既存2段保護案 | schematics/power/servo_ovp_candidate.json | OVP分圧、過渡、回生、故障記憶 |
 | 保護の統合代替 | schematics/power/integrated_servo_protection_screen.json | 2段保護と排他的な比較。型番動作・故障復帰・遮断保証 |
-| 電源保護・再始動の統合候補 | schematics/power/servo_power_rearm_current.json（revI） | 状態回路、監視の有効性判定、電源遷移・回生 |
+| 電源保護・再始動の統合候補 | schematics/power/servo_power_rearm_current.json（revM） | 状態回路、監視の有効性判定、電源遷移・回生 |
+
+以下は変更履歴。現行候補は上表の指示ファイルを優先する。
 
 revJのPG受信部はrevIの単一受信部を置換する。抵抗はR15を含め19個、
 局所コンデンサは17個。candidate_bom.csvの抵抗セット18個は別掲R15を除いた数。
@@ -248,3 +251,7 @@ ABS・PETGに加えてTPUも使用可能。一部TPUの採用は許可されて�
 ### 過電圧比較点だけでは故障負担を包絡しない
 
 `validation/series_fault_coverage_v1` で表のVCC=12V条件を分離。抵抗下限の比較では出力0Vで53.616W、3Vで62.988Wとなり、v3の過電圧51.510WだけをSOA要求にしてはいけない。入力・FET・抵抗・出力の電力整合を確認。実使用5V/12.6V、出力1〜3V、過電流タイマーの適用は未確認。未知域を補間して最悪値を捏造せず、採用は保留。
+
+### LT4363代替案の選定ゲート
+
+`schematics/power/series_clamp_selection_gate.json` で候補の詳細統合を保留。過電流時は過電圧時と警告期間の充電動作が異なり、典型式や2.5µsの伝搬遅延を全故障遮断上限として使えない。実動作点の電流・時間包絡、容量部品、温度別の線形SOAが再開条件。未確認パラメータ掃引や追加配線ではこの不足は解消しない。現行revMを合格へ昇格させる判断でもない。
