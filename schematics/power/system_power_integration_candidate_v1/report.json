@@ -1,0 +1,77 @@
+{
+  "source_sha256": {
+    "schematics/power/battery_protection_integration_candidate_v1/assembly.json": "e407b8eca4951c07c2fb3a3edd96203772e83c46a59e7ddca393416ab2ab7c4e",
+    "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json": "ae0e95e3e893f5ee0d438a0a508cf269cf967984d22b3f6dedecb0916e6c577d"
+  },
+  "parts": 196,
+  "populated_pin_connections": 564,
+  "explicit_trace_count": 4,
+  "connection_checks": {
+    "no_explicit_copper_short_across_shunt": true,
+    "no_explicit_copper_short_across_main_fets": true,
+    "no_explicit_copper_parallel_servo_outputs": true,
+    "logic_and_stop_input_on_protected_positive": true,
+    "both_regulator_inputs_on_protected_positive": true,
+    "bq_reference_separate_from_system_reference": true
+  },
+  "check_scope": "Explicit net naming/copper only; no component conduction, leakage, transient, ground offset, layout or fault proof",
+  "unresolved_pins": {
+    "BAT__U_CELL_PROTECT": [
+      22,
+      39,
+      40
+    ]
+  },
+  "unselected_part_references": [
+    "SYS__LEFT_R_GATE",
+    "SYS__LEFT_C_GATE",
+    "SYS__RIGHT_R_GATE",
+    "SYS__RIGHT_C_GATE",
+    "SYS__LEFT_R_ILM",
+    "SYS__RIGHT_R_ILM",
+    "SYS__LEFT_R_OV_TOP",
+    "SYS__LEFT_R_OV_BOTTOM",
+    "SYS__RIGHT_R_OV_TOP",
+    "SYS__RIGHT_R_OV_BOTTOM"
+  ],
+  "tab5_branch_present": false,
+  "controller_present": false,
+  "predischarge_hardware_present": false,
+  "unimplemented_design": [
+    {
+      "issue": 21,
+      "gap": "Main battery connector, fuse/disconnect/reverse protection before CELL_POS_FUSED"
+    },
+    {
+      "issue": 21,
+      "gap": "Tab5 protected input branch and independent default-off inhibit; Tab5 is absent from this netlist"
+    },
+    {
+      "issue": 21,
+      "gap": "BQ local controller on BQ_CTRL3V3/CELL_B_MINUS and qualified cross-domain interface to system sequencer"
+    },
+    {
+      "issue": 24,
+      "gap": "External PDSG switch/resistor, independent abort and TS2 wake/PCHG disposition"
+    },
+    {
+      "issue": 22,
+      "gap": "Predischarge budget includes automatic-start logic/stop branches, both disabled regulators, capacitors and Tab5 leakage"
+    },
+    {
+      "issue": 23,
+      "gap": "Complete startup/reset/brownout sequence with raw comparator outputs qualified before motor enable"
+    },
+    {
+      "issue": 24,
+      "gap": "Independent default-off and watchdog drivers for both regulator ALLOW ports and BQ BOTHOFF"
+    },
+    {
+      "issue": 24,
+      "gap": "Main/eFuse thresholds, inrush, regeneration, short-circuit energy, thermal and recovery qualification"
+    }
+  ],
+  "decision": "HOLD: incomplete design, not eligible for manufacturing or Issue closure",
+  "electrical_qualification": false,
+  "manufacturing_release": false
+}
