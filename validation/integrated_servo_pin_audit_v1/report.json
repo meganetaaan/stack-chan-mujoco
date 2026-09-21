@@ -1,0 +1,43 @@
+{
+  "changes": [
+    {
+      "reference": "LEFT_U_POWER",
+      "before": {
+        "9": "LEFT_ITIMER",
+        "10": "LEFT_ILM"
+      },
+      "after": {
+        "9": "LEFT_ILM",
+        "10": "LEFT_ITIMER"
+      }
+    },
+    {
+      "reference": "RIGHT_U_POWER",
+      "before": {
+        "9": "RIGHT_ITIMER",
+        "10": "RIGHT_ILM"
+      },
+      "after": {
+        "9": "RIGHT_ILM",
+        "10": "RIGHT_ITIMER"
+      }
+    }
+  ],
+  "reviewed_eFuse_pin_mapping": {
+    "1": "EN_UVLO",
+    "2": "OVLO_SENSE",
+    "3": "PG_SOURCE",
+    "4": "FLT_N",
+    "5": "REGULATOR_OUT",
+    "6": "INTERNAL_OUT",
+    "7": "DVDT",
+    "8": "GND",
+    "9": "ILM",
+    "10": "ITIMER"
+  },
+  "source": "https://www.ti.com/lit/ds/symlink/tps25981.pdf",
+  "source_revision": "SLVSGG6D",
+  "source_table": "5-1 pages4-5",
+  "eFuse_pins_checked": 20,
+  "electrical_qualification": false
+}
