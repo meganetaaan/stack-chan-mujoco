@@ -1,0 +1,44 @@
+{
+  "engineering_choices": {
+    "bleed_ohm": 100000,
+    "total_resistor_tolerance": 0.01,
+    "start_V": 12.6,
+    "target_V": 3.5,
+    "required_reset_time_s": null
+  },
+  "manufacturer_derived_POR_fall_lower_V": 3.6,
+  "maximum_sustained_backfeed_for_target_A_exclusive": 3.465346534653465e-05,
+  "battery_current_at_12p6V_upper_A": 0.00012727272727272728,
+  "resistor_power_at_12p6V_upper_W": 0.0016036363636363635,
+  "cases": [
+    {
+      "backfeed_A": 0,
+      "equilibrium_V": 0.0,
+      "can_reach_target": true,
+      "seconds_per_uF": 0.1293743183916685,
+      "local_caps_only_time_s": 0.02725011268283713
+    },
+    {
+      "backfeed_A": 1e-05,
+      "equilibrium_V": 1.01,
+      "can_reach_target": true,
+      "seconds_per_uF": 0.15532385463437942,
+      "local_caps_only_time_s": 0.03271586350163934
+    },
+    {
+      "backfeed_A": 4e-05,
+      "equilibrium_V": 4.04,
+      "can_reach_target": false,
+      "seconds_per_uF": null,
+      "local_caps_only_time_s": null
+    }
+  ],
+  "whole_system_capacitance_F": null,
+  "qualified": false,
+  "limits": [
+    "Capacitance on shared BATTERY_RAW includes unmodelled converter inputs; local time is not robot reset time",
+    "Backfeed cases are diagnostic assumptions, not measured bounds",
+    "Other passive/IC discharge paths omitted; no helpful minimum load assumed",
+    "POR voltage crossing alone does not establish reset pulse duration or safe servo rearm"
+  ]
+}

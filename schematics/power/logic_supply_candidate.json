@@ -89,7 +89,7 @@
     "fault_mode": {
       "MODE": "open",
       "behavior": "Circuit breaker with latched overload shutdown; fast-trip includes internal restart before overload handling",
-      "recovery_candidate": "External input power cycle below POR reset level; discharge path pending",
+      "recovery_candidate": "External source disconnect with 100k BATTERY_RAW-to-GND bleed candidate; total capacitance/backfeed and reset hold duration unqualified",
       "evidence": "validation/logic_fault_mode_v1/README_ja.md",
       "qualified": false,
       "startup_timer_review": {
@@ -98,7 +98,8 @@
         "tCB_min_s": null,
         "tCB_max_s": null,
         "status": "startup_not_qualified; do not infer output charging slope from upstream dVdT"
-      }
+      },
+      "discharge_evidence": "validation/logic_discharge_v1/report.json"
     },
     "pin_level_candidate": "schematics/power/logic_input_branch_candidate_v1/branch.json",
     "current_setting_candidate": {

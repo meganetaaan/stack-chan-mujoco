@@ -256,6 +256,30 @@
         "availability_checked": false,
         "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
       }
+    },
+    {
+      "ref": "R_LOGIC_INPUT_BLEED",
+      "value_ohm": 100000,
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "GND"
+      },
+      "part": "TNPW0603100KBEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      },
+      "purpose": "Discharge shared input after all external sources disconnect; do not connect to RTN"
     }
   ],
   "interfaces": {
@@ -274,7 +298,7 @@
     "118kohm replaces 120kohm; actual current threshold bounds and startup require reevaluation; process/aging within 1% allocation pending",
     "Four local C0G capacitors selected as candidates; cold capacitance, transient voltage and layout unresolved",
     "Default ramp and downstream regulator startup not qualified",
-    "External power-cycle discharge/reset not implemented",
+    "100k input bleed candidate added; total shared capacitance and backfeed bounds unknown, so power-cycle reset timing unqualified",
     "Battery cell protection not supplied by this branch",
     "Reverse-input and backfeed paths through complete system not verified",
     "Not merged into revM assembly or KiCad; no PCB thermal/layout verification"
@@ -343,5 +367,6 @@
       "source": "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM31C5C1H104JA01-01A.pdf"
     }
   ],
-  "bypass_evidence": "validation/logic_branch_bypass_v1/report.json"
+  "bypass_evidence": "validation/logic_branch_bypass_v1/report.json",
+  "discharge_evidence": "validation/logic_discharge_v1/report.json"
 }
