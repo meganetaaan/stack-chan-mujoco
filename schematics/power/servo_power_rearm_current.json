@@ -1,6 +1,6 @@
 {
-  "revision": "servo_power_rearm_integration_revK",
-  "assembly": "schematics/power/servo_power_rearm_integration_revK/assembly.json",
+  "revision": "servo_power_rearm_integration_revL",
+  "assembly": "schematics/power/servo_power_rearm_integration_revL/assembly.json",
   "status": "integrated_comparison_not_released",
   "includes": [
     "Dual TPS259813L stages",
@@ -12,7 +12,8 @@
     "SN74AUP1T50 monitor-ready receiver with output pulldown; operating envelope conditional",
     "Local default-low resistor on sequence enable request",
     "13 monitor/default resistors assigned manufacturer ordering codes; nominal values unchanged",
-    "21 local 100nF capacitors with selected ordering candidate"
+    "21 local 100nF capacitors with selected ordering candidate",
+    "Dedicated stop input 1k/BAS116/100k branch; conditional DC screen only"
   ],
   "manufacturing_release": false,
   "electrical_qualification": false,
@@ -23,6 +24,6 @@
     "Unselected passives and complete current/thermal budget",
     "Integrated transient and fault verification"
   ],
-  "candidate_bom": "schematics/power/servo_power_rearm_integration_revK/candidate_bom.csv",
+  "candidate_bom": "schematics/power/servo_power_rearm_integration_revL/candidate_bom.csv",
   "stop_output_capacitor_requirements": "schematics/power/stop_output_capacitor_requirements.json"
 }
