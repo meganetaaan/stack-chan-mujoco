@@ -1,0 +1,10 @@
+{
+  "criterion_mm": 0.2,
+  "method": "Keep triangle-bound proofs for samples <= criterion; directly superpose every remaining sample. No new FE solves.",
+  "stop": "One pass over all archived samples; no threshold changes.",
+  "limits": [
+    "Same linear isotropic single mesh and ideal clamp as source.",
+    "Nodal displacement only, not actual printed structure certification.",
+    "Latest mass not in archived loads."
+  ]
+}
