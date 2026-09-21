@@ -12,7 +12,7 @@ parts=[]
 def add(ref,part,pins,**extra):
  parts.append({'reference':ref,'part':part,'pins':{str(k):v for k,v in pins.items()},**extra})
 bq_pins={str(p['pin']):p['sense_net'] for p in a['cell_input_map']['pins']}
-bq_pins.update({'17':'CELL_B_MINUS','43':'BQ76942_DSG_43','45':'BQ76942_CHG_45','41':'BQ_LD','42':'BQ_PACK','47':'BQ_BAT_HOLD'})
+bq_pins.update({'17':'CELL_B_MINUS','43':'BQ76942_DSG_43','45':'BQ76942_CHG_45','41':'BQ_LD','42':'BQ_PACK','47':'BQ_BAT_HOLD','24':'BQ_REG18','46':'BQ_CP1'})
 for pin in a['cell_input_map']['NC_pins_left_open']:bq_pins[str(pin)]=None
 unresolved=[i for i in range(1,49) if str(i) not in bq_pins]
 add('U_CELL_PROTECT',a['part'],bq_pins,unresolved_pins=unresolved)
@@ -33,11 +33,14 @@ add('R_PACK','TNPW060310K0BEEA',{1:'PACK_POS_PROTECTED',2:'BQ_PACK'})
 add('R_BAT','TNPW1206100RBEEA',{1:'CELL_POS_FUSED',2:'BQ_BAT_DIODE_A'})
 add('D_BAT','BAS116',{1:'BQ_BAT_DIODE_A',2:None,3:'BQ_BAT_HOLD'},ordering_suffix_pending=True)
 add('C_BAT','C1206C105K3RACTU',{1:'BQ_BAT_HOLD',2:'CELL_B_MINUS'},effective_capacitance_qualified=False)
-assert len(parts)==42 and len({p['reference'] for p in parts})==42
+for i in range(3):
+ add(f'C_REG18_{i}','C1206C105K3RACTU',{1:'BQ_REG18',2:'CELL_B_MINUS'},effective_capacitance_qualified=False)
+add('C_CP1','C1206C105K3RACTU',{1:'BQ_CP1',2:'BQ_BAT_HOLD'},effective_capacitance_qualified=False)
+assert len(parts)==46 and len({p['reference'] for p in parts})==46
 # Check that the obsolete 8-capacitor parallel-only filter was not also imported.
 assert sum(p['part']==c['capacitor_part'] for p in parts)==24
 out=power/'battery_protection_integration_candidate_v1';out.mkdir(exist_ok=True)
-assembly={'status':'partial_connection_candidate','parts':parts,'part_count':len(parts),'unresolved_BQ76942_pins':unresolved,'source_sha256':{s:hashlib.sha256((power/s).read_bytes()).hexdigest() for s in sources},'external_ports':['CELL_B_MINUS','CELL1_TAP','CELL2_TAP','CELL3_TAP','CELL_POS_FUSED','PACK_POS_PROTECTED'],'missing_stages':['cell tap and main connectors','battery fuse and reverse protection','shunt and current filters','BAT hold-up and input fault qualification; REG18 CP1 and optional LDO supply','PACK/LD transient and reverse-polarity qualification','configuration and startup inhibit','temperature inputs and protection settings','system/servo integration'],'electrically_operational':False,'manufacturing_release':False}
+assembly={'status':'partial_connection_candidate','parts':parts,'part_count':len(parts),'unresolved_BQ76942_pins':unresolved,'source_sha256':{s:hashlib.sha256((power/s).read_bytes()).hexdigest() for s in sources},'external_ports':['CELL_B_MINUS','CELL1_TAP','CELL2_TAP','CELL3_TAP','CELL_POS_FUSED','PACK_POS_PROTECTED'],'missing_stages':['cell tap and main connectors','battery fuse and reverse protection','shunt and current filters','BAT hold-up and input faults; REG18/CP1 effective capacitance and startup; optional LDO supply','PACK/LD transient and reverse-polarity qualification','configuration and startup inhibit','temperature inputs and protection settings','system/servo integration'],'electrically_operational':False,'manufacturing_release':False}
 (out/'assembly.json').write_text(json.dumps(assembly,indent=2)+'\n')
 with (out/'bom.csv').open('w') as f:
  w=csv.writer(f);w.writerow(['part_or_type','quantity','references'])
