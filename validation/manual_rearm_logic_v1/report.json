@@ -1,0 +1,1315 @@
+{
+  "transitions_checked": 96,
+  "logic_checks_pass": true,
+  "hardware_qualified": false,
+  "transitions": [
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": false,
+        "button": false
+      },
+      "next": "READY",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "WAIT_RELEASE",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": false,
+        "button": false
+      },
+      "next": "READY",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": false,
+        "button": true
+      },
+      "next": "ENABLED",
+      "enable": true
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "READY",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": false,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": false,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": false,
+        "fault": true,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": false,
+        "button": false
+      },
+      "next": "ENABLED",
+      "enable": true
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": false,
+        "button": true
+      },
+      "next": "ENABLED",
+      "enable": true
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": false,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": false,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": false,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": true,
+        "button": false
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    },
+    {
+      "state": "ENABLED",
+      "inputs": {
+        "power_valid": true,
+        "monitor_valid": true,
+        "fault": true,
+        "stop": true,
+        "button": true
+      },
+      "next": "WAIT_RELEASE",
+      "enable": false
+    }
+  ],
+  "traces": {
+    "held_button_power_cycle": {
+      "inputs": [
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1
+        ]
+      ],
+      "enable": [
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false
+      ]
+    },
+    "fault_clear_while_held": {
+      "inputs": [
+        [
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1
+        ]
+      ],
+      "enable": [
+        false,
+        true,
+        false,
+        false,
+        false,
+        true
+      ]
+    },
+    "release_during_fault_is_not_rearm": {
+      "inputs": [
+        [
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1
+        ]
+      ],
+      "enable": [
+        false,
+        false,
+        false,
+        true
+      ]
+    }
+  }
+}
