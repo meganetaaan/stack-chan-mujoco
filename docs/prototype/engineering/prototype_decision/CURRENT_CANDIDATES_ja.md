@@ -100,3 +100,7 @@ TPS70933メーカー非暗号化モデルの定常計算は実行できたが、
 `board/power/placement_revA/` に入力フィルムコンデンサ1個を実配置。既存8群・基板との公称干渉なし、取付禁止領域外、KiCadの6穴とCAD体積を照合。98部品全体の配置配線は未完了。
 
 左右eFuseのITIMERを外付けコンデンサなし（意図的開放）へ選定。`schematics/power/itimer_selection.json` と `validation/itimer_open_selection_v1/` が最新の扱い。1.8 µs典型値を最大遮断時間として使用しない。通常時誤停止・故障エネルギーは未確認。
+
+### OVLOクランプ追加の負荷確認
+
+`validation/ov_clamp_networks_v1` に4構成の限定比較を保存。35.7k/10kを維持する単純追加は検出電圧または電流不足で採用しない。3.57k/1kへの変更候補は静的比較のみ通過し、低電流精度・過渡応答の裏付けがなく未採用。revMと製作保留の結論は維持する。
