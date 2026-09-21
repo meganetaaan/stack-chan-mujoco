@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -18,6 +19,18 @@ from typing import Sequence
 
 COMMANDS = {"sch": "erc", "pcb": "drc"}
 SUFFIXES = {"sch": ".kicad_sch", "pcb": ".kicad_pcb"}
+SCHEMATIC_SHEETFILE = re.compile(
+    r'\(property\s+"Sheetfile"\s+"((?:\\.|[^"\\])*)"'
+)
+DEPENDENCY_SIDECARS = (".kicad_pro", ".kicad_dru")
+MANUAL_REVIEW_REQUIRED = [
+    "Project/rule settings loaded correctly, ignored rules and exclusions",
+    "All sheets, libraries and project dependencies at the reviewed revision",
+    "Schematic/PCB parity (NOT run by this script)",
+    "Ratings, power/return paths, mechanical fit and all outline corner radii",
+    "Logo/revision presence and legibility in actual fabrication output",
+    "Saved zone fills and Gerber/drill output at the reviewed revision",
+]
 
 
 def run(command: list[str], timeout: int) -> subprocess.CompletedProcess[str]:
@@ -37,6 +50,107 @@ def command_for(cli: str, kind: str, source: Path, report: Path,
     return command + ["--output", str(report), str(source)]
 
 
+def _decode_kicad_string(value: str) -> str:
+    """Decode the escapes relevant to a KiCad quoted path."""
+    return value.replace(r"\\", "\\").replace(r'\"', '"')
+
+
+def dependency_paths(source: Path) -> list[Path]:
+    """Return the files that can affect this check, starting at ``source``."""
+    dependencies = {source}
+    if source.suffix == ".kicad_sch":
+        pending = [source]
+        while pending:
+            schematic = pending.pop()
+            text = schematic.read_text(encoding="utf-8")
+            for raw_path in SCHEMATIC_SHEETFILE.findall(text):
+                child = (schematic.parent / _decode_kicad_string(raw_path)).resolve()
+                if child.suffix != ".kicad_sch":
+                    raise ValueError(f"Referenced sheet is not a KiCad schematic: {child}")
+                if not child.is_file():
+                    raise ValueError(f"Referenced sheet does not exist: {child}")
+                if child not in dependencies:
+                    dependencies.add(child)
+                    pending.append(child)
+
+    # These sidecars are loaded by KiCad for the corresponding design. Missing
+    # sidecars are intentionally omitted; their appearance during the check is
+    # detected when the dependency set is collected again.
+    for suffix in DEPENDENCY_SIDECARS:
+        sidecar = source.with_suffix(suffix)
+        if sidecar.is_file():
+            dependencies.add(sidecar)
+    return sorted(dependencies, key=str)
+
+
+def dependency_snapshot(source: Path) -> dict[str, str]:
+    return {
+        str(path): hashlib.sha256(path.read_bytes()).hexdigest()
+        for path in dependency_paths(source)
+    }
+
+
+def verify_dependency_snapshot(source: Path, before: dict[str, str]) -> None:
+    after = dependency_snapshot(source)
+    before_paths = set(before)
+    after_paths = set(after)
+    if before_paths != after_paths:
+        changed_paths = sorted(before_paths ^ after_paths)
+        raise ValueError(
+            "Review dependency set changed during review: "
+            + ", ".join(changed_paths)
+        )
+    changed_paths = sorted(path for path in before if before[path] != after[path])
+    if changed_paths:
+        raise ValueError(
+            "Review dependency changed during review: "
+            + ", ".join(changed_paths)
+        )
+
+
+def check_entry(number: int, kind: str, source: Path, output: Path) -> dict:
+    name = f"{number:03d}-{source.stem}.{COMMANDS[kind]}"
+    return {
+        "input": str(source), "kind": COMMANDS[kind], "command": None,
+        "report": str(output / f"{name}.json"),
+        "log": str(output / f"{name}.log"), "status": "NOT_CHECKED",
+        "zones": "not_applicable" if kind == "sch" else None,
+    }
+
+
+def write_summary(output: Path, version: str | None, exit_code: int,
+                  checks: list[dict], preflight_error: str | None = None) -> None:
+    summary = {
+        "kicad_version": version,
+        "exit_code": exit_code,
+        "checks": checks,
+        "scope": "Only the explicitly selected ERC/DRC runs; not manufacturing approval.",
+        "manual_review_required": MANUAL_REVIEW_REQUIRED,
+    }
+    if preflight_error is not None:
+        summary["preflight_error"] = preflight_error
+    (output / "summary.json").write_text(
+        json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8",
+    )
+
+
+def write_preflight_failure(output: Path, version: str | None,
+                            checks: list[dict], error: Exception) -> int:
+    message = f"NOT_CHECKED: {error}\n"
+    for entry in checks:
+        entry["error"] = str(error)
+        Path(entry["log"]).write_text(
+            message + f"Input: {entry['input']}\n", encoding="utf-8",
+        )
+    (output / "preflight.log").write_text(
+        message + "All requested checks were left NOT_CHECKED.\n",
+        encoding="utf-8",
+    )
+    write_summary(output, version, 2, checks, str(error))
+    print(message.rstrip(), file=sys.stderr)
+    return 2
+
+
 def review(args: argparse.Namespace) -> int:
     inputs: list[tuple[str, Path]] = []
     for kind, paths in (("sch", args.schematic), ("pcb", args.pcb)):
@@ -47,29 +161,6 @@ def review(args: argparse.Namespace) -> int:
             if (kind, source) not in inputs:
                 inputs.append((kind, source))
 
-    cli = shutil.which(args.kicad_cli)
-    if cli is None:
-        raise ValueError(f"KiCad CLI not found: {args.kicad_cli}")
-    version = run([cli, "version"], args.timeout)
-    if version.returncode != 0 or not version.stdout.strip():
-        raise ValueError(f"Cannot read KiCad version: {version.stderr.strip()}")
-
-    refill = False
-    for kind in sorted({kind for kind, _ in inputs}):
-        help_result = run([cli, kind, COMMANDS[kind], "--help"], args.timeout)
-        required = ("--format", "--severity-all", "--exit-code-violations")
-        if help_result.returncode != 0 or any(
-            flag not in help_result.stdout for flag in required
-        ):
-            raise ValueError(f"Unsupported KiCad {kind} {COMMANDS[kind]} CLI options")
-        if kind == "pcb":
-            refill = "--refill-zones" in help_result.stdout
-            if not refill and not args.zones_prefilled:
-                raise ValueError(
-                    "This CLI cannot refill zones. Refill and save ALL zones in a "
-                    "review copy first, then explicitly pass --zones-prefilled."
-                )
-
     parent = None
     if args.output_dir is not None:
         parent = Path(args.output_dir).resolve()
@@ -77,21 +168,54 @@ def review(args: argparse.Namespace) -> int:
     # A fresh directory prevents old reports from turning a failed run green.
     output = Path(tempfile.mkdtemp(prefix="board-review-", dir=parent))
     print(f"Reports: {output}")
-    checks: list[dict] = []
+    checks = [
+        check_entry(number, kind, source, output)
+        for number, (kind, source) in enumerate(inputs, 1)
+    ]
+    version_text: str | None = None
+
+    # Keep all input/argument validation above output creation, but persist
+    # failures from CLI discovery and capability preflight in the fresh run.
+    try:
+        cli = shutil.which(args.kicad_cli)
+        if cli is None:
+            raise ValueError(f"KiCad CLI not found: {args.kicad_cli}")
+        version = run([cli, "version"], args.timeout)
+        version_text = version.stdout.strip() or None
+        if version.returncode != 0 or version_text is None:
+            raise ValueError(f"Cannot read KiCad version: {version.stderr.strip()}")
+
+        refill = False
+        for kind in sorted({kind for kind, _ in inputs}):
+            help_result = run([cli, kind, COMMANDS[kind], "--help"], args.timeout)
+            required = ("--format", "--severity-all", "--exit-code-violations")
+            if help_result.returncode != 0 or any(
+                flag not in help_result.stdout for flag in required
+            ):
+                raise ValueError(f"Unsupported KiCad {kind} {COMMANDS[kind]} CLI options")
+            if kind == "pcb":
+                refill = "--refill-zones" in help_result.stdout
+                if not refill and not args.zones_prefilled:
+                    raise ValueError(
+                        "This CLI cannot refill zones. Refill and save ALL zones in a "
+                        "review copy first, then explicitly pass --zones-prefilled."
+                    )
+    except (OSError, ValueError, UnicodeError, subprocess.TimeoutExpired) as exc:
+        return write_preflight_failure(output, version_text, checks, exc)
+
     exit_code = 0
-    for number, (kind, source) in enumerate(inputs, 1):
-        name = f"{number:03d}-{source.stem}.{COMMANDS[kind]}"
-        report = output / f"{name}.json"
-        log = output / f"{name}.log"
+    for entry, (kind, source) in zip(checks, inputs):
+        report = Path(entry["report"])
+        log = Path(entry["log"])
         command = command_for(cli, kind, source, report, refill)
-        entry = {
-            "input": str(source), "kind": COMMANDS[kind], "command": command,
-            "report": str(report), "log": str(log), "status": "NOT_CHECKED",
-            "zones": ("refilled_in_memory" if refill else "prefilled_by_caller")
-            if kind == "pcb" else "not_applicable",
-        }
+        entry["command"] = command
+        if kind == "pcb":
+            entry["zones"] = "refilled_in_memory" if refill else "prefilled_by_caller"
         try:
-            entry["input_sha256"] = hashlib.sha256(source.read_bytes()).hexdigest()
+            dependencies = dependency_snapshot(source)
+            entry["dependencies"] = sorted(dependencies)
+            entry["dependency_sha256"] = dependencies
+            entry["input_sha256"] = dependencies[str(source)]
             result = run(command, args.timeout)
             entry["returncode"] = result.returncode
             log.write_text(result.stdout + "\nSTDERR:\n" + result.stderr, encoding="utf-8")
@@ -101,37 +225,20 @@ def review(args: argparse.Namespace) -> int:
             data = json.loads(report.read_text(encoding="utf-8"))
             if not isinstance(data, dict) or not data:
                 raise ValueError("KiCad report is not a non-empty JSON object")
-            if hashlib.sha256(source.read_bytes()).hexdigest() != entry["input_sha256"]:
-                raise ValueError("Input changed during review; rerun on a stable snapshot")
+            verify_dependency_snapshot(source, dependencies)
             entry["status"] = "PASS" if result.returncode == 0 else "FAIL"
             if result.returncode == 5:
                 exit_code = max(exit_code, 1)
         except (OSError, ValueError, UnicodeError, subprocess.TimeoutExpired) as exc:
             entry["error"] = str(exc)
-            if not log.exists():
-                log.write_text(str(exc) + "\n", encoding="utf-8")
+            with log.open("a", encoding="utf-8") as handle:
+                handle.write(f"ERROR: {exc}\n")
             exit_code = 2
-        checks.append(entry)
         print(f"{entry['status']}: {source}")
         if "error" in entry:
             print(f"  {entry['error']}", file=sys.stderr)
 
-    summary = {
-        "kicad_version": version.stdout.strip(), "exit_code": exit_code,
-        "checks": checks,
-        "scope": "Only the explicitly selected ERC/DRC runs; not manufacturing approval.",
-        "manual_review_required": [
-            "Project/rule settings loaded correctly, ignored rules and exclusions",
-            "All sheets, libraries and project dependencies at the reviewed revision",
-            "Schematic/PCB parity (NOT run by this script)",
-            "Ratings, power/return paths, mechanical fit and all outline corner radii",
-            "Logo/revision presence and legibility in actual fabrication output",
-            "Saved zone fills and Gerber/drill output at the reviewed revision",
-        ],
-    }
-    (output / "summary.json").write_text(
-        json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8",
-    )
+    write_summary(output, version_text, exit_code, checks)
     print("Manual checklist still required; this is not board approval.")
     return exit_code
 
