@@ -7,17 +7,19 @@ p = argparse.ArgumentParser(description=__doc__)
 p.add_argument('--out', type=Path, required=True)
 p.add_argument('--bleed-ohms', type=float, default=0., help='Resistance of each of two permanent bleed branches; zero disables them')
 p.add_argument('--open-bleeds', type=int, choices=[0,1,2], default=0)
+p.add_argument('--regen-start-s',type=float,default=.1)
 p.add_argument('--regen-a', type=float, default=0., help='Injected return current from 100 to 120 ms, 1 us edges')
 p.add_argument('--cout-uf', type=float, default=800.)
 a = p.parse_args()
 assert np.isfinite(a.bleed_ohms) and a.bleed_ohms >= 0
+assert np.isfinite(a.regen_start_s) and .08 <= a.regen_start_s < .979999
 assert np.isfinite(a.regen_a) and a.regen_a >= 0
 assert np.isfinite(a.cout_uf) and a.cout_uf > 0
 a.out.mkdir(parents=True, exist_ok=False)
 base = ROOT/'validation/coupled_power_ldo_development_v1/coupled_power_startup_continuous_v2/coupled.cir'
 plan = {'scope': __doc__, 'source_sha256': hashlib.sha256(base.read_bytes()).hexdigest(),
         'bleed_each_ohm': a.bleed_ohms, 'open_bleeds': a.open_bleeds, 'Cout_uF': a.cout_uf,
-        'regeneration_A': a.regen_a, 'regeneration_window_s': [.1,.12],
+        'regeneration_A': a.regen_a, 'regeneration_window_s': [a.regen_start_s,a.regen_start_s+.02],
         'battery_V': 7.4, 'disconnect_s': .08, 'stop_s': 1., 'motor_current_A': 0.,
         'measurements_s': [.079, .081, .1, .2, 1.],
         'criteria': {'finite_measurements': True, 'simulation_reaches_s': 1.},
@@ -38,7 +40,7 @@ assert n == 1
 net, n = re.subn(r'Vwave wave 0 PWL\(.*?^\+ \)', 'Vwave wave 0 0', net, flags=re.M|re.S)
 assert n == 1
 if a.regen_a:
-    net = net.replace('Vwave wave 0 0', f'Vwave wave 0 PWL(0 0 .1 0 .100001 {-a.regen_a:.12g} .12 {-a.regen_a:.12g} .120001 0 1 0)')
+    net = net.replace('Vwave wave 0 0', f'Vwave wave 0 PWL(0 0 {a.regen_start_s:.12g} 0 {a.regen_start_s+1e-6:.12g} {-a.regen_a:.12g} {a.regen_start_s+.02:.12g} {-a.regen_a:.12g} {a.regen_start_s+.020001:.12g} 0 1 0)')
 assert re.search(r'^Cout rail 0 800u$', net, re.M)
 net = net.replace('Cout rail 0 800u', f'Cout rail 0 {a.cout_uf:.12g}u')
 if a.bleed_ohms:
