@@ -100,6 +100,14 @@
         "status": "startup_not_qualified; do not infer output charging slope from upstream dVdT"
       }
     },
-    "pin_level_candidate": "schematics/power/logic_input_branch_candidate_v1/branch.json"
+    "pin_level_candidate": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+    "current_setting_candidate": {
+      "nominal_ohm": 118000,
+      "part": "TNPW0603118KBEEA",
+      "total_allocation": 0.01,
+      "evidence": "validation/logic_branch_resistors_v1/report.json",
+      "thresholds_qualified": false,
+      "supersedes": "120kohm test-point proposal; old calculations retained as history only"
+    }
   }
 }

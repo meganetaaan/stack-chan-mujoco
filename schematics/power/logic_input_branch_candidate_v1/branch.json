@@ -148,8 +148,21 @@
         "1": "BATTERY_RAW",
         "2": "LOGIC_UVLO"
       },
-      "part": null,
-      "status": "nominal_only_not_manufacturing_selected"
+      "part": "TNPW060340K2BEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      }
     },
     {
       "ref": "R_LOGIC_UV_BOTTOM",
@@ -158,8 +171,21 @@
         "1": "LOGIC_UVLO",
         "2": "LOGIC_PROTECT_RTN"
       },
-      "part": null,
-      "status": "nominal_only_not_manufacturing_selected"
+      "part": "TNPW060310K0BEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      }
     },
     {
       "ref": "R_LOGIC_OV_TOP",
@@ -168,8 +194,21 @@
         "1": "BATTERY_RAW",
         "2": "LOGIC_OVP"
       },
-      "part": null,
-      "status": "nominal_only_not_manufacturing_selected"
+      "part": "TNPW0603124KBEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      }
     },
     {
       "ref": "R_LOGIC_OV_BOTTOM",
@@ -178,18 +217,45 @@
         "1": "LOGIC_OVP",
         "2": "LOGIC_PROTECT_RTN"
       },
-      "part": null,
-      "status": "nominal_only_not_manufacturing_selected"
+      "part": "TNPW060310K0BEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      }
     },
     {
       "ref": "R_LOGIC_ILIM",
-      "value_ohm": 120000,
+      "value_ohm": 118000,
       "pins": {
         "1": "LOGIC_ILIM",
         "2": "LOGIC_PROTECT_RTN"
       },
-      "part": null,
-      "status": "nominal_only_not_manufacturing_selected"
+      "part": "TNPW0603118KBEEA",
+      "status": "ordering_code_candidate_not_released",
+      "previous_nominal_ohm": 120000,
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      }
     }
   ],
   "interfaces": {
@@ -222,7 +288,7 @@
     }
   ],
   "release_blockers": [
-    "120kohm is recommended upper limit: positive resistor tolerance exceeds it; select derated nominal and reassess current thresholds before release",
+    "118kohm replaces 120kohm; actual current threshold bounds and startup require reevaluation; process/aging within 1% allocation pending",
     "Input/output capacitors and voltage/transient ratings unresolved",
     "Default ramp and downstream regulator startup not qualified",
     "External power-cycle discharge/reset not implemented",
@@ -230,5 +296,6 @@
     "Reverse-input and backfeed paths through complete system not verified",
     "Not merged into revM assembly or KiCad; no PCB thermal/layout verification"
   ],
-  "manufacturing_release": false
+  "manufacturing_release": false,
+  "resistor_evidence": "validation/logic_branch_resistors_v1/report.json"
 }

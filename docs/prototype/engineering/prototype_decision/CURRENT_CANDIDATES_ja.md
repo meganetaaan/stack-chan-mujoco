@@ -451,3 +451,7 @@ JST図面とメーカーSTEPの3端子断面を照合し、嵌合側が現行配
 ### LOGIC入力保護の端子接続候補
 
 `schematics/power/logic_input_branch_candidate_v1/branch.json` にTPS26601RHFRの全端子、抵抗とバイパス接続先を具体化。RTN/EPとGNDは別ネットで、逆接保護を維持する。24端子とNC一覧を資料照合済み。製作・主回路統合は未完。RILIM=120kΩは推奨上限そのもので、正の部品公差を許容できないことを追加阻害要因として記録。抵抗選定、起動、放電、電池保護の未成立は残り、Issueを閉じない。
+
+### LOGIC入力保護 抵抗5本の型番候補
+
+`logic_input_branch_candidate_v1/resistor_bom.csv` に5本を具体化。RILIMは120kから118kΩへ変更し、±1%枠でも最大119.18kΩでIC推奨上限内。既存分圧比・±1%枠は維持。初期公差＋温度を検算したが、工程・経年・実基板温度、変更後IC電流しきい値、起動は未検証。旧120kΩ評価点の電流値を現案の保証値には使わない。証跡は `validation/logic_branch_resistors_v1`。

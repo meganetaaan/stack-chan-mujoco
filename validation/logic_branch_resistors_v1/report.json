@@ -1,0 +1,91 @@
+{
+  "criteria": {
+    "total_allocation_fraction": 0.01,
+    "ILIM_recommended_ohm": [
+      5360,
+      120000
+    ]
+  },
+  "rows": [
+    {
+      "ref": "R_LOGIC_UV_TOP",
+      "part": "TNPW060340K2BEEA",
+      "initial_plus_temperature_ohm": [
+        40059.4005,
+        40340.80049999999
+      ],
+      "allocated_ohm": [
+        39798.0,
+        40602.0
+      ],
+      "remaining_fraction_for_process_and_age": 0.006497500000000267,
+      "initial_temperature_within_allocation": true
+    },
+    {
+      "ref": "R_LOGIC_UV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "initial_plus_temperature_ohm": [
+        9965.025000000001,
+        10035.024999999998
+      ],
+      "allocated_ohm": [
+        9900.0,
+        10100.0
+      ],
+      "remaining_fraction_for_process_and_age": 0.006497500000000267,
+      "initial_temperature_within_allocation": true
+    },
+    {
+      "ref": "R_LOGIC_OV_TOP",
+      "part": "TNPW0603124KBEEA",
+      "initial_plus_temperature_ohm": [
+        123566.31000000001,
+        124434.30999999997
+      ],
+      "allocated_ohm": [
+        122760.0,
+        125240.0
+      ],
+      "remaining_fraction_for_process_and_age": 0.006497500000000267,
+      "initial_temperature_within_allocation": true
+    },
+    {
+      "ref": "R_LOGIC_OV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "initial_plus_temperature_ohm": [
+        9965.025000000001,
+        10035.024999999998
+      ],
+      "allocated_ohm": [
+        9900.0,
+        10100.0
+      ],
+      "remaining_fraction_for_process_and_age": 0.006497500000000267,
+      "initial_temperature_within_allocation": true
+    },
+    {
+      "ref": "R_LOGIC_ILIM",
+      "part": "TNPW0603118KBEEA",
+      "initial_plus_temperature_ohm": [
+        117587.29500000001,
+        118413.29499999997
+      ],
+      "allocated_ohm": [
+        116820.0,
+        119180.0
+      ],
+      "remaining_fraction_for_process_and_age": 0.006497500000000267,
+      "initial_temperature_within_allocation": true,
+      "allocated_range_within_IC_recommended": true,
+      "nominal_IOL_A": 0.1016949152542373,
+      "nominal_IOL_change_from_120k_percent": 1.6949152542372836
+    }
+  ],
+  "qualified": false,
+  "limitations": [
+    "Film temperature -40..125C is an engineering envelope, not verified PCB temperature",
+    "Process and aging must fit remaining allocation; not yet qualified",
+    "120k datasheet current threshold limits are not transferred to 118k",
+    "No startup, fault, thermal, availability or full-board qualification"
+  ]
+}
