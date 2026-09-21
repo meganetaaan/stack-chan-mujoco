@@ -1,0 +1,34 @@
+{
+  "candidate": "TPSM63610RDFR x2",
+  "status": "not_selected_for_manufacture",
+  "source": "https://www.ti.com/lit/ds/symlink/tpsm63610.pdf",
+  "revision": "SLVSGU1A",
+  "verified_source_conditions": [
+    {
+      "section": "8.2.1.1",
+      "fact": "5V example enters dropout below approximately 6V input",
+      "scope": "Example uses 1MHz and 8A maximum; not a universal exact threshold or 2S guarantee"
+    },
+    {
+      "section": "6.6",
+      "fact": "150mV typical load transient",
+      "conditions": "5V output, 24V input, 0 to 4A at 1A/us, effective output capacitance 100uF",
+      "scope": "Not production tested; not a bound for the robot or low input voltage"
+    }
+  ],
+  "previous_static_headroom_V": 0.07342156897826684,
+  "required_before_adoption": [
+    "Exact battery/BMS and minimum loaded voltage at converter pins, including input wiring",
+    "Chosen frequency, ripple and dropout under actual load envelope",
+    "Effective capacitance, regulator dynamics and load-step slew bound",
+    "Thermal layout and protection coordination"
+  ],
+  "forbidden_inferences": [
+    "3V operating input minimum means 5V regulated output at 3V input",
+    "150mV example proves robot fails or bounds its worst case",
+    "Increase capacitance in an ideal-source model until passing and call converter qualified",
+    "Raise battery cutoff without accounting for required usable energy and battery specification"
+  ],
+  "next_decision": "Define battery/source and supported load-step conditions before further converter simulation",
+  "manufacturing_release": false
+}
