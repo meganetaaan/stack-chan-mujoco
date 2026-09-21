@@ -1,0 +1,1367 @@
+{
+  "model_sha256": "1422bb8401c9d6e77c6a961d15001102532488d35333775bad780eb1b686e373",
+  "scenarios": {
+    "early_request_not_deferred": [
+      {
+        "time_ms": 0,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 0,
+          "previous_ms": 0,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 4999,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": true,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 0,
+          "previous_ms": 4999,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5000,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": true,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 0,
+          "previous_ms": 5000,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5100,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 0,
+          "previous_ms": 5100,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5101,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": true,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "BOOT",
+          "off_since": null,
+          "previous_ms": 5101,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      }
+    ],
+    "off_observation_loss_restarts_wait": [
+      {
+        "time_ms": 0,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 0,
+          "previous_ms": 0,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 4999,
+        "inputs": {
+          "healthy": true,
+          "off_verified": false,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": null,
+          "previous_ms": 4999,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5000,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 5000,
+          "previous_ms": 5000,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 9999,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": true,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 5000,
+          "previous_ms": 9999,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 10000,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 5000,
+          "previous_ms": 10000,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 10001,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": true,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "BOOT",
+          "off_since": null,
+          "previous_ms": 10001,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      }
+    ],
+    "controller_reset_discards_time": [
+      {
+        "time_ms": 0,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 0,
+          "previous_ms": 0,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 4999,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 4999,
+          "previous_ms": 4999,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5000,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": true,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 4999,
+          "previous_ms": 5000,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 9999,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 4999,
+          "previous_ms": 9999,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 10000,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": true,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "BOOT",
+          "off_since": null,
+          "previous_ms": 10000,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      }
+    ],
+    "backwards_time": [
+      {
+        "time_ms": 0,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 0,
+          "previous_ms": 0,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 4999,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 0,
+          "previous_ms": 4999,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 10,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": true,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": null,
+          "previous_ms": null,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5010,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": true,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 5010,
+          "previous_ms": 5010,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      }
+    ],
+    "unknown_observation_interval": [
+      {
+        "time_ms": 0,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 0,
+          "previous_ms": 0,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 4999,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": false,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": null,
+          "previous_ms": 4999,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5000,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 5000,
+          "previous_ms": 5000,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5001,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": true,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 5000,
+          "previous_ms": 5001,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      }
+    ],
+    "fresh_arm_and_brownout": [
+      {
+        "time_ms": 0,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 0,
+          "previous_ms": 0,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5000,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": true,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "BOOT",
+          "off_since": null,
+          "previous_ms": 5000,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5001,
+        "inputs": {
+          "healthy": true,
+          "off_verified": false,
+          "continuous_observation": true,
+          "power_valid": true,
+          "ready": true,
+          "request": false,
+          "arm": true,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "READY",
+          "off_since": null,
+          "previous_ms": 5001,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5002,
+        "inputs": {
+          "healthy": true,
+          "off_verified": false,
+          "continuous_observation": true,
+          "power_valid": true,
+          "ready": true,
+          "request": false,
+          "arm": true,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "READY",
+          "off_since": null,
+          "previous_ms": 5002,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5003,
+        "inputs": {
+          "healthy": true,
+          "off_verified": false,
+          "continuous_observation": true,
+          "power_valid": true,
+          "ready": true,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "READY",
+          "off_since": null,
+          "previous_ms": 5003,
+          "request_low_seen": false,
+          "arm_low_seen": true
+        },
+        "after": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5004,
+        "inputs": {
+          "healthy": true,
+          "off_verified": false,
+          "continuous_observation": true,
+          "power_valid": true,
+          "ready": true,
+          "request": false,
+          "arm": true,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "RUN",
+          "off_since": null,
+          "previous_ms": 5004,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": true,
+          "drive_permission": true,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5005,
+        "inputs": {
+          "healthy": true,
+          "off_verified": false,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": true,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": null,
+          "previous_ms": 5005,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5006,
+        "inputs": {
+          "healthy": true,
+          "off_verified": false,
+          "continuous_observation": true,
+          "power_valid": true,
+          "ready": true,
+          "request": false,
+          "arm": true,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": null,
+          "previous_ms": 5006,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      }
+    ],
+    "shutdown_ack_required": [
+      {
+        "time_ms": 0,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 0,
+          "previous_ms": 0,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5000,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": true,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "BOOT",
+          "off_since": null,
+          "previous_ms": 5000,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5001,
+        "inputs": {
+          "healthy": true,
+          "off_verified": false,
+          "continuous_observation": true,
+          "power_valid": true,
+          "ready": true,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "READY",
+          "off_since": null,
+          "previous_ms": 5001,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5002,
+        "inputs": {
+          "healthy": true,
+          "off_verified": false,
+          "continuous_observation": true,
+          "power_valid": true,
+          "ready": true,
+          "request": false,
+          "arm": false,
+          "stop": true,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "SHUTDOWN",
+          "off_since": null,
+          "previous_ms": 5002,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": true
+        }
+      },
+      {
+        "time_ms": 99999,
+        "inputs": {
+          "healthy": true,
+          "off_verified": false,
+          "continuous_observation": true,
+          "power_valid": true,
+          "ready": true,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": true
+        },
+        "state": {
+          "phase": "SHUTDOWN",
+          "off_since": null,
+          "previous_ms": 99999,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": true
+        }
+      },
+      {
+        "time_ms": 100000,
+        "inputs": {
+          "healthy": true,
+          "off_verified": false,
+          "continuous_observation": true,
+          "power_valid": true,
+          "ready": true,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": true
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": null,
+          "previous_ms": 100000,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      }
+    ],
+    "fault_overrides_shutdown": [
+      {
+        "time_ms": 0,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": 0,
+          "previous_ms": 0,
+          "request_low_seen": true,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5000,
+        "inputs": {
+          "healthy": true,
+          "off_verified": true,
+          "continuous_observation": true,
+          "power_valid": false,
+          "ready": false,
+          "request": true,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "BOOT",
+          "off_since": null,
+          "previous_ms": 5000,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5001,
+        "inputs": {
+          "healthy": true,
+          "off_verified": false,
+          "continuous_observation": true,
+          "power_valid": true,
+          "ready": true,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "READY",
+          "off_since": null,
+          "previous_ms": 5001,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      },
+      {
+        "time_ms": 5002,
+        "inputs": {
+          "healthy": true,
+          "off_verified": false,
+          "continuous_observation": true,
+          "power_valid": true,
+          "ready": true,
+          "request": false,
+          "arm": false,
+          "stop": true,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "SHUTDOWN",
+          "off_since": null,
+          "previous_ms": 5002,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": true,
+          "drive_permission": false,
+          "shutdown_request": true
+        }
+      },
+      {
+        "time_ms": 5003,
+        "inputs": {
+          "healthy": false,
+          "off_verified": false,
+          "continuous_observation": true,
+          "power_valid": true,
+          "ready": true,
+          "request": false,
+          "arm": false,
+          "stop": false,
+          "shutdown_ack": false
+        },
+        "before": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        },
+        "state": {
+          "phase": "OFF",
+          "off_since": null,
+          "previous_ms": 5003,
+          "request_low_seen": false,
+          "arm_low_seen": false
+        },
+        "after": {
+          "tab5_allow": false,
+          "drive_permission": false,
+          "shutdown_request": false
+        }
+      }
+    ]
+  },
+  "scenario_count": 8,
+  "contract_checks_pass": true,
+  "hardware_implemented": false,
+  "limits": [
+    "off_verified must certify actual off condition; voltage threshold and observation circuit not selected",
+    "continuous_observation requires fault capture between samples; no sampled Boolean can prove it",
+    "timestamps represent a conservative elapsed-time lower bound; oscillator tolerance/scheduling not modeled",
+    "ready and shutdown_ack must be fresh for current boot/transaction",
+    "BOOT has no selected deadline: it never permits drive without ready but can remain powered indefinitely",
+    "drive_permission must be ANDed with existing independent servo protection; it does not replace it",
+    "No detector, GPIO, backfeed, asynchronous timing or internal Tab5 discharge proof"
+  ],
+  "manufacturing_release": false
+}

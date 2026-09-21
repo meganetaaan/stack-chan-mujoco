@@ -72,3 +72,32 @@ UV上昇8.125–8.780V、下降7.468–8.063V、OV上昇15.378–16.734V。
 再現：`python software/sim/circuits/screen_tab5_branch.py`。
 結果：`validation/tab5_branch_v1/report.json`。
 元データ：[TI TPS2660 Rev.G](https://www.ti.com/lit/ds/symlink/tps2660.pdf)。
+
+## 再投入の実行可能な状態遷移（回路・ファーム実装ではない）
+
+`software/sim/circuits/tab5_restart_model.py` を設計参照モデルとして追加。
+既存 `power_sequence_model.py` は左右サーボ枝の順序とラッチ解除を扱い、
+Tab5の電源断や5秒の待ち時間は観測していないため変更せず、独立した必要条件として扱う。
+実装時はTab5モデルの `drive_permission` と既存の独立保護許可の両方が必要。
+
+OFF → BOOT → READY → RUN、計画停止はSHUTDOWN → OFFとする。
+異常はどの状態からもOFFへ遷移する。OFFで実際の無給電を連続確認して5秒以上待ち、
+新たな電源投入要求を受けてBOOTへ進む。待ち時間満了前の要求は予約しない。
+READY到達後に駆動要求のLowを観測し、その後のHighで初めてRUNを許可する。
+電源回復・起動完了だけではRUNへ進めない。
+
+制御側リセットでは経過時間と許可を破棄する。観測が途切れた場合も数え直す。
+時計の逆行はOFFへ戻す。実際の時間源は誤差を含む経過時間の下限値を与える必要があり、
+生の5,000msカウントをそのままメーカー指定5秒と同一視しない。
+
+事前の判定条件は、早期要求の非予約、連続OFF確認、リセット後の新しい待機、
+準備完了後の新規アーム、低電圧時の駆動禁止、正常停止の応答待ち、異常遮断の優先。
+`python software/sim/circuits/check_tab5_restart_model.py` で8シナリオを再現し、
+`validation/tab5_restart_v1/report.json` に入力・状態・出力を保存した。
+全体の異常網羅試験やアナログ保護シミュレーションの代用ではない。
+
+**残る具体的な設計入力**：`off_verified`の電圧／残留条件と検出回路、
+サンプル間の異常を保持する仕組み、今回の起動に対応するready、今回の停止に対応するack、
+時間源の誤差、起動失敗時の期限、物理的な許可信号ドライバ。
+BOOTでreadyが来なければ駆動は許可しないが、給電を継続できる時間は未選定。
+これらを理想Boolean入力に置き換えたことをもって#23・#24を完了扱いにしない。
