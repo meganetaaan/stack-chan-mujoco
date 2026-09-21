@@ -113,3 +113,7 @@
 - https://docs.m5stack.com/en/core/Tab5
 - https://www.switch-science.com/products/10378
 - 抵抗・センサの詳細出典と計算は既存 `brake_resistor_rating_review_v1`、`brake_current_sensor_budget_v1` と各部品カードを参照。今回未再確認の項目を新規仕様保証として扱わない。
+
+## 分岐保護の選定追記
+
+TPS25947を机上審査し、各軸回生が共通ブレーキへ戻れなくなることと電圧予算から現構成には採用しない。記録：`validation/branch_efuse_review_v1/`。保護部品未選定の状態を維持し、追加の仮想回生解析は行わない。
