@@ -535,3 +535,7 @@ JST図面とメーカーSTEPの3端子断面を照合し、嵌合側が現行配
 ### 111部品のネイティブ回路図読み戻しと型番不足
 
 `validation/integrated_logic_kicad_review_v1`に111部品候補のKiCadレビュー図と実エクスポート結果を保存。334接続端子＋37明示NCがassemblyと一致。ただし11部品の型番は空欄で、通常出力は拒否、レビュー専用オプションでUNSELECTED表示とした。ゲートR/C4個、ILM抵抗2個、OV分圧4個、C_STOP_OUTが対象。最後の1個は別の選定資料に候補があるが未統合。KiCadからannotation警告あり。汎用passive記号・フットプリントなしで、ERC/部品選定/電気的成立/製作の合格ではない。正式ポインタ据置き。
+
+### ロジック統合v2：停止用出力Cの候補反映
+
+`schematics/power/servo_power_logic_integration_candidate_v2`でC_STOP_OUTに既存候補GRM31CR71H475KA12Lを反映。公称容量・全接続を維持し、未検証条件を部品へ付記。BOMの未選定は10個となり状態欄で区別。`validation/integrated_logic_kicad_review_v2`で111部品/334接続/37NCを読戻し照合。annotation警告、汎用記号、フットプリント未設定、電気的未成立を維持。正式ポインタは変更なし。外付け逆流FETはOFF時の逆流阻止が仕様範囲であり、ON時回生・ゲートRCの未選定をこの統合で解消したとは扱わない。

@@ -1,0 +1,1786 @@
+{
+  "scope": "Combined logic supply and R14 candidate with revM protection; electrical/PCB qualification incomplete.",
+  "parts": [
+    {
+      "reference": "U1",
+      "part": "MAX6816EUS+T",
+      "pins": {
+        "1": "GND",
+        "2": "BUTTON_RAW",
+        "3": "BUTTON_RELEASED",
+        "4": "LOGIC3V3"
+      },
+      "source": "manual_button_candidate.json"
+    },
+    {
+      "reference": "U2",
+      "part": "SN74LVC1G04DBVR",
+      "pins": {
+        "1": null,
+        "2": "BUTTON_RELEASED",
+        "3": "GND",
+        "4": "PRESS",
+        "5": "LOGIC3V3"
+      },
+      "source": "manual_button_candidate.json"
+    },
+    {
+      "reference": "U3",
+      "part": "SN74HCS11PWR",
+      "pins": {
+        "1": "RESET_N",
+        "2": "RAW_RELEASED_CONDITIONED",
+        "3": "ENABLE_PERMISSION",
+        "4": "SEQUENCE_ENABLE_REQUEST",
+        "5": "RESET_N",
+        "6": "POWER_ENABLE_COMMAND",
+        "7": "GND",
+        "8": null,
+        "9": "GND",
+        "10": "GND",
+        "11": "GND",
+        "12": "RELEASE_CONDITION",
+        "13": "BUTTON_RELEASED",
+        "14": "LOGIC3V3"
+      },
+      "source": "manual_release_gate_candidate.json"
+    },
+    {
+      "reference": "U4",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "RELEASE_CONDITION",
+        "3": "GND",
+        "4": "RELEASE_MR",
+        "5": "LOGIC3V3"
+      },
+      "source": "manual_release_mr_buffer_candidate.json"
+    },
+    {
+      "reference": "U5",
+      "part": "TPS3808G33DBVR",
+      "pins": {
+        "1": "RELEASE_QUALIFIED",
+        "2": "GND",
+        "3": "RELEASE_MR",
+        "4": "TIMER_CT",
+        "5": "LOGIC3V3",
+        "6": "LOGIC3V3"
+      },
+      "source": "manual_release_timer_candidate.json"
+    },
+    {
+      "reference": "U6",
+      "part": "SN74HCS74PW",
+      "pins": {
+        "1": "RESET_N",
+        "2": "LOGIC3V3",
+        "3": "RELEASE_QUALIFIED",
+        "4": "LOGIC3V3",
+        "5": "ARMED",
+        "6": null,
+        "7": "GND",
+        "8": null,
+        "9": "ENABLE_PERMISSION",
+        "10": "LOGIC3V3",
+        "11": "PRESS",
+        "12": "ARMED",
+        "13": "RESET_N",
+        "14": "LOGIC3V3"
+      },
+      "source": "manual_rearm_latch_candidate.json"
+    },
+    {
+      "reference": "R1",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "TIMER_CT"
+      },
+      "source": null
+    },
+    {
+      "reference": "R2",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "RELEASE_QUALIFIED"
+      },
+      "source": null
+    },
+    {
+      "reference": "C1",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "C2",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "C3",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "C4",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "C5",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "C6",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "SW1",
+      "part": "B3U-1000P",
+      "pins": {
+        "1": "BUTTON_RAW",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "U7",
+      "part": "TPS3808G33DBVR",
+      "pins": {
+        "1": "RESET_N",
+        "2": "GND",
+        "3": "RAIL_HEALTH_N",
+        "4": "SUPERVISOR_CT",
+        "5": "LOGIC3V3",
+        "6": "LOGIC3V3"
+      },
+      "source": "manual_rearm_supervisor_candidate.json"
+    },
+    {
+      "reference": "R3",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "SUPERVISOR_CT"
+      },
+      "source": null
+    },
+    {
+      "reference": "R4",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "RESET_N"
+      },
+      "source": null
+    },
+    {
+      "reference": "C7",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "U8",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "POWER_ENABLE_COMMAND",
+        "3": "GND",
+        "4": "ENABLE_BUFFER_OUT",
+        "5": "LOGIC3V3"
+      },
+      "source": "main_enable_driver_candidate.json"
+    },
+    {
+      "reference": "R6",
+      "part": "220k pulldown; total +/-1% budget, part pending",
+      "pins": {
+        "1": "POWER_ENABLE_COMMAND",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "C8",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "R7",
+      "part": "4.7k series; total +/-1% budget, part pending",
+      "pins": {
+        "1": "ENABLE_BUFFER_OUT",
+        "2": "MAIN_EFUSE_EN"
+      },
+      "source": null
+    },
+    {
+      "reference": "U9",
+      "part": "TPS3808G33DBVR",
+      "pins": {
+        "1": "RAIL_HEALTH_N",
+        "2": "GND",
+        "3": "STOP_AUX3V3",
+        "4": "CLAMP_CT",
+        "5": "LOGIC3V3",
+        "6": "STOP_AUX3V3"
+      },
+      "source": "main_enable_clamp_candidate.json"
+    },
+    {
+      "reference": "R8",
+      "part": "100k CT candidate; part pending",
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "CLAMP_CT"
+      },
+      "source": null
+    },
+    {
+      "reference": "C9",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "U10",
+      "part": "TPS3808G01DBVR",
+      "pins": {
+        "1": "MAIN_EFUSE_EN",
+        "2": "GND",
+        "3": "CLAMP_MR_STOP_AUX",
+        "4": null,
+        "5": "STOP_AUX3V3",
+        "6": "STOP_AUX3V3"
+      },
+      "source": "main_clamp_cause_candidate.json"
+    },
+    {
+      "reference": "U11",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "RAIL_HEALTH_N",
+        "3": "GND",
+        "4": "CLAMP_MR_STOP_AUX",
+        "5": "STOP_AUX3V3"
+      },
+      "source": "main_clamp_cause_candidate.json"
+    },
+    {
+      "reference": "R9",
+      "part": "10k cause pullup; total +/-1% budget, part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "RAIL_HEALTH_N"
+      },
+      "source": null
+    },
+    {
+      "reference": "C10",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "C11",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "U14",
+      "part": "74AUP1G06GW",
+      "pins": {
+        "1": null,
+        "2": "SEQUENCE_CLEAR_REQUEST",
+        "3": "GND",
+        "4": "RESET_N",
+        "5": "LOGIC3V3"
+      },
+      "source": "sequence_clear_sink_candidate.json"
+    },
+    {
+      "reference": "R14",
+      "part": "TNPW12061K00BYEA",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "SEQUENCE_CLEAR_REQUEST"
+      },
+      "source": "validation/sequence_clear_edge_v1/report.json",
+      "value_ohm": 1000,
+      "total_tolerance_budget": 0.01,
+      "status": "conditional_release_edge_candidate_not_qualified"
+    },
+    {
+      "reference": "C14",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "U15",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "BUTTON_RAW",
+        "3": "GND",
+        "4": "RAW_RELEASED_CONDITIONED",
+        "5": "LOGIC3V3"
+      },
+      "source": "local_enable_button_candidate.json"
+    },
+    {
+      "reference": "R15",
+      "part": "3k local button pullup; total +/-1% budget; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "BUTTON_RAW"
+      },
+      "source": null
+    },
+    {
+      "reference": "C15",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "LEFT_U12",
+      "part": "TPS3700DDCR",
+      "pins": {
+        "1": "LEFT_PG_CONDITIONED_OD",
+        "2": "GND",
+        "3": "LEFT_PG_DIVIDED",
+        "4": "GND",
+        "5": "LOGIC3V3",
+        "6": null
+      },
+      "source": "pg_receiver_candidate.json",
+      "origin_reference": "U12"
+    },
+    {
+      "reference": "LEFT_U13",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "LEFT_PG_CONDITIONED_OD",
+        "3": "GND",
+        "4": "LEFT_PG_CONDITIONED",
+        "5": "LOGIC3V3"
+      },
+      "source": "pg_receiver_candidate.json",
+      "origin_reference": "U13"
+    },
+    {
+      "reference": "LEFT_R10",
+      "part": "TNPW0603150KBYEA",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "LEFT_PG_SOURCE"
+      },
+      "source": null,
+      "placement": "At eFuse PG pin, before monitored trace",
+      "origin_reference": "R10"
+    },
+    {
+      "reference": "LEFT_R11",
+      "part": "TNPW08051M00BYEA",
+      "pins": {
+        "1": "LEFT_EFUSE_PG",
+        "2": "LEFT_PG_DIVIDED"
+      },
+      "source": null,
+      "origin_reference": "R11"
+    },
+    {
+      "reference": "LEFT_R12",
+      "part": "TNPW0603330KBYEA",
+      "pins": {
+        "1": "LEFT_PG_DIVIDED",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "R12"
+    },
+    {
+      "reference": "LEFT_R13",
+      "part": "TNPW060310K0BYEA",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "LEFT_PG_CONDITIONED_OD"
+      },
+      "source": null,
+      "origin_reference": "R13"
+    },
+    {
+      "reference": "LEFT_C12",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "C12"
+    },
+    {
+      "reference": "LEFT_C13",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "C13"
+    },
+    {
+      "reference": "RIGHT_U12",
+      "part": "TPS3700DDCR",
+      "pins": {
+        "1": "RIGHT_PG_CONDITIONED_OD",
+        "2": "GND",
+        "3": "RIGHT_PG_DIVIDED",
+        "4": "GND",
+        "5": "LOGIC3V3",
+        "6": null
+      },
+      "source": "pg_receiver_candidate.json",
+      "origin_reference": "U12"
+    },
+    {
+      "reference": "RIGHT_U13",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "RIGHT_PG_CONDITIONED_OD",
+        "3": "GND",
+        "4": "RIGHT_PG_CONDITIONED",
+        "5": "LOGIC3V3"
+      },
+      "source": "pg_receiver_candidate.json",
+      "origin_reference": "U13"
+    },
+    {
+      "reference": "RIGHT_R10",
+      "part": "TNPW0603150KBYEA",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "RIGHT_PG_SOURCE"
+      },
+      "source": null,
+      "placement": "At eFuse PG pin, before monitored trace",
+      "origin_reference": "R10"
+    },
+    {
+      "reference": "RIGHT_R11",
+      "part": "TNPW08051M00BYEA",
+      "pins": {
+        "1": "RIGHT_EFUSE_PG",
+        "2": "RIGHT_PG_DIVIDED"
+      },
+      "source": null,
+      "origin_reference": "R11"
+    },
+    {
+      "reference": "RIGHT_R12",
+      "part": "TNPW0603330KBYEA",
+      "pins": {
+        "1": "RIGHT_PG_DIVIDED",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "R12"
+    },
+    {
+      "reference": "RIGHT_R13",
+      "part": "TNPW060310K0BYEA",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "RIGHT_PG_CONDITIONED_OD"
+      },
+      "source": null,
+      "origin_reference": "R13"
+    },
+    {
+      "reference": "RIGHT_C12",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "C12"
+    },
+    {
+      "reference": "RIGHT_C13",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "C13"
+    },
+    {
+      "reference": "LEFT_U_POWER",
+      "part": "TPS259813LRPW",
+      "pins": {
+        "1": "LEFT_EN_LOCAL",
+        "2": "LEFT_OVLO_SENSE",
+        "3": "LEFT_PG_SOURCE",
+        "4": "LEFT_FLT_N",
+        "5": "LEFT_REGULATOR_OUT",
+        "6": "LEFT_INTERNAL_OUT",
+        "7": "LEFT_DVDT",
+        "8": "GND",
+        "9": "LEFT_ILM",
+        "10": "LEFT_ITIMER"
+      }
+    },
+    {
+      "reference": "LEFT_Q_REVERSE",
+      "part": "SiSS80DN-T1-GE3 comparison only",
+      "pins": {
+        "1": "LEFT_INTERNAL_OUT",
+        "2": "LEFT_INTERNAL_OUT",
+        "3": "LEFT_INTERNAL_OUT",
+        "4": "LEFT_REVERSE_GATE",
+        "5": "LEFT_SERVO_BUS",
+        "6": "LEFT_SERVO_BUS",
+        "7": "LEFT_SERVO_BUS",
+        "8": "LEFT_SERVO_BUS"
+      }
+    },
+    {
+      "reference": "LEFT_R_GATE",
+      "part": null,
+      "value_ohm": null,
+      "pins": {
+        "1": "LEFT_DVDT",
+        "2": "LEFT_REVERSE_GATE"
+      }
+    },
+    {
+      "reference": "LEFT_C_GATE",
+      "part": null,
+      "value_F": null,
+      "pins": {
+        "1": "LEFT_REVERSE_GATE",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "RIGHT_U_POWER",
+      "part": "TPS259813LRPW",
+      "pins": {
+        "1": "RIGHT_EN_LOCAL",
+        "2": "RIGHT_OVLO_SENSE",
+        "3": "RIGHT_PG_SOURCE",
+        "4": "RIGHT_FLT_N",
+        "5": "RIGHT_REGULATOR_OUT",
+        "6": "RIGHT_INTERNAL_OUT",
+        "7": "RIGHT_DVDT",
+        "8": "GND",
+        "9": "RIGHT_ILM",
+        "10": "RIGHT_ITIMER"
+      }
+    },
+    {
+      "reference": "RIGHT_Q_REVERSE",
+      "part": "SiSS80DN-T1-GE3 comparison only",
+      "pins": {
+        "1": "RIGHT_INTERNAL_OUT",
+        "2": "RIGHT_INTERNAL_OUT",
+        "3": "RIGHT_INTERNAL_OUT",
+        "4": "RIGHT_REVERSE_GATE",
+        "5": "RIGHT_SERVO_BUS",
+        "6": "RIGHT_SERVO_BUS",
+        "7": "RIGHT_SERVO_BUS",
+        "8": "RIGHT_SERVO_BUS"
+      }
+    },
+    {
+      "reference": "RIGHT_R_GATE",
+      "part": null,
+      "value_ohm": null,
+      "pins": {
+        "1": "RIGHT_DVDT",
+        "2": "RIGHT_REVERSE_GATE"
+      }
+    },
+    {
+      "reference": "RIGHT_C_GATE",
+      "part": null,
+      "value_F": null,
+      "pins": {
+        "1": "RIGHT_REVERSE_GATE",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "LEFT_R_ILM",
+      "part": null,
+      "value_ohm": 1100,
+      "initial_tolerance_comparison": 0.001,
+      "status": "sizing_candidate_not_selected_part",
+      "pins": {
+        "1": "LEFT_ILM",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "RIGHT_R_ILM",
+      "part": null,
+      "value_ohm": 1100,
+      "initial_tolerance_comparison": 0.001,
+      "status": "sizing_candidate_not_selected_part",
+      "pins": {
+        "1": "RIGHT_ILM",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "LEFT_R_OV_TOP",
+      "part": null,
+      "value_ohm": 35700,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "LEFT_REGULATOR_OUT",
+        "2": "LEFT_OVLO_SENSE"
+      }
+    },
+    {
+      "reference": "LEFT_R_OV_BOTTOM",
+      "part": null,
+      "value_ohm": 10000,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "LEFT_OVLO_SENSE",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "RIGHT_R_OV_TOP",
+      "part": null,
+      "value_ohm": 35700,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "RIGHT_REGULATOR_OUT",
+        "2": "RIGHT_OVLO_SENSE"
+      }
+    },
+    {
+      "reference": "RIGHT_R_OV_BOTTOM",
+      "part": null,
+      "value_ohm": 10000,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "RIGHT_OVLO_SENSE",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "U_STOP_LDO",
+      "part": "TPS70933DBVR",
+      "pins": {
+        "1": "STOP_LDO_INPUT",
+        "2": "GND",
+        "3": null,
+        "4": null,
+        "5": "STOP_AUX3V3"
+      },
+      "note": "TPS709 pinout, not TPS709A/B; EN intentionally floating per TI table 5-1"
+    },
+    {
+      "reference": "C_STOP_IN",
+      "part": "MKS2C042201K00JSSD",
+      "value_F": 2.2e-06,
+      "pins": {
+        "1": "STOP_LDO_INPUT",
+        "2": "GND"
+      },
+      "requirement": "Input bulk candidate; temperature/process capacitance and board envelope unqualified",
+      "dielectric": "PET film",
+      "initial_tolerance": 0.05,
+      "rated_voltage_V": 63,
+      "body_nominal_mm": {
+        "width": 7.2,
+        "height": 13,
+        "length": 7.2
+      },
+      "lead_pitch_mm": 5,
+      "selection_source": "https://www.wima.de/wp-content/uploads/media/e_WIMA_MKS_2.pdf"
+    },
+    {
+      "reference": "C_STOP_OUT",
+      "part": "GRM31CR71H475KA12L",
+      "value_F": 4.7e-06,
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "GND"
+      },
+      "requirement": "Design target >=2.2uF effective retained; TPS70933 application guidance minimum 1.5uF, maximum 47uF, ESR 0..0.2 ohm. See schematics/power/stop_output_capacitor_requirements.json",
+      "selection_source": "schematics/power/stop_output_capacitor_requirements.json",
+      "qualification": {
+        "reference": "C_STOP_OUT",
+        "regulator": "TPS70933DBVR",
+        "source": "https://www.ti.com/lit/ds/symlink/tps709.pdf",
+        "revision": "SBVS186H July 2021 section 8.1.1",
+        "manufacturer_application_guidance": {
+          "effective_capacitance_min_F": 1.5e-06,
+          "effective_capacitance_max_F": 4.7e-05,
+          "ESR_min_ohm": 0,
+          "ESR_max_ohm": 0.2,
+          "condition": "Output voltage >= 1.5 V"
+        },
+        "retained_design_target": {
+          "effective_capacitance_min_F": 2.2e-06,
+          "nominal_capacitance_F": 4.7e-06,
+          "classification": "Codex design margin, not manufacturer minimum"
+        },
+        "candidate": {
+          "family": "GRM31CR71H475KA12",
+          "nominal_F": 4.7e-06,
+          "rated_V": 50,
+          "initial_tolerance": 0.1,
+          "dielectric": "X7R",
+          "package": "1206",
+          "source": "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM31CR71H475KA12-01A.pdf",
+          "status": "exact_ordering_candidate_not_qualified",
+          "part_number": "GRM31CR71H475KA12L",
+          "source_date": "2026-06-25",
+          "source_sha256": "79e4b038591e12555fe8f014db5554725d20cce3ec127846d34c20e27e53d3da",
+          "temperature_change_fraction_no_bias": 0.15,
+          "package_quantity": 2000
+        },
+        "qualification": false,
+        "remaining": [
+          "DC bias and temperature combined capacitance at actual rail",
+          "Ageing and assembly allowance",
+          "ESR over relevant frequency and temperature",
+          "Procurement and footprint",
+          "Total connected rail capacitance and regulator transient verification"
+        ],
+        "correction": "Earlier requirement text incorrectly attributed 2.2uF effective minimum to TI. Preserve 2.2uF as a design target; do not relabel prior failures as passes.",
+        "screening_evidence": "validation/stop_output_capacitor_v1/report.json",
+        "model_scope_evidence": "validation/stop_cap_model_scope_v1/report.json",
+        "additional_nominal_screening": "Stopped: nominal data cannot resolve remaining bias/ESR qualification"
+      }
+    },
+    {
+      "reference": "R_STOP_MIN_LOAD",
+      "part": "TNPW060330K1BYEA",
+      "value_ohm": 30100.0,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "GND"
+      },
+      "note": "Minimum loading; exact resistor and temperature budget pending",
+      "selection_source": "schematics/power/stop_enable_resistors.json"
+    },
+    {
+      "reference": "LEFT_R_EN_PULLDOWN",
+      "part": "TNPW060378K7BYEA",
+      "value_ohm": 78700,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "LEFT_EN_LOCAL",
+        "2": "GND"
+      },
+      "placement": "At eFuse EN pin and local ground, after monitored trace; no shared remote pulldown",
+      "selection_source": "schematics/power/stop_enable_resistors.json"
+    },
+    {
+      "reference": "RIGHT_R_EN_PULLDOWN",
+      "part": "TNPW060378K7BYEA",
+      "value_ohm": 78700,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "RIGHT_EN_LOCAL",
+        "2": "GND"
+      },
+      "placement": "At eFuse EN pin and local ground, after monitored trace; no shared remote pulldown",
+      "selection_source": "schematics/power/stop_enable_resistors.json"
+    },
+    {
+      "reference": "LEFT_U_WINDOW",
+      "part": "TPS3700DDCR",
+      "pins": {
+        "1": "LEFT_SOURCE_WINDOW_OD",
+        "2": "GND",
+        "3": "LEFT_SOURCE_UV_SENSE",
+        "4": "LEFT_SOURCE_OV_SENSE",
+        "5": "STOP_AUX3V3",
+        "6": "LEFT_SOURCE_WINDOW_OD"
+      }
+    },
+    {
+      "reference": "LEFT_R_SOURCE_UV_TOP",
+      "part": "TNPW0603102KBYEA",
+      "value_ohm": 102000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "LEFT_REGULATOR_OUT",
+        "2": "LEFT_SOURCE_UV_SENSE"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json"
+    },
+    {
+      "reference": "LEFT_R_SOURCE_UV_BOTTOM",
+      "part": "TNPW060310K0BYEA",
+      "value_ohm": 10000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "LEFT_SOURCE_UV_SENSE",
+        "2": "GND"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json"
+    },
+    {
+      "reference": "LEFT_R_SOURCE_OV_TOP",
+      "part": "TNPW0603130KBYEA",
+      "value_ohm": 130000.0,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "LEFT_REGULATOR_OUT",
+        "2": "LEFT_SOURCE_OV_SENSE"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json"
+    },
+    {
+      "reference": "LEFT_R_SOURCE_OV_BOTTOM",
+      "part": "TNPW060310K0BYEA",
+      "value_ohm": 10000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "LEFT_SOURCE_OV_SENSE",
+        "2": "GND"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json"
+    },
+    {
+      "reference": "LEFT_R_WINDOW_PULLUP",
+      "part": "TNPW060310K0BYEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "LEFT_SOURCE_WINDOW_OD"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "total_tolerance_budget": 0.01
+    },
+    {
+      "reference": "LEFT_C_WINDOW",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "GND"
+      },
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "RIGHT_U_WINDOW",
+      "part": "TPS3700DDCR",
+      "pins": {
+        "1": "RIGHT_SOURCE_WINDOW_OD",
+        "2": "GND",
+        "3": "RIGHT_SOURCE_UV_SENSE",
+        "4": "RIGHT_SOURCE_OV_SENSE",
+        "5": "STOP_AUX3V3",
+        "6": "RIGHT_SOURCE_WINDOW_OD"
+      }
+    },
+    {
+      "reference": "RIGHT_R_SOURCE_UV_TOP",
+      "part": "TNPW0603102KBYEA",
+      "value_ohm": 102000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "RIGHT_REGULATOR_OUT",
+        "2": "RIGHT_SOURCE_UV_SENSE"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json"
+    },
+    {
+      "reference": "RIGHT_R_SOURCE_UV_BOTTOM",
+      "part": "TNPW060310K0BYEA",
+      "value_ohm": 10000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "RIGHT_SOURCE_UV_SENSE",
+        "2": "GND"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json"
+    },
+    {
+      "reference": "RIGHT_R_SOURCE_OV_TOP",
+      "part": "TNPW0603130KBYEA",
+      "value_ohm": 130000.0,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "RIGHT_REGULATOR_OUT",
+        "2": "RIGHT_SOURCE_OV_SENSE"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json"
+    },
+    {
+      "reference": "RIGHT_R_SOURCE_OV_BOTTOM",
+      "part": "TNPW060310K0BYEA",
+      "value_ohm": 10000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "RIGHT_SOURCE_OV_SENSE",
+        "2": "GND"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json"
+    },
+    {
+      "reference": "RIGHT_R_WINDOW_PULLUP",
+      "part": "TNPW060310K0BYEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "RIGHT_SOURCE_WINDOW_OD"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "total_tolerance_budget": 0.01
+    },
+    {
+      "reference": "RIGHT_C_WINDOW",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "GND"
+      },
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "U_MONITOR_START",
+      "part": "TPS3808G33DBVR",
+      "pins": {
+        "1": "MONITOR_START_READY_OD",
+        "2": "GND",
+        "3": "STOP_AUX3V3",
+        "4": null,
+        "5": "STOP_AUX3V3",
+        "6": "STOP_AUX3V3"
+      }
+    },
+    {
+      "reference": "R_MONITOR_START",
+      "part": "TNPW0603100KBYEA",
+      "value_ohm": 100000,
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "MONITOR_START_READY_OD"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "total_tolerance_budget": 0.01
+    },
+    {
+      "reference": "C_MONITOR_START",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "GND"
+      },
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "U_MONITOR_RX",
+      "part": "SN74AUP1T50DCKR",
+      "pins": {
+        "1": null,
+        "2": "MONITOR_START_READY_OD",
+        "3": "GND",
+        "4": "MONITOR_START_READY_LOGIC",
+        "5": "LOGIC3V3"
+      }
+    },
+    {
+      "reference": "R_MONITOR_RX_OFF",
+      "part": "TNPW0603220KBYEA",
+      "value_ohm": 220000,
+      "pins": {
+        "1": "MONITOR_START_READY_LOGIC",
+        "2": "GND"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "total_tolerance_budget": 0.01
+    },
+    {
+      "reference": "C_MONITOR_RX",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "selection_source": "schematics/power/manual_rearm_capacitors.json"
+    },
+    {
+      "reference": "R_SEQUENCE_OFF",
+      "part": "TNPW060310K0BYEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "SEQUENCE_ENABLE_REQUEST",
+        "2": "GND"
+      },
+      "placement": "At U3 pin4; after any future sequencer interconnect; not at remote driver",
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "total_tolerance_budget": 0.01
+    },
+    {
+      "reference": "R_STOP_INPUT",
+      "part": "TNPW12061K00BYEA",
+      "value_ohm": 1000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "STOP_INPUT_LIMITED"
+      },
+      "placement": "At battery branch entry before any downstream copper exposed to a short"
+    },
+    {
+      "reference": "D_STOP_REVERSE",
+      "part": "BAS116",
+      "ordering_suffix_pending": true,
+      "pins": {
+        "1": "STOP_INPUT_LIMITED",
+        "2": null,
+        "3": "STOP_LDO_INPUT"
+      },
+      "placement": "SOT23: pin1 anode, pin3 cathode, pin2 NC"
+    },
+    {
+      "reference": "R_STOP_INPUT_BLEED",
+      "part": "TNPW0603100KBYEA",
+      "value_ohm": 100000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "STOP_LDO_INPUT",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "C_STOP_IN_HF",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "STOP_LDO_INPUT",
+        "2": "GND"
+      },
+      "placement": "Directly at TPS709 IN/GND; film bulk does not replace local HF return"
+    },
+    {
+      "reference": "U_LOGIC_PROTECT",
+      "part": "TPS26601RHFR",
+      "pins": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "4": null,
+        "5": null,
+        "6": null,
+        "7": null,
+        "8": "BATTERY_RAW",
+        "9": "BATTERY_RAW",
+        "10": "LOGIC_UVLO",
+        "11": null,
+        "12": "LOGIC_OVP",
+        "13": null,
+        "14": null,
+        "15": "LOGIC_PROTECT_RTN",
+        "16": null,
+        "17": "GND",
+        "18": null,
+        "19": "LOGIC_ILIM",
+        "20": null,
+        "21": null,
+        "22": null,
+        "23": "LOGIC_PROTECTED_INPUT",
+        "24": "LOGIC_PROTECTED_INPUT",
+        "EP": "LOGIC_PROTECT_RTN"
+      },
+      "pin_dispositions": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "2": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "3": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "4": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "5": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "6": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "7": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "8": {
+          "name": "IN",
+          "net": "BATTERY_RAW",
+          "disposition": "connected"
+        },
+        "9": {
+          "name": "IN",
+          "net": "BATTERY_RAW",
+          "disposition": "connected"
+        },
+        "10": {
+          "name": "UVLO",
+          "net": "LOGIC_UVLO",
+          "disposition": "connected"
+        },
+        "11": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "12": {
+          "name": "OVP",
+          "net": "LOGIC_OVP",
+          "disposition": "connected"
+        },
+        "13": {
+          "name": "MODE",
+          "net": null,
+          "disposition": "intentional_open",
+          "reason": "Open selects TPS26601 latched circuit breaker"
+        },
+        "14": {
+          "name": "SHDN",
+          "net": null,
+          "disposition": "intentional_open",
+          "reason": "Internal pullup; external reset not implemented"
+        },
+        "15": {
+          "name": "RTN",
+          "net": "LOGIC_PROTECT_RTN",
+          "disposition": "connected"
+        },
+        "16": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "17": {
+          "name": "GND",
+          "net": "GND",
+          "disposition": "connected"
+        },
+        "18": {
+          "name": "IMON",
+          "net": null,
+          "disposition": "intentional_open",
+          "reason": "Unused monitor"
+        },
+        "19": {
+          "name": "ILIM",
+          "net": "LOGIC_ILIM",
+          "disposition": "connected"
+        },
+        "20": {
+          "name": "dVdT",
+          "net": null,
+          "disposition": "intentional_open",
+          "reason": "Default ramp candidate; not qualified for downstream LDO startup"
+        },
+        "21": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "22": {
+          "name": "FLT",
+          "net": null,
+          "disposition": "intentional_open",
+          "reason": "Unused diagnostic output; not a substitute for rail supervisor"
+        },
+        "23": {
+          "name": "OUT",
+          "net": "LOGIC_PROTECTED_INPUT",
+          "disposition": "connected"
+        },
+        "24": {
+          "name": "OUT",
+          "net": "LOGIC_PROTECTED_INPUT",
+          "disposition": "connected"
+        },
+        "EP": {
+          "name": "PowerPAD",
+          "net": "LOGIC_PROTECT_RTN",
+          "disposition": "connected",
+          "layout": "Multiple vias to dedicated RTN plane; pin 15 must also be connected"
+        }
+      },
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json"
+    },
+    {
+      "value_ohm": 40200,
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "LOGIC_UVLO"
+      },
+      "part": "TNPW060340K2BEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      },
+      "reference": "R_LOGIC_UV_TOP",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json"
+    },
+    {
+      "value_ohm": 10000,
+      "pins": {
+        "1": "LOGIC_UVLO",
+        "2": "LOGIC_PROTECT_RTN"
+      },
+      "part": "TNPW060310K0BEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      },
+      "reference": "R_LOGIC_UV_BOTTOM",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json"
+    },
+    {
+      "value_ohm": 124000,
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "LOGIC_OVP"
+      },
+      "part": "TNPW0603124KBEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      },
+      "reference": "R_LOGIC_OV_TOP",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json"
+    },
+    {
+      "value_ohm": 10000,
+      "pins": {
+        "1": "LOGIC_OVP",
+        "2": "LOGIC_PROTECT_RTN"
+      },
+      "part": "TNPW060310K0BEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      },
+      "reference": "R_LOGIC_OV_BOTTOM",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json"
+    },
+    {
+      "value_ohm": 118000,
+      "pins": {
+        "1": "LOGIC_ILIM",
+        "2": "LOGIC_PROTECT_RTN"
+      },
+      "part": "TNPW0603118KBEEA",
+      "status": "ordering_code_candidate_not_released",
+      "previous_nominal_ohm": 120000,
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      },
+      "reference": "R_LOGIC_ILIM",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json"
+    },
+    {
+      "value_ohm": 100000,
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "GND"
+      },
+      "part": "TNPW0603100KBEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      },
+      "purpose": "Discharge shared input after all external sources disconnect; do not connect to RTN",
+      "reference": "R_LOGIC_INPUT_BLEED",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json"
+    },
+    {
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "dielectric": "C0G",
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "GND"
+      },
+      "placement": "Adjacent to TPS26601 IN/GND",
+      "status": "candidate_not_transient_qualified",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+      "reference": "C_LOGIC_PROTECT_IN_1"
+    },
+    {
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "dielectric": "C0G",
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "GND"
+      },
+      "placement": "Adjacent to TPS26601 IN/GND",
+      "status": "candidate_not_transient_qualified",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+      "reference": "C_LOGIC_PROTECT_IN_2"
+    },
+    {
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "dielectric": "C0G",
+      "pins": {
+        "1": "LOGIC_PROTECTED_INPUT",
+        "2": "GND"
+      },
+      "placement": "Adjacent to TPS26601 OUT and TPS709 IN; short shared supply trace required",
+      "status": "candidate_not_transient_qualified",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+      "reference": "C_LOGIC_PROTECT_OUT_1"
+    },
+    {
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "dielectric": "C0G",
+      "pins": {
+        "1": "LOGIC_PROTECTED_INPUT",
+        "2": "GND"
+      },
+      "placement": "Adjacent to TPS26601 OUT and TPS709 IN; short shared supply trace required",
+      "status": "candidate_not_transient_qualified",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+      "reference": "C_LOGIC_PROTECT_OUT_2"
+    },
+    {
+      "reference": "U_LOGIC_LDO",
+      "part": "TPS70933DRVR",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": null,
+        "3": "GND",
+        "4": null,
+        "5": null,
+        "6": "LOGIC_PROTECTED_INPUT",
+        "EP": "GND"
+      },
+      "source": "schematics/power/logic_supply_candidate.json",
+      "note": "EN intentionally floating per Table5-1; do not connect to 3S battery voltage"
+    },
+    {
+      "reference": "C_LOGIC_LDO_OUT",
+      "part": "T520A226M010ATE080",
+      "value_F": 2.2e-05,
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": "schematics/power/logic_supply_candidate.json",
+      "qualification": {
+        "part": "T520A226M010ATE080",
+        "nominal_F": 2.2e-05,
+        "initial_tolerance": 0.2,
+        "rated_V": 10,
+        "temperature_C": [
+          -55,
+          105
+        ],
+        "ESR_ohm_at_100kHz_25C": 0.08,
+        "leakage_A_at_25C_5min": 2.2e-05,
+        "source": "https://search.kemet.com/download/specsheet/T520A226M010ATE080",
+        "status": "screened_candidate_not_selected_for_manufacturing",
+        "remaining": [
+          "Temperature-dependent capacitance and ESR limits",
+          "TPS709 stability across frequency/temperature with this capacitor technology",
+          "Total connected capacitance including MCU bypass",
+          "Surge, reverse voltage, reflow and ripple requirements"
+        ]
+      }
+    }
+  ],
+  "interfaces": {
+    "LOGIC3V3": "Driven by U_LOGIC_LDO; current, startup and capacitor stability remain unqualified",
+    "GND": "common reference; physical return routing unfinished",
+    "RESET_N": "U7 and U14 open-drain outputs; independent external stop/fault sinks and physical clear acknowledgement unfinished",
+    "ENABLE_PERMISSION": "logic output only; physical default-off power stage unfinished",
+    "MAIN_EFUSE_EN": "Common EN to both TPS259813L; source monitor circuits exist, but their inhibition/qualification and sequencer remain unfinished",
+    "SEQUENCE_ENABLE_REQUEST": "U3 pin4 with local 10 kohm pulldown; sequencer driver absent; future source must meet loading and partial-power constraints",
+    "SEQUENCE_CLEAR_REQUEST": "active high U14 input; weak default asserted; actual sequencer driver and clear width unfinished",
+    "BUTTON_RAW": "local PCB-only switch node; do not expose as external cable input; protection/layout unfinished",
+    "LEFT_PG_CONDITIONED": "Output to unimplemented startup sequencer; not valid during unqualified power transitions",
+    "RIGHT_PG_CONDITIONED": "Output to unimplemented startup sequencer; not valid during unqualified power transitions",
+    "LEFT_REGULATOR_OUT": "External selected converter output, not included",
+    "LEFT_SERVO_BUS": "Servo branch, regeneration absorber and discharge not included",
+    "LEFT_FLT_N": "Fault output, capture network UNIMPLEMENTED",
+    "LEFT_ITIMER": "Timer passive not selected",
+    "RIGHT_REGULATOR_OUT": "External selected converter output, not included",
+    "RIGHT_SERVO_BUS": "Servo branch, regeneration absorber and discharge not included",
+    "RIGHT_FLT_N": "Fault output, capture network UNIMPLEMENTED",
+    "RIGHT_ITIMER": "Timer passive not selected",
+    "STOP_AUX3V3": "Stop supervisors plus two source-window ICs; full load and power sequencing qualification pending",
+    "LEFT_SOURCE_WINDOW_OD": "Raw window comparator output to unimplemented sequencer qualification; invalid during startup/power loss; not direct enable",
+    "RIGHT_SOURCE_WINDOW_OD": "Raw window comparator output to unimplemented sequencer qualification; invalid during startup/power loss; not direct enable",
+    "MONITOR_START_READY_OD": "TPS3808 output connected to U_MONITOR_RX; local output loading and dip coverage pending",
+    "MONITOR_START_READY_LOGIC": "Buffered startup timer status; does not imply qualified source voltage; no direct EN connection",
+    "BATTERY_RAW": "Shared source feeding logic and STOP branches; battery, UBEC inputs, source disconnect and backfeed not integrated",
+    "STOP_LDO_INPUT": "After 1k resistor and BAS116; 100k bleed. Startup, reverse transient and exact diode order qualification pending"
+  },
+  "source_sha256": {
+    "schematics/power/servo_power_rearm_integration_revM/assembly.json": "345add726fd60b9dbf7351ced3864b2f8eebcbd65653f029af9b759e4c27b5a5",
+    "validation/sequence_clear_edge_v1/report.json": "e8865f8509b692f672b2f639539926bf7fc01626d27bd83423df51509f84925c"
+  },
+  "part_count": 98,
+  "pin_count": 317,
+  "logical_composition_only": true,
+  "electrical_qualification": false,
+  "manufacturing_release": false,
+  "assembly_overrides": [
+    "U8 pin4 routed through R7 to MAIN_EFUSE_EN; overrides direct output in individual driver candidate",
+    "U9 RESET goes to RAIL_HEALTH_N instead of EN; U7 MR receives RAIL_HEALTH_N instead of LOGIC3V3; U11 level buffer and U10 reset follower drive EN",
+    "U3 unused second AND gate: pins3,4,5 accept ENABLE_PERMISSION, SEQUENCE_ENABLE_REQUEST, RESET_N; pin6 drives U8 input POWER_ENABLE_COMMAND"
+  ],
+  "interconnects": [
+    {
+      "name": "LEFT_PG_TRACE",
+      "from": "LEFT_PG_SOURCE",
+      "to": "LEFT_EFUSE_PG",
+      "type": "PCB trace, not a resistor",
+      "placement": "Pullup R10 at eFuse source end; R11/R12 at receiver end"
+    },
+    {
+      "name": "RIGHT_PG_TRACE",
+      "from": "RIGHT_PG_SOURCE",
+      "to": "RIGHT_EFUSE_PG",
+      "type": "PCB trace, not a resistor",
+      "placement": "Pullup R10 at eFuse source end; R11/R12 at receiver end"
+    },
+    {
+      "name": "LEFT_EN_TRACE",
+      "from": "MAIN_EFUSE_EN",
+      "to": "LEFT_EN_LOCAL",
+      "type": "PCB trace, not a resistor",
+      "placement": "Local pulldown on eFuse side of trace break"
+    },
+    {
+      "name": "RIGHT_EN_TRACE",
+      "from": "MAIN_EFUSE_EN",
+      "to": "RIGHT_EN_LOCAL",
+      "type": "PCB trace, not a resistor",
+      "placement": "Local pulldown on eFuse side of trace break"
+    }
+  ],
+  "integration_limitations": [
+    "Converter, battery protection, input/output capacitors, regeneration and discharge omitted",
+    "Power-stage part values and OVLO fault pin range remain unqualified",
+    "Connectivity only: no integrated transient or fault proof",
+    "Stop supply moved from legacy 5V to dedicated 3.3V; previous 5V clamp timing/level calculations cannot be reused",
+    "Stop LDO load, thermal, capacitor effective value and startup/brownout order unresolved",
+    "Stop LDO own failure and shared battery loss not covered",
+    "Minimum load resistor added; rated part and temperature tolerance not selected. No guarantee of total load or transient output.",
+    "Common EN drive is connected and statically screened; startup/brownout behavior and source UV monitoring unqualified",
+    "One common EN trace is not independent fault-tolerant shutdown; output and wiring faults require analysis",
+    "Local EN pull-downs replace R5; earlier 39k calculations are historical",
+    "Open trace analysis is settled leakage only; discharge timing and pin/pulldown ground faults unqualified",
+    "Voltage monitor circuitry connected to actual converter sources; startup-qualified status and sequencer hardware absent",
+    "Raw window outputs not tied to EN or RESET; monitor output invalidity must be handled before use",
+    "Window divider/capacitor exact parts and full tolerance, leakage, timing and fault coverage pending",
+    "TPS3808G33 startup delay added; downstream qualification/sequencer not implemented",
+    "Short supply dips and undefined low-supply outputs are not covered by the timer proof",
+    "Timer output load must meet datasheet timing conditions; receiver and exact passives pending",
+    "SN74AUP1T50 receiver is rated -40..85 C; operation above 85 C not qualified and must not inherit other ICs 125 C rating",
+    "Receiver LOGIC3V3 must be 3.0..3.6 V for stated input thresholds; whole rail and startup inhibition pending",
+    "Receiver input capacitance typical only; TPS3808 delay loading not fully qualified",
+    "Output pulldown limits leakage at VCC=0 only; intermediate voltage and downstream loading pending",
+    "Sequence-enable input now has local pulldown; no sequencer behavior is supplied by this resistor",
+    "13 monitor/default resistor ordering codes selected; total tolerance ageing/process and PCB thermal verification remain pending; EA packaging 5000 pieces",
+    "Local 100nF capacitors now have ordering candidates; bulk and gate capacitors remain unselected. PCB return inductance and full rail stability not qualified.",
+    "Low-current input resistor/diode/bleed added. Does not qualify hot polarity reversal, resistor bypass/short failure, battery cell protection, input transients or upstream wiring shorts.",
+    "WIMA 2.2uF film input plus 100nF C0G local bypass selected as candidates; 13mm film body height, routing and operating capacitance unqualified",
+    "R14 1k candidate assumes total node capacitance <=50pF, common rail 3.207..3.393V and leakage <=13.58uA excluding board leakage. None is a PCB qualification.",
+    "Budget up to 3.428mA continuous GPIO sink while request Low and 11.63mW resistor dissipation. Whole rail/current budget incomplete.",
+    "Startup controller remains unimplemented. This change is not power-transition, reset or protection qualification."
+  ],
+  "power_stage_warnings": [
+    "Internal QOD is on INTERNAL_OUT; reverse FET OFF isolates it from SERVO_BUS",
+    "Existing FET choice is not qualified for DVDT minimum drive, gate charge, or negative VGS during cutoff",
+    "Gate resistor and capacitor in Figure 7-8 have no selected values here"
+  ],
+  "candidate_integration": {
+    "inputs": {
+      "base": "schematics/power/servo_power_clear_pullup_candidate_v1/assembly.json",
+      "branch": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+      "ldo": "schematics/power/logic_supply_candidate.json",
+      "stop_cap": "schematics/power/stop_output_capacitor_requirements.json"
+    },
+    "source_sha256": {
+      "base": "f7b09edd2b721ee78c9a92bf96f2a05159b07eac0d236ccfe2462b2b18246fe6",
+      "branch": "39c8c28e2f32878215aca0f7ae6feec9c1a84a7b1ca44407486efa6db99577c7",
+      "ldo": "0874d185d9674afac612b6a82035f5767dfcd4a5804aa7628dedeefc2b746f15",
+      "stop_cap": "2401931e14ef4069e2ad864602af96ec9efc6ab9806122b75189bb8ab9beafcb"
+    },
+    "current_pointer_changed": false,
+    "missing": [
+      "Battery and converter complete models",
+      "MCU startup sequencer and receivers",
+      "Output capacitor stability qualification",
+      "Current thresholds for 118kohm and 3S",
+      "Integrated startup/fault/thermal/PCB verification",
+      "Shared source discharge/backfeed bound"
+    ],
+    "forbidden_net_merges": [
+      [
+        "LOGIC_PROTECT_RTN",
+        "GND"
+      ]
+    ],
+    "base_overlays": [
+      {
+        "reference": "C_STOP_OUT",
+        "before": {
+          "reference": "C_STOP_OUT",
+          "part": null,
+          "value_F": 4.7e-06,
+          "pins": {
+            "1": "STOP_AUX3V3",
+            "2": "GND"
+          },
+          "requirement": "Design target >=2.2uF effective retained; TPS70933 application guidance minimum 1.5uF, maximum 47uF, ESR 0..0.2 ohm. See schematics/power/stop_output_capacitor_requirements.json"
+        },
+        "after": {
+          "reference": "C_STOP_OUT",
+          "part": "GRM31CR71H475KA12L",
+          "value_F": 4.7e-06,
+          "pins": {
+            "1": "STOP_AUX3V3",
+            "2": "GND"
+          },
+          "requirement": "Design target >=2.2uF effective retained; TPS70933 application guidance minimum 1.5uF, maximum 47uF, ESR 0..0.2 ohm. See schematics/power/stop_output_capacitor_requirements.json",
+          "selection_source": "schematics/power/stop_output_capacitor_requirements.json",
+          "qualification": {
+            "reference": "C_STOP_OUT",
+            "regulator": "TPS70933DBVR",
+            "source": "https://www.ti.com/lit/ds/symlink/tps709.pdf",
+            "revision": "SBVS186H July 2021 section 8.1.1",
+            "manufacturer_application_guidance": {
+              "effective_capacitance_min_F": 1.5e-06,
+              "effective_capacitance_max_F": 4.7e-05,
+              "ESR_min_ohm": 0,
+              "ESR_max_ohm": 0.2,
+              "condition": "Output voltage >= 1.5 V"
+            },
+            "retained_design_target": {
+              "effective_capacitance_min_F": 2.2e-06,
+              "nominal_capacitance_F": 4.7e-06,
+              "classification": "Codex design margin, not manufacturer minimum"
+            },
+            "candidate": {
+              "family": "GRM31CR71H475KA12",
+              "nominal_F": 4.7e-06,
+              "rated_V": 50,
+              "initial_tolerance": 0.1,
+              "dielectric": "X7R",
+              "package": "1206",
+              "source": "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM31CR71H475KA12-01A.pdf",
+              "status": "exact_ordering_candidate_not_qualified",
+              "part_number": "GRM31CR71H475KA12L",
+              "source_date": "2026-06-25",
+              "source_sha256": "79e4b038591e12555fe8f014db5554725d20cce3ec127846d34c20e27e53d3da",
+              "temperature_change_fraction_no_bias": 0.15,
+              "package_quantity": 2000
+            },
+            "qualification": false,
+            "remaining": [
+              "DC bias and temperature combined capacitance at actual rail",
+              "Ageing and assembly allowance",
+              "ESR over relevant frequency and temperature",
+              "Procurement and footprint",
+              "Total connected rail capacitance and regulator transient verification"
+            ],
+            "correction": "Earlier requirement text incorrectly attributed 2.2uF effective minimum to TI. Preserve 2.2uF as a design target; do not relabel prior failures as passes.",
+            "screening_evidence": "validation/stop_output_capacitor_v1/report.json",
+            "model_scope_evidence": "validation/stop_cap_model_scope_v1/report.json",
+            "additional_nominal_screening": "Stopped: nominal data cannot resolve remaining bias/ESR qualification"
+          }
+        },
+        "change": "Ordering candidate only; value and pins unchanged; stability remains unqualified"
+      }
+    ]
+  }
+}
