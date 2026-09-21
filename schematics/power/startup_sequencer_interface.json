@@ -12,7 +12,8 @@
     "LEFT_SOURCE_VOLTAGE_VALID": "Qualified status not implemented; raw LEFT_SOURCE_WINDOW_OD now exists in servo_power_rearm_integration_revF; require monitor supply validity and startup wait before accepting",
     "RIGHT_SOURCE_VOLTAGE_VALID": "Qualified status not implemented; raw RIGHT_SOURCE_WINDOW_OD now exists in servo_power_rearm_integration_revF; require monitor supply validity and startup wait before accepting",
     "LEFT_PG_VALID": "Unimplemented qualified left switch status; distinguish startup low from RUN failure",
-    "RIGHT_PG_VALID": "Unimplemented qualified right switch status; distinguish startup low from RUN failure"
+    "RIGHT_PG_VALID": "Unimplemented qualified right switch status; distinguish startup low from RUN failure",
+    "MONITOR_START_READY_OD": "Dedicated TPS3808G33 in revG; conditional initial-startup delay only; receiver and short-dip invalidation missing. Not complete source-valid status."
   },
   "outputs": {
     "SEQUENCE_ENABLE_REQUEST": "revF U3 pin4; true only START/RUN and healthy",
@@ -48,5 +49,6 @@
   "timer_freshness_evidence": "validation/clear_timer_freshness_v1/README_ja.md",
   "split_supply_status": "Dual PG receivers and source-window circuits integrated; qualified source status, startup sequencer and fault timing unimplemented",
   "dual_pg_receiver_candidate": "schematics/power/dual_pg_receiver_revB/connectivity.json",
-  "source_window_integration": "schematics/power/servo_power_rearm_integration_revF/assembly.json"
+  "source_window_integration": "schematics/power/servo_power_rearm_integration_revF/assembly.json",
+  "monitor_startup_timer": "schematics/power/servo_power_rearm_integration_revG/integration_report.json"
 }

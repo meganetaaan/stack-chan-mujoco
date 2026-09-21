@@ -1,9 +1,22 @@
 {
-  "revision": "servo_power_rearm_integration_revF",
-  "assembly": "schematics/power/servo_power_rearm_integration_revF/assembly.json",
+  "revision": "servo_power_rearm_integration_revG",
+  "assembly": "schematics/power/servo_power_rearm_integration_revG/assembly.json",
   "status": "integrated_comparison_not_released",
-  "includes": ["Dual TPS259813L stages", "Manual rearm revJ with dual PG receivers", "Dedicated STOP_AUX3V3 LDO and minimum load", "Common EN with local pulldowns", "Dual source voltage-window monitors"],
+  "includes": [
+    "Dual TPS259813L stages",
+    "Manual rearm revJ with dual PG receivers",
+    "Dedicated STOP_AUX3V3 LDO and minimum load",
+    "Common EN with local pulldowns",
+    "Dual source voltage-window monitors",
+    "Dedicated monitor startup-delay supervisor; qualification incomplete"
+  ],
   "manufacturing_release": false,
   "electrical_qualification": false,
-  "missing": ["Startup sequencer and monitor-valid timing", "Converter and complete battery protection", "Regeneration and discharge integration", "Unselected passives and complete current/thermal budget", "Integrated transient and fault verification"]
+  "missing": [
+    "Startup sequencer and monitor-valid timing",
+    "Converter and complete battery protection",
+    "Regeneration and discharge integration",
+    "Unselected passives and complete current/thermal budget",
+    "Integrated transient and fault verification"
+  ]
 }
