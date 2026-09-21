@@ -11,17 +11,28 @@
     "13_PG": "NC for now; not a replacement for downstream eFuse PG",
     "16_NC": "NC",
     "17_EN": "UNRESOLVED: input UVLO and enable policy; do not float in implemented hardware",
-    "12_RT": "UNRESOLVED: frequency resistor",
-    "2_RBOOT_3_CBOOT": "UNRESOLVED: bootstrap slew resistor",
+    "12_RT": "15.8kohm candidate toAGND; see precision_passives_candidate.json",
+    "2_RBOOT_3_CBOOT": "100ohm candidate betweenpins2and3; see precision_passives_candidate.json",
     "8_FB": "UNRESOLVED: qualified5V divider and feedforward capacitor"
   },
   "mode": "FPWM; no external clock; mode follows converter input rather than separately powered MCU",
   "mode_high_threshold_V": 1.7,
-  "mode_continuous_absolute_range_V": [-0.3,36],
+  "mode_continuous_absolute_range_V": [
+    -0.3,
+    36
+  ],
   "voltage_rating_is_not_system_qualification": true,
   "VLDOIN_reason": "Avoid direct connection of possibly prebiased output to bias input while VIN is removed; manufacturer permits VIN-powered internal LDO. This does not establish output reverse-current safety.",
   "thermal_tradeoff": "VIN-powered LDO has greater loss than VOUT bias; include in PCB thermal design",
-  "unresolved": ["Input ripple/transient/negative excursions at shared MODE/VIN", "3S loaded minimum and UVLO/usable energy", "Mode establishment during startup and downstream permission", "FPWM negative-current path and regeneration", "Input/output capacitance, frequency, bootstrap resistor, thermal/EMI", "No automatic servo rearm after converter hiccup/thermal recovery"],
+  "unresolved": [
+    "Input ripple/transient/negative excursions at shared MODE/VIN",
+    "3S loaded minimum and UVLO/usable energy",
+    "Mode establishment during startup and downstream permission",
+    "FPWM negative-current path and regeneration",
+    "Input/output capacitance, frequency, bootstrap resistor, thermal/EMI",
+    "No automatic servo rearm after converter hiccup/thermal recovery"
+  ],
   "manufacturing_release": false,
-  "formal_circuit_changed": false
+  "formal_circuit_changed": false,
+  "passives_reference": "schematics/power/precision_passives_candidate.json"
 }

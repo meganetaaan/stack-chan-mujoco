@@ -757,3 +757,7 @@ Wera05118120001のメーカー資料で軸径5.7 mm・長さ60 mmを確認。`ya
 ### 高精度モジュールのモード・バイアス部分接続
 
 `precision_mode_candidate.json`でMODEを同一保護後VINへ接続しFPWM選択、SPSPとVLDOINをAGNDとする部分案を保存。別電源MCUや出力バイアスからの注入を追加せず、VIN給電LDOの熱損失増加を明示。3.7V入力でMODEしきい値1.7Vを上回るが5V出力成立とは別条件。EN/UVLO・RT・FB・入出力容量は未選定で完全回路ではない。起動中精度、FPWM回生、自動復帰と下流手動許可の整合を未完了に残す。
+
+### 高精度電源のRT/RBOOTを具体化
+
+`precision_passives_candidate.json`でRT15.8kΩ(TNPW060315K8BEEA)、RBOOT100Ω(TNPW0603100RBEEA)を各2個の部品候補へ。`precision_passives_candidate_v1`は公称0.997992MHzと初期抵抗公差のみの範囲を算出し、発振器/温度込みの保証とは区別。局所COUT実効75µFが必要で、公称47µF×3の残存率53.19%以上が条件。局所容量はeFuse手前、サーボ容量は下流と区別し、遮断時に切り離される容量を制御ループの最低容量へ算入しない。EN/UVLO/容量実品/熱等は未完了。
