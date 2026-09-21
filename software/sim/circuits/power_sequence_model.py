@@ -38,7 +38,7 @@ class Outputs:
 
 
 def outputs(s, i):
-    fault = (not i.healthy or not i.permission or
+    fault = (not i.healthy or not i.permission or not i.armed or i.clr_low or
              (s.phase == 'RUN' and not (i.left_pg and i.right_pg)) or
              (s.phase == 'START' and i.startup_expired))
     return Outputs(
@@ -67,12 +67,14 @@ def advance(s, i):
             return State()
         if not i.permission:
             return State('WAIT_NEW_PRESS', permission_low_seen=True)
-        if s.permission_low_seen and i.armed:
+        if not i.armed or i.clr_low:
+            return State()  # Inconsistent permission must be cleared, not remembered.
+        if s.permission_low_seen:
             # Refuse a stale expired timer before launching a fresh START.
             return State() if i.startup_expired else State('START')
         return s
     if s.phase in ('START', 'RUN'):
-        if not i.healthy or not i.permission:
+        if not i.healthy or not i.permission or not i.armed or i.clr_low:
             return State()
         if s.phase == 'START':
             # Timeout wins a simultaneous PG rise, rather than masking a timeout.

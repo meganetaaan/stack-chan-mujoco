@@ -41,7 +41,8 @@
     "RUN requires both leg PG inputs valid; single MAIN_EFUSE_PG is not sufficient",
     "Either source-voltage qualification lost in START/RUN cancels sequence permission and requests remembered clear, irrespective of FLT",
     "Either PG lost in RUN cancels both-leg sequence permission; normal pre-start PG low must not deadlock START",
-    "Voltage recovery alone cannot reissue permission; complete clear and a fresh release/press are required"
+    "Voltage recovery alone cannot reissue permission; complete clear and a fresh release/press are required",
+    "Permission High with ARMED Low or actual CLR Low cancels sequence and enters a fresh clear; START/RUN require ARMED High and CLR released"
   ],
   "evidence": "validation/sequence_clear_completion_v1/README_ja.md",
   "manufacturing_release": false,
@@ -56,6 +57,7 @@
   "monitor_startup_receiver": "schematics/power/servo_power_rearm_integration_revH/assembly.json",
   "sequence_request_default": "schematics/power/servo_power_rearm_integration_revI/integration_report.json",
   "integrated_state_model": "software/sim/circuits/power_sequence_model.py",
-  "integrated_state_model_evidence": "validation/power_sequence_model_v1/report.json",
-  "model_state_mapping": "Initial OFF is implemented as CLEAR until independent clear acknowledgements; WAIT_NEW_PRESS and CLEAR each have two protocol substates"
+  "integrated_state_model_evidence": "validation/power_sequence_model_v2/report.json",
+  "model_state_mapping": "Initial OFF is implemented as CLEAR until independent clear acknowledgements; WAIT_NEW_PRESS and CLEAR each have two protocol substates",
+  "invalid_observation_regression": "validation/power_sequence_invalid_order_v1/after/report.json"
 }

@@ -21,14 +21,14 @@ while pending:
  s=pending.pop()
  for i in inputs:
   o=outputs(s,i);n=advance(s,i);count+=1
-  assert not o.enable_request or (s.phase in ('START','RUN') and i.healthy and i.permission)
+  assert not o.enable_request or (s.phase in ('START','RUN') and i.healthy and i.permission and i.armed and not i.clr_low)
   assert not (s.phase=='RUN' and not(i.left_pg and i.right_pg) and o.enable_request)
   assert not(s.phase=='START' and i.startup_expired and o.enable_request)
   assert not(o.enable_request and o.clear_request)
   if s.phase=='CLEAR' and n.phase!='CLEAR':
    assert s.clear_phase=='QUALIFY' and i.healthy and i.clr_low and i.hold_done and not i.armed and not i.permission
   if n.phase=='START' and s.phase!='START':
-   assert s.phase=='WAIT_NEW_PRESS' and s.permission_low_seen and i.permission and i.armed and i.healthy and not i.startup_expired
+   assert s.phase=='WAIT_NEW_PRESS' and s.permission_low_seen and i.permission and i.armed and i.healthy and not i.startup_expired and not i.clr_low
   if s.phase in ('START','RUN') and not i.healthy:assert n==State()
   if n not in seen:seen.add(n);pending.append(n)
 # A normal startup and a right-leg failure, with external observations delayed.
