@@ -2,8 +2,9 @@
 import argparse,csv,hashlib,json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[3]
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--supervisor',action='store_true');a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
 files=['manual_button_candidate.json','manual_release_gate_candidate.json','manual_release_mr_buffer_candidate.json','manual_release_timer_candidate.json','manual_rearm_latch_candidate.json']
+if a.supervisor: files.append('manual_rearm_supervisor_candidate.json')
 data={f:json.loads((ROOT/'schematics/power'/f).read_text()) for f in files}
 parts=[]
 def add(ref,part,nets,source=None):
@@ -18,7 +19,13 @@ add('R1','100k value candidate; exact part/tolerance pending',['LOGIC3V3','TIMER
 add('R2','100k value candidate; exact part/tolerance pending',['LOGIC3V3','RELEASE_QUALIFIED'])
 for i in range(1,7):add(f'C{i}','100nF local ceramic candidate; exact part pending',['LOGIC3V3','GND'])
 add('SW1','NO momentary enable button; part/contact characteristics pending',['BUTTON_RAW','GND'])
+if a.supervisor:
+ add('U7',data['manual_rearm_supervisor_candidate.json']['part_number'],['RESET_N','GND','LOGIC3V3','SUPERVISOR_CT','LOGIC3V3','LOGIC3V3'],'manual_rearm_supervisor_candidate.json')
+ add('R3','100k value candidate; exact part/tolerance pending',['LOGIC3V3','SUPERVISOR_CT'])
+ add('R4','100k value candidate; exact part/tolerance pending',['LOGIC3V3','RESET_N'])
+ add('C7','100nF local ceramic candidate; exact part pending',['LOGIC3V3','GND'])
 ports={'LOGIC3V3':'upstream logic rail; power budget and independent supervision unfinished','GND':'common reference; physical return routing unfinished','RESET_N':'independent health-qualified clear input; low on stop/fault/invalid power; must not depend on button debounce/timer','RAW_RELEASED_CONDITIONED':'unfinished protected raw-input interface from BUTTON_RAW; not a direct wire','ENABLE_PERMISSION':'logic output only; physical default-off power stage unfinished'}
+if a.supervisor: ports['RESET_N']='U7 open-drain rail reset plus external stop/fault sinks; sink components, fanout and fail-state behavior unfinished; never push-pull drive'
 report={'scope':__doc__,'parts':parts,'interfaces':ports,'source_sha256':{f:hashlib.sha256((ROOT/'schematics/power'/f).read_bytes()).hexdigest() for f in files},'part_count':len(parts),'pin_count':sum(len(x['pins']) for x in parts),'logical_composition_only':True,'electrical_qualification':False,'manufacturing_release':False}
 # Wiring invariants that prevent accidental inversion or delayed stop substitution.
 refs={x['reference']:x for x in parts}

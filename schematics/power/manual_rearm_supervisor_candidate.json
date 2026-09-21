@@ -1,0 +1,35 @@
+{
+  "part_number": "TPS3808G33DBVR",
+  "quantity": 1,
+  "role": "independent logic-rail supervisor; separate from release timer",
+  "status": "pin_candidate_not_released",
+  "pins": {
+    "1_RESET": "RESET_N wired open drain with external stop/fault sinks; 100k pullup to LOGIC3V3",
+    "2_GND": "GND",
+    "3_MR": "LOGIC3V3; do not feed RESET_N back here",
+    "4_CT": "100k resistor to LOGIC3V3",
+    "5_SENSE": "LOGIC3V3 at latch supply",
+    "6_VDD": "LOGIC3V3 with local 100nF candidate"
+  },
+  "external_interface": "stop/fault sinks on RESET_N must assert for stop, invalid monitoring or fault; concrete parts pending",
+  "threshold_falling_V": [
+    3.0239499999999997,
+    3.1160499999999995
+  ],
+  "release_upper_conservative_V": 3.193951249999999,
+  "delay_ms": [
+    180,
+    420
+  ],
+  "passives": "100k values and 100nF candidate; exact ordering codes/tolerances pending",
+  "limits": [
+    "No guaranteed RESET before POR valid voltage; physical power stage must default off",
+    "Output low guarantee depends on pullup/load; full fanout budget pending",
+    "Transient supply fall and supervisor response not yet coordinated",
+    "Stop/fault signal loss coverage unfinished",
+    "Not permitted to replace independent stop with button or release timer"
+  ],
+  "manufacturing_release": false,
+  "source": "https://www.ti.com/lit/ds/symlink/tps3808.pdf",
+  "revision": "SBVS050N August 2026"
+}
