@@ -20,6 +20,8 @@ U_CELL_PROTECT,24,BQ_REG18,candidate_connected
 U_CELL_PROTECT,46,BQ_CP1,candidate_connected
 U_CELL_PROTECT,18,BQ_SRP,candidate_connected
 U_CELL_PROTECT,20,BQ_SRN,candidate_connected
+U_CELL_PROTECT,21,BQ_TS_CELL,candidate_connected
+U_CELL_PROTECT,23,BQ_TS_FET,candidate_connected
 U_CELL_PROTECT,1,,NC
 U_CELL_PROTECT,3,,NC
 U_CELL_PROTECT,5,,NC
@@ -36,9 +38,7 @@ U_CELL_PROTECT,35,,UNUSED_OPEN
 U_CELL_PROTECT,38,,UNUSED_OPEN
 U_CELL_PROTECT,36,CELL_B_MINUS,candidate_connected
 U_CELL_PROTECT,37,CELL_B_MINUS,candidate_connected
-U_CELL_PROTECT,21,,UNRESOLVED
 U_CELL_PROTECT,22,,UNRESOLVED
-U_CELL_PROTECT,23,,UNRESOLVED
 U_CELL_PROTECT,25,,UNRESOLVED
 U_CELL_PROTECT,26,,UNRESOLVED
 U_CELL_PROTECT,27,,UNRESOLVED
@@ -162,3 +162,7 @@ R_SRN,1,SHUNT_PACK_SENSE,candidate_connected
 R_SRN,2,BQ_SRN,candidate_connected
 C_CURRENT,1,BQ_SRP,candidate_connected
 C_CURRENT,2,BQ_SRN,candidate_connected
+TH_CELL,1,BQ_TS_CELL,candidate_connected
+TH_CELL,2,CELL_B_MINUS,candidate_connected
+TH_FET,1,BQ_TS_FET,candidate_connected
+TH_FET,2,CELL_B_MINUS,candidate_connected

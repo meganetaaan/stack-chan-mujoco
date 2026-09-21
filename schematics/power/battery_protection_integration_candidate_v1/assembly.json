@@ -26,6 +26,8 @@
         "46": "BQ_CP1",
         "18": "BQ_SRP",
         "20": "BQ_SRN",
+        "21": "BQ_TS_CELL",
+        "23": "BQ_TS_FET",
         "1": null,
         "3": null,
         "5": null,
@@ -44,9 +46,7 @@
         "37": "CELL_B_MINUS"
       },
       "unresolved_pins": [
-        21,
         22,
-        23,
         25,
         26,
         27,
@@ -490,13 +490,33 @@
         "1": "BQ_SRP",
         "2": "BQ_SRN"
       }
+    },
+    {
+      "reference": "TH_CELL",
+      "part": "103AT-2",
+      "pins": {
+        "1": "BQ_TS_CELL",
+        "2": "CELL_B_MINUS"
+      },
+      "location_candidate": "battery exterior",
+      "mounting_qualified": false,
+      "protection_threshold_qualified": false
+    },
+    {
+      "reference": "TH_FET",
+      "part": "103AT-2",
+      "pins": {
+        "1": "BQ_TS_FET",
+        "2": "CELL_B_MINUS"
+      },
+      "location_candidate": "main protection FET region",
+      "mounting_qualified": false,
+      "protection_threshold_qualified": false
     }
   ],
-  "part_count": 50,
+  "part_count": 52,
   "unresolved_BQ76942_pins": [
-    21,
     22,
-    23,
     25,
     26,
     27,
@@ -527,9 +547,24 @@
     "BAT hold-up and input faults; REG18/CP1 effective capacitance and startup; optional LDO supply",
     "PACK/LD transient and reverse-polarity qualification",
     "configuration and startup inhibit",
-    "temperature inputs and protection settings",
+    "thermistor attachment, harness, fault response and temperature protection settings",
     "system/servo integration"
   ],
+  "temperature_configuration_candidate": {
+    "TS1": {
+      "address": "0x92FD",
+      "value": "0x07",
+      "role": "cell temperature"
+    },
+    "TS3": {
+      "address": "0x92FF",
+      "value": "0x0F",
+      "role": "FET temperature"
+    },
+    "source": "TI SLUUBY1B tables 13-9/13-11 and memory map",
+    "applied_to_hardware": false,
+    "full_protection_configuration": false
+  },
   "electrically_operational": false,
   "manufacturing_release": false
 }
