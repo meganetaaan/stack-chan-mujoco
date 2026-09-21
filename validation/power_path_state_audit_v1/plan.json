@@ -1,0 +1,8 @@
+{
+  "question": "Does a common absorber remain electrically reachable from each servo after source isolation or branch opening?",
+  "method": "Directed connectivity of candidate topology; no transistor or motor model",
+  "criteria": {"every_included_regeneration_source_reaches_an_absorber": true},
+  "stop_condition": "Enumerate five declared states once; record missing paths and revise topology requirements, without parameter sweeps",
+  "assumptions": ["An intact ordinary conductor or fuse conducts both ways", "Source disconnect is open in both directions when commanded off", "A servo can remain a regeneration source after supply removal", "Absorber node means a proposed energy sink, not a rated implemented part"],
+  "limitations": ["Connectivity is necessary, not sufficient: voltage, energy, current, delay, temperature and independence are not verified", "Servo cable detachment is a separate operating/fault condition needing an explicit design decision"]
+}
