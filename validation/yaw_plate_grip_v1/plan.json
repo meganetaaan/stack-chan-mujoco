@@ -1,0 +1,14 @@
+{
+  "question": "What is the nominal clamp stack and screw protrusion at all eight plate joints?",
+  "source_sha256": {
+    "validation/yaw_integrated_candidate_v2/inventory.json": "abe177ddc07eb29be046070248853042bad698fcd75b334875c4001826e7f8e0",
+    "validation/yaw_integrated_candidate_v2/yaw_support_candidate.step": "13037a398982bbb3bbb98980aa5c5a8b3de2c9dd175a2e5b8b0cd6f1ff863ca0"
+  },
+  "criterion": "Nominal bearing planes coincide and screw envelope extends through nut; no effective-thread or preload claim.",
+  "assumptions": [
+    "SLH-M2-10 underhead length 10 mm from existing inventory",
+    "Z-axis screws point upward",
+    "Nominal CAD only; no dimensional tolerances"
+  ],
+  "stop": "Eight existing joints, no strength calculation or geometry change."
+}
