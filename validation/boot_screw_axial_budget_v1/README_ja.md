@@ -1,3 +1,7 @@
+# 訂正: 閉じた天井を仮定した計算は現行CADに適用できない
+
+`validation/boot_tip_relief_v1/original_tip_probe.json`で、ねじ軸上には既存穴が続き、Z=-12.8〜-12.0 mmにも半径1 mmのねじ先端と交差する材料がないことを8箇所で確認した。以下の寸法表は閉じた天井がある場合の反実仮想として保存する。実形状の干渉証拠でも逃げ加工の必要性の根拠でもない。
+
 # 外装固定ねじの軸方向寸法 — 現行案は余裕不足
 
 再現: `.venv-engineering/bin/python software/sim/structural/check_boot_screw_axial_budget.py`。

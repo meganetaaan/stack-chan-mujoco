@@ -25,9 +25,10 @@
   "basis": "Nut clamped against cavity bottom; maximum modeled nut thickness 1.2 mm. Screw tip/threads simplified.",
   "criteria": "Positive roof clearance and full axial traversal of nominal nut envelope; necessary screening only, not thread strength.",
   "screw_length_tolerance_mm": null,
-  "decision": "Current cavity has no robust length window under retained independent boundary assumption, even before screw tolerance.",
+  "decision": "INVALID roof assumption: cavity upper Z is not a closed roof on the screw axis. See validation/boot_tip_relief_v1/original_tip_probe.json. Rows retained as a counterfactual budget, not actual interference.",
+  "actual_roof_interference_proven": false,
   "manufacturing_release": false,
-  "next_design_constraint": "Increase axial space above the clamped nut or justify tighter correlated process capability. Do not select a longer screw without roof check.",
+  "next_design_constraint": "Verify radial hole tolerance and effective thread engagement against actual CAD. Do not enlarge tip relief based on this invalid closed-roof assumption.",
   "limitations": [
     "Full formed thread engagement and chamfers not modeled.",
     "Print errors are Codex assumptions, not measured capability.",
