@@ -1,0 +1,49 @@
+{
+  "candidate": "74LVC1G06GW",
+  "source": "https://assets.nexperia.com/documents/data-sheet/74LVC1G06.pdf",
+  "revision": "16.1, 2024-09-03",
+  "rows": [
+    {
+      "resistance_ohm": 100000,
+      "sink_load_A": 3.857272727272727e-05,
+      "high_comparison_V": 2.5707,
+      "below_100uA": true,
+      "meets_unchanged_high_comparison": false
+    },
+    {
+      "resistance_ohm": 82000,
+      "sink_load_A": 4.60960088691796e-05,
+      "high_comparison_V": 2.685234,
+      "below_100uA": true,
+      "meets_unchanged_high_comparison": false
+    },
+    {
+      "resistance_ohm": 75000,
+      "sink_load_A": 4.9996969696969695e-05,
+      "high_comparison_V": 2.729775,
+      "below_100uA": true,
+      "meets_unchanged_high_comparison": true
+    }
+  ],
+  "low_output_spec": {
+    "max_V": 0.1,
+    "load_A": 0.0001,
+    "supply_V": [
+      1.65,
+      5.5
+    ]
+  },
+  "comparison_high_target_V": 2.69695,
+  "proposed_pullup_ohm": 75000,
+  "input_low_max_V": 0.8,
+  "input_high_min_V": 2.0,
+  "input_transition_max_ns_per_V": 10,
+  "integrated": false,
+  "electrical_qualification": false,
+  "pending": [
+    "Receiver thresholds over actual rail interval",
+    "Leakage guarantees at actual rail and input states",
+    "Drive edge rate including open-driver pullup and power transitions",
+    "Clear pulse, recovery, observation and sequencing hardware"
+  ]
+}
