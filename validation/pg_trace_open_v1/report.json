@@ -1,0 +1,35 @@
+{
+  "fault": "Open PG trace between source-side pullup and receiver top resistor",
+  "cases": [
+    {
+      "Rbottom_ohm": 326700,
+      "receiver_current_A": -2.5e-08,
+      "sense_open_V": 0.0081675
+    },
+    {
+      "Rbottom_ohm": 326700,
+      "receiver_current_A": 2.5e-08,
+      "sense_open_V": -0.0081675
+    },
+    {
+      "Rbottom_ohm": 333300,
+      "receiver_current_A": -2.5e-08,
+      "sense_open_V": 0.0083325
+    },
+    {
+      "Rbottom_ohm": 333300,
+      "receiver_current_A": 2.5e-08,
+      "sense_open_V": -0.0083325
+    }
+  ],
+  "maximum_sense_V": 0.0083325,
+  "required_falling_threshold_min_V": 0.387,
+  "conditional_low": true,
+  "qualification": false,
+  "limits": [
+    "Leakage-only settled comparison; negative voltage may be clamped by actual input protection",
+    "No detection-time claim; capacitance is not qualified",
+    "Open eFuse pin before source pullup remains undetectable",
+    "Receiver power validity, shared ground, resistor failures and stuck high not covered"
+  ]
+}
