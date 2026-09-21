@@ -39,5 +39,7 @@
     "Total connected rail capacitance and regulator transient verification"
   ],
   "correction": "Earlier requirement text incorrectly attributed 2.2uF effective minimum to TI. Preserve 2.2uF as a design target; do not relabel prior failures as passes.",
-  "screening_evidence": "validation/stop_output_capacitor_v1/report.json"
+  "screening_evidence": "validation/stop_output_capacitor_v1/report.json",
+  "model_scope_evidence": "validation/stop_cap_model_scope_v1/report.json",
+  "additional_nominal_screening": "Stopped: nominal data cannot resolve remaining bias/ESR qualification"
 }
