@@ -1,0 +1,12 @@
+{
+  "scope": "Two permanent bleed resistors as an output discharge candidate; not a released protection design",
+  "candidate_each_ohm": 390,
+  "assumed_resistance_tolerance": 0.05,
+  "assumed_Cout_max_uF": 960,
+  "initial_voltage_bound_V": 5.25,
+  "candidate_requirement": {"rail_at_920ms_after_disconnect_max_V": 0.5},
+  "requirement_basis": "Proposed electrical discharge target only; does not prove zero torque or safe stopping",
+  "cases": ["both working", "one open", "both open"],
+  "analytical_method": "V0*exp(-t/(R_equivalent*C)), no current sources, conservative only if all other paths are dissipative",
+  "limitations": ["Resistance and capacitance bounds are design assumptions awaiting BOM qualification", "No resistor thermal or pulse rating selected", "No backfeed or motor regeneration", "Shorted resistor requires upstream protection and is not analyzed here", "No safe re-enable or mechanical stopping proof"]
+}
