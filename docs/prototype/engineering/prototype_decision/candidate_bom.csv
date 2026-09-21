@@ -1,0 +1,20 @@
+item,quantity_full_robot,minimum_test_quantity,status,purpose_or_blocker,evidence
+Tab5,1,0,retained_candidate,face; independent supply route to qualify,board/mechanical/prototype/bom.csv
+XL330-M288-T,6,1,retained_candidate,single joint after bench electrical gate; not continuous stall rated,board/mechanical/prototype/bom.csv
+XC330-M288-T,6,1,retained_candidate,second actuator type qualification after first stage,board/mechanical/prototype/bom.csv
+Sole and yoke candidate,2 sets,1 set,unpowered_test_piece,print material and orientation must be recorded; strength not released,validation/sole_wide_seat_v1/cad
+M2x8 low head screw and square nut,TBD,1 set,dimensions_only,exact purchased grade head dimensions engagement and tightening specification unresolved,validation/sole_wide_seat_v1/cad
+SCW-SOLE-SPACER-01 revA,TBD,1,custom_candidate,SUS304 proposed; OD5.95-6 ID2.3-2.35 thickness0.85-0.95; rounded edge candidate not manufacturing release,docs/prototype/mechanical/sole_spacer/specification.json
+Ultrafuse TPU95A sole,TBD,1,test_material_candidate,friction retention creep and print process unqualified,validation/tpu_retention_material_review_v1
+NP-F550 battery,1,0,hold,exact supplied pack current temperature and protection specification required,board/mechanical/prototype/bom.csv
+Pololu D42V55F5,unselected,1,candidate_for_bench,not qualified for full 9.63 A allocation,https://www.pololu.com/product/5571
+Vishay AC10 5.1 ohm,2,2,evaluation_candidate,exact order code thermal mounting SOA of companion switch unresolved; 4.7 ohm card remains historical,validation/brake_51ohm_envelope_faults_v1
+360 ohm bleed resistor,2,2,candidate,CRCW1206e3 derived code needs purchasing verification and thermal check,schematics/power/passive_discharge_candidate.json
+INA180A1,2,1,candidate,shunt comparator latch and fault isolation not released,validation/brake_current_sensor_budget_v1
+0.1 ohm shunt,2,1,specification_only,part number pulse rating tolerance and Kelvin layout unresolved,validation/brake_shunt_insertion_v1
+TPS70933DBVR,1,1,candidate,auxiliary supply; effective capacitance and pin level review pending,schematics/power/aux_sequence_candidate.json
+TPS3840PL30 and TPS3700,1 each,1 each,candidate,sequence only; not complete battery or fault protection,schematics/power/aux_sequence_candidate.json
+Brake MOSFET and gate drive,TBD,TBD,unselected,Vds Vgs SOA Rds temperature and supply loss behavior required,validation/brake_fault_en_coupled_v1
+Fuse reverse protection physical disconnect latch reset,TBD,1 bench chain,unselected,DC interrupt current wiring coordination and no automatic restart required,docs/prototype/engineering/prototype_decision/DECISION_ja.md
+Connectors harness and fasteners,TBD,1 test harness,unselected,wire current temperature voltage drop mating and strain relief required,docs/prototype/engineering/prototype_decision/DECISION_ja.md
+Current limited bench supply and independent disconnect,external equipment,1 set,select_before_power,5 V supply plus regeneration sink or qualified external clamp; no assumed sink capability,docs/prototype/engineering/prototype_decision/TEST_PLAN_ja.md
