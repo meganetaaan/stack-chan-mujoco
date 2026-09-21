@@ -8,12 +8,18 @@ current=json.loads((root/'schematics/power/manual_rearm_current.json').read_text
 paths=[current['assembly'],current['resistor_selection']]
 assembly,resistors=[json.loads((root/x).read_text()) for x in paths]
 overlay={r['reference']:r for r in resistors['resistors']};groups=defaultdict(list)
+caps=None
+if current.get('capacitor_selection'):
+ paths.append(current['capacitor_selection']);caps=json.loads((root/paths[-1]).read_text())
+ assert set(caps['references'])=={p['reference'] for p in assembly['parts'] if p['reference'].startswith('C')}
+ assert caps['nominal_capacitance_F']==1e-7
+
 for part in assembly['parts']:
  ref=part['reference']
  if ref.startswith('R'):
   selected=overlay[ref];key=(selected['part_number'],f"{selected['value_ohm']} ohm",'selected_candidate_not_released')
  elif ref.startswith('U'):key=(part['part'],'IC','selected_candidate_not_released')
- elif ref.startswith('C'):key=('UNSELECTED','100 nF nominal local bypass','part_rating_tolerance_effective_capacitance_pending')
+ elif ref.startswith('C'):key=(caps['part_number'],'100 nF nominal local bypass',caps['status']) if caps else ('UNSELECTED','100 nF nominal local bypass','part_rating_tolerance_effective_capacitance_pending')
  elif ref=='SW1':key=('UNSELECTED','Normally open momentary switch','B3U-1000P separate candidate not integrated')
  else:raise ValueError(ref)
  groups[key].append(ref)

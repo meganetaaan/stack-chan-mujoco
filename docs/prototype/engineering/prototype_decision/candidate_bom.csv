@@ -49,4 +49,4 @@ SN74HCS11PWR permission and release gates,1,1,conditional_candidate,revH U3; sha
 TPS3808G33DBVR release qualification timer,1,1,conditional_candidate,revH U5; separate from rail supervisor U7 and clamp-cause supervisor U9,schematics/power/manual_release_timer_candidate.json
 74LVC1G17GV PG receiver output buffer,1,1,conditional_candidate,revH U13; additional to U4 U8 U11; power transition validity pending,schematics/power/pg_receiver_candidate.json
 Manual rearm resistor set,14,14,selected_candidates_not_released,revH R1-R14; quantity and exact part candidates in generated BOM,validation/manual_rearm_bom_v1/bom.csv
-Manual rearm local bypass capacitors,14,14,unselected,revH C1-C14 nominal 100nF; exact parts ratings effective capacitance and layout pending,validation/manual_rearm_bom_v1/bom.csv
+Murata GRM31C5C1H104JA01L local bypass capacitors,14,14,selected_candidate_not_released,revH C1-C14; 100nF 50V C0G 1206; placement and high-frequency decoupling unqualified,schematics/power/manual_rearm_capacitors.json
