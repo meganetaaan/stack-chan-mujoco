@@ -1,0 +1,162 @@
+{
+  "source_sha256": {
+    "board/mechanical/prototype/yaw_support_candidate/revA/inventory.json": "44b30143aae11b946018bde832e769e2d47d34d4a9d12c57619a2e240edcf609",
+    "docs/prototype/engineering/prototype_decision/candidate_bom.csv": "dbbab041cef3f62664ae777f6ba6958096e434bd62698059778f7dafb2cb0ab8"
+  },
+  "coverage": [
+    {
+      "item": "Yaw candidate body shroud",
+      "yaw_quantity": 1,
+      "foot_quantity": 0,
+      "BOM_quantity": 1,
+      "yaw_parts": [
+        "body_shroud"
+      ],
+      "status": "geometry_candidate_not_released"
+    },
+    {
+      "item": "A5052P-H34 rear structural plate t2 mm",
+      "yaw_quantity": 1,
+      "foot_quantity": 0,
+      "BOM_quantity": 1,
+      "yaw_parts": [
+        "rear_plate"
+      ],
+      "status": "material_candidate_not_released"
+    },
+    {
+      "item": "Yaw fixed support keeper-v2",
+      "yaw_quantity": 2,
+      "foot_quantity": 0,
+      "BOM_quantity": 2,
+      "yaw_parts": [
+        "left_yaw_fixed_support",
+        "right_yaw_fixed_support"
+      ],
+      "status": "geometry_candidate_not_released"
+    },
+    {
+      "item": "A5052P-H34 threaded backing plate t3 mm",
+      "yaw_quantity": 2,
+      "foot_quantity": 0,
+      "BOM_quantity": 2,
+      "yaw_parts": [
+        "left_threaded_backing_plate",
+        "right_threaded_backing_plate"
+      ],
+      "status": "material_candidate_not_released"
+    },
+    {
+      "item": "SUS304 yaw servo mount plate t1 mm",
+      "yaw_quantity": 2,
+      "foot_quantity": 0,
+      "BOM_quantity": 2,
+      "yaw_parts": [
+        "left_mount_plate",
+        "right_mount_plate"
+      ],
+      "status": "material_candidate_not_released"
+    },
+    {
+      "item": "NBK SNS-M3-16 yaw rear main bolts",
+      "yaw_quantity": 8,
+      "foot_quantity": 0,
+      "BOM_quantity": 8,
+      "yaw_parts": [
+        "left_rear_0_bolt",
+        "left_rear_1_bolt",
+        "left_rear_2_bolt",
+        "left_rear_3_bolt",
+        "right_rear_0_bolt",
+        "right_rear_1_bolt",
+        "right_rear_2_bolt",
+        "right_rear_3_bolt"
+      ],
+      "status": "preferred_candidate_not_released"
+    },
+    {
+      "item": "Yaw rear M3 washer OD7 ID3.2 t0.5 mm",
+      "yaw_quantity": 8,
+      "foot_quantity": 0,
+      "BOM_quantity": 8,
+      "yaw_parts": [
+        "left_rear_0_rear_washer",
+        "left_rear_1_rear_washer",
+        "left_rear_2_rear_washer",
+        "left_rear_3_rear_washer",
+        "right_rear_0_rear_washer",
+        "right_rear_1_rear_washer",
+        "right_rear_2_rear_washer",
+        "right_rear_3_rear_washer"
+      ],
+      "status": "specification_only"
+    },
+    {
+      "item": "NBK SLH-M2-10 screw",
+      "yaw_quantity": 12,
+      "foot_quantity": 2,
+      "BOM_quantity": 14,
+      "yaw_parts": [
+        "left_64_keeper",
+        "left_76_keeper",
+        "left_plate_0_screw",
+        "left_plate_1_screw",
+        "left_plate_2_screw",
+        "left_plate_3_screw",
+        "right_64_keeper",
+        "right_76_keeper",
+        "right_plate_0_screw",
+        "right_plate_1_screw",
+        "right_plate_2_screw",
+        "right_plate_3_screw"
+      ],
+      "status": "nominal_fit_candidate"
+    },
+    {
+      "item": "SCW-SOLE-SPACER-01 revA",
+      "yaw_quantity": 8,
+      "foot_quantity": 2,
+      "BOM_quantity": 10,
+      "yaw_parts": [
+        "left_plate_0_washer",
+        "left_plate_1_washer",
+        "left_plate_2_washer",
+        "left_plate_3_washer",
+        "right_plate_0_washer",
+        "right_plate_1_washer",
+        "right_plate_2_washer",
+        "right_plate_3_washer"
+      ],
+      "status": "custom_candidate"
+    },
+    {
+      "item": "PTS A56202 external nut",
+      "yaw_quantity": 8,
+      "foot_quantity": 2,
+      "BOM_quantity": 10,
+      "yaw_parts": [
+        "left_plate_0_nut",
+        "left_plate_1_nut",
+        "left_plate_2_nut",
+        "left_plate_3_nut",
+        "right_plate_0_nut",
+        "right_plate_1_nut",
+        "right_plate_2_nut",
+        "right_plate_3_nut"
+      ],
+      "status": "nominal_fit_candidate"
+    }
+  ],
+  "yaw_parts_mapped_exactly_once": 52,
+  "bom_family_count": 10,
+  "quantity_check_passed": true,
+  "scope": "Only 52-solid yaw candidate and explicit shared foot quantities; not complete robot procurement",
+  "excluded_from_assembly": [
+    "Servos horns and case tapping screws",
+    "Body corner fasteners",
+    "Legs and other foot parts",
+    "Electronics wires connectors",
+    "Tools spares and test coupons"
+  ],
+  "manufacturing_release": false
+}
