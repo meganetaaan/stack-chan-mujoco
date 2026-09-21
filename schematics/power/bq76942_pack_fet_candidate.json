@@ -91,5 +91,74 @@
       "8": "PACK_FET_MID",
       "exposed_drain_pad": "PACK_FET_MID"
     }
+  },
+  "gate_network_candidate": {
+    "status": "initial_values_and_parts_not_timing_qualified",
+    "series_resistor": {
+      "part": "TNPW06031K00BEEA",
+      "ohm": 1000,
+      "quantity": 2,
+      "reason": "TI16.5 intermediate turnoff comparison; not optimized for unmeasured harness inductance"
+    },
+    "gate_source_resistor": {
+      "part": "TNPW08051M00BEEA",
+      "ohm": 1000000,
+      "quantity": 2,
+      "reason": "source-referenced passive discharge; leakage and driver load require qualification"
+    },
+    "zener": {
+      "type": "BZT52H-C16",
+      "order_suffix": null,
+      "quantity": 2,
+      "pin1": "cathode_to_gate",
+      "pin2": "anode_to_own_source",
+      "VZ_at_5mA_25C_V": [
+        15.3,
+        17.1
+      ],
+      "source": "https://assets.nexperia.com/documents/data-sheet/BZT52H_SER.pdf",
+      "qualified_clamp_max_V": null
+    },
+    "resistor_source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+    "connections": [
+      {
+        "FET": "Q_CHG",
+        "series_resistor": [
+          "BQ76942_CHG_45",
+          "CHG_GATE"
+        ],
+        "bleed_resistor": [
+          "CHG_GATE",
+          "CELL_POS_FUSED"
+        ],
+        "zener_pins": {
+          "1": "CHG_GATE",
+          "2": "CELL_POS_FUSED"
+        }
+      },
+      {
+        "FET": "Q_DSG",
+        "series_resistor": [
+          "BQ76942_DSG_43",
+          "DSG_GATE"
+        ],
+        "bleed_resistor": [
+          "DSG_GATE",
+          "PACK_POS_PROTECTED"
+        ],
+        "zener_pins": {
+          "1": "DSG_GATE",
+          "2": "PACK_POS_PROTECTED"
+        }
+      }
+    ],
+    "driver_loss_of_power": "passive source-referenced resistor path exists; off-time and residual VGS not yet guaranteed",
+    "unknowns": [
+      "driver pin behavior when BAT unpowered",
+      "gate leakage including contamination and temperature",
+      "zener clamp voltage at actual current and temperature",
+      "turnoff spike and resistor pulse load",
+      "charge pump capacity with static gate bleeders"
+    ]
   }
 }
