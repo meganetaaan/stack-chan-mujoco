@@ -45,3 +45,7 @@ revAのTPU足裏は過去の形状比較資料であり、ユーザーが指定�
 キー穴拡大比較は`validation/rigid_sole_keyhole_v1/`。半径方向の余裕は増えるが、
 保持かかり代が減り、軸方向は旧誤差仮定の下で干渉可能なまま。
 この失敗を残し、穴拡大だけでABS/PETG適合と判定しない。
+
+頭位置を内側へ0.4mm上げた`validation/rigid_sole_heads_v1/`では、
+旧公差仮定の軸方向残余を0.2mmへ改善。拡大キー穴と合わせた左右各34姿勢は
+`validation/rigid_sole_insertion_v2/`で公称非干渉。固定後の遊びと保持強度は未確認。

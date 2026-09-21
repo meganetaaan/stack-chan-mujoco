@@ -2,10 +2,10 @@
 import argparse,json,hashlib
 from pathlib import Path
 import cadquery as cq
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);p.add_argument('--holder-dir',type=Path,default=Path('validation/sole_contact_split_v1'));p.add_argument('--yoke-dir',type=Path,default=Path('validation/sole_external_nut_v1'));a=p.parse_args();a.out.mkdir(parents=True,exist_ok=False)
 rows=[];hashes={}
 for side in ['left','right']:
- paths={'holder':Path(f'validation/sole_contact_split_v1/{side}_holder_envelope.step'),'yoke':Path(f'validation/sole_external_nut_v1/{side}_yoke.step'),'boot':Path(f'validation/boot_low_head_candidate_v1/cad/{side}_boot_shell.step')}
+ paths={'holder':a.holder_dir/f'{side}_holder_envelope.step','yoke':a.yoke_dir/f'{side}_yoke.step','boot':Path(f'validation/boot_low_head_candidate_v1/cad/{side}_boot_shell.step')}
  parts={k:cq.importers.importStep(str(v)).val() for k,v in paths.items()};hashes.update({str(v):hashlib.sha256(v.read_bytes()).hexdigest() for v in paths.values()})
  samples=[]
  for phase,positions in [('insert',[(8,-8+i*.5) for i in range(17)]),('slide',[(8-i*.5,0) for i in range(17)])]:
