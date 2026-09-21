@@ -30,3 +30,5 @@ revJのPG受信部はrevIの単一受信部を置換する。抵抗はR15を含�
 外装ナットの寸法候補はPTS A56202を8個（外付け足裏・ヨー用10個とは別）。幅4.6 mmの局所比較v2は既存公差仮定で幅・高さの総隙間各0.2 mm。統合revDはv1のため、v2採用時には差し替えが必要。最低注文数500個、強度・工具空間・質量は未確定。
 
 現行足部をrevEへ統合した。`board/mechanical/prototype/foot_candidate/current.json`を入口とする。上記の「revDはv1」「v2未統合」は履歴となる。幅4.6 mm外装を含む30部品の交差0、硬質部慣性は`foot_rigid_inertia_v2`へ更新。
+
+左右TPS259813L電源段とrevJのPG接続を`schematics/power/servo_power_rearm_integration_revA`へ統合（68部品・238端子）。EN_UVLO駆動、FLT捕捉、起動状態回路、変換器、回生等は未接続で、完成電源ではない。
