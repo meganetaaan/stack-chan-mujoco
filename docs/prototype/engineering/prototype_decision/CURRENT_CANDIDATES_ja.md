@@ -86,3 +86,5 @@ TPS70933の出力コンデンサ条件の出典を訂正。メーカーの実効
 現行電源はrevL（97部品315ピン）。停止電源専用の直列抵抗・逆接ダイオード・放電抵抗を接続。短絡の定常抵抗発熱は条件付き比較を通過。入力起動・急反転・上流配線保護は未確認。`schematics/power/servo_power_rearm_integration_revL/README_ja.md`。
 
 現行電源revMは98部品317ピン。停止電源入力に2.2 µF WIMAフィルム候補と100 nF C0G直近バイパスを選定。公称入力容量は維持し、フィルム高さ13 mmの配置は未確認。初期容量範囲・RC比較は `schematics/power/servo_power_rearm_integration_revM/selection_report.json`。起動期限の証明ではない。
+
+TPS70933メーカー非暗号化モデルの定常計算は実行できたが、直列抵抗付き起動過渡はngspice互換環境で完了せず。通常/Gear2の失敗記録を `validation/tps709_model_compatibility_v1/` に保存。同じ数値設定の追加試行は打切り。実回路の起動失敗という判定ではない。
