@@ -2,23 +2,54 @@
   "status": "comparison_not_selected",
   "source_revision": "Nexperia 10 November 2022",
   "candidates": [
-    {"part":"PSMN1R0-30YLE", "package":"LFPAK56 SOT669", "source":"https://assets.nexperia.com/documents/data-sheet/PSMN1R0-30YLE.pdf", "RDSon_max_at_7V_25C_ohm":0.00155, "Rth_j_mb_max_K_per_W":0.67},
-    {"part":"PSMNR67-30YLE", "package":"LFPAK56E SOT1023", "source":"https://assets.nexperia.com/documents/data-sheet/PSMNR67-30YLE.pdf", "RDSon_max_at_7V_25C_ohm":0.001, "Rth_j_mb_max_K_per_W":0.45}
+    {
+      "part": "PSMN1R0-30YLE",
+      "package": "LFPAK56 SOT669",
+      "source": "https://assets.nexperia.com/documents/data-sheet/PSMN1R0-30YLE.pdf",
+      "RDSon_max_at_7V_25C_ohm": 0.00155,
+      "Rth_j_mb_max_K_per_W": 0.67
+    },
+    {
+      "part": "PSMNR67-30YLE",
+      "package": "LFPAK56E SOT1023",
+      "source": "https://assets.nexperia.com/documents/data-sheet/PSMNR67-30YLE.pdf",
+      "RDSon_max_at_7V_25C_ohm": 0.001,
+      "Rth_j_mb_max_K_per_W": 0.45
+    },
+    {
+      "part": "PSMN2R4-30YLD",
+      "package": "LFPAK56 SOT669",
+      "source": "https://assets.nexperia.com/documents/data-sheet/PSMN2R4-30YLD.pdf",
+      "source_revision": "7 February 2014",
+      "RDSon_max_at_4_5V_25C_ohm": 0.0031,
+      "Rth_j_mb_max_K_per_W": 1.42,
+      "status": "logic_level_comparison_requires_pulse_SOA"
+    }
   ],
   "shared": {
-    "VDS_rating_25_to_175C_V":30,
-    "VGS_abs_max_V":20,
-    "Tj_max_C":175,
-    "published_SOA_mounting_base_temperatures_C":[25,125],
-    "SOA_pulse_scope":"single pulse; not arbitrary repetition or board ambient",
-    "pins":{"1":"source","2":"source","3":"source","4":"gate","mounting_base":"drain"}
+    "VDS_rating_25_to_175C_V": 30,
+    "VGS_abs_max_V": 20,
+    "Tj_max_C": 175,
+    "published_SOA_mounting_base_temperatures_C": [
+      25,
+      125
+    ],
+    "SOA_pulse_scope": "single pulse; not arbitrary repetition or board ambient",
+    "pins": {
+      "1": "source",
+      "2": "source",
+      "3": "source",
+      "4": "gate",
+      "mounting_base": "drain"
+    },
+    "SOA_temperature_scope": "25/125C curves apply to first two ASFETs only; do not transfer them to PSMN2R4-30YLD."
   },
   "gate_compatibility": {
-    "LT4363_min_gate_over_SNS_at_VCC_4V_V":4.5,
-    "RDSon_lowest_tabulated_gate_voltage_V":7,
-    "low_supply_gate_drive_qualified":false,
-    "reason":"Do not interpret gate-charge measurement at4.5V or gate threshold as guaranteed low RDSon at4.5V. Actual4.75..5.25V controller drive remains to be established."
+    "LT4363_min_gate_over_SNS_at_VCC_4V_V": 4.5,
+    "RDSon_lowest_tabulated_gate_voltage_V": 7,
+    "low_supply_gate_drive_qualified": false,
+    "reason": "LT4363 application guidance explicitly requires a logic-level MOSFET below9V. First two candidates have tabulated RDSon at7V or10V; third has4.5V data. Actual gate load and timing remain unqualified."
   },
-  "SOA_point_verified":false,
-  "manufacturing_release":false
+  "SOA_point_verified": false,
+  "manufacturing_release": false
 }

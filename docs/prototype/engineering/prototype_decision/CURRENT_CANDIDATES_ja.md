@@ -136,3 +136,7 @@ TPS70933メーカー非暗号化モデルの定常計算は実行できたが、
 ### 直列MOSFET候補の条件
 
 `schematics/power/series_mosfet_candidates.json` に高温SOAを掲載する2候補を記録。`validation/series_mosfet_selection_v1` の熱抵抗比較は固定ベース温度の計算のみでSOA未判定。オン抵抗の保証に必要なVGS7Vと低入力時の制御ICゲート駆動の適合が未確認のため未採用。タイマーを先に仮決めしない。
+
+### 5V制御電源のMOSFET条件
+
+`validation/series_gate_architecture_v1` により5V給電は4.5V駆動のロジックレベルMOSFETで評価する。PSMN2R4-30YLDを未採用候補へ追加したが、125℃ベースで約50W連続は熱条件を満たさず、パルスSOAとタイマー確認が必要。LT4363のタイマー容量最低10nFを制約へ追加。電池からの制御給電への変更はタイマー・状態出力・電池下限へ影響するため単純置換しない。
