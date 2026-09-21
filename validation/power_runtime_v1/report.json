@@ -1,0 +1,105 @@
+{
+  "trace": [
+    {
+      "event": "hold_low",
+      "inputs": 135,
+      "request": 2,
+      "state": 1,
+      "io_fault": 0,
+      "latch": 2048
+    },
+    {
+      "event": "hold_done",
+      "inputs": 391,
+      "request": 6,
+      "state": 2,
+      "io_fault": 0,
+      "latch": 6144
+    },
+    {
+      "event": "clear_still_low",
+      "inputs": 135,
+      "request": 0,
+      "state": 2,
+      "io_fault": 0,
+      "latch": 0
+    },
+    {
+      "event": "released_and_permission_low",
+      "inputs": 7,
+      "request": 0,
+      "state": 3,
+      "io_fault": 0,
+      "latch": 0
+    },
+    {
+      "event": "new_permission",
+      "inputs": 103,
+      "request": 0,
+      "state": 4,
+      "io_fault": 0,
+      "latch": 0
+    },
+    {
+      "event": "both_pg",
+      "inputs": 127,
+      "request": 9,
+      "state": 5,
+      "io_fault": 0,
+      "latch": 256
+    },
+    {
+      "event": "write_failure",
+      "inputs": 127,
+      "request": 2,
+      "state": 0,
+      "io_fault": 1,
+      "latch": 2048
+    },
+    {
+      "event": "healthy_after_failure",
+      "inputs": 127,
+      "request": 2,
+      "state": 0,
+      "io_fault": 1,
+      "latch": 2048
+    },
+    {
+      "event": "healthy_after_failure",
+      "inputs": 127,
+      "request": 2,
+      "state": 0,
+      "io_fault": 1,
+      "latch": 2048
+    },
+    {
+      "event": "healthy_after_failure",
+      "inputs": 127,
+      "request": 2,
+      "state": 0,
+      "io_fault": 1,
+      "latch": 2048
+    },
+    {
+      "event": "healthy_after_failure",
+      "inputs": 127,
+      "request": 2,
+      "state": 0,
+      "io_fault": 1,
+      "latch": 2048
+    },
+    {
+      "event": "healthy_after_failure",
+      "inputs": 127,
+      "request": 2,
+      "state": 0,
+      "io_fault": 1,
+      "latch": 2048
+    }
+  ],
+  "sticky_failure_verified_in_callback_model": true,
+  "failed_initialization_inhibits": true,
+  "delayed_reset_release_waits": true,
+  "host_and_arm_compile": true,
+  "hardware_verified": false
+}

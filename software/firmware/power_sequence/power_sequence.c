@@ -40,7 +40,8 @@ uint8_t power_sequence_next(uint8_t state, uint16_t in) {
     case POWER_WAIT_PERMISSION_LOW:
     case POWER_WAIT_PERMISSION_HIGH:
         if (!healthy(in)) return POWER_CLEAR_RESET;
-        if (!(in & P_IN_PERMISSION)) return POWER_WAIT_PERMISSION_HIGH;
+        if (!(in & P_IN_PERMISSION))
+            return (in & P_IN_CLR_LOW) ? POWER_WAIT_PERMISSION_LOW : POWER_WAIT_PERMISSION_HIGH;
         if (!(in & P_IN_ARMED) || (in & P_IN_CLR_LOW)) return POWER_CLEAR_RESET;
         if (state == POWER_WAIT_PERMISSION_HIGH)
             return (in & P_IN_STARTUP_EXPIRED) ? POWER_CLEAR_RESET : POWER_START;

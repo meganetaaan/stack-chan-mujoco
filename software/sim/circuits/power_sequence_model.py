@@ -66,7 +66,7 @@ def advance(s, i):
         if not i.healthy:
             return State()
         if not i.permission:
-            return State('WAIT_NEW_PRESS', permission_low_seen=True)
+            return State('WAIT_NEW_PRESS', permission_low_seen=not i.clr_low)
         if not i.armed or i.clr_low:
             return State()  # Inconsistent permission must be cleared, not remembered.
         if s.permission_low_seen:

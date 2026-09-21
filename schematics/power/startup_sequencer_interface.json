@@ -57,7 +57,7 @@
   "monitor_startup_receiver": "schematics/power/servo_power_rearm_integration_revH/assembly.json",
   "sequence_request_default": "schematics/power/servo_power_rearm_integration_revI/integration_report.json",
   "integrated_state_model": "software/sim/circuits/power_sequence_model.py",
-  "integrated_state_model_evidence": "validation/power_sequence_model_v2/report.json",
+  "integrated_state_model_evidence": "validation/power_sequence_model_v3/report.json",
   "model_state_mapping": "Initial OFF is implemented as CLEAR until independent clear acknowledgements; WAIT_NEW_PRESS and CLEAR each have two protocol substates",
   "invalid_observation_regression": "validation/power_sequence_invalid_order_v1/after/report.json",
   "controller_candidate": "schematics/power/sequence_controller_candidate/controller.json",
@@ -66,10 +66,12 @@
   "alternative_controller_candidate": "schematics/power/sequence_controller_candidate/g030_controller.json",
   "alternative_controller_pin_evidence": "validation/g030_bonded_pins_v1/report.json",
   "portable_c_core": "software/firmware/power_sequence/power_sequence.c",
-  "portable_c_evidence": "validation/power_sequence_c_v1/report.json",
+  "portable_c_evidence": "validation/power_sequence_c_v2/report.json",
   "gpio_initialization_core": "software/firmware/power_sequence/g030_gpio_init.c",
   "gpio_initialization_evidence": "validation/g030_gpio_init_v2/report.json",
   "gpio_latch_write_failure": "validation/g030_gpio_latch_failure_v1/before.json",
   "gpio_output_core": "software/firmware/power_sequence/g030_gpio_outputs.c",
-  "gpio_output_evidence": "validation/g030_gpio_outputs_v1/report.json"
+  "gpio_output_evidence": "validation/g030_gpio_outputs_v1/report.json",
+  "runtime_core": "software/firmware/power_sequence/power_runtime.c",
+  "runtime_evidence": "validation/power_runtime_v1/report.json"
 }

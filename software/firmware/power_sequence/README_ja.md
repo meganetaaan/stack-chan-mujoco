@@ -33,4 +33,6 @@ GPIO初期化のレジスタ操作コアはg030_gpio_init.cへ追加。実MMIO�
 
 GPIO初期化は出力ラッチを読み戻してから出力化する。失敗時の順序検査はvalidation/g030_gpio_latch_failure_v1とg030_gpio_init_v2を参照。
 
-出力要求のレジスタ反映はg030_gpio_outputs.c。3端子を単一BSRRで更新するが、物理端子の観測・遅延保証ではない。失敗を記憶する呼出し側とMMIO接続は未実装。
+出力要求のレジスタ反映はg030_gpio_outputs.c。3端子を単一BSRRで更新するが、物理端子の観測・遅延保証ではない。書込み失敗を記憶する呼出し側はpower_runtime.cへ追加。実MMIO接続は未実装。
+
+power_runtime_bootは起動時専用。実CLR解除後の許可Low観測を要求し、IO故障は再起動まで解除しない。検査はvalidation/power_runtime_v1参照。
