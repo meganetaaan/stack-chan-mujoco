@@ -1,6 +1,6 @@
 # 電池保護回路の部分統合候補
 
-セル保護IC、入力フィルタ、主FET、ゲート網、温度検出・起動禁止入力を54部品の接続表へ統合。
+セル保護IC、入力フィルタ、主FET、ゲート網、温度検出・起動禁止入力・設定用電源を60部品の接続表へ統合。
 `bom.csv`は候補部品表、`connections.csv`は機能端子に加えて確認済みIC端子番号を使った接続表。
 旧8個並列フィルタは取り込まず、直列化した24個のCだけを取り込む。
 ツェナーの包装コードと各部品の調達可否は未確定。購入用・製造用BOMではない。
@@ -263,3 +263,48 @@ CUV有効化だけでは短い遮断遅延を保証しない。最終保護マ�
 出典：[TI SLUUBY1B](https://www.ti.com/lit/ug/sluuby1b/sluuby1b.pdf)
 §5.2.3.2、表13-7、13-32、13-34、および
 [データシート](https://www.ti.com/lit/ds/symlink/bq76942.pdf)表16-3。
+
+
+## 設定用電源の統合（現候補、旧LDO不使用方針を置換）
+
+BQ76942PFBRを**BQ7694202PFBR**へ変更する。REG0と3.3V REG1が出荷時から有効であり、
+保護FETをONにしてから制御電源を作る循環を避ける。ユーザー要求の追加ではなく設計判断。
+I2CはCRC有効となる。旧品を同じBOM位置へ代替してはならない。REG2は不使用のまま。
+TRM §3.3の既定値はREG0 Config=0x01、REG12 Config=0x0D。
+OTP書込みは不要な候補だが、3S・保護設定は毎回の読戻し確認が必要。
+
+給電経路はCELL_POS_FUSED→D_REG0(BAT46W-7-F)→R_REG0(100Ω)→Q_REG0のC。
+Q_REG0=FCX495TA、BはBREG37、EはREGIN36。REGINに22nF、REG1(35)に1µF、
+QのCに1µFをVSSへ接続する。REG1出力はBQ_CTRL3V3。
+独立した電池側制御回路のみへ使用し、既存LOGIC3V3・Tab5・サーボへ直結しない。
+メーカー図を機能端子B/C/E・A/Kで転記し、基板パッド番号は未確定。
+BAT保持ダイオードは共有せず、REGIN→BATの内部ダイオード条件も確認対象に残す。
+
+TI評価基板のREG0構成とFCX495TAを参考にしたが、評価基板の直列150Ω×2は
+低電圧3Sで電圧降下が大きいためコピーしない。100Ωは工学上の候補値で、
+20mAという比較電流では2V/40mW。これは負荷保証値ではない。
+C短絡では12.6V・ダイオード降下ゼロ比較で抵抗1.59Wとなり、短絡耐量は未合格。
+電源成立には最低電池電圧時のBREGヘッドルームとQの動作、負荷・突入、短絡保護が必要。
+
+| 確認済み仕様 | 設計への制約 |
+|---|---|
+| REG1の3.3V設定は条件付き3.0〜3.6V、0〜45mA、REGIN≥4.1V | 公称3.3Vだけでホスト適合を判断しない。ホスト・プルアップ・監督回路の負荷/電圧評価は未完了 |
+| REGIN外付Cは15〜27nF、ディレーティング後7nF超 | 22nF±10%は初期19.8〜24.2nF。温度/バイアス/経時の実効容量確認は残る |
+| REG1の外付Cは1µF指定 | C1206C105K3RACTUを候補とし、配線と負荷を含む安定性は未証明 |
+| FCX495TAの150V/1Aは絶対最大定格 | 基板放熱・DC安全動作領域・ベース駆動条件を省略できない |
+| 主FET OFFでもREG0/REG1はセルから消費する | CUV時はモーター停止に加え制御側低消費化/SHUTDOWNを設計する必要がある |
+| SHUTDOWNでREG1もOFF | TS2/LDによる復帰、下流の再許可と設定再確認を設計する |
+
+この変更は起動の給電経路を具体化するもので、設定前のFET停止保証ではない。
+下流給電禁止、BQリセット時の停止、通信異常時の動作は引き続き未設計。
+60部品・未設計6端子、通電不可・製作HOLDを維持する。
+TI注文ページで品番Activeを確認したが、閲覧時に在庫なし表示。購入可否は未確定。
+
+出典：
+- [TI TRM](https://www.ti.com/lit/ug/sluuby1b/sluuby1b.pdf) §3.3、6.3
+- [TI仕様](https://www.ti.com/lit/ds/symlink/bq76942.pdf) §7.11/7.12
+- [TI評価基板](https://www.ti.com/lit/ug/sluuc32a/sluuc32a.pdf) 図5-9、BOM
+- [FCX495](https://www.diodes.com/assets/Datasheets/FCX495.pdf) Rev.8-2 June2024
+- [BAT46W](https://www.diodes.com/assets/Datasheets/BAT46W.pdf) Rev.20-2 November2023
+- [22nF仕様](https://search.kemet.com/component-documentation/download/specsheet/C0603C223K4RACTU)
+- [BQ7694202PFBR](https://www.ti.com/product/BQ76942/part-details/BQ7694202PFBR)

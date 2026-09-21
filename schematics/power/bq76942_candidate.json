@@ -1,6 +1,6 @@
 {
   "status": "preferred_next_cell_protection_design_candidate_not_qualified",
-  "part": "BQ76942PFBR",
+  "part": "BQ7694202PFBR",
   "quantity": 1,
   "sources": {
     "datasheet": "https://www.ti.com/lit/ds/symlink/bq76942.pdf",
@@ -252,5 +252,14 @@
     "restart_rule": "battery recovery does not grant servo permission",
     "next_hardware_step": "Select CHG/DSG FETs, gate networks and pack-local supply; evaluate reverse-current and partial power paths",
     "physical_handoff": "Validate IC timing at final config; do not replace undefined external hardware with physical-test-only status"
+  },
+  "startup_supply_selection": {
+    "previous_part": "BQ76942PFBR",
+    "reason": "Factory-enabled REG0 and 3.3V REG1 permit battery-side configuration without a separate bootstrap supply",
+    "factory_REG0_Config": "0x01",
+    "factory_REG12_Config": "0x0D",
+    "communications": "I2C with CRC enabled",
+    "source": "TI SLUUBY1B section 3.3 table 3-2",
+    "qualified": false
   }
 }

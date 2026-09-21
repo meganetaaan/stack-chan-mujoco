@@ -3,7 +3,7 @@
   "parts": [
     {
       "reference": "U_CELL_PROTECT",
-      "part": "BQ76942PFBR",
+      "part": "BQ7694202PFBR",
       "pins": {
         "16": "CELL0_FILTERED",
         "15": "CELL1_FILTERED",
@@ -43,10 +43,10 @@
         "31": null,
         "32": null,
         "34": null,
-        "35": null,
         "38": null,
-        "36": "CELL_B_MINUS",
-        "37": "CELL_B_MINUS"
+        "35": "BQ_CTRL3V3",
+        "36": "BQ_REGIN",
+        "37": "BQ_BREG"
       },
       "unresolved_pins": [
         22,
@@ -61,10 +61,10 @@
         31,
         32,
         34,
-        35,
         38
       ],
-      "disabled_LDO_required": true
+      "REG0_REG1_required": true,
+      "REG2_disabled_required": true
     },
     {
       "reference": "Q_CHG",
@@ -528,9 +528,64 @@
         "1": "BQ_BOTHOFF_N",
         "2": "CELL_B_MINUS"
       }
+    },
+    {
+      "reference": "D_REG0",
+      "part": "BAT46W-7-F",
+      "pins": {
+        "A": "CELL_POS_FUSED",
+        "K": "BQ_REG0_PRE_R"
+      },
+      "footprint_pad_mapping_qualified": false
+    },
+    {
+      "reference": "R_REG0",
+      "part": "TNPW1206100RBEEA",
+      "pins": {
+        "1": "BQ_REG0_PRE_R",
+        "2": "BQ_REG0_COLLECTOR"
+      }
+    },
+    {
+      "reference": "C_REG0",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_REG0_COLLECTOR",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false
+    },
+    {
+      "reference": "Q_REG0",
+      "part": "FCX495TA",
+      "pins": {
+        "B": "BQ_BREG",
+        "C": "BQ_REG0_COLLECTOR",
+        "E": "BQ_REGIN"
+      },
+      "footprint_pad_mapping_qualified": false,
+      "thermal_qualified": false
+    },
+    {
+      "reference": "C_REGIN",
+      "part": "C0603C223K4RACTU",
+      "pins": {
+        "1": "BQ_REGIN",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false
+    },
+    {
+      "reference": "C_REG1",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false
     }
   ],
-  "part_count": 54,
+  "part_count": 60,
   "unresolved_BQ76942_pins": [
     22,
     25,
@@ -540,7 +595,7 @@
     40
   ],
   "source_sha256": {
-    "bq76942_candidate.json": "df1ddf921600e383966b8f38bfb06fe5c95a7bfaca9319fcc9708f54980c9ed2",
+    "bq76942_candidate.json": "198d96f12042b26d7cdf329dbba4df3e3523ce0dba6961c450d492a0f847eb33",
     "bq76942_series_filter_candidate.json": "5d1ba5f53047c1c7889759401795a1ebb5d9908e0620ee99aef42dcd15901e2b",
     "bq76942_pack_fet_candidate.json": "2babc4c93e3b0a20dc8736bd80b585438b154ab1f3bb72cde1791a82167da984"
   },
@@ -552,15 +607,16 @@
     "CELL_POS_FUSED",
     "PACK_POS_PROTECTED",
     "PACK_RETURN",
-    "BQ_ALLOW_BMINUS"
+    "BQ_ALLOW_BMINUS",
+    "BQ_CTRL3V3"
   ],
   "missing_stages": [
     "cell tap and main connectors",
     "battery fuse and reverse protection",
     "current threshold, shunt thermal/pulse and sense-routing qualification",
-    "BAT hold-up and input faults; REG18/CP1 effective capacitance and startup; optional LDO supply",
+    "BAT and REG0 input faults; REG18/CP1/REGIN/REG1 effective capacitance, headroom, load and startup",
     "PACK/LD transient and reverse-polarity qualification",
-    "configuration before allow; independent control supply and driver; cold-start and reset qualification",
+    "configuration before allow; REG1-powered local controller and driver; cold-start and reset qualification",
     "thermistor attachment, harness, fault response and temperature protection settings",
     "system/servo integration"
   ],
@@ -594,6 +650,22 @@
     "effective_before_configuration": false,
     "external_allow_driver_qualified": false,
     "control_reference": "CELL_B_MINUS"
+  },
+  "control_supply_candidate": {
+    "part": "BQ7694202PFBR",
+    "source": "REG0 plus factory-enabled REG1",
+    "domain_reference": "CELL_B_MINUS",
+    "factory_REG0_Config": "0x01",
+    "factory_REG12_Config": "0x0D",
+    "I2C_CRC_required": true,
+    "REG1_output_spec_V": [
+      3.0,
+      3.6
+    ],
+    "REG1_output_spec_conditions": "REGIN >=4.1V, load 0..45mA; datasheet section7.12",
+    "MCU_load_budget_qualified": false,
+    "cold_start_qualified": false,
+    "shutdown_cuts_control_supply": true
   },
   "electrically_operational": false,
   "manufacturing_release": false
