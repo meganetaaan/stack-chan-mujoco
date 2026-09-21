@@ -31,3 +31,7 @@ flowchart LR
 故障表`fault_review.csv`の結果は接続からの推論で、実故障注入結果ではない。故障時に別の部品が壊れる可能性まで含む最終FMEAではない。#22/#24は未完了。製作前にTBD、モデル、ピン/フットプリント、遮断と温度条件を解消する。
 
 接続表再生成：`.venv-engineering/bin/python software/sim/circuits/package_common_brake.py`
+
+## 常時オン検出の信号選択（接続前レビュー）
+
+`validation/brake_fault_observability_v1`で旧「実ゲートLow＋電流High」のドライバ固着見逃しを確認した。統合する常時オン検出は「吸収指令オフ＋枝電流High」の継続判定を基本とする。指令自体の固着、吸収不作動、センサー故障は別監視が必要で、単一の不一致判定を全故障保護としない。実信号の有効性・遅延を確定するまでラッチの実部品接続を完了扱いにしない。
