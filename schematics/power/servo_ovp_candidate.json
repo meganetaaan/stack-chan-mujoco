@@ -18,7 +18,28 @@
   "SHDN": "Default off; asserted only by startup-qualified manual permission; receiver and resistor implementation pending",
   "FAULT": "Status only; not directly connected to the same permission reset because shutdown itself asserts FAULT",
   "recovery": "Normal variant has nominal 36ms automatic recovery; not manual-rearm qualification",
-  "external_FETs": null,
+  "external_FETs": {
+    "part": "SiSS80DN-T1-GE3",
+    "quantity_per_leg": 2,
+    "quantity_robot": 4,
+    "source": "https://www.vishay.com/docs/77684/siss80dn.pdf",
+    "status": "comparison_candidate_not_released",
+    "VDS_absolute_max_V": 20,
+    "VGS_absolute_range_V": [
+      -8,
+      12
+    ],
+    "Rds_max_ohm_at_2_5V_25C": 0.003,
+    "driver_gate_comparison": "LTC4365 GATE-VOUT minimum3V at VIN=VOUT=5V IGATE=-1uA; actual common-source VGS and other operating states require verification",
+    "unqualified": [
+      "High temperature Rds bound",
+      "Minimum gate-source voltage in actual two-FET circuit across normal input range",
+      "Gate charge and turnoff time",
+      "Startup SOA and inductive turnoff stress",
+      "Off-state diode and leakage paths",
+      "PCB thermal and reflow assembly"
+    ]
+  },
   "OV_divider": null,
   "UV_divider": null,
   "pending": [
