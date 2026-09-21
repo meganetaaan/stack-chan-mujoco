@@ -117,6 +117,50 @@
         "1": "RIGHT_ILM",
         "2": "GND"
       }
+    },
+    {
+      "reference": "LEFT_R_OV_TOP",
+      "part": null,
+      "value_ohm": 35700,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "LEFT_REGULATOR_OUT",
+        "2": "LEFT_OVLO_SENSE"
+      }
+    },
+    {
+      "reference": "LEFT_R_OV_BOTTOM",
+      "part": null,
+      "value_ohm": 10000,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "LEFT_OVLO_SENSE",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "RIGHT_R_OV_TOP",
+      "part": null,
+      "value_ohm": 35700,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "RIGHT_REGULATOR_OUT",
+        "2": "RIGHT_OVLO_SENSE"
+      }
+    },
+    {
+      "reference": "RIGHT_R_OV_BOTTOM",
+      "part": null,
+      "value_ohm": 10000,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "RIGHT_OVLO_SENSE",
+        "2": "GND"
+      }
     }
   ],
   "source": "https://www.ti.com/lit/ds/symlink/tps25981.pdf",
@@ -144,5 +188,6 @@
     "correction": "ILM pin9 and ITIMER pin10; prior map had these reversed",
     "source_sha256": "8609249da4eb65da1d5398a4cbd5bc3ace4ca1f1f0205e41fbf3873d8e3f8e91"
   },
-  "current_limit_comparison": "validation/integrated_current_limit_v1/report.json"
+  "current_limit_comparison": "validation/integrated_current_limit_v1/report.json",
+  "OV_divider_comparison": "validation/integrated_ov_divider_v1/report.json"
 }
