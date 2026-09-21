@@ -1,0 +1,26 @@
+{
+  "scope": "Worst dimensional bounds of proposed requirements; no strength or production qualification",
+  "spec_sha256": "7a2599521dccf2080bdf2014aabb20747747a2bcafb9b2736f52b35135ccea39",
+  "minimum_radial_sole_clearance_mm": 0.1499999999999999,
+  "minimum_radial_screw_clearance_mm": 0.1499999999999999,
+  "minimum_unloaded_head_recess_mm": 0.55,
+  "remaining_budget_for_compression_wear_tilt_embedding_mm": 0.35000000000000003,
+  "minimum_geometric_flat_bearing_annulus_mm2": 22.163936171075992,
+  "nominal_sharp_edge_bearing_annulus_mm2": 24.11957759793564,
+  "bearing_area_reduction_fraction": 0.08108108108108103,
+  "conditional_dimensional_gates": {
+    "sole_radial_clearance": true,
+    "screw_clearance": true,
+    "unloaded_floor_recess": true
+  },
+  "note": "Annulus is geometric only; actual loaded contact area can be smaller. Prior nominal FE cannot establish tolerance-case stress.",
+  "manufacturing_release": false,
+  "unverified": [
+    "Supplier capability and cost for proposed machining tolerances",
+    "Assembled TPU hole size and local thickness, including print distortion",
+    "Selected M2x8 low-head screw dimensional limits",
+    "Loaded sole compression, wear, tilt and spacer embedding",
+    "Spacer elastic bending, unilateral contact and PETG creep",
+    "Walking shear transfer and overall joint strength"
+  ]
+}
