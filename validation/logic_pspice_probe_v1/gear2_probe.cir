@@ -1,0 +1,15 @@
+TPS70933 vendor model compatibility startup probe
+.include TPS70933_TRANS.LIB
+Vsource in 0 PWL(0 0 100u 12.6 10m 12.6)
+Xldo in 0 en out nc TPS70933_TRANS
+Cin in 0 200n
+Cout out 0 27.975u
+Rload out 0 165
+.options method=gear maxord=2
+.tran 1u 10m
+.control
+run
+wrdata startup.dat v(in) v(out) i(Vsource)
+quit
+.endc
+.end
