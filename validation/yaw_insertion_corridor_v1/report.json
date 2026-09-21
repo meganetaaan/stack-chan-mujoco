@@ -1,0 +1,146 @@
+{
+  "rows": [
+    {
+      "side": "left",
+      "target": "Tab5",
+      "intersection_mm3": 0.0,
+      "distance_mm": 47.49999999999993,
+      "nominal_corridor_clear": true
+    },
+    {
+      "side": "left",
+      "target": "battery_tray",
+      "intersection_mm3": 0.0,
+      "distance_mm": 12.34999999999993,
+      "nominal_corridor_clear": true
+    },
+    {
+      "side": "left",
+      "target": "battery_2S_reservation",
+      "intersection_mm3": 0.0,
+      "distance_mm": 14.249999999999929,
+      "nominal_corridor_clear": true
+    },
+    {
+      "side": "left",
+      "target": "body_shroud",
+      "intersection_mm3": 0.0,
+      "distance_mm": 0.8684522933421275,
+      "nominal_corridor_clear": true
+    },
+    {
+      "side": "left",
+      "target": "rear_structural_plate",
+      "intersection_mm3": 0.0,
+      "distance_mm": 32.699999999999925,
+      "nominal_corridor_clear": true
+    },
+    {
+      "side": "left",
+      "target": "left_support",
+      "intersection_mm3": 0.0,
+      "distance_mm": 8.526512829121202e-14,
+      "nominal_corridor_clear": true
+    },
+    {
+      "side": "left",
+      "target": "right_support",
+      "intersection_mm3": 0.0,
+      "distance_mm": 23.999999999999922,
+      "nominal_corridor_clear": true
+    },
+    {
+      "side": "right",
+      "target": "Tab5",
+      "intersection_mm3": 0.0,
+      "distance_mm": 47.49999999999993,
+      "nominal_corridor_clear": true
+    },
+    {
+      "side": "right",
+      "target": "battery_tray",
+      "intersection_mm3": 0.0,
+      "distance_mm": 12.34999999999993,
+      "nominal_corridor_clear": true
+    },
+    {
+      "side": "right",
+      "target": "battery_2S_reservation",
+      "intersection_mm3": 0.0,
+      "distance_mm": 14.249999999999929,
+      "nominal_corridor_clear": true
+    },
+    {
+      "side": "right",
+      "target": "body_shroud",
+      "intersection_mm3": 0.0,
+      "distance_mm": 0.4314254427467953,
+      "nominal_corridor_clear": true
+    },
+    {
+      "side": "right",
+      "target": "rear_structural_plate",
+      "intersection_mm3": 0.0,
+      "distance_mm": 32.699999999999925,
+      "nominal_corridor_clear": true
+    },
+    {
+      "side": "right",
+      "target": "left_support",
+      "intersection_mm3": 0.0,
+      "distance_mm": 23.999999999999993,
+      "nominal_corridor_clear": true
+    },
+    {
+      "side": "right",
+      "target": "right_support",
+      "intersection_mm3": 0.0,
+      "distance_mm": 8.526512829121202e-14,
+      "nominal_corridor_clear": true
+    }
+  ],
+  "bounds": [
+    {
+      "side": "left",
+      "final_bounds": [
+        -29.500000000000078,
+        4.500000000000071,
+        15.999999999999924,
+        36.00000000000001,
+        61.99999984395105,
+        88.00000000000009
+      ],
+      "start_top_z_mm": -11.999999999999915
+    },
+    {
+      "side": "right",
+      "final_bounds": [
+        -29.500000000000078,
+        4.500000000000071,
+        -36.00000000000008,
+        -15.999999999999991,
+        61.99999984395105,
+        88.00000000000009
+      ],
+      "start_top_z_mm": -11.999999999999915
+    }
+  ],
+  "source_sha256": {
+    "validation/x330_manufacturer_cad_v1/XL_XC_330.stp": "e2f7b060801a1d6a21f23bca2554f29a402f7d73b8498cb201c9e6adf3139eb6",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/Tab5.step": "bc4f282fb78ac58e92fb8d285a9dbfc7935f2d268dff3be77e88dda248214376",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/battery_tray.step": "a15f5940f58507584b649a18b8d74a4cd6a152c89e33caac418d24fdbc839826",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/battery_2S_reservation.step": "d39aa883f2fdc2a1558b79927232b8f45c3b972672c9b9f4b1bbb05475bb84f1",
+    "validation/rear_joint_assembly_development_v1/rear_joint_inset2_v1/body_shroud.step": "a1d4fce41fadaae414d65d8ca4259d798414727b95503eb171012a1235c5d149",
+    "validation/rear_joint_assembly_development_v1/rear_joint_inset2_v1/rear_structural_plate.step": "062ef8936bf307abcb88e74b873b49d570e0c6808539fb7d1027ab05ed9dbe28",
+    "validation/inset_yaw_assembly_development_v1/yaw_inset_mount_v1/left_yaw_fixed_support.step": "c16866ad21f8ba665eaefda959d646effac536a9718165946d861d5a936ee0c6",
+    "validation/inset_yaw_assembly_development_v1/yaw_inset_mount_v1/right_yaw_fixed_support.step": "6a54794d22334043920a9d3d0955e1c1144cc5f72b02bee606920a1202986308"
+  },
+  "manufacturing_release": false,
+  "limitations": [
+    "Bounding volume intersection does not prove actual servo collision",
+    "No grip/hand/cable envelope",
+    "Final shelf contact allowed by volume criterion",
+    "No case fastening proof",
+    "No installed legs/couplers"
+  ]
+}
