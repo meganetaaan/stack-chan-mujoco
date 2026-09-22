@@ -40,3 +40,5 @@ ENをLowにしても正方向のボディダイオードは残るため、主電
 出典：
 - [TI LM74700-Q1 Rev.G、ピン表・推奨条件・動作](https://www.ti.com/lit/ds/symlink/lm74700-q1.pdf)
 - [TI CSD18540Q5B Rev.B、定格・電気特性](https://www.ti.com/lit/ds/symlink/csd18540q5b.pdf)
+
+後続の`validation/cell_tap_disconnect_v1`に、未選定4線バランスGNDを共通接続した場合の主逆接短絡経路を記録した。入口理想ダイオードはこの経路を保護しない。セルハーネスの選定を閉じるまで全体逆接保護を主張しない。
