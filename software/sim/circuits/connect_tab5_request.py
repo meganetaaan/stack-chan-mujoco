@@ -24,6 +24,12 @@ assert p['TAB5__R_SHDN_SER']['part']=='TNPW06031K00BEEA'
 assert p['TAB5__R_SHDN_SER']['pins']=={'1':'TAB5_START_ALLOW','2':'TAB5_SHDN'}
 assert p['TAB5__R_SHDN_PD']['part']=='TNPW060310K0BEEA'
 assert p['TAB5__R_SHDN_PD']['pins']=={'1':'TAB5_SHDN','2':'PACK_RETURN'}
+selection_path=ROOT/'schematics/power/tab5_startup_parameter_candidate_v1/selection.json'
+selection=json.loads(selection_path.read_text())
+assert selection['source_sha256'][str(SRC.relative_to(ROOT))]==hashlib.sha256(SRC.read_bytes()).hexdigest()
+selected=selection['selected_part']
+assert selected['reference']=='TAB5__C_DVDT'
+p['TAB5__C_DVDT'].update(part=selected['part'],value_F=selected['value_F'],selection_basis='tab5_startup_parameter_candidate_v1; nominal ramp candidate, startup not qualified')
 p['CTRL__U_HOST']['pins']['14']='CTRL_TAB5_REQUEST_RAW'
 new=[
  {'reference':'IF_TAB5__U_SCHMITT','part':'74LVC1G17GV','pins':{'1':None,'2':'CTRL_TAB5_REQUEST_RAW','3':'PACK_RETURN','4':'CTRL_TAB5_REQUEST','5':'CTRL3V3'}},
@@ -39,7 +45,7 @@ r['unresolved_signal_ports'].pop('TAB5_START_ALLOW')
 assert set(r['unresolved_signal_ports'])=={'PACK_UV_WARN_N'}
 assert len(r['parts'])==len({x['reference'] for x in r['parts']})==209
 changed=[x['reference'] for x in a['parts'] if x!=p[x['reference']]]
-assert changed==['CTRL__U_HOST']
+assert changed==['TAB5__C_DVDT','CTRL__U_HOST']
 # Transfer the existing static comparison only after checking exact receiver/resistor choices.
 aux_path=ROOT/'validation/aux_start_connection_v1/report.json'
 aux=json.loads(aux_path.read_text())
@@ -64,7 +70,7 @@ assert len(contract)==640
 with (VAL/'contract_combinations.csv').open('w',newline='') as f:
  w=csv.DictWriter(f,fieldnames=list(contract[0]),lineterminator='\n');w.writeheader();w.writerows(contract)
 report={
- 'source_sha256':{str(x.relative_to(ROOT)):hashlib.sha256(x.read_bytes()).hexdigest() for x in [SRC,aux_path,Path(__file__).with_name('tab5_restart_model.py')]},
+ 'source_sha256':{str(x.relative_to(ROOT)):hashlib.sha256(x.read_bytes()).hexdigest() for x in [SRC,aux_path,selection_path,Path(__file__).with_name('tab5_restart_model.py')]},
  'MCU_assignment':{'package':'TSSOP20','pin':14,'port':'PA7','net':'CTRL_TAB5_REQUEST_RAW'},
  'normal_supply_truth_table':truth,'contract_combination_count':640,
  'static_receiver_comparison':aux['calculations'],
@@ -77,7 +83,8 @@ report={
   'driver_ground_positive_limit_V':(.4-aux['calculations']['low_SHDN_V_at_driver3V_table_bound'])*(1+990/10100),
   'scope':'DC point comparison with transferred10uA leakage allocation; no production routing allowance or transient bound'},
  'extra_current_not_included':['Two new IC supply currents','Input leakage and switching current','GPIO and permit-output dynamic load'],
- 'old_parts_changed':changed,'old_protection_part_values_changed':False,
+ 'old_parts_changed':changed,'old_protection_part_values_changed':['TAB5__C_DVDT'],
+ 'Tab5_ramp_selection':selected,
  'implementation_contract':[
   'PA7 low by default; configure output data low before enabling output mode',
   'Drive PA7 from Tab5 restart contract tab5_allow, not from raw user start button',
@@ -88,7 +95,7 @@ report={
  ],
  'remaining':[
   'off_verified, power_valid, ready and shutdown_ack detection/communication not wired or implemented',
-  'Tab5 current limit and DVDT values, input capacitance/inrush and connector wiring',
+  'Tab5 current limit selection; selected100nF DVDT startup/thermal qualification, input capacitance/inrush and connector wiring',
   'GPIO reset/leakage, Schmitt-to-AND edge timing and permit fanout',
   'Full CTRL budget, intermediate-supply behavior and actual shutdown timing',
   'SHDN leakage allocation at other voltages/3S input range, eFuse recovery/backfeed',

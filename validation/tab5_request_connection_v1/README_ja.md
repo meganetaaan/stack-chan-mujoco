@@ -36,7 +36,7 @@ Low側のノード余裕は26.69 mV。プルダウンを受信IC GNDへ戻す条
 
 ## 残件と完了条件との差
 
-明示未接続ポートはPACK_UV_WARN_Nだけになったが、未設計機能全体を1件と数えない。Tab5のILIM/DVDT値、実入力負荷、検出/通信、逆流、異常復帰、制御電源の完全な負荷予算、基板・配線は残る。PTH置換比較も別案として未統合。
+明示未接続ポートはPACK_UV_WARN_Nだけになったが、未設計機能全体を1件と数えない。Tab5のILIM値、選定100 nFの起動/熱適合、実入力負荷、検出/通信、逆流、異常復帰、制御電源の完全な負荷予算、基板・配線は残る。PTH置換比較も別案として未統合。
 
 #21の全負荷/部品仕様適合、#22の全レール解析、#23の過渡/熱、#24の異常時検証は本接続だけでは満たさない。Issueは未完、製作HOLD。
 
@@ -47,4 +47,4 @@ Low側のノード余裕は26.69 mV。プルダウンを受信IC GNDへ戻す条
 .venv-engineering/bin/python software/sim/circuits/check_tab5_restart_model.py
 ```
 
-入力ハッシュと比較値は[report.json](report.json)。既存部品で変更した端子表はMCUだけで、保護IC・抵抗値・停止回路の接続は維持した。
+入力ハッシュと比較値は[report.json](report.json)。既存部品で変更した端子表はMCUだけで、停止回路の接続は維持した。後続の[立上り設定選定](../../schematics/power/tab5_startup_parameter_candidate_v1/README_ja.md)によりTAB5__C_DVDTへ100 nF部品を割り当てた。

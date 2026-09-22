@@ -2,6 +2,7 @@
   "source_sha256": {
     "schematics/power/protected_pack_system_candidate_v6/assembly.json": "26731a902f2924b14dc58e5fdf042fb6c18bbd25f404708793f5980aa9261e11",
     "validation/aux_start_connection_v1/report.json": "278f4da7fe2b52c646aa7c7643b080f4cae2e507e451e39d08d29b0338f4badf",
+    "schematics/power/tab5_startup_parameter_candidate_v1/selection.json": "d5f4a3595c1408cb0a903efae95d006fcfa3660ee7c0b6aa7884cfab906ce886",
     "software/sim/circuits/tab5_restart_model.py": "1422bb8401c9d6e77c6a961d15001102532488d35333775bad780eb1b686e373"
   },
   "MCU_assignment": {
@@ -55,9 +56,18 @@
     "GPIO and permit-output dynamic load"
   ],
   "old_parts_changed": [
+    "TAB5__C_DVDT",
     "CTRL__U_HOST"
   ],
-  "old_protection_part_values_changed": false,
+  "old_protection_part_values_changed": [
+    "TAB5__C_DVDT"
+  ],
+  "Tab5_ramp_selection": {
+    "reference": "TAB5__C_DVDT",
+    "part": "GRM31C5C1H104JA01L",
+    "value_F": 1e-07,
+    "basis": "Reuse existing selected nominal100nF part; limits inherited from existing capacitor selection"
+  },
   "implementation_contract": [
     "PA7 low by default; configure output data low before enabling output mode",
     "Drive PA7 from Tab5 restart contract tab5_allow, not from raw user start button",
@@ -68,7 +78,7 @@
   ],
   "remaining": [
     "off_verified, power_valid, ready and shutdown_ack detection/communication not wired or implemented",
-    "Tab5 current limit and DVDT values, input capacitance/inrush and connector wiring",
+    "Tab5 current limit selection; selected100nF DVDT startup/thermal qualification, input capacitance/inrush and connector wiring",
     "GPIO reset/leakage, Schmitt-to-AND edge timing and permit fanout",
     "Full CTRL budget, intermediate-supply behavior and actual shutdown timing",
     "SHDN leakage allocation at other voltages/3S input range, eFuse recovery/backfeed",

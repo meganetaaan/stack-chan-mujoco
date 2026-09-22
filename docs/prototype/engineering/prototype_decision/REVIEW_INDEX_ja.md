@@ -81,3 +81,5 @@
 [現枠の座面積・強度評価入力](../../../../validation/current_carrier_bearing_v1/README_ja.md)：接触面12か所をCADから抽出。側面ねじ頭の殻側座面14.679 mm²、枠パッド25.918 mm²で、同じ合力なら殻側平均面圧は約1.77倍。予圧・材料許容は未設定。殻座面の圧縮/曲げ/クリープ、保持・離間・相対変位を解析量に明記し、旧1.256 Nや7 MPaを現構成の合格基準に転用しない。
 
 [Tab5起動要求の接続](../../../../validation/tab5_request_connection_v1/README_ja.md)：PA7→シュミット→CTRL許可とのAND→既存SHDNを接続。状態契約640組と既存8イベントを照合。追加抵抗負荷比較0.704 mA・容量200 nF。停止入力のGND電位差、検出器・通信・全電源動作は未確認。
+
+[Tab5入力と立上り設定](../../../../schematics/power/tab5_startup_parameter_candidate_v1/README_ja.md)：現メーカー回路図の直列D7/FU4と公称20.1 µFを確認。DVDT100 nFを209部品案へ反映。MODE開放は電流クランプではなくラッチ遮断器であり、ILIM値・内部ヒューズ協調・起動負荷/熱は未確認。

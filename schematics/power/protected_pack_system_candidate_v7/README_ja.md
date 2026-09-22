@@ -4,4 +4,4 @@ v6の204部品にTab5要求のシュミットバッファ、許可AND、プル�
 
 [接続・静的比較・状態契約・残件・再現](../../../validation/tab5_request_connection_v1/README_ja.md)。部品表は[bom.csv](bom.csv)、端子表は[connections.csv](connections.csv)、値と入力来歴は[assembly.json](assembly.json)。
 
-明示した未接続ポートはPACK_UV_WARN_N。これ以外の未設計機能がないという意味ではなく、Tab5の電源OFF確認・準備完了・終了応答等は検出/通信手段が未実装。Tab5枝の電流制限・DVDTも未確定。全電力・過渡・異常・熱の検証は未完、製作リリース不可。
+明示した未接続ポートはPACK_UV_WARN_N。これ以外の未設計機能がないという意味ではなく、Tab5の電源OFF確認・準備完了・終了応答等は検出/通信手段が未実装。Tab5枝の電流設定抵抗は未確定。DVDTは[100 nF候補](../tab5_startup_parameter_candidate_v1/README_ja.md)を選定したが起動/熱は未検証。全電力・過渡・異常・熱の検証は未完、製作リリース不可。
