@@ -1,0 +1,19 @@
+{
+  "probe_distance_mm": 1,
+  "intersection_threshold_mm3": 1e-06,
+  "directions": [
+    "+X",
+    "-X",
+    "+Y",
+    "-Y",
+    "+Z",
+    "-Z"
+  ],
+  "criterion": "Each1mm axis translation intersects a physical stop in nominal geometry",
+  "stop": "24 probes; no rigid-body search or elastic retention claim",
+  "limits": [
+    "Tab5 simplified source geometry",
+    "No rotational escape or tolerance/deflection proof",
+    "No loads/strength"
+  ]
+}
