@@ -1,0 +1,84 @@
+{
+  "valid_tray": true,
+  "tray_solids": 1,
+  "volume_mm3": 6900.994691556625,
+  "internal_overlaps_mm3": {
+    "tray_battery": 0.0,
+    "tray_strap_0": 0.0,
+    "tray_strap_1": 0.0,
+    "battery_strap_0": 0.0,
+    "battery_strap_1": 0.0
+  },
+  "external_overlaps": [
+    {
+      "candidate": "strap_0",
+      "part": "yaw__right_yaw_fixed_support",
+      "volume_mm3": 183.53702927201792
+    },
+    {
+      "candidate": "strap_0",
+      "part": "yaw__right_mount_plate",
+      "volume_mm3": 15.930000000000023
+    },
+    {
+      "candidate": "strap_0",
+      "part": "yaw__right_plate_3_screw",
+      "volume_mm3": 0.29739935451741256
+    },
+    {
+      "candidate": "strap_0",
+      "part": "yaw__right_plate_3_washer",
+      "volume_mm3": 5.085216249777769
+    },
+    {
+      "candidate": "strap_0",
+      "part": "yaw__right_plate_3_nut",
+      "volume_mm3": 2.0926349414561325
+    },
+    {
+      "candidate": "strap_1",
+      "part": "yaw__left_yaw_fixed_support",
+      "volume_mm3": 183.53702927201152
+    },
+    {
+      "candidate": "strap_1",
+      "part": "yaw__left_mount_plate",
+      "volume_mm3": 15.930000000000023
+    },
+    {
+      "candidate": "strap_1",
+      "part": "yaw__left_plate_2_screw",
+      "volume_mm3": 0.2973993545174126
+    },
+    {
+      "candidate": "strap_1",
+      "part": "yaw__left_plate_2_washer",
+      "volume_mm3": 5.085216249777769
+    },
+    {
+      "candidate": "strap_1",
+      "part": "yaw__left_plate_2_nut",
+      "volume_mm3": 2.092634941456133
+    }
+  ],
+  "minimum_external_gap_mm": {
+    "tray": 0.0,
+    "strap_0": 0.0,
+    "strap_1": 0.0
+  },
+  "source_sha256": {
+    "validation/lb020_tray_v1/tray.step": "be0fc07c4977afe3023513947fd76343e5ccb41d30f0429faf4da3b752d6a4cd",
+    "validation/lb020_tray_v1/battery.step": "119a5b072b37e4b19863ab1f7b213ede22358142e1b10b85e1ca8a03b419c80b",
+    "validation/torso_power_integration_v2/report.json": "cdf02cf60123418d902d9e580f674ded9621f0b1923e215b7f545b434e4b0814",
+    "validation/torso_power_integration_v2/torso_candidate.step": "ccf4bc4f3353483a8bb20fc74a602c754cf1395398702e1ba91918a746b0b22c"
+  },
+  "strap_spacing_mm": 24,
+  "previous_spacing_mm": 40,
+  "pure_couple_force_multiplier": 1.6666666666666667,
+  "manufacturing_release": false,
+  "limits": [
+    "Upper U double-layer reservation; assembly must retain closure at z>=80mm; bend radius and installation unqualified",
+    "Published closure values are typical, not design allowables; pressure limit unknown",
+    "No tolerance, flexure or strength qualification"
+  ]
+}
