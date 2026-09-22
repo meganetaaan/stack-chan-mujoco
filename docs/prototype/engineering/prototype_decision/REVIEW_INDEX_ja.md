@@ -67,3 +67,5 @@
 [当初完了条件と残件の再照合](../../../../validation/prototype_remaining_scope_v1/README_ja.md)：#22は根拠付き近似を許容し、PSpice必須ではない。現204部品には品番／値未確定20点。主遮断ゲートRC・電流制限・過電圧、Tab5枝、全電力予算の確定を優先する。
 
 [外付けゲートRCの代替判断](../../../../validation/integrated_reverse_alternative_v1/README_ja.md)：TPS25948の片脚1個置換は温度範囲抵抗による比較で29〜34 mV不足し不採用。現ゲート駆動の不足仕様はRC仮置きで解消しない。保護群分割・変換器精度・駆動保証のいずれかを先に判断する。
+
+[精度改善と保護分割の比較](../../../../validation/precision_module_comparison_v1/README_ja.md)：次の詳細候補はPTH08T240W×2＋TPS25948系。未割当降下の比較余裕41〜46 mVで、Pololu維持・保護分割の9〜12 mVより大きい。未統合であり、周辺容量・停止入力・14 V入力上限・熱・CADが未確認。
