@@ -8,6 +8,8 @@ val=ROOT/'validation/regulator_request_connection_v1'
 for d in (out,val):d.mkdir(exist_ok=True)
 a=json.loads(src.read_text());r=copy.deepcopy(a);parts={p['reference']:p for p in r['parts']}
 assert len(parts)==194
+assert parts['SYS__R9']['pins']=={'1':'SYS__LOGIC3V3','2':'SYS__RAIL_HEALTH_N'}
+parts['SYS__R9'].update(part='TNPW060310K0BEEA',value_ohm=10000,total_tolerance_budget=0.01,selection_basis='Reuse selected10k part;1% is engineering total budget, not initial tolerance')
 host=parts['CTRL__U_HOST']; assert host['part']=='STM32G030F6P6'
 assert parts['CTRL__U_PERMIT_LATCH']['pins']['5']=='CTRL_LATCH_PERMIT'
 for side,pin in [('LEFT','12'),('RIGHT','13')]:
@@ -33,7 +35,7 @@ for voltage in (0.,.4,2.4,3.3,3.6):
  ena=(vin/rint+voltage/rs)/(1/rint+1/rs+1/pd)
  rows.append({'driver_V':voltage,'ENA_nominal_V':ena,'driver_nominal_A':(voltage-ena)/rs})
 report={'source_sha256':{str(src.relative_to(ROOT)):hashlib.sha256(src.read_bytes()).hexdigest()},
- 'MCU_assignments':{'12':'PA5 left request','13':'PA6 right request'},'old_pin_maps_changed':changed,
+ 'MCU_assignments':{'12':'PA5 left request','13':'PA6 right request'},'old_pin_maps_changed':changed,'existing_part_selection':{'SYS__R9':'TNPW060310K0BEEA'},
  'normal_valid_supply_truth_table':[{'request':q,'CTRL_latch_permit':p,'regulator_allow':q and p} for q in (False,True) for p in (False,True)],
  'SYS_reset_is_not_an_input':True,
  'nominal_module_network':{'VIN_V':vin,'ENA_to_VIN_ohm':1e6,'ENB_to_VIN_ohm':1e6,'ENA_ENB_ohm':1e4,'external_series_ohm':rs,'external_pulldown_ohm':pd,'rows':rows,'driver_high_impedance_ENA_V':vin*pd/(pd+rint)},

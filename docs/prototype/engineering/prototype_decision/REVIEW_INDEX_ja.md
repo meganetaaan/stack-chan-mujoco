@@ -61,3 +61,5 @@
 [左右監視から停止への接続](../../../../validation/source_window_reset_connection_v1/README_ja.md)：以前は未消費だった監視出力を既存RAIL_HEALTH_Nへ接続。監視ノードの電気条件と遮断時間は未確認。変換器ALLOWをSYSリセットへ従属させると起動循環になるため、その接続は禁止する設計判断。
 
 [左右変換器の起動許可](../../../../validation/regulator_request_connection_v1/README_ja.md)：PA5/PA6→シュミット→CTRL許可ラッチとのANDを接続。SYSリセットから独立。追加抵抗比較負荷3.876 mA・容量400 nFは旧起動プローブに未反映。ENAしきい値、部分給電、全予算は未完。
+
+[統合監視ノードの静的比較](../../../../validation/health_node_static_v1/README_ja.md)：単独出力の比較負荷0.418 mA。R9は10 kΩを維持して品番TNPW060310K0BEEAを割当。表記条件とのLow/High余裕を確認したが、全温度・電源遷移の合格ではない。

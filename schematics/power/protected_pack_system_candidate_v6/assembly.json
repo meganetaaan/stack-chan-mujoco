@@ -413,7 +413,7 @@
     },
     {
       "reference": "SYS__R9",
-      "part": "10k cause pullup; total +/-1% budget, part pending",
+      "part": "TNPW060310K0BEEA",
       "pins": {
         "1": "SYS__LOGIC3V3",
         "2": "SYS__RAIL_HEALTH_N"
@@ -421,7 +421,10 @@
       "source": null,
       "source_reference": "R9",
       "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json",
-      "integration_group": "retained"
+      "integration_group": "retained",
+      "value_ohm": 10000,
+      "total_tolerance_budget": 0.01,
+      "selection_basis": "Reuse selected10k part;1% is engineering total budget, not initial tolerance"
     },
     {
       "reference": "SYS__C10",
@@ -3665,6 +3668,9 @@
     "old_pin_maps_changed": [
       "CTRL__U_HOST"
     ],
+    "existing_part_selection": {
+      "SYS__R9": "TNPW060310K0BEEA"
+    },
     "normal_valid_supply_truth_table": [
       {
         "request": false,

@@ -5,3 +5,5 @@ v5の停止監視経路を維持し、CTRL側PA5/PA6から左右変換器ENAへ�
 [接続判断・計算・残件・再現手順](../../../validation/regulator_request_connection_v1/README_ja.md)を参照。SYSリセットに起動を依存させない構成であり、サーボ給電は従来の監視と手動再ARMの条件を維持する。
 
 未接続ポートはTAB5_START_ALLOW、PACK_UV_WARN_N。部品表・接続候補は全回路の動作証明ではない。ENA条件、電源遷移、負荷予算、配線・基板設計は未完。製造リリース不可。
+
+R9はTNPW060310K0BEEA（10 kΩ、総変動1%の設計割当）へ具体化。[静的比較](../../../validation/health_node_static_v1/README_ja.md)を参照。
