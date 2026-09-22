@@ -1,0 +1,24 @@
+{
+  "purpose": "Quantify mean seat pressure and identify missing preload/contact inputs before local mesh refinement",
+  "criteria": [
+    "Twelve named nominal bearing areas are positive",
+    "Exact common-face area agrees with independent annulus calculation within1e-6mm2",
+    "No material strength, friction coefficient or preload silently assigned"
+  ],
+  "method": "Common planar CAD faces, local cylinder clips for individual side pads",
+  "load_definition": "N is actual positive compressive contact resultant in newtons; p_mean=N/A in MPa",
+  "stop": "One geometric extraction and analytical cross-check; no mesh refinement or load acceptance",
+  "comparison_contact_forces_N": [
+    1,
+    10,
+    50,
+    100
+  ],
+  "comparison_basis": "Engineering sensitivity points only, not required or permitted assembly preload",
+  "limits": [
+    "Nominal planar contact, not actual pressure distribution",
+    "No preload/friction/contact separation/creep solved",
+    "No print or hardware tolerance, chamfer, surface roughness or elastic deformation",
+    "No whole-robot dynamic load update"
+  ]
+}
