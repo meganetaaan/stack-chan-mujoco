@@ -22,7 +22,7 @@
 | 電源取付 | [現行入口revB](../../../../board/mechanical/prototype/power_mount_candidate/current.json) | 43部品、公称穴形状の候補。保持強度と工程公差は未証明 |
 | 質量 | [部分台帳v2](../../../../validation/pololu_mass_ledger_v2/report.json) | 最新胴体・電池・制御系を統合した全身mass/COM/inertiaは未確定 |
 
-旧111部品胴体の抜取り検査を115部品版の検査として引用しない。
+[115部品版の抜取り検査](../../../../validation/insert_carrier_removal_v2/README_ja.md)では、側面4ねじを除去後、移動10部品・固定101部品の前方40 mm経路に公称干渉フラグなし。配線・工具・公差・変形・保持能力は未確認。旧111部品版の結果とは区別する。
 先にTab5締結条件・造形工程・全荷重経路を決め、保持、座面、根元の変形と干渉に必要な評価を行う。局所最大応力の収束だけで完了にしない。
 
 ## 電源

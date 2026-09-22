@@ -1,24 +1,28 @@
 """Continuous nominal translation via swept boundary faces of stationary obstacles."""
-import hashlib,itertools,json
+import argparse,hashlib,json
 from pathlib import Path
 import cadquery as cq
 from OCP.BRepPrimAPI import BRepPrimAPI_MakePrism
 from OCP.gp import gp_Vec
-ROOT=Path(__file__).resolve().parents[3];OUT=ROOT/'validation/insert_carrier_removal_v1';OUT.mkdir(exist_ok=True)
-src=ROOT/'validation/serviceable_torso_v2';r=json.loads((src/'report.json').read_text());solids=cq.importers.importStep(str(src/'assembly.step')).val().Solids()
+ROOT=Path(__file__).resolve().parents[3]
+parser=argparse.ArgumentParser()
+parser.add_argument('--with-frame-screws', action='store_true', help='Evaluate 115-part torso v3 with Tab5 screws retained on moving frame')
+args=parser.parse_args()
+OUT=ROOT/('validation/insert_carrier_removal_v2' if args.with_frame_screws else 'validation/insert_carrier_removal_v1');OUT.mkdir(exist_ok=True)
+src=ROOT/('validation/serviceable_torso_v3' if args.with_frame_screws else 'validation/serviceable_torso_v2');r=json.loads((src/'report.json').read_text());solids=cq.importers.importStep(str(src/'assembly.step')).val().Solids()
 assert len(solids)==len(r['parts'])
 parts={row['name']:s for row,s in zip(r['parts'],solids)}
 for row,s in zip(r['parts'],solids):assert abs(row['volume_mm3']-s.Volume())<1e-5
-moving={n:s for n,s in parts.items() if n=='new_carrier' or n.endswith('_insert') or n=='Tab5'}
-assert len(moving)==6, list(moving)
+moving={n:s for n,s in parts.items() if n=='new_carrier' or n.endswith('_insert') or n=='Tab5' or (args.with_frame_screws and n.startswith('new_frame_screw_'))}
+assert len(moving)==(10 if args.with_frame_screws else 6), list(moving)
 removed={f'new_{sign}_{z}_screw' for sign in [-1,1] for z in [88,112]}
 assert removed<=parts.keys()
 fixed={n:s for n,s in parts.items() if n not in moving and n not in removed}
 travel=40.
 plan={'translation_mm':[travel,0,0],'removed_before_move':sorted(removed),'moving':sorted(moving),
- 'criteria':'No nominal volume overlap >0.01mm3 over continuous translation; geometry errors remain unresolved',
+ 'criteria':'No overlap >0.01mm3 with any backward-sweep piece; broad-phase box overlap <=0.01mm3 is pruned; geometry errors remain unresolved',
  'method':'Intersect moving solids at initial pose with each stationary solid swept backward by40mm, represented by original solid plus prisms of all its boundary faces',
- 'limits':['No cables, hand, tool, deformation or tolerances','Simplified Tab5 envelope and installed insert approximation','Tab5-to-carrier screws absent']}
+ 'limits':['No cables, hand, tool, deformation or tolerances','Simplified Tab5 envelope and installed insert approximation',('Tab5-to-carrier screws retained; engagement and internal contacts unqualified' if args.with_frame_screws else 'Tab5-to-carrier screws absent'),'Piecewise threshold is not an upper bound on summed sweep intersection; not a minimum-clearance test'],'stop':'One continuous straight-path audit; record flags without modifying geometry to pass'}
 (OUT/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
 # Independent analytic check: a unit cube translated by two units sweeps a 3x1x1 box.
 cube=cq.Workplane('XY').box(1,1,1).val();sweep=cube
