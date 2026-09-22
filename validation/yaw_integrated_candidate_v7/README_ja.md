@@ -15,3 +15,9 @@ v6より逃げを増やした形状の比較版。正式版ポインタは変更
 LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bin/python software/sim/structural/integrate_yaw_upper_shelf.py --support-dir validation/yaw_upper_tool_relief_v1 --out /tmp/yaw-v7
 LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bin/python software/sim/structural/check_yaw_integrated_overlap.py --candidate /tmp/yaw-v7 --all-pairs
 ```
+
+2026-09-22追記：後続の`validation/yaw_v7_clearance_subset_v1`で、
+v6からの集合包含による剛体隙間下限の継承を確認済み。
+新規v7スイープとしては扱わない。この証跡を照合し、同一形状を
+`board/mechanical/prototype/yaw_support_candidate/revC`へ整理して現行候補を更新した。
+上記の「正式版ポインタは変更しない」はv7比較作成時の状態を記録したもの。
