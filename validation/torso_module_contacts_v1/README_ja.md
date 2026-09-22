@@ -34,3 +34,5 @@ LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bi
 基板の圧縮・曲げ、締付け保持、ねじ締結長、工具アクセスは本検査では証明しない。
 Tab5と外装の0.4mm、および全身・配線の干渉は別の未完了事項として残る。
 製作リリースおよび#17–20の完了判定はfalseのまま。
+
+後続：`validation/pololu_hole_tolerance_v1`に固定軸の公差反例を記録。公称重複0の結果とは別に、位置合わせ自由度の確認が必要。
