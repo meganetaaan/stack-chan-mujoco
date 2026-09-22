@@ -126,6 +126,13 @@ def compose():
         'tab5_rtn_not_copper_merged_to_ground': find('TAB5_PROTECT_RTN') != find('PACK_RETURN'),
         'tab5_shutdown_pulldown_to_ground': byref['TAB5__R_SHDN_PD']['pins'] == {'1': 'TAB5_SHDN', '2': 'PACK_RETURN'},
     })
+    checks.update({
+        'inlet_fuse_before_ideal_diode': byref['INLET__F_MAIN']['pins']['2'] == 'CELL_POS_FUSED_RAW',
+        'inlet_source_and_controller_anode_match': byref['INLET__Q_REVERSE']['pins']['1'] == byref['INLET__U_REVERSE']['pins']['6'] == 'CELL_POS_FUSED_RAW',
+        'inlet_drain_and_controller_cathode_match': byref['INLET__Q_REVERSE']['pins']['5'] == byref['INLET__U_REVERSE']['pins']['4'] == 'CELL_POS_FUSED',
+        'inlet_no_direct_copper_bypass': find('CELL_POS_FUSED_RAW') != find('CELL_POS_FUSED'),
+        'inlet_VCAP_referenced_to_anode': all(byref['INLET__C_VCAP_'+str(i)]['pins']['2'] == 'CELL_POS_FUSED_RAW' for i in range(2)),
+    })
     assert all(checks.values()), checks
     unresolved = {p['reference']: p['unresolved_pins'] for p in parts if p.get('unresolved_pins')}
     missing_parts = [p['reference'] for p in parts if not p.get('part')]
@@ -135,7 +142,7 @@ def compose():
     suffix_pending = [p['reference'] for p in parts if p.get('ordering_suffix_pending')]
 
     required_design = [
-        {'issue': 21, 'gap': 'Battery inlet/fuse candidates added; load/fault coordination, wiring, full disconnect and reverse protection unresolved'},
+        {'issue': 21, 'gap': 'Battery inlet/fuse/ideal-diode candidates added; transients, cell-tap bypass, load/fault coordination and full disconnect unresolved'},
         {'issue': 21, 'gap': 'Tab5 branch candidate connected; ILIM, ramp, harness, allow driver and restart inhibition remain unselected'},
         {'issue': 21, 'gap': 'Local host supervisor/watchdog/latch connected; AUX crossing connected; analog qualification and rearm firmware incomplete'},
         {'issue': 24, 'gap': 'External PDSG switch/resistor, independent abort and TS2 wake/PCHG disposition'},

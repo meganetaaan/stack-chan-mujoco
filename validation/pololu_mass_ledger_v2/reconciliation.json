@@ -2,7 +2,7 @@
   "source_sha256": {
     "validation/pololu_mass_ledger_v1/report.json": "38d41d61da99288376a7d4382327fc826ead02789629465c3d62cecafa2e65c1",
     "validation/pololu_mass_ledger_v2/report.json": "5ade817111bf7ef5b2edfa07c937fa1154a8d41866f019c9880c013db6716a76",
-    "schematics/power/system_power_integration_candidate_v1/assembly.json": "6601de3559ae216c6e3f9c182dfb9f7c921808e719196f1f04772a7321c5a370"
+    "schematics/power/system_power_integration_candidate_v1/assembly.json": "0e5da0bbf2b922e4f0d750a68fac137e5a0a7ec5d3edb1cd158240b346376d3b"
   },
   "bracket_coefficient_deltas": {
     "left_bracket": {
@@ -1522,11 +1522,53 @@
       "part": "01530002H",
       "ledger_entry": null,
       "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__U_REVERSE",
+      "part": "LM74700QDBVRQ1",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__Q_REVERSE",
+      "part": "CSD18540Q5BT",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__C_IN",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__C_OUT_0",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__C_OUT_1",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__C_VCAP_0",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__C_VCAP_1",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
     }
   ],
-  "circuit_references": 243,
+  "circuit_references": 250,
   "mapped_catalog_mass_references": 2,
-  "unreconciled_references": 241,
+  "unreconciled_references": 248,
   "interpretation": "Unreconciled does not mean zero mass or necessarily all new mass: reconcile existing TTL/board reservations before adding allocations. PCB substrate, copper, solder, wiring and connectors require explicit boundaries to avoid double counting.",
   "whole_robot_mass_kg": null,
   "model_updated": false,

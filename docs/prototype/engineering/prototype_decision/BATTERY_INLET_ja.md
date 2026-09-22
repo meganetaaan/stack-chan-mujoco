@@ -10,7 +10,7 @@
 | ホルダー | Littelfuse 01530002H | MINI対応20A/32V、16–22AWG。推奨圧着工具または同等品で施工。CADと保持は未確定 |
 | 配線 | 18AWG候補 | コネクター推奨とホルダー範囲の共通値。製品、長さ、絶縁、束線温度、許容電流は未選定 |
 
-主電流経路はXT30の正極→ヒューズ→CELL_POS_FUSED→既存主保護。
+主電流経路はXT30の正極→ヒューズ→CELL_POS_FUSED_RAW→理想ダイオード候補→CELL_POS_FUSED→既存主保護。
 負極はCELL_B_MINUSへ。ロボット負荷の戻りはPACK_RETURNへ接続し、シャントを迂回しない。
 ホルダーはヒューズを保持する部品としてBOMへ含め、並列の導通経路を作らない。
 正負の表示は論理極性であり、未確認のCADパッド番号を割り当てていない。
@@ -48,4 +48,6 @@ BQのセル端子接続順序は別途確定し、ここで任意の抜き差し
 - [Littelfuseインラインホルダー、2023-03-29](https://www.littelfuse.com/assetdocs/littelfuse-fuse-holder-mini-in-line-datasheet?assetguid=8e57c2a1-0f6e-4a5a-a557-fb7247faee5f)
 
 `python software/sim/circuits/screen_battery_inlet.py` → `validation/battery_inlet_v1/report.json`。
-接続候補の再生成は既存 `integrate_system_power.py`。統合243部品、全体動作・製造リリースはfalseのまま。
+接続候補の再生成は既存 `integrate_system_power.py`。統合250部品、全体動作・製造リリースはfalseのまま。
+
+後続の逆接保護候補は`validation/inlet_ideal_diode_v1`参照。主線の理想ダイオードはセルタップ誤接続を保護せず、完全切離しの代用にもならない。
