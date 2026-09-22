@@ -1,9 +1,12 @@
 """Combine current yaw candidate and Pololu mount; retain installed yaw fasteners."""
-import hashlib,itertools,json
+import argparse,hashlib,itertools,json
 from pathlib import Path
 import cadquery as cq
 ROOT=Path(__file__).resolve().parents[3]
-OUT=ROOT/'validation/torso_power_integration_v1'
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--out', type=Path, default=ROOT/'validation/torso_power_integration_v2')
+args=parser.parse_args()
+OUT=args.out
 OUT.mkdir(exist_ok=True)
 plan={'scope':__doc__,'criteria':{'overlap_flag_mm3':.01,'near_gap_flag_mm':.5},
  'replacement':'Replace rear_plate only. The16 yaw rear fasteners removed for insertion must be present in the final assembly.',
@@ -24,7 +27,8 @@ for it,s in zip(inv,ss):
  assert abs(it['volume_mm3']-s.Volume())<1e-5
  if it['name']=='rear_plate':continue
  add('yaw__'+it['name'],s,'yaw',it['name'])
-inv=read('validation/pololu_mount_assembly_v1/inventory.json')['parts'];ss=load('validation/pololu_mount_assembly_v1/mount_assembly.step').Solids()
+mount=read('board/mechanical/prototype/power_mount_candidate/current.json')
+inv=read(mount['inventory'])['parts'];ss=load(mount['assembly']).Solids()
 assert len(inv)==len(ss)==43
 for it,s in zip(inv,ss):
  assert abs(it['volume_mm3']-s.Volume())<1e-5

@@ -1,0 +1,15 @@
+{
+  "scope": "Combine current yaw candidate and Pololu mount; retain installed yaw fasteners.",
+  "criteria": {
+    "overlap_flag_mm3": 0.01,
+    "near_gap_flag_mm": 0.5
+  },
+  "replacement": "Replace rear_plate only. The16 yaw rear fasteners removed for insertion must be present in the final assembly.",
+  "stop": "One nominal final-position cross-subassembly overlap screen; no new geometry or mesh refinement.",
+  "limits": [
+    "No articulated legs/feet or harness",
+    "Electronics use module envelopes; new protection PCB not placed",
+    "Contact flags require joint-specific review; no automatic exemptions",
+    "Nominal static geometry, no tolerance or deformation qualification"
+  ]
+}
