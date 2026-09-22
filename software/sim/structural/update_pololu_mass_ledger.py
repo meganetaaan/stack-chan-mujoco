@@ -6,7 +6,7 @@ import cadquery as cq
 p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);a=p.parse_args();paths=[]
 def read(p):
  p=Path(p);paths.append(p);return json.loads(p.read_text())
-plan=read(a.out/'plan.json');basepath='validation/yaw_v7_payload_ledger_v1/report.json';base=read(basepath);power=read('schematics/power/dual_pololu_candidate.json');ms=read('docs/prototype/mechanical/pololu_mount_fasteners/candidate.json');rs=read('docs/prototype/mechanical/pololu_mount_fasteners/rear_candidate.json');inv=read('validation/pololu_mount_assembly_v1/inventory.json')['parts'];step=Path('validation/pololu_mount_assembly_v1/mount_assembly.step');paths.append(step);ss=cq.importers.importStep(str(step)).val().Solids();assert len(inv)==len(ss)==43
+plan=read(a.out/'plan.json');basepath='validation/yaw_v7_payload_ledger_v1/report.json';base=read(basepath);power=read('schematics/power/dual_pololu_candidate.json');ms=read('docs/prototype/mechanical/pololu_mount_fasteners/candidate.json');rs=read('docs/prototype/mechanical/pololu_mount_fasteners/rear_candidate.json');mount=read('board/mechanical/prototype/power_mount_candidate/current.json');inv=read(mount['inventory'])['parts'];step=Path(mount['assembly']);paths.append(step);ss=cq.importers.importStep(str(step)).val().Solids();assert len(inv)==len(ss)==43
 inherited={}
 for group in ['retained_old_allocations','new_metal_parts','selected_SUS304_mount_washers','added_candidate_allocations']:
  for n,v in base[group].items():

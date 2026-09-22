@@ -1,0 +1,16 @@
+{
+  "question": "Update mass and moment coefficients to the current2.4mm bore mount without converting unknown densities to claimed mass.",
+  "criteria": [
+    "Exactly43 mount parts classified once",
+    "Remove old rear plate and two UBEC allocations once",
+    "Current candidate input hashes recorded",
+    "Numeric subtotal reconciles independently",
+    "Compare bracket changes with v1 while retaining unknown whole-body terms"
+  ],
+  "stop": "One ledger regeneration and exact old/new coefficient difference; no new load simulation with incomplete inertia.",
+  "limits": [
+    "Homogeneous material coefficients are not printed mass",
+    "Unknowns stay null",
+    "Catalog fastener mass lacks verified spatial distribution"
+  ]
+}
