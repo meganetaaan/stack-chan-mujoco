@@ -37,12 +37,13 @@
 
 | 対象 | 現在の参照先 | 適用限界 |
 |---|---|---|
+| 新電池の統合入口 | [191部品接続候補](../../../../schematics/power/protected_pack_system_candidate_v1/README_ja.md) | 旧生セル回路を除去し制御枝/主許可を統合。7信号境界・保護協調は未完。未動作 |
 | 旧全系統 | [250部品接続候補](../../../../schematics/power/system_power_integration_candidate_v1/README_ja.md) | 生セル側BQ保護を含む旧構成。未選定部品あり。LB-020採用済み完成回路ではない |
 | 保護内蔵電池への移行 | [移行監査](../../../../validation/protected_pack_transition_v1/README_ja.md) | 旧電池回路の削除だけでは給電・起動許可・監視が成立しない |
-| 新しい制御電源枝 | [41部品候補](../../../../schematics/power/pack_control_ramp_candidate_v1/README_ja.md) | 全系統へ未統合。既知部分負荷と仮定による充電比較で、突入電流上限や起動合格ではない |
+| 新しい制御電源枝 | [41部品候補](../../../../schematics/power/pack_control_ramp_candidate_v1/README_ja.md) | 191部品案へ接続候補として統合。既知部分負荷と仮定による充電比較で、突入電流上限や起動合格ではない |
 | メーカー過渡モデル | [PSpiceプローブv2](../../../../validation/pack_startup_pspice_v2/README_ja.md) | 主許可出力の追加負荷を反映。9/12.6 Vの回路を出力済み、未実行。対応環境と波形が必要。温度・MCU起動等のモデル限界あり |
 
-[主起動許可の3部品接続候補](../../../../schematics/power/pack_main_allow_interface_candidate_v1/README_ja.md)では、SYS無給電時のHCS11直結を避け、受信側給電バッファを選定。電源遷移と信号余裕は未検証で、全系統へ未統合。
+[主起動許可の3部品接続候補](../../../../schematics/power/pack_main_allow_interface_candidate_v1/README_ja.md)では、SYS無給電時のHCS11直結を避け、受信側給電バッファを選定。191部品案へ接続候補として統合したが、電源遷移と信号余裕は未検証。
 
 250部品と41部品を合算したBOMを購入用にしない。次の設計作業は全負荷予算と制御・停止境界の接続、メーカー条件との照合、対応環境での起動・保護検証。未選定回路を実測待ちとして処理しない。
 
