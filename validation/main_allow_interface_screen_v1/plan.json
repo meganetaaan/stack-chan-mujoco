@@ -1,0 +1,13 @@
+{
+  "scope": "Static input-low comparison and incremental current budget, not startup waveform",
+  "engineering_assumptions": {
+    "resistor_total_tolerance": 0.01,
+    "budget_voltage_V": 3.6
+  },
+  "criteria": [
+    "Compare leakage-induced input against specified falling threshold only at tabulated supply points",
+    "Do not apply powered leakage to unpowered HCS receiver",
+    "Keep full interface acceptance null until both-rail and transition margins established"
+  ],
+  "stop": "One arithmetic screen; no inferred intermediate-voltage guarantees"
+}

@@ -1,0 +1,92 @@
+{
+  "driver_off_buffer_input_V_conditional": 0.11110000000000002,
+  "leakage_basis": {
+    "SN74LVC1G08_Ioff_A": 1e-05,
+    "74LVC1G17_input_leakage_A": 1e-06,
+    "limits": "Catalog test conditions; same ground, no additional external leakage or stored charge"
+  },
+  "tabulated_low_checks": [
+    {
+      "receiver_supply_V": 1.8,
+      "min_falling_threshold_V": 0.46,
+      "margin_V": 0.3489,
+      "static_comparison_pass": true
+    },
+    {
+      "receiver_supply_V": 2.3,
+      "min_falling_threshold_V": 0.65,
+      "margin_V": 0.5389,
+      "static_comparison_pass": true
+    },
+    {
+      "receiver_supply_V": 3.0,
+      "min_falling_threshold_V": 0.88,
+      "margin_V": 0.7689,
+      "static_comparison_pass": true
+    },
+    {
+      "receiver_supply_V": 4.5,
+      "min_falling_threshold_V": 1.32,
+      "margin_V": 1.2089,
+      "static_comparison_pass": true
+    },
+    {
+      "receiver_supply_V": 5.5,
+      "min_falling_threshold_V": 1.58,
+      "margin_V": 1.4689,
+      "static_comparison_pass": true
+    }
+  ],
+  "new_CTRL3V3_output_load_allocation_A": 0.0003646363636363637,
+  "updated_partial_controller_budgets": [
+    {
+      "MCU_MHz": 16,
+      "partial_screen_sum_A": 0.006005140882509304
+    },
+    {
+      "MCU_MHz": 32,
+      "partial_screen_sum_A": 0.008005140882509304
+    },
+    {
+      "MCU_MHz": 64,
+      "partial_screen_sum_A": 0.011405140882509305
+    }
+  ],
+  "SYS3V3_allocations": {
+    "buffer_ICC_at_catalog_conditions_A": 4e-06,
+    "existing_output_pulldown_load_A": 0.00036363636363636367,
+    "existing_output_pulldown_is_new_load": false,
+    "new_decap_nominal_F": 1e-07,
+    "total_added_SYS_max_A": null,
+    "missing": "Dynamic current and intermediate input-level additional ICC; regulator/startup budgets incomplete"
+  },
+  "buffer_off_only_contribution_at_output_V": 0.0202,
+  "total_output_off_node_bound_V": null,
+  "output_bound_missing": "SN74HCS11 unpowered input leakage not specified by its powered6V leakage row; do not invent bound",
+  "both_powered_margin_pass": null,
+  "brownout_sequence_pass": null,
+  "whole_interface_qualified": false,
+  "manufacturing_release": false,
+  "sources": [
+    {
+      "url": "https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf",
+      "revision": "AA August2026",
+      "section": "5.5 Ioff;7.3.2"
+    },
+    {
+      "url": "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf",
+      "revision": "16.1 September2024",
+      "section": "10 leakage and10.1 transfer thresholds, -40..125C"
+    },
+    {
+      "url": "https://www.ti.com/lit/ds/symlink/sn74hcs11.pdf",
+      "revision": "B March2026",
+      "section": "5.5 leakage test condition"
+    }
+  ],
+  "source_sha256": {
+    "schematics/power/pack_main_allow_interface_candidate_v1/assembly.json": "c10da5b6e7dac18c093583f8b8d683b630695ce92c1ea2f82c82ba77e9ff2259",
+    "validation/pack_controller_budget_v1/report.json": "e2804aac68a6df5bb85ad13745a1c75385573aaeea9b71fb61a0866baeb13fd8",
+    "schematics/power/system_power_integration_candidate_v1/assembly.json": "0e5da0bbf2b922e4f0d750a68fac137e5a0a7ec5d3edb1cd158240b346376d3b"
+  }
+}

@@ -25,3 +25,5 @@ SYS__U3の3番ENABLE_PERMISSIONと5番RESET_Nを残すので、通常論理と�
 ```sh
 .venv-engineering/bin/python software/sim/circuits/build_pack_main_allow_interface.py
 ```
+
+[静的漏れ・負荷比較](../../../validation/main_allow_interface_screen_v1/README_ja.md)を追加。電源0 Vの送信側に対する条件付きLow比較と追加電流のみで、全状態の合格ではない。
