@@ -1,17 +1,25 @@
 """Compare mount ledgers and expose circuit references not mass-reconciled."""
-import hashlib,json
+import hashlib,json,math
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[3]
 oldp=ROOT/'validation/pololu_mass_ledger_v1/report.json';newp=ROOT/'validation/pololu_mass_ledger_v2/report.json';ep=ROOT/'schematics/power/system_power_integration_candidate_v1/assembly.json'
 old,new,e=[json.loads(p.read_text()) for p in [oldp,newp,ep]]
-assert old['numeric_comparison_subtotal_kg']==new['numeric_comparison_subtotal_kg']
-assert old['new_numeric_allocations']==new['new_numeric_allocations']
+def same(a,b):
+ if isinstance(a,dict):
+  return a.keys()==b.keys() and all(same(a[k],b[k]) for k in a)
+ if isinstance(a,list):
+  return len(a)==len(b) and all(same(x,y) for x,y in zip(a,b))
+ if isinstance(a,float):
+  return math.isclose(a,b,rel_tol=1e-10,abs_tol=1e-18)
+ return a==b
+assert same(old['numeric_comparison_subtotal_kg'],new['numeric_comparison_subtotal_kg'])
+assert same(old['new_numeric_allocations'],new['new_numeric_allocations'])
 assert old['new_unknown_masses']==new['new_unknown_masses']
 deltas={}
 for name,v in new['new_density_coefficients_per_kg_m3'].items():
  ov=old['new_density_coefficients_per_kg_m3'][name]
  if not name.endswith('_bracket'):
-  assert v==ov
+  assert same(v,ov)
   continue
  deltas[name]={'volume_delta_mm3':v['volume_mm3']-ov['volume_mm3'],
   'mass_delta_kg_per_kg_m3':v['mass_kg_per_kg_m3']-ov['mass_kg_per_kg_m3'],
@@ -26,7 +34,9 @@ for part in e['parts']:
  rows.append({'reference':ref,'part':part.get('part'),'ledger_entry':entry,
  'status':'catalog_mass_only_COM_inertia_unqualified' if entry else 'not_reconciled_to_current_mass_ledger'})
 r={'source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [oldp,newp,ep]},
- 'bracket_coefficient_deltas':deltas,'numeric_subtotal_unchanged':True,
+ 'bracket_coefficient_deltas':deltas,'numeric_subtotal_unchanged_within_numerical_tolerance':True,
+ 'numeric_comparison_tolerance':{'relative':1e-10,'absolute':1e-18},
+ 'numeric_subtotal_roundoff_delta_kg':new['numeric_comparison_subtotal_kg']-old['numeric_comparison_subtotal_kg'],
  'circuit_mass_reconciliation':rows,'circuit_references':len(rows),'mapped_catalog_mass_references':len(mapping),
  'unreconciled_references':len(rows)-len(mapping),
  'interpretation':'Unreconciled does not mean zero mass or necessarily all new mass: reconcile existing TTL/board reservations before adding allocations. PCB substrate, copper, solder, wiring and connectors require explicit boundaries to avoid double counting.',
