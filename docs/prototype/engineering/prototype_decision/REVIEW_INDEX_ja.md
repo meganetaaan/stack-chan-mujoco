@@ -37,11 +37,11 @@
 
 | 対象 | 現在の参照先 | 適用限界 |
 |---|---|---|
-| 新電池の統合入口 | [196部品接続候補](../../../../schematics/power/protected_pack_system_candidate_v4/README_ja.md) | 制御枝/主許可/補助許可/クリア駆動を接続。4信号境界と全過渡・保護協調は未完。未動作 |
+| 新電池の統合入口 | [監視接続済み194部品候補](../../../../schematics/power/protected_pack_system_candidate_v5/README_ja.md) | 制御枝/主許可/補助許可/クリア駆動を接続。4信号境界と全過渡・保護協調は未完。未動作 |
 | 旧全系統 | [250部品接続候補](../../../../schematics/power/system_power_integration_candidate_v1/README_ja.md) | 生セル側BQ保護を含む旧構成。未選定部品あり。LB-020採用済み完成回路ではない |
 | 保護内蔵電池への移行 | [移行監査](../../../../validation/protected_pack_transition_v1/README_ja.md) | 旧電池回路の削除だけでは給電・起動許可・監視が成立しない |
 | 新しい制御電源枝 | [41部品候補](../../../../schematics/power/pack_control_ramp_candidate_v1/README_ja.md) | 191部品案へ接続候補として統合。既知部分負荷と仮定による充電比較で、突入電流上限や起動合格ではない |
-| メーカー過渡モデル | [PSpiceプローブv2](../../../../validation/pack_startup_pspice_v2/README_ja.md) | 主許可出力の追加負荷を反映。9/12.6 Vの回路を出力済み、未実行。対応環境と波形が必要。温度・MCU起動等のモデル限界あり |
+| メーカー過渡モデル | [PSpiceプローブv3](../../../../validation/pack_startup_pspice_v3/README_ja.md) | v4の制御側追加負荷を反映。9/12.6 Vの回路を出力済み、未実行。対応環境と波形が必要。温度・MCU起動等のモデル限界あり |
 
 [主起動許可の3部品接続候補](../../../../schematics/power/pack_main_allow_interface_candidate_v1/README_ja.md)では、SYS無給電時のHCS11直結を避け、受信側給電バッファを選定。191部品案へ接続候補として統合したが、電源遷移と信号余裕は未検証。
 
@@ -57,3 +57,5 @@
 [クリア入力速度の再評価](../../../../validation/sequence_clear_input_v1/README_ja.md)：旧194部品の10 kΩ直接入力は代表容量だけでも21.798 ns/Vとなり10 ns/V条件を超える比較結果。196部品では74LVC1G17GVを追加。旧入力の詳細化は終了し、新段の出力・電源遷移・予算の確認へ進む。回路成立は未証明。
 
 [起動負荷の現候補への照合](../../../../validation/controller_probe_load_v1/README_ja.md)：補助許可・クリア回路を含む部分比較値12.129 mA、公称CTRL容量10.3 µF。[PSpice v3](../../../../validation/pack_startup_pspice_v3/README_ja.md)へ反映済みだが未実行。全電流上限・起動成立を示さない。
+
+[左右監視から停止への接続](../../../../validation/source_window_reset_connection_v1/README_ja.md)：以前は未消費だった監視出力を既存RAIL_HEALTH_Nへ接続。監視ノードの電気条件と遮断時間は未確認。変換器ALLOWをSYSリセットへ従属させると起動循環になるため、その接続は禁止する設計判断。
