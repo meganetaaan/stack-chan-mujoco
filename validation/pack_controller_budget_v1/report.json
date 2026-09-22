@@ -1,0 +1,97 @@
+{
+  "source_sha256": "19a93949e4040a151278b50724da9a95d0714e248c803d2653fb1c214b274e2f",
+  "resistor_allocations": [
+    {
+      "reference": "CTRL__R_HOST_NRST",
+      "nominal_ohm": 100000,
+      "allocated_A": 3.6363636363636364e-05
+    },
+    {
+      "reference": "CTRL__R_AUX_START_REQUEST_PD",
+      "nominal_ohm": 47500,
+      "allocated_A": 7.655502392344497e-05
+    },
+    {
+      "reference": "CTRL__R_HOST_HEARTBEAT_PD",
+      "nominal_ohm": 10000,
+      "allocated_A": 0.00036363636363636367
+    },
+    {
+      "reference": "CTRL__R_HOST_SUP_TOP",
+      "nominal_ohm": 57600,
+      "allocated_A": 6.313131313131313e-05
+    },
+    {
+      "reference": "CTRL__R_HOST_SUP_BOTTOM",
+      "nominal_ohm": 10000,
+      "allocated_A": 0.00036363636363636367
+    },
+    {
+      "reference": "CTRL__R_WD_CWD",
+      "nominal_ohm": 10000,
+      "allocated_A": 0.00036363636363636367
+    },
+    {
+      "reference": "CTRL__R_MAIN_REQUEST_RAW_PD",
+      "nominal_ohm": 10000,
+      "allocated_A": 0.00036363636363636367
+    },
+    {
+      "reference": "CTRL__R_AUX_REQUEST_RAW_PD",
+      "nominal_ohm": 10000,
+      "allocated_A": 0.00036363636363636367
+    },
+    {
+      "reference": "CTRL__R_ARM_EDGE_PD",
+      "nominal_ohm": 10000,
+      "allocated_A": 0.00036363636363636367
+    },
+    {
+      "reference": "CTRL__R_PACK_WARN_PU",
+      "nominal_ohm": 10000,
+      "allocated_A": 0.00036363636363636367
+    }
+  ],
+  "resistor_envelope_A": 0.0027215045188729403,
+  "watchdog_spec_max_A": 1.9e-05,
+  "rows": [
+    {
+      "MCU_MHz": 16,
+      "MCU_characterized_max_A": 0.0029,
+      "partial_screen_sum_A": 0.0056405045188729405,
+      "LDO_output_load_loss_W": 0.05245669202551835,
+      "reference_board_temperature_rise_C": 11.126064378612442
+    },
+    {
+      "MCU_MHz": 32,
+      "MCU_characterized_max_A": 0.0049,
+      "partial_screen_sum_A": 0.0076405045188729405,
+      "LDO_output_load_loss_W": 0.07105669202551836,
+      "reference_board_temperature_rise_C": 15.071124378612442
+    },
+    {
+      "MCU_MHz": 64,
+      "MCU_characterized_max_A": 0.0083,
+      "partial_screen_sum_A": 0.01104050451887294,
+      "LDO_output_load_loss_W": 0.10267669202551835,
+      "reference_board_temperature_rise_C": 21.777726378612442
+    }
+  ],
+  "unknown_budget_terms": [
+    "MCU enabled peripherals/oscillator differences, external I/O loads and switching",
+    "TPS3808 at actual voltage and reset state (5uA figure only at3.3V reset released)",
+    "Logic gates/buffer/latch static and transition current at actual levels",
+    "Capacitor charging/leakage, startup, debug and new interface loads",
+    "TPS709 ground current at actual load, input-protection current and loss"
+  ],
+  "total_controller_max_current_A": null,
+  "legacy_750ohm_feed_screen": {
+    "pack_V": 9.0,
+    "MCU_only_A": 0.0083,
+    "ideal_LDO_input_V": 2.7750000000000004,
+    "assumed_diode_drop_V": 0,
+    "can_support_this_current_at3_3V": false,
+    "conclusion": "Cannot reuse old feed for this budget point; actual undervoltage dynamics not simulated"
+  },
+  "manufacturing_release": false
+}

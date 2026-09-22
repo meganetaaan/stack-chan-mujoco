@@ -1,0 +1,20 @@
+{
+  "assumptions": {
+    "rail_screen_V": 3.6,
+    "resistance_total_variation_fraction": 0.01,
+    "pack_screen_V": [
+      9.0,
+      12.6
+    ],
+    "regulator_output_for_loss_V": 3.3,
+    "thermal_reference_RthetaJA_C_W": 212.1,
+    "thermal_scope": "TI DBV reference board figure, not the actual PCB or thermal acceptance",
+    "resistor_scope": "Sum V/Rmin for every resistor individually; deliberately overcounts divider/network states",
+    "mcu_scope": "ST DS12991 Rev6 Table25 Range1 Flash 85C VDD3.6; peripherals off, characterized not production tested"
+  },
+  "criteria": [
+    "Do not represent partial sum as full maximum current",
+    "Compare old 750ohm feed against the 64MHz MCU term alone before proposing reuse"
+  ],
+  "stop": "One static budget and feed rejection; no arbitrary transient sweep"
+}
