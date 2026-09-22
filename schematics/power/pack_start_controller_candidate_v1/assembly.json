@@ -1,0 +1,455 @@
+{
+  "status": "pin_mapped_subcircuit_not_integrated_or_qualified",
+  "parts": [
+    {
+      "reference": "CTRL__U_HOST",
+      "part": "STM32G030F6P6",
+      "pins": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "4": "CTRL3V3",
+        "5": "PACK_RETURN",
+        "6": "CTRL_HOST_NRST",
+        "7": "CTRL_MAIN_REQUEST_RAW",
+        "8": "CTRL_AUX_REQUEST_RAW",
+        "9": "PACK_UV_WARN_N",
+        "10": "CTRL_ARM_EDGE",
+        "11": null,
+        "12": null,
+        "13": null,
+        "14": null,
+        "15": null,
+        "16": null,
+        "17": "CTRL_HOST_HEARTBEAT",
+        "18": "CTRL_HOST_SWDIO",
+        "19": "CTRL_HOST_SWCLK",
+        "20": null
+      },
+      "package": "TSSOP20",
+      "role": "Pack-side startup coordination; requires new firmware and manual-input interface",
+      "source_reference": "BAT__U_BQ_HOST",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__C_HOST_HF",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "CTRL3V3",
+        "2": "PACK_RETURN"
+      },
+      "value_F": 1e-07,
+      "source_reference": "BAT__C_BQ_HOST_HF",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__C_HOST_BULK",
+      "part": "GRM31CR71H475KA12L",
+      "pins": {
+        "1": "CTRL3V3",
+        "2": "PACK_RETURN"
+      },
+      "value_F": 4.7e-06,
+      "effective_capacitance_qualified": false,
+      "source_reference": "BAT__C_BQ_HOST_BULK",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__C_HOST_NRST",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "CTRL_HOST_NRST",
+        "2": "PACK_RETURN"
+      },
+      "value_F": 1e-07,
+      "source_reference": "BAT__C_BQ_HOST_NRST",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__R_HOST_NRST",
+      "part": "TNPW0603100KBEEA",
+      "pins": {
+        "1": "CTRL3V3",
+        "2": "CTRL_HOST_NRST"
+      },
+      "value_ohm": 100000,
+      "source_reference": "BAT__R_BQ_HOST_NRST",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__R_AUX_START_REQUEST_PD",
+      "part": "TNPW060347K5BEEA",
+      "pins": {
+        "1": "LOGIC_START_ALLOW",
+        "2": "PACK_RETURN"
+      },
+      "value_ohm": 47500,
+      "source_reference": "BAT__R_BQ_AUX_START_REQUEST_PD",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__R_HOST_HEARTBEAT_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "CTRL_HOST_HEARTBEAT",
+        "2": "PACK_RETURN"
+      },
+      "value_ohm": 10000,
+      "source_reference": "BAT__R_BQ_HOST_HEARTBEAT_PD",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__U_HOST_SUP",
+      "part": "TPS3808G01DBVR",
+      "pins": {
+        "1": "CTRL_HOST_NRST",
+        "2": "PACK_RETURN",
+        "3": "CTRL3V3",
+        "4": null,
+        "5": "CTRL_HOST_SUP_SENSE",
+        "6": "CTRL3V3"
+      },
+      "source_reference": "BAT__U_BQ_HOST_SUP",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__R_HOST_SUP_TOP",
+      "part": "TNPW060357K6BEEA",
+      "value_ohm": 57600,
+      "pins": {
+        "1": "CTRL3V3",
+        "2": "CTRL_HOST_SUP_SENSE"
+      },
+      "source_reference": "BAT__R_BQ_HOST_SUP_TOP",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__R_HOST_SUP_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "CTRL_HOST_SUP_SENSE",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "BAT__R_BQ_HOST_SUP_BOTTOM",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__C_HOST_SUP",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "CTRL3V3",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "BAT__C_BQ_HOST_SUP",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__U_WD",
+      "part": "TPS3431SDRBR",
+      "pins": {
+        "1": "CTRL3V3",
+        "2": "CTRL_WD_CWD",
+        "3": "CTRL3V3",
+        "4": "PACK_RETURN",
+        "5": "CTRL3V3",
+        "6": "CTRL_HOST_HEARTBEAT",
+        "7": "CTRL_HOST_NRST",
+        "8": null,
+        "EP": "PACK_RETURN"
+      },
+      "source_reference": "BAT__U_BQ_WD",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__C_WD",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "CTRL3V3",
+        "2": "PACK_RETURN"
+      },
+      "value_F": 1e-07,
+      "source_reference": "BAT__C_BQ_WD",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__R_WD_CWD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "CTRL3V3",
+        "2": "CTRL_WD_CWD"
+      },
+      "value_ohm": 10000,
+      "source_reference": "BAT__R_BQ_WD_CWD",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__U_RESET_BUFFER",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "CTRL_HOST_NRST",
+        "3": "PACK_RETURN",
+        "4": "CTRL_RESET_VALID_N",
+        "5": "CTRL3V3"
+      },
+      "source_reference": "BAT__U_BQ_RESET_BUFFER",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__C_RESET_BUFFER",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "CTRL3V3",
+        "2": "PACK_RETURN"
+      },
+      "value_F": 1e-07,
+      "source_reference": "BAT__C_BQ_RESET_BUFFER",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__U_PERMIT_LATCH",
+      "part": "SN74LVC1G74DCTR",
+      "pins": {
+        "1": "CTRL_ARM_EDGE",
+        "2": "CTRL3V3",
+        "3": null,
+        "4": "PACK_RETURN",
+        "5": "CTRL_LATCH_PERMIT",
+        "6": "CTRL_RESET_VALID_N",
+        "7": "CTRL3V3",
+        "8": "CTRL3V3"
+      },
+      "source_reference": "BAT__U_BQ_PERMIT_LATCH",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__C_PERMIT_LATCH",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "CTRL3V3",
+        "2": "PACK_RETURN"
+      },
+      "value_F": 1e-07,
+      "source_reference": "BAT__C_BQ_PERMIT_LATCH",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__U_MAIN_GATE",
+      "part": "SN74LVC1G08DBVR",
+      "pins": {
+        "1": "CTRL_MAIN_REQUEST_RAW",
+        "2": "CTRL_LATCH_PERMIT",
+        "3": "PACK_RETURN",
+        "4": "MAIN_START_ALLOW",
+        "5": "CTRL3V3"
+      },
+      "source_reference": "BAT__U_BQ_MAIN_GATE",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__C_MAIN_GATE",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "CTRL3V3",
+        "2": "PACK_RETURN"
+      },
+      "value_F": 1e-07,
+      "source_reference": "BAT__C_BQ_MAIN_GATE",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__U_AUX_GATE",
+      "part": "SN74LVC1G08DBVR",
+      "pins": {
+        "1": "CTRL_AUX_REQUEST_RAW",
+        "2": "CTRL_LATCH_PERMIT",
+        "3": "PACK_RETURN",
+        "4": "LOGIC_START_ALLOW",
+        "5": "CTRL3V3"
+      },
+      "source_reference": "BAT__U_BQ_AUX_GATE",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__C_AUX_GATE",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "CTRL3V3",
+        "2": "PACK_RETURN"
+      },
+      "value_F": 1e-07,
+      "source_reference": "BAT__C_BQ_AUX_GATE",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__R_MAIN_REQUEST_RAW_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "CTRL_MAIN_REQUEST_RAW",
+        "2": "PACK_RETURN"
+      },
+      "value_ohm": 10000,
+      "source_reference": "BAT__R_MAIN_REQUEST_RAW_PD",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__R_AUX_REQUEST_RAW_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "CTRL_AUX_REQUEST_RAW",
+        "2": "PACK_RETURN"
+      },
+      "value_ohm": 10000,
+      "source_reference": "BAT__R_AUX_REQUEST_RAW_PD",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__R_ARM_EDGE_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "CTRL_ARM_EDGE",
+        "2": "PACK_RETURN"
+      },
+      "value_ohm": 10000,
+      "source_reference": "BAT__R_ARM_EDGE_PD",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__U_LDO",
+      "part": "TPS70933DBVR",
+      "pins": {
+        "1": "CONTROL_INPUT_PROTECTED",
+        "2": "PACK_RETURN",
+        "3": null,
+        "4": null,
+        "5": "CTRL3V3"
+      },
+      "note": "TPS709 pinout, not TPS709A/B; EN intentionally floating per TI table 5-1",
+      "source_reference": "SYS__U_STOP_LDO",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__C_LDO_IN",
+      "part": "MKS2C042201K00JSSD",
+      "value_F": 2.2e-06,
+      "pins": {
+        "1": "CONTROL_INPUT_PROTECTED",
+        "2": "PACK_RETURN"
+      },
+      "requirement": "Input bulk candidate; temperature/process capacitance and board envelope unqualified",
+      "dielectric": "PET film",
+      "initial_tolerance": 0.05,
+      "rated_voltage_V": 63,
+      "body_nominal_mm": {
+        "width": 7.2,
+        "height": 13,
+        "length": 7.2
+      },
+      "lead_pitch_mm": 5,
+      "selection_source": "https://www.wima.de/wp-content/uploads/media/e_WIMA_MKS_2.pdf",
+      "source_reference": "SYS__C_STOP_IN",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__C_LDO_OUT",
+      "part": "GRM31CR71H475KA12L",
+      "value_F": 4.7e-06,
+      "pins": {
+        "1": "CTRL3V3",
+        "2": "PACK_RETURN"
+      },
+      "requirement": "Design target >=2.2uF effective retained; TPS70933 application guidance minimum 1.5uF, maximum 47uF, ESR 0..0.2 ohm. See schematics/power/stop_output_capacitor_requirements.json",
+      "selection_source": "schematics/power/stop_output_capacitor_requirements.json",
+      "qualification": {
+        "reference": "C_STOP_OUT",
+        "regulator": "TPS70933DBVR",
+        "source": "https://www.ti.com/lit/ds/symlink/tps709.pdf",
+        "revision": "SBVS186H July 2021 section 8.1.1",
+        "manufacturer_application_guidance": {
+          "effective_capacitance_min_F": 1.5e-06,
+          "effective_capacitance_max_F": 4.7e-05,
+          "ESR_min_ohm": 0,
+          "ESR_max_ohm": 0.2,
+          "condition": "Output voltage >= 1.5 V"
+        },
+        "retained_design_target": {
+          "effective_capacitance_min_F": 2.2e-06,
+          "nominal_capacitance_F": 4.7e-06,
+          "classification": "Codex design margin, not manufacturer minimum"
+        },
+        "candidate": {
+          "family": "GRM31CR71H475KA12",
+          "nominal_F": 4.7e-06,
+          "rated_V": 50,
+          "initial_tolerance": 0.1,
+          "dielectric": "X7R",
+          "package": "1206",
+          "source": "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM31CR71H475KA12-01A.pdf",
+          "status": "exact_ordering_candidate_not_qualified",
+          "part_number": "GRM31CR71H475KA12L",
+          "source_date": "2026-06-25",
+          "source_sha256": "79e4b038591e12555fe8f014db5554725d20cce3ec127846d34c20e27e53d3da",
+          "temperature_change_fraction_no_bias": 0.15,
+          "package_quantity": 2000
+        },
+        "qualification": false,
+        "remaining": [
+          "DC bias and temperature combined capacitance at actual rail",
+          "Ageing and assembly allowance",
+          "ESR over relevant frequency and temperature",
+          "Procurement and footprint",
+          "Total connected rail capacitance and regulator transient verification"
+        ],
+        "correction": "Earlier requirement text incorrectly attributed 2.2uF effective minimum to TI. Preserve 2.2uF as a design target; do not relabel prior failures as passes.",
+        "screening_evidence": "validation/stop_output_capacitor_v1/report.json",
+        "model_scope_evidence": "validation/stop_cap_model_scope_v1/report.json",
+        "additional_nominal_screening": "Stopped: nominal data cannot resolve remaining bias/ESR qualification"
+      },
+      "source_reference": "SYS__C_STOP_OUT",
+      "source_assembly": "schematics/power/system_power_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "CTRL__R_PACK_WARN_PU",
+      "part": "TNPW060310K0BEEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "CTRL3V3",
+        "2": "PACK_UV_WARN_N"
+      },
+      "note": "Open-drain warning input; a broken input wire reads high and is NOT detected"
+    }
+  ],
+  "source_sha256": {
+    "schematics/power/system_power_integration_candidate_v1/assembly.json": "0e5da0bbf2b922e4f0d750a68fac137e5a0a7ec5d3edb1cd158240b346376d3b"
+  },
+  "external_ports": {
+    "CONTROL_INPUT_PROTECTED": "Dedicated input branch AFTER fuse/reverse protection; current limit and faults not yet designed",
+    "PACK_RETURN": "Protected pack output negative; do not expose raw cells",
+    "PACK_UV_WARN_N": "External open-drain voltage warning; threshold and monitor missing",
+    "LOGIC_START_ALLOW": "Candidate replaces former isolator output; rail/partial-power levels not qualified",
+    "MAIN_START_ALLOW": "Additional system drive permission; downstream connection not implemented",
+    "CTRL_HOST_SWDIO": "Debug port, connector not selected",
+    "CTRL_HOST_SWCLK": "Debug port, connector not selected"
+  },
+  "checks": {
+    "no_old_cell_reference": true,
+    "dedicated_aux_supply": true,
+    "watchdog_reset_retained": true,
+    "reset_clears_latch": true,
+    "aux_request_gated": true,
+    "main_request_gated": true,
+    "ldo_enable_not_tied_to_pack": true
+  },
+  "check_scope": "Pin connectivity only; not timing or fault proof",
+  "remaining": [
+    "Dedicated branch fault protection, thermal/current and capacitance budgets",
+    "Pack undervoltage warning, fresh physical user request input, Tab5 boot/shutdown handshake",
+    "Power-loss/bounce and partially powered output behavior; latch clear timing",
+    "Main permission AND into existing drive rearm; no replacement of independent stop",
+    "New firmware state machine, watchdog timing and layout"
+  ],
+  "electrically_operational": false,
+  "manufacturing_release": false
+}
