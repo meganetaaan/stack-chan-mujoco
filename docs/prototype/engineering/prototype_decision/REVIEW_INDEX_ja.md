@@ -65,3 +65,5 @@
 [統合監視ノードの静的比較](../../../../validation/health_node_static_v1/README_ja.md)：単独出力の比較負荷0.418 mA。R9は10 kΩを維持して品番TNPW060310K0BEEAを割当。表記条件とのLow/High余裕を確認したが、全温度・電源遷移の合格ではない。
 
 [当初完了条件と残件の再照合](../../../../validation/prototype_remaining_scope_v1/README_ja.md)：#22は根拠付き近似を許容し、PSpice必須ではない。現204部品には品番／値未確定20点。主遮断ゲートRC・電流制限・過電圧、Tab5枝、全電力予算の確定を優先する。
+
+[外付けゲートRCの代替判断](../../../../validation/integrated_reverse_alternative_v1/README_ja.md)：TPS25948の片脚1個置換は温度範囲抵抗による比較で29〜34 mV不足し不採用。現ゲート駆動の不足仕様はRC仮置きで解消しない。保護群分割・変換器精度・駆動保証のいずれかを先に判断する。
