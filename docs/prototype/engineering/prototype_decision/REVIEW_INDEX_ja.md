@@ -41,7 +41,7 @@
 | 旧全系統 | [250部品接続候補](../../../../schematics/power/system_power_integration_candidate_v1/README_ja.md) | 生セル側BQ保護を含む旧構成。未選定部品あり。LB-020採用済み完成回路ではない |
 | 保護内蔵電池への移行 | [移行監査](../../../../validation/protected_pack_transition_v1/README_ja.md) | 旧電池回路の削除だけでは給電・起動許可・監視が成立しない |
 | 新しい制御電源枝 | [41部品候補](../../../../schematics/power/pack_control_ramp_candidate_v1/README_ja.md) | 191部品案へ接続候補として統合。既知部分負荷と仮定による充電比較で、突入電流上限や起動合格ではない |
-| メーカー過渡モデル | [PSpiceプローブv3](../../../../validation/pack_startup_pspice_v3/README_ja.md) | v4の制御側追加負荷を反映。9/12.6 Vの回路を出力済み、未実行。対応環境と波形が必要。温度・MCU起動等のモデル限界あり |
+| メーカー過渡モデル | [PSpiceプローブv3](../../../../validation/pack_startup_pspice_v3/README_ja.md) | v4の制御側追加負荷を反映。9/12.6 Vの回路を出力済み、未実行。メーカー模型の実行には対応環境が必要。#22は根拠付き近似も可。温度・MCU起動等のモデル限界あり |
 
 [主起動許可の3部品接続候補](../../../../schematics/power/pack_main_allow_interface_candidate_v1/README_ja.md)では、SYS無給電時のHCS11直結を避け、受信側給電バッファを選定。191部品案へ接続候補として統合したが、電源遷移と信号余裕は未検証。
 
@@ -63,3 +63,5 @@
 [左右変換器の起動許可](../../../../validation/regulator_request_connection_v1/README_ja.md)：PA5/PA6→シュミット→CTRL許可ラッチとのANDを接続。SYSリセットから独立。追加抵抗比較負荷3.876 mA・容量400 nFは旧起動プローブに未反映。ENAしきい値、部分給電、全予算は未完。
 
 [統合監視ノードの静的比較](../../../../validation/health_node_static_v1/README_ja.md)：単独出力の比較負荷0.418 mA。R9は10 kΩを維持して品番TNPW060310K0BEEAを割当。表記条件とのLow/High余裕を確認したが、全温度・電源遷移の合格ではない。
+
+[当初完了条件と残件の再照合](../../../../validation/prototype_remaining_scope_v1/README_ja.md)：#22は根拠付き近似を許容し、PSpice必須ではない。現204部品には品番／値未確定20点。主遮断ゲートRC・電流制限・過電圧、Tab5枝、全電力予算の確定を優先する。

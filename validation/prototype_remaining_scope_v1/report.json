@@ -1,0 +1,210 @@
+{
+  "assembly": "schematics/power/protected_pack_system_candidate_v6/assembly.json",
+  "assembly_sha256": "26731a902f2924b14dc58e5fdf042fb6c18bbd25f404708793f5980aa9261e11",
+  "issues_snapshot_sha256": "f560501f4c6496ac7c15fbd2bbf1e0fcb37037211c5a5813c933f82e0f19e049",
+  "unselected_parts": [
+    {
+      "reference": "SYS__R1",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "value_ohm": null,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "SYS__TIMER_CT"
+      }
+    },
+    {
+      "reference": "SYS__R2",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "value_ohm": null,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "SYS__RELEASE_QUALIFIED"
+      }
+    },
+    {
+      "reference": "SYS__R3",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "value_ohm": null,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "SYS__SUPERVISOR_CT"
+      }
+    },
+    {
+      "reference": "SYS__R4",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "value_ohm": null,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "SYS__RESET_N"
+      }
+    },
+    {
+      "reference": "SYS__R6",
+      "part": "220k pulldown; total +/-1% budget, part pending",
+      "value_ohm": null,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__POWER_ENABLE_COMMAND",
+        "2": "PACK_RETURN"
+      }
+    },
+    {
+      "reference": "SYS__R7",
+      "part": "4.7k series; total +/-1% budget, part pending",
+      "value_ohm": null,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__ENABLE_BUFFER_OUT",
+        "2": "SYS__MAIN_EFUSE_EN"
+      }
+    },
+    {
+      "reference": "SYS__R8",
+      "part": "100k CT candidate; part pending",
+      "value_ohm": null,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__STOP_AUX3V3",
+        "2": "SYS__CLAMP_CT"
+      }
+    },
+    {
+      "reference": "SYS__R15",
+      "part": "3k local button pullup; total +/-1% budget; exact part pending",
+      "value_ohm": null,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "SYS__BUTTON_RAW"
+      }
+    },
+    {
+      "reference": "SYS__LEFT_R_GATE",
+      "part": null,
+      "value_ohm": null,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__LEFT_DVDT",
+        "2": "SYS__LEFT_REVERSE_GATE"
+      }
+    },
+    {
+      "reference": "SYS__LEFT_C_GATE",
+      "part": null,
+      "value_ohm": null,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__LEFT_REVERSE_GATE",
+        "2": "PACK_RETURN"
+      }
+    },
+    {
+      "reference": "SYS__RIGHT_R_GATE",
+      "part": null,
+      "value_ohm": null,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__RIGHT_DVDT",
+        "2": "SYS__RIGHT_REVERSE_GATE"
+      }
+    },
+    {
+      "reference": "SYS__RIGHT_C_GATE",
+      "part": null,
+      "value_ohm": null,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__RIGHT_REVERSE_GATE",
+        "2": "PACK_RETURN"
+      }
+    },
+    {
+      "reference": "SYS__LEFT_R_ILM",
+      "part": null,
+      "value_ohm": 1100,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__LEFT_ILM",
+        "2": "PACK_RETURN"
+      }
+    },
+    {
+      "reference": "SYS__RIGHT_R_ILM",
+      "part": null,
+      "value_ohm": 1100,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__RIGHT_ILM",
+        "2": "PACK_RETURN"
+      }
+    },
+    {
+      "reference": "SYS__LEFT_R_OV_TOP",
+      "part": null,
+      "value_ohm": 35700,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__LEFT_REGULATOR_OUT",
+        "2": "SYS__LEFT_OVLO_SENSE"
+      }
+    },
+    {
+      "reference": "SYS__LEFT_R_OV_BOTTOM",
+      "part": null,
+      "value_ohm": 10000,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__LEFT_OVLO_SENSE",
+        "2": "PACK_RETURN"
+      }
+    },
+    {
+      "reference": "SYS__RIGHT_R_OV_TOP",
+      "part": null,
+      "value_ohm": 35700,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__RIGHT_REGULATOR_OUT",
+        "2": "SYS__RIGHT_OVLO_SENSE"
+      }
+    },
+    {
+      "reference": "SYS__RIGHT_R_OV_BOTTOM",
+      "part": null,
+      "value_ohm": 10000,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__RIGHT_OVLO_SENSE",
+        "2": "PACK_RETURN"
+      }
+    },
+    {
+      "reference": "TAB5__R_ILIM",
+      "part": null,
+      "value_ohm": null,
+      "value_F": null,
+      "pins": {
+        "1": "TAB5_ILIM",
+        "2": "TAB5_PROTECT_RTN"
+      }
+    },
+    {
+      "reference": "TAB5__C_DVDT",
+      "part": null,
+      "value_ohm": null,
+      "value_F": null,
+      "pins": {
+        "1": "TAB5_DVDT",
+        "2": "TAB5_PROTECT_RTN"
+      }
+    }
+  ],
+  "count": 20,
+  "scope": "Explicit missing/placeholder part fields; not all unspecified tolerances, ratings, wiring or model parameters",
+  "goal_complete": false
+}
