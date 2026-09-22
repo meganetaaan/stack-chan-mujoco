@@ -1,0 +1,37 @@
+{
+  "frozen_XML_hash_verified": true,
+  "fixture_runtime_base_mass_kg": 0.5229396482513734,
+  "fixture_runtime_whole_mass_kg": 0.9184400455756535,
+  "current_numeric_and_homogeneous_printed_partial_kg": 0.672388822481903,
+  "partial_compared_to_old_base_ratio": 1.2857866576578458,
+  "partial_minus_old_base_kg": 0.1494491742305296,
+  "component_counts": {
+    "numeric": 78,
+    "homogeneous_print_comparison": 7,
+    "unassigned_CAD_parts": 30
+  },
+  "exact_like_for_like_mass_comparison": false,
+  "current_partial_is_guaranteed_lower_bound": false,
+  "old_mass_sensitivity_fraction_documented": 0.05,
+  "within_old_base_plus5percent_numeric_comparison": false,
+  "frozen_loads_qualify_current_design": false,
+  "reason": "Changed geometry, incomplete mass/COM/inertia and different component coverage; old uniform mass sensitivity does not cover local redistribution. Recompute after integration; no force/current scaling claim.",
+  "trace_provenance_limit": "EPIC4 trace reports name joints/settings but do not embed complete historical runtime body-mass array; current frozen fixture initialization is verified, not reconstructed historical execution",
+  "next_required": [
+    "Finish whole-body mass/COM/inertia and model-frame transforms",
+    "Preserve EPIC4 traces as historical comparisons",
+    "Build separate integrated model with current geometry and inertias",
+    "Export simultaneous loads through same structural/electrical interface, retaining failures and tolerances"
+  ],
+  "model_modified": false,
+  "physics_rerun": false,
+  "manufacturing_release": false,
+  "source_sha256": {
+    "validation/current_torso_mass_v2/report.json": "bcc79f14082da117639cf041e000742cb9902a93e1046a1dd128d520d2470e7b",
+    "validation/torso_print_conditions_v1/report.json": "f1ac63916104047b4db5ef48e7cdeda415cc723c18931af0f7cacb79294ec7c0",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/models/scene.xml": "b79bc86618c58c44088fb9211c1807a09c27ea8f623152243a86b7959e74b434",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/FROZEN_FILES.json": "e08e2e51941cac7455e7c5571b7dae984eeb6d5205246a495458c125c21d66bf",
+    "software/sim/actuator/fixtures.py": "d0726f1020e9c1d4503946247c8eb208102232ac963062bb0c394a51643628dd",
+    "docs/prototype/LOAD_INTERFACE_ja.md": "bee6e8f61722c564a16b51d15abdf7c4af34649149c18a5a70d7a74697f322a0"
+  }
+}
