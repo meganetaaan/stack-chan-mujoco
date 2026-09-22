@@ -9,3 +9,5 @@
 ```sh
 LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bin/python software/sim/structural/integrate_serviceable_torso_v3.py
 ```
+
+後続の[選定工具アクセス検査](../current_face_tool_access_v1/README_ja.md)により、Tab5固定ねじは顔ユニット単体で操作する順序を採用。本体装着中は工具干渉あり。側面ねじの公称工具・抜取り経路も同115部品で照合した。形状変更や締結承認ではない。
