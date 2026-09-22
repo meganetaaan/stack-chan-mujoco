@@ -38,6 +38,8 @@
 | 新しい制御電源枝 | [41部品候補](../../../../schematics/power/pack_control_ramp_candidate_v1/README_ja.md) | 全系統へ未統合。既知部分負荷と仮定による充電比較で、突入電流上限や起動合格ではない |
 | メーカー過渡モデル | [PSpiceプローブ](../../../../validation/pack_startup_pspice_v1/README_ja.md) | 9/12.6 Vの回路を出力済み、未実行。対応環境と波形が必要。温度・MCU起動等のモデル限界あり |
 
+[主起動許可の3部品接続候補](../../../../schematics/power/pack_main_allow_interface_candidate_v1/README_ja.md)では、SYS無給電時のHCS11直結を避け、受信側給電バッファを選定。電源遷移と信号余裕は未検証で、全系統へ未統合。
+
 250部品と41部品を合算したBOMを購入用にしない。次の設計作業は全負荷予算と制御・停止境界の接続、メーカー条件との照合、対応環境での起動・保護検証。未選定回路を実測待ちとして処理しない。
 
 ## 完了条件と後続実測
