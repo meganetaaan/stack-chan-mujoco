@@ -42,3 +42,10 @@ LD_LIBRARY_PATH="$PWD/.tools/root/usr/lib/x86_64-linux-gnu" .venv-engineering/bi
 
 出力：`torso_candidate.step`、`report.json`、事前条件`plan.json`。
 造形方向や製造用図面が確定した組立ではない。#17–20は未完了。
+
+## 後続照合
+
+`validation/torso_module_contacts_v1`で重複16組をメーカー共通STEPと照合した。
+公称重複は全16組で0mm³、距離は取付接触の0mm。
+5V専用形状・公差・基板変形の適合までは示さない。元の包絡フラグを削除せず、
+限定されたモデルでの解消記録として参照する。
