@@ -1,0 +1,60 @@
+{
+  "source_sha256": {
+    "schematics/power/protected_pack_system_candidate_v3/assembly.json": "fbdf56cfdbc3d95193827724d4349781e5d0cfc2e5f1735380b9c87f8a009c68"
+  },
+  "sources": [
+    {
+      "url": "https://www.ti.com/lit/ds/symlink/sn74lvc1g07.pdf",
+      "revision": "AG October2025",
+      "sections": [
+        "5.3 input edge10ns/V",
+        "5.5 input capacitance4pF typical"
+      ]
+    },
+    {
+      "url": "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf",
+      "revision": "16.1 September2024",
+      "sections": [
+        "2 unlimited input rise/fall",
+        "6 GV pinout",
+        "7 noninverting truth table"
+      ]
+    },
+    {
+      "url": "https://assets.nexperia.com/documents/data-sheet/74LVC1G07.pdf",
+      "revision": "18 September2024",
+      "sections": [
+        "9 edge limit10ns/V despite introductory Schmitt wording"
+      ]
+    }
+  ],
+  "rejected_candidate": "protected_pack_system_candidate_v3",
+  "case": "CTRL3V3 stable3.3V; previously low MCU PA4 becomes high impedance",
+  "engineering_comparison": {
+    "R_ohm": 10000,
+    "VCC_V": 3.3,
+    "C_F": 4e-12,
+    "C_status": "TI typical input only, not guaranteed maximum",
+    "MCU_and_trace_capacitance_included": false,
+    "leakage_included": false,
+    "VIL_V": 0.8,
+    "VIH_V": 2.0,
+    "threshold_window_time_ns": 26.157058696266567,
+    "threshold_window_average_ns_per_V": 21.797548913555474,
+    "manufacturer_limit_ns_per_V": 10,
+    "capacitance_for_average_limit_pF": 1.8350687115616369
+  },
+  "decision": "Reject direct10k-to-SN74LVC1G07 as qualified design; nominal typical-capacitance comparison already exceeds limit, not proof every specimen fails",
+  "correction": "Add74LVC1G17GV and100nF on CTRL3V3; preserve clear polarity and OD isolation",
+  "alternative_rejected": "Nexperia74LVC1G07 also specifies10ns/V; Schmitt action wording does not remove requirement",
+  "termination_condition": "Stop RC refinement of rejected input. Next close conditioned output edge/DC/load and power sequence behavior before approval.",
+  "remaining": [
+    "Schmitt output edge into OD input with bounded pin/trace capacitance",
+    "MCU reset pad state/leakage and Schmitt threshold margins",
+    "Output1k pullup and AUP input edge/leakage with new driver",
+    "Full reset fanout, cold start, brownout and asynchronous rail loss",
+    "CTRL current and capacitance budgets include new two buffers and pullup"
+  ],
+  "electrically_qualified": false,
+  "manufacturing_release": false
+}

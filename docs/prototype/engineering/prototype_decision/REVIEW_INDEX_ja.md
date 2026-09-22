@@ -37,7 +37,7 @@
 
 | 対象 | 現在の参照先 | 適用限界 |
 |---|---|---|
-| 新電池の統合入口 | [194部品接続候補](../../../../schematics/power/protected_pack_system_candidate_v3/README_ja.md) | 制御枝/主許可/補助許可/クリア駆動を接続。4信号境界と全過渡・保護協調は未完。未動作 |
+| 新電池の統合入口 | [196部品接続候補](../../../../schematics/power/protected_pack_system_candidate_v4/README_ja.md) | 制御枝/主許可/補助許可/クリア駆動を接続。4信号境界と全過渡・保護協調は未完。未動作 |
 | 旧全系統 | [250部品接続候補](../../../../schematics/power/system_power_integration_candidate_v1/README_ja.md) | 生セル側BQ保護を含む旧構成。未選定部品あり。LB-020採用済み完成回路ではない |
 | 保護内蔵電池への移行 | [移行監査](../../../../validation/protected_pack_transition_v1/README_ja.md) | 旧電池回路の削除だけでは給電・起動許可・監視が成立しない |
 | 新しい制御電源枝 | [41部品候補](../../../../schematics/power/pack_control_ramp_candidate_v1/README_ja.md) | 191部品案へ接続候補として統合。既知部分負荷と仮定による充電比較で、突入電流上限や起動合格ではない |
@@ -53,3 +53,5 @@
 設計・解析の残件は#17〜#24に残す。実測事項は#48/#49で追跡するが、実機製作・実測とEPIC #7以降の実装は今回の対象外。
 各候補のREADMEに再現方法・結果・限界があり、[変更履歴](CURRENT_CANDIDATES_ja.md)には失敗案も残す。
 完成を主張するには、最新の統合構成に対して当初の強度・動作余裕・通常/最悪/異常給電の証跡が必要。現時点でクローズ対象はない。
+
+[クリア入力速度の再評価](../../../../validation/sequence_clear_input_v1/README_ja.md)：旧194部品の10 kΩ直接入力は代表容量だけでも21.798 ns/Vとなり10 ns/V条件を超える比較結果。196部品では74LVC1G17GVを追加。旧入力の詳細化は終了し、新段の出力・電源遷移・予算の確認へ進む。回路成立は未証明。
