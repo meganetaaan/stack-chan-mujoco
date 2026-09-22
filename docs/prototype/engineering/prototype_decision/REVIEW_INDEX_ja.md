@@ -69,3 +69,5 @@
 [外付けゲートRCの代替判断](../../../../validation/integrated_reverse_alternative_v1/README_ja.md)：TPS25948の片脚1個置換は温度範囲抵抗による比較で29〜34 mV不足し不採用。現ゲート駆動の不足仕様はRC仮置きで解消しない。保護群分割・変換器精度・駆動保証のいずれかを先に判断する。
 
 [精度改善と保護分割の比較](../../../../validation/precision_module_comparison_v1/README_ja.md)：次の詳細候補はPTH08T240W×2＋TPS25948系。未割当降下の比較余裕41〜46 mVで、Pololu維持・保護分割の9〜12 mVより大きい。未統合であり、周辺容量・停止入力・14 V入力上限・熱・CADが未確認。
+
+[PTH入力容量候補と出力安定性条件](../../../../schematics/power/pth_input_cap_candidate_v1/README_ja.md)：EEUFR1C471を入力側各1個の候補に選定。5 V時の必要リップル条件を700 mArmsへ修正。出力は全容量バンクの最低ESR条件が未確認で、PTH採用確定は保留。
