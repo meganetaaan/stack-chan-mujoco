@@ -71,3 +71,5 @@
 [精度改善と保護分割の比較](../../../../validation/precision_module_comparison_v1/README_ja.md)：次の詳細候補はPTH08T240W×2＋TPS25948系。未割当降下の比較余裕41〜46 mVで、Pololu維持・保護分割の9〜12 mVより大きい。未統合であり、周辺容量・停止入力・14 V入力上限・熱・CADが未確認。
 
 [PTH入力容量候補と出力安定性条件](../../../../schematics/power/pth_input_cap_candidate_v1/README_ja.md)：EEUFR1C471を入力側各1個の候補に選定。5 V時の必要リップル条件を700 mArmsへ修正。出力は全容量バンクの最低ESR条件が未確認で、PTH採用確定は保留。
+
+[出力安定性の設計／実測境界](output_stability/DECISION_ja.md)：PTH08T241Wを低ESR対応の比較候補に追加。局所実効容量と全負荷範囲は設計残件。E0-S/E1-S手順を#49へ引き継ぐが未実施で、親Issueは未完。
