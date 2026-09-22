@@ -37,7 +37,7 @@
 
 | 対象 | 現在の参照先 | 適用限界 |
 |---|---|---|
-| 新電池の統合入口 | [191部品接続候補](../../../../schematics/power/protected_pack_system_candidate_v1/README_ja.md) | 旧生セル回路を除去し制御枝/主許可を統合。7信号境界・保護協調は未完。未動作 |
+| 新電池の統合入口 | [191部品接続候補](../../../../schematics/power/protected_pack_system_candidate_v2/README_ja.md) | 制御枝/主許可/補助許可を接続。5信号境界と全過渡・保護協調は未完。未動作 |
 | 旧全系統 | [250部品接続候補](../../../../schematics/power/system_power_integration_candidate_v1/README_ja.md) | 生セル側BQ保護を含む旧構成。未選定部品あり。LB-020採用済み完成回路ではない |
 | 保護内蔵電池への移行 | [移行監査](../../../../validation/protected_pack_transition_v1/README_ja.md) | 旧電池回路の削除だけでは給電・起動許可・監視が成立しない |
 | 新しい制御電源枝 | [41部品候補](../../../../schematics/power/pack_control_ramp_candidate_v1/README_ja.md) | 191部品案へ接続候補として統合。既知部分負荷と仮定による充電比較で、突入電流上限や起動合格ではない |

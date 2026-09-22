@@ -1,0 +1,43 @@
+{
+  "source_sha256": "b4d9e6c049e87267f37b34b2c9fb0dd4f27eac93f6b20a0174086727bb963edc",
+  "decision": "Join LOGIC_START_ALLOW to SYS__LOGIC_START_ALLOW as a static-compatible candidate, not transient qualification",
+  "criteria_before_calculation": {
+    "high_min_V": 1.0,
+    "low_max_V": 0.4,
+    "unpowered_driver_off_boundary_sink_exceeds_sources": true
+  },
+  "resistor_total_tolerance_assumption": 0.01,
+  "calculations": {
+    "high_SHDN_V_at_driver3V_table_bound": 2.1686535288725937,
+    "low_SHDN_V_at_driver3V_table_bound": 0.3733083859332732,
+    "pulldown_sink_A_at0_4V": 3.9603960396039605e-05,
+    "allocated_source_A_eFuse_plus_off_driver": 1.9999999999999998e-05,
+    "CTRL_high_extra_branch_current_A_at3_6V": 0.00034057851239669427
+  },
+  "checks": {
+    "high_point": true,
+    "low_point": true,
+    "driver_off_sink_capacity": true,
+    "SHDN_uses_system_ground": true,
+    "RTN_not_shortened_to_GND": true
+  },
+  "leakage_assumption": "TPS266010uA condition is specified at0.4V; using magnitude10uA at other SHDN voltages is a comparison allocation, not a guaranteed bound",
+  "source_conditions": [
+    "TPS2660 RevG7.5 test default24V;9.3.5.7 SHDN low requires10uA sink at0.4V, enable>=1V",
+    "SN74LVC1G08 RevAA5.5: at3V/-16mA VOH>=2.4V;at3V/+16mA VOL<=0.4V;Ioff<=10uA atVCC0V",
+    "3V driver output bounds used as point check; full rail tolerance/temperature/startup are not thereby simulated"
+  ],
+  "remaining": [
+    "Receiver input-voltage applicability across3S range and transient overshoot",
+    "CTRL ramp/brownout0<VCC<specified operation and reset/latch clearing",
+    "SHDN fault-latch reset and PCM restore sequencing",
+    "Back-power/leakage with stored energy and upstream reverse transients",
+    "Complete current budget and whole-power validation"
+  ],
+  "full_operating_envelope_qualified": false,
+  "manufacturing_release": false,
+  "sources": [
+    "https://www.ti.com/lit/ds/symlink/tps2660.pdf",
+    "https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf"
+  ]
+}
