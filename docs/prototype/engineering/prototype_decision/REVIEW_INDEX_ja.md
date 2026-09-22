@@ -27,6 +27,8 @@
 
 [旧負荷と最新質量の適用性確認](../../../../validation/current_load_mass_basis_v1/README_ja.md)：旧base 523 gに対し、現候補の既知部分＋均質PETG比較は672 g。集計範囲は異なり保証重量差ではないが、旧±5%感度試験を現構成の合格根拠にできない。全機統合後に負荷を再生成する。
 
+[最新CADの部分慣性](../../../../validation/current_torso_inertia_v1/README_ja.md)は85点の比較値を集計し、未割当30点を拒否する検査を追加。内部均質分布の仮定で、MuJoCo座標への変換と全身入力は未完。
+
 ## 電源
 
 優先比較候補は保護内蔵ROBOTIS LB-020とPololu D42V110F5×2。

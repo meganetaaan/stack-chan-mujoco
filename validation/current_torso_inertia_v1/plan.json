@@ -1,0 +1,11 @@
+{
+  "frame": "Assembly CAD origin and axes; mm converted to m; not MuJoCo body frame",
+  "criteria": [
+    "One row per current CAD part",
+    "Reject missing masses in complete aggregate",
+    "Independent translated cuboid and two-body parallel-axis checks",
+    "Use pre-insertion carrier shape consistently for both mass and moments"
+  ],
+  "stop": "One CAD moment aggregation, no dynamics or strength acceptance",
+  "assumption": "Each allocated part has uniform mass distribution within its chosen CAD shape, including electronics/fasteners; comparison only"
+}
