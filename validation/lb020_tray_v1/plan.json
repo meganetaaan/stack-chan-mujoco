@@ -1,0 +1,24 @@
+{
+  "battery_xyz_mm": [
+    24,
+    70,
+    36
+  ],
+  "center_mm": [
+    29,
+    0,
+    80
+  ],
+  "side_clearance_mm": 0.7,
+  "clearance_basis": "engineering assumption, not qualified swelling/tolerance allowance",
+  "wall_floor_mm": 1.5,
+  "wall_height_mm": 8,
+  "overlap_flag_mm3": 0.01,
+  "criteria": [
+    "One valid connected tray solid",
+    "No battery volume intersection",
+    "No new volume intersection with other98 torso parts",
+    "Torso axis-aligned bounds not enlarged"
+  ],
+  "stop": "One geometry and static screen; preserve failed criteria; no FE before retention and load path defined"
+}
