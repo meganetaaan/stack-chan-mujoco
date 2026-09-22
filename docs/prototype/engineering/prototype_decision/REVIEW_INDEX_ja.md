@@ -73,3 +73,5 @@
 [PTH入力容量候補と出力安定性条件](../../../../schematics/power/pth_input_cap_candidate_v1/README_ja.md)：EEUFR1C471を入力側各1個の候補に選定。5 V時の必要リップル条件を700 mArmsへ修正。出力は全容量バンクの最低ESR条件が未確認で、PTH採用確定は保留。
 
 [出力安定性の設計／実測境界](output_stability/DECISION_ja.md)：PTH08T241Wを低ESR対応の比較候補に追加。局所実効容量と全負荷範囲は設計残件。E0-S/E1-S手順を#49へ引き継ぐが未実施で、親Issueは未完。
+
+[PTH停止インターフェース候補](../../../../schematics/power/pth_inhibit_candidate_v1/README_ja.md)：左右12部品の接続を具体化。無給電ALLOW漏れの比較で初案100 kΩを退け、解除側4.7 kΩへ変更。BSS138のメーカー差、起動競争、温度・漏れの適用性は未解決。全体v6未置換、#24未完。
