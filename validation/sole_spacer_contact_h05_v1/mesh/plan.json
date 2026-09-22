@@ -1,0 +1,17 @@
+{
+  "scope": "Mesh both cropped parts together, then separate nodes while retaining identical contact triangles.",
+  "mesh_mm": 0.5,
+  "source_sha256": {
+    "validation/sole_lock_boss_screen_v1/boss.step": "99dba25fc9cd82cdab8762dc51382d890e33f49bfb274ee50a3c7d86bcd1eed6",
+    "validation/sole_spacer_contact_geometry_v1/spacer.step": "c51066c58f013d9cdf90e20e7ef130f5f1dba3a5c43cd2594121bfec23fac82f"
+  },
+  "criteria": {
+    "volume_error_mm3": 1e-06,
+    "matching_contact_triangle_coordinates": true,
+    "patch_area_relative_error": 0.01
+  },
+  "limitations": [
+    "Mesh preparation only; equal interface coordinates are duplicated in exported parts, not bonded.",
+    "Local cropped geometry and nominal bearing shapes remain assumptions."
+  ]
+}

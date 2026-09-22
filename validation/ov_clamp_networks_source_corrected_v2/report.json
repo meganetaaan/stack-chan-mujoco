@@ -1,0 +1,114 @@
+{
+  "criteria": {
+    "normal_max_V": 5.25,
+    "servo_max_V": 6.0,
+    "pin_max_V": 1.5,
+    "clamp_min_current_A": 0.0001
+  },
+  "criteria_classification": {
+    "clamp_min_current_A": "Retained 100uA engineering screen; not the TLV431AI table maximum"
+  },
+  "manufacturer_current_specification": {
+    "TLV431AI_IK_min_max_A": 8e-05,
+    "TLV431AQ_IK_min_max_A": 0.0001,
+    "TLV431B_IK_min_max_A": 0.0001,
+    "conditions": "VKA=VREF; table default TA=25C unless otherwise specified; do not extrapolate to adjusted-voltage/full-temperature operation"
+  },
+  "candidate": "TLV431AI; not selected for assembly",
+  "source": "https://www.ti.com/lit/ds/symlink/tlv431.pdf",
+  "source_revision": "SLVS139Z June 2024 sections 5.3 and 5.6",
+  "rows": [
+    {
+      "divider_ohm": [
+        35700,
+        10000
+      ],
+      "clamp_feedback_ohm": [
+        1000,
+        20000
+      ],
+      "resistor_only_trip_V": [
+        7.357570912657343,
+        7.690967443873874
+      ],
+      "conditional_clamp_V": [
+        1.2756286213786214,
+        1.3292775266266263
+      ],
+      "minimum_cathode_current_at_loaded_pin_limit_A": 2.8969560531865332e-05,
+      "resistor_loading_screen_pass": false,
+      "conditional_clamp_screen_pass": false
+    },
+    {
+      "divider_ohm": [
+        35700,
+        10000
+      ],
+      "clamp_feedback_ohm": [
+        10000,
+        200000
+      ],
+      "resistor_only_trip_V": [
+        5.561885877692308,
+        5.814498254684684
+      ],
+      "conditional_clamp_V": [
+        1.2756286213786214,
+        1.3373856266266264
+      ],
+      "minimum_cathode_current_at_loaded_pin_limit_A": 2.057072153496247e-05,
+      "resistor_loading_screen_pass": true,
+      "conditional_clamp_screen_pass": false
+    },
+    {
+      "divider_ohm": [
+        3570,
+        1000
+      ],
+      "clamp_feedback_ohm": [
+        1000,
+        20000
+      ],
+      "resistor_only_trip_V": [
+        5.565095664692307,
+        5.811282041684684
+      ],
+      "conditional_clamp_V": [
+        1.2756286213786214,
+        1.3292775266266263
+      ],
+      "minimum_cathode_current_at_loaded_pin_limit_A": 0.00022546257255756704,
+      "resistor_loading_screen_pass": true,
+      "conditional_clamp_screen_pass": true
+    },
+    {
+      "divider_ohm": [
+        3570,
+        1000
+      ],
+      "clamp_feedback_ohm": [
+        10000,
+        200000
+      ],
+      "resistor_only_trip_V": [
+        5.385527161195804,
+        5.623635122765766
+      ],
+      "conditional_clamp_V": [
+        1.2756286213786214,
+        1.3373856266266264
+      ],
+      "minimum_cathode_current_at_loaded_pin_limit_A": 0.00020773171675394142,
+      "resistor_loading_screen_pass": true,
+      "conditional_clamp_screen_pass": true
+    }
+  ],
+  "qualified": false,
+  "limits": [
+    "Feedback resistors load the OVLO divider even before regulation. Trip values omit unknown pre-regulation cathode current and are not guaranteed trip bounds.",
+    "Reference range 1.215..1.265V is specified at 10mA; actual lower current accuracy remains unbounded here.",
+    "Iref 0..0.9uA is a comparison envelope, not a whole-state guarantee.",
+    "Only initial resistor tolerance is covered; temperature and aging need allocation.",
+    "No capacitance, stability or transient overshoot proof; do not integrate on this screen alone."
+  ]
+}

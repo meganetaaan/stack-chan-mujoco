@@ -1,0 +1,57 @@
+{
+  "part": "STM32C011F6P6",
+  "package": "TSSOP20",
+  "status": "pin_allocation_candidate_not_integrated",
+  "role": "Power sequencing only; fast fault cutoff remains external hardware",
+  "source": "https://www.st.com/resource/en/datasheet/stm32c011f4.pdf",
+  "source_revision": "DS13866 Rev 5 February 2026",
+  "source_pages": [28, 29, 30, 37, 60, 61, 93],
+  "supply": "LOGIC3V3",
+  "manufacturer_operating_supply_V": [2.0, 3.6],
+  "manufacturer_ambient_C": [-40, 85],
+  "pins": {
+    "1": {"port": "PB7", "role": "input", "signal": "INDEPENDENT_HEALTH"},
+    "2": {"port": "PC14", "role": "input", "signal": "MONITOR_START_READY_LOGIC"},
+    "3": {"port": "PC15", "role": "input", "signal": "CLEAR_HOLD_DONE"},
+    "4": {"port": "VDD/VDDA", "role": "supply", "signal": "LOGIC3V3"},
+    "5": {"port": "VSS/VSSA", "role": "supply", "signal": "GND"},
+    "6": {"port": "PF2-NRST", "role": "reset", "signal": "SEQUENCER_NRST"},
+    "7": {"port": "PA0", "role": "input", "signal": "LEFT_SOURCE_STATUS_RECEIVED"},
+    "8": {"port": "PA1", "role": "input", "signal": "RIGHT_SOURCE_STATUS_RECEIVED"},
+    "9": {"port": "PA2", "role": "input", "signal": "LEFT_PG_CONDITIONED"},
+    "10": {"port": "PA3", "role": "input", "signal": "RIGHT_PG_CONDITIONED"},
+    "11": {"port": "PA4", "role": "input", "signal": "ARMED"},
+    "12": {"port": "PA5", "role": "input", "signal": "ENABLE_PERMISSION"},
+    "13": {"port": "PA6", "role": "input", "signal": "U6_CLR1_LOW_RECEIVED"},
+    "14": {"port": "PA7", "role": "input", "signal": "U6_CLR2_LOW_RECEIVED"},
+    "15": {"port": "PA8", "role": "output", "signal": "SEQUENCE_ENABLE_REQUEST"},
+    "16": {"port": "PA11", "role": "output", "signal": "SEQUENCE_CLEAR_REQUEST"},
+    "17": {"port": "PA12", "role": "output", "signal": "RESET_LOW_VALID"},
+    "18": {"port": "PA13", "role": "debug", "signal": "SWDIO"},
+    "19": {"port": "PA14-BOOT0", "role": "debug", "signal": "SWCLK_BOOT0"},
+    "20": {"port": "PB6", "role": "spare", "signal": null}
+  },
+  "internal_functions": {
+    "STARTUP_EXPIRED": "Timer comparison; required bound and clock tolerance not yet selected",
+    "startup_timer_run": "Internal timer start/reset; no external GPIO",
+    "clr_low": "Both independently qualified CLR observations true",
+    "source_valid": "Received source status AND qualified monitor validity; short-dip coverage unresolved"
+  },
+  "requirements": [
+    "Use internal clock; PC14 and PC15 allocated to inputs, no external crystal on these pins",
+    "Retain SWD and dedicated NRST; do not share their pins with enable outputs",
+    "Default sequence enable Low and clear request High while MCU reset or unprogrammed",
+    "MCU crash, debug halt and firmware update must not defeat independent fault inhibition",
+    "Do not sample unqualified raw window output or assign CLR observation from own clear command"
+  ],
+  "pending": [
+    "Exact orderable availability, decoupling, reset and programming circuit",
+    "Supply load and thermal budget, BOR configuration and option bytes",
+    "Input/output leakage and level budget for every connection",
+    "Source receivers and two physical CLR observation circuits",
+    "Clock tolerance, startup deadline, watchdog and asynchronous fault memory",
+    "Executable firmware and integrated transient/fault verification"
+  ],
+  "manufacturing_release": false,
+  "hardware_implemented": false
+}

@@ -2,6 +2,8 @@
 
 The electrical port is quasi-static: internal current-loop dynamics are an
 identified-later first-order approximation, not a winding inductance claim.
+Only energized operation at the constructor voltage is represented. Torque-off,
+brownout and disconnected-bus commutation require a different electrical model.
 """
 from pathlib import Path
 import json
@@ -22,7 +24,7 @@ class CurrentPositionBank:
         numeric=[dt,slew,voltage,current_tau,thermal_capacity,thermal_resistance,ambient,delay_s,lowpass,backlash]
         if not np.isfinite(numeric).all() or min(dt,slew,current_tau,thermal_capacity,thermal_resistance)<=0 or min(delay_s,lowpass,backlash)<0:
             raise ValueError('invalid actuator model parameters')
-        self.names=list(names);self.dt=dt;self.voltage=voltage
+        self.names=list(names);self.dt=dt;self._voltage=voltage
         self.current_alpha=-np.expm1(-dt/current_tau);self.backlash=backlash
         self.C=thermal_capacity;self.Rth=thermal_resistance;self.ambient=ambient
         specs=[CATALOG['models'][name] for name in names]
@@ -45,6 +47,11 @@ class CurrentPositionBank:
         self.reset(np.zeros(len(names)))
 
     @property
+    def voltage(self):
+        """Fixed operating point used to fit resistance, back EMF and limits."""
+        return self._voltage
+
+    @property
     def filtered(self):return self.filter.filtered
 
     def reset(self,target,strength=1.):
@@ -52,7 +59,10 @@ class CurrentPositionBank:
         self.current=np.zeros(len(self.names));self.temperature=np.full(len(self.names),float(self.ambient))
         self.telemetry={}
 
-    def step(self,q,qd,target):
+    def step(self,q,qd,target,*,power_state="energized"):
+        if power_state != "energized":
+            raise NotImplementedError("Only energized fixed-voltage operation is modeled; "
+                                      "torque-off, brownout and bus disconnection need commutation/energy models")
         q=np.asarray(q);qd=np.asarray(qd);target=np.asarray(target)
         if q.shape!=(len(self.names),) or qd.shape!=q.shape or target.shape!=q.shape or not np.isfinite([q,qd,target]).all():
             raise ValueError('finite joint arrays required')

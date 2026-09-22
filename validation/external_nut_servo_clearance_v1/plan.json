@@ -1,0 +1,14 @@
+{
+  "scope": "Neutral assembly check against mapped manufacturer servo and ankle gimbal.",
+  "criteria": {
+    "minimum_nominal_clearance_mm": 1.1,
+    "maximum_overlap_mm3": 0.01
+  },
+  "stop_condition": "One neutral assembly evaluation, both sides; no dimension sweep",
+  "limitations": [
+    "Tool cylinder is a reservation not a selected wrench",
+    "Neutral only; no motion clearance claim",
+    "Manufacturer CAD tolerance and mapping assumptions inherited",
+    "No harness or deflection"
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "status": "aux_start_domain_crossing_candidate",
+  "part": "ISO7710FDR",
+  "source": "https://www.ti.com/lit/ds/symlink/iso7710.pdf",
+  "revision": "SLLSER9E December2024",
+  "parts": [
+    {
+      "reference": "SYS__U_AUX_START_ISO",
+      "part": "ISO7710FDR",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_AUX_START_REQUEST",
+        "3": "BQ_CTRL3V3",
+        "4": "CELL_B_MINUS",
+        "5": "PACK_RETURN",
+        "6": "SYS__LOGIC_START_ALLOW",
+        "7": null,
+        "8": "SYS__STOP_AUX3V3"
+      }
+    },
+    {
+      "reference": "SYS__C_AUX_ISO_PRIMARY",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "SYS__C_AUX_ISO_SECONDARY",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "SYS__STOP_AUX3V3",
+        "2": "PACK_RETURN"
+      }
+    }
+  ],
+  "architecture": "VCC2 uses ungated STOP_AUX3V3, never the LOGIC3V3 rail this output enables. Grounds remain distinct; entire robot is not galvanically isolated because shunt remains.",
+  "default_state": "F suffix required: input open or primary power absent yields Low while output side powered per Table7-2. Output-side power absent is not covered by that Low statement.",
+  "primary_pulldown_change": {
+    "reference": "R_BQ_AUX_START_REQUEST_PD",
+    "old_ohm": 10000,
+    "new_ohm": 47500,
+    "part": "TNPW060347K5BEEA",
+    "reason": "Keep steady gate output load below100uA for low-current VOH screening"
+  },
+  "electrical_screen": {
+    "primary_supply_V": [
+      3.0,
+      3.6
+    ],
+    "secondary_supply_conditional_V": [
+      3.207,
+      3.393
+    ],
+    "ISO_input_current_testpoint_abs_A": 1e-05,
+    "ISO_VOH_drop_V": 0.3,
+    "ISO_VOL_max_V": 0.3,
+    "ISO_ICC1_DC_max_low_A": 0.0012,
+    "ISO_ICC1_DC_max_high_A": 0.0024,
+    "ISO_ICC2_DC_max_low_A": 0.0011,
+    "ISO_ICC2_DC_max_high_A": 0.0012,
+    "datasheet_condition": "Both supplies3.3V +/-10%; steady input rail/ground test points; no startup or arbitrary switching bound"
+  },
+  "remaining": [
+    "Combined STOP_AUX3V3 current/headroom and precharge budget including this added load",
+    "Reg1 budget adds up to2.4mA input-side DC current under stated conditions",
+    "Partial supply, intermediate input/output levels, startup and source loss transients",
+    "SHDN3S operation, fault paths, PCB routing, isolated-pin contamination and leakage",
+    "Signal-high failure is not independently detected by this channel",
+    "User rearm protocol and full startup sequence remain incomplete"
+  ],
+  "manufacturing_release": false
+}

@@ -1,0 +1,40 @@
+{
+  "scope": "Local boot nut-seat compression screen with explicitly idealized bearing supports.",
+  "source_sha256": "bd17f19ec7269c33183c59bec92a5b2abac3aeb16b34c5dba8ad7f9709b22473",
+  "crop_mm": {
+    "x": [
+      -38,
+      -30
+    ],
+    "y": [
+      -18.5,
+      -10.5
+    ],
+    "z": [
+      -16,
+      -12.8
+    ]
+  },
+  "mesh_mm": [
+    1,
+    0.7,
+    0.5
+  ],
+  "load_N": 20,
+  "young_MPa": 1120,
+  "poisson": 0.35,
+  "fixed": "All pad bottom facets z=-16 ideal clamp",
+  "load": "Entire cavity floor z=-14.6, downward 20 N; larger than actual nut bearing area",
+  "criteria": {
+    "displacement_mm": 0.2,
+    "stress_MPa": 5.6,
+    "last_displacement_relative_change": 0.05,
+    "last_stress_relative_change": 0.1
+  },
+  "limitations": [
+    "Single left rear local submodel, not whole boot or full joint.",
+    "Cut boundaries free; omitted surrounding material changes stiffness.",
+    "Load smeared over cavity floor, no contact/preload solution.",
+    "Isotropic PETG constants and allowable are unqualified assumptions; no creep/buckling."
+  ]
+}

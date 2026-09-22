@@ -1,0 +1,269 @@
+{
+  "time_s": 2.8009999999998025,
+  "joints": [
+    {
+      "joint": "left_hip_yaw",
+      "candidate_q_rad": 0.0341186953840369,
+      "baseline_q_rad": 0.034118254024309375,
+      "difference_rad": 4.413597275224057e-07,
+      "limits_rad": [
+        -0.261799387799149,
+        0.261799387799149
+      ],
+      "signed_margin_rad": 0.22768069241511213,
+      "reference_rad": 0.06596117387908257
+    },
+    {
+      "joint": "left_hip_roll",
+      "candidate_q_rad": 0.17831382695008988,
+      "baseline_q_rad": 0.17816180617183885,
+      "difference_rad": 0.0001520207782510219,
+      "limits_rad": [
+        -0.28,
+        0.28
+      ],
+      "signed_margin_rad": 0.10168617304991015,
+      "reference_rad": 0.18100973297050565
+    },
+    {
+      "joint": "left_hip_pitch",
+      "candidate_q_rad": 0.2919809882241382,
+      "baseline_q_rad": 0.292084069008226,
+      "difference_rad": -0.00010308078408777233,
+      "limits_rad": [
+        0.1,
+        1.35
+      ],
+      "signed_margin_rad": 0.1919809882241382,
+      "reference_rad": 0.2653786763042159
+    },
+    {
+      "joint": "left_knee",
+      "candidate_q_rad": -1.0250123417134718,
+      "baseline_q_rad": -1.024848858755115,
+      "difference_rad": -0.0001634829583567754,
+      "limits_rad": [
+        -1.95,
+        -0.35
+      ],
+      "signed_margin_rad": 0.6750123417134718,
+      "reference_rad": -0.9940195505498954
+    },
+    {
+      "joint": "left_ankle_pitch",
+      "candidate_q_rad": 0.7373888888337514,
+      "baseline_q_rad": 0.7373645161376902,
+      "difference_rad": 2.4372696061258914e-05,
+      "limits_rad": [
+        0.05,
+        1.35
+      ],
+      "signed_margin_rad": 0.6126111111662487,
+      "reference_rad": 0.7347767973972221
+    },
+    {
+      "joint": "left_ankle_roll",
+      "candidate_q_rad": -0.179206974102854,
+      "baseline_q_rad": -0.1792587538742146,
+      "difference_rad": 5.177977136061607e-05,
+      "limits_rad": [
+        -0.28,
+        0.28
+      ],
+      "signed_margin_rad": 0.10079302589714603,
+      "reference_rad": -0.17027186745530618
+    },
+    {
+      "joint": "right_hip_yaw",
+      "candidate_q_rad": -0.1253992479698454,
+      "baseline_q_rad": -0.12529721939894845,
+      "difference_rad": -0.00010202857089694484,
+      "limits_rad": [
+        -0.261799387799149,
+        0.261799387799149
+      ],
+      "signed_margin_rad": 0.13640013982930363,
+      "reference_rad": -0.1487961364249072
+    },
+    {
+      "joint": "right_hip_roll",
+      "candidate_q_rad": 0.16037718248585536,
+      "baseline_q_rad": 0.16150652803372836,
+      "difference_rad": -0.0011293455478730008,
+      "limits_rad": [
+        -0.28,
+        0.28
+      ],
+      "signed_margin_rad": 0.11962281751414466,
+      "reference_rad": 0.1119805975156518
+    },
+    {
+      "joint": "right_hip_pitch",
+      "candidate_q_rad": 0.32419294807194105,
+      "baseline_q_rad": 0.3239177256831105,
+      "difference_rad": 0.00027522238883054273,
+      "limits_rad": [
+        0.1,
+        1.35
+      ],
+      "signed_margin_rad": 0.22419294807194104,
+      "reference_rad": 0.30066023442558565
+    },
+    {
+      "joint": "right_knee",
+      "candidate_q_rad": -1.0422317129937295,
+      "baseline_q_rad": -1.043958301496604,
+      "difference_rad": 0.0017265885028745487,
+      "limits_rad": [
+        -1.95,
+        -0.35
+      ],
+      "signed_margin_rad": 0.6922317129937295,
+      "reference_rad": -1.030835089459151
+    },
+    {
+      "joint": "right_ankle_pitch",
+      "candidate_q_rad": 0.742828733419081,
+      "baseline_q_rad": 0.7414170008098827,
+      "difference_rad": 0.0014117326091982463,
+      "limits_rad": [
+        0.05,
+        1.35
+      ],
+      "signed_margin_rad": 0.6071712665809191,
+      "reference_rad": 0.6749515466696822
+    },
+    {
+      "joint": "right_ankle_roll",
+      "candidate_q_rad": -0.28002850550935193,
+      "baseline_q_rad": -0.2783355991908344,
+      "difference_rad": -0.0016929063185175397,
+      "limits_rad": [
+        -0.28,
+        0.28
+      ],
+      "signed_margin_rad": -2.850550935190599e-05,
+      "reference_rad": -0.260776733940559
+    }
+  ],
+  "contacts": [
+    {
+      "case": "candidate",
+      "feet": [
+        {
+          "body_id": 7,
+          "contacts": [],
+          "force_world_N": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "body_id": 13,
+          "contacts": [
+            {
+              "position_local_mm": [
+                43.99999540458618,
+                -29.99971937836655,
+                -21.86409226823007
+              ],
+              "normal_contact_force_N": 1.9759942501120822
+            },
+            {
+              "position_local_mm": [
+                -37.50000208028802,
+                -29.59779909665803,
+                -21.86561730999188
+              ],
+              "normal_contact_force_N": 2.9365870798793883
+            },
+            {
+              "position_local_mm": [
+                -37.500000752314364,
+                17.59825369805868,
+                -21.914378487018254
+              ],
+              "normal_contact_force_N": 2.367442764238905
+            },
+            {
+              "position_local_mm": [
+                45.499996057859214,
+                17.59825603345682,
+                -21.913248270877773
+              ],
+              "normal_contact_force_N": 1.4385007668339627
+            }
+          ],
+          "force_world_N": [
+            0.10441079875947543,
+            0.9287601536879229,
+            8.718524861064338
+          ]
+        }
+      ]
+    },
+    {
+      "case": "baseline",
+      "feet": [
+        {
+          "body_id": 7,
+          "contacts": [],
+          "force_world_N": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "body_id": 13,
+          "contacts": [
+            {
+              "position_local_mm": [
+                -38.99992428787441,
+                -29.99981850498728,
+                -21.865594948530855
+              ],
+              "normal_contact_force_N": 2.690377264957885
+            },
+            {
+              "position_local_mm": [
+                47.0000620673241,
+                -29.99985121392783,
+                -21.88981735977771
+              ],
+              "normal_contact_force_N": 1.9435994245306347
+            },
+            {
+              "position_local_mm": [
+                -38.99994254402727,
+                18.00013773186815,
+                -21.89800348475719
+              ],
+              "normal_contact_force_N": 2.26213152517664
+            },
+            {
+              "position_local_mm": [
+                47.000043811171246,
+                18.000105022927606,
+                -21.92222589600405
+              ],
+              "normal_contact_force_N": 1.5752639547620013
+            }
+          ],
+          "force_world_N": [
+            -0.023607137351920326,
+            0.9032029523440684,
+            8.47137216942716
+          ]
+        }
+      ]
+    }
+  ],
+  "cause_proven": false,
+  "source_sha256": {
+    "validation/rounded_sole_collision_v1/probe/trace.npz": "4cce56128e25d050aa5be99cb3e27df9e99036387cdc76eaf17935204a9f7ccd",
+    "validation/foot_dynamics_capture_v1/trace.npz": "9c4907b6a9b2439f5ca86cce73f32895f634534c34fb6e3dc7f0edecd2efdc19",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/models/scene.xml": "b79bc86618c58c44088fb9211c1807a09c27ea8f623152243a86b7959e74b434"
+  }
+}

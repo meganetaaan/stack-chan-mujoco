@@ -1,0 +1,33 @@
+{
+  "source": "https://www.ti.com/lit/zip/SBVM571",
+  "archive_sha256": "728ed7b2649a1fbafde389e4e8ef6386beedd6199f12faa0c0c20062bbafd7a3",
+  "member": "TPS70933_TRANS.LIB",
+  "model_sha256": "5cc2e24e655297011c7dd3964b0f68522342012f631c89e8388c1174ba607d3e",
+  "version": "Final 1.10 15JAN2016",
+  "declared_simulator": "PSpice 16.2",
+  "used_simulator": "ngspice 42 PSpice compatibility with XSPICE code models",
+  "DC_observation": {
+    "input_V": 9,
+    "load_ohm": 2200,
+    "output_V": 3.300421,
+    "input_current_A": 0.00150159
+  },
+  "first_transient": "Stopped by SIGTERM: simulated time advanced only to approximately 1.00350ms, target 100ms",
+  "retry_plan": {
+    "change": "Gear order2 only",
+    "wall_time_limit_s": 40,
+    "stop_condition": "If incomplete, no further solver or component sweeps in this check"
+  },
+  "omitted_features": [
+    "Input voltage dependence of quiescent and GND current",
+    "Temperature dependent characteristics"
+  ],
+  "hardware_qualification": false,
+  "manufacturer_model_redistributed": false,
+  "gear_retry": {
+    "exit_code": 124,
+    "wall_time_limit_reached": true,
+    "last_reported_simulated_time_s": 0.0010035,
+    "waveform_completed": false
+  }
+}

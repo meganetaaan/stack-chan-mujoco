@@ -1,0 +1,28 @@
+{
+  "rows": [
+    {
+      "assumed_distribution_drop_V": 0.0,
+      "minimum_setpoint_V": 5.2,
+      "exclusive_maximum_setpoint_V": 4.725695280672328,
+      "window_width_V": -0.47430471932767215,
+      "nonempty": false
+    },
+    {
+      "assumed_distribution_drop_V": 0.1,
+      "minimum_setpoint_V": 5.3,
+      "exclusive_maximum_setpoint_V": 4.725695280672328,
+      "window_width_V": -0.5743047193276718,
+      "nonempty": false
+    }
+  ],
+  "normal_rail_min_V": 4.75,
+  "normal_rail_basis": "Existing Codex engineering target in PLAN_ja.md, not user requirement or servo manufacturer minimum",
+  "transient_comparison_V": 0.45,
+  "transient_basis": "Module typical at specified load step; not actual robot bound",
+  "manufacturing_release": false,
+  "decision": "Lowering setpoint alone cannot accommodate this symmetric transient comparison while preserving current normal rail target, even with zero distribution loss. Do not change rail target just to pass.",
+  "sources_sha256": {
+    "schematics/power/pol_module_screen.json": "94326a764b691cab8516316df850a4f3ec50176c4f4dfc599981dcdbc31d2cfe",
+    "docs/prototype/engineering/PLAN_ja.md": "8904d639a830d2308c3d5ea643589256e64c83af96e3b7e62fc5de5656098d0d"
+  }
+}

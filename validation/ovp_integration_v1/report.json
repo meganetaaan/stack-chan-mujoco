@@ -1,0 +1,1814 @@
+{
+  "source_sha256": {
+    "schematics/power/manual_rearm_revI/assembly.json": "21b8febbb24b2ada320acc8c1a07a306dde948ad486910cfc3e489ea7f0e300a",
+    "schematics/power/servo_ovp_revA/connectivity.json": "d54d182a38f5758054696dd761daaf3390bdbfbc40f75f2d18e12d162592d2db"
+  },
+  "parts": 58,
+  "pins": 225,
+  "nets": {
+    "GND": [
+      {
+        "assembly": "manual",
+        "ref": "U1",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U2",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "7"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "9"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "10"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "11"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U4",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U5",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "7"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C1",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C2",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C3",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C4",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C5",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C6",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "SW1",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U7",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C7",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U8",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R5",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R6",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C8",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U9",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C9",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U10",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U11",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C10",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C11",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U12",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U12",
+        "pin": "4"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U13",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R12",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C12",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C13",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U14",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C14",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U15",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C15",
+        "pin": "2"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_L",
+        "pin": "4"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_R",
+        "pin": "4"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "R_SHDN_L",
+        "pin": "2"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "R_SHDN_R",
+        "pin": "2"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_PERMIT_L",
+        "pin": "3"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "C_PERMIT_L",
+        "pin": "2"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_PERMIT_R",
+        "pin": "3"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "C_PERMIT_R",
+        "pin": "2"
+      }
+    ],
+    "BUTTON_RAW": [
+      {
+        "assembly": "manual",
+        "ref": "U1",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "SW1",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U15",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R15",
+        "pin": "2"
+      }
+    ],
+    "BUTTON_RELEASED": [
+      {
+        "assembly": "manual",
+        "ref": "U1",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U2",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "13"
+      }
+    ],
+    "LOGIC3V3": [
+      {
+        "assembly": "manual",
+        "ref": "U1",
+        "pin": "4"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U2",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "14"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U4",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U5",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U5",
+        "pin": "6"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "4"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "10"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "14"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R1",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R2",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C1",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C2",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C3",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C4",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C5",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C6",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U7",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U7",
+        "pin": "6"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R3",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R4",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C7",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U8",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C8",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U9",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R9",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U12",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U13",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R10",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R13",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C12",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C13",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U14",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R14",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C14",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U15",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R15",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C15",
+        "pin": "1"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_PERMIT_L",
+        "pin": "5"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "C_PERMIT_L",
+        "pin": "1"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_PERMIT_R",
+        "pin": "5"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "C_PERMIT_R",
+        "pin": "1"
+      }
+    ],
+    "PRESS": [
+      {
+        "assembly": "manual",
+        "ref": "U2",
+        "pin": "4"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "11"
+      }
+    ],
+    "RESET_N": [
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "13"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U7",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R4",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U14",
+        "pin": "4"
+      }
+    ],
+    "RAW_RELEASED_CONDITIONED": [
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U15",
+        "pin": "4"
+      }
+    ],
+    "ENABLE_PERMISSION": [
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "9"
+      }
+    ],
+    "SEQUENCE_ENABLE_REQUEST": [
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "4"
+      }
+    ],
+    "POWER_ENABLE_COMMAND": [
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "6"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U8",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R6",
+        "pin": "1"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_PERMIT_L",
+        "pin": "2"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_PERMIT_R",
+        "pin": "2"
+      }
+    ],
+    "RELEASE_CONDITION": [
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "12"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U4",
+        "pin": "2"
+      }
+    ],
+    "RELEASE_MR": [
+      {
+        "assembly": "manual",
+        "ref": "U4",
+        "pin": "4"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U5",
+        "pin": "3"
+      }
+    ],
+    "RELEASE_QUALIFIED": [
+      {
+        "assembly": "manual",
+        "ref": "U5",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R2",
+        "pin": "2"
+      }
+    ],
+    "TIMER_CT": [
+      {
+        "assembly": "manual",
+        "ref": "U5",
+        "pin": "4"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R1",
+        "pin": "2"
+      }
+    ],
+    "ARMED": [
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "12"
+      }
+    ],
+    "RAIL_HEALTH_N": [
+      {
+        "assembly": "manual",
+        "ref": "U7",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U9",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U11",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R9",
+        "pin": "2"
+      }
+    ],
+    "SUPERVISOR_CT": [
+      {
+        "assembly": "manual",
+        "ref": "U7",
+        "pin": "4"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R3",
+        "pin": "2"
+      }
+    ],
+    "ENABLE_BUFFER_OUT": [
+      {
+        "assembly": "manual",
+        "ref": "U8",
+        "pin": "4"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R7",
+        "pin": "1"
+      }
+    ],
+    "MAIN_EFUSE_EN": [
+      {
+        "assembly": "manual",
+        "ref": "R5",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R7",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U10",
+        "pin": "1"
+      }
+    ],
+    "EFUSE_INPUT_5V": [
+      {
+        "assembly": "manual",
+        "ref": "U9",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U9",
+        "pin": "6"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R8",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C9",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U10",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U10",
+        "pin": "6"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U11",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C10",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C11",
+        "pin": "1"
+      }
+    ],
+    "CLAMP_CT": [
+      {
+        "assembly": "manual",
+        "ref": "U9",
+        "pin": "4"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R8",
+        "pin": "2"
+      }
+    ],
+    "CLAMP_MR_5V": [
+      {
+        "assembly": "manual",
+        "ref": "U10",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U11",
+        "pin": "4"
+      }
+    ],
+    "PG_CONDITIONED_OD": [
+      {
+        "assembly": "manual",
+        "ref": "U12",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U13",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R13",
+        "pin": "2"
+      }
+    ],
+    "PG_DIVIDED": [
+      {
+        "assembly": "manual",
+        "ref": "U12",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R11",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R12",
+        "pin": "1"
+      }
+    ],
+    "PG_CONDITIONED": [
+      {
+        "assembly": "manual",
+        "ref": "U13",
+        "pin": "4"
+      }
+    ],
+    "MAIN_EFUSE_PG": [
+      {
+        "assembly": "manual",
+        "ref": "R10",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R11",
+        "pin": "1"
+      }
+    ],
+    "SEQUENCE_CLEAR_REQUEST": [
+      {
+        "assembly": "manual",
+        "ref": "U14",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R14",
+        "pin": "2"
+      }
+    ],
+    "UBEC_L": [
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_L",
+        "pin": "1"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_IN_L",
+        "pin": "5"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_IN_L",
+        "pin": "6"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_IN_L",
+        "pin": "7"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_IN_L",
+        "pin": "8"
+      }
+    ],
+    "UV_SENSE_L": [
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_L",
+        "pin": "2"
+      }
+    ],
+    "OV_SENSE_L": [
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_L",
+        "pin": "3"
+      }
+    ],
+    "PERMIT_L": [
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_L",
+        "pin": "5"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "R_SHDN_L",
+        "pin": "1"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_PERMIT_L",
+        "pin": "4"
+      }
+    ],
+    "FAULT_N_L": [
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_L",
+        "pin": "6"
+      }
+    ],
+    "OV_OUT_L": [
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_L",
+        "pin": "7"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_OUT_L",
+        "pin": "5"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_OUT_L",
+        "pin": "6"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_OUT_L",
+        "pin": "7"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_OUT_L",
+        "pin": "8"
+      }
+    ],
+    "GATE_L": [
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_L",
+        "pin": "8"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_IN_L",
+        "pin": "4"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_OUT_L",
+        "pin": "4"
+      }
+    ],
+    "COMMON_S_L": [
+      {
+        "assembly": "ovp",
+        "ref": "Q_IN_L",
+        "pin": "1"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_IN_L",
+        "pin": "2"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_IN_L",
+        "pin": "3"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_OUT_L",
+        "pin": "1"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_OUT_L",
+        "pin": "2"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_OUT_L",
+        "pin": "3"
+      }
+    ],
+    "UBEC_R": [
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_R",
+        "pin": "1"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_IN_R",
+        "pin": "5"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_IN_R",
+        "pin": "6"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_IN_R",
+        "pin": "7"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_IN_R",
+        "pin": "8"
+      }
+    ],
+    "UV_SENSE_R": [
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_R",
+        "pin": "2"
+      }
+    ],
+    "OV_SENSE_R": [
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_R",
+        "pin": "3"
+      }
+    ],
+    "PERMIT_R": [
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_R",
+        "pin": "5"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "R_SHDN_R",
+        "pin": "1"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_PERMIT_R",
+        "pin": "4"
+      }
+    ],
+    "FAULT_N_R": [
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_R",
+        "pin": "6"
+      }
+    ],
+    "OV_OUT_R": [
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_R",
+        "pin": "7"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_OUT_R",
+        "pin": "5"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_OUT_R",
+        "pin": "6"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_OUT_R",
+        "pin": "7"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_OUT_R",
+        "pin": "8"
+      }
+    ],
+    "GATE_R": [
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_R",
+        "pin": "8"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_IN_R",
+        "pin": "4"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_OUT_R",
+        "pin": "4"
+      }
+    ],
+    "COMMON_S_R": [
+      {
+        "assembly": "ovp",
+        "ref": "Q_IN_R",
+        "pin": "1"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_IN_R",
+        "pin": "2"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_IN_R",
+        "pin": "3"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_OUT_R",
+        "pin": "1"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_OUT_R",
+        "pin": "2"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "Q_OUT_R",
+        "pin": "3"
+      }
+    ]
+  },
+  "cross_assembly_nets": {
+    "GND": [
+      {
+        "assembly": "manual",
+        "ref": "U1",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U2",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "7"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "9"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "10"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "11"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U4",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U5",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "7"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C1",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C2",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C3",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C4",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C5",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C6",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "SW1",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U7",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C7",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U8",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R5",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R6",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C8",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U9",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C9",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U10",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U11",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C10",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C11",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U12",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U12",
+        "pin": "4"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U13",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R12",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C12",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C13",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U14",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C14",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U15",
+        "pin": "3"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C15",
+        "pin": "2"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_L",
+        "pin": "4"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_OV_R",
+        "pin": "4"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "R_SHDN_L",
+        "pin": "2"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "R_SHDN_R",
+        "pin": "2"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_PERMIT_L",
+        "pin": "3"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "C_PERMIT_L",
+        "pin": "2"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_PERMIT_R",
+        "pin": "3"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "C_PERMIT_R",
+        "pin": "2"
+      }
+    ],
+    "LOGIC3V3": [
+      {
+        "assembly": "manual",
+        "ref": "U1",
+        "pin": "4"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U2",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "14"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U4",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U5",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U5",
+        "pin": "6"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "4"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "10"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U6",
+        "pin": "14"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R1",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R2",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C1",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C2",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C3",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C4",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C5",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C6",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U7",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U7",
+        "pin": "6"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R3",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R4",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C7",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U8",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C8",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U9",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R9",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U12",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U13",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R10",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R13",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C12",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C13",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U14",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R14",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C14",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U15",
+        "pin": "5"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R15",
+        "pin": "1"
+      },
+      {
+        "assembly": "manual",
+        "ref": "C15",
+        "pin": "1"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_PERMIT_L",
+        "pin": "5"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "C_PERMIT_L",
+        "pin": "1"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_PERMIT_R",
+        "pin": "5"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "C_PERMIT_R",
+        "pin": "1"
+      }
+    ],
+    "POWER_ENABLE_COMMAND": [
+      {
+        "assembly": "manual",
+        "ref": "U3",
+        "pin": "6"
+      },
+      {
+        "assembly": "manual",
+        "ref": "U8",
+        "pin": "2"
+      },
+      {
+        "assembly": "manual",
+        "ref": "R6",
+        "pin": "1"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_PERMIT_L",
+        "pin": "2"
+      },
+      {
+        "assembly": "ovp",
+        "ref": "U_PERMIT_R",
+        "pin": "2"
+      }
+    ]
+  },
+  "required_unimplemented_interfaces": {
+    "OV_SENSE_L": {
+      "connections": [
+        {
+          "assembly": "ovp",
+          "ref": "U_OV_L",
+          "pin": "3"
+        }
+      ],
+      "missing": "OV divider absent"
+    },
+    "UV_SENSE_L": {
+      "connections": [
+        {
+          "assembly": "ovp",
+          "ref": "U_OV_L",
+          "pin": "2"
+        }
+      ],
+      "missing": "UV divider absent"
+    },
+    "FAULT_N_L": {
+      "connections": [
+        {
+          "assembly": "ovp",
+          "ref": "U_OV_L",
+          "pin": "6"
+        }
+      ],
+      "missing": "Fault receiver absent"
+    },
+    "UBEC_L": {
+      "connections": [
+        {
+          "assembly": "ovp",
+          "ref": "U_OV_L",
+          "pin": "1"
+        },
+        {
+          "assembly": "ovp",
+          "ref": "Q_IN_L",
+          "pin": "5"
+        },
+        {
+          "assembly": "ovp",
+          "ref": "Q_IN_L",
+          "pin": "6"
+        },
+        {
+          "assembly": "ovp",
+          "ref": "Q_IN_L",
+          "pin": "7"
+        },
+        {
+          "assembly": "ovp",
+          "ref": "Q_IN_L",
+          "pin": "8"
+        }
+      ],
+      "missing": "UBEC connector and distribution not implemented"
+    },
+    "OV_OUT_L": {
+      "connections": [
+        {
+          "assembly": "ovp",
+          "ref": "U_OV_L",
+          "pin": "7"
+        },
+        {
+          "assembly": "ovp",
+          "ref": "Q_OUT_L",
+          "pin": "5"
+        },
+        {
+          "assembly": "ovp",
+          "ref": "Q_OUT_L",
+          "pin": "6"
+        },
+        {
+          "assembly": "ovp",
+          "ref": "Q_OUT_L",
+          "pin": "7"
+        },
+        {
+          "assembly": "ovp",
+          "ref": "Q_OUT_L",
+          "pin": "8"
+        }
+      ],
+      "missing": "Overcurrent stage not instantiated in this connection table"
+    },
+    "OV_SENSE_R": {
+      "connections": [
+        {
+          "assembly": "ovp",
+          "ref": "U_OV_R",
+          "pin": "3"
+        }
+      ],
+      "missing": "OV divider absent"
+    },
+    "UV_SENSE_R": {
+      "connections": [
+        {
+          "assembly": "ovp",
+          "ref": "U_OV_R",
+          "pin": "2"
+        }
+      ],
+      "missing": "UV divider absent"
+    },
+    "FAULT_N_R": {
+      "connections": [
+        {
+          "assembly": "ovp",
+          "ref": "U_OV_R",
+          "pin": "6"
+        }
+      ],
+      "missing": "Fault receiver absent"
+    },
+    "UBEC_R": {
+      "connections": [
+        {
+          "assembly": "ovp",
+          "ref": "U_OV_R",
+          "pin": "1"
+        },
+        {
+          "assembly": "ovp",
+          "ref": "Q_IN_R",
+          "pin": "5"
+        },
+        {
+          "assembly": "ovp",
+          "ref": "Q_IN_R",
+          "pin": "6"
+        },
+        {
+          "assembly": "ovp",
+          "ref": "Q_IN_R",
+          "pin": "7"
+        },
+        {
+          "assembly": "ovp",
+          "ref": "Q_IN_R",
+          "pin": "8"
+        }
+      ],
+      "missing": "UBEC connector and distribution not implemented"
+    },
+    "OV_OUT_R": {
+      "connections": [
+        {
+          "assembly": "ovp",
+          "ref": "U_OV_R",
+          "pin": "7"
+        },
+        {
+          "assembly": "ovp",
+          "ref": "Q_OUT_R",
+          "pin": "5"
+        },
+        {
+          "assembly": "ovp",
+          "ref": "Q_OUT_R",
+          "pin": "6"
+        },
+        {
+          "assembly": "ovp",
+          "ref": "Q_OUT_R",
+          "pin": "7"
+        },
+        {
+          "assembly": "ovp",
+          "ref": "Q_OUT_R",
+          "pin": "8"
+        }
+      ],
+      "missing": "Overcurrent stage not instantiated in this connection table"
+    }
+  },
+  "electrical_rule_check": false,
+  "manufacturing_release": false,
+  "scope": "Connection export only; no component behavioral model, power-state or fault qualification"
+}

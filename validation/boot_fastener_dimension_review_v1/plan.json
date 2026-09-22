@@ -1,0 +1,30 @@
+{
+  "nut_width_mm": [
+    3.7,
+    4.0
+  ],
+  "nut_thickness_mm": [
+    0.8,
+    1.2
+  ],
+  "cavity_width_mm": 4.4,
+  "cavity_height_mm": 1.8,
+  "cavity_floor_z_mm": -14.6,
+  "head_seat_z_mm": -19,
+  "screw_nominal_length_mm": 6,
+  "head_diameter_max_mm": 3.8,
+  "head_height_max_mm": 2,
+  "head_pocket_radius_mm": 2.3,
+  "head_pocket_depth_mm": 2.2,
+  "assumed_print_surface_error_mm": 0.2,
+  "criteria": {
+    "minimum_head_axial_residual_mm": 0.2,
+    "minimum_head_radial_residual_mm": 0.2,
+    "positive_full_nut_height_coverage": true
+  },
+  "limitations": [
+    "Screw length tolerance, chamfer and incomplete thread allowances not supplied; nominal length only.",
+    "Print error is a design sensitivity assumption, not a qualified process.",
+    "Geometric nut height coverage is not effective thread engagement or proof strength."
+  ]
+}

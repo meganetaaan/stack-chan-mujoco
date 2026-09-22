@@ -1,0 +1,28 @@
+{
+  "translation_mm": [
+    40.0,
+    0,
+    0
+  ],
+  "removed_before_move": [
+    "new_-1_112_screw",
+    "new_-1_88_screw",
+    "new_1_112_screw",
+    "new_1_88_screw"
+  ],
+  "moving": [
+    "Tab5",
+    "new_-1_112_insert",
+    "new_-1_88_insert",
+    "new_1_112_insert",
+    "new_1_88_insert",
+    "new_carrier"
+  ],
+  "criteria": "No nominal volume overlap >0.01mm3 over continuous translation; geometry errors remain unresolved",
+  "method": "Intersect moving solids at initial pose with each stationary solid swept backward by40mm, represented by original solid plus prisms of all its boundary faces",
+  "limits": [
+    "No cables, hand, tool, deformation or tolerances",
+    "Simplified Tab5 envelope and installed insert approximation",
+    "Tab5-to-carrier screws absent"
+  ]
+}

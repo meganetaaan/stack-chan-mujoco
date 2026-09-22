@@ -1,0 +1,7 @@
+{
+ "scope": "Conditional continuous-rating screen for an AC10 4.7 ohm brake resistor candidate",
+ "criteria": {"each_peak_W_max": 8.4},
+ "assumptions": ["Rating applicable at ambient 70 C with manufacturer mounting conditions", "Measured modeled peak has no unresolved inductive overshoot", "Two branches each sized for full burden"],
+ "sources": ["schematics/power/brake_resistor_candidate.json", "validation/disconnect_absorber_energy_v1/completed/report.json"],
+ "limitations": ["Not an enclosure thermal analysis", "No pulse overload rating is inferred from energy alone", "Resistance tolerance-only voltage bound omits temperature and aging"]
+}

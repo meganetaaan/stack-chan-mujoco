@@ -1,0 +1,90 @@
+{
+  "status": "interface redesign required; not manufacturing release",
+  "review_date": "2026-09-21",
+  "axes": [
+    "left_ankle_roll",
+    "right_ankle_roll"
+  ],
+  "actuator": "XL330-M288-T",
+  "output_horn_candidate": {
+    "part": "HNX330-N101",
+    "sku": "903-0314-000",
+    "manufacturer": "ROBOTIS",
+    "compatibility_confirmed": [
+      "XL330",
+      "XC330"
+    ],
+    "kit_contents": {
+      "metal_horn": 1,
+      "PHS_M2x4_frame_screws": 6
+    },
+    "source": "https://en.robotis.com/shop_en/item.php?it_id=903-0314-000",
+    "hole_pattern_verified": false,
+    "axial_stack_verified": false,
+    "mass_kg": null,
+    "adopted": false
+  },
+  "existing_cad": {
+    "source": "board/mechanical/design/r5a_source/cad/r4_geometry.py",
+    "motor_envelope_mm": [
+      26,
+      20,
+      34
+    ],
+    "shaft_keepout_radius_mm": 2.45,
+    "shaft_keepout_length_mm": 5,
+    "foot_yoke_axis_hole_radius_mm": 3.1,
+    "note": "These are collision envelopes and prototype holes, not a qualified horn/bearing interface."
+  },
+  "required_load_path": [
+    "output gear to compatible horn",
+    "horn to foot yoke through defined screw group",
+    "opposite-side support with defined bearing or bushing and retention",
+    "actuator case to gimbal through specified case mounting fasteners"
+  ],
+  "required_evidence": [
+    "manufacturer drawing or STEP with verified reference frame and mounting dimensions",
+    "explicit screw count, engagement, head access and thread material",
+    "opposite-side support dimensions, fit, load rating and axial retention",
+    "all-motion nominal and tolerance/deflection clearance including hardware",
+    "joint wrench distribution, fastener and bearing reactions, structure strength",
+    "mass and inertia ledger replacement before updated load simulation"
+  ],
+  "prohibited_inferences": [
+    "Do not treat the 2.45 mm radius shaft keepout as a selected bearing journal.",
+    "Do not treat six supplied screws as six proven usable screw locations in this yoke.",
+    "Do not enlarge the yoke hole only to pass clearance without defining its mechanical function.",
+    "Do not infer HN11-I101 compatibility from its horn/bearing product category."
+  ],
+  "drawing_retrieval": {
+    "index": "https://en.robotis.com/service/downloadpage.php?ca_id=7020",
+    "xl330_step_link": "https://www.robotis.com/service/download.php?no=1987",
+    "xl330_pdf_link": "https://www.robotis.com/service/download.php?no=1986",
+    "status": "Manufacturer-linked XL/XC-330 STEP obtained via download page redirect; horn-specific STEP and dimensioned PDF pending",
+    "official_assembly_images": "validation/x330_assembly_reference_v1/manifest.json",
+    "manufacturer_step": "validation/x330_manufacturer_cad_v1/source.json"
+  },
+  "native_idler_candidate": {
+    "source": "validation/x330_assembly_reference_v1/assembly.png",
+    "parts_shown": [
+      "idler horn",
+      "idler cap",
+      "M2.6x6 tapping screw"
+    ],
+    "status": "manufacturer assembly concept confirmed; dimensions, part numbers, fit and load capacity unresolved",
+    "adopted": false
+  },
+  "native_frame_screws": {
+    "case_mounting": "M2 tapping screws shown in front and back assembly drawings",
+    "horn_assembly_example": "3 mm frame and 3 mm horn section shown with PHS M2x6 TAP accepted, M2x8 TAP rejected",
+    "source": "validation/x330_assembly_reference_v1/horn_screw.png",
+    "limitation": "Do not transfer this example to HNX330-N101 metal horn without its own drawing and engagement specification."
+  },
+  "nominal_registration_review": {
+    "evidence": "validation/x330_component_map_v1/report.json",
+    "front_yoke_to_horn_axial_gap_mm": 2.6,
+    "rear_yoke_to_idler_axial_gap_mm": 5.6,
+    "status": "conditional on front-case-plane registration; current yoke is not an assembled horn interface",
+    "screw_conflict": "STEP product name BTS2_M2_6X8 versus assembly image M2.6x6; unresolved"
+  }
+}

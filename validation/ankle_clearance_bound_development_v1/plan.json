@@ -1,0 +1,36 @@
+{
+  "scope": "Bound local ankle CAD clearance between samples using rigid-rotation motion.",
+  "range_rad": [
+    -0.32,
+    0.32
+  ],
+  "required_nominal_clearance_mm": 1.1,
+  "allocation_mm": {
+    "residual": 0.5,
+    "surface_tolerances_total": 0.4,
+    "relative_deflection_reservation": 0.2
+  },
+  "numerical_allowance_mm": 1e-05,
+  "minimum_interval_rad": 0.0001,
+  "bound": "d(theta) >= d(midpoint) - R * half_interval; R bounds distance of every moving point to X axis via CAD bounding box",
+  "source_sha256": {
+    "board/mechanical/design/r5a_source/cad/r4_geometry.py": "dde1d67ea8c28c722e391e30db5fc6c24e91934aff95afad9d113cd3314c83ae",
+    "board/mechanical/design/r5a_source/src/tab5_biped/core.py": "9a16813b61435492746dc3cb7d7e765a7a7432e47ab29c266ce011742da5c322",
+    "board/mechanical/design/r5a_source/robot.json": "3b40b4d0b81d190bfa5b72ca8602093675829599e423b3a72a828367b1751291",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/robot.json": "26785c1fcfe3165256b859b4fbc21f3a04d3e101f13a751a92bd5ec36f6f79ce",
+    "software/sim/structural/certify_ankle_roll_clearance.py": "762715e56d8be342f2905e2d56f9e1fb1a48eeee56436badc018ead5a876b198",
+    "validation/ankle_gimbal_relief_development_v1/v4/cad/left_ankle_gimbal.step": "76d10f95c80176162520c8d5f55fea1d74b25ea24945614a5d1f0946dd1579dd",
+    "validation/ankle_gimbal_relief_development_v1/v4/cad/right_ankle_gimbal.step": "4528cde80772b2e4f0afa3a5f1f2b29b8e90ffd8c354596117c4f3a9e9ce8839",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/left_foot_yoke.step": "9b22088ef664634004479934005171165390b9306ba20fb5a768fb4242c3b807",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/left_boot_shell.step": "1a2b00690b82e3028b15fc6fd5e77a731c51dd4523d2d2df0bebe7c49ae49ce7",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/left_sole_TPU.step": "372933a09fda4da9455d00b83ffbbce9eaad4026f1e42d531905a622411387a3",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/right_foot_yoke.step": "5a8837533aa00798bc1febb5a255c90e7855bc27fd243b347ee266cfb63a7ee9",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/right_boot_shell.step": "bf3fec353786f2931e2cf839c56257a086c2ec1b549f14accaf740aab3e0d327",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/right_sole_TPU.step": "6fc7f9e1955689997625a1bfb382716125fd784b699730d9421f70c4f2378939"
+  },
+  "limitations": [
+    "Deflection reservation is an allocation, not FE verification.",
+    "Local CAD pairs only; no other leg, floor, harness, fasteners.",
+    "Motor shaft envelope interfaces are retained and require actual bearing design."
+  ]
+}

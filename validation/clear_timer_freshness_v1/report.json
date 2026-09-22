@@ -1,0 +1,405 @@
+{
+  "traces": {
+    "stale_high": [
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "phase": "RESET_TIMER",
+        "reset_low_valid": false,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "phase": "RESET_TIMER",
+        "reset_low_valid": false,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "phase": "RESET_TIMER",
+        "reset_low_valid": false,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "phase": "RESET_TIMER",
+        "reset_low_valid": false,
+        "clear_may_release": false
+      }
+    ],
+    "fresh_cycle": [
+      {
+        "input": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        "phase": "RESET_TIMER",
+        "reset_low_valid": false,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          0
+        ],
+        "phase": "QUALIFY",
+        "reset_low_valid": true,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "phase": "QUALIFY",
+        "reset_low_valid": true,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "phase": "QUALIFY",
+        "reset_low_valid": true,
+        "clear_may_release": true
+      }
+    ],
+    "second_request_stale_high": [
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "phase": "RESET_TIMER",
+        "reset_low_valid": false,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "phase": "QUALIFY",
+        "reset_low_valid": true,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "phase": "QUALIFY",
+        "reset_low_valid": true,
+        "clear_may_release": true
+      },
+      {
+        "input": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "phase": "IDLE",
+        "reset_low_valid": false,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "phase": "RESET_TIMER",
+        "reset_low_valid": false,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "phase": "RESET_TIMER",
+        "reset_low_valid": false,
+        "clear_may_release": false
+      }
+    ],
+    "health_loss_requires_new_low": [
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "phase": "RESET_TIMER",
+        "reset_low_valid": false,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "phase": "QUALIFY",
+        "reset_low_valid": true,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        "phase": "RESET_TIMER",
+        "reset_low_valid": false,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "phase": "RESET_TIMER",
+        "reset_low_valid": false,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "phase": "QUALIFY",
+        "reset_low_valid": true,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "phase": "QUALIFY",
+        "reset_low_valid": true,
+        "clear_may_release": true
+      }
+    ],
+    "clr_dropout_requires_new_low": [
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "phase": "RESET_TIMER",
+        "reset_low_valid": false,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "phase": "QUALIFY",
+        "reset_low_valid": true,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "phase": "RESET_TIMER",
+        "reset_low_valid": false,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "phase": "RESET_TIMER",
+        "reset_low_valid": false,
+        "clear_may_release": false
+      }
+    ],
+    "latch_outputs_must_both_clear": [
+      {
+        "input": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "phase": "RESET_TIMER",
+        "reset_low_valid": false,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        "phase": "QUALIFY",
+        "reset_low_valid": true,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        "phase": "QUALIFY",
+        "reset_low_valid": true,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        "phase": "QUALIFY",
+        "reset_low_valid": true,
+        "clear_may_release": false
+      },
+      {
+        "input": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "phase": "QUALIFY",
+        "reset_low_valid": true,
+        "clear_may_release": true
+      }
+    ]
+  },
+  "scenario_count": 6,
+  "request_entry_forces_timer_reset_phase": true,
+  "old_combinational_contract_accepts_stale_high": true,
+  "hardware_implemented": false,
+  "physical_timing_proven": false,
+  "limits": [
+    "Observation protocol, not a clock frequency or synchronizer design",
+    "RESET_LOW_VALID generation, MR response and DONE sampling must be implemented",
+    "No ideal assignment of latch outputs",
+    "Noise, glitches, metastability and threshold validity not modeled",
+    "CLR-to-clock recovery still separate"
+  ]
+}

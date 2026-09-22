@@ -1,0 +1,38 @@
+{
+  "board_box_mm": {
+    "min": [
+      0,
+      -40,
+      99
+    ],
+    "size": [
+      1.6,
+      80,
+      25
+    ]
+  },
+  "component_box_mm": {
+    "min": [
+      1.6,
+      -40,
+      99
+    ],
+    "size": [
+      16,
+      80,
+      25
+    ]
+  },
+  "fixed_clearance_screen_mm": 0.5,
+  "criteria": [
+    "No nominal overlap with any existing solid",
+    "Minimum nominal distance >=0.5mm to existing geometry"
+  ],
+  "limits": [
+    "Provisional 80x25 board area does not prove routing 98 components",
+    "Support and fastener envelope not included",
+    "Wires, connectors, thermal spacing, full motion and service paths not included",
+    "0.5mm is a retained screening allowance, not printer tolerance proof"
+  ],
+  "layout": "vertical_raised"
+}

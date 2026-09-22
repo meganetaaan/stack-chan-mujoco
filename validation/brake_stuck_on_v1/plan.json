@@ -1,0 +1,9 @@
+{
+ "scope": "Stuck-on brake switch from startup, including powered idle and delayed regeneration",
+ "resistance_ohm": 4.42714,
+ "stuck_switch_ohm": 0.1,
+ "powered_measurement_window_s": [0.05,0.079],
+ "faults": ["primary_stuck_on","both_stuck_on"],
+ "criteria": {"powered_bus_min_V": 4.75,"powered_bus_max_V":5.25,"post_disconnect_bus_max_V":6.0},
+ "limitations": ["Powered interval is short and motor load zero", "No converter current limiting or overload thermal model", "0.1 ohm is assumed stuck-on conduction, not zero-ohm drain-source short", "No fault detection or recovery implemented", "Not a sustained thermal qualification"]
+}

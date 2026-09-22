@@ -1,0 +1,20 @@
+{
+  "question": "Can power-good be wired directly into the enable latch clear?",
+  "acceptance_before_evaluation": [
+    "A healthy disabled system can accept a fresh request and begin startup",
+    "Independent stop takes priority in every state",
+    "PG loss after RUN cancels permission; no recovery without a fresh request",
+    "Failure to establish PG requires a bounded startup deadline"
+  ],
+  "stop": "One causal counterexample and finite sequencing table; no invented startup time or analog qualification",
+  "source": "https://www.ti.com/lit/ds/symlink/tps25982.pdf",
+  "revision": "SLVSEI3D May 2026",
+  "source_sha256": "655c21dbf6b91a3c98b7ab26cd3bf0020d3eb7d765f411c71030d22fa4b6bc1f",
+  "source_pages_1_based": [
+    5,
+    6,
+    9,
+    28,
+    29
+  ]
+}

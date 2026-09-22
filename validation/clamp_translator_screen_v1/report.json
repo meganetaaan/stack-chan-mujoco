@@ -1,0 +1,34 @@
+{
+  "candidate": "TXU0101 (DBV 6-pin)",
+  "direct_replacement_accepted": false,
+  "reason": "Output isolation is high impedance; U10 MR has an internal pullup. Loss of VCCA does not force clamp assertion.",
+  "assumptions": {
+    "VCCB_V": [
+      4.75,
+      5.25
+    ],
+    "existing_required_default": "U10 MR Low with LOGIC3V3 absent",
+    "resistor_tolerance_fraction": 0.01
+  },
+  "manufacturer_conditions": {
+    "MR_pullup_min_ohm": 70000,
+    "MR_VIL_fraction": 0.3,
+    "translator_Ioff_max_A": 2.5e-06,
+    "translator_rail_wide_VOH_load_A": 0.0001
+  },
+  "conservative_sufficient_bounds": {
+    "pulldown_actual_max_ohm_for_off_low": 18387.09677419355,
+    "pulldown_actual_min_ohm_for_100uA_high_drive": 52500.0,
+    "nominal_max_ohm_with_1pct": 18205.046311082722,
+    "nominal_min_ohm_with_1pct": 53030.30303030303,
+    "overlap": false
+  },
+  "conclusion": "A pulldown cannot satisfy these two sufficient bounds simultaneously. This does not prove every stronger-drive or alternative circuit impossible. Do not replace U11 based only on the 100uA rail-wide specification.",
+  "remaining": [
+    "Higher-load VOH coverage across 4.75..5.25V or a different topology",
+    "Input-level supply current at actual RAIL_HEALTH_N levels",
+    "Partial brownout and propagation before isolation",
+    "Whole-circuit fault and sequencing integration"
+  ],
+  "electrical_qualification": false
+}

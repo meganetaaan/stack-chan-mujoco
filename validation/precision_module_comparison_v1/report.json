@@ -1,0 +1,107 @@
+{
+  "source_sha256": {
+    "validation/model_dc_envelope_v2/report.json": "7600a7b78007ebd5b017c6c610b186ba1c53fc8b7213540da7324ceed9d9ea9a",
+    "validation/pololu_wiring_budget_v1/plan.json": "9e2afdd3c786d0a8ca3492d36ce29ea46b0a6daaa4458b1c9731f60148c3adba"
+  },
+  "preexisting_targets_V": [
+    4.75,
+    5.25
+  ],
+  "target_changed": false,
+  "PTH_set_resistor_ohm": 169,
+  "PTH_total_accuracy_fraction": 0.015,
+  "RSET_tolerance_added_again": false,
+  "RSET_basis": "TI table1 169ohm ->5.005V; footnote2 says limits met with1%100ppm/C or better. Do not double count this tolerance.",
+  "rows": [
+    {
+      "option": "PTH08T240W plus one TPS25948 per leg",
+      "axis": "XL330-M288-T",
+      "source_min_V": 4.929925,
+      "source_max_V": 5.080074999999999,
+      "shared_A": 4.947701754385965,
+      "protection_drop_V": 0.0989540350877193,
+      "contacts_drop_V": 0.03008,
+      "50mm_feeder_drop_V": 0.004545132845236451,
+      "remaining_V": 0.046345832067044145
+    },
+    {
+      "option": "PTH08T240W plus one TPS25948 per leg",
+      "axis": "XC330-M288-T",
+      "source_min_V": 4.929925,
+      "source_max_V": 5.080074999999999,
+      "shared_A": 4.947701754385965,
+      "protection_drop_V": 0.0989540350877193,
+      "contacts_drop_V": 0.035480000000000005,
+      "50mm_feeder_drop_V": 0.004545132845236451,
+      "remaining_V": 0.040945832067044136
+    },
+    {
+      "option": "Existing Pololu plus two TPS25948 per leg",
+      "group": "2XL_1XC",
+      "source_min_V": 4.85,
+      "shared_A": 2.421701754385965,
+      "protection_drop_V": 0.0484340350877193,
+      "worst_XC_contacts_drop_V": 0.035480000000000005,
+      "50mm_common_feeder_drop_V": 0.004573336556614634,
+      "remaining_V": 0.01151262835566571
+    },
+    {
+      "option": "Existing Pololu plus two TPS25948 per leg",
+      "group": "1XL_2XC",
+      "source_min_V": 4.85,
+      "shared_A": 2.5567017543859647,
+      "protection_drop_V": 0.0511340350877193,
+      "worst_XC_contacts_drop_V": 0.035480000000000005,
+      "50mm_common_feeder_drop_V": 0.004573336556614634,
+      "remaining_V": 0.008812628355665708
+    }
+  ],
+  "decision": "Prioritize precision-module candidate for further component/thermal/inhibit design; split protection is backup and has smaller unallocated drop margin.",
+  "new_module_candidate": {
+    "part_family": "PTH08T240W",
+    "quantity": 2,
+    "ordering_suffix": null,
+    "normal_input_for5V_min_V": 7,
+    "input_max_V": 14,
+    "input_note": "9..12.6V battery comparison fits DC range; hotplug/overshoot below14V not yet proved",
+    "RSET_ohm": 169,
+    "minimum_output_capacitance_F_at5V": 0.00033,
+    "required_input_electrolytic_F": 0.00022,
+    "input_cap_min_ripple_A": 0.7,
+    "inhibit": "Open enables, pull low disables; internal pullup, no external pullup. Need low-leakage open-drain driver, current push-pull ENA network cannot be reused.",
+    "sense": "Local before protective disconnect; do not remote-sense beyond switch without stability/open-sense/fault analysis"
+  },
+  "sources": [
+    {
+      "url": "https://www.ti.com/lit/gpn/pth08t240w",
+      "revision": "SLTS264J June2009",
+      "sections": [
+        "Electrical characteristics footnotes2/4/5/6",
+        "Table1 RSET",
+        "Input Capacitor p13:700mArms forVO>=3V"
+      ]
+    },
+    {
+      "url": "https://www.ti.com/lit/ds/symlink/tps25948.pdf",
+      "revision": "D April2026",
+      "section": "6.5 RON20mohm at3A"
+    }
+  ],
+  "remaining": [
+    "Exact orderable module/suffix and current supply status",
+    "Capacitor types, tolerances, ESR, ripple, and5V transient stability; no TurboTrans chart extrapolation",
+    "Inhibit fail-low/partial power behavior and pin mapping",
+    "Input transient protection versus14V operating ceiling",
+    "Thermal derating at actual enclosure conditions;10A at25C is not hot-box proof",
+    "Carrier CAD, height/clearance, harness and full mass update",
+    "eFuse RON at actual current, overcurrent and voltage thresholds and regeneration"
+  ],
+  "limits": [
+    "DC selection screen only; residual must fund OEM branch wire,PCB,solder,hot-wire increase and dynamic droop",
+    "20mohm eFuse table at3A is applied to larger per-leg current only as comparison; split currents stay below3A",
+    "50mm feeder is assumed routing length and nominal20C DCR",
+    "Doubling protected buses requires independent discharge, capacitors and fault monitoring; no automatic division of unknown bus capacitance"
+  ],
+  "integrated_into_current_CAD_or_circuit": false,
+  "manufacturing_release": false
+}

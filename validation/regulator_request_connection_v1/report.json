@@ -1,0 +1,121 @@
+{
+  "source_sha256": {
+    "schematics/power/protected_pack_system_candidate_v5/assembly.json": "bc4ccfe3755283ce2a715231b35070af416c90c4adc4de5f098c4c58f62f9fa3"
+  },
+  "MCU_assignments": {
+    "12": "PA5 left request",
+    "13": "PA6 right request"
+  },
+  "old_pin_maps_changed": [
+    "CTRL__U_HOST"
+  ],
+  "existing_part_selection": {
+    "SYS__R9": "TNPW060310K0BEEA"
+  },
+  "normal_valid_supply_truth_table": [
+    {
+      "request": false,
+      "CTRL_latch_permit": false,
+      "regulator_allow": false
+    },
+    {
+      "request": false,
+      "CTRL_latch_permit": true,
+      "regulator_allow": false
+    },
+    {
+      "request": true,
+      "CTRL_latch_permit": false,
+      "regulator_allow": false
+    },
+    {
+      "request": true,
+      "CTRL_latch_permit": true,
+      "regulator_allow": true
+    }
+  ],
+  "SYS_reset_is_not_an_input": true,
+  "nominal_module_network": {
+    "VIN_V": 12.6,
+    "ENA_to_VIN_ohm": 1000000.0,
+    "ENB_to_VIN_ohm": 1000000.0,
+    "ENA_ENB_ohm": 10000.0,
+    "external_series_ohm": 100.0,
+    "external_pulldown_ohm": 2210.0,
+    "rows": [
+      {
+        "driver_V": 0.0,
+        "ENA_nominal_V": 0.0023985172322919046,
+        "driver_nominal_A": -2.3985172322919045e-05
+      },
+      {
+        "driver_V": 0.4,
+        "ENA_nominal_V": 0.3850096527633389,
+        "driver_nominal_A": 0.00014990347236661095
+      },
+      {
+        "driver_V": 2.4,
+        "ENA_nominal_V": 2.298065330418574,
+        "driver_nominal_A": 0.0010193466958142584
+      },
+      {
+        "driver_V": 3.3,
+        "ENA_nominal_V": 3.1589403853634295,
+        "driver_nominal_A": 0.0014105961463657035
+      },
+      {
+        "driver_V": 3.6,
+        "ENA_nominal_V": 3.445898737011715,
+        "driver_nominal_A": 0.0015410126298828518
+      }
+    ],
+    "driver_high_impedance_ENA_V": 0.05517363681968641
+  },
+  "new_CTRL_nominal_capacitance_F": 4e-07,
+  "new_CTRL_resistive_allocation_A": 0.0038756395120031484,
+  "resistive_allocation_scope": "3.6V, external resistor1% engineering envelope; not complete added current. Module injection not counted as CTRL supply load.",
+  "sources": [
+    {
+      "url": "https://www.st.com/resource/en/datasheet/stm32g030f6.pdf",
+      "revision": "DS12991 Rev6",
+      "section": "Table12 TSSOP20 pins12/13"
+    },
+    {
+      "url": "https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf",
+      "revision": "AA August2026",
+      "sections": [
+        "4 DBV pinout",
+        "5.3 input speed",
+        "5.5 VOH/VOL/Ioff"
+      ]
+    },
+    {
+      "url": "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf",
+      "revision": "16.1 September2024",
+      "sections": [
+        "2 unlimited input edge",
+        "6 GV pinout"
+      ]
+    },
+    {
+      "url": "https://www.pololu.com/product/5671",
+      "section": "Connections ENA and ENB"
+    }
+  ],
+  "remaining": [
+    "Module ENA guaranteed low/high thresholds and internal resistor tolerance not specified by product page",
+    "Unpowered module driven high and CTRL loss with VIN alive: injection/partial rail behavior",
+    "GPIO reset state/leakage, Schmitt output and permit fanout edge/DC margins",
+    "Brownout latch clearing and no automatic restart across all rail orders",
+    "Update complete CTRL budget:4ICs,2GPIO loads,2ENA loads,400nF plus dynamic/leakage",
+    "Firmware sequencing contract and manual-input authorization not implemented"
+  ],
+  "firmware_contract": [
+    "Default both requests low",
+    "CTRL supervisor/watchdog valid and explicit arm before permit latch set",
+    "Start regulators independently of SYS reset, qualify source voltages, then allow existing manual servo rearm",
+    "Any CTRL fault clears permit; do not automatically rearm on power restoration"
+  ],
+  "qualified": false,
+  "manufacturing_release": false
+}

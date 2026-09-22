@@ -1,0 +1,100 @@
+{
+  "status": "design_contract_not_implemented_or_qualified",
+  "manufacturer_source": {
+    "url": "https://docs.m5stack.com/en/core/Tab5",
+    "accessed": "2026-09-22",
+    "input_range_V": [
+      6,
+      24
+    ],
+    "direct_disconnect_minimum_wait_s": 5,
+    "normal_shutdown_before_disconnect": true
+  },
+  "candidate": {
+    "input_source": "PACK_POS_PROTECTED",
+    "return": "PACK_RETURN",
+    "destination": "Tab5 J9 pin 2 SYS_VIN / pin 1 GND",
+    "pinmap_source": "schematics/power/rc_supply_candidate.json",
+    "branch_protection_and_switch": "TPS26601RHFR; partial candidate in tab5_input_branch_candidate.json, ILIM/ramp/driver not selected",
+    "servo_power_from_Tab5": false,
+    "NP_F550_installed": false,
+    "USB_connected_during_walk": false,
+    "external_3S_charging_via_Tab5": false
+  },
+  "requirements": [
+    {
+      "id": "T1",
+      "origin": "component_specification",
+      "text": "Tab5 input must stay within 6–24 V during enabled operation; establish transient limits from internal part ratings separately."
+    },
+    {
+      "id": "T2",
+      "origin": "component_specification",
+      "text": "Perform shutdown before planned power removal. After direct disconnection wait at least 5 s before powering on again."
+    },
+    {
+      "id": "T3",
+      "origin": "design_assumption",
+      "text": "Keep Tab5 branch off during pack predischarge. Enable only after the main protected supply is established."
+    },
+    {
+      "id": "T4",
+      "origin": "design_assumption",
+      "text": "Use a dedicated protected, default-off Tab5 branch. Do not feed it through the servo 5 V output or the small STOP auxiliary supply."
+    },
+    {
+      "id": "T5",
+      "origin": "design_assumption",
+      "text": "Treat brownout or unknown power history as requiring a fresh off interval; 5 s of a disabled command alone does not prove removal of actual power."
+    },
+    {
+      "id": "T6",
+      "origin": "design_assumption",
+      "text": "Loss of control validity inhibits servo drive; Tab5 restart alone must not rearm it. Require verified readiness and a fresh explicit arm request."
+    }
+  ],
+  "modes": [
+    {
+      "mode": "walking",
+      "Tab5_source": "protected 3S branch",
+      "USB": false,
+      "NP_F550": false,
+      "servo_allow": "separate arm and readiness checks"
+    },
+    {
+      "mode": "planned_shutdown",
+      "action": "inhibit servo drive, request Tab5 shutdown, confirm shutdown before disconnect",
+      "timeout_policy": "not selected; do not infer shutdown from elapsed time"
+    },
+    {
+      "mode": "electrical_fault",
+      "action": "protective cutoff takes precedence over orderly shutdown",
+      "restart": "latched off; fresh power-off interval at least 5 s, power validity and readiness required"
+    },
+    {
+      "mode": "USB_service",
+      "action": "disconnect robot pack and prevent servo energization before USB attachment",
+      "qualification": "communication-line backfeed and physical interlock remain unverified"
+    },
+    {
+      "mode": "external_battery_charging",
+      "action": "remove battery from robot and use compatible external balance charger",
+      "qualification": "charger and disconnect hardware remain subject to final BOM review"
+    }
+  ],
+  "not_inferred": [
+    "6 h typical runtime is not a peak-current rating",
+    "5 s is not proof of internal rail discharge or a guaranteed boot time",
+    "nominal 3S compatibility is not transient or protection qualification",
+    "no USB/NP-F550 in candidate is not a user prohibition"
+  ],
+  "open_design_items": [
+    "branch IC and connector current ratings, current limit and startup capacitance",
+    "off-state leakage, reverse paths and physical power-off observation",
+    "timer retained or safe restart behavior when its own power is lost",
+    "whole-system power budget including Tab5 peaks",
+    "harness retention and CAD access",
+    "readiness, rearm interface and fault response deadlines"
+  ],
+  "manufacturing_release": false
+}

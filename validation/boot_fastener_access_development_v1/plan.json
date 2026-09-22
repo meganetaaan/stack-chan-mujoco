@@ -1,0 +1,30 @@
+{
+  "scope": "Screen axial access to boot mounting holes before selecting a fastener stack.",
+  "assumed_tool_radius_mm": 2.5,
+  "upper_tool_z_mm": [
+    -12.59,
+    40
+  ],
+  "lower_tool_z_mm": [
+    -35,
+    -19.01
+  ],
+  "through_hole_radius_mm": 1,
+  "through_hole_z_mm": [
+    -19,
+    -12.6
+  ],
+  "overlap_limit_mm3": 0.01,
+  "source_sha256": {
+    "validation/boot_seats_development_v1/left_boot_shell.step": "3adc773b06063117120199696b07e319a0c7d2444d2b0a9613526ef3197a6838",
+    "validation/native_horn_yoke_development_v1/v4/left_foot_yoke.step": "caa258c44b00ef85212f334087a6e16f81b3e7e2eba1ef029f7b421b307995a8",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/left_sole_TPU.step": "372933a09fda4da9455d00b83ffbbce9eaad4026f1e42d531905a622411387a3",
+    "validation/boot_seats_development_v1/right_boot_shell.step": "ca4cf0617e43c2698705db99b35d4bafec17db8672c50e7434b4595709816766",
+    "validation/native_horn_yoke_development_v1/v4/right_foot_yoke.step": "2e021b37af6c001ead6399d8356eb6d5e2dfa065b8d9e06ed9613bee358a4133",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/right_sole_TPU.step": "6fc7f9e1955689997625a1bfb382716125fd784b699730d9421f70c4f2378939"
+  },
+  "limitations": [
+    "Tool envelope is an explicit 5 mm diameter screening assumption, not a selected driver specification.",
+    "Sole removal order, screw head, nut, washer, tolerance, insertion and tightening strength are not qualified."
+  ]
+}

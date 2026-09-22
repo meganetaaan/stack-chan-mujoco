@@ -1,0 +1,31 @@
+{
+  "question": "Replace the circular bearing-footprint simplification with square reference geometry without claiming thread or chamfer fidelity.",
+  "source_sha256": {
+    "validation/yaw_integrated_candidate_v4/inventory.json": "1192810d881e8db576fc9e8f808c01c4f0ff344339966e5e821f22d64fa63dc9",
+    "validation/yaw_integrated_candidate_v4/yaw_support_candidate.step": "621d0b9132992c530bc35ca0f7612f845ff4875d8c5765f1e7138945ed6fbd00",
+    "docs/prototype/mechanical/sole_spacer/nut_candidate.json": "edbe2a1f242eb42f9cc37925e2f499b0670a54710f25f7ebe6bcc91d2a2093d7"
+  },
+  "nut_dimensions": {
+    "part_number": "PTS A56202",
+    "across_flats_mm": [
+      3.7,
+      4.0
+    ],
+    "height_mm": [
+      0.8,
+      1.2
+    ]
+  },
+  "placement": "Use each existing yaw nut centre and lower Z. The foot candidate quantity and foot Z are not reused.",
+  "assumptions": [
+    "Sharp square, sides parallel to X/Y; actual face/corner chamfers unknown",
+    "Nominal 2 mm unthreaded bore remains a simplification",
+    "Lower nut face stays at existing nominal washer top"
+  ],
+  "stop": "Two dimensional corner examples per eight joints; validate containment and analytic contact area. No preload, FE, adoption or parameter sweep.",
+  "limits": [
+    "Minimum sharp-square case is NOT a lower bound on actual contact area; chamfers absent",
+    "No thread engagement, proof load, tool or nut rotation restraint verification",
+    "No mass or manufacturing release derived from these solids"
+  ]
+}

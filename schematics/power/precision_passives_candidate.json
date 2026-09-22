@@ -1,0 +1,83 @@
+{
+  "status": "partial_candidate_not_manufacturing_release",
+  "module": "TPSM63610RDFR",
+  "quantity_modules": 2,
+  "sources": [
+    "https://www.ti.com/lit/ds/symlink/tpsm63610.pdf",
+    "https://www.vishay.com/docs/28758/tnpw_e3.pdf"
+  ],
+  "RT": {
+    "part": "TNPW060315K8BEEA",
+    "value_ohm": 15800,
+    "initial_tolerance": 0.001,
+    "TCR_ppm_K": 25,
+    "pins": [
+      "12_RT",
+      "AGND"
+    ],
+    "quantity_total": 2,
+    "selection_basis": "Approximately1MHz matches TI5V example; formula16.4/(R_kohm+0.633)",
+    "order_code_status": "Derived from manufacturer range/coding table; availability unverified"
+  },
+  "RBOOT": {
+    "part": "TNPW0603100RBEEA",
+    "value_ohm": 100,
+    "initial_tolerance": 0.001,
+    "TCR_ppm_K": 25,
+    "pins": [
+      "2_RBOOT",
+      "3_CBOOT"
+    ],
+    "quantity_total": 2,
+    "selection_basis": "TI recommended100ohm compromise; no heating or EMI pass",
+    "order_code_status": "Derived from manufacturer range/coding table; availability unverified"
+  },
+  "CFF": {
+    "part": null,
+    "nominal_pF": 22,
+    "pins": [
+      "REGULATOR_OUT",
+      "8_FB"
+    ],
+    "selection_basis": "TI table7-1 for100kohm/25kohm5V divider; actual part pending"
+  },
+  "COUT": {
+    "comparison_part": "GRM32ER71A476ME15L",
+    "count_each_module": 3,
+    "nominal_each_uF": 47,
+    "rated_V": 10,
+    "required_effective_total_uF": 75,
+    "pins": [
+      "REGULATOR_OUT",
+      "PGND"
+    ],
+    "source": "TI tables7-1/7-3; supplier qualification still needed",
+    "effective_value_verified": false,
+    "source_review": "validation/precision_cout_source_review_v1",
+    "status": "not_selected_latest_effective_capacitance_bound_unavailable",
+    "historical_supplier_data": {
+      "source": "https://docs.rs-online.com/7ef3/A700000008617765.pdf",
+      "document_date_as_printed": "01/07/2022",
+      "initial_tolerance_fraction": 0.2,
+      "temperature_characteristic_fraction": 0.15,
+      "latest_approval_specification": false
+    }
+  },
+  "CIN": {
+    "minimum_nominal_each_uF": 10,
+    "minimum_count_each_module": 2,
+    "placement": "one nearVIN1 and one nearVIN2, localPGND returns",
+    "part": null,
+    "effective_capacitance_and_ripple_current_verified": false
+  },
+  "placement_invariant": "Local converterCOUT is upstream of downstream eFuse and reverse FET; cannot rely on servo-side capacitance for local loop when switch opens",
+  "remaining": [
+    "EN/UVLO and battery limits",
+    "Actual FB/CFF/CIN/COUT components and full tolerances",
+    "Oscillator accuracy at chosenRT",
+    "Bootstrap resistor pulse dissipation",
+    "Thermal and EMI",
+    "Startup, switched load stability, reverse energy"
+  ],
+  "manufacturing_release": false
+}

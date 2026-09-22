@@ -1,0 +1,42 @@
+{
+  "question": "Check whether captive boot screws can traverse the nut without hitting its roof.",
+  "rows": [
+    {
+      "printed_boundary_error_mm": 0,
+      "minimum_length_to_traverse_clamped_nut_mm": 5.6,
+      "maximum_length_without_roof_contact_mm": 6.199999999999999,
+      "length_window_mm": 0.5999999999999996,
+      "candidate_length_mm": 6,
+      "candidate_nut_traversal_margin_mm": 0.40000000000000036,
+      "candidate_roof_clearance_mm": 0.1999999999999993,
+      "nonempty_length_window": true
+    },
+    {
+      "printed_boundary_error_mm": 0.2,
+      "minimum_length_to_traverse_clamped_nut_mm": 6.0,
+      "maximum_length_without_roof_contact_mm": 5.799999999999999,
+      "length_window_mm": -0.20000000000000107,
+      "candidate_length_mm": 6,
+      "candidate_nut_traversal_margin_mm": 0.0,
+      "candidate_roof_clearance_mm": -0.20000000000000107,
+      "nonempty_length_window": false
+    }
+  ],
+  "basis": "Nut clamped against cavity bottom; maximum modeled nut thickness 1.2 mm. Screw tip/threads simplified.",
+  "criteria": "Positive roof clearance and full axial traversal of nominal nut envelope; necessary screening only, not thread strength.",
+  "screw_length_tolerance_mm": null,
+  "decision": "INVALID roof assumption: cavity upper Z is not a closed roof on the screw axis. See validation/boot_tip_relief_v1/original_tip_probe.json. Rows retained as a counterfactual budget, not actual interference.",
+  "actual_roof_interference_proven": false,
+  "manufacturing_release": false,
+  "next_design_constraint": "Verify radial hole tolerance and effective thread engagement against actual CAD. Do not enlarge tip relief based on this invalid closed-roof assumption.",
+  "limitations": [
+    "Full formed thread engagement and chamfers not modeled.",
+    "Print errors are Codex assumptions, not measured capability.",
+    "Nut material, preload, stripping and roof printability not verified."
+  ],
+  "source_sha256": {
+    "validation/captive_boot_hardware_development_v1/plan.json": "133fe61788cc3fa17778ebdfb414f4413733ca261434201693388cbed90f3808",
+    "validation/boot_low_head_candidate_v1/cad/plan.json": "101fa220d650e65183e6e6bdac4e5f715d8ceab43e8147e2da7299eb5062135f",
+    "validation/boot_low_head_candidate_v1/plan.json": "95b3f5cbf315460d0739ea3dad20b20b6ec2c7cb2b86bdba24d5a8f0f7ed16c1"
+  }
+}

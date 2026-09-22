@@ -1,0 +1,27 @@
+{
+  "source_path": "validation/rounded_sole_posture_v1/inset25.8/foot_loads.jsonl.gz",
+  "source_sha256": "0e61b932a37be7cfe922b2150da82491c1a1a0b1f16dab277ced11d8f4f8895d",
+  "criteria": {
+    "force_residual_N": 1e-08,
+    "moment_residual_Nmm": 1e-05
+  },
+  "model_directory": "outputs/rounded_sole_fine_v1",
+  "hierarchy": [
+    {
+      "side": "left",
+      "body_id": 7,
+      "children": []
+    },
+    {
+      "side": "right",
+      "body_id": 13,
+      "children": []
+    }
+  ],
+  "axes": "ankle_roll body local axes; positions mm, forces N, moments N mm",
+  "limitations": [
+    "Rigid recorded foot; finite contact areas and TPU deformation are not inferred.",
+    "Wrench at yoke plane preserves resultant only, not traction distribution.",
+    "Entire foot inertia cannot be applied solely to yoke material."
+  ]
+}

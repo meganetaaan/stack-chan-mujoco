@@ -1,0 +1,8 @@
+{
+ "question":"Can bus-powered TPS3700DDCR channel A provide the brake command without battery AUX or an external voltage reference?",
+ "method":"Pin/logic review and fixed 127k/10k divider corner calculation; no motor waveform sweep",
+ "stop_condition":"Calculate threshold ranges once and record startup/output interface constraints before any dynamic simulation",
+ "criteria":{"normal_max_V":5.25,"servo_max_V":6.0},
+ "assumptions":{"Rtop_ohm":127000,"Rbottom_ohm":10000,"resistor_initial_tolerance":0.001,"input_bias_comparison_A":2.5e-8},
+ "limits":["Resistor temperature and aging not included","Input bias bound used as a comparison beyond its tabulated input-voltage test point","No transient peak approval from DC thresholds"]
+}

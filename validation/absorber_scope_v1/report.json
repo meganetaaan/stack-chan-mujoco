@@ -1,0 +1,51 @@
+{
+  "sources_sha256": {
+    "schematics/power/brake_resistor_candidate.json": "2174734f0e27bf1c34d1e5178448041613d401449441b7a71579e60c24dffea4",
+    "validation/disconnect_regeneration_v1/plan.json": "5476a93c8898580a4197823dd10f4a4188c07c12634128e1f287fcad960a60dd"
+  },
+  "requirements": {
+    "servo_max_V": 6.0,
+    "normal_max_comparison_V": 5.25,
+    "change_to_original_limits": false
+  },
+  "regeneration_stress_case": {
+    "current_A": 1,
+    "duration_s": 0.01999899999999999,
+    "charge_C": 0.01999899999999999,
+    "proven_robot_regeneration_bound": false,
+    "capacitor_only_min_F_for_constant_current_no_other_load": 0.02666533333333332,
+    "assumed_old_capacitance_F": 0.00096,
+    "energy_accepted_at_voltage_ceiling_J": 0.11999399999999993
+  },
+  "resistor_screen": {
+    "resistance_ohm": [
+      4.465,
+      4.9350000000000005
+    ],
+    "one_branch_current_at_6V_ideal_switch_A": [
+      1.21580547112462,
+      1.343784994400896
+    ],
+    "two_branches_total_max_at_6V_ideal_switch_A": 2.687569988801792,
+    "one_branch_power_at_6V_W": [
+      7.29483282674772,
+      8.062709966405375
+    ],
+    "continuous_rating_P70_W": 8.4,
+    "complete_thermal_qualification": false
+  },
+  "decision": "Retain resistor only as an unqualified regeneration candidate; do not count it as protection against sustained battery feedthrough.",
+  "architecture_constraints": [
+    "LEFT_SERVO_BUS and RIGHT_SERVO_BUS require load-side absorption on each isolated bus; do not join buses to reuse the historical common-brake design.",
+    "Battery feedthrough needs upstream interruption or series regulation plus bounded transient energy; a 4.7ohm branch cannot sink arbitrary battery current.",
+    "Motor regeneration after source cutoff needs absorption still powered from the affected load-side bus.",
+    "Per-servo disconnect can isolate a motor from the leg absorber; this must remain in the fault scope."
+  ],
+  "limits": [
+    "1A stress injection is inherited Codex test input, not a measured or model-derived physical worst case.",
+    "Resistor calculation assumes a fully on ideal switch, no shunt or wiring resistance, no inductive delay, and initial tolerance only.",
+    "P70 is not a safe printed-enclosure operating power; mounting, temperature and pulse/repetition limits remain unqualified.",
+    "The actual battery fault current and interruption time are not bounded by normal actuator load or eFuse nominal current settings."
+  ],
+  "qualified": false
+}

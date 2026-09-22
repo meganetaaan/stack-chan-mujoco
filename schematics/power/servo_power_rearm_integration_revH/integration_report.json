@@ -1,0 +1,56 @@
+{
+  "classification": "datasheet_interface_budget_not_transient_simulation",
+  "part": "SN74AUP1T50DCKR",
+  "source": "https://www.ti.com/lit/ds/symlink/sn74aup1t50.pdf",
+  "revision": "SCES844A March 2013",
+  "datasheet_pages": [
+    1,
+    4,
+    5
+  ],
+  "manufacturer_constraints": {
+    "temperature_C": [
+      -40,
+      85
+    ],
+    "VCC_for_thresholds_V": [
+      3,
+      3.6
+    ],
+    "VT_plus_max_V": 1.19,
+    "VT_minus_min_V": 0.5,
+    "input_leakage_max_A": 5e-07,
+    "Ioff_at_zero_supply_max_A": 5e-07,
+    "VOH_drop_at_20uA_V": 0.1,
+    "VOL_at_20uA_V": 0.1
+  },
+  "assumptions": [
+    "STOP_AUX3V3 minimum 3.207 V is existing conditional rail budget",
+    "Resistor total tolerance +/-1 percent; exact parts pending",
+    "Input leakage endpoint specification applied to actual input level",
+    "No downstream load beyond the added output resistor in this calculation"
+  ],
+  "bounds": {
+    "input_high_min_V": 3.1262,
+    "high_margin_V": 1.9362,
+    "input_low_max_V": 0.4,
+    "low_margin_V": 0.09999999999999998,
+    "output_pulldown_max_current_A": 1.652892561983471e-05,
+    "remaining_20uA_drive_budget_A": 3.4710743801652904e-06,
+    "output_at_zero_supply_leakage_only_max_V": 0.11109999999999999
+  },
+  "input_threshold_range_specified": true,
+  "conditional_settled_interface_pass": true,
+  "power_on_inhibit_proven": false,
+  "full_source_valid_proven": false,
+  "temperature_change_classification": "New part constraint, not permission to lower an existing requirement; no 125 C operation claim",
+  "part_count": 93,
+  "pin_count": 306,
+  "pending": [
+    "Prove actual LOGIC3V3 range and receiver temperature against system requirements",
+    "Downstream load, logic thresholds and partial power",
+    "Input capacitance and supervisor timing load",
+    "Short dip detection and startup sequencer inhibition"
+  ],
+  "manufacturing_release": false
+}

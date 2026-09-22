@@ -1,0 +1,54 @@
+{
+  "scope": "Square-nut retention candidates; no strength or assembly release.",
+  "loading_mode": "embedded",
+  "nut": {
+    "candidate": "Accu HFSN-M3-A4, DIN562",
+    "source": "https://www.accu.co.uk/flat-square-nuts/21333-HFSN-M3-A4",
+    "width_max_mm": 5.5,
+    "width_min_mm": 5.1,
+    "thickness_max_mm": 1.8,
+    "thickness_min_mm": 1.4,
+    "thread": "M3x0.5",
+    "strength_class": "not qualified"
+  },
+  "pocket": {
+    "width_z_mm": 6.6,
+    "thickness_x_mm": 2.9,
+    "surface_tolerance_mm": 0.2,
+    "nut_back_x_mm": -55.7,
+    "slot_back_x_mm": -56.2,
+    "slot_front_x_mm": -53.3
+  },
+  "criteria": {
+    "intersection_mm3": 0.01,
+    "minimum_total_fit_clearance_mm": 0.1,
+    "rotation_stop_before_deg": 45
+  },
+  "source_sha256": {
+    "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/body_shroud.step": "f6318b98db7ad024ef8b4b7e83a6658e505a96a8c8c62880cadd3a4eccf25faf",
+    "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/rear_structural_plate.step": "604f5385918959d2066bd24234d591b3490692194ad2a4bea4ebbd1d5599f62d"
+  },
+  "limitations": [
+    "square envelope ignores corner radii",
+    "nut thread strength/preload not verified",
+    "retention under tightening torque not verified",
+    "insertion starts inside body; human/tool approach not yet verified",
+    "embedded hardware requires pause-and-insert manufacturing; replacement may require a new body"
+  ],
+  "inner_washer": {
+    "candidate": "Accu HRDW-M3-A4 DIN433",
+    "source": "https://www.accu.co.uk/metric-flat-washers/404911-HRDW-M3-A4",
+    "OD_mm": [
+      5.7,
+      6.0
+    ],
+    "ID_mm": [
+      3.2,
+      3.38
+    ],
+    "thickness_mm": [
+      0.45,
+      0.55
+    ]
+  }
+}

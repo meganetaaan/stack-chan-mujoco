@@ -1,0 +1,16 @@
+{
+  "question": "Does the complete square-nut envelope stay over the flat washer face when the washer shifts within its bore?",
+  "sources": {
+    "docs/prototype/mechanical/sole_spacer/specification.json": "2f8914fa41e2b18177355a791bd705a316af01558acaa29029802517178c0c4d",
+    "docs/prototype/mechanical/sole_spacer/nut_candidate.json": "edbe2a1f242eb42f9cc37925e2f499b0670a54710f25f7ebe6bcc91d2a2093d7",
+    "docs/prototype/mechanical/sole_spacer/screw_candidate.json": "2f8a3b42417f972ac7adc8aea9ac225dfb4e6ad1414217752ba8f7a0678b827e"
+  },
+  "criterion": "Full outer footprint containment requires radius margin >=0. This is geometric, not a strength or allowable-pressure criterion.",
+  "assumptions": [
+    "Nut square envelope uses maximum across-flats 4 mm; actual corner and face chamfers unknown.",
+    "Nut coaxial with a nominal 2 mm screw; nut/thread radial play omitted.",
+    "Washer may shift to one side of its maximum bore clearance, along a nut corner direction.",
+    "Flat bearing edge uses specified maximum radial edge break."
+  ],
+  "stop": "One limiting-dimension calculation; no FE and no strength verdict."
+}

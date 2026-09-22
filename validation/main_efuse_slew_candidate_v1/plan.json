@@ -1,0 +1,12 @@
+{
+  "question": "Does a real 6.8nF candidate permit a useful inrush comparison without inventing total startup time?",
+  "stop": "One algebraic corner comparison; no load transient sweep",
+  "acceptance": "Keep startup deadline unassigned unless delay, full capacitance, startup load and fault energy bounds are available",
+  "assumptions": [
+    "3.207..3.393V logic supply is irrelevant to this bus ramp calculation",
+    "5.25V upper bus comparison",
+    "960uF is historical simulation capacitance, NOT twelve-servo upper limit",
+    "Only initial capacitor +/-5% tolerance is applied",
+    "Use I/C approximation with datasheet charging current bounds; not a complete switching guarantee"
+  ]
+}

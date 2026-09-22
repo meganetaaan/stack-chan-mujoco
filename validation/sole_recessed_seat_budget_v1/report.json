@@ -1,0 +1,33 @@
+{
+  "boundary_error_each_mm": 0.2,
+  "basis": "Previous Codex boundary-position assumption, not validated print accuracy",
+  "rows": [
+    {
+      "quantity": "seat_thickness",
+      "nominal_mm": 1.6,
+      "minimum_under_boundary_assumption_mm": 1.2000000000000002
+    },
+    {
+      "quantity": "yoke_roof_thickness",
+      "nominal_mm": 2.0,
+      "minimum_under_boundary_assumption_mm": 1.6
+    },
+    {
+      "quantity": "seat_to_channel_radial_gap",
+      "nominal_mm": 0.5899999999999999,
+      "minimum_under_boundary_assumption_mm": 0.18999999999999984
+    },
+    {
+      "quantity": "channel_end_wall",
+      "nominal_mm": 0.20000000000000284,
+      "minimum_under_boundary_assumption_mm": -0.19999999999999718
+    }
+  ],
+  "finding": "Channel end wall can disappear under retained uncertainty; do not rely on it for retention or print as an intentional thin wall.",
+  "strength_qualified": false,
+  "next_design_action": "Compare deliberate open-ended relief against relocation; verify load-bearing roof and clamped seat rather than relying on end wall.",
+  "sources": {
+    "validation/sole_retention_decision_v1/report.json": "3333eba7f181fd35dd843826f55c4a6ffe58fa8cebda82e0e166c3c9211aa1f2",
+    "software/sim/structural/build_sole_recessed_seat.py": "428b5a1b456ef4784e72fc3d7b830bd392d6c5cbc3729b28c895cb3ca00ede87"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "question": "Is deformation primarily in the rear wall or in the shelf/span, and is plate seat motion mostly rigid?",
+  "parent_plan_sha256": "caa2663038bb7d3c9bcb3fb3a13f721133d99840c8c8ea9f44afa81521956f0f",
+  "stop": "One existing 3 mm mesh and archived load; energy partition and rigid-fit diagnostics only, no stress convergence or qualification.",
+  "regions_x_mm": {
+    "rear": [
+      -100,
+      -50
+    ],
+    "middle": [
+      -50,
+      -30
+    ],
+    "front": [
+      -30,
+      100
+    ]
+  },
+  "limits": [
+    "Region boundaries are diagnostic assumptions, not separate physical components.",
+    "Nodal rigid fit uses equal node weighting and is not a contact solution.",
+    "Energy partition is quadrature-point based; it is not a strength margin."
+  ]
+}

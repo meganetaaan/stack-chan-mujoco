@@ -1,0 +1,51 @@
+{
+  "converged_active_set": true,
+  "iterations": [
+    {
+      "iteration": 0,
+      "equilibrium_residual_N": 0.001184843410463291,
+      "constraint_residual": 1.5034577256862946e-17
+    },
+    {
+      "iteration": 1,
+      "equilibrium_residual_N": 2.717365701036456e-05,
+      "constraint_residual": 3.29830272099207e-21
+    },
+    {
+      "iteration": 2,
+      "equilibrium_residual_N": 2.7818846834504403e-08,
+      "constraint_residual": 3.7913823780264807e-20
+    }
+  ],
+  "elapsed_seconds": 1140.0692015080003,
+  "matrix_dofs": 273825,
+  "matrix_nonzeros": 10248572,
+  "equilibrium_residual_N": 2.7818846834504403e-08,
+  "mean_constraint_residual": 3.7913823780264807e-20,
+  "gauge_force_sum_relative": 1.885202251931453e-14,
+  "contact_total_N": 20.000000027477387,
+  "maximum_penetration_mm": 3.0007765613748234e-05,
+  "maximum_pressure_MPa": 30.007765613748234,
+  "parts": {
+    "boss": {
+      "max_displacement_mm": 0.004405186301893322,
+      "max_absolute_principal_MPa": 9.028888276192042
+    },
+    "spacer": {
+      "max_displacement_mm": 0.00022770661232328018,
+      "max_absolute_principal_MPa": 16.42814854282796
+    }
+  },
+  "gates": {
+    "active_set": true,
+    "equilibrium": true,
+    "mean_constraints": true,
+    "penetration": true,
+    "gauge_force": true
+  },
+  "joint_verified": false,
+  "source_sha256": {
+    "boss": "fcb51330d0f201b7be3fdf2a68ff60d3acb2c5727c81e169656374e60b1887e1",
+    "spacer": "760682458cecd813490a630bcccd0070ce01a6e8554a635fec2fcef072102232"
+  }
+}

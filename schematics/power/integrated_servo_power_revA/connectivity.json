@@ -1,0 +1,193 @@
+{
+  "parts": [
+    {
+      "reference": "LEFT_U_POWER",
+      "part": "TPS259813LRPW",
+      "pins": {
+        "1": "LEFT_EN_UVLO",
+        "2": "LEFT_OVLO_SENSE",
+        "3": "LEFT_PG_SOURCE",
+        "4": "LEFT_FLT_N",
+        "5": "LEFT_REGULATOR_OUT",
+        "6": "LEFT_INTERNAL_OUT",
+        "7": "LEFT_DVDT",
+        "8": "GND",
+        "9": "LEFT_ILM",
+        "10": "LEFT_ITIMER"
+      }
+    },
+    {
+      "reference": "LEFT_Q_REVERSE",
+      "part": "SiSS80DN-T1-GE3 comparison only",
+      "pins": {
+        "1": "LEFT_INTERNAL_OUT",
+        "2": "LEFT_INTERNAL_OUT",
+        "3": "LEFT_INTERNAL_OUT",
+        "4": "LEFT_REVERSE_GATE",
+        "5": "LEFT_SERVO_BUS",
+        "6": "LEFT_SERVO_BUS",
+        "7": "LEFT_SERVO_BUS",
+        "8": "LEFT_SERVO_BUS"
+      }
+    },
+    {
+      "reference": "LEFT_R_GATE",
+      "part": null,
+      "value_ohm": null,
+      "pins": {
+        "1": "LEFT_DVDT",
+        "2": "LEFT_REVERSE_GATE"
+      }
+    },
+    {
+      "reference": "LEFT_C_GATE",
+      "part": null,
+      "value_F": null,
+      "pins": {
+        "1": "LEFT_REVERSE_GATE",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "RIGHT_U_POWER",
+      "part": "TPS259813LRPW",
+      "pins": {
+        "1": "RIGHT_EN_UVLO",
+        "2": "RIGHT_OVLO_SENSE",
+        "3": "RIGHT_PG_SOURCE",
+        "4": "RIGHT_FLT_N",
+        "5": "RIGHT_REGULATOR_OUT",
+        "6": "RIGHT_INTERNAL_OUT",
+        "7": "RIGHT_DVDT",
+        "8": "GND",
+        "9": "RIGHT_ILM",
+        "10": "RIGHT_ITIMER"
+      }
+    },
+    {
+      "reference": "RIGHT_Q_REVERSE",
+      "part": "SiSS80DN-T1-GE3 comparison only",
+      "pins": {
+        "1": "RIGHT_INTERNAL_OUT",
+        "2": "RIGHT_INTERNAL_OUT",
+        "3": "RIGHT_INTERNAL_OUT",
+        "4": "RIGHT_REVERSE_GATE",
+        "5": "RIGHT_SERVO_BUS",
+        "6": "RIGHT_SERVO_BUS",
+        "7": "RIGHT_SERVO_BUS",
+        "8": "RIGHT_SERVO_BUS"
+      }
+    },
+    {
+      "reference": "RIGHT_R_GATE",
+      "part": null,
+      "value_ohm": null,
+      "pins": {
+        "1": "RIGHT_DVDT",
+        "2": "RIGHT_REVERSE_GATE"
+      }
+    },
+    {
+      "reference": "RIGHT_C_GATE",
+      "part": null,
+      "value_F": null,
+      "pins": {
+        "1": "RIGHT_REVERSE_GATE",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "LEFT_R_ILM",
+      "part": null,
+      "value_ohm": 1100,
+      "initial_tolerance_comparison": 0.001,
+      "status": "sizing_candidate_not_selected_part",
+      "pins": {
+        "1": "LEFT_ILM",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "RIGHT_R_ILM",
+      "part": null,
+      "value_ohm": 1100,
+      "initial_tolerance_comparison": 0.001,
+      "status": "sizing_candidate_not_selected_part",
+      "pins": {
+        "1": "RIGHT_ILM",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "LEFT_R_OV_TOP",
+      "part": null,
+      "value_ohm": 35700,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "LEFT_REGULATOR_OUT",
+        "2": "LEFT_OVLO_SENSE"
+      }
+    },
+    {
+      "reference": "LEFT_R_OV_BOTTOM",
+      "part": null,
+      "value_ohm": 10000,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "LEFT_OVLO_SENSE",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "RIGHT_R_OV_TOP",
+      "part": null,
+      "value_ohm": 35700,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "RIGHT_REGULATOR_OUT",
+        "2": "RIGHT_OVLO_SENSE"
+      }
+    },
+    {
+      "reference": "RIGHT_R_OV_BOTTOM",
+      "part": null,
+      "value_ohm": 10000,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "RIGHT_OVLO_SENSE",
+        "2": "GND"
+      }
+    }
+  ],
+  "source": "https://www.ti.com/lit/ds/symlink/tps25981.pdf",
+  "source_revision": "SLVSGG6D",
+  "figure": "7-8 visually checked, page 30",
+  "required_downstream_connections": [
+    "Regeneration absorber to each SERVO_BUS and GND",
+    "Passive discharge resistor to each SERVO_BUS and GND"
+  ],
+  "manufacturing_release": false,
+  "electrical_qualification": false,
+  "omitted": [
+    "OVLO and UVLO dividers",
+    "ILM exact resistor selection and ITIMER passive",
+    "Input/output capacitors and supply protection",
+    "Enable and fault/PG connections to main logic"
+  ],
+  "warnings": [
+    "Internal QOD is on INTERNAL_OUT; reverse FET OFF isolates it from SERVO_BUS",
+    "Existing FET choice is not qualified for DVDT minimum drive, gate charge, or negative VGS during cutoff",
+    "Gate resistor and capacitor in Figure 7-8 have no selected values here"
+  ],
+  "pin_table_review": {
+    "source_table": "5-1, pages 4-5",
+    "correction": "ILM pin9 and ITIMER pin10; prior map had these reversed",
+    "source_sha256": "8609249da4eb65da1d5398a4cbd5bc3ace4ca1f1f0205e41fbf3873d8e3f8e91"
+  },
+  "current_limit_comparison": "validation/integrated_current_limit_v1/report.json",
+  "OV_divider_comparison": "validation/integrated_ov_divider_v1/report.json"
+}

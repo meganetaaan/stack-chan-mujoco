@@ -1,0 +1,372 @@
+{
+  "status": "pin_level_candidate_not_integrated_or_released",
+  "source": "https://www.ti.com/lit/gpn/tps2660",
+  "revision": "SLVSDG2G December 2019 sections 6, 7.3, 9.3, 10.4",
+  "ic": {
+    "ref": "U_LOGIC_PROTECT",
+    "part": "TPS26601RHFR",
+    "package": "RHF VQFN24",
+    "pins": {
+      "1": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "2": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "3": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "4": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "5": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "6": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "7": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "8": {
+        "name": "IN",
+        "net": "BATTERY_RAW",
+        "disposition": "connected"
+      },
+      "9": {
+        "name": "IN",
+        "net": "BATTERY_RAW",
+        "disposition": "connected"
+      },
+      "10": {
+        "name": "UVLO",
+        "net": "LOGIC_UVLO",
+        "disposition": "connected"
+      },
+      "11": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "12": {
+        "name": "OVP",
+        "net": "LOGIC_OVP",
+        "disposition": "connected"
+      },
+      "13": {
+        "name": "MODE",
+        "net": null,
+        "disposition": "intentional_open",
+        "reason": "Open selects TPS26601 latched circuit breaker"
+      },
+      "14": {
+        "name": "SHDN",
+        "net": null,
+        "disposition": "intentional_open",
+        "reason": "Internal pullup; external reset not implemented"
+      },
+      "15": {
+        "name": "RTN",
+        "net": "LOGIC_PROTECT_RTN",
+        "disposition": "connected"
+      },
+      "16": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "17": {
+        "name": "GND",
+        "net": "GND",
+        "disposition": "connected"
+      },
+      "18": {
+        "name": "IMON",
+        "net": null,
+        "disposition": "intentional_open",
+        "reason": "Unused monitor"
+      },
+      "19": {
+        "name": "ILIM",
+        "net": "LOGIC_ILIM",
+        "disposition": "connected"
+      },
+      "20": {
+        "name": "dVdT",
+        "net": null,
+        "disposition": "intentional_open",
+        "reason": "Default ramp candidate; not qualified for downstream LDO startup"
+      },
+      "21": {
+        "name": "NC",
+        "net": null,
+        "disposition": "intentional_no_connect"
+      },
+      "22": {
+        "name": "FLT",
+        "net": null,
+        "disposition": "intentional_open",
+        "reason": "Unused diagnostic output; not a substitute for rail supervisor"
+      },
+      "23": {
+        "name": "OUT",
+        "net": "LOGIC_PROTECTED_INPUT",
+        "disposition": "connected"
+      },
+      "24": {
+        "name": "OUT",
+        "net": "LOGIC_PROTECTED_INPUT",
+        "disposition": "connected"
+      },
+      "EP": {
+        "name": "PowerPAD",
+        "net": "LOGIC_PROTECT_RTN",
+        "disposition": "connected",
+        "layout": "Multiple vias to dedicated RTN plane; pin 15 must also be connected"
+      }
+    }
+  },
+  "resistors": [
+    {
+      "ref": "R_LOGIC_UV_TOP",
+      "value_ohm": 40200,
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "LOGIC_UVLO"
+      },
+      "part": "TNPW060340K2BEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      }
+    },
+    {
+      "ref": "R_LOGIC_UV_BOTTOM",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "LOGIC_UVLO",
+        "2": "LOGIC_PROTECT_RTN"
+      },
+      "part": "TNPW060310K0BEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      }
+    },
+    {
+      "ref": "R_LOGIC_OV_TOP",
+      "value_ohm": 124000,
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "LOGIC_OVP"
+      },
+      "part": "TNPW0603124KBEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      }
+    },
+    {
+      "ref": "R_LOGIC_OV_BOTTOM",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "LOGIC_OVP",
+        "2": "LOGIC_PROTECT_RTN"
+      },
+      "part": "TNPW060310K0BEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      }
+    },
+    {
+      "ref": "R_LOGIC_ILIM",
+      "value_ohm": 118000,
+      "pins": {
+        "1": "LOGIC_ILIM",
+        "2": "LOGIC_PROTECT_RTN"
+      },
+      "part": "TNPW0603118KBEEA",
+      "status": "ordering_code_candidate_not_released",
+      "previous_nominal_ohm": 120000,
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      }
+    },
+    {
+      "ref": "R_LOGIC_INPUT_BLEED",
+      "value_ohm": 100000,
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "GND"
+      },
+      "part": "TNPW0603100KBEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      },
+      "purpose": "Discharge shared input after all external sources disconnect; do not connect to RTN"
+    }
+  ],
+  "interfaces": {
+    "input": "BATTERY_RAW upstream of servo cutoff; pack protection is separate",
+    "output": "LOGIC_PROTECTED_INPUT to TPS70933DRVR pin 6",
+    "ground": "GND to TPS709 pin 3 and EP; not to protection RTN"
+  },
+  "forbidden_net_merges": [
+    [
+      "LOGIC_PROTECT_RTN",
+      "GND"
+    ]
+  ],
+  "unimplemented": [],
+  "release_blockers": [
+    "118kohm replaces 120kohm; actual current threshold bounds and startup require reevaluation; process/aging within 1% allocation pending",
+    "Four local C0G capacitors selected as candidates; cold capacitance, transient voltage and layout unresolved",
+    "Default ramp and downstream regulator startup not qualified",
+    "100k input bleed candidate added; total shared capacitance and backfeed bounds unknown, so power-cycle reset timing unqualified",
+    "Battery cell protection not supplied by this branch",
+    "Reverse-input and backfeed paths through complete system not verified",
+    "Not merged into revM assembly or KiCad; no PCB thermal/layout verification"
+  ],
+  "manufacturing_release": false,
+  "resistor_evidence": "validation/logic_branch_resistors_v1/report.json",
+  "capacitors": [
+    {
+      "ref": "C_LOGIC_PROTECT_IN_1",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "dielectric": "C0G",
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "GND"
+      },
+      "placement": "Adjacent to TPS26601 IN/GND",
+      "status": "candidate_not_transient_qualified",
+      "source": "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM31C5C1H104JA01-01A.pdf"
+    },
+    {
+      "ref": "C_LOGIC_PROTECT_IN_2",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "dielectric": "C0G",
+      "pins": {
+        "1": "BATTERY_RAW",
+        "2": "GND"
+      },
+      "placement": "Adjacent to TPS26601 IN/GND",
+      "status": "candidate_not_transient_qualified",
+      "source": "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM31C5C1H104JA01-01A.pdf"
+    },
+    {
+      "ref": "C_LOGIC_PROTECT_OUT_1",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "dielectric": "C0G",
+      "pins": {
+        "1": "LOGIC_PROTECTED_INPUT",
+        "2": "GND"
+      },
+      "placement": "Adjacent to TPS26601 OUT and TPS709 IN; short shared supply trace required",
+      "status": "candidate_not_transient_qualified",
+      "source": "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM31C5C1H104JA01-01A.pdf"
+    },
+    {
+      "ref": "C_LOGIC_PROTECT_OUT_2",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "dielectric": "C0G",
+      "pins": {
+        "1": "LOGIC_PROTECTED_INPUT",
+        "2": "GND"
+      },
+      "placement": "Adjacent to TPS26601 OUT and TPS709 IN; short shared supply trace required",
+      "status": "candidate_not_transient_qualified",
+      "source": "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM31C5C1H104JA01-01A.pdf"
+    }
+  ],
+  "bypass_evidence": "validation/logic_branch_bypass_v1/report.json",
+  "discharge_evidence": "validation/logic_discharge_v1/report.json"
+}

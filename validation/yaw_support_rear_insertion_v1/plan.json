@@ -1,0 +1,19 @@
+{
+  "question": "Can the revised support groups and rear plate be inserted from the rear before servos/electronics/legs?",
+  "method": "Per-group axis-aligned bounding box swept continuously 150 mm in -X from final pose; tests the whole corridor, no angle/time sampling.",
+  "sequence": [
+    "Insert left/right 17-part support groups in either order, rear plate absent.",
+    "Insert empty rear structural plate, supports held in final pose.",
+    "Install rear main screws/washers and body corner hardware afterwards; tightening/access outside this check."
+  ],
+  "criterion_intersection_mm3": 0.01,
+  "contact_policy": "Intended final rail/plate contact allowed at zero distance; no positive manufacturing clearance claimed.",
+  "stop": "One straight direction and three groups; bounding-box collision is inconclusive for actual shapes, not an automatic physical failure.",
+  "limits": [
+    "No servo, Tab5, battery, wires, legs or moving couplers installed during these steps",
+    "Hand/grip/jig space, gravity stability, tools and tightening not verified",
+    "No tolerance or misalignment coverage",
+    "Requires supporting groups before rear fasteners are installed; temporary fixture not yet designed",
+    "No manufacturing release"
+  ]
+}

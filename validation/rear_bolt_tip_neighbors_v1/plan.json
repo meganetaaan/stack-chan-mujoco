@@ -1,0 +1,16 @@
+{
+  "question": "Can exposed bolt tips intersect the declared payload and yaw motor/coupler neighbors at neutral pose?",
+  "criteria": {
+    "max_overlap_mm3": 0.01
+  },
+  "criteria_origin": "Existing nominal CAD numerical overlap screening; not manufacturing clearance allowance.",
+  "stop": "Eight tips against seven payload and four motor/coupler envelopes.",
+  "method": "Union cylinder from earliest backing exit to furthest tip among stack cases; nominal M3 radius 1.5mm.",
+  "limits": [
+    "Neutral pose only; yaw coupler rotation not swept",
+    "No lateral hole tolerance or bolt tilt",
+    "Backing plate and support mating parts excluded; this is exposed-tip clearance only",
+    "No cables or motor internal geometry",
+    "No minimum manufactured clearance certified"
+  ]
+}

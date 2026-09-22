@@ -1,0 +1,39 @@
+{
+  "scope": "Check a revised yaw back against the previously failed load, including mesh convergence.",
+  "geometry_sha256": "f594759db4cbb29fddaf820c4232082813ffaef3cd6c744058d733c2d207a5a7",
+  "source_case": {
+    "source": "validation/prototype_epic4_v1/actuator_fullbody_load_right_v1/trace.npz",
+    "side": "left",
+    "samples": 7000,
+    "displacement_upper_mm": 0.5028143654414373,
+    "principal_upper_MPa": 16.44996071817459,
+    "von_mises_upper_MPa": 12.91460835367678,
+    "selected_time_s": 2.660999999999818,
+    "selected_wrench_N_Nmm": [
+      -0.1272189340693049,
+      -1.8776622515986345,
+      7.459879287959114,
+      -319.0787894301102,
+      -83.46580053874436,
+      -79.82271842590434
+    ],
+    "selected_actual_displacement_mm": 0.3921356408118649,
+    "bounded_within_criteria": false
+  },
+  "source_sha256": "c1be6e81e304c97a4544576da40af1a3dfc042b986228e08a7f7bf6ba19d8ffc",
+  "mesh_mm": [
+    4.0,
+    3.0,
+    2.0
+  ],
+  "young_MPa": 1120.0,
+  "poisson": 0.35,
+  "fixed": "rear mounting lands x=-62.2 mm ideal clamp",
+  "load": "shelf z=88 mm x[-29.5,4.5] y[16,36]",
+  "criteria": {
+    "displacement_mm": 0.2,
+    "stress_MPa": 5.6,
+    "displacement_mesh_relative": 0.05,
+    "stress_mesh_relative": 0.1
+  }
+}

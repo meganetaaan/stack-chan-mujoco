@@ -1,0 +1,32 @@
+{
+  "status": "candidate_not_released",
+  "topology": "individual power branches; soldered distribution end with strain relief; existing servo header retained",
+  "housing": "JST EHR-3",
+  "terminal": "JST SEH-001T-P0.6",
+  "servo_header_reference": "JST B3B-EH-A",
+  "pinout": {
+    "1": "GND",
+    "2": "VDD",
+    "3": "DATA"
+  },
+  "full_robot_housings": 12,
+  "full_robot_contacts": 36,
+  "candidate_wire_awg": 22,
+  "wire_part_number": null,
+  "sources": [
+    "https://www.jst-mfg.com/product/pdf/eng/eEH.pdf",
+    "https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/",
+    "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/"
+  ],
+  "qualification_remaining": [
+    "ROBOTIS AWG21 versus JST AWG22 maximum discrepancy; do not assume AWG21 self-crimp compatible",
+    "Exact wire insulation diameter strand construction resistance and crimp tool",
+    "CAD routing length flex strain relief mass",
+    "Common feeder voltage drop branch protection and regeneration",
+    "DATA topology and grounding are not validated"
+  ],
+  "evidence": "validation/servo_connector_decision_v1/README.md",
+  "stationary_jig_wire_candidate": "Alpha Wire 3051",
+  "wire_part_number_note": "Full robot flex wire remains unselected; 3051 is a stationary jig candidate only",
+  "wire_evidence": "validation/servo_wire_selection_v1"
+}

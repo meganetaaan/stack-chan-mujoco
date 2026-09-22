@@ -1,0 +1,115 @@
+{
+  "status": "architecture_and_package_candidate_not_integrated",
+  "part": "TPS70933DRVR",
+  "package": "DRV WSON6",
+  "source": "https://www.ti.com/lit/gpn/tps709",
+  "source_revision": "SBVS186H July 2021",
+  "role": "Dedicated LOGIC3V3 regulator; independent of STOP_AUX3V3 branch",
+  "pins": {
+    "1": "LOGIC3V3",
+    "2": null,
+    "3": "GND",
+    "4": null,
+    "5": null,
+    "6": "LOGIC_PROTECTED_INPUT",
+    "EP": "GND"
+  },
+  "enable": "EN intentionally floating per Table5-1; do not connect to 3S battery voltage",
+  "input_architecture": "Separate branch upstream of servo cutoff, with reverse polarity and branch fault protection still to be designed; LOGIC_PROTECTED_INPUT is not an implemented net",
+  "continuous_design_target_A": 0.02,
+  "temperature_reference_C": 85,
+  "selection_reason": "DRV thermal reference provides substantially more headroom than DBV at 12.6V and 20mA; actual exposed-pad layout required",
+  "capacitors": "Input: two GRM31C5C1H104JA01L in parallel on LOGIC_PROTECTED_INPUT, shared with protection output subject to close PCB placement. Output: separate polymer candidate below. Both unqualified for full conditions.",
+  "remaining": [
+    "Protected input branch, battery undervoltage and disconnect behavior",
+    "Output capacitor and minimum-load requirements",
+    "Full load and transient budget",
+    "DC accuracy across line/load and startup",
+    "PCB thermal path and assembly process for exposed pad",
+    "Integrated fault and reverse-current verification"
+  ],
+  "manufacturing_release": false,
+  "evidence": "validation/logic_supply_package_v1/README_ja.md",
+  "output_capacitor_candidate": {
+    "part": "T520A226M010ATE080",
+    "nominal_F": 2.2e-05,
+    "initial_tolerance": 0.2,
+    "rated_V": 10,
+    "temperature_C": [
+      -55,
+      105
+    ],
+    "ESR_ohm_at_100kHz_25C": 0.08,
+    "leakage_A_at_25C_5min": 2.2e-05,
+    "source": "https://search.kemet.com/download/specsheet/T520A226M010ATE080",
+    "status": "screened_candidate_not_selected_for_manufacturing",
+    "remaining": [
+      "Temperature-dependent capacitance and ESR limits",
+      "TPS709 stability across frequency/temperature with this capacitor technology",
+      "Total connected capacitance including MCU bypass",
+      "Surge, reverse voltage, reflow and ripple requirements"
+    ]
+  },
+  "startup_charge_requirement": {
+    "evidence": "validation/logic_startup_charge_v1/report.json",
+    "initial_output_charge_C": 9.4919175e-05,
+    "rule": "20mA continuous load target is not the input current-limit setting. Allocate net charging current and verify actual protection startup.",
+    "qualified": false
+  },
+  "input_protection_review": {
+    "family": "TPS26601",
+    "status": "functional_candidate_not_selected",
+    "evidence": "validation/logic_input_protection_v1/README_ja.md",
+    "required_design_decisions": [
+      "External UVLO divider; default threshold exceeds 3S full charge",
+      "External OVP suitable for TPS709 input limit",
+      "3S current-limit and startup qualification",
+      "Validate circuit-breaker startup charge against fault timer",
+      "Validate discharge for external power-cycle reset"
+    ],
+    "integrated": false,
+    "divider_proposal": {
+      "UVLO": {
+        "top_ohm": 40200,
+        "bottom_ohm": 10000
+      },
+      "OVP": {
+        "top_ohm": 124000,
+        "bottom_ohm": 10000
+      },
+      "top_connection": "BATTERY_RAW",
+      "bottom_connection": "TPS26601 RTN; reference routing and reverse-input behavior require verification",
+      "total_tolerance_budget": 0.01,
+      "status": "nominal_static_candidate_not_integrated",
+      "evidence": "validation/logic_input_window_v1/report.json",
+      "battery_cell_protection": false
+    },
+    "part_candidate": "TPS26601RHFR",
+    "previous_family": "TPS26600",
+    "fault_mode": {
+      "MODE": "open",
+      "behavior": "Circuit breaker with latched overload shutdown; fast-trip includes internal restart before overload handling",
+      "recovery_candidate": "External source disconnect with 100k BATTERY_RAW-to-GND bleed candidate; total capacitance/backfeed and reset hold duration unqualified",
+      "evidence": "validation/logic_fault_mode_v1/README_ja.md",
+      "qualified": false,
+      "startup_timer_review": {
+        "evidence": "validation/logic_startup_timer_v1/report.json",
+        "tCB_nominal_s": 0.004,
+        "tCB_min_s": null,
+        "tCB_max_s": null,
+        "status": "startup_not_qualified; do not infer output charging slope from upstream dVdT"
+      },
+      "discharge_evidence": "validation/logic_discharge_v1/report.json"
+    },
+    "pin_level_candidate": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+    "current_setting_candidate": {
+      "nominal_ohm": 118000,
+      "part": "TNPW0603118KBEEA",
+      "total_allocation": 0.01,
+      "evidence": "validation/logic_branch_resistors_v1/report.json",
+      "thresholds_qualified": false,
+      "supersedes": "120kohm test-point proposal; old calculations retained as history only"
+    },
+    "bypass_candidate_evidence": "validation/logic_branch_bypass_v1/report.json"
+  }
+}

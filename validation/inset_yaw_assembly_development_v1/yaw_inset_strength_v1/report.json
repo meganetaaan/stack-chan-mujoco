@@ -1,0 +1,85 @@
+{
+  "scope": "Check a revised yaw back against the previously failed load, including mesh convergence.",
+  "rows": [
+    {
+      "dofs": 29802,
+      "elements": 5194,
+      "fixed_facets": 180,
+      "loaded_facets": 102,
+      "max_displacement_mm": 0.16444287127817553,
+      "max_von_mises_MPa": 2.6830071685313905,
+      "max_absolute_principal_MPa": 4.112086456810867,
+      "achieved_wrench_N_Nmm": [
+        -0.12721893406929463,
+        -1.877662251598731,
+        7.459879287959141,
+        -319.0787894301076,
+        -83.4658005387443,
+        -79.82271842590671
+      ],
+      "free_residual_norm_N": 1.387576047888051e-11,
+      "strain_energy_Nmm": 1.4416823964000036,
+      "external_work_Nmm": 2.8833647928018538,
+      "stress_evaluation": "all integration points, no excluded corner or support singularities",
+      "mesh_mm": 4.0
+    },
+    {
+      "dofs": 48846,
+      "elements": 8692,
+      "fixed_facets": 272,
+      "loaded_facets": 204,
+      "max_displacement_mm": 0.1567969555403165,
+      "max_von_mises_MPa": 3.471796552276032,
+      "max_absolute_principal_MPa": 4.142154281091809,
+      "achieved_wrench_N_Nmm": [
+        -0.12721893406936866,
+        -1.8776622515981178,
+        7.459879287959044,
+        -319.0787894301188,
+        -83.46580053874409,
+        -79.8227184259012
+      ],
+      "free_residual_norm_N": 1.7429500962653947e-11,
+      "strain_energy_Nmm": 1.3340121790457606,
+      "external_work_Nmm": 2.668024358091841,
+      "stress_evaluation": "all integration points, no excluded corner or support singularities",
+      "mesh_mm": 3.0
+    },
+    {
+      "dofs": 110388,
+      "elements": 20772,
+      "fixed_facets": 368,
+      "loaded_facets": 422,
+      "max_displacement_mm": 0.161067816998724,
+      "max_von_mises_MPa": 3.0122750371904816,
+      "max_absolute_principal_MPa": 3.91340917232781,
+      "achieved_wrench_N_Nmm": [
+        -0.127218934069217,
+        -1.8776622515993402,
+        7.459879287959133,
+        -319.07878943010604,
+        -83.46580053874706,
+        -79.82271842590572
+      ],
+      "free_residual_norm_N": 2.5913735660449405e-11,
+      "strain_energy_Nmm": 1.3897755171427917,
+      "external_work_Nmm": 2.7795510342915826,
+      "stress_evaluation": "all integration points, no excluded corner or support singularities",
+      "mesh_mm": 2.0
+    }
+  ],
+  "gates": {
+    "displacement": true,
+    "stress": true,
+    "displacement_mesh": true,
+    "stress_mesh": true
+  },
+  "passed_screen": true,
+  "production_verified": false,
+  "limitations": [
+    "one previously failed load only",
+    "clamped lands, no mating structure/contact",
+    "no buckling",
+    "mass update and full load envelope pending"
+  ]
+}

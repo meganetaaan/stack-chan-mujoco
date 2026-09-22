@@ -1,0 +1,134 @@
+{
+  "scope": "Balanced washer-pressure contact probe on current body and plate, not screw qualification.",
+  "force_per_corner_N": 25.0,
+  "penalty_N_mm3": 100000.0,
+  "materials": {
+    "body": {
+      "E_MPa": 1120,
+      "nu": 0.35
+    },
+    "rear_plate": {
+      "E_MPa": 68300,
+      "nu": 0.33
+    }
+  },
+  "anchors": {
+    "body": [
+      {
+        "node": 3686,
+        "xyz": [
+          -62.2,
+          -63.80961940777126,
+          0.1903805922287441
+        ]
+      },
+      {
+        "node": 1747,
+        "xyz": [
+          -62.2,
+          63.80961940777126,
+          0.190380592228744
+        ]
+      },
+      {
+        "node": 3679,
+        "xyz": [
+          -62.2,
+          -63.80961940777126,
+          127.8096194077713
+        ]
+      }
+    ],
+    "rear_plate": [
+      {
+        "node": 20464,
+        "xyz": [
+          -64.2,
+          -63.80961940777126,
+          0.1903805922287444
+        ]
+      },
+      {
+        "node": 20562,
+        "xyz": [
+          -64.2,
+          63.80961940777126,
+          0.1903805922287444
+        ]
+      }
+    ]
+  },
+  "pressure_loads": [
+    {
+      "part": "body",
+      "contact": "body_washer_0",
+      "pressure_MPa": 1.3108200939758115,
+      "force_N": 25.0
+    },
+    {
+      "part": "body",
+      "contact": "body_washer_1",
+      "pressure_MPa": 1.310820093975811,
+      "force_N": 25.0
+    },
+    {
+      "part": "body",
+      "contact": "body_washer_2",
+      "pressure_MPa": 1.3108200939758117,
+      "force_N": 25.0
+    },
+    {
+      "part": "body",
+      "contact": "body_washer_3",
+      "pressure_MPa": 1.310820093975811,
+      "force_N": 25.0
+    },
+    {
+      "part": "rear_plate",
+      "contact": "washer_plate_0",
+      "pressure_MPa": 0.8556742280119881,
+      "force_N": 25.0
+    },
+    {
+      "part": "rear_plate",
+      "contact": "washer_plate_1",
+      "pressure_MPa": 0.855674228011989,
+      "force_N": 25.0
+    },
+    {
+      "part": "rear_plate",
+      "contact": "washer_plate_2",
+      "pressure_MPa": 0.8556742280119882,
+      "force_N": 25.0
+    },
+    {
+      "part": "rear_plate",
+      "contact": "washer_plate_3",
+      "pressure_MPa": 0.8556742280119889,
+      "force_N": 25.0
+    }
+  ],
+  "load_mode": "nodal",
+  "initial_nodal_load_resultant_N": [
+    3.81084053202585e-14,
+    0.0,
+    0.0
+  ],
+  "initial_nodal_load_moment_Nmm": [
+    0.0,
+    -1.1308287639621994e-11,
+    -6.572520305780927e-14
+  ],
+  "criteria": {
+    "solver_completion": true,
+    "relative_total_anchor_force_max": 0.0001
+  },
+  "limitations": [
+    "normal pressure replaces screw and washer compliance",
+    "frictionless contact",
+    "minimal rigid-mode anchors; anchor reaction must be evaluated",
+    "C3D4 mesh not stiffness-converged",
+    "no walking load, thread strength, retained preload, friction or tolerance qualification"
+  ],
+  "mesh_sha256": "17bb369a02705897d992a6e3f4a6b1bb1c21da8412520e6db3a3a12ec0bed6a7"
+}

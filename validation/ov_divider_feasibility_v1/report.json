@@ -1,0 +1,32 @@
+{
+  "q_lower_for_normal_operation_strict": 4.464285714285714,
+  "q_upper_to_trip_by_servo_max": 4.901960784313726,
+  "q_lower_for_fault_pin_limit": 8.4,
+  "nominal_necessary_conditions_feasible": false,
+  "minimum_worst_threshold_if_fault_ratio_satisfied_V": 10.281600000000001,
+  "maximum_fault_source_compatible_with_trip_necessary_bound_V": 7.352941176470589,
+  "rows": [
+    {
+      "side": "LEFT",
+      "q_nominal": 4.57,
+      "nominal_fault_pin_V": 2.757111597374179,
+      "largest_source_V_at_pin_recommended_max_nominal": 6.855,
+      "ideal_trip_interval_V": [
+        5.37432,
+        5.59368
+      ]
+    },
+    {
+      "side": "RIGHT",
+      "q_nominal": 4.57,
+      "nominal_fault_pin_V": 2.757111597374179,
+      "largest_source_V_at_pin_recommended_max_nominal": 6.855,
+      "ideal_trip_interval_V": [
+        5.37432,
+        5.59368
+      ]
+    }
+  ],
+  "decision": "Bare divider cannot meet both retained conditions; select a different sensing/protection topology before ordering OV divider resistors.",
+  "electrical_qualification": false
+}

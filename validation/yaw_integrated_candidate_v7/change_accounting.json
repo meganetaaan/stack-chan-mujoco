@@ -1,0 +1,80 @@
+{
+  "comparison_base": "validation/yaw_integrated_candidate_v5",
+  "changed_parts": [
+    {
+      "name": "left_yaw_fixed_support",
+      "added_volume_mm3": 4561.041667213249,
+      "actual_mass_delta_g": null
+    },
+    {
+      "name": "right_yaw_fixed_support",
+      "added_volume_mm3": 4561.041667213103,
+      "actual_mass_delta_g": null
+    }
+  ],
+  "unchanged_names": [
+    "body_shroud",
+    "rear_plate",
+    "left_threaded_backing_plate",
+    "left_mount_plate",
+    "left_64_keeper",
+    "left_76_keeper",
+    "left_rear_0_bolt",
+    "left_rear_0_rear_washer",
+    "left_rear_1_bolt",
+    "left_rear_1_rear_washer",
+    "left_rear_2_bolt",
+    "left_rear_2_rear_washer",
+    "left_rear_3_bolt",
+    "left_rear_3_rear_washer",
+    "left_plate_0_screw",
+    "left_plate_0_washer",
+    "left_plate_0_nut",
+    "left_plate_1_screw",
+    "left_plate_1_washer",
+    "left_plate_1_nut",
+    "left_plate_2_screw",
+    "left_plate_2_washer",
+    "left_plate_2_nut",
+    "left_plate_3_screw",
+    "left_plate_3_washer",
+    "left_plate_3_nut",
+    "right_threaded_backing_plate",
+    "right_mount_plate",
+    "right_64_keeper",
+    "right_76_keeper",
+    "right_rear_0_bolt",
+    "right_rear_0_rear_washer",
+    "right_rear_1_bolt",
+    "right_rear_1_rear_washer",
+    "right_rear_2_bolt",
+    "right_rear_2_rear_washer",
+    "right_rear_3_bolt",
+    "right_rear_3_rear_washer",
+    "right_plate_0_screw",
+    "right_plate_0_washer",
+    "right_plate_0_nut",
+    "right_plate_1_screw",
+    "right_plate_1_washer",
+    "right_plate_1_nut",
+    "right_plate_2_screw",
+    "right_plate_2_washer",
+    "right_plate_2_nut",
+    "right_plate_3_screw",
+    "right_plate_3_washer",
+    "right_plate_3_nut"
+  ],
+  "source_sha256": {
+    "validation/yaw_integrated_candidate_v5/inventory.json": "2a17fb5a1566d3dbb1705386584d677ff5a69a71b1b70e5a5f8835f3fddd890c",
+    "validation/yaw_integrated_candidate_v5/geometric_moments.json": "c79651ab98dd0bf77a2f2bf1ddb4b332adf278d673956f7a7c38c706b4cb9244",
+    "validation/yaw_integrated_candidate_v5/yaw_support_candidate.step": "6597d99840f71fc24c1d5c79b6abbef9f87a84391126edde2af5a2655223cd63",
+    "validation/yaw_upper_tool_relief_v1/left_yaw_fixed_support.step": "56d284128f57199527228231cac7002225158444b540f8d9b7bed568ab258f38",
+    "validation/yaw_upper_tool_relief_v1/right_yaw_fixed_support.step": "43e5c10dea66d801a33de895c8069149c28285bf144a9388ead666a34fc54de7"
+  },
+  "limits": [
+    "Relative to v5 only; do not add to older aggregate mass twice.",
+    "Nut collision envelopes are not actual nut mass.",
+    "Density, full robot inertia and loads not updated."
+  ],
+  "manufacturing_release": false
+}

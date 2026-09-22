@@ -1,0 +1,30 @@
+{
+  "scope": "Run an averaged, energy-accounted supply probe with the recorded 12-axis load.\n\nDevelopment model: effective output impedance and response are assumptions,\nnot a vendor macromodel. No battery/protection design is certified here.\n",
+  "source_sha256": "9f05eb80ed081c2fd27128883a48fdbd1485984e72503718cf52ae41fcf3eabe",
+  "source_path": "validation/prototype_epic4_v1/load_export_left_v1/loads.npz",
+  "parameters": {
+    "battery_open_circuit_V": 7.4,
+    "battery_resistance_ohm": 0.1,
+    "nominal_output_V": 5.0,
+    "efficiency_assumed": 0.85,
+    "effective_output_inductance_H": 1e-06,
+    "effective_output_resistance_ohm": 0.03,
+    "output_capacitance_F": 0.001,
+    "harness_resistance_ohm": 0.02,
+    "startup_ramp_s": 0.005,
+    "load_start_s": 0.05
+  },
+  "regeneration_test": true,
+  "predefined_screen": {
+    "operating_bus_min_V": 4.75,
+    "operating_bus_max_V": 5.25,
+    "energy_relative_error_max": 0.01
+  },
+  "limitations": [
+    "unselected battery; resistance is a scenario",
+    "no current limit or protection yet",
+    "assumed effective output dynamics, not switching ripple",
+    "prescribed current load; motor current/torque not re-simulated at varying voltage",
+    "generic controller load 3 W; Tab5 dynamic load still to be bounded"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "direct_pg_to_reset": "rejected_startup_deadlock",
+  "direct_counterexample": [
+    {
+      "event": "power_valid",
+      "pg": false,
+      "reset_n": false,
+      "enable": false
+    },
+    {
+      "event": "release_qualified",
+      "pg": false,
+      "reset_n": false,
+      "enable": false
+    },
+    {
+      "event": "fresh_press",
+      "pg": false,
+      "reset_n": false,
+      "enable": false
+    },
+    {
+      "event": "wait",
+      "pg": false,
+      "reset_n": false,
+      "enable": false
+    }
+  ],
+  "pg_pin": 13,
+  "dedicated_fault_pin_present": false,
+  "dc_comparisons_not_qualification": {
+    "PG_unpowered_low_max_V_at_26uA": 0.786,
+    "pullup_current_A_at_3p393V_99kohm_and_0p786V": 2.633333333333333e-05,
+    "including_3uA_powered_input_comparison_A": 2.9333333333333333e-05,
+    "PG_high_leakage_max_A_at_published_test": 1.7e-06,
+    "shared_reset_high_lower_comparison_V": 2.702
+  },
+  "abstract_transition_count": 64,
+  "physical_circuit_qualified": false,
+  "unresolved": [
+    "Fresh request must come from qualified release then press, not a held button",
+    "Startup deadline derived from actual power stage and energy limits; no numeric value assigned",
+    "PG receiver thresholds, pullup, unpowered pin current and timing",
+    "Independent absolute servo overvoltage detection; PG is not a 6V clamp",
+    "Hardware state storage/timer/output default-off implementation",
+    "PG stuck-high needs independent coverage, not solved by sequencing"
+  ]
+}

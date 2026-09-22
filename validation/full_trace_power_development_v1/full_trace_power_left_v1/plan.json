@@ -1,0 +1,32 @@
+{
+  "scope": "Evaluate the complete recorded twelve-axis load with internal-step voltage measurements.",
+  "side": "left",
+  "source_sha256": {
+    "validation/prototype_epic4_v1/load_export_left_v1/loads.npz": "9f05eb80ed081c2fd27128883a48fdbd1485984e72503718cf52ae41fcf3eabe",
+    "validation/coupled_power_ldo_development_v1/coupled_power_startup_continuous_v2/coupled.cir": "58c2b0ebc9850b6135908c62756fef6b3d4572f321c4e380d339379d80c8bfc3"
+  },
+  "load_samples": 7000,
+  "load_time_s": [
+    0.001,
+    7.000000000000672
+  ],
+  "load_start_s": 0.05,
+  "stop_s": 7.060000000000672,
+  "battery_V": 7.4,
+  "solver_max_step_s": 1e-06,
+  "display_interval_s": 0.0001,
+  "measurement_method": "ngspice meas on original internal-step vectors before linearize",
+  "criteria": {
+    "operating_bus_min_V": 4.75,
+    "operating_bus_max_V": 5.25,
+    "startup_gate_max_V": 0.4
+  },
+  "limitations": [
+    "All continuous-LDO coupled model assumptions retained",
+    "Prescribed current does not respond to motor voltage except rolloff below 0.5 V",
+    "No new mechanical mass or load regeneration incorporated",
+    "No component/thermal/protection qualification",
+    "Uniform display trace is not used to certify extrema",
+    "Battery energy is measured but complete energy balance not checked"
+  ]
+}

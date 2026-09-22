@@ -1,0 +1,7 @@
+{
+ "scope":"Offline candidate detector on saved display samples, not hardware protection verification",
+ "thresholds":{"aux_ready_V":3.0,"bus_min_V":4.75,"bus_max_V":5.25,"gate_off_max_V":0.4,"unexpected_current_min_A":0.1,"persistence_s":0.001},
+ "criteria":{"normal_case_detections":0,"stuck_on_detect_before_s":0.079},
+ "cases":{"normal":"validation/brake_51ohm_envelope_faults_v1/none","primary_stuck_on":"validation/brake_stuck_on_v1/primary_stuck_on","both_stuck_on":"validation/brake_stuck_on_v1/both_stuck_on"},
+ "limitations":["100 us display sampling can miss short events; not proof of real-time detection","Current reconstructed from ideal known resistor, not a sensor","Thresholds proposed without sensor offset or comparator error budget","Armed only while auxiliary and bus within range; post-shutdown protection not covered","No actual shutdown or latch/recovery circuit"]
+}

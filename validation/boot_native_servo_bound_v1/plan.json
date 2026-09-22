@@ -1,0 +1,18 @@
+{
+  "required_clearance_mm": 1.1,
+  "numerical_allowance_mm": 1e-05,
+  "range_rad": [
+    -0.34,
+    0.34
+  ],
+  "bound": "min(endpoint distances) - R * interval_width / 2 - numerical allowance; nearest endpoint is at most half an interval away",
+  "co_rotating_bound": "Rigid common rotation preserves pair distance; minimum sampled distance minus numerical allowance",
+  "source_sha256": {
+    "validation/boot_native_servo_development_v1/plan.json": "a36f3f6ed4fe99d1ac897fb67ab756290f66924f6da9bcda3279ed9fbb637d80",
+    "validation/boot_native_servo_development_v1/report.json": "01e7e5cbf10afd05931b8640eb721b36da086067ed25dccc16a86aa5f0b87164"
+  },
+  "limitations": [
+    "Conditional on previous motion group assignments and CAD distance numerical allowance.",
+    "No new hardware, harness, tolerances or measured deflection."
+  ]
+}

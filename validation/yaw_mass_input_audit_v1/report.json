@@ -1,0 +1,19 @@
+{
+  "source_sha256": "44b30143aae11b946018bde832e769e2d47d34d4a9d12c57619a2e240edcf609",
+  "parts_accounted": 52,
+  "nominal_volume_coefficients_only": true,
+  "robot_mass_updated": false,
+  "frozen_model_mass_must_not_be_incremented_blindly": true,
+  "exclusions": [
+    "Servos/horns/case screws",
+    "Body corner fasteners",
+    "Legs/feet",
+    "Tab5/battery/electronics/wiring"
+  ],
+  "required_before_load_update": [
+    "Manufacturing process and effective density",
+    "Hardware actual mass",
+    "Mapping replacing existing model components, not double counting",
+    "Mass centres and inertia tensors in assembled frame"
+  ]
+}

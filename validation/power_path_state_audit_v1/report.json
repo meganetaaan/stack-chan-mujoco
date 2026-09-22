@@ -1,0 +1,87 @@
+{
+  "scope": "Does a common absorber remain electrically reachable from each servo after source isolation or branch opening?",
+  "rows": [
+    {
+      "state": "normal",
+      "removed_edges": [],
+      "regeneration_sources_without_sink_path": [],
+      "connectivity_gate": true
+    },
+    {
+      "state": "source_disconnected",
+      "removed_edges": [
+        [
+          "source",
+          "bus"
+        ],
+        [
+          "bus",
+          "source"
+        ]
+      ],
+      "regeneration_sources_without_sink_path": [],
+      "connectivity_gate": true
+    },
+    {
+      "state": "branch0_protection_open",
+      "removed_edges": [
+        [
+          "bus",
+          "branch0"
+        ],
+        [
+          "branch0",
+          "bus"
+        ]
+      ],
+      "regeneration_sources_without_sink_path": [
+        "servo0"
+      ],
+      "connectivity_gate": false
+    },
+    {
+      "state": "servo0_cable_detached",
+      "removed_edges": [
+        [
+          "branch0",
+          "servo0"
+        ],
+        [
+          "servo0",
+          "branch0"
+        ]
+      ],
+      "regeneration_sources_without_sink_path": [
+        "servo0"
+      ],
+      "connectivity_gate": false
+    },
+    {
+      "state": "source_disconnected_and_branch0_open",
+      "removed_edges": [
+        [
+          "source",
+          "bus"
+        ],
+        [
+          "bus",
+          "source"
+        ],
+        [
+          "bus",
+          "branch0"
+        ],
+        [
+          "branch0",
+          "bus"
+        ]
+      ],
+      "regeneration_sources_without_sink_path": [
+        "servo0"
+      ],
+      "connectivity_gate": false
+    }
+  ],
+  "topology_covers_all_declared_states": false,
+  "electrical_protection_verified": false
+}

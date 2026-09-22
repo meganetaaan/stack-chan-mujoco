@@ -1,0 +1,50 @@
+{
+  "question": "Does outer-port relief materially increase shelf deformation under the same archived load?",
+  "source_case": {
+    "source": "validation/prototype_epic4_v1/actuator_fullbody_load_right_v1/trace.npz",
+    "side": "left",
+    "samples": 7000,
+    "displacement_upper_mm": 0.5028143654414373,
+    "principal_upper_MPa": 16.44996071817459,
+    "von_mises_upper_MPa": 12.91460835367678,
+    "selected_time_s": 2.660999999999818,
+    "selected_wrench_N_Nmm": [
+      -0.1272189340693049,
+      -1.8776622515986345,
+      7.459879287959114,
+      -319.0787894301102,
+      -83.46580053874436,
+      -79.82271842590434
+    ],
+    "selected_actual_displacement_mm": 0.3921356408118649,
+    "bounded_within_criteria": false
+  },
+  "source_sha256": "c1be6e81e304c97a4544576da40af1a3dfc042b986228e08a7f7bf6ba19d8ffc",
+  "material_assumption": {
+    "young_MPa": 1120,
+    "poisson": 0.35
+  },
+  "fixed": "All boundary facets on rear mounting lands X=-62.2, ideal clamp.",
+  "loaded": "Plate contact plane Z89, X[-37.5,11.6], Y[9.5,42.5]; resultant-preserving bonded traction, no unilateral contact.",
+  "origin_mm": [
+    -5,
+    26,
+    62
+  ],
+  "mesh_sizes_mm": [
+    3,
+    2
+  ],
+  "criteria": {
+    "free_residual_N": 1e-07,
+    "energy_relative": 1e-06,
+    "mesh_displacement_relative": 0.1
+  },
+  "stop": "Exactly two shapes and two meshes for one archived load. Do not refine based on local peak stress.",
+  "limits": [
+    "Archived EPIC4 load is not a current complete mass/load envelope.",
+    "E is a comparison assumption, not a printed ABS/PETG allowable.",
+    "No preload, contact separation, rear-body flexibility, creep, layer failure or bolt pullout.",
+    "No strength pass or manufacturing release."
+  ]
+}

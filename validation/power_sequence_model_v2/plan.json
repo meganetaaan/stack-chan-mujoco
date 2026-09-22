@@ -1,0 +1,16 @@
+{
+  "scope": "Exhaustively check reachable sampled states with independent input combinations.",
+  "criteria": [
+    "No enable outside START/RUN",
+    "Health or permission loss inhibits output without waiting for sampled state update",
+    "Either PG failure in RUN inhibits both-leg enable",
+    "Startup expiry inhibits and wins simultaneous PG success",
+    "Clear completion requires independent latch and fresh hold observations",
+    "Fault recovery alone cannot reach START"
+  ],
+  "limits": [
+    "Boolean sampled observations only, not asynchronous timing proof",
+    "Manual permission is an externally qualified latch, not a raw button",
+    "No latch state or timer acknowledgement is assigned by this model"
+  ]
+}

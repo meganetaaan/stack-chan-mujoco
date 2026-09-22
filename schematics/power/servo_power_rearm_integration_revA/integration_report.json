@@ -1,0 +1,39 @@
+{
+  "shared_nets": [
+    "GND",
+    "LEFT_PG_SOURCE",
+    "RIGHT_PG_SOURCE"
+  ],
+  "PG_checks": [
+    {
+      "side": "LEFT",
+      "PG_output": "LEFT_U_POWER.3",
+      "source_pullup": "LEFT_R10.2",
+      "receiver_input": "LEFT_R11.1",
+      "trace_connected": true
+    },
+    {
+      "side": "RIGHT",
+      "PG_output": "RIGHT_U_POWER.3",
+      "source_pullup": "RIGHT_R10.2",
+      "receiver_input": "RIGHT_R11.1",
+      "trace_connected": true
+    }
+  ],
+  "part_count": 68,
+  "pin_count": 238,
+  "unselected_parts": [
+    "LEFT_R_GATE",
+    "LEFT_C_GATE",
+    "RIGHT_R_GATE",
+    "RIGHT_C_GATE",
+    "LEFT_R_ILM",
+    "RIGHT_R_ILM",
+    "LEFT_R_OV_TOP",
+    "LEFT_R_OV_BOTTOM",
+    "RIGHT_R_OV_TOP",
+    "RIGHT_R_OV_BOTTOM"
+  ],
+  "enable_network_implemented": false,
+  "manufacturing_release": false
+}

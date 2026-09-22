@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "case": "both_working",
+      "simulated_rail_V": 0.001361431,
+      "simulated_Cout_energy_J": 8.896772965252799e-10,
+      "simulation_meets_candidate_target": true,
+      "isolated_RC_rail_V": 0.048690243688527604,
+      "isolated_RC_meets_candidate_target": true
+    },
+    {
+      "case": "one_open",
+      "simulated_rail_V": 0.0228909,
+      "simulated_Cout_energy_J": 2.515167853487999e-07,
+      "simulation_meets_candidate_target": true,
+      "isolated_RC_rail_V": 0.5055925032719234,
+      "isolated_RC_meets_candidate_target": false
+    },
+    {
+      "case": "both_open",
+      "simulated_rail_V": 0.7407269,
+      "simulated_Cout_energy_J": 0.00026336464338413274,
+      "simulation_meets_candidate_target": false,
+      "isolated_RC_rail_V": 5.25,
+      "isolated_RC_meets_candidate_target": false
+    }
+  ],
+  "each_resistor_max_operating_power_W": 0.07439271255060728,
+  "total_max_operating_power_W": 0.14878542510121456,
+  "Cout_initial_energy_bound_J": 0.013229999999999999,
+  "maximum_each_resistance_ohm_for_single_survivor_RC_target": 407.56290618171886,
+  "protection_design_verified": false,
+  "interpretation": "Isolated RC excludes other discharge and energy paths; this comparison exposes dependence on behavioral loads, not a proof of full-circuit worst-case bounds."
+}

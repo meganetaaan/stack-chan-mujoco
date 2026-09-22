@@ -1,0 +1,8 @@
+{
+ "scope":"Insert proposed low-side current shunts and reference switches to gate-source voltage",
+ "shunt_ohm":0.101,
+ "brake_ohm":5.746544,
+ "criteria":{"post_disconnect_bus_max_V":6.0},
+ "cases":["none","primary_open"],
+ "limitations":["Shunt +1% initial corner only; total temperature envelope unqualified","INA180 is not connected; tests insertion burden only","MOS remains an ideal resistive switch, no gate capacitance referenced to moving source","Shunt/source movement changes gate-source control but does not validate actual MOS transfer","No sensor latch or automatic isolation"]
+}

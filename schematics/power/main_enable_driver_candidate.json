@@ -1,0 +1,25 @@
+{
+  "part_number": "74LVC1G17GV",
+  "role": "main eFuse EN buffer, conditional candidate, not complete default-off protection",
+  "pins": {
+    "1_NC": "NC",
+    "2_A": "POWER_ENABLE_COMMAND from unfinished startup/stop sequencer; 220k to GND",
+    "3_GND": "GND",
+    "4_Y": "MAIN_EFUSE_EN -> TPS259823 pin6; 39k to GND at eFuse",
+    "5_VCC": "LOGIC3V3; local 100nF candidate"
+  },
+  "resistors": "39k and 220k; total +/-1% comparison only; actual parts and temperature budget pending",
+  "sources": [
+    "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf",
+    "https://www.ti.com/lit/ds/symlink/tps25982.pdf"
+  ],
+  "evidence": "validation/main_enable_driver_v1/README_ja.md",
+  "limits": [
+    "No direct ENABLE_PERMISSION bypass of startup/stop qualification",
+    "Input threshold and command driver qualification pending",
+    "Ioff at zero supply does not guarantee behavior during brownout",
+    "Output stuck-high failure not independently covered",
+    "EN does not guarantee reverse-current isolation"
+  ],
+  "manufacturing_release": false
+}

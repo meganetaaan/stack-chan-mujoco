@@ -1,0 +1,43 @@
+{
+  "valid_single_solid": true,
+  "volume_mm3": 6170.79469155663,
+  "source_sha256": {
+    "board/mechanical/prototype/rc_battery_tray_revA/tray.step": "9067d70198488bd58d241678d8f627d245780d1da90cccf04ca7c875d2c3fb9d",
+    "validation/rc_battery_cad_v1_checked/battery_candidate.step": "5f3ece800a1715d5e12958fb7623d65ef4e9802fbacbb21010aa407bdb86b1b2",
+    "validation/battery_retention_envelope_v1/strap_envelope.step": "7417630ce80042009f5e98ac1377b7b96f4093cdc451f7872f89d8f832c66ddf",
+    "board/mechanical/prototype/yaw_support_candidate/revA/yaw_support_candidate.step": "519382141db1040e813441babe6fa07309a2e03d24ed6e363ce9435e10975934",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/Tab5.step": "bc4f282fb78ac58e92fb8d285a9dbfc7935f2d268dff3be77e88dda248214376"
+  },
+  "strap_width_mm": 10,
+  "guide_inner_gap_mm": 11,
+  "nominal_lateral_gap_each_mm": 0.5,
+  "checks": [
+    {
+      "part": "battery",
+      "overlap_mm3": 0.0,
+      "distance_mm": 0.0
+    },
+    {
+      "part": "strap",
+      "overlap_mm3": 0.0,
+      "distance_mm": 0.0
+    },
+    {
+      "part": "yaw",
+      "overlap_mm3": 0.0,
+      "distance_mm": 0.0
+    },
+    {
+      "part": "Tab5",
+      "overlap_mm3": 0.0,
+      "distance_mm": 8.549999999999997
+    }
+  ],
+  "release": false,
+  "pending": [
+    "Actual strap width thickness buckle and tolerance",
+    "Guide strength and print orientation",
+    "Full insertion routing and service sequence",
+    "Pack pressure and retention loads"
+  ]
+}

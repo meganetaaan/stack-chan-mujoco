@@ -1,0 +1,60 @@
+{
+  "part_number": "TPS3700DDCR",
+  "status": "alternative_not_integrated",
+  "replaces_candidate": "revI U14 74AUP1G06GW; not a pin-compatible replacement",
+  "pins": {
+    "1": null,
+    "2": "GND",
+    "3": "GND",
+    "4": "SEQUENCE_CLEAR_REQUEST",
+    "5": "LOGIC3V3",
+    "6": "RESET_N"
+  },
+  "retain_passives": [
+    "R14 100k request pullup",
+    "C14 100nF local bypass",
+    "R4 100k RESET_N pullup"
+  ],
+  "logic": "Request above positive threshold asserts OUTB Low; below negative threshold releases OUTB",
+  "threshold_reference_V": {
+    "rising": [
+      0.396,
+      0.404
+    ],
+    "falling": [
+      0.387,
+      0.4
+    ]
+  },
+  "output_reference": {
+    "VOL_V_max": 0.25,
+    "specified_points": [
+      {
+        "VDD_V": 1.3,
+        "IOL_A": 0.0004
+      },
+      {
+        "VDD_V": 1.8,
+        "IOL_A": 0.003
+      },
+      {
+        "VDD_V": 5,
+        "IOL_A": 0.005
+      }
+    ],
+    "note": "Not a continuous-voltage proof; UVLO OUTB goes Hi-Z, so low-voltage VOL row must not be treated as asserted OUTB under UVLO"
+  },
+  "source": "https://www.ti.com/lit/ds/symlink/tps3700.pdf",
+  "source_revision": "SBVS187G, February 2019, pp4,6,7",
+  "startup_invalid_s_max": 0.00045,
+  "power_loss_behavior": "OUTB Hi-Z below UVLO; indeterminate below POR",
+  "pending": [
+    "Threshold and output applicability over actual supply interval",
+    "Driver Low must be below falling threshold including error; prior 0.9V input specification cannot be reused",
+    "Startup and partial-power inhibition by independent U7",
+    "Propagation budget and short-request capture",
+    "Actual CLR observation and timer sequencing"
+  ],
+  "manufacturing_release": false,
+  "electrical_qualification": false
+}

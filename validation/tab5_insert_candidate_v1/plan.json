@@ -1,0 +1,33 @@
+{
+  "candidate": "CNC Kitchen TC-M3x5.7, four; retain NBK SLH-M3-10, four",
+  "manufacturer_mm": {
+    "length": 5.7,
+    "outer_diameter": 4.6,
+    "hole_diameter": 4.0,
+    "minimum_wall_from_hole": 1.6
+  },
+  "engineering_choices": {
+    "insert_abs_y": [
+      55,
+      60.7
+    ],
+    "through_bore_mm": 4.0,
+    "ear_height_mm": 8,
+    "ear_x_mm": [
+      37,
+      50
+    ]
+  },
+  "criteria": [
+    "Single valid carrier",
+    "No new carrier overlap above 0.01 mm3",
+    "Nominal bore wall >= manufacturer minimum",
+    "Screw spans insert length; no screw bottoming in blind polymer"
+  ],
+  "stop": "One candidate and nominal dimensional/interference comparison; no mesh study",
+  "limits": [
+    "Hole compensation requires a same-process coupon",
+    "Knurls, thread runout, tolerances, heat distortion and pullout not modeled",
+    "Installed polymer envelope is a subtraction approximation, not melt simulation"
+  ]
+}

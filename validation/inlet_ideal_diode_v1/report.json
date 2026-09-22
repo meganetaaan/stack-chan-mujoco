@@ -1,0 +1,61 @@
+{
+  "source_sha256": "dde1ad9b62969dd73bad77851edf5102ee652450914a1e3b0188c65c327411dc",
+  "pin_mapping_checks_pass": true,
+  "loss_conditions": "FET fully enhanced at VGS4.5V,25C datasheet maxRds3.3mohm at28A; illustrative currents, not hot system bounds or regulated-mode loss",
+  "conditional_loss_rows": [
+    {
+      "current_A": 5,
+      "assumed_Rds_ohm": 0.0033,
+      "conduction_drop_V": 0.0165,
+      "conduction_loss_W": 0.0825
+    },
+    {
+      "current_A": 8.6,
+      "assumed_Rds_ohm": 0.0033,
+      "conduction_drop_V": 0.02838,
+      "conduction_loss_W": 0.24406799999999998
+    },
+    {
+      "current_A": 10,
+      "assumed_Rds_ohm": 0.0033,
+      "conduction_drop_V": 0.033,
+      "conduction_loss_W": 0.33
+    }
+  ],
+  "steady_reverse_comparison": {
+    "input_V": -12.6,
+    "precharged_output_V": 12.6,
+    "MOSFET_VDS_V": 25.2,
+    "MOSFET_rating_V": 60,
+    "controller_cathode_minus_anode_V": 25.2,
+    "transient_margin_proven": false
+  },
+  "gate_rating_comparison": {
+    "controller_recommended_minimum_FET_VGS_rating_V": 15,
+    "FET_absolute_VGS_rating_V": 20,
+    "transient_clamp_proven": false
+  },
+  "states": [
+    {
+      "name": "normal forward",
+      "path": "body diode initially, controller-driven channel afterwards",
+      "qualified": false
+    },
+    {
+      "name": "EN low or controller not started",
+      "path": "forward body diode remains; not a load disconnect",
+      "qualified_as_disconnect": false
+    },
+    {
+      "name": "input reversed/output precharged",
+      "path": "controller must remove gate charge; steady body diode blocks reverse; transient current unproven",
+      "qualified": false
+    },
+    {
+      "name": "main input removed with cell taps connected",
+      "path": "possible alternative supply through sense network; must audit separately",
+      "qualified": false
+    }
+  ],
+  "manufacturing_release": false
+}

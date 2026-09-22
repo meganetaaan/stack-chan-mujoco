@@ -1,0 +1,164 @@
+{
+  "status": "component_and_functional_topology_candidate_not_released",
+  "part": "CSD18540Q5BT",
+  "quantity": 2,
+  "source": "https://www.ti.com/lit/ds/symlink/csd18540q5b.pdf",
+  "source_revision": "SLPS488B April2017",
+  "ratings": {
+    "VDS_absolute_max_V": 60,
+    "VGS_absolute_max_V": 20,
+    "RDSon_max_at_4p5V_25C_ohm": 0.0033,
+    "RDSon_max_at_10V_25C_ohm": 0.0022,
+    "gate_charge_max_at_10V_nC": 53,
+    "gate_charge_test": "VDS30V ID28A; not robot gate waveform"
+  },
+  "functional_connections": {
+    "Q_CHG": {
+      "source": "CELL_POS_FUSED",
+      "drain": "PACK_FET_MID",
+      "gate": "CHG_GATE"
+    },
+    "Q_DSG": {
+      "source": "PACK_POS_PROTECTED",
+      "drain": "PACK_FET_MID",
+      "gate": "DSG_GATE"
+    }
+  },
+  "driver": "BQ76942 CHG45 and DSG43 through unselected gate networks; high overdrive candidate",
+  "pin_number_mapping_verified": true,
+  "normal_gate_screen": "BQ76942 high overdrive 10..13V relative BAT for BAT>=8V under table conditions; source-relative transient VGS still unqualified",
+  "fixed_current_comparison_not_load_requirement": [
+    {
+      "current_A": 5,
+      "two_FET_drop_V_at_4p5V_25C": 0.033,
+      "two_FET_loss_W_at_4p5V_25C": 0.165
+    },
+    {
+      "current_A": 10,
+      "two_FET_drop_V_at_4p5V_25C": 0.066,
+      "two_FET_loss_W_at_4p5V_25C": 0.66
+    }
+  ],
+  "unresolved": [
+    "CAD footprint pad numbering and exposed drain pad mapping",
+    "gate resistor and source clamp parts",
+    "charge pump capacitor and transient load",
+    "hot RDSon and PCB thermal path",
+    "3S input current envelope including Tab5 and conversion loss",
+    "short circuit SOA and fuse coordination",
+    "reverse polarity and USB injection",
+    "pack-local supply and loss of gate drive"
+  ],
+  "manufacturing_release": false,
+  "pin_mapping_evidence": {
+    "method": "visual inspection of manufacturer PDF page1 Top View",
+    "source_sha256": "2e43c4a2ac82af8a089be0a9e413282326f8d7857254ac07390b458deca854e0",
+    "source_pins": [
+      1,
+      2,
+      3
+    ],
+    "gate_pin": 4,
+    "drain_pins": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "exposed_pad": "drain; numeric CAD pad identifier not assigned by this review",
+    "PCB_footprint_verified": false
+  },
+  "pin_connections": {
+    "Q_CHG": {
+      "1": "CELL_POS_FUSED",
+      "2": "CELL_POS_FUSED",
+      "3": "CELL_POS_FUSED",
+      "4": "CHG_GATE",
+      "5": "PACK_FET_MID",
+      "6": "PACK_FET_MID",
+      "7": "PACK_FET_MID",
+      "8": "PACK_FET_MID",
+      "exposed_drain_pad": "PACK_FET_MID"
+    },
+    "Q_DSG": {
+      "1": "PACK_POS_PROTECTED",
+      "2": "PACK_POS_PROTECTED",
+      "3": "PACK_POS_PROTECTED",
+      "4": "DSG_GATE",
+      "5": "PACK_FET_MID",
+      "6": "PACK_FET_MID",
+      "7": "PACK_FET_MID",
+      "8": "PACK_FET_MID",
+      "exposed_drain_pad": "PACK_FET_MID"
+    }
+  },
+  "gate_network_candidate": {
+    "status": "initial_values_and_parts_not_timing_qualified",
+    "series_resistor": {
+      "part": "TNPW06031K00BEEA",
+      "ohm": 1000,
+      "quantity": 2,
+      "reason": "TI16.5 intermediate turnoff comparison; not optimized for unmeasured harness inductance"
+    },
+    "gate_source_resistor": {
+      "part": "TNPW08051M00BEEA",
+      "ohm": 1000000,
+      "quantity": 2,
+      "reason": "source-referenced passive discharge; leakage and driver load require qualification"
+    },
+    "zener": {
+      "type": "BZT52H-C16",
+      "order_suffix": null,
+      "quantity": 2,
+      "pin1": "cathode_to_gate",
+      "pin2": "anode_to_own_source",
+      "VZ_at_5mA_25C_V": [
+        15.3,
+        17.1
+      ],
+      "source": "https://assets.nexperia.com/documents/data-sheet/BZT52H_SER.pdf",
+      "qualified_clamp_max_V": null
+    },
+    "resistor_source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+    "connections": [
+      {
+        "FET": "Q_CHG",
+        "series_resistor": [
+          "BQ76942_CHG_45",
+          "CHG_GATE"
+        ],
+        "bleed_resistor": [
+          "CHG_GATE",
+          "CELL_POS_FUSED"
+        ],
+        "zener_pins": {
+          "1": "CHG_GATE",
+          "2": "CELL_POS_FUSED"
+        }
+      },
+      {
+        "FET": "Q_DSG",
+        "series_resistor": [
+          "BQ76942_DSG_43",
+          "DSG_GATE"
+        ],
+        "bleed_resistor": [
+          "DSG_GATE",
+          "PACK_POS_PROTECTED"
+        ],
+        "zener_pins": {
+          "1": "DSG_GATE",
+          "2": "PACK_POS_PROTECTED"
+        }
+      }
+    ],
+    "driver_loss_of_power": "passive source-referenced resistor path exists; off-time and residual VGS not yet guaranteed",
+    "unknowns": [
+      "driver pin behavior when BAT unpowered",
+      "gate leakage including contamination and temperature",
+      "zener clamp voltage at actual current and temperature",
+      "turnoff spike and resistor pulse load",
+      "charge pump capacity with static gate bleeders"
+    ]
+  }
+}

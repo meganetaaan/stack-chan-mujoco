@@ -1,0 +1,123 @@
+{
+  "scope": "Seven printed solids from115-part torso; feet/other leg parts excluded",
+  "candidate_material": "Prusament PETG, standard unfilled formulation; color and lot pending",
+  "comparison_process": {
+    "nozzle_C": 250,
+    "bed_C": 80,
+    "layer_mm": 0.2,
+    "infill_percent": 100
+  },
+  "process_source_is_legacy_comparison_not_validated_for_new_parts": true,
+  "parts": [
+    {
+      "name": "yaw__left_yaw_fixed_support",
+      "material_volume_mm3": 35360.80119128364,
+      "comparison_density_kg_m3": 1270.0,
+      "homogeneous_comparison_mass_kg": 0.04490821751293022,
+      "manufactured_mass_kg": null,
+      "build_orientation": null,
+      "allowed_stress_MPa": null,
+      "process_released": false
+    },
+    {
+      "name": "yaw__right_yaw_fixed_support",
+      "material_volume_mm3": 35360.80119128144,
+      "comparison_density_kg_m3": 1270.0,
+      "homogeneous_comparison_mass_kg": 0.04490821751292743,
+      "manufactured_mass_kg": null,
+      "build_orientation": null,
+      "allowed_stress_MPa": null,
+      "process_released": false
+    },
+    {
+      "name": "power__left_bracket",
+      "material_volume_mm3": 6746.844340304034,
+      "comparison_density_kg_m3": 1270.0,
+      "homogeneous_comparison_mass_kg": 0.008568492312186123,
+      "manufactured_mass_kg": null,
+      "build_orientation": null,
+      "allowed_stress_MPa": null,
+      "process_released": false
+    },
+    {
+      "name": "power__right_bracket",
+      "material_volume_mm3": 6677.7960228196525,
+      "comparison_density_kg_m3": 1270.0,
+      "homogeneous_comparison_mass_kg": 0.008480800948980958,
+      "manufactured_mass_kg": null,
+      "build_orientation": null,
+      "allowed_stress_MPa": null,
+      "process_released": false
+    },
+    {
+      "name": "new_fixed_shell",
+      "material_volume_mm3": 92236.99961099878,
+      "comparison_density_kg_m3": 1270.0,
+      "homogeneous_comparison_mass_kg": 0.11714098950596846,
+      "manufactured_mass_kg": null,
+      "build_orientation": null,
+      "allowed_stress_MPa": null,
+      "process_released": false
+    },
+    {
+      "name": "new_carrier",
+      "material_volume_mm3": 22855.09561658694,
+      "comparison_density_kg_m3": 1270.0,
+      "homogeneous_comparison_mass_kg": 0.02902597143306541,
+      "manufactured_mass_kg": null,
+      "build_orientation": null,
+      "allowed_stress_MPa": null,
+      "process_released": false
+    },
+    {
+      "name": "new_tray",
+      "material_volume_mm3": 6900.994691556624,
+      "comparison_density_kg_m3": 1270.0,
+      "homogeneous_comparison_mass_kg": 0.008764263258276913,
+      "manufactured_mass_kg": null,
+      "build_orientation": null,
+      "allowed_stress_MPa": null,
+      "process_released": false
+    }
+  ],
+  "metal_washers_excluded_from_print_material": [
+    "yaw__left_rear_0_rear_washer",
+    "yaw__left_rear_1_rear_washer",
+    "yaw__left_rear_2_rear_washer",
+    "yaw__left_rear_3_rear_washer",
+    "yaw__right_rear_0_rear_washer",
+    "yaw__right_rear_1_rear_washer",
+    "yaw__right_rear_2_rear_washer",
+    "yaw__right_rear_3_rear_washer",
+    "power__left_rear_0_outer_washer",
+    "power__left_rear_0_inner_washer",
+    "power__left_rear_1_outer_washer",
+    "power__left_rear_1_inner_washer",
+    "power__right_rear_0_outer_washer",
+    "power__right_rear_0_inner_washer",
+    "power__right_rear_1_outer_washer",
+    "power__right_rear_1_inner_washer"
+  ],
+  "homogeneous_printed_comparison_subtotal_kg": 0.26179695248433554,
+  "actual_printed_subtotal_kg": null,
+  "legacy_FE_allowable_screen_MPa": 7,
+  "legacy_FE_allowable_is_qualified_for_manufacturing": false,
+  "design_choices": [
+    "Use existing standard PETG candidate for first common material comparison; ABS alternative remains",
+    "No TPU assignment to these load-bearing torso supports; TPU remains a contact/cushion candidate",
+    "Use pre-insertion carrier volume; installed approximation is not lost polymer"
+  ],
+  "required_process_inputs": [
+    "Printer/nozzle and actual material product",
+    "Orientation for each part and load direction relative to layers",
+    "Wall/perimeter, solid-fill path, support removal and hole finishing",
+    "Insert installation temperature/depth, torque and retained preload",
+    "Finished dimensions and retention/creep acceptance tied to loads"
+  ],
+  "manufacturing_release": false,
+  "source_sha256": {
+    "validation/current_torso_mass_v1/report.json": "a738d0ebb8b13d4fa81be3886335d93b8590442a19d4f4bf9d91a8ed820bad2a",
+    "board/mechanical/prototype/rc_battery_tray_revB/material_candidate.json": "2c38ad3de9b347a059d0b2621c6ec65ae649c7791e1cc84a265e8c301c1f5c24",
+    "board/mechanical/engineering/materials.json": "c9f307164b0d604087a4f982793d25a07f902b3de0a6d646ac1b4d86c8aac780"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "sources_sha256": {
+    "validation/prototype_epic4_v1/load_export_left_v1/schema.json": "b34696045a89982d4af897b58a0873ae06b536a236a7ff90d71f8e71195e52c5",
+    "validation/prototype_epic4_v1/load_export_left_v1/loads.npz": "9f05eb80ed081c2fd27128883a48fdbd1485984e72503718cf52ae41fcf3eabe",
+    "validation/prototype_epic4_v1/load_export_right_v1/schema.json": "26ec29436052276ac36faf1a61dc6f3b70d061df667ea9709e6772e63dd329eb",
+    "validation/prototype_epic4_v1/load_export_right_v1/loads.npz": "82822803b318c522aa937fce304f590ee1e469543ba51658330da98c6a049229"
+  },
+  "integration": "Rectangle rule over exported start-of-interval samples; sum all N intervals, not trapezoid over N-1.",
+  "rows": [
+    {
+      "turn": "left",
+      "leg": "left",
+      "record_duration_s": 7.000000000000006,
+      "sum_individual_return_peak_A": 0.024681491864978315,
+      "sum_individual_return_charge_C": 0.0011062179990335287,
+      "sum_individual_return_energy_J": 0.005531089995167644,
+      "net_bus_return_peak_A": 0.0,
+      "net_bus_return_charge_C": 0.0,
+      "net_bus_return_energy_J": 0.0,
+      "net_return_event_count": 0,
+      "largest_net_return_event": null
+    },
+    {
+      "turn": "left",
+      "leg": "right",
+      "record_duration_s": 7.000000000000006,
+      "sum_individual_return_peak_A": 0.01896468424551623,
+      "sum_individual_return_charge_C": 0.0014395527374098873,
+      "sum_individual_return_energy_J": 0.007197763687049437,
+      "net_bus_return_peak_A": 0.0,
+      "net_bus_return_charge_C": 0.0,
+      "net_bus_return_energy_J": 0.0,
+      "net_return_event_count": 0,
+      "largest_net_return_event": null
+    },
+    {
+      "turn": "right",
+      "leg": "left",
+      "record_duration_s": 7.000000000000006,
+      "sum_individual_return_peak_A": 0.018696738846002484,
+      "sum_individual_return_charge_C": 0.0014488319519244336,
+      "sum_individual_return_energy_J": 0.007244159759622167,
+      "net_bus_return_peak_A": 0.0,
+      "net_bus_return_charge_C": 0.0,
+      "net_bus_return_energy_J": 0.0,
+      "net_return_event_count": 0,
+      "largest_net_return_event": null
+    },
+    {
+      "turn": "right",
+      "leg": "right",
+      "record_duration_s": 7.000000000000006,
+      "sum_individual_return_peak_A": 0.024443728747834955,
+      "sum_individual_return_charge_C": 0.001099230404323432,
+      "sum_individual_return_energy_J": 0.005496152021617159,
+      "net_bus_return_peak_A": 0.0,
+      "net_bus_return_charge_C": 0.0,
+      "net_bus_return_energy_J": 0.0,
+      "net_return_event_count": 0,
+      "largest_net_return_event": null
+    }
+  ],
+  "qualified_hardware_bound": false,
+  "limits": [
+    "Only two retained 7s turning records; no latest prototype payload, shutdown, fault or arbitrary gait coverage.",
+    "DC current and power follow the existing ideal bridge model, not measured servo regeneration or PWM spikes.",
+    "Net bus return includes consumption by other servos on the same leg. Sum of individual negative currents does not credit that consumption.",
+    "Consumption on the other leg must not cancel return energy because the power buses are isolated.",
+    "Neither observed peak nor total energy is a worst-case bound; do not replace the existing stress case or model envelope with these smaller values."
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "truth_table": [
+    {
+      "permission": false,
+      "sequence_request": false,
+      "reset_n": false,
+      "command": false
+    },
+    {
+      "permission": false,
+      "sequence_request": false,
+      "reset_n": true,
+      "command": false
+    },
+    {
+      "permission": false,
+      "sequence_request": true,
+      "reset_n": false,
+      "command": false
+    },
+    {
+      "permission": false,
+      "sequence_request": true,
+      "reset_n": true,
+      "command": false
+    },
+    {
+      "permission": true,
+      "sequence_request": false,
+      "reset_n": false,
+      "command": false
+    },
+    {
+      "permission": true,
+      "sequence_request": false,
+      "reset_n": true,
+      "command": false
+    },
+    {
+      "permission": true,
+      "sequence_request": true,
+      "reset_n": false,
+      "command": false
+    },
+    {
+      "permission": true,
+      "sequence_request": true,
+      "reset_n": true,
+      "command": true
+    }
+  ],
+  "stuck_high_request_trace": [
+    {
+      "event": "running",
+      "reset_n": true,
+      "permission": true,
+      "sequence_request": true,
+      "command": true
+    },
+    {
+      "event": "rail_fault_asserted",
+      "reset_n": false,
+      "permission": false,
+      "sequence_request": true,
+      "command": false
+    },
+    {
+      "event": "recovered_no_press",
+      "reset_n": true,
+      "permission": false,
+      "sequence_request": true,
+      "command": false
+    },
+    {
+      "event": "qualified_new_press",
+      "reset_n": true,
+      "permission": true,
+      "sequence_request": true,
+      "command": true
+    }
+  ],
+  "physical_gate_present": true,
+  "reset_input_pins": [
+    "U3.1",
+    "U3.5",
+    "U6.1",
+    "U6.13"
+  ],
+  "static_comparison": {
+    "gate_output_load_A": 1.6578512396694213e-05,
+    "HCS_output_test_load_A": 2e-05,
+    "reset_high_lower_comparison_V": 2.7727,
+    "reset_low_sink_upper_comparison_A": 3.827272727272727e-05
+  },
+  "electrical_qualification": false,
+  "remaining": [
+    "HCS input thresholds across actual rail and RESET_N loading",
+    "Unpowered/partial-power behavior",
+    "Propagation and fault-pulse capture",
+    "Real startup timeout and PG fault latching",
+    "All other external stop/monitor interfaces"
+  ]
+}

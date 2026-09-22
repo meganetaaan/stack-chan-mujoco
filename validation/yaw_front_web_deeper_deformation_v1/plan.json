@@ -1,0 +1,43 @@
+{
+  "question": "Does the supplied support meet the existing 0.2 mm deformation allocation for the archived comparison load?",
+  "source_plan": "validation/yaw_current_archive_envelope_v1/report.json",
+  "source_sha256": "8f9ea2f06db5fd560289b32898ac828da76f18f0caf1aa6c9435dde268b95041",
+  "step": "validation/yaw_front_web_deeper_v1/left_yaw_fixed_support.step",
+  "step_sha256": "b21a6178b4009842463f8b625b3d7b4288035a0982fe72954e8a19a3bbbf60ee",
+  "load_and_boundary_conditions": {
+    "origin_mm": [
+      -5,
+      26,
+      62
+    ],
+    "source_case": {
+      "source": "validation/prototype_epic4_v1/actuator_fullbody_load_right_v1/trace.npz",
+      "side": "right",
+      "samples": 7000,
+      "displacement_upper_mm": 0.31644733227864114,
+      "principal_upper_MPa": 7.757361423058435,
+      "von_mises_upper_MPa": 5.320045999517024,
+      "selected_time_s": 3.0199999999997784,
+      "selected_wrench_N_Nmm": [
+        0.3684933267760049,
+        -1.5669809815618343,
+        7.610967008718026,
+        -274.341981485369,
+        -141.16941217037964,
+        -7.867198389243171
+      ],
+      "selected_actual_displacement_mm": 0.22013027289145443,
+      "bounded_within_criteria": false
+    }
+  },
+  "criterion_max_displacement_mm": 0.2,
+  "mesh_relative_limit": 0.1,
+  "stop": "3 mm mesh first. If displacement exceeds 0.2 mm, stop as unmet; otherwise run 2 mm once and require both meshes <=0.2 mm and relative change <=10%. No stress-driven refinement.",
+  "limits": [
+    "One archived load only; latest mass and full load envelope absent",
+    "Assumed isotropic print material; no certified allowable",
+    "Bonded distributed load and ideal rear clamp; no actual joint contact",
+    "Shroud rail seat is not bonded or assigned tensile support; only the unchanged rear clamp is supported",
+    "Not manufacturing release"
+  ]
+}

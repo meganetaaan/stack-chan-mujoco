@@ -1,0 +1,45 @@
+{
+  "reference": "C_STOP_OUT",
+  "regulator": "TPS70933DBVR",
+  "source": "https://www.ti.com/lit/ds/symlink/tps709.pdf",
+  "revision": "SBVS186H July 2021 section 8.1.1",
+  "manufacturer_application_guidance": {
+    "effective_capacitance_min_F": 1.5e-06,
+    "effective_capacitance_max_F": 4.7e-05,
+    "ESR_min_ohm": 0,
+    "ESR_max_ohm": 0.2,
+    "condition": "Output voltage >= 1.5 V"
+  },
+  "retained_design_target": {
+    "effective_capacitance_min_F": 2.2e-06,
+    "nominal_capacitance_F": 4.7e-06,
+    "classification": "Codex design margin, not manufacturer minimum"
+  },
+  "candidate": {
+    "family": "GRM31CR71H475KA12",
+    "nominal_F": 4.7e-06,
+    "rated_V": 50,
+    "initial_tolerance": 0.1,
+    "dielectric": "X7R",
+    "package": "1206",
+    "source": "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM31CR71H475KA12-01A.pdf",
+    "status": "exact_ordering_candidate_not_qualified",
+    "part_number": "GRM31CR71H475KA12L",
+    "source_date": "2026-06-25",
+    "source_sha256": "79e4b038591e12555fe8f014db5554725d20cce3ec127846d34c20e27e53d3da",
+    "temperature_change_fraction_no_bias": 0.15,
+    "package_quantity": 2000
+  },
+  "qualification": false,
+  "remaining": [
+    "DC bias and temperature combined capacitance at actual rail",
+    "Ageing and assembly allowance",
+    "ESR over relevant frequency and temperature",
+    "Procurement and footprint",
+    "Total connected rail capacitance and regulator transient verification"
+  ],
+  "correction": "Earlier requirement text incorrectly attributed 2.2uF effective minimum to TI. Preserve 2.2uF as a design target; do not relabel prior failures as passes.",
+  "screening_evidence": "validation/stop_output_capacitor_v1/report.json",
+  "model_scope_evidence": "validation/stop_cap_model_scope_v1/report.json",
+  "additional_nominal_screening": "Stopped: nominal data cannot resolve remaining bias/ESR qualification"
+}

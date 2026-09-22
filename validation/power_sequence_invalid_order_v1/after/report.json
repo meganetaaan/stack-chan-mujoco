@@ -1,0 +1,23 @@
+{
+  "contradictory_permission_clears": true,
+  "asserted_reset_inhibits": true,
+  "operating_cases_checked": 8,
+  "valid_start_preserved": true,
+  "trace_after_early_permission": [
+    {
+      "phase": "CLEAR",
+      "clear_phase": "RESET_TIMER",
+      "permission_low_seen": false
+    },
+    {
+      "phase": "CLEAR",
+      "clear_phase": "RESET_TIMER",
+      "permission_low_seen": false
+    }
+  ],
+  "hardware_verified": false,
+  "limitations": [
+    "Does not prove reset recovery time",
+    "Independent observation qualification and asynchronous fault capture still required"
+  ]
+}

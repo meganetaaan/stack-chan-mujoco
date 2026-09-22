@@ -1,0 +1,27 @@
+{
+  "normal_source_comparison_V": [
+    4.75,
+    5.25
+  ],
+  "resistor_total_tolerance_assumption": 0.01,
+  "UV_top_ohm": 102000,
+  "OV_top_ohm": 127000,
+  "bottom_ohm": 10000,
+  "positive_threshold_V": [
+    0.396,
+    0.404
+  ],
+  "negative_threshold_V": [
+    0.387,
+    0.4
+  ],
+  "UV_input_leakage_abs_A": 2.5e-08,
+  "OV_input_leakage_abs_A": 1.5e-08,
+  "decision_basis": "Allow normal 5V +/-5% source; early low-voltage indication above 3.7V servo limit, final allowable branch drop and fault timing remain unqualified",
+  "source": "https://www.ti.com/lit/ds/symlink/tps3700.pdf",
+  "limits": [
+    "Published input leakage test points applied as comparison; application coverage needs review",
+    "Monitor supply valid for 450us before status use",
+    "Does not measure voltage at servo terminals"
+  ]
+}

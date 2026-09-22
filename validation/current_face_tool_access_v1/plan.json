@@ -1,0 +1,37 @@
+{
+  "tool": {
+    "manufacturer": "Wera",
+    "part": "05118068001",
+    "hex_AF_mm": 2,
+    "blade_length_mm": 60,
+    "blade_diameter_mm": 3,
+    "handle_length_mm": 97,
+    "overall_box_mm": [
+      157,
+      13,
+      13
+    ],
+    "source": "https://hybris-media.wera.de/download/pdfgenerator-datasheets/en/05118068001.pdf"
+  },
+  "engineering_conditions": {
+    "socket_insertion_mm": 1,
+    "straight_approach_travel_mm": 50,
+    "handle_rotational_envelope_radius_mm": 9.19238815542512,
+    "screw_head_rear_x_mm": 46.3,
+    "numerical_overlap_threshold_mm3": 0.01
+  },
+  "method": "Union of axisymmetric blade and handle envelopes, each extended backward by approach travel; encloses all axial positions and rotations",
+  "cases": [
+    "installed torso, all 115 parts",
+    "separated 10-part face unit on bench, other torso parts absent",
+    "side screws: installed torso, selected tool and 12mm screw removal"
+  ],
+  "criteria": "Record all swept envelope overlaps >0.01mm3, excluding only the target screw whose socket is omitted in its CAD",
+  "stop": "One selected tool; choose assembly sequence from actual blockers. Do not change shell merely to pass.",
+  "limits": [
+    "Catalog dimensions are nominal, no manufacturer dimensional tolerances",
+    "Tip-to-socket fit and insertion depth not proven by target-screw exclusion",
+    "No hand, cable, connector, bench support or tightening torque model",
+    "Bench case does not prove the transport path from the robot"
+  ]
+}

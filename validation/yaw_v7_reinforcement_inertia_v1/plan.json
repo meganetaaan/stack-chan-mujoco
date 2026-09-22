@@ -1,0 +1,11 @@
+{
+  "scope": "Density-linear incremental inertia of v7 support additions relative to v5.",
+  "frame": "Assembly CAD origin, same axes as v5/v7; m, kg and kg/m3",
+  "stop": "Two support differences; cross-check geometry subtraction against stored origin moments. No density sweep or dynamics run.",
+  "density": "Leave as coefficient;1270 kg/m3 is inherited uniform PETG comparison only, not actual print mass.",
+  "limits": [
+    "Same homogeneous density in old and new supports.",
+    "Not a complete v7 mass replacement for the frozen MuJoCo model.",
+    "Current nut envelopes must not be used as actual nut mass."
+  ]
+}

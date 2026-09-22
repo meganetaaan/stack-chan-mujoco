@@ -1,0 +1,58 @@
+{
+  "switch": "B3U-1000P",
+  "manufacturer": "OMRON / current catalog Aratas",
+  "role": "onboard momentary manual-enable button; not independent stop",
+  "contact_form": "SPST-NO",
+  "switch_contact_nets": [
+    "BUTTON_RAW",
+    "GND"
+  ],
+  "external_pullup_ohm": 3000,
+  "external_pullup_to": "LOGIC3V3",
+  "receiver": "Nexperia 74LVC1G17GV",
+  "receiver_pins": {
+    "1": null,
+    "2": "BUTTON_RAW",
+    "3": "GND",
+    "4": "RAW_RELEASED_CONDITIONED",
+    "5": "LOGIC3V3"
+  },
+  "supply_V": [
+    3.207,
+    3.393
+  ],
+  "switch_rating": {
+    "current_A": [
+      0.001,
+      0.05
+    ],
+    "voltage_V": [
+      3,
+      12
+    ],
+    "initial_contact_resistance_ohm_max": 0.1,
+    "bounce_ms_max": 5,
+    "ambient_temperature_C": [
+      -25,
+      70
+    ],
+    "environment_note": "Humidity and no icing/condensation restrictions per datasheet; not robot-wide qualification"
+  },
+  "sources": [
+    "https://components.omron.com/us-en/system/files/2023-01/datasheet_pdf/A162-E1.pdf",
+    "https://components.omron.com/eu-en/products/switches/B3U",
+    "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf",
+    "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX6816-MAX6818.pdf"
+  ],
+  "scope": "same PCB local button; no external wire connector",
+  "status": "candidate_not_integrated",
+  "manufacturing_release": false,
+  "pending": [
+    "footprint and physical terminal orientation",
+    "enclosure actuation and overstress prevention",
+    "raw-branch protection and PCB leakage",
+    "receiver thresholds across actual rail and output compatibility",
+    "contact aging and actual bounce evaluation in issue49",
+    "passive part and temperature tolerance"
+  ]
+}

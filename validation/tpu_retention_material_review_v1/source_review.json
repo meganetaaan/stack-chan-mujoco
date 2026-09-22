@@ -1,0 +1,42 @@
+{
+  "product": "Ultrafuse TPU 95A",
+  "status": "candidate, not qualified",
+  "review_date": "2026-09-21",
+  "source": "https://move.forward-am.com/hubfs/AES%20Documentation/Flexible%20Filaments/TPU%2095A/TDS/Ultrafuse_TPU-95A_TDS_EN_v1.0.pdf",
+  "source_version": "2.0, 2022-08-22",
+  "density_filament_kg_m3": 1149,
+  "orientations": {
+    "XY": {
+      "young_MPa": 48.4,
+      "nominal_stress_at_strain_MPa": {
+        "0.5": 8.3,
+        "1.0": 10.5,
+        "3.0": 20.3
+      }
+    },
+    "ZX": {
+      "young_MPa": 46.7,
+      "nominal_stress_at_strain_MPa": {
+        "0.5": 7.9,
+        "1.0": 9.9
+      }
+    }
+  },
+  "conditioning": {
+    "tempering_C": 100,
+    "tempering_h": 20,
+    "climate_C": 23,
+    "relative_humidity_percent": 50,
+    "climate_h": 72
+  },
+  "test_speed_mm_min": {
+    "modulus": 1,
+    "large_strain": 200
+  },
+  "limitations": [
+    "Published averages, not printed-part design allowables.",
+    "Different test speeds; do not assume one rate-independent constitutive curve.",
+    "Compression/shear curves, cyclic recovery and joint friction not provided.",
+    "Filament density is not a guaranteed printed effective density."
+  ]
+}

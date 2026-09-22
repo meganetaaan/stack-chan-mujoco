@@ -1,0 +1,37 @@
+{
+  "criteria": {
+    "fault_pin_min_exclusive_V": 1.224,
+    "fault_pin_max_V": 1.5,
+    "normal_pin_max_exclusive_V": 1.074,
+    "driver_load_max_A": 0.0001
+  },
+  "source_assembly": "schematics/power/servo_power_rearm_integration_revM/assembly.json",
+  "part_count": 102,
+  "pin_count": 331,
+  "fault_pin_conditional_V": [
+    1.2782821522462562,
+    1.4314982078464107
+  ],
+  "normal_pin_conditional_V": [
+    -0.00123725,
+    0.043380511686143576
+  ],
+  "max_driver_DC_load_A": 6.8101443001443e-05,
+  "fault_pin_DC_screen_pass": true,
+  "driver_load_screen_pass": true,
+  "whole_protection_qualified": false,
+  "sources": [
+    "https://www.ti.com/lit/ds/symlink/sn74lvc1g14.pdf",
+    "https://www.ti.com/lit/ds/symlink/tps25981.pdf",
+    "https://www.ti.com/lit/ds/symlink/tps3700.pdf"
+  ],
+  "limits": [
+    "STOP rail 3.207..3.393V is a conditional existing envelope, not a qualified supply.",
+    "LVC VOH/VOL at 100uA support output sizing; transient charging current and signal ringing excluded.",
+    "Normal-state calculation extrapolates OVLO leakage below 0.5V, so normal_pin range is diagnostic only. Active-low enable is explicitly supported by eFuse pin description.",
+    "Schmitt input threshold table is at discrete supplies; actual rail interpretation and TPS3700 loaded output must be verified.",
+    "TPS3700 OV threshold replaces the old direct eFuse threshold; no timing equivalence is claimed.",
+    "Total resistor tolerance 1% is an allocation; selected initial 0.1% plus temperature/aging qualification remains.",
+    "Existing monitor startup gating and manual rearm remain necessary. Source-window stuck-high/open and STOP power-loss faults are not covered by this DC screen."
+  ]
+}

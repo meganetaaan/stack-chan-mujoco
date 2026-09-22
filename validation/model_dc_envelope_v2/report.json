@@ -1,0 +1,65 @@
+{
+  "scope": "Every feasible state of the existing ideal bridge under unchanged analysis current limits; not hardware or fault envelope",
+  "derivation": "abs(Vterminal)<=Vbus and abs(Imotor)<=Ilimit imply -Ilimit+Iidle <= Idc=(Vterminal/Vbus)*Imotor+Iidle <= Ilimit+Iidle",
+  "rows": [
+    {
+      "model": "XL330-M288-T",
+      "count_per_leg": 3,
+      "count_robot": 6,
+      "motor_limit_A": 0.735,
+      "standby_A": 0.017,
+      "dc_draw_upper_A": 0.752,
+      "dc_regeneration_magnitude_upper_A": 0.718
+    },
+    {
+      "model": "XC330-M288-T",
+      "count_per_leg": 3,
+      "count_robot": 6,
+      "motor_limit_A": 0.87,
+      "standby_A": 0.017,
+      "dc_draw_upper_A": 0.887,
+      "dc_regeneration_magnitude_upper_A": 0.853
+    }
+  ],
+  "per_leg_draw_upper_A": 4.917,
+  "robot_draw_upper_A": 9.834,
+  "robot_regeneration_upper_A": 9.426,
+  "hardware_qualified": false,
+  "tight_bound_proven": false,
+  "sources_sha256": {
+    "software/sim/actuator/catalog.json": "1ceb656e7f2530a2862b8c18544eddc2e89df1ebd0754a68dcad0a8ca9019ae6",
+    "software/sim/actuator/drive.py": "cf858371b2ff4fa958eaa660dfd76e10338ccb86f5983f4637a7bdc5cd7af0eb",
+    "board/mechanical/prototype/joints.json": "157f531e2821249cbab85b17b0ed5674b27239a4708c1f27c49aa937d1b1c392"
+  },
+  "exclusions": [
+    "Servo switching/conduction losses beyond fitted model",
+    "PWM pulse peak and input-capacitor inrush",
+    "Current limit implementation, faults and latency",
+    "Tab5, external logic, conversion losses and battery current"
+  ],
+  "decision": "Use only as a conditional model screening envelope; do not size hardware from two turn-trace peaks or label motor-current sum as measured DC maximum",
+  "trace_crosschecks": [
+    {
+      "turn": "left",
+      "peak_draw_A": 0.5598434967428024,
+      "peak_regeneration_A": 0.024681491864978315,
+      "inside_model_envelope": true,
+      "per_axis_checked": true,
+      "source_hashes": {
+        "validation/prototype_epic4_v1/load_export_left_v1/schema.json": "b34696045a89982d4af897b58a0873ae06b536a236a7ff90d71f8e71195e52c5",
+        "validation/prototype_epic4_v1/load_export_left_v1/loads.npz": "9f05eb80ed081c2fd27128883a48fdbd1485984e72503718cf52ae41fcf3eabe"
+      }
+    },
+    {
+      "turn": "right",
+      "peak_draw_A": 0.5601095356835647,
+      "peak_regeneration_A": 0.024443728747834955,
+      "inside_model_envelope": true,
+      "per_axis_checked": true,
+      "source_hashes": {
+        "validation/prototype_epic4_v1/load_export_right_v1/schema.json": "26ec29436052276ac36faf1a61dc6f3b70d061df667ea9709e6772e63dd329eb",
+        "validation/prototype_epic4_v1/load_export_right_v1/loads.npz": "82822803b318c522aa937fce304f590ee1e469543ba51658330da98c6a049229"
+      }
+    }
+  ]
+}

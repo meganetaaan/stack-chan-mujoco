@@ -1,0 +1,42 @@
+{
+  "scope": "Mesh actual cropped yoke with screw-head and boot-seat bearing patches.",
+  "source_sha256": "caa258c44b00ef85212f334087a6e16f81b3e7e2eba1ef029f7b421b307995a8",
+  "crop_xy_mm": [
+    [
+      -38,
+      -30
+    ],
+    [
+      -18.5,
+      -10.5
+    ]
+  ],
+  "crop_z_mm": [
+    -19,
+    -16
+  ],
+  "patches": {
+    "boot_contact": {
+      "z": -16,
+      "radius": 3
+    },
+    "head_bearing": {
+      "z": -19,
+      "radius": 1.9
+    }
+  },
+  "hole_radius_mm": 1.15,
+  "mesh_mm": [
+    0.25
+  ],
+  "criteria": {
+    "cad_area_error_mm2": 1e-06,
+    "mesh_area_relative_error": 0.01,
+    "volume_change_mm3": 1e-06
+  },
+  "limitations": [
+    "Cut side faces omit surrounding yoke stiffness.",
+    "Nominal patches, no screw-head fillet or tolerance.",
+    "Mesh preparation only; not a contact solve."
+  ]
+}

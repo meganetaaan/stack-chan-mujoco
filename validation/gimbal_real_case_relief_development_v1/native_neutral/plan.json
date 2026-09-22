@@ -1,0 +1,22 @@
+{
+  "scope": "Check native-horn yoke against every manufacturer servo component at neutral.",
+  "overlap_limit_mm3": 0.01,
+  "intended_horn_contact_indices": [
+    3,
+    10
+  ],
+  "source_sha256": {
+    "validation/x330_manufacturer_cad_v1/XL_XC_330.stp": "e2f7b060801a1d6a21f23bca2554f29a402f7d73b8498cb201c9e6adf3139eb6",
+    "validation/x330_component_map_v1/report.json": "5ea25dc100d931d4007de017a4af67a6a8133347ac26cf4be6305b7311959989",
+    "validation/native_horn_yoke_development_v1/v4/right_foot_yoke.step": "2e021b37af6c001ead6399d8356eb6d5e2dfa065b8d9e06ed9613bee358a4133",
+    "validation/native_horn_yoke_development_v1/v4/left_foot_yoke.step": "caa258c44b00ef85212f334087a6e16f81b3e7e2eba1ef029f7b421b307995a8",
+    "outputs/gimbal_raised_bridge_v1/left_ankle_gimbal.step": "582e7d8c08994e4865e98eee8284eae4190e8792a0c81e2e4116120c0156a45e",
+    "outputs/gimbal_raised_bridge_v1/right_ankle_gimbal.step": "d80055dffc3d6d19b10c5553e8a6fe3649e14c51b1121f69fbee6aeef4ba850b"
+  },
+  "limitations": [
+    "Neutral pose only",
+    "Manufacturer screws are assembly CAD, not approved purchased screw lengths",
+    "New frame-to-horn M2 fasteners not yet included",
+    "Cap rotation assignment and mating contact not yet qualified"
+  ]
+}

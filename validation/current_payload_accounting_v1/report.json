@@ -1,0 +1,434 @@
+{
+  "source_sha256": {
+    "validation/yaw_inertial_ledger_v2/report.json": "4e19164c326a99c2158c54fd64271022d7f052fe14d969496f33f2f6b83f50a0",
+    "validation/payload_inertial_replacement_v1/report.json": "0f4e420c05667843c3e45edaf64a3d3b0798fac541b587fe899180259fe23797",
+    "schematics/power/split_servo_harness_revA/connections.csv": "cd8e12692c32a65acdee115f6e3938b9ae8ebc9b26a3758f077717c8040505a0",
+    "validation/base_mass_bounds_v1/report.json": "eb6f2c940bf2be35e99e6544ed0e12f89431f01c35a8351a3e7d8f4f04677707"
+  },
+  "retained_allocations": [
+    {
+      "item": "Tab5",
+      "accounting": "already_in_partial_base_subtotal",
+      "mass_kg": 0.1184,
+      "action": "Replace mass, first moment and inertia together after selection; do not add a second allocation."
+    },
+    {
+      "item": "TTL_interface",
+      "accounting": "already_in_partial_base_subtotal",
+      "mass_kg": 0.012,
+      "action": "Replace mass, first moment and inertia together after selection; do not add a second allocation."
+    },
+    {
+      "item": "battery_strap_envelope",
+      "accounting": "already_in_partial_base_subtotal",
+      "mass_kg": 0.0012,
+      "action": "Replace mass, first moment and inertia together after selection; do not add a second allocation."
+    },
+    {
+      "item": "left_yaw_motor_case",
+      "accounting": "already_in_partial_base_subtotal",
+      "mass_kg": 0.017331575446373825,
+      "action": "Replace mass, first moment and inertia together after selection; do not add a second allocation."
+    },
+    {
+      "item": "right_yaw_motor_case",
+      "accounting": "already_in_partial_base_subtotal",
+      "mass_kg": 0.017331575446373825,
+      "action": "Replace mass, first moment and inertia together after selection; do not add a second allocation."
+    },
+    {
+      "item": "left_battery_screw_envelope",
+      "accounting": "already_in_partial_base_subtotal",
+      "mass_kg": 0.0003,
+      "action": "Replace mass, first moment and inertia together after selection; do not add a second allocation."
+    },
+    {
+      "item": "right_battery_screw_envelope",
+      "accounting": "already_in_partial_base_subtotal",
+      "mass_kg": 0.0003,
+      "action": "Replace mass, first moment and inertia together after selection; do not add a second allocation."
+    }
+  ],
+  "added_payload_names": [
+    "battery",
+    "UBEC_left",
+    "UBEC_right",
+    "tray"
+  ],
+  "unallocated_servo_conductors": [
+    {
+      "joint": "left_hip_yaw",
+      "connector": "J_left_hip_yaw",
+      "pin": "1",
+      "net": "POWER_RETURN_STAR",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_hip_yaw",
+      "connector": "J_left_hip_yaw",
+      "pin": "2",
+      "net": "LEFT_SERVO_5V",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_hip_yaw",
+      "connector": "J_left_hip_yaw",
+      "pin": "3",
+      "net": "LEFT_DATA",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_hip_roll",
+      "connector": "J_left_hip_roll",
+      "pin": "1",
+      "net": "POWER_RETURN_STAR",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_hip_roll",
+      "connector": "J_left_hip_roll",
+      "pin": "2",
+      "net": "LEFT_SERVO_5V",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_hip_roll",
+      "connector": "J_left_hip_roll",
+      "pin": "3",
+      "net": "LEFT_DATA",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_hip_pitch",
+      "connector": "J_left_hip_pitch",
+      "pin": "1",
+      "net": "POWER_RETURN_STAR",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_hip_pitch",
+      "connector": "J_left_hip_pitch",
+      "pin": "2",
+      "net": "LEFT_SERVO_5V",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_hip_pitch",
+      "connector": "J_left_hip_pitch",
+      "pin": "3",
+      "net": "LEFT_DATA",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_knee",
+      "connector": "J_left_knee",
+      "pin": "1",
+      "net": "POWER_RETURN_STAR",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_knee",
+      "connector": "J_left_knee",
+      "pin": "2",
+      "net": "LEFT_SERVO_5V",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_knee",
+      "connector": "J_left_knee",
+      "pin": "3",
+      "net": "LEFT_DATA",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_ankle_pitch",
+      "connector": "J_left_ankle_pitch",
+      "pin": "1",
+      "net": "POWER_RETURN_STAR",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_ankle_pitch",
+      "connector": "J_left_ankle_pitch",
+      "pin": "2",
+      "net": "LEFT_SERVO_5V",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_ankle_pitch",
+      "connector": "J_left_ankle_pitch",
+      "pin": "3",
+      "net": "LEFT_DATA",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_ankle_roll",
+      "connector": "J_left_ankle_roll",
+      "pin": "1",
+      "net": "POWER_RETURN_STAR",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_ankle_roll",
+      "connector": "J_left_ankle_roll",
+      "pin": "2",
+      "net": "LEFT_SERVO_5V",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "left_ankle_roll",
+      "connector": "J_left_ankle_roll",
+      "pin": "3",
+      "net": "LEFT_DATA",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_hip_yaw",
+      "connector": "J_right_hip_yaw",
+      "pin": "1",
+      "net": "POWER_RETURN_STAR",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_hip_yaw",
+      "connector": "J_right_hip_yaw",
+      "pin": "2",
+      "net": "RIGHT_SERVO_5V",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_hip_yaw",
+      "connector": "J_right_hip_yaw",
+      "pin": "3",
+      "net": "RIGHT_DATA",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_hip_roll",
+      "connector": "J_right_hip_roll",
+      "pin": "1",
+      "net": "POWER_RETURN_STAR",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_hip_roll",
+      "connector": "J_right_hip_roll",
+      "pin": "2",
+      "net": "RIGHT_SERVO_5V",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_hip_roll",
+      "connector": "J_right_hip_roll",
+      "pin": "3",
+      "net": "RIGHT_DATA",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_hip_pitch",
+      "connector": "J_right_hip_pitch",
+      "pin": "1",
+      "net": "POWER_RETURN_STAR",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_hip_pitch",
+      "connector": "J_right_hip_pitch",
+      "pin": "2",
+      "net": "RIGHT_SERVO_5V",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_hip_pitch",
+      "connector": "J_right_hip_pitch",
+      "pin": "3",
+      "net": "RIGHT_DATA",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_knee",
+      "connector": "J_right_knee",
+      "pin": "1",
+      "net": "POWER_RETURN_STAR",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_knee",
+      "connector": "J_right_knee",
+      "pin": "2",
+      "net": "RIGHT_SERVO_5V",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_knee",
+      "connector": "J_right_knee",
+      "pin": "3",
+      "net": "RIGHT_DATA",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_ankle_pitch",
+      "connector": "J_right_ankle_pitch",
+      "pin": "1",
+      "net": "POWER_RETURN_STAR",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_ankle_pitch",
+      "connector": "J_right_ankle_pitch",
+      "pin": "2",
+      "net": "RIGHT_SERVO_5V",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_ankle_pitch",
+      "connector": "J_right_ankle_pitch",
+      "pin": "3",
+      "net": "RIGHT_DATA",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_ankle_roll",
+      "connector": "J_right_ankle_roll",
+      "pin": "1",
+      "net": "POWER_RETURN_STAR",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_ankle_roll",
+      "connector": "J_right_ankle_roll",
+      "pin": "2",
+      "net": "RIGHT_SERVO_5V",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    },
+    {
+      "joint": "right_ankle_roll",
+      "connector": "J_right_ankle_roll",
+      "pin": "3",
+      "net": "RIGHT_DATA",
+      "wire_status": "unselected_for_dynamic_flex",
+      "route_length_m": null,
+      "mass_kg": null,
+      "body_allocation": null
+    }
+  ],
+  "other_unallocated": [
+    "Servo connector housings and crimps",
+    "Battery/distribution/Tab5/USB cabling and strain relief",
+    "Protection PCB and fitted parts not included in UBEC modules"
+  ],
+  "rules": [
+    "TTL interface and battery strap are already represented by historical placeholders, not zero-mass omissions.",
+    "Wire lengths from the stationary jig are not dynamic robot routing lengths.",
+    "Moving harness mass must be assigned across actual attached bodies; do not put all 36 conductors in the base.",
+    "Preserve the removal of the old 25 g cables-and-fasteners reservation; replace with itemized allocations."
+  ],
+  "whole_base_complete": false,
+  "robot_mass_complete": false,
+  "model_updated": false
+}

@@ -1,0 +1,146 @@
+{
+  "source_sha256": "0e5da0bbf2b922e4f0d750a68fac137e5a0a7ec5d3edb1cd158240b346376d3b",
+  "balance_connector_present_in_current_netlist": false,
+  "assumption": "Conventional four-wire3S balance harness proposed with B0 directly tied to CELL_B_MINUS",
+  "cases": [
+    {
+      "main_connected": true,
+      "main_reversed": false,
+      "four_wire_balance_connected": true,
+      "wire_connections": [
+        [
+          "BATTERY_B0",
+          "CELL_B_MINUS",
+          "main negative wire"
+        ],
+        [
+          "BATTERY_B3",
+          "CELL_POS_UNFUSED",
+          "main positive wire"
+        ],
+        [
+          "BATTERY_B0",
+          "CELL_B_MINUS",
+          "proposed direct balance return"
+        ],
+        [
+          "BATTERY_B1",
+          "CELL1_TAP",
+          "balance cell1"
+        ],
+        [
+          "BATTERY_B2",
+          "CELL2_TAP",
+          "balance cell2"
+        ],
+        [
+          "BATTERY_B3",
+          "CELL3_TAP",
+          "balance cell3"
+        ]
+      ],
+      "direct_B0_B3_short": false,
+      "all_cell_connections_removed": false,
+      "scope": "Only explicit ideal wires; absent hard short is not a safe-fault verdict"
+    },
+    {
+      "main_connected": true,
+      "main_reversed": true,
+      "four_wire_balance_connected": true,
+      "wire_connections": [
+        [
+          "BATTERY_B3",
+          "CELL_B_MINUS",
+          "main negative wire"
+        ],
+        [
+          "BATTERY_B0",
+          "CELL_POS_UNFUSED",
+          "main positive wire"
+        ],
+        [
+          "BATTERY_B0",
+          "CELL_B_MINUS",
+          "proposed direct balance return"
+        ],
+        [
+          "BATTERY_B1",
+          "CELL1_TAP",
+          "balance cell1"
+        ],
+        [
+          "BATTERY_B2",
+          "CELL2_TAP",
+          "balance cell2"
+        ],
+        [
+          "BATTERY_B3",
+          "CELL3_TAP",
+          "balance cell3"
+        ]
+      ],
+      "direct_B0_B3_short": true,
+      "all_cell_connections_removed": false,
+      "scope": "Only explicit ideal wires; absent hard short is not a safe-fault verdict"
+    },
+    {
+      "main_connected": false,
+      "main_reversed": false,
+      "four_wire_balance_connected": true,
+      "wire_connections": [
+        [
+          "BATTERY_B0",
+          "CELL_B_MINUS",
+          "proposed direct balance return"
+        ],
+        [
+          "BATTERY_B1",
+          "CELL1_TAP",
+          "balance cell1"
+        ],
+        [
+          "BATTERY_B2",
+          "CELL2_TAP",
+          "balance cell2"
+        ],
+        [
+          "BATTERY_B3",
+          "CELL3_TAP",
+          "balance cell3"
+        ]
+      ],
+      "direct_B0_B3_short": false,
+      "all_cell_connections_removed": false,
+      "scope": "Only explicit ideal wires; absent hard short is not a safe-fault verdict"
+    },
+    {
+      "main_connected": true,
+      "main_reversed": true,
+      "four_wire_balance_connected": false,
+      "wire_connections": [
+        [
+          "BATTERY_B3",
+          "CELL_B_MINUS",
+          "main negative wire"
+        ],
+        [
+          "BATTERY_B0",
+          "CELL_POS_UNFUSED",
+          "main positive wire"
+        ]
+      ],
+      "direct_B0_B3_short": false,
+      "all_cell_connections_removed": false,
+      "scope": "Only explicit ideal wires; absent hard short is not a safe-fault verdict"
+    }
+  ],
+  "counterexample": "With reversed main negative wire and correctly attached balance return, B3 and B0 meet at CELL_B_MINUS. Positive-side fuse/ideal diode cannot interrupt these two wires.",
+  "not_proven": [
+    "Current unselected harness has this wiring",
+    "Current magnitude, heating or source impedance",
+    "IC input/clamp paths with no balance return",
+    "Safe cell attachment/disconnect order"
+  ],
+  "decision": "Reject direct shared-return four-wire harness for a main-reversal protection claim; connector and protection architecture must be resolved first",
+  "manufacturing_release": false
+}

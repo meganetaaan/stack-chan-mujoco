@@ -1,0 +1,1576 @@
+{
+  "source_sha256": {
+    "validation/pololu_mass_ledger_v1/report.json": "38d41d61da99288376a7d4382327fc826ead02789629465c3d62cecafa2e65c1",
+    "validation/pololu_mass_ledger_v2/report.json": "5ade817111bf7ef5b2edfa07c937fa1154a8d41866f019c9880c013db6716a76",
+    "schematics/power/system_power_integration_candidate_v1/assembly.json": "0e5da0bbf2b922e4f0d750a68fac137e5a0a7ec5d3edb1cd158240b346376d3b"
+  },
+  "bracket_coefficient_deltas": {
+    "left_bracket": {
+      "volume_delta_mm3": -18.107511736766355,
+      "mass_delta_kg_per_kg_m3": -1.8107511736766746e-08,
+      "first_moment_delta_kg_m_per_kg_m3": [
+        4.5268779341855455e-10,
+        -5.797300957645615e-10,
+        -1.785698679720147e-09
+      ],
+      "inertia_origin_delta_kg_m2_per_kg_m3": [
+        [
+          -1.9768975243668785e-10,
+          -1.4493252394085914e-11,
+          -4.464246699292096e-11
+        ],
+        [
+          -1.4493252394085914e-11,
+          -1.9436248819177808e-10,
+          5.717092892993551e-11
+        ],
+        [
+          -4.464246699292096e-11,
+          5.717092892993551e-11,
+          -3.965912683617219e-11
+        ]
+      ]
+    },
+    "right_bracket": {
+      "volume_delta_mm3": -18.107511736779088,
+      "mass_delta_kg_per_kg_m3": -1.810751173677945e-08,
+      "first_moment_delta_kg_m_per_kg_m3": [
+        4.5268779341839574e-10,
+        5.429356319154665e-10,
+        -1.7856986797204647e-09
+      ],
+      "inertia_origin_delta_kg_m2_per_kg_m3": [
+        [
+          -1.9540849567802327e-10,
+          1.3573390797856223e-11,
+          -4.4642466992927576e-11
+        ],
+        [
+          1.3573390797856223e-11,
+          -1.9436248819180455e-10,
+          -5.354238921273902e-11
+        ],
+        [
+          -4.4642466992927576e-11,
+          -5.354238921273902e-11,
+          -3.737787007757047e-11
+        ]
+      ]
+    }
+  },
+  "numeric_subtotal_unchanged_within_numerical_tolerance": true,
+  "numeric_comparison_tolerance": {
+    "relative": 1e-10,
+    "absolute": 1e-18
+  },
+  "numeric_subtotal_roundoff_delta_kg": -8.881784197001252e-16,
+  "circuit_mass_reconciliation": [
+    {
+      "reference": "BAT__U_CELL_PROTECT",
+      "part": "BQ7694202PFBR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__Q_CHG",
+      "part": "CSD18540Q5BT",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__Q_DSG",
+      "part": "CSD18540Q5BT",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_GATE_CHG",
+      "part": "TNPW06031K00BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_GS_CHG",
+      "part": "TNPW08051M00BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__D_GS_CHG",
+      "part": "BZT52H-C16",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_GATE_DSG",
+      "part": "TNPW06031K00BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_GS_DSG",
+      "part": "TNPW08051M00BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__D_GS_DSG",
+      "part": "BZT52H-C16",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_CELL_0",
+      "part": "TNPW060322R1BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_CELL_1",
+      "part": "TNPW060322R1BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_CELL_2",
+      "part": "TNPW060322R1BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_CELL_3",
+      "part": "TNPW060322R1BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F0_0",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F0_1",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F0_2",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F0_3",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F0_4",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F0_5",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F1_0",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F1_1",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F1_2",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F1_3",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F1_4",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F1_5",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F2_0",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F2_1",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F2_2",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F2_3",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F2_4",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F2_5",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F3_0",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F3_1",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F3_2",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F3_3",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F3_4",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_F3_5",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_LD",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_PACK",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_BAT",
+      "part": "TNPW1206100RBEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__D_BAT",
+      "part": "BAS116",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_BAT",
+      "part": "C1206C105K3RACTU",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_REG18_0",
+      "part": "C1206C105K3RACTU",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_REG18_1",
+      "part": "C1206C105K3RACTU",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_REG18_2",
+      "part": "C1206C105K3RACTU",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_CP1",
+      "part": "C1206C105K3RACTU",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_SHUNT",
+      "part": "WSK25125L000FEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_SRP",
+      "part": "TNPW0603100RBEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_SRN",
+      "part": "TNPW0603100RBEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_CURRENT",
+      "part": "C1206C104J3GACAUTO",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__TH_CELL",
+      "part": "103AT-2",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__TH_FET",
+      "part": "103AT-2",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_ALLOW_SER",
+      "part": "TNPW06031K00BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_ALLOW_PD",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__U_REG0_LIMIT",
+      "part": "TPS26600RHFR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_REG0_UV_TOP",
+      "part": "TNPW060340K2BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_REG0_UV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_REG0_OV_TOP",
+      "part": "TNPW0603124KBEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_REG0_OV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_REG0_ILIM",
+      "part": "TNPW0603118KBEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_REG0_PROTECT_IN_1",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_REG0_PROTECT_IN_2",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_REG0_PROTECT_OUT_1",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_REG0_PROTECT_OUT_2",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_REG0_MODE",
+      "part": "TNPW0805402KBEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__D_REG0",
+      "part": "BAT46W-7-F",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_REG0_0",
+      "part": "TNPW120644R2BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_REG0_1",
+      "part": "TNPW120644R2BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_REG0",
+      "part": "C1206C105K3RACTU",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__Q_REG0",
+      "part": "FCX495TA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_REGIN",
+      "part": "C0603C223K4RACTU",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_REG1",
+      "part": "C1206C105K3RACTU",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_BQ_SCL",
+      "part": "TNPW06032K21BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_BQ_SDA",
+      "part": "TNPW06032K21BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_BQ_ALERT",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__U_BQ_HOST",
+      "part": "STM32G030F6P6",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_BQ_HOST_HF",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_BQ_HOST_BULK",
+      "part": "GRM31CR71H475KA12L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_BQ_HOST_NRST",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_BQ_HOST_NRST",
+      "part": "TNPW0603100KBEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_BQ_AUX_START_REQUEST_PD",
+      "part": "TNPW060347K5BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_BQ_HOST_HEARTBEAT_PD",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__U_BQ_HOST_SUP",
+      "part": "TPS3808G01DBVR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_BQ_HOST_SUP_TOP",
+      "part": "TNPW060357K6BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_BQ_HOST_SUP_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_BQ_HOST_SUP",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__U_BQ_WD",
+      "part": "TPS3431SDRBR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_BQ_WD",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_BQ_WD_CWD",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__U_BQ_RESET_BUFFER",
+      "part": "74LVC1G17GV",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_BQ_RESET_BUFFER",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__U_BQ_PERMIT_LATCH",
+      "part": "SN74LVC1G74DCTR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_BQ_PERMIT_LATCH",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__U_BQ_MAIN_GATE",
+      "part": "SN74LVC1G08DBVR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_BQ_MAIN_GATE",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__U_BQ_AUX_GATE",
+      "part": "SN74LVC1G08DBVR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__C_BQ_AUX_GATE",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_MAIN_REQUEST_RAW_PD",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_AUX_REQUEST_RAW_PD",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "BAT__R_ARM_EDGE_PD",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U1",
+      "part": "MAX6816EUS+T",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U2",
+      "part": "SN74LVC1G04DBVR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U3",
+      "part": "SN74HCS11PWR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U4",
+      "part": "74LVC1G17GV",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U5",
+      "part": "TPS3808G33DBVR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U6",
+      "part": "SN74HCS74PW",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R1",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R2",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C1",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C2",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C3",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C4",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C5",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C6",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__SW1",
+      "part": "B3U-1000P",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U7",
+      "part": "TPS3808G33DBVR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R3",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R4",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C7",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U8",
+      "part": "74LVC1G17GV",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R6",
+      "part": "220k pulldown; total +/-1% budget, part pending",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C8",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R7",
+      "part": "4.7k series; total +/-1% budget, part pending",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U9",
+      "part": "TPS3808G33DBVR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R8",
+      "part": "100k CT candidate; part pending",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C9",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U10",
+      "part": "TPS3808G01DBVR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U11",
+      "part": "74LVC1G17GV",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R9",
+      "part": "10k cause pullup; total +/-1% budget, part pending",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C10",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C11",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U14",
+      "part": "74AUP1G06GW",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R14",
+      "part": "TNPW12061K00BYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C14",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U15",
+      "part": "74LVC1G17GV",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R15",
+      "part": "3k local button pullup; total +/-1% budget; exact part pending",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C15",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_U12",
+      "part": "TPS3700DDCR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_U13",
+      "part": "74LVC1G17GV",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R10",
+      "part": "TNPW0603150KBYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R11",
+      "part": "TNPW08051M00BYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R12",
+      "part": "TNPW0603330KBYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R13",
+      "part": "TNPW060310K0BYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_C12",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_C13",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_U12",
+      "part": "TPS3700DDCR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_U13",
+      "part": "74LVC1G17GV",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R10",
+      "part": "TNPW0603150KBYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R11",
+      "part": "TNPW08051M00BYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R12",
+      "part": "TNPW0603330KBYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R13",
+      "part": "TNPW060310K0BYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_C12",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_C13",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_U_POWER",
+      "part": "TPS259813LRPW",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_Q_REVERSE",
+      "part": "SiSS80DN-T1-GE3 comparison only",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R_GATE",
+      "part": null,
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_C_GATE",
+      "part": null,
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_U_POWER",
+      "part": "TPS259813LRPW",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_Q_REVERSE",
+      "part": "SiSS80DN-T1-GE3 comparison only",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R_GATE",
+      "part": null,
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_C_GATE",
+      "part": null,
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R_ILM",
+      "part": null,
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R_ILM",
+      "part": null,
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R_OV_TOP",
+      "part": null,
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R_OV_BOTTOM",
+      "part": null,
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R_OV_TOP",
+      "part": null,
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R_OV_BOTTOM",
+      "part": null,
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U_STOP_LDO",
+      "part": "TPS70933DBVR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C_STOP_IN",
+      "part": "MKS2C042201K00JSSD",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C_STOP_OUT",
+      "part": "GRM31CR71H475KA12L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R_STOP_MIN_LOAD",
+      "part": "TNPW060330K1BYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R_EN_PULLDOWN",
+      "part": "TNPW060378K7BYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R_EN_PULLDOWN",
+      "part": "TNPW060378K7BYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_U_WINDOW",
+      "part": "TPS3700DDCR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R_SOURCE_UV_TOP",
+      "part": "TNPW0603102KBYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R_SOURCE_UV_BOTTOM",
+      "part": "TNPW060310K0BYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R_SOURCE_OV_TOP",
+      "part": "TNPW0603130KBYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R_SOURCE_OV_BOTTOM",
+      "part": "TNPW060310K0BYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R_WINDOW_PULLUP",
+      "part": "TNPW060310K0BYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_C_WINDOW",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_U_WINDOW",
+      "part": "TPS3700DDCR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R_SOURCE_UV_TOP",
+      "part": "TNPW0603102KBYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R_SOURCE_UV_BOTTOM",
+      "part": "TNPW060310K0BYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R_SOURCE_OV_TOP",
+      "part": "TNPW0603130KBYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R_SOURCE_OV_BOTTOM",
+      "part": "TNPW060310K0BYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R_WINDOW_PULLUP",
+      "part": "TNPW060310K0BYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_C_WINDOW",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U_MONITOR_START",
+      "part": "TPS3808G33DBVR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R_MONITOR_START",
+      "part": "TNPW0603100KBYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C_MONITOR_START",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U_MONITOR_RX",
+      "part": "SN74AUP1T50DCKR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R_MONITOR_RX_OFF",
+      "part": "TNPW0603220KBYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C_MONITOR_RX",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R_SEQUENCE_OFF",
+      "part": "TNPW060310K0BYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__D_STOP_REVERSE",
+      "part": "BAS116",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R_STOP_INPUT_BLEED",
+      "part": "TNPW0603100KBYEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C_STOP_IN_HF",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U_LOGIC_PROTECT",
+      "part": "TPS26601RHFR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R_LOGIC_UV_TOP",
+      "part": "TNPW060340K2BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R_LOGIC_UV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R_LOGIC_OV_TOP",
+      "part": "TNPW0603124KBEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R_LOGIC_OV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R_LOGIC_ILIM",
+      "part": "TNPW0603118KBEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R_LOGIC_INPUT_BLEED",
+      "part": "TNPW0603100KBEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C_LOGIC_PROTECT_IN_1",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C_LOGIC_PROTECT_IN_2",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C_LOGIC_PROTECT_OUT_1",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C_LOGIC_PROTECT_OUT_2",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U_LOGIC_LDO",
+      "part": "TPS70933DRVR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C_LOGIC_LDO_OUT",
+      "part": "T520A226M010ATE080",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_U_REGULATOR",
+      "part": "D42V110F5",
+      "ledger_entry": "Pololu_left",
+      "status": "catalog_mass_only_COM_inertia_unqualified"
+    },
+    {
+      "reference": "SYS__RIGHT_U_REGULATOR",
+      "part": "D42V110F5",
+      "ledger_entry": "Pololu_right",
+      "status": "catalog_mass_only_COM_inertia_unqualified"
+    },
+    {
+      "reference": "SYS__LEFT_R_DISCHARGE_1",
+      "part": "CRCW1206360RFKEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R_DISCHARGE_2",
+      "part": "CRCW1206360RFKEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R_DISCHARGE_1",
+      "part": "CRCW1206360RFKEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R_DISCHARGE_2",
+      "part": "CRCW1206360RFKEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R_REG_EN_PD",
+      "part": "TNPW06032K21BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__LEFT_R_REG_EN_SER",
+      "part": "TNPW0603100RBEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R_REG_EN_PD",
+      "part": "TNPW06032K21BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__RIGHT_R_REG_EN_SER",
+      "part": "TNPW0603100RBEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R_LOGIC_SHDN_PD",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R_LOGIC_SHDN_SER",
+      "part": "TNPW06031K00BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__U_AUX_START_ISO",
+      "part": "ISO7710FDR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C_AUX_ISO_PRIMARY",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__C_AUX_ISO_SECONDARY",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R_STOP_INPUT_0",
+      "part": "TNPW12061K50BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "SYS__R_STOP_INPUT_1",
+      "part": "TNPW12061K50BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "TAB5__U_PROTECT",
+      "part": "TPS26601RHFR",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "TAB5__R_UV_TOP",
+      "part": "TNPW060360K4BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "TAB5__R_UV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "TAB5__R_OV_TOP",
+      "part": "TNPW0603124KBEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "TAB5__R_OV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "TAB5__R_ILIM",
+      "part": null,
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "TAB5__C_PROTECT_IN_1",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "TAB5__C_PROTECT_IN_2",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "TAB5__C_PROTECT_OUT_1",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "TAB5__C_PROTECT_OUT_2",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "TAB5__R_SHDN_PD",
+      "part": "TNPW060310K0BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "TAB5__R_SHDN_SER",
+      "part": "TNPW06031K00BEEA",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "TAB5__C_DVDT",
+      "part": null,
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__J_PACK",
+      "part": "XT30U-M",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__F_MAIN",
+      "part": "0297010.L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__FH_MAIN",
+      "part": "01530002H",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__U_REVERSE",
+      "part": "LM74700QDBVRQ1",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__Q_REVERSE",
+      "part": "CSD18540Q5BT",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__C_IN",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__C_OUT_0",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__C_OUT_1",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__C_VCAP_0",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    },
+    {
+      "reference": "INLET__C_VCAP_1",
+      "part": "GRM31C5C1H104JA01L",
+      "ledger_entry": null,
+      "status": "not_reconciled_to_current_mass_ledger"
+    }
+  ],
+  "circuit_references": 250,
+  "mapped_catalog_mass_references": 2,
+  "unreconciled_references": 248,
+  "interpretation": "Unreconciled does not mean zero mass or necessarily all new mass: reconcile existing TTL/board reservations before adding allocations. PCB substrate, copper, solder, wiring and connectors require explicit boundaries to avoid double counting.",
+  "whole_robot_mass_kg": null,
+  "model_updated": false,
+  "manufacturing_release": false
+}

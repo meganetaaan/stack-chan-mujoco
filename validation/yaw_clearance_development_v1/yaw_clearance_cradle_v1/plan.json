@@ -1,0 +1,21 @@
+{
+  "scope": "B-rep yaw coupler/support clearance over continuous recorded angle ranges.\n\nThe between-sample lower bound assumes rigid single-axis rotation; deformation\nand manufacturing allowances are separately subtracted, not modeled as loads.\n",
+  "include_cradle": true,
+  "criteria": {
+    "residual_clearance_min_mm": 0.5,
+    "tolerance_per_part_mm": 0.2,
+    "assumed_deflection_per_part_mm": 0.2
+  },
+  "step_deg": 0.25,
+  "source_sha256": {
+    "software/sim/mujoco/assets/r9_fast_turn_v1/models/scene.xml": "b79bc86618c58c44088fb9211c1807a09c27ea8f623152243a86b7959e74b434",
+    "validation/prototype_epic4_v1/actuator_fullbody_load_left_v1/trace.npz": "9c4907b6a9b2439f5ca86cce73f32895f634534c34fb6e3dc7f0edecd2efdc19",
+    "validation/prototype_epic4_v1/actuator_fullbody_load_right_v1/trace.npz": "476c5748e833fbee6226b92f3498da8581ebec770425ba713b8512912be28ec9"
+  },
+  "limitations": [
+    "Only yaw coupler versus its fixed support, not the full assembly",
+    "Recorded angle interval assumes continuous interpolation; unrecorded excursions not covered",
+    "Deflection allowances are requirements, not proof of actual worst-case deformation",
+    "No fastener/harness/tool shapes in this pair study"
+  ]
+}

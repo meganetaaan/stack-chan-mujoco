@@ -1,0 +1,60 @@
+{
+  "scope": "Independent reference/comparator/resistor branches; development fault study only.",
+  "fault": "none",
+  "normal_load": true,
+  "branches": [
+    {
+      "reference_V": 2.507475,
+      "rbottom_ohm": 9900.0,
+      "rfeedback_ohm": 990000.0,
+      "rbrake_ohm": 4.9350000000000005,
+      "rmos_ohm": 0.1,
+      "offset_V": 0.004,
+      "lag_s": 2e-05,
+      "gate_capacity_F": 2e-09,
+      "zener_knee_V": 7.7625,
+      "zener_slope_ohm": 80.0,
+      "zener_capacity_F": 2e-10,
+      "rtop_ohm": 11918.0
+    },
+    {
+      "reference_V": 2.507475,
+      "rbottom_ohm": 9900.0,
+      "rfeedback_ohm": 990000.0,
+      "rbrake_ohm": 4.9350000000000005,
+      "rmos_ohm": 0.1,
+      "offset_V": 0.004,
+      "lag_s": 2e-05,
+      "gate_capacity_F": 2e-09,
+      "zener_knee_V": 7.7625,
+      "zener_slope_ohm": 80.0,
+      "zener_capacity_F": 2e-10,
+      "rtop_ohm": 12221.0
+    }
+  ],
+  "branch_open": [
+    false,
+    false
+  ],
+  "criteria": {
+    "bus_min_V": 4.75,
+    "bus_max_V": 5.25,
+    "gate_abs_max_V": 10.0,
+    "resistor_peak_W": 10.0,
+    "resistor_energy_J": 0.15,
+    "zener_peak_W": 0.1,
+    "pullup_peak_W": 0.25,
+    "energy_relative_error": 0.01,
+    "normal_brake_energy_J": 0.001
+  },
+  "source": "validation/supply_development_v1/supply_probe_v2/probe.cir",
+  "source_sha256": "1e7829bc4f60572d490bd19d7a2b94e9c6cf896c68dfeba08bd909d8d39098b1",
+  "limitations": [
+    "Development corners, not all component/temperature bounds",
+    "Open fault disables only one dissipative switch; no common-cause coverage",
+    "Reference, comparator, gate and zener are behavioral approximations",
+    "No short/stuck-on detection, fuse, battery undervoltage or upstream shutdown yet",
+    "Injected regeneration is not a coupled motor model",
+    "No thermal mounting or physical independence verification"
+  ]
+}

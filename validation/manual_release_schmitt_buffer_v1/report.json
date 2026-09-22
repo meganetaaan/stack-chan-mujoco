@@ -1,0 +1,35 @@
+{
+  "decision": "Prefer Nexperia 74LVC1G17GV over SN74LVC1G34DBVR for MR buffer",
+  "input_transition_limit": "unlimited per manufacturer",
+  "component_count_change": 0,
+  "MR_load_upper_A": 4.847142857142857e-05,
+  "output_test_current_A": 0.0001,
+  "MR_DC_high_margin_V": 0.8621,
+  "MR_DC_low_margin_V": 0.8621,
+  "input_leakage_max_A": 1e-06,
+  "gate_output_test_current_A": 2e-05,
+  "input_threshold_review": {
+    "document_points_V": [
+      1.8,
+      2.3,
+      3,
+      4.5,
+      5.5
+    ],
+    "VTplus_max_over_listed_points_V": 2.79,
+    "VTminus_min_over_listed_points_V": 0.46,
+    "source_high_min_V": 3.107,
+    "source_low_max_V": 0.1,
+    "high_margin_over_listed_points_V": 0.317,
+    "low_margin_over_listed_points_V": 0.36,
+    "full_supply_interval_guaranteed": false,
+    "reason": "No interpolation or extrema-between-points guarantee claimed from discrete table"
+  },
+  "remaining": [
+    "Input threshold guarantee for actual rail interval",
+    "Raw button protection and HCS input compatibility",
+    "Power-on/brownout independent clear and default-off output",
+    "Real footprint and decoupling selection"
+  ],
+  "manufacturing_release": false
+}

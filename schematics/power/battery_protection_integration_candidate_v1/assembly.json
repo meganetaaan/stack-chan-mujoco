@@ -1,0 +1,1507 @@
+{
+  "status": "partial_connection_candidate",
+  "parts": [
+    {
+      "reference": "U_CELL_PROTECT",
+      "part": "BQ7694202PFBR",
+      "pins": {
+        "16": "CELL0_FILTERED",
+        "15": "CELL1_FILTERED",
+        "14": "CELL2_FILTERED",
+        "13": "CELL2_FILTERED",
+        "12": "CELL2_FILTERED",
+        "10": "CELL2_FILTERED",
+        "8": "CELL2_FILTERED",
+        "6": "CELL2_FILTERED",
+        "4": "CELL2_FILTERED",
+        "2": "CELL2_FILTERED",
+        "48": "CELL3_FILTERED",
+        "17": "CELL_B_MINUS",
+        "43": "BQ76942_DSG_43",
+        "45": "BQ76942_CHG_45",
+        "41": "BQ_LD",
+        "42": "BQ_PACK",
+        "47": "BQ_BAT_HOLD",
+        "24": "BQ_REG18",
+        "46": "BQ_CP1",
+        "18": "BQ_SRP",
+        "20": "BQ_SRN",
+        "21": "BQ_TS_CELL",
+        "23": "BQ_TS_FET",
+        "30": "BQ_BOTHOFF_N",
+        "29": "CELL_B_MINUS",
+        "33": "CELL_B_MINUS",
+        "25": "BQ_ALERT_N",
+        "26": "BQ_SCL",
+        "27": "BQ_SDA",
+        "1": null,
+        "3": null,
+        "5": null,
+        "7": null,
+        "9": null,
+        "11": null,
+        "19": null,
+        "44": null,
+        "28": null,
+        "31": null,
+        "32": null,
+        "34": null,
+        "38": null,
+        "35": "BQ_CTRL3V3",
+        "36": "BQ_REGIN",
+        "37": "BQ_BREG"
+      },
+      "unresolved_pins": [
+        22,
+        39,
+        40
+      ],
+      "intentionally_unused_open_pins": [
+        28,
+        31,
+        32,
+        34,
+        38
+      ],
+      "REG0_REG1_required": true,
+      "REG2_disabled_required": true
+    },
+    {
+      "reference": "Q_CHG",
+      "part": "CSD18540Q5BT",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "CELL_POS_FUSED",
+        "3": "CELL_POS_FUSED",
+        "4": "CHG_GATE",
+        "5": "PACK_FET_MID",
+        "6": "PACK_FET_MID",
+        "7": "PACK_FET_MID",
+        "8": "PACK_FET_MID",
+        "exposed_drain_pad": "PACK_FET_MID"
+      }
+    },
+    {
+      "reference": "Q_DSG",
+      "part": "CSD18540Q5BT",
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "PACK_POS_PROTECTED",
+        "3": "PACK_POS_PROTECTED",
+        "4": "DSG_GATE",
+        "5": "PACK_FET_MID",
+        "6": "PACK_FET_MID",
+        "7": "PACK_FET_MID",
+        "8": "PACK_FET_MID",
+        "exposed_drain_pad": "PACK_FET_MID"
+      }
+    },
+    {
+      "reference": "R_GATE_CHG",
+      "part": "TNPW06031K00BEEA",
+      "pins": {
+        "1": "BQ76942_CHG_45",
+        "2": "CHG_GATE"
+      }
+    },
+    {
+      "reference": "R_GS_CHG",
+      "part": "TNPW08051M00BEEA",
+      "pins": {
+        "1": "CHG_GATE",
+        "2": "CELL_POS_FUSED"
+      }
+    },
+    {
+      "reference": "D_GS_CHG",
+      "part": "BZT52H-C16",
+      "pins": {
+        "1": "CHG_GATE",
+        "2": "CELL_POS_FUSED"
+      },
+      "ordering_suffix_pending": true
+    },
+    {
+      "reference": "R_GATE_DSG",
+      "part": "TNPW06031K00BEEA",
+      "pins": {
+        "1": "BQ76942_DSG_43",
+        "2": "DSG_GATE"
+      }
+    },
+    {
+      "reference": "R_GS_DSG",
+      "part": "TNPW08051M00BEEA",
+      "pins": {
+        "1": "DSG_GATE",
+        "2": "PACK_POS_PROTECTED"
+      }
+    },
+    {
+      "reference": "D_GS_DSG",
+      "part": "BZT52H-C16",
+      "pins": {
+        "1": "DSG_GATE",
+        "2": "PACK_POS_PROTECTED"
+      },
+      "ordering_suffix_pending": true
+    },
+    {
+      "reference": "R_CELL_0",
+      "part": "TNPW060322R1BEEA",
+      "pins": {
+        "1": "CELL_B_MINUS",
+        "2": "CELL0_FILTERED"
+      }
+    },
+    {
+      "reference": "R_CELL_1",
+      "part": "TNPW060322R1BEEA",
+      "pins": {
+        "1": "CELL1_TAP",
+        "2": "CELL1_FILTERED"
+      }
+    },
+    {
+      "reference": "R_CELL_2",
+      "part": "TNPW060322R1BEEA",
+      "pins": {
+        "1": "CELL2_TAP",
+        "2": "CELL2_FILTERED"
+      }
+    },
+    {
+      "reference": "R_CELL_3",
+      "part": "TNPW060322R1BEEA",
+      "pins": {
+        "1": "CELL3_TAP",
+        "2": "CELL3_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F0_0",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL0_FILTERED",
+        "2": "FILTER_0_MID"
+      }
+    },
+    {
+      "reference": "C_F0_1",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL0_FILTERED",
+        "2": "FILTER_0_MID"
+      }
+    },
+    {
+      "reference": "C_F0_2",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL0_FILTERED",
+        "2": "FILTER_0_MID"
+      }
+    },
+    {
+      "reference": "C_F0_3",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_0_MID",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_F0_4",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_0_MID",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_F0_5",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_0_MID",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_F1_0",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL1_FILTERED",
+        "2": "FILTER_1_MID"
+      }
+    },
+    {
+      "reference": "C_F1_1",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL1_FILTERED",
+        "2": "FILTER_1_MID"
+      }
+    },
+    {
+      "reference": "C_F1_2",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL1_FILTERED",
+        "2": "FILTER_1_MID"
+      }
+    },
+    {
+      "reference": "C_F1_3",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_1_MID",
+        "2": "CELL0_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F1_4",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_1_MID",
+        "2": "CELL0_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F1_5",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_1_MID",
+        "2": "CELL0_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F2_0",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL2_FILTERED",
+        "2": "FILTER_2_MID"
+      }
+    },
+    {
+      "reference": "C_F2_1",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL2_FILTERED",
+        "2": "FILTER_2_MID"
+      }
+    },
+    {
+      "reference": "C_F2_2",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL2_FILTERED",
+        "2": "FILTER_2_MID"
+      }
+    },
+    {
+      "reference": "C_F2_3",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_2_MID",
+        "2": "CELL1_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F2_4",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_2_MID",
+        "2": "CELL1_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F2_5",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_2_MID",
+        "2": "CELL1_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F3_0",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL3_FILTERED",
+        "2": "FILTER_3_MID"
+      }
+    },
+    {
+      "reference": "C_F3_1",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL3_FILTERED",
+        "2": "FILTER_3_MID"
+      }
+    },
+    {
+      "reference": "C_F3_2",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL3_FILTERED",
+        "2": "FILTER_3_MID"
+      }
+    },
+    {
+      "reference": "C_F3_3",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_3_MID",
+        "2": "CELL2_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F3_4",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_3_MID",
+        "2": "CELL2_FILTERED"
+      }
+    },
+    {
+      "reference": "C_F3_5",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_3_MID",
+        "2": "CELL2_FILTERED"
+      }
+    },
+    {
+      "reference": "R_LD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "BQ_LD"
+      }
+    },
+    {
+      "reference": "R_PACK",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "BQ_PACK"
+      }
+    },
+    {
+      "reference": "R_BAT",
+      "part": "TNPW1206100RBEEA",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "BQ_BAT_DIODE_A"
+      }
+    },
+    {
+      "reference": "D_BAT",
+      "part": "BAS116",
+      "pins": {
+        "1": "BQ_BAT_DIODE_A",
+        "2": null,
+        "3": "BQ_BAT_HOLD"
+      },
+      "ordering_suffix_pending": true
+    },
+    {
+      "reference": "C_BAT",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_BAT_HOLD",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false
+    },
+    {
+      "reference": "C_REG18_0",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_REG18",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false
+    },
+    {
+      "reference": "C_REG18_1",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_REG18",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false
+    },
+    {
+      "reference": "C_REG18_2",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_REG18",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false
+    },
+    {
+      "reference": "C_CP1",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_CP1",
+        "2": "BQ_BAT_HOLD"
+      },
+      "effective_capacitance_qualified": false
+    },
+    {
+      "reference": "R_SHUNT",
+      "part": "WSK25125L000FEA",
+      "pins": {
+        "I1": "CELL_B_MINUS",
+        "I2": "PACK_RETURN",
+        "E1": "SHUNT_CELL_SENSE",
+        "E2": "SHUNT_PACK_SENSE"
+      },
+      "pin_label_source": "Vishay 30108 Rev 11-Dec-2023 p3",
+      "footprint_pad_mapping_qualified": false,
+      "resistance_ohm": 0.005,
+      "tolerance_fraction": 0.01,
+      "component_tcr_ppm_per_K": 35,
+      "rated_power_W_at_70C": 1.0,
+      "kelvin_routing_required": true,
+      "thermal_qualified": false
+    },
+    {
+      "reference": "R_SRP",
+      "part": "TNPW0603100RBEEA",
+      "pins": {
+        "1": "SHUNT_CELL_SENSE",
+        "2": "BQ_SRP"
+      }
+    },
+    {
+      "reference": "R_SRN",
+      "part": "TNPW0603100RBEEA",
+      "pins": {
+        "1": "SHUNT_PACK_SENSE",
+        "2": "BQ_SRN"
+      }
+    },
+    {
+      "reference": "C_CURRENT",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "BQ_SRP",
+        "2": "BQ_SRN"
+      }
+    },
+    {
+      "reference": "TH_CELL",
+      "part": "103AT-2",
+      "pins": {
+        "1": "BQ_TS_CELL",
+        "2": "CELL_B_MINUS"
+      },
+      "location_candidate": "battery exterior",
+      "mounting_qualified": false,
+      "protection_threshold_qualified": false
+    },
+    {
+      "reference": "TH_FET",
+      "part": "103AT-2",
+      "pins": {
+        "1": "BQ_TS_FET",
+        "2": "CELL_B_MINUS"
+      },
+      "location_candidate": "main protection FET region",
+      "mounting_qualified": false,
+      "protection_threshold_qualified": false
+    },
+    {
+      "reference": "R_ALLOW_SER",
+      "part": "TNPW06031K00BEEA",
+      "pins": {
+        "1": "BQ_ALLOW_BMINUS",
+        "2": "BQ_BOTHOFF_N"
+      }
+    },
+    {
+      "reference": "R_ALLOW_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_BOTHOFF_N",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "U_REG0_LIMIT",
+      "part": "TPS26600RHFR",
+      "pins": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "4": null,
+        "5": null,
+        "6": null,
+        "7": null,
+        "8": "CELL_POS_FUSED",
+        "9": "CELL_POS_FUSED",
+        "10": "REG0_UVLO",
+        "11": null,
+        "12": "REG0_OVP",
+        "13": "REG0_MODE",
+        "14": null,
+        "15": "REG0_PROTECT_RTN",
+        "16": null,
+        "17": "CELL_B_MINUS",
+        "18": null,
+        "19": "REG0_ILIM",
+        "20": null,
+        "21": null,
+        "22": null,
+        "23": "BQ_REG0_LIMITED",
+        "24": "BQ_REG0_LIMITED",
+        "EP": "REG0_PROTECT_RTN"
+      },
+      "intentionally_unused_open_pins": [
+        14,
+        18,
+        20,
+        22
+      ]
+    },
+    {
+      "reference": "R_REG0_UV_TOP",
+      "part": "TNPW060340K2BEEA",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "REG0_UVLO"
+      }
+    },
+    {
+      "reference": "R_REG0_UV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "REG0_UVLO",
+        "2": "REG0_PROTECT_RTN"
+      }
+    },
+    {
+      "reference": "R_REG0_OV_TOP",
+      "part": "TNPW0603124KBEEA",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "REG0_OVP"
+      }
+    },
+    {
+      "reference": "R_REG0_OV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "REG0_OVP",
+        "2": "REG0_PROTECT_RTN"
+      }
+    },
+    {
+      "reference": "R_REG0_ILIM",
+      "part": "TNPW0603118KBEEA",
+      "pins": {
+        "1": "REG0_ILIM",
+        "2": "REG0_PROTECT_RTN"
+      }
+    },
+    {
+      "reference": "C_REG0_PROTECT_IN_1",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_REG0_PROTECT_IN_2",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_REG0_PROTECT_OUT_1",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_REG0_LIMITED",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_REG0_PROTECT_OUT_2",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_REG0_LIMITED",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "R_REG0_MODE",
+      "part": "TNPW0805402KBEEA",
+      "pins": {
+        "1": "REG0_MODE",
+        "2": "REG0_PROTECT_RTN"
+      }
+    },
+    {
+      "reference": "D_REG0",
+      "part": "BAT46W-7-F",
+      "pins": {
+        "A": "BQ_REG0_LIMITED",
+        "K": "BQ_REG0_PRE_R"
+      },
+      "footprint_pad_mapping_qualified": false
+    },
+    {
+      "reference": "R_REG0_0",
+      "part": "TNPW120644R2BEEA",
+      "pins": {
+        "1": "BQ_REG0_PRE_R",
+        "2": "BQ_REG0_COLLECTOR"
+      }
+    },
+    {
+      "reference": "R_REG0_1",
+      "part": "TNPW120644R2BEEA",
+      "pins": {
+        "1": "BQ_REG0_PRE_R",
+        "2": "BQ_REG0_COLLECTOR"
+      }
+    },
+    {
+      "reference": "C_REG0",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_REG0_COLLECTOR",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false
+    },
+    {
+      "reference": "Q_REG0",
+      "part": "FCX495TA",
+      "pins": {
+        "B": "BQ_BREG",
+        "C": "BQ_REG0_COLLECTOR",
+        "E": "BQ_REGIN"
+      },
+      "footprint_pad_mapping_qualified": false,
+      "thermal_qualified": false
+    },
+    {
+      "reference": "C_REGIN",
+      "part": "C0603C223K4RACTU",
+      "pins": {
+        "1": "BQ_REGIN",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false
+    },
+    {
+      "reference": "C_REG1",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false
+    },
+    {
+      "reference": "R_BQ_SCL",
+      "part": "TNPW06032K21BEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_SCL"
+      }
+    },
+    {
+      "reference": "R_BQ_SDA",
+      "part": "TNPW06032K21BEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_SDA"
+      }
+    },
+    {
+      "reference": "R_BQ_ALERT",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_ALERT_N"
+      }
+    },
+    {
+      "reference": "U_BQ_HOST",
+      "part": "STM32G030F6P6",
+      "pins": {
+        "1": "BQ_SDA",
+        "2": null,
+        "3": null,
+        "4": "BQ_CTRL3V3",
+        "5": "CELL_B_MINUS",
+        "6": "BQ_HOST_NRST",
+        "7": "BQ_MAIN_REQUEST_RAW",
+        "8": "BQ_AUX_REQUEST_RAW",
+        "9": "BQ_ALERT_N",
+        "10": "BQ_ARM_EDGE",
+        "11": null,
+        "12": null,
+        "13": null,
+        "14": null,
+        "15": null,
+        "16": null,
+        "17": "BQ_HOST_HEARTBEAT",
+        "18": "BQ_HOST_SWDIO",
+        "19": "BQ_HOST_SWCLK",
+        "20": "BQ_SCL"
+      },
+      "package": "TSSOP20",
+      "role": "BQ-local configuration and startup coordinator; not independent fault cutoff"
+    },
+    {
+      "reference": "C_BQ_HOST_HF",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07
+    },
+    {
+      "reference": "C_BQ_HOST_BULK",
+      "part": "GRM31CR71H475KA12L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 4.7e-06,
+      "effective_capacitance_qualified": false
+    },
+    {
+      "reference": "C_BQ_HOST_NRST",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_HOST_NRST",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07
+    },
+    {
+      "reference": "R_BQ_HOST_NRST",
+      "part": "TNPW0603100KBEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_HOST_NRST"
+      },
+      "value_ohm": 100000
+    },
+    {
+      "reference": "R_BQ_AUX_START_REQUEST_PD",
+      "part": "TNPW060347K5BEEA",
+      "pins": {
+        "1": "BQ_AUX_START_REQUEST",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 47500
+    },
+    {
+      "reference": "R_BQ_HOST_HEARTBEAT_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_HOST_HEARTBEAT",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000
+    },
+    {
+      "reference": "U_BQ_HOST_SUP",
+      "part": "TPS3808G01DBVR",
+      "pins": {
+        "1": "BQ_HOST_NRST",
+        "2": "CELL_B_MINUS",
+        "3": "BQ_CTRL3V3",
+        "4": null,
+        "5": "BQ_HOST_SUP_SENSE",
+        "6": "BQ_CTRL3V3"
+      }
+    },
+    {
+      "reference": "R_BQ_HOST_SUP_TOP",
+      "part": "TNPW060357K6BEEA",
+      "value_ohm": 57600,
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_HOST_SUP_SENSE"
+      }
+    },
+    {
+      "reference": "R_BQ_HOST_SUP_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "BQ_HOST_SUP_SENSE",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_BQ_HOST_SUP",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "U_BQ_WD",
+      "part": "TPS3431SDRBR",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_WD_CWD",
+        "3": "BQ_CTRL3V3",
+        "4": "CELL_B_MINUS",
+        "5": "BQ_CTRL3V3",
+        "6": "BQ_HOST_HEARTBEAT",
+        "7": "BQ_HOST_NRST",
+        "8": null,
+        "EP": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_BQ_WD",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07
+    },
+    {
+      "reference": "R_BQ_WD_CWD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_WD_CWD"
+      },
+      "value_ohm": 10000
+    },
+    {
+      "reference": "U_BQ_RESET_BUFFER",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "BQ_HOST_NRST",
+        "3": "CELL_B_MINUS",
+        "4": "BQ_RESET_VALID_N",
+        "5": "BQ_CTRL3V3"
+      }
+    },
+    {
+      "reference": "C_BQ_RESET_BUFFER",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07
+    },
+    {
+      "reference": "U_BQ_PERMIT_LATCH",
+      "part": "SN74LVC1G74DCTR",
+      "pins": {
+        "1": "BQ_ARM_EDGE",
+        "2": "BQ_CTRL3V3",
+        "3": null,
+        "4": "CELL_B_MINUS",
+        "5": "BQ_LATCH_PERMIT",
+        "6": "BQ_RESET_VALID_N",
+        "7": "BQ_CTRL3V3",
+        "8": "BQ_CTRL3V3"
+      }
+    },
+    {
+      "reference": "C_BQ_PERMIT_LATCH",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07
+    },
+    {
+      "reference": "U_BQ_MAIN_GATE",
+      "part": "SN74LVC1G08DBVR",
+      "pins": {
+        "1": "BQ_MAIN_REQUEST_RAW",
+        "2": "BQ_LATCH_PERMIT",
+        "3": "CELL_B_MINUS",
+        "4": "BQ_ALLOW_BMINUS",
+        "5": "BQ_CTRL3V3"
+      }
+    },
+    {
+      "reference": "C_BQ_MAIN_GATE",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07
+    },
+    {
+      "reference": "U_BQ_AUX_GATE",
+      "part": "SN74LVC1G08DBVR",
+      "pins": {
+        "1": "BQ_AUX_REQUEST_RAW",
+        "2": "BQ_LATCH_PERMIT",
+        "3": "CELL_B_MINUS",
+        "4": "BQ_AUX_START_REQUEST",
+        "5": "BQ_CTRL3V3"
+      }
+    },
+    {
+      "reference": "C_BQ_AUX_GATE",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07
+    },
+    {
+      "reference": "R_MAIN_REQUEST_RAW_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_MAIN_REQUEST_RAW",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000
+    },
+    {
+      "reference": "R_AUX_REQUEST_RAW_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_AUX_REQUEST_RAW",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000
+    },
+    {
+      "reference": "R_ARM_EDGE_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_ARM_EDGE",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000
+    }
+  ],
+  "part_count": 100,
+  "unresolved_BQ76942_pins": [
+    22,
+    39,
+    40
+  ],
+  "source_sha256": {
+    "bq76942_candidate.json": "198d96f12042b26d7cdf329dbba4df3e3523ce0dba6961c450d492a0f847eb33",
+    "bq76942_series_filter_candidate.json": "5d1ba5f53047c1c7889759401795a1ebb5d9908e0620ee99aef42dcd15901e2b",
+    "bq76942_pack_fet_candidate.json": "2babc4c93e3b0a20dc8736bd80b585438b154ab1f3bb72cde1791a82167da984",
+    "bq76942_reg0_limiter_candidate.json": "63c874eed128fcd14a15c2f91eb75213cc81839aa40b3eadcf85fb03e7cfa70c",
+    "bq_local_host_candidate.json": "14868e12b12d075882d3f3e05a7f458182defca53eeedca88be0b9486eb803c3",
+    "bq_host_watchdog_candidate.json": "5b9524c2aed7d7d7a507771a55d258ab40c8b5153cb5dd6288298d6b1f56a56c"
+  },
+  "external_ports": [
+    "CELL_B_MINUS",
+    "CELL1_TAP",
+    "CELL2_TAP",
+    "CELL3_TAP",
+    "CELL_POS_FUSED",
+    "PACK_POS_PROTECTED",
+    "PACK_RETURN",
+    "BQ_ALLOW_BMINUS",
+    "BQ_CTRL3V3",
+    "BQ_SCL",
+    "BQ_SDA",
+    "BQ_ALERT_N",
+    "BQ_AUX_START_REQUEST",
+    "BQ_HOST_HEARTBEAT",
+    "BQ_HOST_NRST",
+    "BQ_HOST_SWDIO",
+    "BQ_HOST_SWCLK"
+  ],
+  "local_host_candidate": {
+    "status": "local_host_connection_candidate_not_operational",
+    "source": "https://www.st.com/resource/en/datasheet/stm32g030f6.pdf",
+    "source_revision": "DS12991 Rev6 June2025",
+    "source_sections": [
+      "4, Figure4 and Tables12/14",
+      "5.1.6 Figure9",
+      "5.3.15 Figure19"
+    ],
+    "supply": "BQ_CTRL3V3",
+    "reference_ground": "CELL_B_MINUS",
+    "parts": [
+      {
+        "reference": "U_BQ_HOST",
+        "part": "STM32G030F6P6",
+        "pins": {
+          "1": "BQ_SDA",
+          "2": null,
+          "3": null,
+          "4": "BQ_CTRL3V3",
+          "5": "CELL_B_MINUS",
+          "6": "BQ_HOST_NRST",
+          "7": "BQ_MAIN_REQUEST_RAW",
+          "8": "BQ_AUX_REQUEST_RAW",
+          "9": "BQ_ALERT_N",
+          "10": "BQ_ARM_EDGE",
+          "11": null,
+          "12": null,
+          "13": null,
+          "14": null,
+          "15": null,
+          "16": null,
+          "17": "BQ_HOST_HEARTBEAT",
+          "18": "BQ_HOST_SWDIO",
+          "19": "BQ_HOST_SWCLK",
+          "20": "BQ_SCL"
+        },
+        "package": "TSSOP20",
+        "role": "BQ-local configuration and startup coordinator; not independent fault cutoff"
+      },
+      {
+        "reference": "C_BQ_HOST_HF",
+        "part": "GRM31C5C1H104JA01L",
+        "pins": {
+          "1": "BQ_CTRL3V3",
+          "2": "CELL_B_MINUS"
+        },
+        "value_F": 1e-07
+      },
+      {
+        "reference": "C_BQ_HOST_BULK",
+        "part": "GRM31CR71H475KA12L",
+        "pins": {
+          "1": "BQ_CTRL3V3",
+          "2": "CELL_B_MINUS"
+        },
+        "value_F": 4.7e-06,
+        "effective_capacitance_qualified": false
+      },
+      {
+        "reference": "C_BQ_HOST_NRST",
+        "part": "GRM31C5C1H104JA01L",
+        "pins": {
+          "1": "BQ_HOST_NRST",
+          "2": "CELL_B_MINUS"
+        },
+        "value_F": 1e-07
+      },
+      {
+        "reference": "R_BQ_HOST_NRST",
+        "part": "TNPW0603100KBEEA",
+        "pins": {
+          "1": "BQ_CTRL3V3",
+          "2": "BQ_HOST_NRST"
+        },
+        "value_ohm": 100000
+      },
+      {
+        "reference": "R_BQ_AUX_START_REQUEST_PD",
+        "part": "TNPW060347K5BEEA",
+        "pins": {
+          "1": "BQ_AUX_START_REQUEST",
+          "2": "CELL_B_MINUS"
+        },
+        "value_ohm": 47500
+      },
+      {
+        "reference": "R_BQ_HOST_HEARTBEAT_PD",
+        "part": "TNPW060310K0BEEA",
+        "pins": {
+          "1": "BQ_HOST_HEARTBEAT",
+          "2": "CELL_B_MINUS"
+        },
+        "value_ohm": 10000
+      },
+      {
+        "reference": "U_BQ_HOST_SUP",
+        "part": "TPS3808G01DBVR",
+        "pins": {
+          "1": "BQ_HOST_NRST",
+          "2": "CELL_B_MINUS",
+          "3": "BQ_CTRL3V3",
+          "4": null,
+          "5": "BQ_HOST_SUP_SENSE",
+          "6": "BQ_CTRL3V3"
+        }
+      },
+      {
+        "reference": "R_BQ_HOST_SUP_TOP",
+        "part": "TNPW060357K6BEEA",
+        "value_ohm": 57600,
+        "pins": {
+          "1": "BQ_CTRL3V3",
+          "2": "BQ_HOST_SUP_SENSE"
+        }
+      },
+      {
+        "reference": "R_BQ_HOST_SUP_BOTTOM",
+        "part": "TNPW060310K0BEEA",
+        "value_ohm": 10000,
+        "pins": {
+          "1": "BQ_HOST_SUP_SENSE",
+          "2": "CELL_B_MINUS"
+        }
+      },
+      {
+        "reference": "C_BQ_HOST_SUP",
+        "part": "GRM31C5C1H104JA01L",
+        "value_F": 1e-07,
+        "pins": {
+          "1": "BQ_CTRL3V3",
+          "2": "CELL_B_MINUS"
+        }
+      }
+    ],
+    "pin_allocation": {
+      "1": {
+        "port": "PB7",
+        "role": "I2C1_SDA",
+        "signal": "BQ_SDA",
+        "selected_gpio": "PB7",
+        "bonded_gpios": [
+          "PB7",
+          "PB8"
+        ],
+        "inactive_bonded_gpios": [
+          "PB8"
+        ],
+        "alternate_function": 6,
+        "open_drain": true
+      },
+      "2": {
+        "port": "PC14",
+        "role": "unused_analog_no_pull",
+        "signal": null,
+        "selected_gpio": "PC14",
+        "bonded_gpios": [
+          "PC14",
+          "PB9"
+        ],
+        "inactive_bonded_gpios": [
+          "PB9"
+        ]
+      },
+      "3": {
+        "port": "PC15",
+        "role": "unused_analog_no_pull",
+        "signal": null,
+        "selected_gpio": "PC15",
+        "bonded_gpios": [
+          "PC15"
+        ],
+        "inactive_bonded_gpios": []
+      },
+      "4": {
+        "port": "VDD/VDDA",
+        "role": "see_signal_assignment",
+        "signal": "BQ_CTRL3V3"
+      },
+      "5": {
+        "port": "VSS/VSSA",
+        "role": "see_signal_assignment",
+        "signal": "CELL_B_MINUS"
+      },
+      "6": {
+        "port": "NRST",
+        "role": "see_signal_assignment",
+        "signal": "BQ_HOST_NRST"
+      },
+      "7": {
+        "port": "PA0",
+        "role": "output_initial_low",
+        "signal": "BQ_MAIN_REQUEST_RAW",
+        "selected_gpio": "PA0",
+        "bonded_gpios": [
+          "PA0"
+        ],
+        "inactive_bonded_gpios": []
+      },
+      "8": {
+        "port": "PA1",
+        "role": "output_initial_low",
+        "signal": "BQ_AUX_REQUEST_RAW",
+        "selected_gpio": "PA1",
+        "bonded_gpios": [
+          "PA1"
+        ],
+        "inactive_bonded_gpios": []
+      },
+      "9": {
+        "port": "PA2",
+        "role": "see_signal_assignment",
+        "signal": "BQ_ALERT_N",
+        "selected_gpio": "PA2",
+        "bonded_gpios": [
+          "PA2"
+        ],
+        "inactive_bonded_gpios": []
+      },
+      "10": {
+        "port": "PA3",
+        "role": "output_initial_low",
+        "signal": "BQ_ARM_EDGE",
+        "selected_gpio": "PA3",
+        "bonded_gpios": [
+          "PA3"
+        ],
+        "inactive_bonded_gpios": []
+      },
+      "11": {
+        "port": "PA4",
+        "role": "unused_analog_no_pull",
+        "signal": null,
+        "selected_gpio": "PA4",
+        "bonded_gpios": [
+          "PA4"
+        ],
+        "inactive_bonded_gpios": []
+      },
+      "12": {
+        "port": "PA5",
+        "role": "unused_analog_no_pull",
+        "signal": null,
+        "selected_gpio": "PA5",
+        "bonded_gpios": [
+          "PA5"
+        ],
+        "inactive_bonded_gpios": []
+      },
+      "13": {
+        "port": "PA6",
+        "role": "unused_analog_no_pull",
+        "signal": null,
+        "selected_gpio": "PA6",
+        "bonded_gpios": [
+          "PA6"
+        ],
+        "inactive_bonded_gpios": []
+      },
+      "14": {
+        "port": "PA7",
+        "role": "unused_analog_no_pull",
+        "signal": null,
+        "selected_gpio": "PA7",
+        "bonded_gpios": [
+          "PA7"
+        ],
+        "inactive_bonded_gpios": []
+      },
+      "15": {
+        "port": "PA8",
+        "role": "unused_analog_no_pull",
+        "signal": null,
+        "selected_gpio": "PA8",
+        "bonded_gpios": [
+          "PA8",
+          "PB0",
+          "PB1",
+          "PB2"
+        ],
+        "inactive_bonded_gpios": [
+          "PB0",
+          "PB1",
+          "PB2"
+        ]
+      },
+      "16": {
+        "port": "PA11",
+        "role": "unused_analog_no_pull",
+        "signal": null,
+        "selected_gpio": "PA11",
+        "bonded_gpios": [
+          "PA11"
+        ],
+        "inactive_bonded_gpios": []
+      },
+      "17": {
+        "port": "PA12",
+        "role": "see_signal_assignment",
+        "signal": "BQ_HOST_HEARTBEAT",
+        "selected_gpio": "PA12",
+        "bonded_gpios": [
+          "PA12"
+        ],
+        "inactive_bonded_gpios": []
+      },
+      "18": {
+        "port": "PA13",
+        "role": "see_signal_assignment",
+        "signal": "BQ_HOST_SWDIO",
+        "selected_gpio": "PA13",
+        "bonded_gpios": [
+          "PA13"
+        ],
+        "inactive_bonded_gpios": []
+      },
+      "19": {
+        "port": "PA14-BOOT0",
+        "role": "see_signal_assignment",
+        "signal": "BQ_HOST_SWCLK",
+        "selected_gpio": "PA14",
+        "bonded_gpios": [
+          "PA14",
+          "PA15"
+        ],
+        "inactive_bonded_gpios": [
+          "PA15"
+        ]
+      },
+      "20": {
+        "port": "PB6",
+        "role": "I2C1_SCL",
+        "signal": "BQ_SCL",
+        "selected_gpio": "PB6",
+        "bonded_gpios": [
+          "PB6",
+          "PB3",
+          "PB4",
+          "PB5"
+        ],
+        "inactive_bonded_gpios": [
+          "PB3",
+          "PB4",
+          "PB5"
+        ],
+        "alternate_function": 6,
+        "open_drain": true
+      }
+    },
+    "I2C_clock_Hz_candidate": 100000,
+    "BQ_I2C_CRC_required": true,
+    "clock": "internal HSI; no external crystal; divider and timing not selected",
+    "debug_ports": [
+      "BQ_CTRL3V3_VTREF_ONLY",
+      "CELL_B_MINUS",
+      "BQ_HOST_NRST",
+      "BQ_HOST_SWDIO",
+      "BQ_HOST_SWCLK"
+    ],
+    "requirements": [
+      "Inactive bonded GPIOs must remain analog with no pulls; PB8 must not drive the PB7/SDA package pin",
+      "Do not reuse existing SYS sequencer GPIO initialization for this differently allocated MCU",
+      "PA0 and PA1 initial output data Low before changing to output mode",
+      "BQ_ALLOW_BMINUS only after configuration readback; default BQ BOTHOFF function is not active before configuration",
+      "AUX request requires separate domain-crossing driver; never directly connect to SYS__LOGIC_START_ALLOW",
+      "Use a B-minus referenced or isolated debug interface; external programmer must not inject power or bypass shunt through PACK_RETURN",
+      "Select boot option bytes for main flash, retain NRST and SWD; record and verify programmed values",
+      "Watchdog/latch gates connected by bq_host_watchdog_candidate; analog timing and rearm protocol unqualified",
+      "BQ REG1/REG0 load, added bulk capacitor startup and stability must be requalified",
+      "External TPS3808 reset candidate connected; dynamic response and low-voltage output validity remain unqualified"
+    ],
+    "manufacturing_release": false,
+    "firmware_implemented": false,
+    "reset_supervision_qualified": false,
+    "supervisor_candidate": {
+      "source": "https://www.ti.com/lit/ds/symlink/tps3808.pdf",
+      "revision": "SBVS050N August2026",
+      "sections": [
+        "5",
+        "6.5",
+        "6.6",
+        "7.3.1",
+        "7.3.4"
+      ],
+      "part": "TPS3808G01DBVR",
+      "nominal_threshold_V": 0.405,
+      "threshold_fraction": 0.02,
+      "hysteresis_fraction_max": 0.03,
+      "sense_current_abs_A": 2.5e-08,
+      "total_resistance_variation_allocation": 0.01,
+      "NRST_external_pullup_changed_from_ohm": 10000,
+      "NRST_external_pullup_ohm": 100000,
+      "reason": "10k external in parallel with MCU internal 25..55k fell below TPS3808 application minimum pullup; use100k",
+      "CT": "open:12..28ms only at manufacturer loading/test conditions; NRST100nF here not qualified",
+      "SENSE_filter": "no added capacitor yet; layout/noise and transient response require joint decision",
+      "reset_output_scope": "MCU reset only; no independent override of main FET or AUX request",
+      "dynamic_shutdown_qualified": false
+    }
+  },
+  "missing_stages": [
+    "cell tap and main connectors",
+    "battery fuse and reverse protection",
+    "current threshold, shunt thermal/pulse and sense-routing qualification",
+    "BAT and REG0 input faults; REG18/CP1/REGIN/REG1 effective capacitance, headroom, load and startup",
+    "PACK/LD transient and reverse-polarity qualification",
+    "local host and reset supervisor connected; watchdog/latch connected; firmware and domain-crossing driver unimplemented; dynamic reset and shutdown unqualified",
+    "thermistor attachment, harness, fault response and temperature protection settings",
+    "system integration candidate exists; whole-system electrical qualification incomplete"
+  ],
+  "temperature_configuration_candidate": {
+    "TS1": {
+      "address": "0x92FD",
+      "value": "0x07",
+      "role": "cell temperature"
+    },
+    "TS3": {
+      "address": "0x92FF",
+      "value": "0x0F",
+      "role": "FET temperature"
+    },
+    "source": "TI SLUUBY1B tables 13-9/13-11 and memory map",
+    "applied_to_hardware": false,
+    "full_protection_configuration": false
+  },
+  "startup_inhibit_candidate": {
+    "DFETOFF_config": {
+      "address": "0x92FB",
+      "value": "0xC2",
+      "active_level": "low",
+      "function": "BOTHOFF"
+    },
+    "CFETOFF_config": {
+      "address": "0x92FA",
+      "value": "0x00"
+    },
+    "RST_SHUT": "unused tied to VSS; not emergency stop",
+    "effective_before_configuration": false,
+    "external_allow_driver_qualified": false,
+    "control_reference": "CELL_B_MINUS"
+  },
+  "control_supply_candidate": {
+    "part": "BQ7694202PFBR",
+    "source": "REG0 plus factory-enabled REG1",
+    "domain_reference": "CELL_B_MINUS",
+    "factory_REG0_Config": "0x01",
+    "factory_REG12_Config": "0x0D",
+    "I2C_CRC_required": true,
+    "REG1_output_spec_V": [
+      3.0,
+      3.6
+    ],
+    "REG1_output_spec_conditions": "REGIN >=4.1V, load 0..45mA; datasheet section7.12",
+    "MCU_load_budget_qualified": false,
+    "cold_start_qualified": false,
+    "shutdown_cuts_control_supply": true
+  },
+  "communications_candidate": {
+    "clock_Hz": 100000,
+    "I2C_CRC_required": true,
+    "pullup_ohm": 2210,
+    "bus_capacitance_allocation_F": 1e-10,
+    "allocation_origin": "engineering PCB budget, not measured",
+    "ALERT_config": {
+      "address": "0x92FC",
+      "value": "0x82",
+      "function": "active-low open-drain"
+    },
+    "domain_reference": "CELL_B_MINUS",
+    "host_interface_qualified": false
+  },
+  "electrically_operational": false,
+  "manufacturing_release": false
+}

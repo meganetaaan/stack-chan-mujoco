@@ -1,0 +1,25 @@
+{
+  "scope": "Necessary rectangular support bounds for static ankle-balancing sole loads.",
+  "normal_force_threshold_N": 1e-06,
+  "geometric_tolerance_mm": 1e-06,
+  "rectangle_mm": {
+    "x": [
+      -39,
+      47
+    ],
+    "left_y": [
+      -18,
+      30
+    ],
+    "right_y": [
+      -30,
+      18
+    ]
+  },
+  "formula": "At z=-19: x_COP=1-My/Fz, y_COP=side*6+Mx/Fz; shift moment from z=-16 before calculation.",
+  "limitations": [
+    "Necessary bound only: rounded corners and holes may further restrict contact.",
+    "Ignores inertia and actual floor contact; failure rejects the static balancing assumption, not the robot.",
+    "No friction or yaw moment feasibility proof."
+  ]
+}

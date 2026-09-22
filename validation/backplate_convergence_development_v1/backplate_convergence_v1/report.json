@@ -1,0 +1,63 @@
+{
+  "scope": "Check the predefined three-mesh displacement/stress convergence gate.",
+  "criteria": {
+    "relative_displacement": 0.05,
+    "relative_stress": 0.1
+  },
+  "relative_change_denominator": "finest mesh absolute maximum",
+  "rows": [
+    {
+      "mesh_mm": 4.0,
+      "displacement_mm": 0.02269009677408958,
+      "principal_MPa": 13.91682394710535,
+      "von_mises_MPa": 10.74589144400372,
+      "screen_passed": true,
+      "source_hashes": {
+        "plan.json": "6fffdd0cc0c272874c8d70ba0b71228cf592696fde67b36aa433cc46c9e8381a",
+        "report.json": "3df6931da4eb4d349f53acf0cbff4860f7ea486c80259c4aed6d7853b0686a79"
+      }
+    },
+    {
+      "mesh_mm": 3.0,
+      "displacement_mm": 0.022879044245736353,
+      "principal_MPa": 12.734054513007706,
+      "von_mises_MPa": 10.712936315928012,
+      "screen_passed": true,
+      "source_hashes": {
+        "plan.json": "7a4c180dca1b9c6a2c37a9a812053d5fb63459e25e27f0681a9fc53313462529",
+        "report.json": "2888924d7a63ab1c57f6aa4d07ad0166efd48b50e6b53bb091b2aad60956e950"
+      }
+    },
+    {
+      "mesh_mm": 2.0,
+      "displacement_mm": 0.022820328791087956,
+      "principal_MPa": 14.574237982836726,
+      "von_mises_MPa": 11.36672280050602,
+      "screen_passed": true,
+      "source_hashes": {
+        "plan.json": "90b5ae0db9799b4826b201ab845370b8e37a7923d6f86d317290456107645235",
+        "report.json": "3c43b96c72c0a8d37cfc3a0d4c0a0d1386f71b87a1aa73fa75e8774012602d76"
+      }
+    }
+  ],
+  "last_two_relative_changes": {
+    "displacement_mm": 0.002572945165948984,
+    "principal_MPa": 0.12626275706463022,
+    "von_mises_MPa": 0.05751758849515562
+  },
+  "gates": {
+    "three_meshes": true,
+    "displacement_convergence": true,
+    "principal_convergence": false,
+    "von_mises_convergence": true,
+    "all_mesh_screens": true
+  },
+  "passed": false,
+  "load_path_verified": false,
+  "limitations": [
+    "single recorded instant",
+    "ideal corner clamps",
+    "extra plate mass absent from dynamic loads",
+    "contact, joint compliance and buckling not represented"
+  ]
+}

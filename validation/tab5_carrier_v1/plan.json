@@ -1,0 +1,35 @@
+{
+  "split_plane_x_mm": 46,
+  "seam_mm": 0.3,
+  "pad_radius_mm": 3.5,
+  "pad_x_mm": [
+    48,
+    52
+  ],
+  "mount_clearance_radius_mm": 1.65,
+  "axes_yz_mm": [
+    [
+      -60,
+      52
+    ],
+    [
+      -60,
+      124
+    ],
+    [
+      60,
+      52
+    ],
+    [
+      60,
+      124
+    ]
+  ],
+  "criteria": [
+    "Connected valid fixed shell and carrier",
+    "No new volume overlaps >0.01mm3",
+    "No growth of torso bounds"
+  ],
+  "basis": "Split plane, seam, pad and clearance sizes are engineering candidates; not qualified manufacturing tolerances",
+  "stop": "One partition/nominal interference and forward group swept-box screen. No strength claim before carrier-to-body fastening."
+}

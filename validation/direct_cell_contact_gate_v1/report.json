@@ -1,0 +1,42 @@
+{
+  "source_sha256": {
+    "validation/direct_cell_contact_gate_v1/contact_spec.json": "02266d2838456fe79e3987b282d837d6ee601a0ff1fd10eb99210f5a970cb05c",
+    "validation/direct_cell_voltage_budget_v1/report.json": "bb1fb38e7015b1247fe50d32668a7af87546ddc1e3abff0ae1f5721831fc82b3",
+    "validation/direct_cell_p2150r_v1/cell_candidate.json": "a998a3785a2c87b4a9de46f16abf8baf1798eb74220c1a3acd03e6054d1587e8"
+  },
+  "comparison_total_current_A": 9.834,
+  "contact_current_rating_A_at_25C": 14,
+  "electrical_comparison": [
+    {
+      "contact_condition": "initial_max",
+      "pair_drop_V": 0.039335999999999996,
+      "pair_loss_W": 0.38683022399999994,
+      "necessary_loaded_battery_V_before_unbudgeted_losses": 3.8161188000000004,
+      "remaining_at_4p2V_before_unbudgeted_losses_V": 0.3838811999999998
+    },
+    {
+      "contact_condition": "after_conditioning_max",
+      "pair_drop_V": 0.39336,
+      "pair_loss_W": 3.86830224,
+      "necessary_loaded_battery_V_before_unbudgeted_losses": 4.170142800000001,
+      "remaining_at_4p2V_before_unbudgeted_losses_V": 0.029857199999999473
+    }
+  ],
+  "necessary_PCB_spacing_minus_battery_length_interval_mm": [
+    6.199999999999999,
+    6.3999999999999995
+  ],
+  "remaining_total_spacing_and_battery_length_tolerance_width_mm": 0.20000000000000018,
+  "battery_length_min_mm": null,
+  "fixed_holder_travel_verified": false,
+  "decision": "not_selected_for_direct_cell_holder",
+  "limits": [
+    "14A is specified at 25C ambient, not all operating temperatures.",
+    "Contact resistance conditions are not established for this battery terminal finish.",
+    "Existing 4.917A per-leg eFuse resistance comparison is outside its 3A tabulated test condition.",
+    "Battery sag, fuse, STOP switch, wires, PCB and remaining connections still consume voltage.",
+    "Travel interval is a necessary aggregate condition, not individual spring compression/force proof.",
+    "No claim that all possible contacts or the single-cell architecture are infeasible."
+  ],
+  "manufacturing_release": false
+}

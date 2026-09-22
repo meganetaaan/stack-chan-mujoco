@@ -1,0 +1,40 @@
+{
+  "scope": "Conditional DC stress only; current values are comparisons, not guaranteed TPS26600 3S limits",
+  "rows": [
+    {
+      "total_current_A": 0.02,
+      "per_resistor_W": 0.00442,
+      "old_single_resistor_W": 0.00884,
+      "feed_drop_V": 0.44200000000000006
+    },
+    {
+      "total_current_A": 0.1,
+      "per_resistor_W": 0.11050000000000003,
+      "old_single_resistor_W": 0.22100000000000006,
+      "feed_drop_V": 2.2100000000000004
+    },
+    {
+      "total_current_A": 0.12,
+      "per_resistor_W": 0.15912,
+      "old_single_resistor_W": 0.31824,
+      "feed_drop_V": 2.652
+    },
+    {
+      "total_current_A": 0.25,
+      "per_resistor_W": 0.690625,
+      "old_single_resistor_W": 1.38125,
+      "feed_drop_V": 5.525
+    }
+  ],
+  "source_current_scope": "TI table 7.5 gives 80..120mA short-circuit current only at RILIM=120kohm and VIN-VOUT=5V; actual candidate uses118kohm and different operating conditions",
+  "positive_change": "For a given total current and unchanged22.1ohm equivalent, each resistor dissipates half the former loss",
+  "termination_condition": "Compare steady limiting modes and distributed resistor dissipation; do not infer switch transient from nominal timer",
+  "remaining": [
+    "3S overcurrent bounds at selected RILIM",
+    "fast-trip/retry transient stress",
+    "thermal latch and fault recovery",
+    "input/output capacitor startup",
+    "MCU and interface load budget"
+  ],
+  "manufacturing_release": false
+}

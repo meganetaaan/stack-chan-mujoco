@@ -1,0 +1,23 @@
+{
+  "question": "Can inward-thickened existing side ribs stiffen the front shelf without enlarging the envelope or blocking fixed hardware?",
+  "candidate": "Two cheeks X-30..10, local Y[-18,-11.5] and [11.5,18], Z70..88; overlap existing side ribs, stop below plate pocket.",
+  "screw_relief": "Radius 2.7 mm vertical columns through added material only; existing support untouched. Tool access not qualified.",
+  "assumptions": {
+    "rib_thickness_mm": 6.5,
+    "lower_z_mm": 70,
+    "material": "printed ABS/PETG, grade and printing not qualified"
+  },
+  "criteria": [
+    "valid single solid",
+    "unchanged bounding box",
+    "added-material overlap with fixed assembly and manufacturer case/connectors <=0.01 mm3",
+    "reserved outer-port corridor distance >=1.3 mm"
+  ],
+  "stop": "One geometry, both sides; no parameter sweep or release.",
+  "limits": [
+    "No stiffness/strength evaluation yet",
+    "No full moving-assembly clearance",
+    "No physical tool or printing qualification",
+    "Rear idler is not in current build and is not introduced here"
+  ]
+}

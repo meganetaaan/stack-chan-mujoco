@@ -1,0 +1,60 @@
+{
+  "part_count": 90,
+  "pin_count": 297,
+  "classification": "conditional_datasheet_bound_comparison_not_transient_simulation",
+  "derived_design_requirement": "No power permission based on invalid monitor state",
+  "manufacturer_constraints": {
+    "supervisor": {
+      "source": "https://www.ti.com/lit/ds/symlink/tps3808.pdf",
+      "revision": "SBVS050N August 2026",
+      "pages": [
+        3,
+        4,
+        6,
+        7
+      ],
+      "falling_threshold_V": [
+        3.0239499999999997,
+        3.1160499999999995
+      ],
+      "hysteresis_max_fraction": 0.025,
+      "CT_open_delay_s": [
+        0.012,
+        0.028
+      ],
+      "timing_load": "100 kohm, 50 pF; VDD 1.7..6.5 V; -40..125 C",
+      "sense_pulse_condition_s": 2e-05,
+      "sense_pulse_levels": "High 1.05 VIT, Low 0.95 VIT"
+    },
+    "monitor": {
+      "source": "https://www.ti.com/lit/ds/symlink/tps3700.pdf",
+      "revision": "SBVS187G February 2019",
+      "page": 6,
+      "startup_max_s": 0.00045,
+      "continuous_supply_min_V": 1.8
+    }
+  },
+  "design_assumptions": [
+    "Common local supply at both monitor and timer pins",
+    "Monotonic initial ramp followed by continuous valid supply",
+    "Timer delay output loading satisfies datasheet conditions",
+    "STOP_AUX minimum 3.207 V is an existing conditional LDO budget"
+  ],
+  "bounds": {
+    "release_threshold_conservative_max_V": 3.193951249999999,
+    "conditional_rail_release_margin_V": 0.01304875000000072,
+    "minimum_wait_minus_monitor_startup_s": 0.01155,
+    "timer_start_threshold_above_monitor_min_V": 1.2239499999999996
+  },
+  "conditional_initial_startup_check": true,
+  "not_proven": [
+    "Receiver logic levels and capacitance",
+    "Inhibition during POR and arbitrary supply ramps",
+    "Detection of sub-20 us dips; no invented minimum actual dip duration",
+    "Requalification after every monitor-invalidating dip",
+    "Maximum complete fault-to-power-off delay and energy",
+    "Complete startup sequencer and fresh manual restart"
+  ],
+  "electrical_qualification": false,
+  "manufacturing_release": false
+}

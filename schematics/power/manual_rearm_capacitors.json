@@ -1,0 +1,60 @@
+{
+  "part_number": "GRM31C5C1H104JA01L",
+  "manufacturer": "Murata",
+  "references": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15"
+  ],
+  "nominal_capacitance_F": 1e-07,
+  "initial_tolerance_fraction": 0.05,
+  "rated_voltage_V": 50,
+  "temperature_range_C": [
+    -55,
+    125
+  ],
+  "dielectric": "C0G",
+  "package": "1206 / 3216 metric",
+  "dimensions_mm": {
+    "length": [
+      3.0,
+      3.4
+    ],
+    "width": [
+      1.4,
+      1.8
+    ],
+    "height": [
+      1.4,
+      1.8
+    ]
+  },
+  "reference_source": "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM31C5C1H104JA01-01A.pdf",
+  "source_date": "2026-06-30",
+  "source_pages": [
+    2,
+    3,
+    6
+  ],
+  "selection_reason": "Retains nominal 100nF local bypass; C0G candidate avoids relying on unbounded high-k DC-bias capacitance assumptions",
+  "status": "selected_candidate_not_released",
+  "limitations": [
+    "L suffix denotes 2000-piece reel, not robot quantity",
+    "15 capacitors apply only to current manual-rearm assembly",
+    "Nominal low-frequency capacitance is not high-frequency decoupling proof",
+    "1206 placement, return inductance, assembly bending and solder process remain to qualify",
+    "No whole-rail or protection qualification implied; stock not checked"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "sources": [
+    "https://assets.nexperia.com/documents/data-sheet/BAS116.pdf",
+    "https://www.vishay.com/docs/28758/tnpw_e3.pdf"
+  ],
+  "fixed_comparison_conditions": {
+    "battery_max_V": 12.6,
+    "battery_low_V": 9,
+    "ambient_C": 85,
+    "diode_drop_assumed_V": 1,
+    "series_total_tolerance": 0.01,
+    "load_evidence": "validation/stop_supply_budget_v1/report.json"
+  },
+  "short_current_max_A": 0.012727272727272728,
+  "series_short_power_W": 0.16036363636363635,
+  "series_general_mode_derated_W": 0.19636363636363638,
+  "reverse_steady_leakage_only_V": 0.00808,
+  "low_battery_LDO_input_comparison_V": 6.390734642479614,
+  "remaining": [
+    "9V low battery is a comparison, not chosen cell cutoff",
+    "BAS116 drop limit is a pulsed 25C test at 10mA; use at actual current/temperature unresolved",
+    "80nA reverse leakage limit specified at 75V and 150C; application comparison only",
+    "Reverse leakage calculation excludes transient capacitive coupling and other backfeed",
+    "Regulator ground current and dynamic charge not in load comparison",
+    "Resistor film temperature, accumulated drift and PCB layout unqualified"
+  ],
+  "part_count": 97,
+  "pin_count": 315,
+  "qualification": false
+}

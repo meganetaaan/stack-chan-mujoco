@@ -1,0 +1,8 @@
+{
+ "scope": "Repeat post-disconnection 1 A, 20 ms regeneration after auxiliary supply decay",
+ "regeneration_start_s": 0.3,
+ "battery_disconnect_s": 0.0800005,
+ "criteria": {"post_disconnect_bus_max_V": 6.0},
+ "basis": "Earlier 100 ms injection passed while auxiliary rail still carried charge; test 300 ms with same amplitude and duration",
+ "limitations": ["Stress injection is not a measured or coupled motor load", "Behavioral unpowered comparator/reference behavior remains unqualified", "No component energy or thermal qualification"]
+}

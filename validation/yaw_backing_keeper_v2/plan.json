@@ -1,0 +1,26 @@
+{
+  "question": "Can two M2x10 low-head keeper screws retain the backing plate before body attachment without rear plate overlap?",
+  "stop": "One keeper pattern, two supports; no load analysis.",
+  "candidate": "NBK SLH-M2-10, head diameter3.8 height1.3 nominal",
+  "geometry": {
+    "keeper_z_mm": [
+      64,
+      76
+    ],
+    "seat_x_mm": -59.9,
+    "tip_x_mm": -49.9,
+    "counterbore_diameter_mm": 4.2,
+    "clearance_hole_mm": 2.3,
+    "thread": "M2x0.4 through in backing plate; pilot only modeled"
+  },
+  "criteria": {
+    "unintended_overlap_mm3": 0.01
+  },
+  "limits": [
+    "Keeper torque and stripping strength unknown",
+    "Threads/purchased tolerances not modeled",
+    "Two screws bound rotation only within hole clearance",
+    "Central unused hole from v1 retained as history",
+    "Main M3 fastening still required for service load"
+  ]
+}

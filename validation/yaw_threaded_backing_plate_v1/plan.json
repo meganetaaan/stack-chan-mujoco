@@ -1,0 +1,25 @@
+{
+  "question": "Can a common metal threaded plate eliminate four internal nut-driver operations?",
+  "stop": "One 3x22x32 mm backing plate per support, nominal geometry and surrounding collision check.",
+  "design": {
+    "plate_x_mm": [
+      -53.5,
+      -50.5
+    ],
+    "thread": "four M3x0.5 through, 14x24 mm pattern",
+    "model_hole_diameter_mm": 2.5,
+    "retention": "central M2x0.4 through tapped hole reserved for separate keeper screw; keeper screw/length/approach not yet selected",
+    "material": "metal grade and thread stripping allowable TBD"
+  },
+  "criteria": {
+    "nonmating_gap_mm": 0.9,
+    "intersection_mm3": 0.01
+  },
+  "limits": [
+    "Pilot holes shown, actual threads not modeled",
+    "Nominal3 mm engagement not strength acceptance",
+    "Thread grade/manufacture/keeper not released",
+    "Contact at support face intentional",
+    "No tool approach or full assembly qualification"
+  ]
+}

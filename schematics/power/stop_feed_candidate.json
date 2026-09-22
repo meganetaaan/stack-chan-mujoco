@@ -1,0 +1,23 @@
+{
+  "status": "revised_feed_candidate_not_qualified",
+  "supersedes_reference": "SYS__R_STOP_INPUT",
+  "old_nominal_ohm": 1000,
+  "topology": "two parallel resistors",
+  "resistance_each_ohm": 1500,
+  "part_each": "TNPW12061K50BEEA",
+  "quantity": 2,
+  "total_resistance_variation_allocation": 0.01,
+  "nets": ["PACK_POS_PROTECTED", "SYS__STOP_INPUT_LIMITED"],
+  "reason": "Added isolator nearly doubles conditional STOP load; reduce feed drop while sharing downstream-short dissipation",
+  "requirements": [
+    "Both resistors at branch entry; no unprotected downstream copper before resistors",
+    "One-open condition must not be described as normal operation; supply may lose regulation",
+    "A resistor short bypasses current limitation; upstream fault coordination still required",
+    "No safe temperature inference from wattage alone; shared PCB heating and film temperature require verification"
+  ],
+  "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+  "source_revision": "10-Apr-2026",
+  "general_mode_P70_W_each": 0.27,
+  "general_mode_film_temperature_max_C": 125,
+  "manufacturing_release": false
+}

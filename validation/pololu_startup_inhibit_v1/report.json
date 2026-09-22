@@ -1,0 +1,37 @@
+{
+  "scope": "nominal DC network, not threshold or transient qualification",
+  "VIN_V": 12.6,
+  "ENA_with_control_open_V": 0.05517363681968641,
+  "cases": [
+    {
+      "allow_V": 0,
+      "ENA_V": 0.0023985172322919046,
+      "driver_current_A": -2.3985172322919045e-05
+    },
+    {
+      "allow_V": 3.0,
+      "ENA_V": 2.871982033715144,
+      "driver_current_A": 0.0012801796628485595
+    },
+    {
+      "allow_V": 3.3,
+      "ENA_V": 3.1589403853634295,
+      "driver_current_A": 0.0014105961463657035
+    },
+    {
+      "allow_V": 3.6,
+      "ENA_V": 3.445898737011715,
+      "driver_current_A": 0.0015410126298828518
+    }
+  ],
+  "two_modules_shutdown_current_typ_A": 0.0002504,
+  "important": "Both internal pullups included through ENB link; shutdown current is typical only",
+  "remaining": [
+    "ENA low threshold not quantified on module page",
+    "internal resistor tolerances",
+    "driver and power-off injection",
+    "ENA transient during VIN ramp",
+    "Tab5 and other loads still need independent inhibit"
+  ],
+  "manufacturing_release": false
+}

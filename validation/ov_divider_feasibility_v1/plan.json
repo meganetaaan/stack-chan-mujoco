@@ -1,0 +1,30 @@
+{
+  "question": "Can any bare two-resistor divider both trip by the servo limit and keep OVLO within its recommended maximum during the existing 3S pass-through fault?",
+  "source": "https://www.ti.com/lit/ds/symlink/tps25981.pdf",
+  "revision": "SLVSGG6D September 2026",
+  "sections": [
+    "6.3",
+    "6.5"
+  ],
+  "manufacturer": {
+    "OVLO_rise_min_V": 1.176,
+    "OVLO_rise_max_V": 1.224,
+    "OVLO_recommended_max_V": 1.5,
+    "OVLO_absolute_max_V": 6.5
+  },
+  "retained_design_conditions": {
+    "normal_source_max_V": 5.25,
+    "servo_max_V": 6.0,
+    "source_pass_through_fault_V": 12.6
+  },
+  "classification": "Design limits/fault case retained from prior power reviews; manufacturer pin constraints separate. No new user requirement.",
+  "method": "q=1+Rtop/Rbottom, ideal nominal divider, zero leakage (an admitted operating point). These are necessary conditions; tolerance/delay checks cannot repair a failed nominal necessary condition.",
+  "stop": "Analytic interval intersection once, then report existing left/right ratio; no resistor sweep or circuit qualification.",
+  "assembly_sha256": "b7b2a89ef8574f3a969b99ced0b4959e2f332711a22803b9fa90b0b5bebb88f3",
+  "limits": [
+    "No guaranteed source fault slew/energy or shutdown time",
+    "No clamp or additional monitor considered",
+    "Passing these inequalities alone would not establish protection",
+    "Absolute maximum is not used as operating allowance"
+  ]
+}

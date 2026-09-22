@@ -1,0 +1,17 @@
+TPS709 nominal series-input feasibility screen
+.include model.lib
+* 8V = 9V battery minus assumed 1V diode drop; not diode model.
+VIN source 0 PWL(0 0 1m 0 1.1m 8 100m 8)
+RIN source in 1000
+RBLEED in 0 100k
+CIN in 0 2.3u
+XU in 0 en out nc TPS70933_TRANS
+COUT out 0 5.4u
+RLOAD out 0 2251
+.options method=gear maxord=2
+.control
+tran 10u 100m
+wrdata waveform.txt v(in) v(out) i(VIN)
+quit
+.endc
+.end

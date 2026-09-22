@@ -1,0 +1,39 @@
+{
+  "candidate_revision": "manual_rearm_revI",
+  "assembly": "schematics/power/manual_rearm_revI/assembly.json",
+  "readme": "schematics/power/manual_rearm_revI/README_ja.md",
+  "manufacturing_release": false,
+  "electrical_qualification": false,
+  "confirmed_scope": [
+    "Candidate pin map",
+    "Settled permission cancellation even with sequence request high",
+    "Static output-load comparisons",
+    "PG receiver pin map; conditional DC comparisons only",
+    "U14 open-drain clear sink and static load comparison",
+    "Local button and raw Schmitt receiver pin map; not enclosure or ESD qualification"
+  ],
+  "open_interfaces": [
+    "SEQUENCE_ENABLE_REQUEST: actual startup/PG sequencer",
+    "RESET_N: external stop/fault sinks",
+    "SEQUENCE_CLEAR_REQUEST: actual sequencer driver; U14 sink now defined"
+  ],
+  "remaining": [
+    "Rail-wide static levels",
+    "Unpowered and partial-power behavior",
+    "Fault pulse capture and propagation",
+    "Exact passives and complete power path",
+    "PG receiver power-transition validity and open-wire fault handling",
+    "Local button footprint and raw-node protection",
+    "Split-supply left/right source-voltage qualification and two independent PG receivers; current single PG receiver does not cover both legs"
+  ],
+  "historical_failure": "validation/dual_supervisor_recovery_v1/README_ja.md",
+  "sequencer_interface": "schematics/power/startup_sequencer_interface.json",
+  "resistor_selection": "schematics/power/manual_rearm_resistors_revI.json",
+  "resistor_bom": "validation/manual_rearm_resistors_v2/resistor_bom.csv",
+  "quantity_bom": "validation/manual_rearm_bom_v4/bom.csv",
+  "quantity_bom_report": "validation/manual_rearm_bom_v4/report.json",
+  "capacitor_selection": "schematics/power/manual_rearm_capacitors.json",
+  "supply_audit": "validation/manual_rearm_supply_v2/report.json",
+  "split_pg_integration_candidate": "schematics/power/manual_rearm_revJ/assembly.json",
+  "split_pg_integration_bom": "validation/manual_rearm_bom_v5/bom.csv"
+}

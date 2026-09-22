@@ -1,0 +1,21 @@
+{
+  "scope": "Check existing normal-load gate traces against candidate MOSFET threshold evidence.",
+  "candidate": "IRLML6344TRPbF",
+  "source": "https://www.infineon.com/assets/row/public/documents/24/49/infineon-irlml6344-datasheet-en.pdf",
+  "datasheet_page": 2,
+  "threshold_min_V": 0.5,
+  "threshold_max_V": 1.1,
+  "threshold_test": "TJ=25 C, VDS=VGS, ID=10 uA",
+  "startup_window_s": [
+    0,
+    0.05
+  ],
+  "development_off_gate_limit_V": 0.4,
+  "limit_reason": "20 percent below 25 C minimum threshold; a design target, not a full-temperature leakage guarantee",
+  "trace_sha256": "0c7adfe9eaf37c52bd8ea083beb52ac58239a055e5209a9c25f42937b6aa01e8",
+  "limitations": [
+    "Existing trace uses a 2.5 V ideal MOS switch; no actual drain-current prediction",
+    "No temperature-dependent threshold or guaranteed leakage below threshold",
+    "Startup clamp not implemented"
+  ]
+}

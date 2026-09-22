@@ -1,0 +1,50 @@
+{
+  "part_number": "TPS259823ONRGE",
+  "status": "evaluation_candidate_not_released",
+  "role": "main forward-current circuit breaker; complete isolation not yet qualified",
+  "source": "https://www.ti.com/lit/ds/symlink/tps25982.pdf",
+  "source_revision": "SLVSEI3D May 2026",
+  "configuration": {
+    "RETRY_DLY": "GND for no auto-retry",
+    "EN_UVLO": "external default-low permission circuit TBD; never floating",
+    "ILIM": "TBD from actual DC load and wiring coordination",
+    "ITIMER": "TBD",
+    "dVdt": "6.8nF C0G comparison candidate from pin15 to GND; not released"
+  },
+  "ron_max_ohm_at_2A_specified_temperature": 0.0045,
+  "not_proven": [
+    "Reverse current and OUT biased with IN absent",
+    "Bidirectional isolation",
+    "Supply-loss and return manual rearm",
+    "Inrush short-circuit thermal layout and final current setting"
+  ],
+  "evidence": "validation/main_efuse_selection_v1/README.md",
+  "manufacturing_release": false,
+  "status_interface": {
+    "pin_13_PG": "EFUSE_PG, separate pullup/receiver and startup-aware monitor pending",
+    "dedicated_fault_output": false,
+    "forbidden_connection": "Do not wire PG directly to manual-rearm RESET_N: disabled PG prevents startup",
+    "sequence": "Fresh qualified request starts a bounded startup interval; PG establishes RUN; PG loss in RUN or startup timeout cancels permission; independent stop wins in all states",
+    "evidence": "validation/main_efuse_pg_interface_v1/README_ja.md"
+  },
+  "slew_capacitor_candidate": {
+    "base_part": "GRM1885C1H682JA01",
+    "nominal_pF": 6800,
+    "initial_tolerance_percent": 5,
+    "rated_voltage_V": 50,
+    "dielectric": "C0G",
+    "size": "0603 (1608 metric)",
+    "ordering_suffix": "not yet fixed",
+    "status": "comparison_only_effective_capacitance_and_startup_load_pending",
+    "source": "https://www.murata.com/-/media/webrenewal/tool/library/common-pdf/static-model/component-list-s-mlcc-2506.ashx?cvid=20250805040438000000&la=ja-jp",
+    "evidence": "validation/main_efuse_slew_candidate_v1/README_ja.md"
+  },
+  "internal_overvoltage_review": {
+    "nominal_trip_V": 7.6,
+    "source_table": "TPS25982 SLVSEI3D table 4 and section 7.3.2",
+    "protects_6V_servo_limit": false,
+    "decision": "Not suitable as sole servo overvoltage protection; external detection and disconnection required",
+    "recovery": "Internal OVLO attempts restart when input returns to range; external permission must prevent automatic drive restart",
+    "manufacturing_release": false
+  }
+}

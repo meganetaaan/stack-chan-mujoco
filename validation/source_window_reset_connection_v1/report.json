@@ -1,0 +1,121 @@
+{
+  "source_sha256": {
+    "schematics/power/protected_pack_system_candidate_v4/assembly.json": "8c16bc35ececcdad159164caf7a0c7624e1235fa417d7fe9ff4969025e1a16b8"
+  },
+  "prior_unconsumed_window_endpoints": {
+    "SYS__LEFT_SOURCE_WINDOW_OD": [
+      {
+        "reference": "SYS__LEFT_U_WINDOW",
+        "pin": "1"
+      },
+      {
+        "reference": "SYS__LEFT_U_WINDOW",
+        "pin": "6"
+      },
+      {
+        "reference": "SYS__LEFT_R_WINDOW_PULLUP",
+        "pin": "2"
+      }
+    ],
+    "SYS__RIGHT_SOURCE_WINDOW_OD": [
+      {
+        "reference": "SYS__RIGHT_U_WINDOW",
+        "pin": "1"
+      },
+      {
+        "reference": "SYS__RIGHT_U_WINDOW",
+        "pin": "6"
+      },
+      {
+        "reference": "SYS__RIGHT_R_WINDOW_PULLUP",
+        "pin": "2"
+      }
+    ]
+  },
+  "changed_pin_maps": [
+    "SYS__LEFT_U_WINDOW",
+    "SYS__RIGHT_U_WINDOW"
+  ],
+  "removed_pullups": [
+    "SYS__LEFT_R_WINDOW_PULLUP",
+    "SYS__RIGHT_R_WINDOW_PULLUP"
+  ],
+  "retained_pullup": "SYS__R9 to SYS__LOGIC3V3",
+  "path": [
+    "TPS3700 OUTA or OUTB low",
+    "SYS__RAIL_HEALTH_N low",
+    "SYS__U7 MR low",
+    "SYS__RESET_N low",
+    "SYS__U6 asynchronous latch clear and SYS__U3 permission gate low"
+  ],
+  "operating_truth_cases": [
+    {
+      "left_valid": false,
+      "right_valid": false,
+      "other_health_released": false,
+      "health_can_release": false
+    },
+    {
+      "left_valid": false,
+      "right_valid": false,
+      "other_health_released": true,
+      "health_can_release": false
+    },
+    {
+      "left_valid": false,
+      "right_valid": true,
+      "other_health_released": false,
+      "health_can_release": false
+    },
+    {
+      "left_valid": false,
+      "right_valid": true,
+      "other_health_released": true,
+      "health_can_release": false
+    },
+    {
+      "left_valid": true,
+      "right_valid": false,
+      "other_health_released": false,
+      "health_can_release": false
+    },
+    {
+      "left_valid": true,
+      "right_valid": false,
+      "other_health_released": true,
+      "health_can_release": false
+    },
+    {
+      "left_valid": true,
+      "right_valid": true,
+      "other_health_released": false,
+      "health_can_release": false
+    },
+    {
+      "left_valid": true,
+      "right_valid": true,
+      "other_health_released": true,
+      "health_can_release": true
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.ti.com/lit/ds/symlink/tps3700.pdf",
+      "revision": "G February2019",
+      "sections": [
+        "5 DDC pinout",
+        "7.3 open-drain outputs"
+      ]
+    }
+  ],
+  "design_decision": "Require both pre-eFuse regulator voltages valid before servo permission; source faults clear manual rearm latch. Regulator startup request must remain independent of SYS reset to avoid startup deadlock.",
+  "limits": [
+    "Connectivity and ideal valid-supply truth table only; not transient or timing simulation",
+    "Merged health node leakage/capacitance, VOL and receiver margins must be recomputed",
+    "STOP_AUX startup/loss and TPS3700 startup delay require qualification",
+    "Regulator commands still unconnected; manual rearm and source qualification timings incomplete",
+    "Existing window thresholds and downstream response need whole-chain fault evaluation"
+  ],
+  "electrically_qualified": false,
+  "manufacturing_release": false
+}

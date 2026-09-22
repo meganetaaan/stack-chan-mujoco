@@ -1,0 +1,27 @@
+{
+  "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+  "revision": "10-Apr-2026 pp2-4",
+  "initial_tolerance": 0.001,
+  "TCR_ppm_K": 10,
+  "conditional_film_temperature_C": [
+    -40,
+    85
+  ],
+  "reference_temperature_C": 20,
+  "existing_total_budget": 0.01,
+  "power_screen_voltage_V": 12.6,
+  "general_mode_P70_W": 0.11,
+  "conditional_ambient_max_C": 85,
+  "general_mode_film_limit_C": 125,
+  "criteria": [
+    "Nominal values and connections unchanged",
+    "Initial plus temperature contribution below existing 1% budget",
+    "12.6 V across each resistor below voltage and derated power limits"
+  ],
+  "limits": [
+    "12.6 V is the selected 3S full-charge comparison, not a transient bound",
+    "Actual PCB film temperature, soldering and ageing remain to qualify",
+    "Order-table candidates do not establish stock or small-quantity availability",
+    "No IC fault tolerance or circuit transient qualification follows from resistor power screening"
+  ]
+}

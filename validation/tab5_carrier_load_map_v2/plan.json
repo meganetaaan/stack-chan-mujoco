@@ -1,0 +1,52 @@
+{
+  "purpose": "Identify axial, shear and moment demands before any local FE refinement",
+  "support_positions_base_m": [
+    [
+      0.042,
+      -0.058,
+      0.088
+    ],
+    [
+      0.042,
+      -0.058,
+      0.112
+    ],
+    [
+      0.042,
+      0.058,
+      0.088
+    ],
+    [
+      0.042,
+      0.058,
+      0.112
+    ]
+  ],
+  "reference_base_m": [
+    0.042,
+    0,
+    0.1
+  ],
+  "load_sharing_assumption": "Rigid carrier and four equal isotropic point springs; not a conservative bound",
+  "mass_assumptions": {
+    "tab5_kg": 0.1184,
+    "tab5_center_m": [
+      0.058,
+      0,
+      0.088
+    ],
+    "carrier_density_kg_m3": 1270
+  },
+  "exclusions": [
+    "Insert and Tab5 fastening hardware mass",
+    "Tab5 COM measurement",
+    "Preload and friction/contact separation",
+    "Updated robot dynamics, fall and emergency stop"
+  ],
+  "tab5_inertia_assumption": "Uniform 12 x 128 x 80 mm cuboid, not measured inertia",
+  "criteria": [
+    "Six independent unit wrenches reproduce force and moment within 1e-10",
+    "Retain simultaneous vectors and timestamps, not combined component extrema"
+  ],
+  "stop": "One algebraic map and two frozen EPIC4 traces; no strength acceptance or mesh sweep"
+}

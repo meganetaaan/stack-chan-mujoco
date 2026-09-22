@@ -1,0 +1,19 @@
+{
+  "question": "Are plate fasteners and their two-sided tools accessible in the current upper body?",
+  "stop": "One neutral assembly; record stage dependencies, no geometry sweep.",
+  "criteria": {
+    "clearance_mm": 0.9,
+    "intersection_mm3": 0.01
+  },
+  "tools": {
+    "lower_hex_key": "radius1.5, Z36.7..86.7",
+    "upper_nut_driver": "outer radius4, Z91.9..141.9, radius2.9 cavity first8 mm"
+  },
+  "limits": [
+    "Tool reservations, not selected purchased tools",
+    "No hand envelope or complete legs/harness",
+    "No torque/preload",
+    "Case TAP screw heads absent",
+    "Own plate/support seating verified separately; not a full self-interference audit"
+  ]
+}

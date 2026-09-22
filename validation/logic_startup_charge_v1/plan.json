@@ -1,0 +1,11 @@
+{
+  "question": "What charge and input-current headroom must the independent logic input protection allow?",
+  "scope": "Zero initial charge, initial capacitance envelope only, ideal LDO current transfer excluding ground current.",
+  "engineering_assumptions": {
+    "target_voltage_V": 3.393,
+    "load_reservation_A": 0.02,
+    "one_reference_ramp_s": 0.001
+  },
+  "stop": "Charge, energy and one reference ramp only; no invented regulator waveform, current-limit or startup-time pass.",
+  "criterion": "A bounded current source must supply net capacitor charge in addition to load; continuous rating alone does not prove startup."
+}

@@ -1,0 +1,30 @@
+{
+  "source_sha256": {
+    "schematics/power/servo_power_logic_integration_candidate_v1/assembly.json": "d92788de105a78fd34dab4d0ccdb1c078a7cbb766d57b59b0416f66d2c28bba8",
+    "validation/integrated_logic_loads_v1/direct/report.json": "de5bf3d887555dfe6af0c5cec9ec368c6edfc2b241fb8ba14b11ecedfe3261b0"
+  },
+  "paths": [
+    {
+      "path": "U3 -> R6",
+      "supply": "LOGIC3V3",
+      "upper_A": 1.5578512396694213e-05
+    },
+    {
+      "path": "U_MONITOR_RX -> R_MONITOR_RX_OFF",
+      "supply": "LOGIC3V3",
+      "upper_A": 1.5578512396694213e-05
+    },
+    {
+      "path": "U8 -> R7 -> EN pulldowns or U10 clamp",
+      "supply": "LOGIC3V3",
+      "normal_upper_A": 7.780414817872252e-05,
+      "upper_A": 0.0007292069632495164,
+      "counting": "R7 clamp upper replaces, does not add to, pulldown current"
+    }
+  ],
+  "output_fed_subtotal_A": 0.0007603639880429049,
+  "future_MCU_enable_reservation_A": 0.0003427272727272727,
+  "logic_direct_plus_output_plus_reservation_A": 0.006883757927436843,
+  "complete_current_budget": false,
+  "manufacturing_release": false
+}

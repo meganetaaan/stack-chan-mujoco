@@ -1,0 +1,8 @@
+{
+ "scope":"Couple behavioral current fault detector and sticky latch to EN sink in existing power model",
+ "criteria":{"normal_latch_max_V":0.01,"fault_latch_at_20ms_min_V":0.9,"fault_EN_at_20ms_max_V":0.4,"fault_drive_at_20ms_max_V":0.01},
+ "cases":["none","primary_stuck_on","both_stuck_on"],
+ "shunt_ohm":0.099,
+ "brake_ohm":4.42714,
+ "limitations":["Behavioral detector and ideal 10 ohm EN sink, not selected parts","Latch persistence with auxiliary power absent is ideal state retention, not a physical circuit guarantee","EN disable is not galvanic isolation or proof of motor torque removal","Nominal timing/noise and limited static sensor corner","External scheduled battery disconnect still at80ms; no restart/recovery test"]
+}

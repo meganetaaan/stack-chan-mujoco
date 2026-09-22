@@ -1,0 +1,8 @@
+{
+  "question": "Can a bus-powered UCC27517DBVR drive the AO3400A candidate after source disconnection without relying on battery AUX3V3?",
+  "method": "Datasheet supply, UVLO, output voltage and pin review; resistor-limited DC gate budget only",
+  "stop_condition": "Evaluate startup margin and source-shunt gate budget once; save pin-level candidate and unresolved comparator/cold-start conditions",
+  "criteria": {"normal_bus_min_V": 4.75, "driver_start_max_V": 4.65, "gate_comparison_min_V": 2.5},
+  "assumptions": {"bus_upper_V": 6, "source_shunt_ohm": 0.1, "driver_test_supply_V": 4.5, "driver_high_drop_max_V_at_10mA": 0.13},
+  "limitations": ["No time-domain startup or SOA verification", "Source shunt value is a candidate, not tolerance-qualified", "No extrapolation of 12 V switching timing to 5 V", "Comparator and reference supply must also survive upstream power removal"]
+}

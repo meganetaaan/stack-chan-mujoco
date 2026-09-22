@@ -1,0 +1,49 @@
+{
+  "status": "behavioral development candidate; not schematic or BOM release",
+  "always_on_LDO": {
+    "candidate": "TPS70933DBVR",
+    "input": "reverse-protected battery input, upstream of servo converter enable",
+    "output": "AUX3V3",
+    "enable": "leave floating; do not connect to raw 2S or 3S battery",
+    "output_capacitor": "4.7 uF nominal model; choose part with effective capacitance at least 2.2 uF",
+    "input_capacitor": "2.2 uF or greater candidate; final source/layout qualification pending",
+    "continuous_model_note": "Development model only: 3.207 V lower target including DC/line/load terms, 320 mA typical limit, 200 us RC reference, UVLO transition width sensitivity 10/100 mV; not a vendor macro-model"
+  },
+  "delay_supervisor": {
+    "candidate": "TPS3840PL30",
+    "supply": "AUX3V3",
+    "CT": "4.7 nF; effective tolerance +/-5 percent requirement",
+    "reset_output": "through 1 kohm and BAS116 anode to EN cathode",
+    "manual_reset": "pulled low by battery monitor undervoltage output"
+  },
+  "battery_monitor": {
+    "candidate": "TPS3700, additional device",
+    "supply": "AUX3V3",
+    "input": "battery divided by 140 kohm / 10 kohm into INA+",
+    "OUTA": "delay supervisor MR",
+    "scope": "6 V nominal reset trigger for sequencing; not complete cell-level battery protection"
+  },
+  "converter_EN": {
+    "candidate_converter": "Pololu D42V55F5",
+    "pulldown": "22 kohm",
+    "model_capacitance": "1 nF assumed total",
+    "internal_pullup": "1 Mohm nominal to VIN; 800 kohm sensitivity model"
+  },
+  "verification": {
+    "evidence": "validation/aux_sequence_development_v1",
+    "actual_vendor_models": false,
+    "power_stage_coupled": true,
+    "pin_mapping_validated": false,
+    "manufacturing_release": false,
+    "coupled_power_evidence": "validation/coupled_power_ldo_development_v1",
+    "power_stage_model": "averaged development model, first 150 ms recorded load or injected regeneration only"
+  },
+  "three_cell_review": {
+    "status": "not_qualified",
+    "monitor_6V_threshold": "Historical 2S sequencing threshold; must not be reused as 3S pack or cell undervoltage protection",
+    "ldo_input": "TPS709 30V rated input permits further 3S review; thermal and transient qualification pending",
+    "ldo_source": "https://www.ti.com/product/TPS709",
+    "converter_EN": "Pololu-specific pullup and EN model does not apply to Hobbywing switch without circuit evidence",
+    "historical_simulation": "Existing 2S simulations retained, not evidence for 3S"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "part_number": "SN74HCS11PWR",
+  "status": "buffered_output_candidate_raw_input_pending",
+  "quantity": 1,
+  "pins": {
+    "1_1A": "HEALTHY conditioned logic; independent clear remains separate",
+    "2_1B": "RAW_RELEASED conditioned input; do not directly attach external MAX6816 IN without interface review",
+    "13_1C": "DEBOUNCED_RELEASED from MAX6816 OUT; threshold compatibility pending",
+    "12_1Y": "RELEASE_CONDITION -> Nexperia 74LVC1G17GV pin2; see manual_release_mr_buffer_candidate.json",
+    "3_2A": "GND unused",
+    "4_2B": "GND unused",
+    "5_2C": "GND unused",
+    "6_2Y": "NC",
+    "9_3A": "GND unused",
+    "10_3B": "GND unused",
+    "11_3C": "GND unused",
+    "8_3Y": "NC",
+    "7_GND": "GND",
+    "14_VCC": "LOGIC3V3 with local 100nF candidate"
+  },
+  "requirements": [
+    "No debounce or release delay in independent stop clear",
+    "Do not connect gate output to both DFF clears; button press resets only release timer",
+    "No floating unused inputs",
+    "Add raw interface protection and leakage to input budget"
+  ],
+  "manufacturing_release": false,
+  "source": "https://www.ti.com/lit/ds/symlink/sn74hcs11.pdf",
+  "revision": "SCLS790B March 2026"
+}

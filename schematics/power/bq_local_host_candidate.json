@@ -1,0 +1,399 @@
+{
+  "status": "local_host_connection_candidate_not_operational",
+  "source": "https://www.st.com/resource/en/datasheet/stm32g030f6.pdf",
+  "source_revision": "DS12991 Rev6 June2025",
+  "source_sections": [
+    "4, Figure4 and Tables12/14",
+    "5.1.6 Figure9",
+    "5.3.15 Figure19"
+  ],
+  "supply": "BQ_CTRL3V3",
+  "reference_ground": "CELL_B_MINUS",
+  "parts": [
+    {
+      "reference": "U_BQ_HOST",
+      "part": "STM32G030F6P6",
+      "pins": {
+        "1": "BQ_SDA",
+        "2": null,
+        "3": null,
+        "4": "BQ_CTRL3V3",
+        "5": "CELL_B_MINUS",
+        "6": "BQ_HOST_NRST",
+        "7": "BQ_MAIN_REQUEST_RAW",
+        "8": "BQ_AUX_REQUEST_RAW",
+        "9": "BQ_ALERT_N",
+        "10": "BQ_ARM_EDGE",
+        "11": null,
+        "12": null,
+        "13": null,
+        "14": null,
+        "15": null,
+        "16": null,
+        "17": "BQ_HOST_HEARTBEAT",
+        "18": "BQ_HOST_SWDIO",
+        "19": "BQ_HOST_SWCLK",
+        "20": "BQ_SCL"
+      },
+      "package": "TSSOP20",
+      "role": "BQ-local configuration and startup coordinator; not independent fault cutoff"
+    },
+    {
+      "reference": "C_BQ_HOST_HF",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07
+    },
+    {
+      "reference": "C_BQ_HOST_BULK",
+      "part": "GRM31CR71H475KA12L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 4.7e-06,
+      "effective_capacitance_qualified": false
+    },
+    {
+      "reference": "C_BQ_HOST_NRST",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_HOST_NRST",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07
+    },
+    {
+      "reference": "R_BQ_HOST_NRST",
+      "part": "TNPW0603100KBEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_HOST_NRST"
+      },
+      "value_ohm": 100000
+    },
+    {
+      "reference": "R_BQ_AUX_START_REQUEST_PD",
+      "part": "TNPW060347K5BEEA",
+      "pins": {
+        "1": "BQ_AUX_START_REQUEST",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 47500
+    },
+    {
+      "reference": "R_BQ_HOST_HEARTBEAT_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_HOST_HEARTBEAT",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000
+    },
+    {
+      "reference": "U_BQ_HOST_SUP",
+      "part": "TPS3808G01DBVR",
+      "pins": {
+        "1": "BQ_HOST_NRST",
+        "2": "CELL_B_MINUS",
+        "3": "BQ_CTRL3V3",
+        "4": null,
+        "5": "BQ_HOST_SUP_SENSE",
+        "6": "BQ_CTRL3V3"
+      }
+    },
+    {
+      "reference": "R_BQ_HOST_SUP_TOP",
+      "part": "TNPW060357K6BEEA",
+      "value_ohm": 57600,
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_HOST_SUP_SENSE"
+      }
+    },
+    {
+      "reference": "R_BQ_HOST_SUP_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "BQ_HOST_SUP_SENSE",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_BQ_HOST_SUP",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      }
+    }
+  ],
+  "pin_allocation": {
+    "1": {
+      "port": "PB7",
+      "role": "I2C1_SDA",
+      "signal": "BQ_SDA",
+      "selected_gpio": "PB7",
+      "bonded_gpios": [
+        "PB7",
+        "PB8"
+      ],
+      "inactive_bonded_gpios": [
+        "PB8"
+      ],
+      "alternate_function": 6,
+      "open_drain": true
+    },
+    "2": {
+      "port": "PC14",
+      "role": "unused_analog_no_pull",
+      "signal": null,
+      "selected_gpio": "PC14",
+      "bonded_gpios": [
+        "PC14",
+        "PB9"
+      ],
+      "inactive_bonded_gpios": [
+        "PB9"
+      ]
+    },
+    "3": {
+      "port": "PC15",
+      "role": "unused_analog_no_pull",
+      "signal": null,
+      "selected_gpio": "PC15",
+      "bonded_gpios": [
+        "PC15"
+      ],
+      "inactive_bonded_gpios": []
+    },
+    "4": {
+      "port": "VDD/VDDA",
+      "role": "see_signal_assignment",
+      "signal": "BQ_CTRL3V3"
+    },
+    "5": {
+      "port": "VSS/VSSA",
+      "role": "see_signal_assignment",
+      "signal": "CELL_B_MINUS"
+    },
+    "6": {
+      "port": "NRST",
+      "role": "see_signal_assignment",
+      "signal": "BQ_HOST_NRST"
+    },
+    "7": {
+      "port": "PA0",
+      "role": "output_initial_low",
+      "signal": "BQ_MAIN_REQUEST_RAW",
+      "selected_gpio": "PA0",
+      "bonded_gpios": [
+        "PA0"
+      ],
+      "inactive_bonded_gpios": []
+    },
+    "8": {
+      "port": "PA1",
+      "role": "output_initial_low",
+      "signal": "BQ_AUX_REQUEST_RAW",
+      "selected_gpio": "PA1",
+      "bonded_gpios": [
+        "PA1"
+      ],
+      "inactive_bonded_gpios": []
+    },
+    "9": {
+      "port": "PA2",
+      "role": "see_signal_assignment",
+      "signal": "BQ_ALERT_N",
+      "selected_gpio": "PA2",
+      "bonded_gpios": [
+        "PA2"
+      ],
+      "inactive_bonded_gpios": []
+    },
+    "10": {
+      "port": "PA3",
+      "role": "output_initial_low",
+      "signal": "BQ_ARM_EDGE",
+      "selected_gpio": "PA3",
+      "bonded_gpios": [
+        "PA3"
+      ],
+      "inactive_bonded_gpios": []
+    },
+    "11": {
+      "port": "PA4",
+      "role": "unused_analog_no_pull",
+      "signal": null,
+      "selected_gpio": "PA4",
+      "bonded_gpios": [
+        "PA4"
+      ],
+      "inactive_bonded_gpios": []
+    },
+    "12": {
+      "port": "PA5",
+      "role": "unused_analog_no_pull",
+      "signal": null,
+      "selected_gpio": "PA5",
+      "bonded_gpios": [
+        "PA5"
+      ],
+      "inactive_bonded_gpios": []
+    },
+    "13": {
+      "port": "PA6",
+      "role": "unused_analog_no_pull",
+      "signal": null,
+      "selected_gpio": "PA6",
+      "bonded_gpios": [
+        "PA6"
+      ],
+      "inactive_bonded_gpios": []
+    },
+    "14": {
+      "port": "PA7",
+      "role": "unused_analog_no_pull",
+      "signal": null,
+      "selected_gpio": "PA7",
+      "bonded_gpios": [
+        "PA7"
+      ],
+      "inactive_bonded_gpios": []
+    },
+    "15": {
+      "port": "PA8",
+      "role": "unused_analog_no_pull",
+      "signal": null,
+      "selected_gpio": "PA8",
+      "bonded_gpios": [
+        "PA8",
+        "PB0",
+        "PB1",
+        "PB2"
+      ],
+      "inactive_bonded_gpios": [
+        "PB0",
+        "PB1",
+        "PB2"
+      ]
+    },
+    "16": {
+      "port": "PA11",
+      "role": "unused_analog_no_pull",
+      "signal": null,
+      "selected_gpio": "PA11",
+      "bonded_gpios": [
+        "PA11"
+      ],
+      "inactive_bonded_gpios": []
+    },
+    "17": {
+      "port": "PA12",
+      "role": "see_signal_assignment",
+      "signal": "BQ_HOST_HEARTBEAT",
+      "selected_gpio": "PA12",
+      "bonded_gpios": [
+        "PA12"
+      ],
+      "inactive_bonded_gpios": []
+    },
+    "18": {
+      "port": "PA13",
+      "role": "see_signal_assignment",
+      "signal": "BQ_HOST_SWDIO",
+      "selected_gpio": "PA13",
+      "bonded_gpios": [
+        "PA13"
+      ],
+      "inactive_bonded_gpios": []
+    },
+    "19": {
+      "port": "PA14-BOOT0",
+      "role": "see_signal_assignment",
+      "signal": "BQ_HOST_SWCLK",
+      "selected_gpio": "PA14",
+      "bonded_gpios": [
+        "PA14",
+        "PA15"
+      ],
+      "inactive_bonded_gpios": [
+        "PA15"
+      ]
+    },
+    "20": {
+      "port": "PB6",
+      "role": "I2C1_SCL",
+      "signal": "BQ_SCL",
+      "selected_gpio": "PB6",
+      "bonded_gpios": [
+        "PB6",
+        "PB3",
+        "PB4",
+        "PB5"
+      ],
+      "inactive_bonded_gpios": [
+        "PB3",
+        "PB4",
+        "PB5"
+      ],
+      "alternate_function": 6,
+      "open_drain": true
+    }
+  },
+  "I2C_clock_Hz_candidate": 100000,
+  "BQ_I2C_CRC_required": true,
+  "clock": "internal HSI; no external crystal; divider and timing not selected",
+  "debug_ports": [
+    "BQ_CTRL3V3_VTREF_ONLY",
+    "CELL_B_MINUS",
+    "BQ_HOST_NRST",
+    "BQ_HOST_SWDIO",
+    "BQ_HOST_SWCLK"
+  ],
+  "requirements": [
+    "Inactive bonded GPIOs must remain analog with no pulls; PB8 must not drive the PB7/SDA package pin",
+    "Do not reuse existing SYS sequencer GPIO initialization for this differently allocated MCU",
+    "PA0 and PA1 initial output data Low before changing to output mode",
+    "BQ_ALLOW_BMINUS only after configuration readback; default BQ BOTHOFF function is not active before configuration",
+    "AUX request requires separate domain-crossing driver; never directly connect to SYS__LOGIC_START_ALLOW",
+    "Use a B-minus referenced or isolated debug interface; external programmer must not inject power or bypass shunt through PACK_RETURN",
+    "Select boot option bytes for main flash, retain NRST and SWD; record and verify programmed values",
+    "Watchdog/latch gates connected by bq_host_watchdog_candidate; analog timing and rearm protocol unqualified",
+    "BQ REG1/REG0 load, added bulk capacitor startup and stability must be requalified",
+    "External TPS3808 reset candidate connected; dynamic response and low-voltage output validity remain unqualified"
+  ],
+  "manufacturing_release": false,
+  "firmware_implemented": false,
+  "reset_supervision_qualified": false,
+  "supervisor_candidate": {
+    "source": "https://www.ti.com/lit/ds/symlink/tps3808.pdf",
+    "revision": "SBVS050N August2026",
+    "sections": [
+      "5",
+      "6.5",
+      "6.6",
+      "7.3.1",
+      "7.3.4"
+    ],
+    "part": "TPS3808G01DBVR",
+    "nominal_threshold_V": 0.405,
+    "threshold_fraction": 0.02,
+    "hysteresis_fraction_max": 0.03,
+    "sense_current_abs_A": 2.5e-08,
+    "total_resistance_variation_allocation": 0.01,
+    "NRST_external_pullup_changed_from_ohm": 10000,
+    "NRST_external_pullup_ohm": 100000,
+    "reason": "10k external in parallel with MCU internal 25..55k fell below TPS3808 application minimum pullup; use100k",
+    "CT": "open:12..28ms only at manufacturer loading/test conditions; NRST100nF here not qualified",
+    "SENSE_filter": "no added capacitor yet; layout/noise and transient response require joint decision",
+    "reset_output_scope": "MCU reset only; no independent override of main FET or AUX request",
+    "dynamic_shutdown_qualified": false
+  }
+}

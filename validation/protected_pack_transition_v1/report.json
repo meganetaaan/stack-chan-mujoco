@@ -1,0 +1,1624 @@
+{
+  "source": "schematics/power/system_power_integration_candidate_v1/assembly.json",
+  "source_sha256": "0e5da0bbf2b922e4f0d750a68fac137e5a0a7ec5d3edb1cd158240b346376d3b",
+  "original_parts": 250,
+  "raw_cell_parts_removed": 100,
+  "additional_isolator_parts_removed": [
+    "SYS__C_AUX_ISO_PRIMARY",
+    "SYS__C_AUX_ISO_SECONDARY",
+    "SYS__U_AUX_START_ISO"
+  ],
+  "remaining_parts": 147,
+  "removed_references": [
+    "BAT__C_BAT",
+    "BAT__C_BQ_AUX_GATE",
+    "BAT__C_BQ_HOST_BULK",
+    "BAT__C_BQ_HOST_HF",
+    "BAT__C_BQ_HOST_NRST",
+    "BAT__C_BQ_HOST_SUP",
+    "BAT__C_BQ_MAIN_GATE",
+    "BAT__C_BQ_PERMIT_LATCH",
+    "BAT__C_BQ_RESET_BUFFER",
+    "BAT__C_BQ_WD",
+    "BAT__C_CP1",
+    "BAT__C_CURRENT",
+    "BAT__C_F0_0",
+    "BAT__C_F0_1",
+    "BAT__C_F0_2",
+    "BAT__C_F0_3",
+    "BAT__C_F0_4",
+    "BAT__C_F0_5",
+    "BAT__C_F1_0",
+    "BAT__C_F1_1",
+    "BAT__C_F1_2",
+    "BAT__C_F1_3",
+    "BAT__C_F1_4",
+    "BAT__C_F1_5",
+    "BAT__C_F2_0",
+    "BAT__C_F2_1",
+    "BAT__C_F2_2",
+    "BAT__C_F2_3",
+    "BAT__C_F2_4",
+    "BAT__C_F2_5",
+    "BAT__C_F3_0",
+    "BAT__C_F3_1",
+    "BAT__C_F3_2",
+    "BAT__C_F3_3",
+    "BAT__C_F3_4",
+    "BAT__C_F3_5",
+    "BAT__C_REG0",
+    "BAT__C_REG0_PROTECT_IN_1",
+    "BAT__C_REG0_PROTECT_IN_2",
+    "BAT__C_REG0_PROTECT_OUT_1",
+    "BAT__C_REG0_PROTECT_OUT_2",
+    "BAT__C_REG1",
+    "BAT__C_REG18_0",
+    "BAT__C_REG18_1",
+    "BAT__C_REG18_2",
+    "BAT__C_REGIN",
+    "BAT__D_BAT",
+    "BAT__D_GS_CHG",
+    "BAT__D_GS_DSG",
+    "BAT__D_REG0",
+    "BAT__Q_CHG",
+    "BAT__Q_DSG",
+    "BAT__Q_REG0",
+    "BAT__R_ALLOW_PD",
+    "BAT__R_ALLOW_SER",
+    "BAT__R_ARM_EDGE_PD",
+    "BAT__R_AUX_REQUEST_RAW_PD",
+    "BAT__R_BAT",
+    "BAT__R_BQ_ALERT",
+    "BAT__R_BQ_AUX_START_REQUEST_PD",
+    "BAT__R_BQ_HOST_HEARTBEAT_PD",
+    "BAT__R_BQ_HOST_NRST",
+    "BAT__R_BQ_HOST_SUP_BOTTOM",
+    "BAT__R_BQ_HOST_SUP_TOP",
+    "BAT__R_BQ_SCL",
+    "BAT__R_BQ_SDA",
+    "BAT__R_BQ_WD_CWD",
+    "BAT__R_CELL_0",
+    "BAT__R_CELL_1",
+    "BAT__R_CELL_2",
+    "BAT__R_CELL_3",
+    "BAT__R_GATE_CHG",
+    "BAT__R_GATE_DSG",
+    "BAT__R_GS_CHG",
+    "BAT__R_GS_DSG",
+    "BAT__R_LD",
+    "BAT__R_MAIN_REQUEST_RAW_PD",
+    "BAT__R_PACK",
+    "BAT__R_REG0_0",
+    "BAT__R_REG0_1",
+    "BAT__R_REG0_ILIM",
+    "BAT__R_REG0_MODE",
+    "BAT__R_REG0_OV_BOTTOM",
+    "BAT__R_REG0_OV_TOP",
+    "BAT__R_REG0_UV_BOTTOM",
+    "BAT__R_REG0_UV_TOP",
+    "BAT__R_SHUNT",
+    "BAT__R_SRN",
+    "BAT__R_SRP",
+    "BAT__TH_CELL",
+    "BAT__TH_FET",
+    "BAT__U_BQ_AUX_GATE",
+    "BAT__U_BQ_HOST",
+    "BAT__U_BQ_HOST_SUP",
+    "BAT__U_BQ_MAIN_GATE",
+    "BAT__U_BQ_PERMIT_LATCH",
+    "BAT__U_BQ_RESET_BUFFER",
+    "BAT__U_BQ_WD",
+    "BAT__U_CELL_PROTECT",
+    "BAT__U_REG0_LIMIT",
+    "SYS__C_AUX_ISO_PRIMARY",
+    "SYS__C_AUX_ISO_SECONDARY",
+    "SYS__U_AUX_START_ISO"
+  ],
+  "raw_cell_boundary": [
+    {
+      "net": "CELL_B_MINUS",
+      "removed_pins": [
+        {
+          "reference": "BAT__U_CELL_PROTECT",
+          "pin": "17"
+        },
+        {
+          "reference": "BAT__U_CELL_PROTECT",
+          "pin": "29"
+        },
+        {
+          "reference": "BAT__U_CELL_PROTECT",
+          "pin": "33"
+        },
+        {
+          "reference": "BAT__R_CELL_0",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__C_F0_3",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__C_F0_4",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__C_F0_5",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__C_BAT",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__C_REG18_0",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__C_REG18_1",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__C_REG18_2",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__R_SHUNT",
+          "pin": "I1"
+        },
+        {
+          "reference": "BAT__TH_CELL",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__TH_FET",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__R_ALLOW_PD",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__U_REG0_LIMIT",
+          "pin": "17"
+        },
+        {
+          "reference": "BAT__C_REG0_PROTECT_IN_1",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__C_REG0_PROTECT_IN_2",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__C_REG0_PROTECT_OUT_1",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__C_REG0_PROTECT_OUT_2",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__C_REG0",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__C_REGIN",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__C_REG1",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__U_BQ_HOST",
+          "pin": "5"
+        },
+        {
+          "reference": "BAT__C_BQ_HOST_HF",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__C_BQ_HOST_BULK",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__C_BQ_HOST_NRST",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__R_BQ_AUX_START_REQUEST_PD",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__R_BQ_HOST_HEARTBEAT_PD",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__U_BQ_HOST_SUP",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__R_BQ_HOST_SUP_BOTTOM",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__C_BQ_HOST_SUP",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__U_BQ_WD",
+          "pin": "4"
+        },
+        {
+          "reference": "BAT__U_BQ_WD",
+          "pin": "EP"
+        },
+        {
+          "reference": "BAT__C_BQ_WD",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__U_BQ_RESET_BUFFER",
+          "pin": "3"
+        },
+        {
+          "reference": "BAT__C_BQ_RESET_BUFFER",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__U_BQ_PERMIT_LATCH",
+          "pin": "4"
+        },
+        {
+          "reference": "BAT__C_BQ_PERMIT_LATCH",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__U_BQ_MAIN_GATE",
+          "pin": "3"
+        },
+        {
+          "reference": "BAT__C_BQ_MAIN_GATE",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__U_BQ_AUX_GATE",
+          "pin": "3"
+        },
+        {
+          "reference": "BAT__C_BQ_AUX_GATE",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__R_MAIN_REQUEST_RAW_PD",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__R_AUX_REQUEST_RAW_PD",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__R_ARM_EDGE_PD",
+          "pin": "2"
+        }
+      ],
+      "remaining_pins": [
+        {
+          "reference": "SYS__U_AUX_START_ISO",
+          "pin": "4"
+        },
+        {
+          "reference": "SYS__C_AUX_ISO_PRIMARY",
+          "pin": "2"
+        },
+        {
+          "reference": "INLET__J_PACK",
+          "pin": "-"
+        },
+        {
+          "reference": "INLET__U_REVERSE",
+          "pin": "2"
+        },
+        {
+          "reference": "INLET__C_IN",
+          "pin": "2"
+        },
+        {
+          "reference": "INLET__C_OUT_0",
+          "pin": "2"
+        },
+        {
+          "reference": "INLET__C_OUT_1",
+          "pin": "2"
+        }
+      ]
+    },
+    {
+      "net": "BQ_CTRL3V3",
+      "removed_pins": [
+        {
+          "reference": "BAT__U_CELL_PROTECT",
+          "pin": "35"
+        },
+        {
+          "reference": "BAT__C_REG1",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__R_BQ_SCL",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__R_BQ_SDA",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__R_BQ_ALERT",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__U_BQ_HOST",
+          "pin": "4"
+        },
+        {
+          "reference": "BAT__C_BQ_HOST_HF",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__C_BQ_HOST_BULK",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__R_BQ_HOST_NRST",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__U_BQ_HOST_SUP",
+          "pin": "3"
+        },
+        {
+          "reference": "BAT__U_BQ_HOST_SUP",
+          "pin": "6"
+        },
+        {
+          "reference": "BAT__R_BQ_HOST_SUP_TOP",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__C_BQ_HOST_SUP",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__U_BQ_WD",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__U_BQ_WD",
+          "pin": "3"
+        },
+        {
+          "reference": "BAT__U_BQ_WD",
+          "pin": "5"
+        },
+        {
+          "reference": "BAT__C_BQ_WD",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__R_BQ_WD_CWD",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__U_BQ_RESET_BUFFER",
+          "pin": "5"
+        },
+        {
+          "reference": "BAT__C_BQ_RESET_BUFFER",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__U_BQ_PERMIT_LATCH",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__U_BQ_PERMIT_LATCH",
+          "pin": "7"
+        },
+        {
+          "reference": "BAT__U_BQ_PERMIT_LATCH",
+          "pin": "8"
+        },
+        {
+          "reference": "BAT__C_BQ_PERMIT_LATCH",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__U_BQ_MAIN_GATE",
+          "pin": "5"
+        },
+        {
+          "reference": "BAT__C_BQ_MAIN_GATE",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__U_BQ_AUX_GATE",
+          "pin": "5"
+        },
+        {
+          "reference": "BAT__C_BQ_AUX_GATE",
+          "pin": "1"
+        }
+      ],
+      "remaining_pins": [
+        {
+          "reference": "SYS__U_AUX_START_ISO",
+          "pin": "1"
+        },
+        {
+          "reference": "SYS__U_AUX_START_ISO",
+          "pin": "3"
+        },
+        {
+          "reference": "SYS__C_AUX_ISO_PRIMARY",
+          "pin": "1"
+        }
+      ]
+    },
+    {
+      "net": "CELL_POS_FUSED",
+      "removed_pins": [
+        {
+          "reference": "BAT__Q_CHG",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__Q_CHG",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__Q_CHG",
+          "pin": "3"
+        },
+        {
+          "reference": "BAT__R_GS_CHG",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__D_GS_CHG",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__R_BAT",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__U_REG0_LIMIT",
+          "pin": "8"
+        },
+        {
+          "reference": "BAT__U_REG0_LIMIT",
+          "pin": "9"
+        },
+        {
+          "reference": "BAT__R_REG0_UV_TOP",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__R_REG0_OV_TOP",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__C_REG0_PROTECT_IN_1",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__C_REG0_PROTECT_IN_2",
+          "pin": "1"
+        }
+      ],
+      "remaining_pins": [
+        {
+          "reference": "INLET__U_REVERSE",
+          "pin": "4"
+        },
+        {
+          "reference": "INLET__Q_REVERSE",
+          "pin": "5"
+        },
+        {
+          "reference": "INLET__Q_REVERSE",
+          "pin": "6"
+        },
+        {
+          "reference": "INLET__Q_REVERSE",
+          "pin": "7"
+        },
+        {
+          "reference": "INLET__Q_REVERSE",
+          "pin": "8"
+        },
+        {
+          "reference": "INLET__Q_REVERSE",
+          "pin": "exposed_drain_pad"
+        },
+        {
+          "reference": "INLET__C_OUT_0",
+          "pin": "1"
+        },
+        {
+          "reference": "INLET__C_OUT_1",
+          "pin": "1"
+        }
+      ]
+    },
+    {
+      "net": "PACK_POS_PROTECTED",
+      "removed_pins": [
+        {
+          "reference": "BAT__Q_DSG",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__Q_DSG",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__Q_DSG",
+          "pin": "3"
+        },
+        {
+          "reference": "BAT__R_GS_DSG",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__D_GS_DSG",
+          "pin": "2"
+        },
+        {
+          "reference": "BAT__R_LD",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__R_PACK",
+          "pin": "1"
+        }
+      ],
+      "remaining_pins": [
+        {
+          "reference": "SYS__U_LOGIC_PROTECT",
+          "pin": "8"
+        },
+        {
+          "reference": "SYS__U_LOGIC_PROTECT",
+          "pin": "9"
+        },
+        {
+          "reference": "SYS__R_LOGIC_UV_TOP",
+          "pin": "1"
+        },
+        {
+          "reference": "SYS__R_LOGIC_OV_TOP",
+          "pin": "1"
+        },
+        {
+          "reference": "SYS__R_LOGIC_INPUT_BLEED",
+          "pin": "1"
+        },
+        {
+          "reference": "SYS__C_LOGIC_PROTECT_IN_1",
+          "pin": "1"
+        },
+        {
+          "reference": "SYS__C_LOGIC_PROTECT_IN_2",
+          "pin": "1"
+        },
+        {
+          "reference": "SYS__LEFT_U_REGULATOR",
+          "pin": "VIN"
+        },
+        {
+          "reference": "SYS__RIGHT_U_REGULATOR",
+          "pin": "VIN"
+        },
+        {
+          "reference": "SYS__R_STOP_INPUT_0",
+          "pin": "1"
+        },
+        {
+          "reference": "SYS__R_STOP_INPUT_1",
+          "pin": "1"
+        },
+        {
+          "reference": "TAB5__U_PROTECT",
+          "pin": "8"
+        },
+        {
+          "reference": "TAB5__U_PROTECT",
+          "pin": "9"
+        },
+        {
+          "reference": "TAB5__R_UV_TOP",
+          "pin": "1"
+        },
+        {
+          "reference": "TAB5__R_OV_TOP",
+          "pin": "1"
+        },
+        {
+          "reference": "TAB5__C_PROTECT_IN_1",
+          "pin": "1"
+        },
+        {
+          "reference": "TAB5__C_PROTECT_IN_2",
+          "pin": "1"
+        }
+      ]
+    },
+    {
+      "net": "PACK_RETURN",
+      "removed_pins": [
+        {
+          "reference": "BAT__R_SHUNT",
+          "pin": "I2"
+        }
+      ],
+      "remaining_pins": [
+        {
+          "reference": "SYS__U1",
+          "pin": "1"
+        },
+        {
+          "reference": "SYS__U2",
+          "pin": "3"
+        },
+        {
+          "reference": "SYS__U3",
+          "pin": "7"
+        },
+        {
+          "reference": "SYS__U3",
+          "pin": "9"
+        },
+        {
+          "reference": "SYS__U3",
+          "pin": "10"
+        },
+        {
+          "reference": "SYS__U3",
+          "pin": "11"
+        },
+        {
+          "reference": "SYS__U4",
+          "pin": "3"
+        },
+        {
+          "reference": "SYS__U5",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__U6",
+          "pin": "7"
+        },
+        {
+          "reference": "SYS__C1",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C2",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C3",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C4",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C5",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C6",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__SW1",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__U7",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C7",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__U8",
+          "pin": "3"
+        },
+        {
+          "reference": "SYS__R6",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C8",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__U9",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C9",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__U10",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__U11",
+          "pin": "3"
+        },
+        {
+          "reference": "SYS__C10",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C11",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__U14",
+          "pin": "3"
+        },
+        {
+          "reference": "SYS__C14",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__U15",
+          "pin": "3"
+        },
+        {
+          "reference": "SYS__C15",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__LEFT_U12",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__LEFT_U12",
+          "pin": "4"
+        },
+        {
+          "reference": "SYS__LEFT_U13",
+          "pin": "3"
+        },
+        {
+          "reference": "SYS__LEFT_R12",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__LEFT_C12",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__LEFT_C13",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__RIGHT_U12",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__RIGHT_U12",
+          "pin": "4"
+        },
+        {
+          "reference": "SYS__RIGHT_U13",
+          "pin": "3"
+        },
+        {
+          "reference": "SYS__RIGHT_R12",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__RIGHT_C12",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__RIGHT_C13",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__LEFT_U_POWER",
+          "pin": "8"
+        },
+        {
+          "reference": "SYS__LEFT_C_GATE",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__RIGHT_U_POWER",
+          "pin": "8"
+        },
+        {
+          "reference": "SYS__RIGHT_C_GATE",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__LEFT_R_ILM",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__RIGHT_R_ILM",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__LEFT_R_OV_BOTTOM",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__RIGHT_R_OV_BOTTOM",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__U_STOP_LDO",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C_STOP_IN",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C_STOP_OUT",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__R_STOP_MIN_LOAD",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__LEFT_R_EN_PULLDOWN",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__RIGHT_R_EN_PULLDOWN",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__LEFT_U_WINDOW",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__LEFT_R_SOURCE_UV_BOTTOM",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__LEFT_R_SOURCE_OV_BOTTOM",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__LEFT_C_WINDOW",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__RIGHT_U_WINDOW",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__RIGHT_R_SOURCE_UV_BOTTOM",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__RIGHT_R_SOURCE_OV_BOTTOM",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__RIGHT_C_WINDOW",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__U_MONITOR_START",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C_MONITOR_START",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__U_MONITOR_RX",
+          "pin": "3"
+        },
+        {
+          "reference": "SYS__R_MONITOR_RX_OFF",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C_MONITOR_RX",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__R_SEQUENCE_OFF",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__R_STOP_INPUT_BLEED",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C_STOP_IN_HF",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__U_LOGIC_PROTECT",
+          "pin": "17"
+        },
+        {
+          "reference": "SYS__R_LOGIC_INPUT_BLEED",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C_LOGIC_PROTECT_IN_1",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C_LOGIC_PROTECT_IN_2",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C_LOGIC_PROTECT_OUT_1",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__C_LOGIC_PROTECT_OUT_2",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__U_LOGIC_LDO",
+          "pin": "3"
+        },
+        {
+          "reference": "SYS__U_LOGIC_LDO",
+          "pin": "EP"
+        },
+        {
+          "reference": "SYS__C_LOGIC_LDO_OUT",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__LEFT_U_REGULATOR",
+          "pin": "GND"
+        },
+        {
+          "reference": "SYS__RIGHT_U_REGULATOR",
+          "pin": "GND"
+        },
+        {
+          "reference": "SYS__LEFT_R_DISCHARGE_1",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__LEFT_R_DISCHARGE_2",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__RIGHT_R_DISCHARGE_1",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__RIGHT_R_DISCHARGE_2",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__LEFT_R_REG_EN_PD",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__RIGHT_R_REG_EN_PD",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__R_LOGIC_SHDN_PD",
+          "pin": "2"
+        },
+        {
+          "reference": "SYS__U_AUX_START_ISO",
+          "pin": "5"
+        },
+        {
+          "reference": "SYS__C_AUX_ISO_SECONDARY",
+          "pin": "2"
+        },
+        {
+          "reference": "TAB5__U_PROTECT",
+          "pin": "17"
+        },
+        {
+          "reference": "TAB5__C_PROTECT_IN_1",
+          "pin": "2"
+        },
+        {
+          "reference": "TAB5__C_PROTECT_IN_2",
+          "pin": "2"
+        },
+        {
+          "reference": "TAB5__C_PROTECT_OUT_1",
+          "pin": "2"
+        },
+        {
+          "reference": "TAB5__C_PROTECT_OUT_2",
+          "pin": "2"
+        },
+        {
+          "reference": "TAB5__R_SHDN_PD",
+          "pin": "2"
+        }
+      ]
+    },
+    {
+      "net": "BQ_AUX_START_REQUEST",
+      "removed_pins": [
+        {
+          "reference": "BAT__R_BQ_AUX_START_REQUEST_PD",
+          "pin": "1"
+        },
+        {
+          "reference": "BAT__U_BQ_AUX_GATE",
+          "pin": "4"
+        }
+      ],
+      "remaining_pins": [
+        {
+          "reference": "SYS__U_AUX_START_ISO",
+          "pin": "2"
+        }
+      ]
+    }
+  ],
+  "replacement_interface_pins": {
+    "SYS__LOGIC_START_ALLOW": [
+      {
+        "reference": "SYS__R_LOGIC_SHDN_SER",
+        "pin": "1"
+      }
+    ],
+    "PACK_POS_PROTECTED": [
+      {
+        "reference": "SYS__U_LOGIC_PROTECT",
+        "pin": "8"
+      },
+      {
+        "reference": "SYS__U_LOGIC_PROTECT",
+        "pin": "9"
+      },
+      {
+        "reference": "SYS__R_LOGIC_UV_TOP",
+        "pin": "1"
+      },
+      {
+        "reference": "SYS__R_LOGIC_OV_TOP",
+        "pin": "1"
+      },
+      {
+        "reference": "SYS__R_LOGIC_INPUT_BLEED",
+        "pin": "1"
+      },
+      {
+        "reference": "SYS__C_LOGIC_PROTECT_IN_1",
+        "pin": "1"
+      },
+      {
+        "reference": "SYS__C_LOGIC_PROTECT_IN_2",
+        "pin": "1"
+      },
+      {
+        "reference": "SYS__LEFT_U_REGULATOR",
+        "pin": "VIN"
+      },
+      {
+        "reference": "SYS__RIGHT_U_REGULATOR",
+        "pin": "VIN"
+      },
+      {
+        "reference": "SYS__R_STOP_INPUT_0",
+        "pin": "1"
+      },
+      {
+        "reference": "SYS__R_STOP_INPUT_1",
+        "pin": "1"
+      },
+      {
+        "reference": "TAB5__U_PROTECT",
+        "pin": "8"
+      },
+      {
+        "reference": "TAB5__U_PROTECT",
+        "pin": "9"
+      },
+      {
+        "reference": "TAB5__R_UV_TOP",
+        "pin": "1"
+      },
+      {
+        "reference": "TAB5__R_OV_TOP",
+        "pin": "1"
+      },
+      {
+        "reference": "TAB5__C_PROTECT_IN_1",
+        "pin": "1"
+      },
+      {
+        "reference": "TAB5__C_PROTECT_IN_2",
+        "pin": "1"
+      }
+    ],
+    "PACK_RETURN": [
+      {
+        "reference": "SYS__U1",
+        "pin": "1"
+      },
+      {
+        "reference": "SYS__U2",
+        "pin": "3"
+      },
+      {
+        "reference": "SYS__U3",
+        "pin": "7"
+      },
+      {
+        "reference": "SYS__U3",
+        "pin": "9"
+      },
+      {
+        "reference": "SYS__U3",
+        "pin": "10"
+      },
+      {
+        "reference": "SYS__U3",
+        "pin": "11"
+      },
+      {
+        "reference": "SYS__U4",
+        "pin": "3"
+      },
+      {
+        "reference": "SYS__U5",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__U6",
+        "pin": "7"
+      },
+      {
+        "reference": "SYS__C1",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C2",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C3",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C4",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C5",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C6",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__SW1",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__U7",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C7",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__U8",
+        "pin": "3"
+      },
+      {
+        "reference": "SYS__R6",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C8",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__U9",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C9",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__U10",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__U11",
+        "pin": "3"
+      },
+      {
+        "reference": "SYS__C10",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C11",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__U14",
+        "pin": "3"
+      },
+      {
+        "reference": "SYS__C14",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__U15",
+        "pin": "3"
+      },
+      {
+        "reference": "SYS__C15",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__LEFT_U12",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__LEFT_U12",
+        "pin": "4"
+      },
+      {
+        "reference": "SYS__LEFT_U13",
+        "pin": "3"
+      },
+      {
+        "reference": "SYS__LEFT_R12",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__LEFT_C12",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__LEFT_C13",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__RIGHT_U12",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__RIGHT_U12",
+        "pin": "4"
+      },
+      {
+        "reference": "SYS__RIGHT_U13",
+        "pin": "3"
+      },
+      {
+        "reference": "SYS__RIGHT_R12",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__RIGHT_C12",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__RIGHT_C13",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__LEFT_U_POWER",
+        "pin": "8"
+      },
+      {
+        "reference": "SYS__LEFT_C_GATE",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__RIGHT_U_POWER",
+        "pin": "8"
+      },
+      {
+        "reference": "SYS__RIGHT_C_GATE",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__LEFT_R_ILM",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__RIGHT_R_ILM",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__LEFT_R_OV_BOTTOM",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__RIGHT_R_OV_BOTTOM",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__U_STOP_LDO",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C_STOP_IN",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C_STOP_OUT",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__R_STOP_MIN_LOAD",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__LEFT_R_EN_PULLDOWN",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__RIGHT_R_EN_PULLDOWN",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__LEFT_U_WINDOW",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__LEFT_R_SOURCE_UV_BOTTOM",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__LEFT_R_SOURCE_OV_BOTTOM",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__LEFT_C_WINDOW",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__RIGHT_U_WINDOW",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__RIGHT_R_SOURCE_UV_BOTTOM",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__RIGHT_R_SOURCE_OV_BOTTOM",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__RIGHT_C_WINDOW",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__U_MONITOR_START",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C_MONITOR_START",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__U_MONITOR_RX",
+        "pin": "3"
+      },
+      {
+        "reference": "SYS__R_MONITOR_RX_OFF",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C_MONITOR_RX",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__R_SEQUENCE_OFF",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__R_STOP_INPUT_BLEED",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C_STOP_IN_HF",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__U_LOGIC_PROTECT",
+        "pin": "17"
+      },
+      {
+        "reference": "SYS__R_LOGIC_INPUT_BLEED",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C_LOGIC_PROTECT_IN_1",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C_LOGIC_PROTECT_IN_2",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C_LOGIC_PROTECT_OUT_1",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__C_LOGIC_PROTECT_OUT_2",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__U_LOGIC_LDO",
+        "pin": "3"
+      },
+      {
+        "reference": "SYS__U_LOGIC_LDO",
+        "pin": "EP"
+      },
+      {
+        "reference": "SYS__C_LOGIC_LDO_OUT",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__LEFT_U_REGULATOR",
+        "pin": "GND"
+      },
+      {
+        "reference": "SYS__RIGHT_U_REGULATOR",
+        "pin": "GND"
+      },
+      {
+        "reference": "SYS__LEFT_R_DISCHARGE_1",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__LEFT_R_DISCHARGE_2",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__RIGHT_R_DISCHARGE_1",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__RIGHT_R_DISCHARGE_2",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__LEFT_R_REG_EN_PD",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__RIGHT_R_REG_EN_PD",
+        "pin": "2"
+      },
+      {
+        "reference": "SYS__R_LOGIC_SHDN_PD",
+        "pin": "2"
+      },
+      {
+        "reference": "TAB5__U_PROTECT",
+        "pin": "17"
+      },
+      {
+        "reference": "TAB5__C_PROTECT_IN_1",
+        "pin": "2"
+      },
+      {
+        "reference": "TAB5__C_PROTECT_IN_2",
+        "pin": "2"
+      },
+      {
+        "reference": "TAB5__C_PROTECT_OUT_1",
+        "pin": "2"
+      },
+      {
+        "reference": "TAB5__C_PROTECT_OUT_2",
+        "pin": "2"
+      },
+      {
+        "reference": "TAB5__R_SHDN_PD",
+        "pin": "2"
+      }
+    ],
+    "CELL_POS_FUSED": [
+      {
+        "reference": "INLET__U_REVERSE",
+        "pin": "4"
+      },
+      {
+        "reference": "INLET__Q_REVERSE",
+        "pin": "5"
+      },
+      {
+        "reference": "INLET__Q_REVERSE",
+        "pin": "6"
+      },
+      {
+        "reference": "INLET__Q_REVERSE",
+        "pin": "7"
+      },
+      {
+        "reference": "INLET__Q_REVERSE",
+        "pin": "8"
+      },
+      {
+        "reference": "INLET__Q_REVERSE",
+        "pin": "exposed_drain_pad"
+      },
+      {
+        "reference": "INLET__C_OUT_0",
+        "pin": "1"
+      },
+      {
+        "reference": "INLET__C_OUT_1",
+        "pin": "1"
+      }
+    ],
+    "CELL_B_MINUS": [
+      {
+        "reference": "INLET__J_PACK",
+        "pin": "-"
+      },
+      {
+        "reference": "INLET__U_REVERSE",
+        "pin": "2"
+      },
+      {
+        "reference": "INLET__C_IN",
+        "pin": "2"
+      },
+      {
+        "reference": "INLET__C_OUT_0",
+        "pin": "2"
+      },
+      {
+        "reference": "INLET__C_OUT_1",
+        "pin": "2"
+      }
+    ]
+  },
+  "missing_functions": [
+    "Protected pack positive-to-distribution connection after inlet protection",
+    "Pack return connection; old current shunt is deleted",
+    "Logic start driver in PACK_RETURN domain",
+    "Independent fresh manual arm and reset/watchdog behavior formerly hosted in BAT domain",
+    "Pack undervoltage warning and Tab5 planned shutdown coordination",
+    "System input current measurement or justified replacement if needed by protection"
+  ],
+  "notes": [
+    "Removing the isolator also removes its local decoupling; retain STOP supply capacitors",
+    "No assertion that PCM protects branch wiring or controls reverse/regeneration current",
+    "Part count reduction is not a mass, cost or safety equivalence claim"
+  ],
+  "electrically_operational": false,
+  "manufacturing_release": false
+}

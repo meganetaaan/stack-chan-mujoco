@@ -1,0 +1,32 @@
+{
+  "status": "selected_connection_candidate_not_electrically_qualified",
+  "manufacturer_source": "https://www.pololu.com/product/5671",
+  "module_count": 2,
+  "functional_ports_not_physical_pad_numbers": true,
+  "physical_pad_mapping_verified": false,
+  "ports_each": {
+    "VIN": {"net": "DRIVE_BATTERY_PROTECTED", "basis": "Design: separate protected/switched3S drive input interface; upstream protection not supplied by this integration"},
+    "GND": {"net": "GND", "basis": "Manufacturer: all module ground connections common; design uses common return"},
+    "VOUT": {"net_pattern": "{SIDE}_REGULATOR_OUT", "basis": "Design: feed own downstream TPS259813L input, never parallel outputs"},
+    "ENA": {"net": null, "basis": "Manufacturer: pulled to VIN by1Mohm, enabled by default. Design leaves open; no MCU connection."},
+    "ENB": {"net": null, "basis": "Manufacturer: pulled to VIN by1Mohm and linked to ENA by10kohm; do not use in defaultPFM. Design leaves open."},
+    "PFM": {"net": null, "basis": "Manufacturer: internal100kohm pullup selectsPFM by default. Design leaves open."},
+    "PG": {"net": null, "basis": "Optional open-drain module output; design leaves unused and distinct from existing eFuse PG signals."}
+  },
+  "design_decisions": [
+    "Converters start when protected drive battery input appears; shutdown/rearm is handled downstream by the existing eFuse candidate",
+    "Converter operation is not equivalent to permission to energize servo buses",
+    "No use of moduleENA/ENB as safety isolation, no addition of MCU high-voltage pin exposure",
+    "No claim that modulePFM absorbs regenerative current",
+    "Tab5 supply remains independent of these two servo regulators"
+  ],
+  "required_but_unproven": [
+    "Protected drive battery distribution, fuse/disconnect, inrush and input fault energy",
+    "eFuse default-off behavior throughout partial-power startup and every relevant reset/fault",
+    "Sequencer monitor qualification and manual rearm timing",
+    "Source and output overvoltage protection, current limits, thermal/dropout margin",
+    "Regeneration handling, residual energy discharge, reverse-current paths",
+    "Physical port/pad mapping, wire gauge, terminals and routing"
+  ],
+  "manufacturing_release": false
+}

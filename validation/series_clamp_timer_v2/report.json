@@ -1,0 +1,59 @@
+{
+  "source_sha256": {
+    "validation/series_clamp_sizing_v1/report.json": "cf4c9c763980fd26b3c581869fd553794ec215b8c9783f4cb5ff651e37623a17",
+    "validation/series_sense_resistor_v1/report.json": "875f48d1b9a08a02a4bea567c583a822ca74f3623fd42303c3fc3935b2b51823"
+  },
+  "fault_power_comparison_W": 50.0479007574651,
+  "datasheet": {
+    "url": "https://www.analog.com/media/en/technical-documentation/data-sheets/4363fb.pdf",
+    "revision": "C",
+    "sections": "Fault Timer Overview / Operation in Overvoltage / Cool Down Phase; electrical characteristics"
+  },
+  "comparison_VDS_V": 7.315046217821782,
+  "typical_interpolated_OV_current_A": 8.207948000265798e-06,
+  "rows": [
+    {
+      "capacitance_F": 1e-08,
+      "typical_pre_warning_s": 0.0009442067615132347,
+      "typical_warning_s": 0.00016666666666666666,
+      "typical_total_regulation_s": 0.0011108734281799013,
+      "constant_fault_energy_comparison_J": 0.05559688308765274,
+      "typical_cooldown_s": 0.033625,
+      "SHDN_low_to_interrupt_cooldown_application_formula_s": 0.01
+    },
+    {
+      "capacitance_F": 1.2e-08,
+      "typical_pre_warning_s": 0.0011330481138158816,
+      "typical_warning_s": 0.00019999999999999998,
+      "typical_total_regulation_s": 0.0013330481138158815,
+      "constant_fault_energy_comparison_J": 0.06671625970518327,
+      "typical_cooldown_s": 0.040350000000000004,
+      "SHDN_low_to_interrupt_cooldown_application_formula_s": 0.012
+    }
+  ],
+  "candidate_capacitance": {
+    "nominal_F": 1.2e-08,
+    "proposed_total_tolerance_fraction": 0.05,
+    "minimum_F": 1.14e-08,
+    "part_selected": false,
+    "reason": "Keeps lower capacitance above stated 10 nF minimum; tolerance is a design target, not a purchased component guarantee."
+  },
+  "electrical_table_warning_current_A": [
+    3e-06,
+    5e-06,
+    7e-06
+  ],
+  "application_text_warning_current_A": 6e-06,
+  "decision": "Do not select FET using a microsecond pulse rating or choose less than 10 nF to force a pass. Check millisecond linear SOA and a valid worst-case timer bound before integration.",
+  "remaining": [
+    "Typical interpolated current is not a guaranteed current at actual VCC-OUT.",
+    "Electrical table warning current typical 5 uA and application equation 6 uA differ; retain both, do not pick faster value as a guarantee.",
+    "Capacitance temperature and bias/leakage must be included in total tolerance.",
+    "Gate-discharge delay and pre-regulation transient are outside these times.",
+    "OV/current-limit transition and startup require separate cases.",
+    "12.6 V fault and constant power are existing comparison conditions, not a transient upper bound."
+  ],
+  "timer_selected": false,
+  "SOA_verified": false,
+  "manufacturing_release": false
+}

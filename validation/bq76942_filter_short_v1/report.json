@@ -1,0 +1,35 @@
+{
+  "scope": "single cell differential capacitor short; stiff 4.2V cell, two equal minimum-initial-tolerance series resistors; excludes IC currents, harness resistance and thermal feedback",
+  "R_each_ohm": 22.0779,
+  "current_A": 0.09511774217656571,
+  "power_each_W": 0.199747258570788,
+  "P70_general_W": 0.11,
+  "P70_power_W": 0.17,
+  "P70_advanced_W": 0.21,
+  "general_rating_exceeded": true,
+  "power_rating_exceeded": true,
+  "advanced_rating_exceeded": false,
+  "faults": [
+    {
+      "physical_cell": 1,
+      "path": "cell1 positive -> upper sense resistor -> shorted capacitor -> lower sense resistor -> cell1 negative",
+      "stopped_by_main_CHG_DSG": false,
+      "passes_main_pack_shunt": false
+    },
+    {
+      "physical_cell": 2,
+      "path": "cell2 positive -> upper sense resistor -> shorted capacitor -> lower sense resistor -> cell2 negative",
+      "stopped_by_main_CHG_DSG": false,
+      "passes_main_pack_shunt": false
+    },
+    {
+      "physical_cell": 3,
+      "path": "cell3 positive -> upper sense resistor -> shorted capacitor -> lower sense resistor -> cell3 negative",
+      "stopped_by_main_CHG_DSG": false,
+      "passes_main_pack_shunt": false
+    }
+  ],
+  "VC0_capacitor_short": "shorts VC0 to local VSS; not a cell discharge loop in this ideal model; sensing effects unqualified",
+  "decision": "No thermal qualification from highest catalog rating; independent cell-tap fault protection required even if resistors enlarged",
+  "manufacturing_release": false
+}

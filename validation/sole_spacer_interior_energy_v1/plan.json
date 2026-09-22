@@ -1,0 +1,34 @@
+{
+  "scope": "Full-volume elastic energy with fixed exterior and three interior mesh densities; diagnostic, not a substitute for convergence gates",
+  "formula": "U=0.5*integral[((1+nu)/E)*sigma:sigma-(nu/E)*trace(sigma)^2]dV",
+  "identity": "2U = u dot (external load + contact force + gauge force), using final clipped contact forces",
+  "criteria": {
+    "absolute_work_identity_error_Nmm": 1e-06
+  },
+  "limitations": [
+    "Energy diagnostic does not replace peak stress/displacement convergence gates",
+    "P1 constant strain per tetrahedron and isotropic assumed materials",
+    "Contact energy not added to elastic energy; identity uses final contact force work",
+    "No peak exclusion or physical material qualification"
+  ],
+  "cases": [
+    {
+      "mesh_mm": "0.5",
+      "analysis": "validation/sole_rounded_contact_v1",
+      "mesh": "validation/sole_rounded_local_mesh_v1",
+      "interior_target_mm": null
+    },
+    {
+      "mesh_mm": "0.5",
+      "analysis": "validation/sole_spacer_interior_probe_v1/analysis",
+      "mesh": "validation/sole_spacer_interior_probe_v1/mesh",
+      "interior_target_mm": 0.125
+    },
+    {
+      "mesh_mm": "0.5",
+      "analysis": "validation/sole_spacer_interior_refine_v1/analysis",
+      "mesh": "validation/sole_spacer_interior_refine_v1/mesh",
+      "interior_target_mm": 0.08
+    }
+  ]
+}

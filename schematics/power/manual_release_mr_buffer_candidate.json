@@ -1,0 +1,25 @@
+{
+  "part_number": "74LVC1G17GV",
+  "quantity": 1,
+  "role": "noninverting buffer for TPS3808 release-timer MR",
+  "status": "preferred_schmitt_buffer_candidate",
+  "pins": {
+    "1_NC": "NC",
+    "2_A": "SN74HCS11 pin12 RELEASE_CONDITION",
+    "3_GND": "GND",
+    "4_Y": "TPS3808 pin3 MR; no other push-pull drivers",
+    "5_VCC": "common LOGIC3V3 with local 100nF candidate"
+  },
+  "manufacturing_release": false,
+  "source": "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf",
+  "revision": "16.1 September 2024",
+  "limits": [
+    "Input threshold guarantee across actual supply interval remains to confirm",
+    "Not a power-on inhibit; independent clear/output inhibit mandatory",
+    "DC output result assumes valid logic and common valid supply"
+  ],
+  "layout_candidate": "Adjacent to HCS11 on same PCB; no additional RC; actual footprint and decoupling pending",
+  "edge_model_evidence": "validation/manual_release_schmitt_buffer_v1/README_ja.md",
+  "manufacturer": "Nexperia",
+  "package": "SC-74A SOT753; verify footprint rather than infer interchangeability"
+}

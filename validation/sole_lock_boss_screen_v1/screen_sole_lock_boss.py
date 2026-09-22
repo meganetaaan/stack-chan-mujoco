@@ -1,0 +1,10 @@
+"""Local sole lock boss preload screen with clamped bottom and cavity-floor traction."""
+import argparse,json,hashlib
+from pathlib import Path
+import cadquery as cq,numpy as np
+from elasticity import tetrahedralize,analyze
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True);a=p.parse_args();root=Path(__file__).resolve().parents[3];a.out.mkdir(parents=True,exist_ok=False);src=root/'validation/sole_separate_seat_lock_v1/left_yoke.step'
+plan={'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'force_N':20,'mesh_mm':[1,.7,.5],'E_MPa':1120,'poisson':.35,'criteria':{'displacement_mm':.2,'principal_MPa':5.6,'relative_displacement':.05,'relative_stress':.1},'limitations':['Cropped boss bottom fully clamped; not actual sleeve/contact boundary.','Traction on entire nut cavity floor, not exact 4 mm nut footprint.','Hypothetical preload, no walking shear, creep, anisotropy or thread strength.']};(a.out/'plan.json').write_text(json.dumps(plan,indent=2)+'\n');shape=cq.importers.importStep(str(src)).val().intersect(cq.Solid.makeBox(8,8,7.4,cq.Vector(31,2,-19))).clean();assert shape.isValid() and len(shape.Solids())==1;step=a.out/'boss.step';cq.exporters.export(shape,str(step));rows=[]
+for h in plan['mesh_mm']:
+ mesh=tetrahedralize(step,a.out/f'boss_{h}.msh',h);r,fields=analyze(mesh,lambda x:abs(x[2]+19)<1e-6,lambda x:abs(x[2]+14.2)<1e-6,[35,6,-14.2],[0,0,-20,0,0,0],young=1120,poisson=.35);r['mesh_mm']=h;rows.append(r);np.savez_compressed(a.out/f'fields_{h}.npz',**fields)
+fine,coarse=rows[-1],rows[-2];changes={'displacement':abs(fine['max_displacement_mm']/coarse['max_displacement_mm']-1),'stress':abs(fine['max_absolute_principal_MPa']/coarse['max_absolute_principal_MPa']-1)};r={'rows':rows,'relative_change':changes,'gates':{'displacement':fine['max_displacement_mm']<=.2,'stress':fine['max_absolute_principal_MPa']<=5.6,'displacement_convergence':changes['displacement']<=.05,'stress_convergence':changes['stress']<=.1},'joint_verified':False};(a.out/'report.json').write_text(json.dumps(r,indent=2)+'\n');print(json.dumps({'fine':fine,'changes':changes,'gates':r['gates']},indent=2))

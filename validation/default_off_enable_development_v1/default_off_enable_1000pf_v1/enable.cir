@@ -1,0 +1,17 @@
+Default-off converter enable interface
+Vbattery battery 0 8.4
+Rinternal battery en 800k
+Roff en 0 33330.0
+Iinput 0 en 1u
+Cen en 0 1e-09
+Vcontrol control 0 PWL(0 .2 .003 .2 .003001 2.5872 .008030 2.5872 .008031 0 .012 0 .012001 2.5872)
+Bdiode control en I=max((V(control)-V(en)-.9)/10,0)-80n*max(0,min((V(en)-V(control))*100,1))
+Cdiode control en 2p
+.control
+set wr_singlescale
+set wr_vecnames
+tran 100n 15m 0 100n
+wrdata trace.dat v(en) v(control) i(Vcontrol)
+quit
+.endc
+.end

@@ -1,0 +1,16 @@
+{
+  "part": "TPS259813LRPW",
+  "references": ["LEFT_U_POWER", "RIGHT_U_POWER"],
+  "pin": "10",
+  "selected_configuration": "intentionally_open_no_external_capacitor",
+  "source": "https://www.ti.com/lit/ds/symlink/tps25981.pdf",
+  "revision": "SLVSGG6D September 2026 pages 5, 8, 9",
+  "rationale": "No established normal-load overcurrent duration justifies added blanking. Retain fastest supported response as the prototype candidate; nuisance-trip and fault-energy qualification remain open.",
+  "published_open_response": {"typical_s": 0.0000018, "maximum_s": null, "condition": "IOUT > ILIM + 30 percent to VOUT falling"},
+  "capacitor_relation": "t = C * deltaV / Idischarge; does not include guaranteed propagation delay",
+  "delta_voltage_V": [1.28, 1.74],
+  "discharge_current_A": [0.00000125, 0.00000272],
+  "prohibited_inferences": ["Open means zero response time", "1.8us is a maximum", "Peak current below a simulation threshold proves no hardware trips", "Fastest response proves MOSFET, wiring or load fault-energy compliance"],
+  "revisit_condition": "Add blanking only if bounded normal current excursions require it and worst-case passed energy is compatible with selected parts",
+  "manufacturing_release": false
+}

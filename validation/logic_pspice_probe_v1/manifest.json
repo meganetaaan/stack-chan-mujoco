@@ -1,0 +1,15 @@
+{
+  "assembly_sha256": "d92788de105a78fd34dab4d0ccdb1c078a7cbb766d57b59b0416f66d2c28bba8",
+  "source": "schematics/power/servo_power_logic_integration_candidate_v1/assembly.json",
+  "executed": false,
+  "qualified": false,
+  "scope": "Nominal supply branch only, 165ohm load and lumped ideal capacitance; no actual logic or sequencer",
+  "model_pin_order_verified_against_header": true,
+  "limitations": [
+    "Source ramp is an engineering probe, not battery contact model",
+    "27.975uF capacitance is previous conditional maximum; no ESR or temperature model",
+    "MCU and whole logic behavior replaced by resistor only for compatibility/startup probe",
+    "Encrypted eFuse requires supported licensed simulator",
+    "No worst-case current or timing guarantees from nominal model"
+  ]
+}

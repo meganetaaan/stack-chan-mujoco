@@ -1,0 +1,301 @@
+{
+  "scope": "Verify unilateral face contact against a series-compliance block solution.",
+  "rows": [
+    {
+      "mesh": 2,
+      "penalty_N_mm3": 10000.0,
+      "expected_compression_force_N": 522.1940670190921,
+      "relative_reaction_error": 0.006519160660949548,
+      "relative_penalty_law_error": 3.4240396387906053e-16,
+      "contact_output_penetration_mm": 0.0005187897999999999,
+      "printed_gap_disagreement_mm": 1.9999999995978096e-10,
+      "reclosure_relative_error": 0.0,
+      "snapshots": [
+        {
+          "time": 1.0,
+          "bottom_reaction_N": [
+            -5.190551e-13,
+            5.394038e-14,
+            518.7898
+          ],
+          "top_reaction_N": [
+            -3.470877e-13,
+            3.760117e-14,
+            -518.7898
+          ],
+          "gap_min_mm": -0.0005187899999999999,
+          "gap_max_mm": -0.0005187899999999999,
+          "penetration_mean_mm": 0.0005187899999999999,
+          "relative_balance": 1.667898731919774e-15
+        },
+        {
+          "time": 2.0,
+          "bottom_reaction_N": [
+            -3.608146e-67,
+            1.605661e-67,
+            2.831303e-66
+          ],
+          "top_reaction_N": [
+            -9.8349e-14,
+            4.483557e-14,
+            -8.446443e-13
+          ],
+          "gap_min_mm": 0.01,
+          "gap_max_mm": 0.01,
+          "penetration_mean_mm": -0.01,
+          "relative_balance": 1.6306811091033157e-15
+        },
+        {
+          "time": 3.0,
+          "bottom_reaction_N": [
+            -1.293153e-13,
+            1.102414e-14,
+            518.7898
+          ],
+          "top_reaction_N": [
+            8.098714e-14,
+            7.230994e-14,
+            -518.7898
+          ],
+          "gap_min_mm": -0.0005187899999999999,
+          "gap_max_mm": -0.0005187899999999999,
+          "penetration_mean_mm": 0.0005187899999999999,
+          "relative_balance": 1.844787151983831e-16
+        }
+      ],
+      "gates": {
+        "compression_reaction": true,
+        "opened_force": true,
+        "positive_open_gap": true,
+        "force_balance": true,
+        "printed_gap_agreement": true,
+        "penalty_law": true,
+        "reclosure": true
+      },
+      "passed": true
+    },
+    {
+      "mesh": 2,
+      "penalty_N_mm3": 1000000.0,
+      "expected_compression_force_N": 550.6617443042906,
+      "relative_reaction_error": 0.007243728741915882,
+      "relative_penalty_law_error": 1.6246980958816968e-16,
+      "contact_output_penetration_mm": 5.466729000000001e-06,
+      "printed_gap_disagreement_mm": 2.7100000031812994e-10,
+      "reclosure_relative_error": 0.0,
+      "snapshots": [
+        {
+          "time": 1.0,
+          "bottom_reaction_N": [
+            -1.259312e-13,
+            -4.897063e-14,
+            546.6729
+          ],
+          "top_reaction_N": [
+            -5.784772e-14,
+            1.475117e-13,
+            -546.6729
+          ],
+          "gap_min_mm": -5.467000000000319e-06,
+          "gap_max_mm": -5.467000000000319e-06,
+          "penetration_mean_mm": 5.467000000000319e-06,
+          "relative_balance": 3.7869101452824443e-16
+        },
+        {
+          "time": 2.0,
+          "bottom_reaction_N": [
+            1.204405e-66,
+            -3.307281e-67,
+            1.691956e-65
+          ],
+          "top_reaction_N": [
+            -9.8349e-14,
+            4.483557e-14,
+            -8.446443e-13
+          ],
+          "gap_min_mm": 0.01,
+          "gap_max_mm": 0.01,
+          "penetration_mean_mm": -0.01,
+          "relative_balance": 1.546379441066303e-15
+        },
+        {
+          "time": 3.0,
+          "bottom_reaction_N": [
+            9.893246e-14,
+            -2.857996e-14,
+            546.6729
+          ],
+          "top_reaction_N": [
+            1.156954e-13,
+            2.603147e-14,
+            -546.6729
+          ],
+          "gap_min_mm": -5.467000000000319e-06,
+          "gap_max_mm": -5.467000000000319e-06,
+          "penetration_mean_mm": 5.467000000000319e-06,
+          "relative_balance": 3.897909961329394e-16
+        }
+      ],
+      "gates": {
+        "compression_reaction": true,
+        "opened_force": true,
+        "positive_open_gap": true,
+        "force_balance": true,
+        "printed_gap_agreement": true,
+        "penalty_law": true,
+        "reclosure": true
+      },
+      "passed": true
+    },
+    {
+      "mesh": 4,
+      "penalty_N_mm3": 10000.0,
+      "expected_compression_force_N": 522.1940670190921,
+      "relative_reaction_error": 0.006519160660949548,
+      "relative_penalty_law_error": 3.4240396387906053e-16,
+      "contact_output_penetration_mm": 0.0005187897999999999,
+      "printed_gap_disagreement_mm": 1.9999999995978096e-10,
+      "reclosure_relative_error": 0.0,
+      "snapshots": [
+        {
+          "time": 1.0,
+          "bottom_reaction_N": [
+            -2.602003e-13,
+            1.186924e-13,
+            518.7898
+          ],
+          "top_reaction_N": [
+            -1.619743e-13,
+            2.465769e-13,
+            -518.7898
+          ],
+          "gap_min_mm": -0.0005187899999999999,
+          "gap_max_mm": -0.0005187899999999999,
+          "penetration_mean_mm": 0.0005187899999999999,
+          "relative_balance": 1.0690641363042824e-15
+        },
+        {
+          "time": 2.0,
+          "bottom_reaction_N": [
+            -2.991996e-66,
+            -3.270267e-67,
+            3.355553e-65
+          ],
+          "top_reaction_N": [
+            -5.785235e-14,
+            -6.508389e-15,
+            -1.865738e-13
+          ],
+          "gap_min_mm": 0.01,
+          "gap_max_mm": 0.01,
+          "penetration_mean_mm": -0.01,
+          "relative_balance": 3.742779744476281e-16
+        },
+        {
+          "time": 3.0,
+          "bottom_reaction_N": [
+            -2.195385e-15,
+            -1.180551e-13,
+            518.7898
+          ],
+          "top_reaction_N": [
+            1.272655e-13,
+            -1.294348e-13,
+            -518.7898
+          ],
+          "gap_min_mm": -0.0005187899999999999,
+          "gap_max_mm": -0.0005187899999999999,
+          "penetration_mean_mm": 0.0005187899999999999,
+          "relative_balance": 5.31023430776387e-16
+        }
+      ],
+      "gates": {
+        "compression_reaction": true,
+        "opened_force": true,
+        "positive_open_gap": true,
+        "force_balance": true,
+        "printed_gap_agreement": true,
+        "penalty_law": true,
+        "reclosure": true
+      },
+      "passed": true
+    },
+    {
+      "mesh": 4,
+      "penalty_N_mm3": 1000000.0,
+      "expected_compression_force_N": 550.6617443042906,
+      "relative_reaction_error": 0.007243728741915882,
+      "relative_penalty_law_error": 1.6246980958816968e-16,
+      "contact_output_penetration_mm": 5.466729000000001e-06,
+      "printed_gap_disagreement_mm": 2.7100000031812994e-10,
+      "reclosure_relative_error": 0.0,
+      "snapshots": [
+        {
+          "time": 1.0,
+          "bottom_reaction_N": [
+            1.012689e-13,
+            -1.174115e-13,
+            546.6729
+          ],
+          "top_reaction_N": [
+            -1.041259e-13,
+            2.639302e-13,
+            -546.6729
+          ],
+          "gap_min_mm": -5.467000000000319e-06,
+          "gap_max_mm": -5.467000000000319e-06,
+          "penetration_mean_mm": 5.467000000000319e-06,
+          "relative_balance": 2.661280786268164e-16
+        },
+        {
+          "time": 2.0,
+          "bottom_reaction_N": [
+            -1.724452e-66,
+            4.664594e-67,
+            -1.129861e-65
+          ],
+          "top_reaction_N": [
+            -2.892618e-14,
+            -1.45354e-13,
+            -2.791376e-13
+          ],
+          "gap_min_mm": 0.01,
+          "gap_max_mm": 0.01,
+          "penetration_mean_mm": -0.01,
+          "relative_balance": 5.739306000383322e-16
+        },
+        {
+          "time": 3.0,
+          "bottom_reaction_N": [
+            3.154416e-13,
+            8.801732e-14,
+            546.6729
+          ],
+          "top_reaction_N": [
+            2.284985e-13,
+            2.436835e-13,
+            -546.6729
+          ],
+          "gap_min_mm": -5.467000000000319e-06,
+          "gap_max_mm": -5.467000000000319e-06,
+          "penetration_mean_mm": 5.467000000000319e-06,
+          "relative_balance": 1.156971396457625e-15
+        }
+      ],
+      "gates": {
+        "compression_reaction": true,
+        "opened_force": true,
+        "positive_open_gap": true,
+        "force_balance": true,
+        "printed_gap_agreement": true,
+        "penalty_law": true,
+        "reclosure": true
+      },
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "gap_definition": "deformed upper bottom-surface z minus lower top-surface z; positive means separated",
+  "undefined_open_contact_statistics": "Solver prints NaN contact centroids/normals when active contact area is zero; these are not used as physical reactions.",
+  "robot_joint_verified": false
+}

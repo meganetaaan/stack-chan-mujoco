@@ -1,0 +1,12 @@
+{
+  "scope": "Resolve envelope flags against manufacturer common STEP, not 5V qualification.",
+  "criteria": {
+    "maximum_overlap_mm3": 0.01
+  },
+  "stop": "Evaluate exactly the16 flagged envelope/hardware pairs; do not change geometry or criteria.",
+  "limits": [
+    "Generic STEP differs from 5V drawing in component height",
+    "Nominal fit only; threads modeled as envelopes",
+    "No tolerance/PCB deflection/thermal validation"
+  ]
+}

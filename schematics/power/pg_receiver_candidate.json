@@ -1,0 +1,71 @@
+{
+  "part": "TPS3700DDCR",
+  "role": "PG receiver only; separate from brake and battery detectors",
+  "status": "conditional_candidate_integrated_in_revG",
+  "pins": {
+    "1": "PG_CONDITIONED_OD",
+    "2": "GND",
+    "3": "PG_DIVIDED",
+    "4": "GND",
+    "5": "LOGIC3V3",
+    "6": "NC"
+  },
+  "passives": [
+    {
+      "name": "R_PG",
+      "value_ohm": 150000,
+      "from": "LOGIC3V3",
+      "to": "MAIN_EFUSE_PG"
+    },
+    {
+      "name": "R_TOP",
+      "value_ohm": 1000000,
+      "from": "MAIN_EFUSE_PG",
+      "to": "PG_DIVIDED"
+    },
+    {
+      "name": "R_BOTTOM",
+      "value_ohm": 330000,
+      "from": "PG_DIVIDED",
+      "to": "GND"
+    },
+    {
+      "name": "R_OUT",
+      "value_ohm": 10000,
+      "from": "LOGIC3V3",
+      "to": "PG_CONDITIONED_OD"
+    },
+    {
+      "name": "C_LOCAL",
+      "value_F": 1e-07,
+      "from": "LOGIC3V3",
+      "to": "GND"
+    }
+  ],
+  "resistor_comparison_total_tolerance": 0.01,
+  "passive_order_codes": null,
+  "source": "https://www.ti.com/lit/ds/symlink/tps3700.pdf",
+  "output_receiver": "74LVC1G17GV on common LOGIC3V3; output PG_CONDITIONED to unfinished startup sequencer",
+  "qualification_gates": [
+    "actual resistor total tolerance including temperature and board leakage",
+    "published input/leakage test conditions applicability to actual voltages",
+    "full-interval Schmitt threshold applicability and downstream sequencer loading",
+    "output invalid for up to 450 us after VDD exceeds 1.8 V; independent inhibition required",
+    "below POR output indeterminate; no unpowered default-off claim",
+    "PG stuck-high/open wire faults not covered",
+    "propagation and RC delays versus selected startup/stop timing"
+  ],
+  "evidence": "validation/pg_receiver_budget_v1/README_ja.md",
+  "manufacturing_release": false,
+  "buffer": {
+    "part": "74LVC1G17GV",
+    "pins": {
+      "1": null,
+      "2": "PG_CONDITIONED_OD",
+      "3": "GND",
+      "4": "PG_CONDITIONED",
+      "5": "LOGIC3V3"
+    },
+    "source": "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf"
+  }
+}

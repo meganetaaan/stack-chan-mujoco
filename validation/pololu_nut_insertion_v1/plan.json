@@ -1,0 +1,8 @@
+{
+  "question": "Can each ideal hex nut enter its bracket pocket from the nearest outer row side, then rise into its bearing seat?",
+  "motion": {"translation_y_mm": 10.0, "sliding_bottom_z_mm": 95.2, "seated_bottom_z_mm": 95.3, "direction": "Lower-Y row approaches from -Y; upper-Y row from +Y"},
+  "criteria": {"maximum_overlap_mm3": 0.01, "minimum_sliding_gap_to_bracket_mm": 0.05, "minimum_gap_to_other_parts_mm": 0.5},
+  "criteria_origin": "0.05mm is an engineering nominal assembly-fit screen, not the 0.5mm free-part clearance and not guaranteed FDM capability; seated bearing contact is intended",
+  "stop": "One continuous translation then seating sweep per nut; no path search. Report tolerance requirements separately from nominal passage.",
+  "limits": ["Screws absent during insertion; they must be introduced afterward", "No hands/tweezers, print tolerances, burrs, friction, nut chamfers or tilted insertion", "No free-standing nut retention before screw engagement", "Does not validate installation of assembled module into robot"]
+}

@@ -1,0 +1,112 @@
+{
+  "scope": "Screen a four-bolt yaw-support connection over all recorded load samples.\n\nThis does not prove plate strength, clamp retention, contact or fatigue. A\nprying multiplier is an explicit screening assumption, not an FE-derived factor.\n",
+  "config": {
+    "status": "inset mounting candidate; assembly and actual contact/load path verification incomplete",
+    "pattern_relative_mm": [
+      [
+        0,
+        -7,
+        -12
+      ],
+      [
+        0,
+        7,
+        -12
+      ],
+      [
+        0,
+        -7,
+        12
+      ],
+      [
+        0,
+        7,
+        12
+      ]
+    ],
+    "group_center_left_base_mm": [
+      -62.2,
+      26,
+      70
+    ],
+    "group_center_right_base_mm": [
+      -62.2,
+      -26,
+      70
+    ],
+    "bolt_axis": "base +X",
+    "bolt": {
+      "thread": "M3 x 0.5",
+      "property_class": "8.8",
+      "nominal_tensile_area_mm2": 5.03,
+      "proof_stress_MPa": 580,
+      "source": "https://www.bossard.com/global-en/-/media/bossard-group/website/documents/technical-resources/en/f-004-en.pdf",
+      "safety_factor": 2,
+      "nominal_length_mm": 16
+    },
+    "load_distribution": "equal-stiffness rigid bolt group, all 6 resultant components conserved",
+    "prying_multiplier_assumed": 2,
+    "tension_screen": "absolute axial force used conservatively; does not prove clamp retention",
+    "plastic_bearing_screen": {
+      "diameter_mm": 3,
+      "thickness_mm": 8,
+      "allowable_MPa": 5.6
+    },
+    "gap_to_existing_rear_cover_mm": 0.7,
+    "gap_treatment": "0.7 mm integral lands, radius 6 mm; cover and frame compliance not established",
+    "pending": [
+      "rear structural plate and body attachment",
+      "bolt length/washer/nut stack",
+      "preload and tightening procedure",
+      "contact and prying validation",
+      "tool access",
+      "cyclic/creep behavior"
+    ],
+    "group_plane_rationale": "rear integral-land interface; simplified equal-stiffness bolt group",
+    "nominal_stack_mm": 13.9,
+    "nominal_thread_beyond_nut_mm": 2.1
+  },
+  "config_sha256": "56e458ea9467b6e60706fa88fab26d992a73b8d6942209fa5be78e9c5b726988",
+  "source_sha256": {
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_backlash_0.0/trace.npz": "b563fa453447e5aa29d0c4de7303c7559aefc8f252134d23beb605726f810406",
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_backlash_0.017453292519943295/trace.npz": "684f0cf32c4ad2dab71a4f579f0955112230799baf2fc012e931e0338202c78d",
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_backward_swing/trace.npz": "83cec2a07c79def6a5ade1e9661a395ef497b5048fa20cdab4ec27b44efd75c3",
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_current_tau_0.001/trace.npz": "e2cd83dfb68182e5cfb053bed662b2f12a9eddbb5c1da2d764c01375c47be6a4",
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_current_tau_0.005/trace.npz": "22798c8e1a09f1f4495faa69d2e65e73e3f7b87ec9be6cc2e1cd65ef7514d5ce",
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_delay_0.005/trace.npz": "14fb1b86c12b16868cec35fa846a56365503acc6f478d3bf92157f750f71082d",
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_delay_0.02/trace.npz": "854da5778be98c44a5cb174f6c8ae9443a51470afe20031803e7ef6c1909a73d",
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_forward_swing/trace.npz": "a899bdbc0de4072bfcc2403f2220ce06e80edf560008da4cc08fa71d272ededa",
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_friction_0.5/trace.npz": "7a5721bd00457ef668555ad4c2ed5ecaf91a429a9e3b76999b54e7436acfaadb",
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_friction_1.5/trace.npz": "bfe4a5ae113cf4051c42623c681ede64a7e67a0cd5022016a1b1585e2049e08d",
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_mass_0.95/trace.npz": "bfd910a4acddc5a4f0065bcb3525a62b7c951c0cf57d7b006cdf0ea5efdbdb21",
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_mass_1.05/trace.npz": "b05b4586ba7cf9d5732e9f1a60ea984ae696126a693aeedb2b73660d75d5c759",
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_support_nominal/trace.npz": "1a1bf157102d924231516c31e9cb5082a12151816e92bf362608fb2bf28a854c",
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_swing_nominal/trace.npz": "086eb91f30530afc46534d14e1884b2e5e0d1c85f41a7c7b930f311fba3d2ded",
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_transfer_nominal/trace.npz": "58b662c9ae351f7c77c83688b8f0c0ad453c2b78029b454eab088a527a28e224",
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_voltage_3.7/trace.npz": "8c9cc81796519bd19920d1c27dea7ef035e95209bf8c47d2f247ca2400bf7dab",
+    "validation/prototype_epic4_v1/actuator_suite_v2/left_voltage_6.0/trace.npz": "1bf72a7a3b660c836790e54b879ef4ab3348ead773113a6c93369b441f89d9b9",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_backlash_0.0/trace.npz": "a79f59e5ac8d6be58a3bdfdfbdb1ed87decc19082529ac10592033ee1cda713d",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_backlash_0.017453292519943295/trace.npz": "a0c204da5db7b37be72457c31cd6c65704979d395e4115029798e81c152d661a",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_backward_swing/trace.npz": "ec3ba42ea74da758ee31a6c73c47e341550fce77b840f56c5170e7111942b44b",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_current_tau_0.001/trace.npz": "804fb4694fc3f4c76b58a8ecb09230dfa4c1d7b8cb18b0f4ce81875b6670f32f",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_current_tau_0.005/trace.npz": "d1d98fde24a29aa035ae87143a20d96febcf887da3fae3caf5df94fad6378498",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_delay_0.005/trace.npz": "f56592332eaf91877bbd4e8939d825f168d36bf65ffec8ef9c9e5b799284d833",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_delay_0.02/trace.npz": "0822c7d50eea74041285813affc9d51312d52e181646eeafa091a3c8d1dbcd75",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_forward_swing/trace.npz": "a14ff664ad20a4c78f674a59ce7284f4b8fd52ebb2abdea6aa84fdd79d1963bb",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_friction_0.5/trace.npz": "fc6d9ef9bec72497df5bdf73917bb7cb60fbd6a28c3be0b664276cabe9630a10",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_friction_1.5/trace.npz": "849d6f2ae06a396a5c37452b2c02eaafa189f5d6763a32b899a82931335701a3",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_mass_0.95/trace.npz": "7e4709da9e855b4c66a6b241dfe0bd2300b55ceff64bb3be630e3bfa51302d35",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_mass_1.05/trace.npz": "8742ef12c77c8f7872054c443e7b5d7403ea288cfbe87ab5f404c51b8e1a9df4",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_support_nominal/trace.npz": "07ded6416b19d525e4aa1a0956b23229e380bbb050ec9127ecae0953dbd2310d",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_swing_nominal/trace.npz": "9ffabb5764978d751c558a988d7e1d90ddf60a839fda97df4e2605675d0f974c",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_transfer_nominal/trace.npz": "923e447a295bb753b958ee9b3d070809914b5cd2650df47982dc1f68334ab39d",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_voltage_3.7/trace.npz": "288889c92063c16ec8f1ca95da4f47d36e8d11bb0c695f378bee80e088acc856",
+    "validation/prototype_epic4_v1/actuator_suite_v2/right_voltage_6.0/trace.npz": "3043a02f1926d420eba5856881e4e745c79c69b7c63164091da9d115888c812d",
+    "validation/prototype_epic4_v1/actuator_fullbody_load_left_v1/trace.npz": "9c4907b6a9b2439f5ca86cce73f32895f634534c34fb6e3dc7f0edecd2efdc19",
+    "validation/prototype_epic4_v1/actuator_fullbody_load_right_v1/trace.npz": "476c5748e833fbee6226b92f3498da8581ebec770425ba713b8512912be28ec9"
+  },
+  "criteria": {
+    "bolt_equivalent_stress_MPa": 290.0,
+    "plastic_bearing_MPa": 5.6
+  }
+}

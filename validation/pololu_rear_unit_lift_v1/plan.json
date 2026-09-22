@@ -1,0 +1,11 @@
+{
+ "question":"Can the existing assembled unit be lifted6mm outside the body, inserted, then lowered without reducing clearance criteria?",
+ "waypoints_mm":[[-70,0,0],[-70,0,6],[0,0,6],[0,0,0]],
+ "lift_rationale":"Bracket bottom94 becomes100, above existing screw tips98; bracket top119 becomes125, below body inner roof126.2. These are only initial bounds, not a pass claim.",
+ "criteria":{"minimum_unintended_gap_mm":0.5,"cad_numerical_allowance_mm":0.000001},
+ "minimum_interval_mm":0.5,
+ "proof":"Swept AABB subset bound first; otherwise exact shape distance at interval midpoint minus half translational interval length (1-Lipschitz bound). Reject sampled clearance failure; unresolved terminal intervals are not passes.",
+ "intended_contact":"Rear plate/body_shroud/yaw supports/backing plates may approach or slide along the rear contact plane. Prove nonpenetration by swept X halfspace separation; do not claim0.5mm at mating faces.",
+ "stop":"One lift height and route; no search. Complete segment certification, stop route on any nonpass segment.",
+ "limits":["Same39 fixed and45 moving components as straight insertion test", "Existing rear bolts/washers removed; temporary support required but not modeled", "No hands, wires, fixtures, tolerances, elastic deformation or gravity", "Module envelopes are conservative geometric reservations only", "Nominal geometric route proof is not production assembly qualification"]
+}

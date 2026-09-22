@@ -1,0 +1,101 @@
+{
+  "status": "Manufacturer-designated screw family identified; case mounting geometry and retention not released",
+  "servo": "ROBOTIS XL330-M288-T",
+  "source": "https://en.robotis.com/shop_en/item.php?it_id=902-0163-000",
+  "checked_date": "2026-09-21",
+  "manufacturer_package": {
+    "frame_screw": {
+      "designation": "PHS M2x8 TAP",
+      "included_per_servo": 10,
+      "nominal_length_mm": 8
+    },
+    "horn_screw": {
+      "designation": "PHS M2x6 TAP",
+      "included_per_servo": 6,
+      "nominal_length_mm": 6
+    },
+    "idler": "Idler and cap are included in FPX330-H101 4PCS Set, not standalone"
+  },
+  "design_decisions": [
+    "Use the manufacturer-designated frame screw as the first case mounting candidate",
+    "Do not substitute a generic M2x0.4 machine screw based on the M2 label",
+    "Do not reuse internal PHS_1_7X20_5_DC10 CAD screws as external frame fasteners",
+    "Keep rear-idler support as a separate structural option; current shelf clashes with that assembly"
+  ],
+  "selected_frame_screws_per_yaw_servo": null,
+  "mounting_hole_coordinates_mm": {
+    "status": "Drawing-derived candidate mapped to existing yaw pose; verify individual CAD bore axes before drilling",
+    "left": [
+      [
+        -27.5,
+        18,
+        88
+      ],
+      [
+        -27.5,
+        34,
+        88
+      ],
+      [
+        2.5,
+        18,
+        88
+      ],
+      [
+        2.5,
+        34,
+        88
+      ]
+    ],
+    "right": [
+      [
+        -27.5,
+        -34,
+        88
+      ],
+      [
+        -27.5,
+        -18,
+        88
+      ],
+      [
+        2.5,
+        -34,
+        88
+      ],
+      [
+        2.5,
+        -18,
+        88
+      ]
+    ],
+    "insertion_axis": [
+      0,
+      0,
+      -1
+    ]
+  },
+  "manufacturer_insertion_depth_limits_mm": null,
+  "tightening_torque_Nm": null,
+  "screw_pullout_allowable_N": null,
+  "pending": [
+    "Match frame attachment faces and holes to dimensioned manufacturer drawing",
+    "Determine actual bracket thickness and screw insertion depth, including tolerances",
+    "Check driver access after support is fastened",
+    "Define load sharing between seated case and fastening holes",
+    "Validate stripping, pullout, creep and assembly-cycle limits before load-bearing release"
+  ],
+  "manufacturing_release": false,
+  "reference_drawing": {
+    "path": "validation/x330_mount_drawing_v1/XL_XC_330.pdf",
+    "date": "28-May-20",
+    "status": "FOR REFERENCE ONLY",
+    "case_pattern_mm": [
+      16,
+      30
+    ],
+    "front_detail_A_dimension_mm": 3.5,
+    "rear_detail_B_dimension_mm": 4.5,
+    "interpretation": "Section dimensions, not declared allowable screw insertion depth; do not use as strength ratings"
+  }
+}

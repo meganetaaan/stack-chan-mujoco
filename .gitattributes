@@ -1,3 +1,68 @@
 # Preserve raw evidence bytes: SHA-256 records include CSV line endings.
 validation/**/*.csv -text whitespace=cr-at-eol
 policies/**/*.monitor.csv -text whitespace=cr-at-eol
+# ngspice wrdata includes significant-for-provenance formatting spaces.
+validation/engineering_setup_v1/rc.dat -text -whitespace
+# Generated CAD/mesh evidence is checked by hashes and numerical readers.
+validation/yaw_support_development_v1/**/*.step -text -diff -whitespace
+validation/yaw_support_development_v1/**/*.msh -text -diff -whitespace
+validation/yaw_connection_development_v1/**/*.step -text -diff -whitespace
+
+validation/yaw_load_bounds_development_v1/**/*.msh -text -diff -whitespace
+
+validation/yaw_back_reinforcement_development_v1/**/*.step -text -diff -whitespace
+validation/yaw_back_reinforcement_development_v1/**/*.msh -text -diff -whitespace
+
+validation/reinforced_all_loads_development_v1/**/*.step -text -diff -whitespace
+validation/reinforced_all_loads_development_v1/**/*.msh -text -diff -whitespace
+
+validation/inset_yaw_assembly_development_v1/**/*.step -text -diff -whitespace
+validation/inset_yaw_assembly_development_v1/**/*.msh -text -diff -whitespace
+
+validation/back_cover_development_v1/**/*.step -text -diff -whitespace
+validation/back_cover_development_v1/**/*.msh -text -diff -whitespace
+validation/back_cover_development_v1/**/*.dxf -text -diff -whitespace
+
+validation/backplate_convergence_development_v1/**/*.msh -text -diff -whitespace
+
+validation/backplate_patch_development_v1/**/*.msh -text -diff -whitespace
+validation/backplate_patch_development_v1/**/*.brep -text -diff -whitespace
+
+# Preserve native CalculiX output formatting.
+validation/contact_solver_development_v1/**/*.frd -text -whitespace
+validation/contact_solver_development_v1/**/*.dat -text -whitespace
+validation/contact_solver_development_v1/**/*.sta -text -whitespace
+validation/contact_solver_development_v1/**/*.cvg -text -whitespace
+validation/contact_solver_development_v1/**/*.log -text -whitespace
+validation/contact_solver_development_v1/**/*.12d -text -whitespace
+
+validation/rear_joint_assembly_development_v1/**/*.step -text -diff -whitespace
+
+validation/captive_rear_nuts_development_v1/**/*.step -text -diff -whitespace
+
+validation/nut_loading_jig_development_v1/**/*.step -text -diff -whitespace
+
+validation/jig_stiffness_embedded_development_v1/**/*.step -text -diff -whitespace
+validation/jig_stiffness_embedded_development_v1/**/*.msh -text -diff -whitespace
+
+validation/rear_contact_geometry_development_v1/**/*.step -text -diff -whitespace
+
+validation/rear_contact_mesh_development_v1/**/*.msh -text -diff -whitespace
+validation/rear_contact_mesh_development_v1/**/*.brep -text -diff -whitespace
+
+validation/rear_contact_assembly_mesh_development_v1/**/*.msh -text -diff -whitespace
+validation/rear_contact_assembly_mesh_development_v1/**/*.brep -text -diff -whitespace
+
+validation/rear_contact_probe_development_v1/**/*.cvg -text -whitespace
+validation/rear_contact_probe_development_v1/**/*.sta -text -whitespace
+validation/rear_contact_probe_development_v1/**/*.log -text -whitespace
+
+validation/coupled_power_ldo_development_v1/**/*.log -text -whitespace
+
+validation/full_trace_power_development_v1/**/*.log -text -whitespace
+
+validation/x330_assembly_reference_v1/LICENSE -text
+
+validation/x330_manufacturer_cad_v1/XL_XC_330.stp -text -diff -whitespace
+
+validation/yaw_oem_frame_review_v1/fpx330-s101.stp -text

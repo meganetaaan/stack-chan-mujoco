@@ -1,0 +1,193 @@
+{
+  "method": "Union of all positions of untranslated-orientation box is exact rectangular prism; continuous path, not sampled frames",
+  "source_hashes": {
+    "validation/rc_battery_envelope_v1/report.json": "0ee6a5fd0f65a547515857634f0387b1f501c7af228582105b10eb785791be6a",
+    "board/mechanical/prototype/yaw_support_candidate/revA/yaw_support_candidate.step": "519382141db1040e813441babe6fa07309a2e03d24ed6e363ce9435e10975934",
+    "board/mechanical/prototype/rc_battery_tray_revA/tray.step": "9067d70198488bd58d241678d8f627d245780d1da90cccf04ca7c875d2c3fb9d",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/Tab5.step": "bc4f282fb78ac58e92fb8d285a9dbfc7935f2d268dff3be77e88dda248214376",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/dedicated_5V_converter.step": "f261e050a36deb6c57261b60a36464b2dbd272658b37cd956b4080596081443a",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/TTL_interface.step": "794de1700aeede7d532a71870434be0b163ab272a86df6ccb92f675f903760c4",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/left_yaw_motor_case.step": "a82aabd631e3af8414ffddfe3e576e7186486cf85e2ebf9f848fd15f766c5d76",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/cad/right_yaw_motor_case.step": "819ae1ed7b2d831e63622910c40e03a010744a411be503e253caf2344d8834ce",
+    "validation/yaw_tool_access_v1/body_shroud.step": "4e76955b352779a48d35f0cb0f95999132b8da97cb3a9d93243b34221fc68aae"
+  },
+  "rows": [
+    {
+      "direction": "X-",
+      "travel_mm": 109.0,
+      "swept_size_mm": [
+        131.0,
+        60,
+        30
+      ],
+      "swept_center_mm": [
+        -25.499999999999996,
+        1.3933175874453181e-15,
+        80.0
+      ],
+      "blocking_groups": [
+        {
+          "part": "yaw_assembly",
+          "overlap_mm3": 33322.006181268815
+        },
+        {
+          "part": "new_tray",
+          "overlap_mm3": 720.0000000000023
+        },
+        {
+          "part": "dedicated_5V_converter",
+          "overlap_mm3": 7772.137166941184
+        },
+        {
+          "part": "left_yaw_motor_case",
+          "overlap_mm3": 10948.0
+        },
+        {
+          "part": "right_yaw_motor_case",
+          "overlap_mm3": 10948.0
+        }
+      ]
+    },
+    {
+      "direction": "X+",
+      "travel_mm": 51.0,
+      "swept_size_mm": [
+        73.0,
+        60,
+        30
+      ],
+      "swept_center_mm": [
+        54.5,
+        1.3933175874453181e-15,
+        80.0
+      ],
+      "blocking_groups": [
+        {
+          "part": "new_tray",
+          "overlap_mm3": 720.0
+        },
+        {
+          "part": "Tab5",
+          "overlap_mm3": 21060.000000000004
+        }
+      ]
+    },
+    {
+      "direction": "Y-",
+      "travel_mm": 99.0,
+      "swept_size_mm": [
+        22,
+        159.0,
+        30
+      ],
+      "swept_center_mm": [
+        29.000000000000004,
+        -49.5,
+        80.0
+      ],
+      "blocking_groups": [
+        {
+          "part": "yaw_assembly",
+          "overlap_mm3": 1187.999999999998
+        },
+        {
+          "part": "new_tray",
+          "overlap_mm3": 276.0000000000001
+        },
+        {
+          "part": "body_shroud",
+          "overlap_mm3": 1187.999999999998
+        }
+      ]
+    },
+    {
+      "direction": "Y+",
+      "travel_mm": 99.0,
+      "swept_size_mm": [
+        22,
+        159.0,
+        30
+      ],
+      "swept_center_mm": [
+        29.000000000000004,
+        49.5,
+        80.0
+      ],
+      "blocking_groups": [
+        {
+          "part": "yaw_assembly",
+          "overlap_mm3": 1187.9999999999982
+        },
+        {
+          "part": "new_tray",
+          "overlap_mm3": 276.0000000000009
+        },
+        {
+          "part": "body_shroud",
+          "overlap_mm3": 1187.9999999999982
+        }
+      ]
+    },
+    {
+      "direction": "Z-",
+      "travel_mm": 100.0,
+      "swept_size_mm": [
+        22,
+        60,
+        130.0
+      ],
+      "swept_center_mm": [
+        29.000000000000004,
+        1.3933175874453181e-15,
+        30.0
+      ],
+      "blocking_groups": [
+        {
+          "part": "yaw_assembly",
+          "overlap_mm3": 1701.426681864259
+        },
+        {
+          "part": "new_tray",
+          "overlap_mm3": 1980.0
+        },
+        {
+          "part": "body_shroud",
+          "overlap_mm3": 1701.426681864259
+        }
+      ]
+    },
+    {
+      "direction": "Z+",
+      "travel_mm": 68.0,
+      "swept_size_mm": [
+        22,
+        60,
+        98.0
+      ],
+      "swept_center_mm": [
+        29.000000000000004,
+        1.3933175874453181e-15,
+        114.0
+      ],
+      "blocking_groups": [
+        {
+          "part": "yaw_assembly",
+          "overlap_mm3": 2375.999999999996
+        },
+        {
+          "part": "body_shroud",
+          "overlap_mm3": 2375.999999999996
+        }
+      ]
+    }
+  ],
+  "strap_assumed_removed": true,
+  "cables_assumed_disconnected": true,
+  "physical_extraction_qualified": false,
+  "limitations": [
+    "Box omits leads, connector, swelling and handling space",
+    "No curved or rotated paths checked",
+    "Legacy converter and TTL geometry retained",
+    "Whole tray removal and housing disassembly not yet checked"
+  ]
+}

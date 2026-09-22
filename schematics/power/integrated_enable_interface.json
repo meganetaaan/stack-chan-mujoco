@@ -1,0 +1,28 @@
+{
+  "status": "electrical_interface_constraints_not_implemented",
+  "target": "TPS259813LRPW EN/UVLO pin 1, each leg",
+  "source": "https://www.ti.com/lit/ds/symlink/tps25981.pdf",
+  "source_revision": "SLVSGG6D",
+  "thresholds_V": {
+    "rising_min": 1.176,
+    "rising_max": 1.224,
+    "falling_min": 1.073,
+    "falling_max": 1.116,
+    "shutdown_falling_min": 0.45,
+    "shutdown_falling_max": 0.75,
+    "recommended_max": 5,
+    "absolute_max": 6.5
+  },
+  "pin_leakage_abs_max_A": 0.0000001,
+  "requirements": [
+    "Enable High must exceed rising_max; stop Low must be below falling_min over valid domains",
+    "Lowest shutdown current requires below shutdown_falling_min; distinct from output-off threshold",
+    "Do not reuse TPS259823 threshold calculations without recalculation",
+    "No bare connection from 3S battery to EN/UVLO",
+    "Independent stop circuit must remain within its own supply and pin ratings during regulator feedthrough",
+    "Zero-supply Ioff is not a model of buffer brownout",
+    "Voltage recovery cannot bypass manual rearm and startup qualification"
+  ],
+  "rejected_unqualified_mapping": "EFUSE_INPUT_5V of old U10/U11 directly to either REGULATOR_OUT without fault-voltage protection",
+  "manufacturing_release": false
+}

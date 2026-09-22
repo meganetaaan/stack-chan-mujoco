@@ -1,0 +1,21 @@
+{
+  "part_family": "TPS25947",
+  "decision": "not selected for present individual servo branch architecture",
+  "source": "https://www.ti.com/lit/ds/symlink/tps25947.pdf",
+  "revision": "SLVSFC9C May 2026",
+  "reasons": [
+    "Reverse current blocking isolates motor regeneration from upstream common absorber",
+    "Voltage drop budget not established at worst specified resistance",
+    "5.7 V nominal OVC variant does not guarantee <=6 V"
+  ],
+  "desk_screen": {
+    "evaluation_current_A": 1,
+    "resistance_ohm": 0.045,
+    "resistance_spec_condition": "maximum at IOUT=3 A over specified VIN and junction temperature; not a 1 A guarantee",
+    "existing_wire_contact_drop_V": 0.0665748031496063,
+    "combined_screen_drop_V": 0.1115748031496063,
+    "budget_V": 0.1
+  },
+  "new_simulation_required": false,
+  "protection_verified": false
+}

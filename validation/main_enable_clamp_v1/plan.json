@@ -1,0 +1,15 @@
+{
+  "question": "Can an independently powered supervisor override EN through a current-limiting series resistor?",
+  "acceptance": [
+    "Clamp current <=1mA under declared driver-high injection",
+    "EN <=0.4V while clamp asserted, below 0.59V shutdown threshold",
+    "Normal EN >=1.23V while clamp released"
+  ],
+  "assumptions": [
+    "5V eFuse input powers clamp supervisor and remains in its valid supply range",
+    "Driver-high injection limited to 3.393V; not a model of unspecified brownout output",
+    "4.7k series and 39k pulldown total +/-1% budget",
+    "Supervisor output asserted and settled; propagation transient excluded"
+  ],
+  "stop": "One static interval calculation; do not assert brownout or recovery qualification"
+}

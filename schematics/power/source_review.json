@@ -1,0 +1,88 @@
+{
+  "status": "source review and shortlist; architecture and BOM not finalized",
+  "tab5": {
+    "source": "https://docs.m5stack.com/en/core/Tab5",
+    "schematic_source": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1132/Tab5_Schematics_PDF.pdf",
+    "schematic_sha256": "13cf3fd9954d39aa198e57b1bb94ec56af7d49107c80a245acc5bd90ac8ea329",
+    "schematic_page_1based": 5,
+    "identified_components": [
+      "MP4560DN",
+      "IP2326",
+      "LPW5209AB5F",
+      "MT9700"
+    ],
+    "identified_nets": [
+      "SYS_INT5V",
+      "SYS_EXT5VO",
+      "EXT5V_EN",
+      "SYS_USB5V",
+      "SYS_BAT_2S"
+    ],
+    "external_servo_supply_approved": false,
+    "remaining": [
+      "Verify schematic topology and external-output current-limit tolerances from component data sheets.",
+      "Confirm the hardware revision represented by the drawing.",
+      "Do not infer a 12-servo current budget from the presence of a 5 V bus."
+    ]
+  },
+  "battery": {
+    "existing_review": "board/mechanical/design/battery_source_review.json",
+    "NP_F550_approved_for_servos": false,
+    "reason": "Existing primary battery specification has inconsistent capacity and current units; protection trip is not a continuous rating.",
+    "alternative_to_investigate": "2S pack with explicit discharge rating and off-robot balance charging",
+    "selection": null
+  },
+  "regulator_candidates": [
+    {
+      "part": "Pololu D24V90F5",
+      "source": "https://www.pololu.com/product/2866",
+      "output_V": 5.0,
+      "accuracy_fraction": 0.04,
+      "size_mm": [
+        40.6,
+        20.3,
+        7.6
+      ],
+      "mass_g": 4.8,
+      "mass_source": "https://www.pololu.com/product/2866/specs",
+      "input_max_V": 38,
+      "dropout_typical_range_V": [
+        0.5,
+        1.5
+      ],
+      "note": "Nominal 9 A is typical and thermally dependent; the page also lists 4-8 A. Do not use either as a guaranteed worst-case continuous rating."
+    },
+    {
+      "part": "Pololu D42V55F5",
+      "source": "https://www.pololu.com/product/5571",
+      "output_V": 5.0,
+      "accuracy_fraction": 0.03,
+      "size_mm": [
+        25.4,
+        25.4,
+        9.0
+      ],
+      "input_max_V": 60,
+      "typical_output_current_range_A": [
+        5,
+        8
+      ],
+      "features": [
+        "reverse input protection",
+        "enable",
+        "power good",
+        "soft start",
+        "overcurrent protection"
+      ],
+      "note": "Shortlisted for tighter output accuracy and smaller area. Read dropout/current graphs at the selected battery voltage before final selection."
+    }
+  ],
+  "remaining_power_design": [
+    "battery selection and capacity budget",
+    "Tab5 input path",
+    "external protection components and thresholds",
+    "regeneration absorber",
+    "wire and connector resistance/current ratings",
+    "startup/low-voltage/fault SPICE models and tests"
+  ]
+}

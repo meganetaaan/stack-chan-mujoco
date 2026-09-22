@@ -1,0 +1,21 @@
+{
+  "scope": "Imprint nominal nut and spacer bearing footprints on the cropped sole lock boss.",
+  "source_sha256": "99dba25fc9cd82cdab8762dc51382d890e33f49bfb274ee50a3c7d86bcd1eed6",
+  "mesh_mm": [
+    1,
+    0.7,
+    0.5
+  ],
+  "expected_area_mm2": {
+    "nut_bearing": 11.8452437156275,
+    "spacer_bearing": 8.411614329986671
+  },
+  "criteria": {
+    "volume_error_mm3": 1e-06,
+    "cad_area_error_mm2": 1e-06,
+    "mesh_area_relative_error": 0.01
+  },
+  "limitations": [
+    "Nominal footprints only; edge chamfers, contact opening and friction not modeled."
+  ]
+}

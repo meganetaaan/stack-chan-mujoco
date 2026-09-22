@@ -1,0 +1,200 @@
+{
+  "status": "document_crosscheck_not_hardware_verified",
+  "frame": "Component side viewed from +Z; terminal edge at Y=0, VIN left and VOUT right; X right, Y up, origin board lower-left. Matches DXF and STEP local XY. Bottom view keeping terminal edge down is horizontally mirrored: x_display=43.18-x, y_display=y.",
+  "orientation_evidence": "Top photograph 0J13901: asymmetric small crosshair at left edge above lower-left mount, terminal large-hole order VIN/GND/GND/VOUT after 90-degree counterclockwise rotation of pinout 0J13942. Bottom photograph 0J13903 silkscreen confirms reverse order and PG/PFM/GND/ENA/ENB.",
+  "ids_are_project_labels_not_manufacturer_pin_numbers": true,
+  "sources": [
+    {
+      "url": "https://a.pololu-files.com/picture/0J13942.1200.jpg",
+      "sha256": "ff1a6bf0f1ca2bf3ae3e5c0da07aea3ee4adf68c7fd0d6ac868d30bebfcc82f5"
+    },
+    {
+      "url": "https://a.pololu-files.com/picture/0J13901.1200.jpg",
+      "sha256": "581e39c391a35455e543bc5af08b40c19c6ab9efd79b666eb70ccdac1fa73779"
+    },
+    {
+      "url": "https://a.pololu-files.com/picture/0J13903.1200.jpg",
+      "sha256": "430dbdc2b29c3118c94b374e733d1b9974bf3325b7f0e4de2c43219c2c715257"
+    }
+  ],
+  "pads": [
+    {
+      "id": "VIN_1",
+      "signal": "VIN",
+      "local_xy_mm": [
+        7.62,
+        2.54
+      ],
+      "selected_power_connection": true
+    },
+    {
+      "id": "VIN_2",
+      "signal": "VIN",
+      "local_xy_mm": [
+        6.35,
+        5.08
+      ],
+      "selected_power_connection": false
+    },
+    {
+      "id": "VIN_3",
+      "signal": "VIN",
+      "local_xy_mm": [
+        8.89,
+        5.08
+      ],
+      "selected_power_connection": false
+    },
+    {
+      "id": "GND_1",
+      "signal": "GND",
+      "local_xy_mm": [
+        12.61999,
+        2.54
+      ],
+      "selected_power_connection": true
+    },
+    {
+      "id": "GND_2",
+      "signal": "GND",
+      "local_xy_mm": [
+        11.43,
+        5.08
+      ],
+      "selected_power_connection": false
+    },
+    {
+      "id": "GND_3",
+      "signal": "GND",
+      "local_xy_mm": [
+        13.97,
+        5.08
+      ],
+      "selected_power_connection": false
+    },
+    {
+      "id": "GND_4",
+      "signal": "GND",
+      "local_xy_mm": [
+        21.59,
+        2.54
+      ],
+      "selected_power_connection": false
+    },
+    {
+      "id": "GND_5",
+      "signal": "GND",
+      "local_xy_mm": [
+        24.13,
+        2.54
+      ],
+      "selected_power_connection": false
+    },
+    {
+      "id": "GND_6",
+      "signal": "GND",
+      "local_xy_mm": [
+        30.56001,
+        2.54
+      ],
+      "selected_power_connection": true
+    },
+    {
+      "id": "GND_7",
+      "signal": "GND",
+      "local_xy_mm": [
+        29.21,
+        5.08
+      ],
+      "selected_power_connection": false
+    },
+    {
+      "id": "GND_8",
+      "signal": "GND",
+      "local_xy_mm": [
+        31.75,
+        5.08
+      ],
+      "selected_power_connection": false
+    },
+    {
+      "id": "VOUT_1",
+      "signal": "VOUT",
+      "local_xy_mm": [
+        35.56,
+        2.54
+      ],
+      "selected_power_connection": true
+    },
+    {
+      "id": "VOUT_2",
+      "signal": "VOUT",
+      "local_xy_mm": [
+        34.29,
+        5.08
+      ],
+      "selected_power_connection": false
+    },
+    {
+      "id": "VOUT_3",
+      "signal": "VOUT",
+      "local_xy_mm": [
+        36.83,
+        5.08
+      ],
+      "selected_power_connection": false
+    },
+    {
+      "id": "PG_1",
+      "signal": "PG",
+      "local_xy_mm": [
+        16.51,
+        2.54
+      ],
+      "selected_power_connection": false
+    },
+    {
+      "id": "PFM_1",
+      "signal": "PFM",
+      "local_xy_mm": [
+        19.05,
+        2.54
+      ],
+      "selected_power_connection": false
+    },
+    {
+      "id": "ENA_1",
+      "signal": "ENA",
+      "local_xy_mm": [
+        26.67,
+        2.54
+      ],
+      "selected_power_connection": false
+    },
+    {
+      "id": "ENB_1",
+      "signal": "ENB",
+      "local_xy_mm": [
+        26.67,
+        5.08
+      ],
+      "selected_power_connection": false
+    }
+  ],
+  "unassigned_crosshairs": [
+    {
+      "local_xy_mm": [
+        1.143,
+        7.62
+      ],
+      "reason": "Not labelled in pinout; do not connect or assume ground."
+    }
+  ],
+  "limitations": [
+    "Image-to-DXF mapping manually reviewed, not an automated image recognition result.",
+    "Crosshair size is not a verified finished hole diameter.",
+    "Hardware continuity, board revision, wire gauge/termination/strain relief and clearance remain unverified.",
+    "Only four large power pads selected for wiring; duplicate small pads and optional control pads remain unwired.",
+    "Mapping does not qualify protection, current capacity, thermal performance or manufacturing release."
+  ]
+}

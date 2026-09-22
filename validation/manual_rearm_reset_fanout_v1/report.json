@@ -1,0 +1,39 @@
+{
+  "powered_known_leakage_comparison_A": 3.3e-06,
+  "powered_sourcing_input_load_comparison_A": 3e-06,
+  "reset_low_sink_current_upper_without_external_source_A": 3.727272727272727e-05,
+  "high_cases": [
+    {
+      "external_off_leakage_A": 0,
+      "high_voltage_lower_comparison_V": 2.8737
+    },
+    {
+      "external_off_leakage_A": 1e-06,
+      "high_voltage_lower_comparison_V": 2.7727
+    },
+    {
+      "external_off_leakage_A": 5e-06,
+      "high_voltage_lower_comparison_V": 2.3686999999999996
+    },
+    {
+      "external_off_leakage_A": 1e-05,
+      "high_voltage_lower_comparison_V": 1.8636999999999997
+    }
+  ],
+  "POR_necessary_budget": {
+    "supply_V": 0.8,
+    "pullup_current_conservative_A": 8.08080808080808e-06,
+    "total_sink_test_limit_A": 1.5e-05,
+    "remaining_all_other_source_current_A": 6.91919191919192e-06,
+    "note": "Do not subtract powered leakage numbers here: HCS devices below rated supply need separate evidence."
+  },
+  "full_reset_qualified": false,
+  "pending": [
+    "Actual pullup tolerance including temperature",
+    "HCS thresholds across actual supply interval",
+    "External fault sink leakage/current",
+    "Below-rated-supply input behavior",
+    "POR supply slew condition",
+    "Capacitance and fault pulse duration"
+  ]
+}

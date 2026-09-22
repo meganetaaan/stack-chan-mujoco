@@ -1,0 +1,124 @@
+{
+  "decision": "Select100nF ramp capacitor for detailed design; not startup/protection qualification",
+  "selected_part": {
+    "reference": "TAB5__C_DVDT",
+    "part": "GRM31C5C1H104JA01L",
+    "value_F": 1e-07,
+    "basis": "Reuse existing selected nominal100nF part; limits inherited from existing capacitor selection"
+  },
+  "current_limit_resistor": null,
+  "other_branch_mode_review": {
+    "SYS__U_LOGIC_PROTECT": {
+      "MODE": null,
+      "part": "TPS26601RHFR",
+      "R_ILIM_ohm": 118000,
+      "nominal_breaker_threshold_A": 0.1316949152542373,
+      "continuous_clamp": false
+    },
+    "U_CTRL_INPUT_LIMIT": {
+      "MODE_net": "CTRL_INPUT_MODE",
+      "MODE_resistor_part": "TNPW0805402KBEEA",
+      "response": "402kohm-to-RTN active-current-limit with latch; do not conflate with SYS/Tab5 MODE-open"
+    }
+  },
+  "verified_schematic_facts": {
+    "path": [
+      "J9 pin2 SYS_VIN",
+      "D7 DSK36",
+      "FU4 marked1A/30V resettable",
+      "U21 MP4560DN VIN"
+    ],
+    "return": "J9 pin1 GND",
+    "nominal_input_caps": [
+      {
+        "ref": "C101",
+        "F": 1e-05,
+        "V": 50
+      },
+      {
+        "ref": "C102",
+        "F": 1e-05,
+        "V": 50
+      },
+      {
+        "ref": "C85",
+        "F": 1e-07,
+        "V": 50
+      }
+    ],
+    "FU4_exact_part": null,
+    "FU4_trip_curve": null,
+    "connector": "J9 HEADER_2X5; not the supplied1.25mm6pin RS485 cable"
+  },
+  "mode_decision": {
+    "MODE": "open",
+    "response": "circuit breaker with latch-off, retained",
+    "nominal_ICB_formula": "12000/R_ILIM_ohm +0.03 A",
+    "not_a_continuous_current_clamp": true,
+    "active_limit_latch_alternative": "402kohm MODE-to-RTN; not adopted, fault energy and startup remain unqualified",
+    "MODE_direct_RTN_is_auto_retry": "Do not short MODE to RTN when latch-off is required"
+  },
+  "cap_only_nominal_comparison": {
+    "internal_nominal_F": 2.01e-05,
+    "external_nominal_F": 2e-07,
+    "combined_for_comparison_F": 2.0300000000000002e-05,
+    "eq1_slope_V_s": 1156.2,
+    "eq2_approx_slope_V_s": 1250.0,
+    "eq1_charging_current_A": 0.023470860000000003,
+    "eq2_approx_charging_current_A": 0.025375,
+    "ramp_rows": [
+      {
+        "vin_V": 9.0,
+        "eq1_ramp_s": 0.007784120394395433,
+        "eq2_approx_ramp_s": 0.0072
+      },
+      {
+        "vin_V": 12.6,
+        "eq1_ramp_s": 0.010897768552153606,
+        "eq2_approx_ramp_s": 0.01008
+      }
+    ],
+    "scope": "Diode conducting and capacitors following common ramp, no converter load; nominal illustration, not inrush bound"
+  },
+  "engineering_reason": "A populated slow-ramp component gives a controllable first design point; capacitive-only nominal demand is tens of mA. Do not enlarge capacitance repeatedly without assessing converter startup and eFuse heating.",
+  "stop_condition": "One schematic reconciliation and nominal ramp calculation; next solve startup load/thermal/harness envelope before R_ILIM selection",
+  "unresolved": [
+    "Actual board revision correspondence",
+    "Capacitance tolerance/bias/temperature and distributed input network",
+    "MP4560 startup/operating current, downstream startup and peak waveform",
+    "Connector/contact/harness current rating and FU4 part/trip/derating",
+    "ICB tolerance at chosen R, fast-trip overshoot and delay, 3S applicability",
+    "Output ramp min/max and startup power/energy/thermal behavior",
+    "OFF detection and residual energy; slow ramp does not implement5second restart rule"
+  ],
+  "sources": [
+    {
+      "url": "https://m5stack-doc.oss-cn-shenzhen.aliyuncs.com/1132/Tab5_Schematics_PDF.pdf",
+      "sha256": "13cf3fd9954d39aa198e57b1bb94ec56af7d49107c80a245acc5bd90ac8ea329",
+      "pages": [
+        4,
+        5
+      ]
+    },
+    {
+      "url": "https://www.ti.com/lit/ds/symlink/tps2660.pdf",
+      "sha256": "b781cbce51984715771bde540df2b36404b4fae4b41e27166c84c19b6598e1de",
+      "revision": "SLVSDG2G",
+      "pages": [
+        7,
+        8,
+        9,
+        21,
+        22,
+        23,
+        30,
+        31
+      ]
+    }
+  ],
+  "source_sha256": {
+    "schematics/power/protected_pack_system_candidate_v6/assembly.json": "26731a902f2924b14dc58e5fdf042fb6c18bbd25f404708793f5980aa9261e11"
+  },
+  "manufacturing_release": false,
+  "startup_verified": false
+}

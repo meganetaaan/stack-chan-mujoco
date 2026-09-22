@@ -1,0 +1,21 @@
+{
+  "status": "6061-T6 bare sheet candidate; purchased certificate and thickness tolerance not yet confirmed",
+  "young_MPa": 68300.0,
+  "poisson": 0.33,
+  "density_kg_m3": 2700,
+  "minimum_yield_reference_MPa": 241.3,
+  "allowable_MPa": 120.0,
+  "safety_factor": 2,
+  "nominal_thickness_mm": 2.0,
+  "sources": {
+    "modulus_density": "https://online.kaiseraluminum.com/depot/PublicProductInformation/Document/1015/Kaiser_Aluminum_6061_Sheet_Coil_and_Plate.pdf",
+    "yield_limit": "https://online.kaiseraluminum.com/depot/PublicProductInformation/Document/1010/Kaiser_Aluminum_Sheet_Plate.pdf"
+  },
+  "derivation": "Kaiser flat rolled products, PDF page 20, Table 7.2: bare 6061-T6 sheet 0.021-0.249 inch, minimum yield 35 ksi = 241.3 MPa. Allowable rounded down to 120 MPa after factor 2. Typical E=68.3 GPa and density=2.70 Mg/m3 from alloy data; nu=0.33 is an engineering assumption.",
+  "limitations": [
+    "E is a typical value, not a minimum material guarantee",
+    "No welding or heat treatment is assumed after procurement",
+    "Purchased sheet temper, material certificate, thickness and manufacturing tolerances remain to be specified",
+    "Isotropic linear elastic screen; fatigue, buckling and joints require separate verification"
+  ]
+}

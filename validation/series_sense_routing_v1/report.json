@@ -1,0 +1,28 @@
+{
+  "sources_sha256": {
+    "validation/series_sense_resistor_v1/report.json": "875f48d1b9a08a02a4bea567c583a822ca74f3623fd42303c3fc3935b2b51823",
+    "validation/series_clamp_sizing_v1/plan.json": "4106fda1c2962b2027db2f806b361a7121dda491aa4d752a0b1afed0a8316fbe"
+  },
+  "load_current_A": 4.917,
+  "sense_resistance_max_ohm": 0.0083627495,
+  "threshold_min_comparison_V": 0.045,
+  "remaining_positive_error_budget_V": 0.003880360708499994,
+  "equivalent_shared_resistance_budget_ohm": 0.0007891724035997548,
+  "acceptance_inequality": "I_load * R_shared + V_other_positive < remaining_positive_error_budget_V",
+  "interpretation": "Boundary at the existing maximum model load, not an allocated design margin. All omitted positive measurement errors share this budget.",
+  "layout_requirements": [
+    "Route SNS and OUT sensing from opposite shunt terminals as independent Kelvin traces.",
+    "Do not pick up sense voltage beyond a connector, via chain or common load-current trace.",
+    "Include shared pad copper and terminal pickup resistance, IC sense input current voltage drop, thermal EMF and residual ageing/solder shifts.",
+    "Record routing and resistor terminal pickup geometry before claiming the budget is met."
+  ],
+  "negative_error_scope": "Negative measurement error can increase maximum current and MOSFET stress; it must be bounded separately, not cancelled against positive errors.",
+  "unresolved": [
+    "Actual layout extraction",
+    "Other measurement errors",
+    "IC threshold applicability",
+    "Load-model coverage of real servo peaks"
+  ],
+  "routing_qualified": false,
+  "manufacturing_release": false
+}

@@ -1,0 +1,22 @@
+{
+  "source_sha256": {
+    "validation/dual_pololu_drill_v1/report.json": "dd5290eb6349bb595f06d018c16cfa651af324e0652ed40d42318c60bdc5c44a",
+    "schematics/power/dual_pololu_mechanical.json": "6fd9b8c9c11e0f67b77fcea0e286ec32c4c0672eff5557139db13a2d8f8e1965"
+  },
+  "nominal_diagonal_mm": 46.42644767802077,
+  "outward_tolerance_diagonal_mm": 46.70331726976147,
+  "spacing_increase_mm": 0.2768695917406987,
+  "available_pair_radial_accommodation_mm": 0.18000000000000016,
+  "necessary_condition_margin_mm": -0.09686959174069854,
+  "fixed_axes_screen_pass": false,
+  "largest_screw_envelope_diameter_for_this_case_mm": 1.9031304082593015,
+  "additional_independent_float_per_screw_at_least_mm": 0.04843479587034927,
+  "interpretation": "Nominal CAD non-overlap does not establish tolerance-robust assembly. This conditional counterexample does not prove actual hardware cannot be assembled.",
+  "unresolved": [
+    "drawing location tolerance interpretation",
+    "minimum finished PCB bore and actual screw major diameter bounds",
+    "nut pocket and spacer clearances allowing independent screw movement",
+    "print positioning error, slot geometry, retention and bearing area"
+  ],
+  "manufacturing_release": false
+}

@@ -1,0 +1,20 @@
+{
+  "question": "Can G030 PA11 drive U14 and leave clear asserted when GPIO is high impedance at a valid common rail?",
+  "scope": "Static valid common LOGIC3V3 only; not reset/startup behavior or unpowered pin qualification.",
+  "assumptions": [
+    "LOGIC3V3 3.207..3.393 V",
+    "Entire MCU product leakage 10 uA + 44*70 nA allocated to this node conservatively",
+    "AUP input leakage 0.5 uA at -40..85 C",
+    "Resistor total tolerance +/-1%; no board leakage included"
+  ],
+  "sources": {
+    "MCU": "https://www.st.com/resource/en/datasheet/stm32g030f6.pdf DS12991 Rev6 pp61,64",
+    "sink": "https://assets.nexperia.com/documents/data-sheet/74AUP1G06.pdf Rev12 pp5,6"
+  },
+  "criteria": [
+    "Default request >=2.0 V",
+    "Driven High >=2.0 V, driven Low <=0.9 V",
+    "Drive load <=6 mA at VDD>=2.7 V"
+  ],
+  "stop": "Existing 100k versus one 10k replacement proposal; no resistor sweep or transistor simulation."
+}

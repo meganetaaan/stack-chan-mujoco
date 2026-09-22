@@ -1,0 +1,19 @@
+{
+  "criteria_before_calculation": {
+    "minimum_release_ms_gt": 80,
+    "nominal_sense_release_must_be_below_assumed_rail_min": true
+  },
+  "assumed_logic_rail_min_V": 3.207,
+  "sense_rise_upper_conservative_V": 3.193951249999999,
+  "sense_margin_V": 0.01304875000000072,
+  "timing_margin_ms": 100,
+  "timing_condition_pass": true,
+  "DC_no_drop_condition_pass": true,
+  "not_proven": [
+    "transient rail dip",
+    "sense trace drop and noise",
+    "MR physical gates and timing",
+    "RESET RC and DFF edge requirements",
+    "independent stop and default off output"
+  ]
+}

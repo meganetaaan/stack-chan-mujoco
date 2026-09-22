@@ -1,0 +1,21 @@
+{
+  "scope": "Necessary fit and anti-rotation bounds; not a proof of complete joint fit.",
+  "stop": "Analytic necessary conditions only; do not enlarge pockets or choose a manufacturing tolerance to force a pass.",
+  "assumptions": [
+    "All listed bore/shaft/AF sizes nominal; tolerances unknown",
+    "PCB position +/-0.1mm Cartesian",
+    "Bracket bore and nut pocket concentric; no relative error",
+    "Rigid perpendicular screws and equal diagonal error",
+    "Print errors are sensitivity inputs, not claimed printer capability"
+  ],
+  "relations": [
+    "sqrt(2)*E <= rPCB+rBracket",
+    "E <= (W-AF)/2+rPCB/sqrt(2)",
+    "W < nut across-corners minimum is necessary to rule out free in-plane nut rotation in an open parallel-wall slot"
+  ],
+  "excluded": [
+    "Nut torque capacity, tilt, chamfers, insertion, retention",
+    "Bore/pocket size errors and eccentricity",
+    "Seat strength, preload and creep"
+  ]
+}

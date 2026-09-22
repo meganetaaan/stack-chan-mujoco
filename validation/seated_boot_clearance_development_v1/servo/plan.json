@@ -1,0 +1,18 @@
+{
+  "criterion_mm": 1.1,
+  "numerical_allowance_mm": 1e-05,
+  "bound": "Both fixed and X-rotating servo parts retain their X coordinates. Separation of X bounding intervals is a lower bound on 3D clearance. New boot is contained in old boot union added solids.",
+  "source_sha256": {
+    "validation/x330_manufacturer_cad_v1/XL_XC_330.stp": "e2f7b060801a1d6a21f23bca2554f29a402f7d73b8498cb201c9e6adf3139eb6",
+    "validation/boot_native_servo_bound_v1/report.json": "bef9e579db35ec0f218dd2cb50c3b5f3bdaf978fb77d3d955375d7f5af5cbe8b",
+    "validation/boot_native_servo_development_v1/plan.json": "a36f3f6ed4fe99d1ac897fb67ab756290f66924f6da9bcda3279ed9fbb637d80",
+    "validation/boot_seats_development_v1/left_boot_shell.step": "3adc773b06063117120199696b07e319a0c7d2444d2b0a9613526ef3197a6838",
+    "validation/boot_rear_relief_development_v1/cad/left_boot_shell.step": "f14dfb0fbf63c3ab92a978749838eab6afe199b3575ef7952cdeb94269d26799",
+    "validation/boot_seats_development_v1/right_boot_shell.step": "ca4cf0617e43c2698705db99b35d4bafec17db8672c50e7434b4595709816766",
+    "validation/boot_rear_relief_development_v1/cad/right_boot_shell.step": "c20b1f787b4460ba6d3d4931275bb5b65f83ef77b94f9ef5485149885c2c32af"
+  },
+  "limitations": [
+    "Inherits previous rigid motion and numerical assumptions.",
+    "No fastening hardware, deformation or manufacturing qualification."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "question": "Does a separate larger washer address the known eccentric outer-footprint shortfall without encroaching on adjacent shelf features?",
+  "stop": "One size candidate at eight nominal joints, plus eight offset directions per joint. No size sweep or strength simulation.",
+  "criteria": {
+    "nut_outer_margin_mm": 0,
+    "nominal_unintended_overlap_mm3": 0.01
+  },
+  "diagnostic": "Flat bearing annulus into shelf over a 0.01 mm slab. Missing area is reported, not discarded or declared a strength failure.",
+  "limits": [
+    "Nominal 2 mm shank and coaxial nut; actual thread radial play unknown",
+    "Directional footprint sampling is not a continuous tolerance proof",
+    "No preload/contact-pressure/material allowable or pull-through proof",
+    "No adoption into current assembly"
+  ]
+}

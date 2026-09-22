@@ -1,0 +1,34 @@
+{
+  "revision": "servo_power_rearm_integration_revM",
+  "assembly": "schematics/power/servo_power_rearm_integration_revM/assembly.json",
+  "status": "integrated_comparison_not_released",
+  "includes": [
+    "Dual TPS259813L stages",
+    "Manual rearm revJ with dual PG receivers",
+    "Dedicated STOP_AUX3V3 LDO and minimum load",
+    "Common EN with local pulldowns",
+    "Dual source voltage-window monitors",
+    "Dedicated monitor startup-delay supervisor; qualification incomplete",
+    "SN74AUP1T50 monitor-ready receiver with output pulldown; operating envelope conditional",
+    "Local default-low resistor on sequence enable request",
+    "13 monitor/default resistors assigned manufacturer ordering codes; nominal values unchanged",
+    "21 local 100nF capacitors with selected ordering candidate",
+    "Dedicated stop input 1k/BAS116/100k branch; conditional DC screen only",
+    "2.2uF WIMA film input candidate plus local 100nF C0G bypass",
+    "ITIMER pin10 intentionally open on both eFuses; external blanking capacitor not fitted"
+  ],
+  "manufacturing_release": false,
+  "electrical_qualification": false,
+  "missing": [
+    "Startup sequencer and monitor-valid timing",
+    "Converter and complete battery protection",
+    "Regeneration and discharge integration",
+    "Unselected passives and complete current/thermal budget",
+    "Integrated transient and fault verification"
+  ],
+  "candidate_bom": "schematics/power/servo_power_rearm_integration_revM/candidate_bom.csv",
+  "stop_output_capacitor_requirements": "schematics/power/stop_output_capacitor_requirements.json",
+  "itimer_selection": "schematics/power/itimer_selection.json",
+  "alternative_under_evaluation": "schematics/power/servo_power_rearm_integration_revN/assembly.json",
+  "alternative_evaluation_status": "revN not adopted as sole fast OV protection: validation/window_ovlo_timing_v1"
+}

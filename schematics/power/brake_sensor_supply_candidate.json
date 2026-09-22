@@ -1,0 +1,21 @@
+{
+  "status": "evaluation_candidate_not_released",
+  "regulator": "TPS70933DBVR",
+  "quantity": 2,
+  "input": "protected input upstream of main source disconnect; voltage compatibility pending",
+  "outputs": [
+    "SENSE3V3_A",
+    "SENSE3V3_B"
+  ],
+  "enable": "leave floating per datasheet; do not tie to VIN",
+  "loads": "one INA180A1 per domain; comparator and power-good load budget not finalized",
+  "forbidden_connections": [
+    "INA180 VS directly to servo bus",
+    "SENSE3V3 tied to upstream AUX3V3"
+  ],
+  "required_validity": "Use real supervisor and settling qualification; missing validity must inhibit source enable or request stop",
+  "capacitors": "unselected; effective values and stability must satisfy regulator specification",
+  "evidence": "validation/brake_sensor_startup_dependency_v1/README.md",
+  "manufacturing_release": false,
+  "historical_rejected_input": "SERVO_BUS downstream: cold-start dependency deadlock with monitor-valid-before-enable requirement"
+}

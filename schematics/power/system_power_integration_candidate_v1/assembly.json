@@ -1,0 +1,3585 @@
+{
+  "status": "partial_system_connection_candidate",
+  "source_sha256": {
+    "schematics/power/battery_protection_integration_candidate_v1/assembly.json": "81b554524ec82166c36094b8298dbce884f5bd7d29f968ce39b23d79f921aa6e",
+    "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json": "ae0e95e3e893f5ee0d438a0a508cf269cf967984d22b3f6dedecb0916e6c577d",
+    "schematics/power/logic_predischarge_inhibit_candidate.json": "6c1a2af4d04f3f393bd5211c139c78ff4d3b9ca4844122c98fa827cc7085a2db",
+    "schematics/power/aux_start_isolator_candidate.json": "debef7a7e54cbf58a93e67bda4266ee319685d56156a23d516c3139c901fb197",
+    "schematics/power/stop_feed_candidate.json": "e0bbf0dcd442b947220ebd4b7bacd5630063950d3883abe89c947db39c2eefd0",
+    "schematics/power/tab5_input_branch_candidate.json": "bef640baae2f34fbcbea9c8b5b30c848a9b8a897d14a69215eb69fff95338507",
+    "schematics/power/battery_inlet_candidate.json": "dde1ad9b62969dd73bad77851edf5102ee652450914a1e3b0188c65c327411dc"
+  },
+  "bindings_SYS_to_BAT": {
+    "GND": "PACK_RETURN",
+    "BATTERY_RAW": "PACK_POS_PROTECTED",
+    "DRIVE_BATTERY_PROTECTED": "PACK_POS_PROTECTED"
+  },
+  "system_overrides": [
+    "SYS__U_LOGIC_PROTECT pin14: floating to SYS__LOGIC_SHDN; default-low network added",
+    "SYS__R_STOP_INPUT 1kohm replaced by2x1.5kohm parallel"
+  ],
+  "connectivity_authority": "parts[].pins and interconnects only; nested metadata is inherited source-local context",
+  "parts": [
+    {
+      "reference": "BAT__U_CELL_PROTECT",
+      "part": "BQ7694202PFBR",
+      "pins": {
+        "16": "CELL0_FILTERED",
+        "15": "CELL1_FILTERED",
+        "14": "CELL2_FILTERED",
+        "13": "CELL2_FILTERED",
+        "12": "CELL2_FILTERED",
+        "10": "CELL2_FILTERED",
+        "8": "CELL2_FILTERED",
+        "6": "CELL2_FILTERED",
+        "4": "CELL2_FILTERED",
+        "2": "CELL2_FILTERED",
+        "48": "CELL3_FILTERED",
+        "17": "CELL_B_MINUS",
+        "43": "BQ76942_DSG_43",
+        "45": "BQ76942_CHG_45",
+        "41": "BQ_LD",
+        "42": "BQ_PACK",
+        "47": "BQ_BAT_HOLD",
+        "24": "BQ_REG18",
+        "46": "BQ_CP1",
+        "18": "BQ_SRP",
+        "20": "BQ_SRN",
+        "21": "BQ_TS_CELL",
+        "23": "BQ_TS_FET",
+        "30": "BQ_BOTHOFF_N",
+        "29": "CELL_B_MINUS",
+        "33": "CELL_B_MINUS",
+        "25": "BQ_ALERT_N",
+        "26": "BQ_SCL",
+        "27": "BQ_SDA",
+        "1": null,
+        "3": null,
+        "5": null,
+        "7": null,
+        "9": null,
+        "11": null,
+        "19": null,
+        "44": null,
+        "28": null,
+        "31": null,
+        "32": null,
+        "34": null,
+        "38": null,
+        "35": "BQ_CTRL3V3",
+        "36": "BQ_REGIN",
+        "37": "BQ_BREG"
+      },
+      "unresolved_pins": [
+        22,
+        39,
+        40
+      ],
+      "intentionally_unused_open_pins": [
+        28,
+        31,
+        32,
+        34,
+        38
+      ],
+      "REG0_REG1_required": true,
+      "REG2_disabled_required": true,
+      "source_reference": "U_CELL_PROTECT",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__Q_CHG",
+      "part": "CSD18540Q5BT",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "CELL_POS_FUSED",
+        "3": "CELL_POS_FUSED",
+        "4": "CHG_GATE",
+        "5": "PACK_FET_MID",
+        "6": "PACK_FET_MID",
+        "7": "PACK_FET_MID",
+        "8": "PACK_FET_MID",
+        "exposed_drain_pad": "PACK_FET_MID"
+      },
+      "source_reference": "Q_CHG",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__Q_DSG",
+      "part": "CSD18540Q5BT",
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "PACK_POS_PROTECTED",
+        "3": "PACK_POS_PROTECTED",
+        "4": "DSG_GATE",
+        "5": "PACK_FET_MID",
+        "6": "PACK_FET_MID",
+        "7": "PACK_FET_MID",
+        "8": "PACK_FET_MID",
+        "exposed_drain_pad": "PACK_FET_MID"
+      },
+      "source_reference": "Q_DSG",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_GATE_CHG",
+      "part": "TNPW06031K00BEEA",
+      "pins": {
+        "1": "BQ76942_CHG_45",
+        "2": "CHG_GATE"
+      },
+      "source_reference": "R_GATE_CHG",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_GS_CHG",
+      "part": "TNPW08051M00BEEA",
+      "pins": {
+        "1": "CHG_GATE",
+        "2": "CELL_POS_FUSED"
+      },
+      "source_reference": "R_GS_CHG",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__D_GS_CHG",
+      "part": "BZT52H-C16",
+      "pins": {
+        "1": "CHG_GATE",
+        "2": "CELL_POS_FUSED"
+      },
+      "ordering_suffix_pending": true,
+      "source_reference": "D_GS_CHG",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_GATE_DSG",
+      "part": "TNPW06031K00BEEA",
+      "pins": {
+        "1": "BQ76942_DSG_43",
+        "2": "DSG_GATE"
+      },
+      "source_reference": "R_GATE_DSG",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_GS_DSG",
+      "part": "TNPW08051M00BEEA",
+      "pins": {
+        "1": "DSG_GATE",
+        "2": "PACK_POS_PROTECTED"
+      },
+      "source_reference": "R_GS_DSG",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__D_GS_DSG",
+      "part": "BZT52H-C16",
+      "pins": {
+        "1": "DSG_GATE",
+        "2": "PACK_POS_PROTECTED"
+      },
+      "ordering_suffix_pending": true,
+      "source_reference": "D_GS_DSG",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_CELL_0",
+      "part": "TNPW060322R1BEEA",
+      "pins": {
+        "1": "CELL_B_MINUS",
+        "2": "CELL0_FILTERED"
+      },
+      "source_reference": "R_CELL_0",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_CELL_1",
+      "part": "TNPW060322R1BEEA",
+      "pins": {
+        "1": "CELL1_TAP",
+        "2": "CELL1_FILTERED"
+      },
+      "source_reference": "R_CELL_1",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_CELL_2",
+      "part": "TNPW060322R1BEEA",
+      "pins": {
+        "1": "CELL2_TAP",
+        "2": "CELL2_FILTERED"
+      },
+      "source_reference": "R_CELL_2",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_CELL_3",
+      "part": "TNPW060322R1BEEA",
+      "pins": {
+        "1": "CELL3_TAP",
+        "2": "CELL3_FILTERED"
+      },
+      "source_reference": "R_CELL_3",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F0_0",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL0_FILTERED",
+        "2": "FILTER_0_MID"
+      },
+      "source_reference": "C_F0_0",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F0_1",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL0_FILTERED",
+        "2": "FILTER_0_MID"
+      },
+      "source_reference": "C_F0_1",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F0_2",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL0_FILTERED",
+        "2": "FILTER_0_MID"
+      },
+      "source_reference": "C_F0_2",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F0_3",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_0_MID",
+        "2": "CELL_B_MINUS"
+      },
+      "source_reference": "C_F0_3",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F0_4",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_0_MID",
+        "2": "CELL_B_MINUS"
+      },
+      "source_reference": "C_F0_4",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F0_5",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_0_MID",
+        "2": "CELL_B_MINUS"
+      },
+      "source_reference": "C_F0_5",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F1_0",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL1_FILTERED",
+        "2": "FILTER_1_MID"
+      },
+      "source_reference": "C_F1_0",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F1_1",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL1_FILTERED",
+        "2": "FILTER_1_MID"
+      },
+      "source_reference": "C_F1_1",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F1_2",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL1_FILTERED",
+        "2": "FILTER_1_MID"
+      },
+      "source_reference": "C_F1_2",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F1_3",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_1_MID",
+        "2": "CELL0_FILTERED"
+      },
+      "source_reference": "C_F1_3",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F1_4",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_1_MID",
+        "2": "CELL0_FILTERED"
+      },
+      "source_reference": "C_F1_4",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F1_5",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_1_MID",
+        "2": "CELL0_FILTERED"
+      },
+      "source_reference": "C_F1_5",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F2_0",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL2_FILTERED",
+        "2": "FILTER_2_MID"
+      },
+      "source_reference": "C_F2_0",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F2_1",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL2_FILTERED",
+        "2": "FILTER_2_MID"
+      },
+      "source_reference": "C_F2_1",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F2_2",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL2_FILTERED",
+        "2": "FILTER_2_MID"
+      },
+      "source_reference": "C_F2_2",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F2_3",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_2_MID",
+        "2": "CELL1_FILTERED"
+      },
+      "source_reference": "C_F2_3",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F2_4",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_2_MID",
+        "2": "CELL1_FILTERED"
+      },
+      "source_reference": "C_F2_4",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F2_5",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_2_MID",
+        "2": "CELL1_FILTERED"
+      },
+      "source_reference": "C_F2_5",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F3_0",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL3_FILTERED",
+        "2": "FILTER_3_MID"
+      },
+      "source_reference": "C_F3_0",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F3_1",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL3_FILTERED",
+        "2": "FILTER_3_MID"
+      },
+      "source_reference": "C_F3_1",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F3_2",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "CELL3_FILTERED",
+        "2": "FILTER_3_MID"
+      },
+      "source_reference": "C_F3_2",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F3_3",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_3_MID",
+        "2": "CELL2_FILTERED"
+      },
+      "source_reference": "C_F3_3",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F3_4",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_3_MID",
+        "2": "CELL2_FILTERED"
+      },
+      "source_reference": "C_F3_4",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_F3_5",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "FILTER_3_MID",
+        "2": "CELL2_FILTERED"
+      },
+      "source_reference": "C_F3_5",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_LD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "BQ_LD"
+      },
+      "source_reference": "R_LD",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_PACK",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "BQ_PACK"
+      },
+      "source_reference": "R_PACK",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_BAT",
+      "part": "TNPW1206100RBEEA",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "BQ_BAT_DIODE_A"
+      },
+      "source_reference": "R_BAT",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__D_BAT",
+      "part": "BAS116",
+      "pins": {
+        "1": "BQ_BAT_DIODE_A",
+        "2": null,
+        "3": "BQ_BAT_HOLD"
+      },
+      "ordering_suffix_pending": true,
+      "source_reference": "D_BAT",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BAT",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_BAT_HOLD",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false,
+      "source_reference": "C_BAT",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_REG18_0",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_REG18",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false,
+      "source_reference": "C_REG18_0",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_REG18_1",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_REG18",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false,
+      "source_reference": "C_REG18_1",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_REG18_2",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_REG18",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false,
+      "source_reference": "C_REG18_2",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_CP1",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_CP1",
+        "2": "BQ_BAT_HOLD"
+      },
+      "effective_capacitance_qualified": false,
+      "source_reference": "C_CP1",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_SHUNT",
+      "part": "WSK25125L000FEA",
+      "pins": {
+        "I1": "CELL_B_MINUS",
+        "I2": "PACK_RETURN",
+        "E1": "SHUNT_CELL_SENSE",
+        "E2": "SHUNT_PACK_SENSE"
+      },
+      "pin_label_source": "Vishay 30108 Rev 11-Dec-2023 p3",
+      "footprint_pad_mapping_qualified": false,
+      "resistance_ohm": 0.005,
+      "tolerance_fraction": 0.01,
+      "component_tcr_ppm_per_K": 35,
+      "rated_power_W_at_70C": 1.0,
+      "kelvin_routing_required": true,
+      "thermal_qualified": false,
+      "source_reference": "R_SHUNT",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_SRP",
+      "part": "TNPW0603100RBEEA",
+      "pins": {
+        "1": "SHUNT_CELL_SENSE",
+        "2": "BQ_SRP"
+      },
+      "source_reference": "R_SRP",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_SRN",
+      "part": "TNPW0603100RBEEA",
+      "pins": {
+        "1": "SHUNT_PACK_SENSE",
+        "2": "BQ_SRN"
+      },
+      "source_reference": "R_SRN",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_CURRENT",
+      "part": "C1206C104J3GACAUTO",
+      "pins": {
+        "1": "BQ_SRP",
+        "2": "BQ_SRN"
+      },
+      "source_reference": "C_CURRENT",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__TH_CELL",
+      "part": "103AT-2",
+      "pins": {
+        "1": "BQ_TS_CELL",
+        "2": "CELL_B_MINUS"
+      },
+      "location_candidate": "battery exterior",
+      "mounting_qualified": false,
+      "protection_threshold_qualified": false,
+      "source_reference": "TH_CELL",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__TH_FET",
+      "part": "103AT-2",
+      "pins": {
+        "1": "BQ_TS_FET",
+        "2": "CELL_B_MINUS"
+      },
+      "location_candidate": "main protection FET region",
+      "mounting_qualified": false,
+      "protection_threshold_qualified": false,
+      "source_reference": "TH_FET",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_ALLOW_SER",
+      "part": "TNPW06031K00BEEA",
+      "pins": {
+        "1": "BQ_ALLOW_BMINUS",
+        "2": "BQ_BOTHOFF_N"
+      },
+      "source_reference": "R_ALLOW_SER",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_ALLOW_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_BOTHOFF_N",
+        "2": "CELL_B_MINUS"
+      },
+      "source_reference": "R_ALLOW_PD",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__U_REG0_LIMIT",
+      "part": "TPS26600RHFR",
+      "pins": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "4": null,
+        "5": null,
+        "6": null,
+        "7": null,
+        "8": "CELL_POS_FUSED",
+        "9": "CELL_POS_FUSED",
+        "10": "REG0_UVLO",
+        "11": null,
+        "12": "REG0_OVP",
+        "13": "REG0_MODE",
+        "14": null,
+        "15": "REG0_PROTECT_RTN",
+        "16": null,
+        "17": "CELL_B_MINUS",
+        "18": null,
+        "19": "REG0_ILIM",
+        "20": null,
+        "21": null,
+        "22": null,
+        "23": "BQ_REG0_LIMITED",
+        "24": "BQ_REG0_LIMITED",
+        "EP": "REG0_PROTECT_RTN"
+      },
+      "intentionally_unused_open_pins": [
+        14,
+        18,
+        20,
+        22
+      ],
+      "source_reference": "U_REG0_LIMIT",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_REG0_UV_TOP",
+      "part": "TNPW060340K2BEEA",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "REG0_UVLO"
+      },
+      "source_reference": "R_REG0_UV_TOP",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_REG0_UV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "REG0_UVLO",
+        "2": "REG0_PROTECT_RTN"
+      },
+      "source_reference": "R_REG0_UV_BOTTOM",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_REG0_OV_TOP",
+      "part": "TNPW0603124KBEEA",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "REG0_OVP"
+      },
+      "source_reference": "R_REG0_OV_TOP",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_REG0_OV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "REG0_OVP",
+        "2": "REG0_PROTECT_RTN"
+      },
+      "source_reference": "R_REG0_OV_BOTTOM",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_REG0_ILIM",
+      "part": "TNPW0603118KBEEA",
+      "pins": {
+        "1": "REG0_ILIM",
+        "2": "REG0_PROTECT_RTN"
+      },
+      "source_reference": "R_REG0_ILIM",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_REG0_PROTECT_IN_1",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "CELL_B_MINUS"
+      },
+      "source_reference": "C_REG0_PROTECT_IN_1",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_REG0_PROTECT_IN_2",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "CELL_B_MINUS"
+      },
+      "source_reference": "C_REG0_PROTECT_IN_2",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_REG0_PROTECT_OUT_1",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_REG0_LIMITED",
+        "2": "CELL_B_MINUS"
+      },
+      "source_reference": "C_REG0_PROTECT_OUT_1",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_REG0_PROTECT_OUT_2",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_REG0_LIMITED",
+        "2": "CELL_B_MINUS"
+      },
+      "source_reference": "C_REG0_PROTECT_OUT_2",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_REG0_MODE",
+      "part": "TNPW0805402KBEEA",
+      "pins": {
+        "1": "REG0_MODE",
+        "2": "REG0_PROTECT_RTN"
+      },
+      "source_reference": "R_REG0_MODE",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__D_REG0",
+      "part": "BAT46W-7-F",
+      "pins": {
+        "A": "BQ_REG0_LIMITED",
+        "K": "BQ_REG0_PRE_R"
+      },
+      "footprint_pad_mapping_qualified": false,
+      "source_reference": "D_REG0",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_REG0_0",
+      "part": "TNPW120644R2BEEA",
+      "pins": {
+        "1": "BQ_REG0_PRE_R",
+        "2": "BQ_REG0_COLLECTOR"
+      },
+      "source_reference": "R_REG0_0",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_REG0_1",
+      "part": "TNPW120644R2BEEA",
+      "pins": {
+        "1": "BQ_REG0_PRE_R",
+        "2": "BQ_REG0_COLLECTOR"
+      },
+      "source_reference": "R_REG0_1",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_REG0",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_REG0_COLLECTOR",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false,
+      "source_reference": "C_REG0",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__Q_REG0",
+      "part": "FCX495TA",
+      "pins": {
+        "B": "BQ_BREG",
+        "C": "BQ_REG0_COLLECTOR",
+        "E": "BQ_REGIN"
+      },
+      "footprint_pad_mapping_qualified": false,
+      "thermal_qualified": false,
+      "source_reference": "Q_REG0",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_REGIN",
+      "part": "C0603C223K4RACTU",
+      "pins": {
+        "1": "BQ_REGIN",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false,
+      "source_reference": "C_REGIN",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_REG1",
+      "part": "C1206C105K3RACTU",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "effective_capacitance_qualified": false,
+      "source_reference": "C_REG1",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_BQ_SCL",
+      "part": "TNPW06032K21BEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_SCL"
+      },
+      "source_reference": "R_BQ_SCL",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_BQ_SDA",
+      "part": "TNPW06032K21BEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_SDA"
+      },
+      "source_reference": "R_BQ_SDA",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_BQ_ALERT",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_ALERT_N"
+      },
+      "source_reference": "R_BQ_ALERT",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__U_BQ_HOST",
+      "part": "STM32G030F6P6",
+      "pins": {
+        "1": "BQ_SDA",
+        "2": null,
+        "3": null,
+        "4": "BQ_CTRL3V3",
+        "5": "CELL_B_MINUS",
+        "6": "BQ_HOST_NRST",
+        "7": "BQ_MAIN_REQUEST_RAW",
+        "8": "BQ_AUX_REQUEST_RAW",
+        "9": "BQ_ALERT_N",
+        "10": "BQ_ARM_EDGE",
+        "11": null,
+        "12": null,
+        "13": null,
+        "14": null,
+        "15": null,
+        "16": null,
+        "17": "BQ_HOST_HEARTBEAT",
+        "18": "BQ_HOST_SWDIO",
+        "19": "BQ_HOST_SWCLK",
+        "20": "BQ_SCL"
+      },
+      "package": "TSSOP20",
+      "role": "BQ-local configuration and startup coordinator; not independent fault cutoff",
+      "source_reference": "U_BQ_HOST",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_HOST_HF",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07,
+      "source_reference": "C_BQ_HOST_HF",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_HOST_BULK",
+      "part": "GRM31CR71H475KA12L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 4.7e-06,
+      "effective_capacitance_qualified": false,
+      "source_reference": "C_BQ_HOST_BULK",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_HOST_NRST",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_HOST_NRST",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07,
+      "source_reference": "C_BQ_HOST_NRST",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_BQ_HOST_NRST",
+      "part": "TNPW0603100KBEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_HOST_NRST"
+      },
+      "value_ohm": 100000,
+      "source_reference": "R_BQ_HOST_NRST",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_BQ_AUX_START_REQUEST_PD",
+      "part": "TNPW060347K5BEEA",
+      "pins": {
+        "1": "BQ_AUX_START_REQUEST",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 47500,
+      "source_reference": "R_BQ_AUX_START_REQUEST_PD",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_BQ_HOST_HEARTBEAT_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_HOST_HEARTBEAT",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000,
+      "source_reference": "R_BQ_HOST_HEARTBEAT_PD",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__U_BQ_HOST_SUP",
+      "part": "TPS3808G01DBVR",
+      "pins": {
+        "1": "BQ_HOST_NRST",
+        "2": "CELL_B_MINUS",
+        "3": "BQ_CTRL3V3",
+        "4": null,
+        "5": "BQ_HOST_SUP_SENSE",
+        "6": "BQ_CTRL3V3"
+      },
+      "source_reference": "U_BQ_HOST_SUP",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_BQ_HOST_SUP_TOP",
+      "part": "TNPW060357K6BEEA",
+      "value_ohm": 57600,
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_HOST_SUP_SENSE"
+      },
+      "source_reference": "R_BQ_HOST_SUP_TOP",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_BQ_HOST_SUP_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "BQ_HOST_SUP_SENSE",
+        "2": "CELL_B_MINUS"
+      },
+      "source_reference": "R_BQ_HOST_SUP_BOTTOM",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_HOST_SUP",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "source_reference": "C_BQ_HOST_SUP",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__U_BQ_WD",
+      "part": "TPS3431SDRBR",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_WD_CWD",
+        "3": "BQ_CTRL3V3",
+        "4": "CELL_B_MINUS",
+        "5": "BQ_CTRL3V3",
+        "6": "BQ_HOST_HEARTBEAT",
+        "7": "BQ_HOST_NRST",
+        "8": null,
+        "EP": "CELL_B_MINUS"
+      },
+      "source_reference": "U_BQ_WD",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_WD",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07,
+      "source_reference": "C_BQ_WD",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_BQ_WD_CWD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_WD_CWD"
+      },
+      "value_ohm": 10000,
+      "source_reference": "R_BQ_WD_CWD",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__U_BQ_RESET_BUFFER",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "BQ_HOST_NRST",
+        "3": "CELL_B_MINUS",
+        "4": "BQ_RESET_VALID_N",
+        "5": "BQ_CTRL3V3"
+      },
+      "source_reference": "U_BQ_RESET_BUFFER",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_RESET_BUFFER",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07,
+      "source_reference": "C_BQ_RESET_BUFFER",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__U_BQ_PERMIT_LATCH",
+      "part": "SN74LVC1G74DCTR",
+      "pins": {
+        "1": "BQ_ARM_EDGE",
+        "2": "BQ_CTRL3V3",
+        "3": null,
+        "4": "CELL_B_MINUS",
+        "5": "BQ_LATCH_PERMIT",
+        "6": "BQ_RESET_VALID_N",
+        "7": "BQ_CTRL3V3",
+        "8": "BQ_CTRL3V3"
+      },
+      "source_reference": "U_BQ_PERMIT_LATCH",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_PERMIT_LATCH",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07,
+      "source_reference": "C_BQ_PERMIT_LATCH",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__U_BQ_MAIN_GATE",
+      "part": "SN74LVC1G08DBVR",
+      "pins": {
+        "1": "BQ_MAIN_REQUEST_RAW",
+        "2": "BQ_LATCH_PERMIT",
+        "3": "CELL_B_MINUS",
+        "4": "BQ_ALLOW_BMINUS",
+        "5": "BQ_CTRL3V3"
+      },
+      "source_reference": "U_BQ_MAIN_GATE",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_MAIN_GATE",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07,
+      "source_reference": "C_BQ_MAIN_GATE",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__U_BQ_AUX_GATE",
+      "part": "SN74LVC1G08DBVR",
+      "pins": {
+        "1": "BQ_AUX_REQUEST_RAW",
+        "2": "BQ_LATCH_PERMIT",
+        "3": "CELL_B_MINUS",
+        "4": "BQ_AUX_START_REQUEST",
+        "5": "BQ_CTRL3V3"
+      },
+      "source_reference": "U_BQ_AUX_GATE",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__C_BQ_AUX_GATE",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07,
+      "source_reference": "C_BQ_AUX_GATE",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_MAIN_REQUEST_RAW_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_MAIN_REQUEST_RAW",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000,
+      "source_reference": "R_MAIN_REQUEST_RAW_PD",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_AUX_REQUEST_RAW_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_AUX_REQUEST_RAW",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000,
+      "source_reference": "R_AUX_REQUEST_RAW_PD",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "BAT__R_ARM_EDGE_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_ARM_EDGE",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000,
+      "source_reference": "R_ARM_EDGE_PD",
+      "source_assembly": "schematics/power/battery_protection_integration_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U1",
+      "part": "MAX6816EUS+T",
+      "pins": {
+        "1": "PACK_RETURN",
+        "2": "SYS__BUTTON_RAW",
+        "3": "SYS__BUTTON_RELEASED",
+        "4": "SYS__LOGIC3V3"
+      },
+      "source": "manual_button_candidate.json",
+      "source_reference": "U1",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U2",
+      "part": "SN74LVC1G04DBVR",
+      "pins": {
+        "1": null,
+        "2": "SYS__BUTTON_RELEASED",
+        "3": "PACK_RETURN",
+        "4": "SYS__PRESS",
+        "5": "SYS__LOGIC3V3"
+      },
+      "source": "manual_button_candidate.json",
+      "source_reference": "U2",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U3",
+      "part": "SN74HCS11PWR",
+      "pins": {
+        "1": "SYS__RESET_N",
+        "2": "SYS__RAW_RELEASED_CONDITIONED",
+        "3": "SYS__ENABLE_PERMISSION",
+        "4": "SYS__SEQUENCE_ENABLE_REQUEST",
+        "5": "SYS__RESET_N",
+        "6": "SYS__POWER_ENABLE_COMMAND",
+        "7": "PACK_RETURN",
+        "8": null,
+        "9": "PACK_RETURN",
+        "10": "PACK_RETURN",
+        "11": "PACK_RETURN",
+        "12": "SYS__RELEASE_CONDITION",
+        "13": "SYS__BUTTON_RELEASED",
+        "14": "SYS__LOGIC3V3"
+      },
+      "source": "manual_release_gate_candidate.json",
+      "source_reference": "U3",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U4",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "SYS__RELEASE_CONDITION",
+        "3": "PACK_RETURN",
+        "4": "SYS__RELEASE_MR",
+        "5": "SYS__LOGIC3V3"
+      },
+      "source": "manual_release_mr_buffer_candidate.json",
+      "source_reference": "U4",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U5",
+      "part": "TPS3808G33DBVR",
+      "pins": {
+        "1": "SYS__RELEASE_QUALIFIED",
+        "2": "PACK_RETURN",
+        "3": "SYS__RELEASE_MR",
+        "4": "SYS__TIMER_CT",
+        "5": "SYS__LOGIC3V3",
+        "6": "SYS__LOGIC3V3"
+      },
+      "source": "manual_release_timer_candidate.json",
+      "source_reference": "U5",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U6",
+      "part": "SN74HCS74PW",
+      "pins": {
+        "1": "SYS__RESET_N",
+        "2": "SYS__LOGIC3V3",
+        "3": "SYS__RELEASE_QUALIFIED",
+        "4": "SYS__LOGIC3V3",
+        "5": "SYS__ARMED",
+        "6": null,
+        "7": "PACK_RETURN",
+        "8": null,
+        "9": "SYS__ENABLE_PERMISSION",
+        "10": "SYS__LOGIC3V3",
+        "11": "SYS__PRESS",
+        "12": "SYS__ARMED",
+        "13": "SYS__RESET_N",
+        "14": "SYS__LOGIC3V3"
+      },
+      "source": "manual_rearm_latch_candidate.json",
+      "source_reference": "U6",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R1",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "SYS__TIMER_CT"
+      },
+      "source": null,
+      "source_reference": "R1",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R2",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "SYS__RELEASE_QUALIFIED"
+      },
+      "source": null,
+      "source_reference": "R2",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C1",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "C1",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C2",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "C2",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C3",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "C3",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C4",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "C4",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C5",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "C5",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C6",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "C6",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__SW1",
+      "part": "B3U-1000P",
+      "pins": {
+        "1": "SYS__BUTTON_RAW",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "source_reference": "SW1",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U7",
+      "part": "TPS3808G33DBVR",
+      "pins": {
+        "1": "SYS__RESET_N",
+        "2": "PACK_RETURN",
+        "3": "SYS__RAIL_HEALTH_N",
+        "4": "SYS__SUPERVISOR_CT",
+        "5": "SYS__LOGIC3V3",
+        "6": "SYS__LOGIC3V3"
+      },
+      "source": "manual_rearm_supervisor_candidate.json",
+      "source_reference": "U7",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R3",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "SYS__SUPERVISOR_CT"
+      },
+      "source": null,
+      "source_reference": "R3",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R4",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "SYS__RESET_N"
+      },
+      "source": null,
+      "source_reference": "R4",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C7",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "C7",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U8",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "SYS__POWER_ENABLE_COMMAND",
+        "3": "PACK_RETURN",
+        "4": "SYS__ENABLE_BUFFER_OUT",
+        "5": "SYS__LOGIC3V3"
+      },
+      "source": "main_enable_driver_candidate.json",
+      "source_reference": "U8",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R6",
+      "part": "220k pulldown; total +/-1% budget, part pending",
+      "pins": {
+        "1": "SYS__POWER_ENABLE_COMMAND",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "source_reference": "R6",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C8",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "C8",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R7",
+      "part": "4.7k series; total +/-1% budget, part pending",
+      "pins": {
+        "1": "SYS__ENABLE_BUFFER_OUT",
+        "2": "SYS__MAIN_EFUSE_EN"
+      },
+      "source": null,
+      "source_reference": "R7",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U9",
+      "part": "TPS3808G33DBVR",
+      "pins": {
+        "1": "SYS__RAIL_HEALTH_N",
+        "2": "PACK_RETURN",
+        "3": "SYS__STOP_AUX3V3",
+        "4": "SYS__CLAMP_CT",
+        "5": "SYS__LOGIC3V3",
+        "6": "SYS__STOP_AUX3V3"
+      },
+      "source": "main_enable_clamp_candidate.json",
+      "source_reference": "U9",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R8",
+      "part": "100k CT candidate; part pending",
+      "pins": {
+        "1": "SYS__STOP_AUX3V3",
+        "2": "SYS__CLAMP_CT"
+      },
+      "source": null,
+      "source_reference": "R8",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C9",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__STOP_AUX3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "C9",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U10",
+      "part": "TPS3808G01DBVR",
+      "pins": {
+        "1": "SYS__MAIN_EFUSE_EN",
+        "2": "PACK_RETURN",
+        "3": "SYS__CLAMP_MR_STOP_AUX",
+        "4": null,
+        "5": "SYS__STOP_AUX3V3",
+        "6": "SYS__STOP_AUX3V3"
+      },
+      "source": "main_clamp_cause_candidate.json",
+      "source_reference": "U10",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U11",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "SYS__RAIL_HEALTH_N",
+        "3": "PACK_RETURN",
+        "4": "SYS__CLAMP_MR_STOP_AUX",
+        "5": "SYS__STOP_AUX3V3"
+      },
+      "source": "main_clamp_cause_candidate.json",
+      "source_reference": "U11",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R9",
+      "part": "10k cause pullup; total +/-1% budget, part pending",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "SYS__RAIL_HEALTH_N"
+      },
+      "source": null,
+      "source_reference": "R9",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C10",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__STOP_AUX3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "C10",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C11",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__STOP_AUX3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "C11",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U14",
+      "part": "74AUP1G06GW",
+      "pins": {
+        "1": null,
+        "2": "SYS__SEQUENCE_CLEAR_REQUEST",
+        "3": "PACK_RETURN",
+        "4": "SYS__RESET_N",
+        "5": "SYS__LOGIC3V3"
+      },
+      "source": "sequence_clear_sink_candidate.json",
+      "source_reference": "U14",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R14",
+      "part": "TNPW12061K00BYEA",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "SYS__SEQUENCE_CLEAR_REQUEST"
+      },
+      "source": "validation/sequence_clear_edge_v1/report.json",
+      "value_ohm": 1000,
+      "total_tolerance_budget": 0.01,
+      "status": "conditional_release_edge_candidate_not_qualified",
+      "source_reference": "R14",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C14",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "C14",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U15",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "SYS__BUTTON_RAW",
+        "3": "PACK_RETURN",
+        "4": "SYS__RAW_RELEASED_CONDITIONED",
+        "5": "SYS__LOGIC3V3"
+      },
+      "source": "local_enable_button_candidate.json",
+      "source_reference": "U15",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R15",
+      "part": "3k local button pullup; total +/-1% budget; exact part pending",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "SYS__BUTTON_RAW"
+      },
+      "source": null,
+      "source_reference": "R15",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C15",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "value_F": 1e-07,
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "C15",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_U12",
+      "part": "TPS3700DDCR",
+      "pins": {
+        "1": "SYS__LEFT_PG_CONDITIONED_OD",
+        "2": "PACK_RETURN",
+        "3": "SYS__LEFT_PG_DIVIDED",
+        "4": "PACK_RETURN",
+        "5": "SYS__LOGIC3V3",
+        "6": null
+      },
+      "source": "pg_receiver_candidate.json",
+      "origin_reference": "U12",
+      "source_reference": "LEFT_U12",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_U13",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "SYS__LEFT_PG_CONDITIONED_OD",
+        "3": "PACK_RETURN",
+        "4": "SYS__LEFT_PG_CONDITIONED",
+        "5": "SYS__LOGIC3V3"
+      },
+      "source": "pg_receiver_candidate.json",
+      "origin_reference": "U13",
+      "source_reference": "LEFT_U13",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R10",
+      "part": "TNPW0603150KBYEA",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "SYS__LEFT_PG_SOURCE"
+      },
+      "source": null,
+      "placement": "At eFuse PG pin, before monitored trace",
+      "origin_reference": "R10",
+      "source_reference": "LEFT_R10",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R11",
+      "part": "TNPW08051M00BYEA",
+      "pins": {
+        "1": "SYS__LEFT_EFUSE_PG",
+        "2": "SYS__LEFT_PG_DIVIDED"
+      },
+      "source": null,
+      "origin_reference": "R11",
+      "source_reference": "LEFT_R11",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R12",
+      "part": "TNPW0603330KBYEA",
+      "pins": {
+        "1": "SYS__LEFT_PG_DIVIDED",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "origin_reference": "R12",
+      "source_reference": "LEFT_R12",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R13",
+      "part": "TNPW060310K0BYEA",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "SYS__LEFT_PG_CONDITIONED_OD"
+      },
+      "source": null,
+      "origin_reference": "R13",
+      "source_reference": "LEFT_R13",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_C12",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "origin_reference": "C12",
+      "source_reference": "LEFT_C12",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_C13",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "origin_reference": "C13",
+      "source_reference": "LEFT_C13",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_U12",
+      "part": "TPS3700DDCR",
+      "pins": {
+        "1": "SYS__RIGHT_PG_CONDITIONED_OD",
+        "2": "PACK_RETURN",
+        "3": "SYS__RIGHT_PG_DIVIDED",
+        "4": "PACK_RETURN",
+        "5": "SYS__LOGIC3V3",
+        "6": null
+      },
+      "source": "pg_receiver_candidate.json",
+      "origin_reference": "U12",
+      "source_reference": "RIGHT_U12",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_U13",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "SYS__RIGHT_PG_CONDITIONED_OD",
+        "3": "PACK_RETURN",
+        "4": "SYS__RIGHT_PG_CONDITIONED",
+        "5": "SYS__LOGIC3V3"
+      },
+      "source": "pg_receiver_candidate.json",
+      "origin_reference": "U13",
+      "source_reference": "RIGHT_U13",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R10",
+      "part": "TNPW0603150KBYEA",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "SYS__RIGHT_PG_SOURCE"
+      },
+      "source": null,
+      "placement": "At eFuse PG pin, before monitored trace",
+      "origin_reference": "R10",
+      "source_reference": "RIGHT_R10",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R11",
+      "part": "TNPW08051M00BYEA",
+      "pins": {
+        "1": "SYS__RIGHT_EFUSE_PG",
+        "2": "SYS__RIGHT_PG_DIVIDED"
+      },
+      "source": null,
+      "origin_reference": "R11",
+      "source_reference": "RIGHT_R11",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R12",
+      "part": "TNPW0603330KBYEA",
+      "pins": {
+        "1": "SYS__RIGHT_PG_DIVIDED",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "origin_reference": "R12",
+      "source_reference": "RIGHT_R12",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R13",
+      "part": "TNPW060310K0BYEA",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "SYS__RIGHT_PG_CONDITIONED_OD"
+      },
+      "source": null,
+      "origin_reference": "R13",
+      "source_reference": "RIGHT_R13",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_C12",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "origin_reference": "C12",
+      "source_reference": "RIGHT_C12",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_C13",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": null,
+      "origin_reference": "C13",
+      "source_reference": "RIGHT_C13",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_U_POWER",
+      "part": "TPS259813LRPW",
+      "pins": {
+        "1": "SYS__LEFT_EN_LOCAL",
+        "2": "SYS__LEFT_OVLO_SENSE",
+        "3": "SYS__LEFT_PG_SOURCE",
+        "4": "SYS__LEFT_FLT_N",
+        "5": "SYS__LEFT_REGULATOR_OUT",
+        "6": "SYS__LEFT_INTERNAL_OUT",
+        "7": "SYS__LEFT_DVDT",
+        "8": "PACK_RETURN",
+        "9": "SYS__LEFT_ILM",
+        "10": "SYS__LEFT_ITIMER"
+      },
+      "source_reference": "LEFT_U_POWER",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_Q_REVERSE",
+      "part": "SiSS80DN-T1-GE3 comparison only",
+      "pins": {
+        "1": "SYS__LEFT_INTERNAL_OUT",
+        "2": "SYS__LEFT_INTERNAL_OUT",
+        "3": "SYS__LEFT_INTERNAL_OUT",
+        "4": "SYS__LEFT_REVERSE_GATE",
+        "5": "SYS__LEFT_SERVO_BUS",
+        "6": "SYS__LEFT_SERVO_BUS",
+        "7": "SYS__LEFT_SERVO_BUS",
+        "8": "SYS__LEFT_SERVO_BUS"
+      },
+      "source_reference": "LEFT_Q_REVERSE",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R_GATE",
+      "part": null,
+      "value_ohm": null,
+      "pins": {
+        "1": "SYS__LEFT_DVDT",
+        "2": "SYS__LEFT_REVERSE_GATE"
+      },
+      "source_reference": "LEFT_R_GATE",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_C_GATE",
+      "part": null,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__LEFT_REVERSE_GATE",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "LEFT_C_GATE",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_U_POWER",
+      "part": "TPS259813LRPW",
+      "pins": {
+        "1": "SYS__RIGHT_EN_LOCAL",
+        "2": "SYS__RIGHT_OVLO_SENSE",
+        "3": "SYS__RIGHT_PG_SOURCE",
+        "4": "SYS__RIGHT_FLT_N",
+        "5": "SYS__RIGHT_REGULATOR_OUT",
+        "6": "SYS__RIGHT_INTERNAL_OUT",
+        "7": "SYS__RIGHT_DVDT",
+        "8": "PACK_RETURN",
+        "9": "SYS__RIGHT_ILM",
+        "10": "SYS__RIGHT_ITIMER"
+      },
+      "source_reference": "RIGHT_U_POWER",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_Q_REVERSE",
+      "part": "SiSS80DN-T1-GE3 comparison only",
+      "pins": {
+        "1": "SYS__RIGHT_INTERNAL_OUT",
+        "2": "SYS__RIGHT_INTERNAL_OUT",
+        "3": "SYS__RIGHT_INTERNAL_OUT",
+        "4": "SYS__RIGHT_REVERSE_GATE",
+        "5": "SYS__RIGHT_SERVO_BUS",
+        "6": "SYS__RIGHT_SERVO_BUS",
+        "7": "SYS__RIGHT_SERVO_BUS",
+        "8": "SYS__RIGHT_SERVO_BUS"
+      },
+      "source_reference": "RIGHT_Q_REVERSE",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R_GATE",
+      "part": null,
+      "value_ohm": null,
+      "pins": {
+        "1": "SYS__RIGHT_DVDT",
+        "2": "SYS__RIGHT_REVERSE_GATE"
+      },
+      "source_reference": "RIGHT_R_GATE",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_C_GATE",
+      "part": null,
+      "value_F": null,
+      "pins": {
+        "1": "SYS__RIGHT_REVERSE_GATE",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "RIGHT_C_GATE",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R_ILM",
+      "part": null,
+      "value_ohm": 1100,
+      "initial_tolerance_comparison": 0.001,
+      "status": "sizing_candidate_not_selected_part",
+      "pins": {
+        "1": "SYS__LEFT_ILM",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "LEFT_R_ILM",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R_ILM",
+      "part": null,
+      "value_ohm": 1100,
+      "initial_tolerance_comparison": 0.001,
+      "status": "sizing_candidate_not_selected_part",
+      "pins": {
+        "1": "SYS__RIGHT_ILM",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "RIGHT_R_ILM",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R_OV_TOP",
+      "part": null,
+      "value_ohm": 35700,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "SYS__LEFT_REGULATOR_OUT",
+        "2": "SYS__LEFT_OVLO_SENSE"
+      },
+      "source_reference": "LEFT_R_OV_TOP",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R_OV_BOTTOM",
+      "part": null,
+      "value_ohm": 10000,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "SYS__LEFT_OVLO_SENSE",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "LEFT_R_OV_BOTTOM",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R_OV_TOP",
+      "part": null,
+      "value_ohm": 35700,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "SYS__RIGHT_REGULATOR_OUT",
+        "2": "SYS__RIGHT_OVLO_SENSE"
+      },
+      "source_reference": "RIGHT_R_OV_TOP",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R_OV_BOTTOM",
+      "part": null,
+      "value_ohm": 10000,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "SYS__RIGHT_OVLO_SENSE",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "RIGHT_R_OV_BOTTOM",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U_STOP_LDO",
+      "part": "TPS70933DBVR",
+      "pins": {
+        "1": "SYS__STOP_LDO_INPUT",
+        "2": "PACK_RETURN",
+        "3": null,
+        "4": null,
+        "5": "SYS__STOP_AUX3V3"
+      },
+      "note": "TPS709 pinout, not TPS709A/B; EN intentionally floating per TI table 5-1",
+      "source_reference": "U_STOP_LDO",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C_STOP_IN",
+      "part": "MKS2C042201K00JSSD",
+      "value_F": 2.2e-06,
+      "pins": {
+        "1": "SYS__STOP_LDO_INPUT",
+        "2": "PACK_RETURN"
+      },
+      "requirement": "Input bulk candidate; temperature/process capacitance and board envelope unqualified",
+      "dielectric": "PET film",
+      "initial_tolerance": 0.05,
+      "rated_voltage_V": 63,
+      "body_nominal_mm": {
+        "width": 7.2,
+        "height": 13,
+        "length": 7.2
+      },
+      "lead_pitch_mm": 5,
+      "selection_source": "https://www.wima.de/wp-content/uploads/media/e_WIMA_MKS_2.pdf",
+      "source_reference": "C_STOP_IN",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C_STOP_OUT",
+      "part": "GRM31CR71H475KA12L",
+      "value_F": 4.7e-06,
+      "pins": {
+        "1": "SYS__STOP_AUX3V3",
+        "2": "PACK_RETURN"
+      },
+      "requirement": "Design target >=2.2uF effective retained; TPS70933 application guidance minimum 1.5uF, maximum 47uF, ESR 0..0.2 ohm. See schematics/power/stop_output_capacitor_requirements.json",
+      "selection_source": "schematics/power/stop_output_capacitor_requirements.json",
+      "qualification": {
+        "reference": "C_STOP_OUT",
+        "regulator": "TPS70933DBVR",
+        "source": "https://www.ti.com/lit/ds/symlink/tps709.pdf",
+        "revision": "SBVS186H July 2021 section 8.1.1",
+        "manufacturer_application_guidance": {
+          "effective_capacitance_min_F": 1.5e-06,
+          "effective_capacitance_max_F": 4.7e-05,
+          "ESR_min_ohm": 0,
+          "ESR_max_ohm": 0.2,
+          "condition": "Output voltage >= 1.5 V"
+        },
+        "retained_design_target": {
+          "effective_capacitance_min_F": 2.2e-06,
+          "nominal_capacitance_F": 4.7e-06,
+          "classification": "Codex design margin, not manufacturer minimum"
+        },
+        "candidate": {
+          "family": "GRM31CR71H475KA12",
+          "nominal_F": 4.7e-06,
+          "rated_V": 50,
+          "initial_tolerance": 0.1,
+          "dielectric": "X7R",
+          "package": "1206",
+          "source": "https://search.murata.co.jp/Ceramy/image/img/A01X/G101/ENG/GRM31CR71H475KA12-01A.pdf",
+          "status": "exact_ordering_candidate_not_qualified",
+          "part_number": "GRM31CR71H475KA12L",
+          "source_date": "2026-06-25",
+          "source_sha256": "79e4b038591e12555fe8f014db5554725d20cce3ec127846d34c20e27e53d3da",
+          "temperature_change_fraction_no_bias": 0.15,
+          "package_quantity": 2000
+        },
+        "qualification": false,
+        "remaining": [
+          "DC bias and temperature combined capacitance at actual rail",
+          "Ageing and assembly allowance",
+          "ESR over relevant frequency and temperature",
+          "Procurement and footprint",
+          "Total connected rail capacitance and regulator transient verification"
+        ],
+        "correction": "Earlier requirement text incorrectly attributed 2.2uF effective minimum to TI. Preserve 2.2uF as a design target; do not relabel prior failures as passes.",
+        "screening_evidence": "validation/stop_output_capacitor_v1/report.json",
+        "model_scope_evidence": "validation/stop_cap_model_scope_v1/report.json",
+        "additional_nominal_screening": "Stopped: nominal data cannot resolve remaining bias/ESR qualification"
+      },
+      "source_reference": "C_STOP_OUT",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R_STOP_MIN_LOAD",
+      "part": "TNPW060330K1BYEA",
+      "value_ohm": 30100.0,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "SYS__STOP_AUX3V3",
+        "2": "PACK_RETURN"
+      },
+      "note": "Minimum loading; exact resistor and temperature budget pending",
+      "selection_source": "schematics/power/stop_enable_resistors.json",
+      "source_reference": "R_STOP_MIN_LOAD",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R_EN_PULLDOWN",
+      "part": "TNPW060378K7BYEA",
+      "value_ohm": 78700,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "SYS__LEFT_EN_LOCAL",
+        "2": "PACK_RETURN"
+      },
+      "placement": "At eFuse EN pin and local ground, after monitored trace; no shared remote pulldown",
+      "selection_source": "schematics/power/stop_enable_resistors.json",
+      "source_reference": "LEFT_R_EN_PULLDOWN",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R_EN_PULLDOWN",
+      "part": "TNPW060378K7BYEA",
+      "value_ohm": 78700,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "SYS__RIGHT_EN_LOCAL",
+        "2": "PACK_RETURN"
+      },
+      "placement": "At eFuse EN pin and local ground, after monitored trace; no shared remote pulldown",
+      "selection_source": "schematics/power/stop_enable_resistors.json",
+      "source_reference": "RIGHT_R_EN_PULLDOWN",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_U_WINDOW",
+      "part": "TPS3700DDCR",
+      "pins": {
+        "1": "SYS__LEFT_SOURCE_WINDOW_OD",
+        "2": "PACK_RETURN",
+        "3": "SYS__LEFT_SOURCE_UV_SENSE",
+        "4": "SYS__LEFT_SOURCE_OV_SENSE",
+        "5": "SYS__STOP_AUX3V3",
+        "6": "SYS__LEFT_SOURCE_WINDOW_OD"
+      },
+      "source_reference": "LEFT_U_WINDOW",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R_SOURCE_UV_TOP",
+      "part": "TNPW0603102KBYEA",
+      "value_ohm": 102000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "SYS__LEFT_REGULATOR_OUT",
+        "2": "SYS__LEFT_SOURCE_UV_SENSE"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "source_reference": "LEFT_R_SOURCE_UV_TOP",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R_SOURCE_UV_BOTTOM",
+      "part": "TNPW060310K0BYEA",
+      "value_ohm": 10000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "SYS__LEFT_SOURCE_UV_SENSE",
+        "2": "PACK_RETURN"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "source_reference": "LEFT_R_SOURCE_UV_BOTTOM",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R_SOURCE_OV_TOP",
+      "part": "TNPW0603130KBYEA",
+      "value_ohm": 130000.0,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "SYS__LEFT_REGULATOR_OUT",
+        "2": "SYS__LEFT_SOURCE_OV_SENSE"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "source_reference": "LEFT_R_SOURCE_OV_TOP",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R_SOURCE_OV_BOTTOM",
+      "part": "TNPW060310K0BYEA",
+      "value_ohm": 10000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "SYS__LEFT_SOURCE_OV_SENSE",
+        "2": "PACK_RETURN"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "source_reference": "LEFT_R_SOURCE_OV_BOTTOM",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R_WINDOW_PULLUP",
+      "part": "TNPW060310K0BYEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "SYS__STOP_AUX3V3",
+        "2": "SYS__LEFT_SOURCE_WINDOW_OD"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "total_tolerance_budget": 0.01,
+      "source_reference": "LEFT_R_WINDOW_PULLUP",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_C_WINDOW",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "SYS__STOP_AUX3V3",
+        "2": "PACK_RETURN"
+      },
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "LEFT_C_WINDOW",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_U_WINDOW",
+      "part": "TPS3700DDCR",
+      "pins": {
+        "1": "SYS__RIGHT_SOURCE_WINDOW_OD",
+        "2": "PACK_RETURN",
+        "3": "SYS__RIGHT_SOURCE_UV_SENSE",
+        "4": "SYS__RIGHT_SOURCE_OV_SENSE",
+        "5": "SYS__STOP_AUX3V3",
+        "6": "SYS__RIGHT_SOURCE_WINDOW_OD"
+      },
+      "source_reference": "RIGHT_U_WINDOW",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R_SOURCE_UV_TOP",
+      "part": "TNPW0603102KBYEA",
+      "value_ohm": 102000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "SYS__RIGHT_REGULATOR_OUT",
+        "2": "SYS__RIGHT_SOURCE_UV_SENSE"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "source_reference": "RIGHT_R_SOURCE_UV_TOP",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R_SOURCE_UV_BOTTOM",
+      "part": "TNPW060310K0BYEA",
+      "value_ohm": 10000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "SYS__RIGHT_SOURCE_UV_SENSE",
+        "2": "PACK_RETURN"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "source_reference": "RIGHT_R_SOURCE_UV_BOTTOM",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R_SOURCE_OV_TOP",
+      "part": "TNPW0603130KBYEA",
+      "value_ohm": 130000.0,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "SYS__RIGHT_REGULATOR_OUT",
+        "2": "SYS__RIGHT_SOURCE_OV_SENSE"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "source_reference": "RIGHT_R_SOURCE_OV_TOP",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R_SOURCE_OV_BOTTOM",
+      "part": "TNPW060310K0BYEA",
+      "value_ohm": 10000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "SYS__RIGHT_SOURCE_OV_SENSE",
+        "2": "PACK_RETURN"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "source_reference": "RIGHT_R_SOURCE_OV_BOTTOM",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R_WINDOW_PULLUP",
+      "part": "TNPW060310K0BYEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "SYS__STOP_AUX3V3",
+        "2": "SYS__RIGHT_SOURCE_WINDOW_OD"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "total_tolerance_budget": 0.01,
+      "source_reference": "RIGHT_R_WINDOW_PULLUP",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_C_WINDOW",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "SYS__STOP_AUX3V3",
+        "2": "PACK_RETURN"
+      },
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "RIGHT_C_WINDOW",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U_MONITOR_START",
+      "part": "TPS3808G33DBVR",
+      "pins": {
+        "1": "SYS__MONITOR_START_READY_OD",
+        "2": "PACK_RETURN",
+        "3": "SYS__STOP_AUX3V3",
+        "4": null,
+        "5": "SYS__STOP_AUX3V3",
+        "6": "SYS__STOP_AUX3V3"
+      },
+      "source_reference": "U_MONITOR_START",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R_MONITOR_START",
+      "part": "TNPW0603100KBYEA",
+      "value_ohm": 100000,
+      "pins": {
+        "1": "SYS__STOP_AUX3V3",
+        "2": "SYS__MONITOR_START_READY_OD"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "total_tolerance_budget": 0.01,
+      "source_reference": "R_MONITOR_START",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C_MONITOR_START",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "SYS__STOP_AUX3V3",
+        "2": "PACK_RETURN"
+      },
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "C_MONITOR_START",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U_MONITOR_RX",
+      "part": "SN74AUP1T50DCKR",
+      "pins": {
+        "1": null,
+        "2": "SYS__MONITOR_START_READY_OD",
+        "3": "PACK_RETURN",
+        "4": "SYS__MONITOR_START_READY_LOGIC",
+        "5": "SYS__LOGIC3V3"
+      },
+      "source_reference": "U_MONITOR_RX",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R_MONITOR_RX_OFF",
+      "part": "TNPW0603220KBYEA",
+      "value_ohm": 220000,
+      "pins": {
+        "1": "SYS__MONITOR_START_READY_LOGIC",
+        "2": "PACK_RETURN"
+      },
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "total_tolerance_budget": 0.01,
+      "source_reference": "R_MONITOR_RX_OFF",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C_MONITOR_RX",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "selection_source": "schematics/power/manual_rearm_capacitors.json",
+      "source_reference": "C_MONITOR_RX",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R_SEQUENCE_OFF",
+      "part": "TNPW060310K0BYEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "SYS__SEQUENCE_ENABLE_REQUEST",
+        "2": "PACK_RETURN"
+      },
+      "placement": "At U3 pin4; after any future sequencer interconnect; not at remote driver",
+      "selection_source": "schematics/power/servo_power_rearm_integration_revJ/plan.json",
+      "total_tolerance_budget": 0.01,
+      "source_reference": "R_SEQUENCE_OFF",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__D_STOP_REVERSE",
+      "part": "BAS116",
+      "ordering_suffix_pending": true,
+      "pins": {
+        "1": "SYS__STOP_INPUT_LIMITED",
+        "2": null,
+        "3": "SYS__STOP_LDO_INPUT"
+      },
+      "placement": "SOT23: pin1 anode, pin3 cathode, pin2 NC",
+      "source_reference": "D_STOP_REVERSE",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R_STOP_INPUT_BLEED",
+      "part": "TNPW0603100KBYEA",
+      "value_ohm": 100000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "SYS__STOP_LDO_INPUT",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "R_STOP_INPUT_BLEED",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C_STOP_IN_HF",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "SYS__STOP_LDO_INPUT",
+        "2": "PACK_RETURN"
+      },
+      "placement": "Directly at TPS709 IN/GND; film bulk does not replace local HF return",
+      "source_reference": "C_STOP_IN_HF",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U_LOGIC_PROTECT",
+      "part": "TPS26601RHFR",
+      "pins": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "4": null,
+        "5": null,
+        "6": null,
+        "7": null,
+        "8": "PACK_POS_PROTECTED",
+        "9": "PACK_POS_PROTECTED",
+        "10": "SYS__LOGIC_UVLO",
+        "11": null,
+        "12": "SYS__LOGIC_OVP",
+        "13": null,
+        "14": "SYS__LOGIC_SHDN",
+        "15": "SYS__LOGIC_PROTECT_RTN",
+        "16": null,
+        "17": "PACK_RETURN",
+        "18": null,
+        "19": "SYS__LOGIC_ILIM",
+        "20": null,
+        "21": null,
+        "22": null,
+        "23": "SYS__LOGIC_PROTECTED_INPUT",
+        "24": "SYS__LOGIC_PROTECTED_INPUT",
+        "EP": "SYS__LOGIC_PROTECT_RTN"
+      },
+      "pin_dispositions": {
+        "1": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "2": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "3": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "4": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "5": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "6": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "7": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "8": {
+          "name": "IN",
+          "net": "BATTERY_RAW",
+          "disposition": "connected"
+        },
+        "9": {
+          "name": "IN",
+          "net": "BATTERY_RAW",
+          "disposition": "connected"
+        },
+        "10": {
+          "name": "UVLO",
+          "net": "LOGIC_UVLO",
+          "disposition": "connected"
+        },
+        "11": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "12": {
+          "name": "OVP",
+          "net": "LOGIC_OVP",
+          "disposition": "connected"
+        },
+        "13": {
+          "name": "MODE",
+          "net": null,
+          "disposition": "intentional_open",
+          "reason": "Open selects TPS26601 latched circuit breaker"
+        },
+        "14": {
+          "name": "SHDN",
+          "net": null,
+          "disposition": "intentional_open",
+          "reason": "Internal pullup; external reset not implemented"
+        },
+        "15": {
+          "name": "RTN",
+          "net": "LOGIC_PROTECT_RTN",
+          "disposition": "connected"
+        },
+        "16": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "17": {
+          "name": "GND",
+          "net": "GND",
+          "disposition": "connected"
+        },
+        "18": {
+          "name": "IMON",
+          "net": null,
+          "disposition": "intentional_open",
+          "reason": "Unused monitor"
+        },
+        "19": {
+          "name": "ILIM",
+          "net": "LOGIC_ILIM",
+          "disposition": "connected"
+        },
+        "20": {
+          "name": "dVdT",
+          "net": null,
+          "disposition": "intentional_open",
+          "reason": "Default ramp candidate; not qualified for downstream LDO startup"
+        },
+        "21": {
+          "name": "NC",
+          "net": null,
+          "disposition": "intentional_no_connect"
+        },
+        "22": {
+          "name": "FLT",
+          "net": null,
+          "disposition": "intentional_open",
+          "reason": "Unused diagnostic output; not a substitute for rail supervisor"
+        },
+        "23": {
+          "name": "OUT",
+          "net": "LOGIC_PROTECTED_INPUT",
+          "disposition": "connected"
+        },
+        "24": {
+          "name": "OUT",
+          "net": "LOGIC_PROTECTED_INPUT",
+          "disposition": "connected"
+        },
+        "EP": {
+          "name": "PowerPAD",
+          "net": "LOGIC_PROTECT_RTN",
+          "disposition": "connected",
+          "layout": "Multiple vias to dedicated RTN plane; pin 15 must also be connected"
+        }
+      },
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+      "source_reference": "U_LOGIC_PROTECT",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "value_ohm": 40200,
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "SYS__LOGIC_UVLO"
+      },
+      "part": "TNPW060340K2BEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      },
+      "reference": "SYS__R_LOGIC_UV_TOP",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+      "source_reference": "R_LOGIC_UV_TOP",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "value_ohm": 10000,
+      "pins": {
+        "1": "SYS__LOGIC_UVLO",
+        "2": "SYS__LOGIC_PROTECT_RTN"
+      },
+      "part": "TNPW060310K0BEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      },
+      "reference": "SYS__R_LOGIC_UV_BOTTOM",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+      "source_reference": "R_LOGIC_UV_BOTTOM",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "value_ohm": 124000,
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "SYS__LOGIC_OVP"
+      },
+      "part": "TNPW0603124KBEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      },
+      "reference": "SYS__R_LOGIC_OV_TOP",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+      "source_reference": "R_LOGIC_OV_TOP",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "value_ohm": 10000,
+      "pins": {
+        "1": "SYS__LOGIC_OVP",
+        "2": "SYS__LOGIC_PROTECT_RTN"
+      },
+      "part": "TNPW060310K0BEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      },
+      "reference": "SYS__R_LOGIC_OV_BOTTOM",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+      "source_reference": "R_LOGIC_OV_BOTTOM",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "value_ohm": 118000,
+      "pins": {
+        "1": "SYS__LOGIC_ILIM",
+        "2": "SYS__LOGIC_PROTECT_RTN"
+      },
+      "part": "TNPW0603118KBEEA",
+      "status": "ordering_code_candidate_not_released",
+      "previous_nominal_ohm": 120000,
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      },
+      "reference": "SYS__R_LOGIC_ILIM",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+      "source_reference": "R_LOGIC_ILIM",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "value_ohm": 100000,
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "PACK_RETURN"
+      },
+      "part": "TNPW0603100KBEEA",
+      "status": "ordering_code_candidate_not_released",
+      "selection": {
+        "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+        "revision": "10-Apr-2026",
+        "initial_tolerance": 0.001,
+        "tcr_ppm_per_K": 25,
+        "film_temperature_C": [
+          -40,
+          125
+        ],
+        "total_design_allocation": 0.01,
+        "availability_checked": false,
+        "ordering_code_basis": "Manufacturer ordering table, 0603 0.1%, 25ppm/K, EA packaging; range and preferred-value series checked"
+      },
+      "purpose": "Discharge shared input after all external sources disconnect; do not connect to RTN",
+      "reference": "SYS__R_LOGIC_INPUT_BLEED",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+      "source_reference": "R_LOGIC_INPUT_BLEED",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "dielectric": "C0G",
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "PACK_RETURN"
+      },
+      "placement": "Adjacent to TPS26601 IN/GND",
+      "status": "candidate_not_transient_qualified",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+      "reference": "SYS__C_LOGIC_PROTECT_IN_1",
+      "source_reference": "C_LOGIC_PROTECT_IN_1",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "dielectric": "C0G",
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "PACK_RETURN"
+      },
+      "placement": "Adjacent to TPS26601 IN/GND",
+      "status": "candidate_not_transient_qualified",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+      "reference": "SYS__C_LOGIC_PROTECT_IN_2",
+      "source_reference": "C_LOGIC_PROTECT_IN_2",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "dielectric": "C0G",
+      "pins": {
+        "1": "SYS__LOGIC_PROTECTED_INPUT",
+        "2": "PACK_RETURN"
+      },
+      "placement": "Adjacent to TPS26601 OUT and TPS709 IN; short shared supply trace required",
+      "status": "candidate_not_transient_qualified",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+      "reference": "SYS__C_LOGIC_PROTECT_OUT_1",
+      "source_reference": "C_LOGIC_PROTECT_OUT_1",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "dielectric": "C0G",
+      "pins": {
+        "1": "SYS__LOGIC_PROTECTED_INPUT",
+        "2": "PACK_RETURN"
+      },
+      "placement": "Adjacent to TPS26601 OUT and TPS709 IN; short shared supply trace required",
+      "status": "candidate_not_transient_qualified",
+      "source": "schematics/power/logic_input_branch_candidate_v1/branch.json",
+      "reference": "SYS__C_LOGIC_PROTECT_OUT_2",
+      "source_reference": "C_LOGIC_PROTECT_OUT_2",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__U_LOGIC_LDO",
+      "part": "TPS70933DRVR",
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": null,
+        "3": "PACK_RETURN",
+        "4": null,
+        "5": null,
+        "6": "SYS__LOGIC_PROTECTED_INPUT",
+        "EP": "PACK_RETURN"
+      },
+      "source": "schematics/power/logic_supply_candidate.json",
+      "note": "EN intentionally floating per Table5-1; do not connect to 3S battery voltage",
+      "source_reference": "U_LOGIC_LDO",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__C_LOGIC_LDO_OUT",
+      "part": "T520A226M010ATE080",
+      "value_F": 2.2e-05,
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "source": "schematics/power/logic_supply_candidate.json",
+      "qualification": {
+        "part": "T520A226M010ATE080",
+        "nominal_F": 2.2e-05,
+        "initial_tolerance": 0.2,
+        "rated_V": 10,
+        "temperature_C": [
+          -55,
+          105
+        ],
+        "ESR_ohm_at_100kHz_25C": 0.08,
+        "leakage_A_at_25C_5min": 2.2e-05,
+        "source": "https://search.kemet.com/download/specsheet/T520A226M010ATE080",
+        "status": "screened_candidate_not_selected_for_manufacturing",
+        "remaining": [
+          "Temperature-dependent capacitance and ESR limits",
+          "TPS709 stability across frequency/temperature with this capacitor technology",
+          "Total connected capacitance including MCU bypass",
+          "Surge, reverse voltage, reflow and ripple requirements"
+        ]
+      },
+      "source_reference": "C_LOGIC_LDO_OUT",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_U_REGULATOR",
+      "part": "D42V110F5",
+      "manufacturer": "Pololu",
+      "manufacturer_item": 5671,
+      "pins": {
+        "VIN": "PACK_POS_PROTECTED",
+        "GND": "PACK_RETURN",
+        "VOUT": "SYS__LEFT_REGULATOR_OUT",
+        "ENA": "SYS__LEFT_REGULATOR_ENA",
+        "ENB": null,
+        "PFM": null,
+        "PG": null
+      },
+      "pin_key_semantics": "functional signals only; not physical pad numbering",
+      "source": "schematics/power/dual_pololu_interface.json",
+      "physical_pad_mapping_verified": false,
+      "source_reference": "LEFT_U_REGULATOR",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_U_REGULATOR",
+      "part": "D42V110F5",
+      "manufacturer": "Pololu",
+      "manufacturer_item": 5671,
+      "pins": {
+        "VIN": "PACK_POS_PROTECTED",
+        "GND": "PACK_RETURN",
+        "VOUT": "SYS__RIGHT_REGULATOR_OUT",
+        "ENA": "SYS__RIGHT_REGULATOR_ENA",
+        "ENB": null,
+        "PFM": null,
+        "PG": null
+      },
+      "pin_key_semantics": "functional signals only; not physical pad numbering",
+      "source": "schematics/power/dual_pololu_interface.json",
+      "physical_pad_mapping_verified": false,
+      "source_reference": "RIGHT_U_REGULATOR",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R_DISCHARGE_1",
+      "part": "CRCW1206360RFKEA",
+      "value_ohm": 360,
+      "pins": {
+        "1": "SYS__LEFT_SERVO_BUS",
+        "2": "PACK_RETURN"
+      },
+      "status": "candidate_thermal_resistance_envelope_not_qualified",
+      "source_reference": "LEFT_R_DISCHARGE_1",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R_DISCHARGE_2",
+      "part": "CRCW1206360RFKEA",
+      "value_ohm": 360,
+      "pins": {
+        "1": "SYS__LEFT_SERVO_BUS",
+        "2": "PACK_RETURN"
+      },
+      "status": "candidate_thermal_resistance_envelope_not_qualified",
+      "source_reference": "LEFT_R_DISCHARGE_2",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R_DISCHARGE_1",
+      "part": "CRCW1206360RFKEA",
+      "value_ohm": 360,
+      "pins": {
+        "1": "SYS__RIGHT_SERVO_BUS",
+        "2": "PACK_RETURN"
+      },
+      "status": "candidate_thermal_resistance_envelope_not_qualified",
+      "source_reference": "RIGHT_R_DISCHARGE_1",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R_DISCHARGE_2",
+      "part": "CRCW1206360RFKEA",
+      "value_ohm": 360,
+      "pins": {
+        "1": "SYS__RIGHT_SERVO_BUS",
+        "2": "PACK_RETURN"
+      },
+      "status": "candidate_thermal_resistance_envelope_not_qualified",
+      "source_reference": "RIGHT_R_DISCHARGE_2",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R_REG_EN_PD",
+      "part": "TNPW06032K21BEEA",
+      "pins": {
+        "1": "SYS__LEFT_REGULATOR_ENA",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "LEFT_R_REG_EN_PD",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__LEFT_R_REG_EN_SER",
+      "part": "TNPW0603100RBEEA",
+      "pins": {
+        "1": "SYS__LEFT_REGULATOR_ALLOW",
+        "2": "SYS__LEFT_REGULATOR_ENA"
+      },
+      "source_reference": "LEFT_R_REG_EN_SER",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R_REG_EN_PD",
+      "part": "TNPW06032K21BEEA",
+      "pins": {
+        "1": "SYS__RIGHT_REGULATOR_ENA",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "RIGHT_R_REG_EN_PD",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__RIGHT_R_REG_EN_SER",
+      "part": "TNPW0603100RBEEA",
+      "pins": {
+        "1": "SYS__RIGHT_REGULATOR_ALLOW",
+        "2": "SYS__RIGHT_REGULATOR_ENA"
+      },
+      "source_reference": "RIGHT_R_REG_EN_SER",
+      "source_assembly": "schematics/power/servo_power_pololu_discharge_candidate_v1/assembly.json"
+    },
+    {
+      "reference": "SYS__R_LOGIC_SHDN_PD",
+      "part": "TNPW060310K0BEEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "SYS__LOGIC_SHDN",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "PD",
+      "source_assembly": "schematics/power/logic_predischarge_inhibit_candidate.json"
+    },
+    {
+      "reference": "SYS__R_LOGIC_SHDN_SER",
+      "part": "TNPW06031K00BEEA",
+      "value_ohm": 1000,
+      "pins": {
+        "1": "SYS__LOGIC_START_ALLOW",
+        "2": "SYS__LOGIC_SHDN"
+      },
+      "source_reference": "SER",
+      "source_assembly": "schematics/power/logic_predischarge_inhibit_candidate.json"
+    },
+    {
+      "reference": "SYS__U_AUX_START_ISO",
+      "part": "ISO7710FDR",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_AUX_START_REQUEST",
+        "3": "BQ_CTRL3V3",
+        "4": "CELL_B_MINUS",
+        "5": "PACK_RETURN",
+        "6": "SYS__LOGIC_START_ALLOW",
+        "7": null,
+        "8": "SYS__STOP_AUX3V3"
+      },
+      "source_reference": "SYS__U_AUX_START_ISO",
+      "source_assembly": "schematics/power/aux_start_isolator_candidate.json"
+    },
+    {
+      "reference": "SYS__C_AUX_ISO_PRIMARY",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "source_reference": "SYS__C_AUX_ISO_PRIMARY",
+      "source_assembly": "schematics/power/aux_start_isolator_candidate.json"
+    },
+    {
+      "reference": "SYS__C_AUX_ISO_SECONDARY",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "SYS__STOP_AUX3V3",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "SYS__C_AUX_ISO_SECONDARY",
+      "source_assembly": "schematics/power/aux_start_isolator_candidate.json"
+    },
+    {
+      "reference": "SYS__R_STOP_INPUT_0",
+      "part": "TNPW12061K50BEEA",
+      "value_ohm": 1500,
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "SYS__STOP_INPUT_LIMITED"
+      },
+      "source_reference": "parallel_0",
+      "source_assembly": "schematics/power/stop_feed_candidate.json"
+    },
+    {
+      "reference": "SYS__R_STOP_INPUT_1",
+      "part": "TNPW12061K50BEEA",
+      "value_ohm": 1500,
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "SYS__STOP_INPUT_LIMITED"
+      },
+      "source_reference": "parallel_1",
+      "source_assembly": "schematics/power/stop_feed_candidate.json"
+    },
+    {
+      "reference": "TAB5__U_PROTECT",
+      "part": "TPS26601RHFR",
+      "pins": {
+        "1": null,
+        "2": null,
+        "3": null,
+        "4": null,
+        "5": null,
+        "6": null,
+        "7": null,
+        "8": "PACK_POS_PROTECTED",
+        "9": "PACK_POS_PROTECTED",
+        "10": "TAB5_UVLO",
+        "11": null,
+        "12": "TAB5_OVP",
+        "13": null,
+        "14": "TAB5_SHDN",
+        "15": "TAB5_PROTECT_RTN",
+        "16": null,
+        "17": "PACK_RETURN",
+        "18": null,
+        "19": "TAB5_ILIM",
+        "20": "TAB5_DVDT",
+        "21": null,
+        "22": null,
+        "23": "TAB5_SYS_VIN",
+        "24": "TAB5_SYS_VIN",
+        "EP": "TAB5_PROTECT_RTN"
+      },
+      "source_reference": "TAB5__U_PROTECT",
+      "source_assembly": "schematics/power/tab5_input_branch_candidate.json"
+    },
+    {
+      "reference": "TAB5__R_UV_TOP",
+      "part": "TNPW060360K4BEEA",
+      "value_ohm": 60400,
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "TAB5_UVLO"
+      },
+      "source_reference": "TAB5__R_UV_TOP",
+      "source_assembly": "schematics/power/tab5_input_branch_candidate.json"
+    },
+    {
+      "reference": "TAB5__R_UV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "TAB5_UVLO",
+        "2": "TAB5_PROTECT_RTN"
+      },
+      "source_reference": "TAB5__R_UV_BOTTOM",
+      "source_assembly": "schematics/power/tab5_input_branch_candidate.json"
+    },
+    {
+      "reference": "TAB5__R_OV_TOP",
+      "part": "TNPW0603124KBEEA",
+      "value_ohm": 124000,
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "TAB5_OVP"
+      },
+      "source_reference": "TAB5__R_OV_TOP",
+      "source_assembly": "schematics/power/tab5_input_branch_candidate.json"
+    },
+    {
+      "reference": "TAB5__R_OV_BOTTOM",
+      "part": "TNPW060310K0BEEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "TAB5_OVP",
+        "2": "TAB5_PROTECT_RTN"
+      },
+      "source_reference": "TAB5__R_OV_BOTTOM",
+      "source_assembly": "schematics/power/tab5_input_branch_candidate.json"
+    },
+    {
+      "reference": "TAB5__R_ILIM",
+      "part": null,
+      "value_ohm": null,
+      "pins": {
+        "1": "TAB5_ILIM",
+        "2": "TAB5_PROTECT_RTN"
+      },
+      "selection_reason": "Requires Tab5 peak/startup envelope and harness current rating; do not reuse logic 118kohm",
+      "source_reference": "TAB5__R_ILIM",
+      "source_assembly": "schematics/power/tab5_input_branch_candidate.json"
+    },
+    {
+      "reference": "TAB5__C_PROTECT_IN_1",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "TAB5__C_PROTECT_IN_1",
+      "source_assembly": "schematics/power/tab5_input_branch_candidate.json"
+    },
+    {
+      "reference": "TAB5__C_PROTECT_IN_2",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "PACK_POS_PROTECTED",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "TAB5__C_PROTECT_IN_2",
+      "source_assembly": "schematics/power/tab5_input_branch_candidate.json"
+    },
+    {
+      "reference": "TAB5__C_PROTECT_OUT_1",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "TAB5_SYS_VIN",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "TAB5__C_PROTECT_OUT_1",
+      "source_assembly": "schematics/power/tab5_input_branch_candidate.json"
+    },
+    {
+      "reference": "TAB5__C_PROTECT_OUT_2",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "TAB5_SYS_VIN",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "TAB5__C_PROTECT_OUT_2",
+      "source_assembly": "schematics/power/tab5_input_branch_candidate.json"
+    },
+    {
+      "reference": "TAB5__R_SHDN_PD",
+      "part": "TNPW060310K0BEEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "TAB5_SHDN",
+        "2": "PACK_RETURN"
+      },
+      "source_reference": "TAB5__R_SHDN_PD",
+      "source_assembly": "schematics/power/tab5_input_branch_candidate.json"
+    },
+    {
+      "reference": "TAB5__R_SHDN_SER",
+      "part": "TNPW06031K00BEEA",
+      "value_ohm": 1000,
+      "pins": {
+        "1": "TAB5_START_ALLOW",
+        "2": "TAB5_SHDN"
+      },
+      "source_reference": "TAB5__R_SHDN_SER",
+      "source_assembly": "schematics/power/tab5_input_branch_candidate.json"
+    },
+    {
+      "reference": "TAB5__C_DVDT",
+      "part": null,
+      "value_F": null,
+      "pins": {
+        "1": "TAB5_DVDT",
+        "2": "TAB5_PROTECT_RTN"
+      },
+      "selection_reason": "Select using actual startup capacitance, load and thermal limits",
+      "source_reference": "TAB5__C_DVDT",
+      "source_assembly": "schematics/power/tab5_input_branch_candidate.json"
+    },
+    {
+      "reference": "INLET__J_PACK",
+      "part": "XT30U-M",
+      "pins": {
+        "+": "CELL_POS_UNFUSED",
+        "-": "CELL_B_MINUS"
+      },
+      "pin_labels": "polarity markings, not numbered CAD pad mapping",
+      "role": "robot-side removable main-current connector; pack mating type/polarity require verification",
+      "source_reference": "INLET__J_PACK",
+      "source_assembly": "schematics/power/battery_inlet_candidate.json"
+    },
+    {
+      "reference": "INLET__F_MAIN",
+      "part": "0297010.L",
+      "pins": {
+        "1": "CELL_POS_UNFUSED",
+        "2": "CELL_POS_FUSED_RAW"
+      },
+      "rating_A": 10,
+      "rating_VDC": 32,
+      "interrupt_rating_A_at_32VDC": 1000,
+      "role": "backup branch/harness fuse; coordination not established",
+      "source_reference": "INLET__F_MAIN",
+      "source_assembly": "schematics/power/battery_inlet_candidate.json"
+    },
+    {
+      "reference": "INLET__FH_MAIN",
+      "part": "01530002H",
+      "pins": {},
+      "role": "physical holder for INLET__F_MAIN; cavities and wire ends electrically represented by fuse pins, not a parallel shunt",
+      "rating_A": 20,
+      "rating_VDC": 32,
+      "wire_range_AWG": [
+        16,
+        22
+      ],
+      "source_reference": "INLET__FH_MAIN",
+      "source_assembly": "schematics/power/battery_inlet_candidate.json"
+    },
+    {
+      "reference": "INLET__U_REVERSE",
+      "part": "LM74700QDBVRQ1",
+      "pins": {
+        "1": "INLET_VCAP",
+        "2": "CELL_B_MINUS",
+        "3": "CELL_POS_FUSED_RAW",
+        "4": "CELL_POS_FUSED",
+        "5": "INLET_GATE",
+        "6": "CELL_POS_FUSED_RAW"
+      },
+      "package": "DBV SOT23-6",
+      "role": "Ideal diode controller; EN tied ANODE, not system disconnect",
+      "source_reference": "INLET__U_REVERSE",
+      "source_assembly": "schematics/power/battery_inlet_candidate.json"
+    },
+    {
+      "reference": "INLET__Q_REVERSE",
+      "part": "CSD18540Q5BT",
+      "pins": {
+        "1": "CELL_POS_FUSED_RAW",
+        "2": "CELL_POS_FUSED_RAW",
+        "3": "CELL_POS_FUSED_RAW",
+        "4": "INLET_GATE",
+        "5": "CELL_POS_FUSED",
+        "6": "CELL_POS_FUSED",
+        "7": "CELL_POS_FUSED",
+        "8": "CELL_POS_FUSED",
+        "exposed_drain_pad": "CELL_POS_FUSED"
+      },
+      "body_diode": "anode source CELL_POS_FUSED_RAW to cathode drain CELL_POS_FUSED",
+      "source_reference": "INLET__Q_REVERSE",
+      "source_assembly": "schematics/power/battery_inlet_candidate.json"
+    },
+    {
+      "reference": "INLET__C_IN",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "pins": {
+        "1": "CELL_POS_FUSED_RAW",
+        "2": "CELL_B_MINUS"
+      },
+      "source_reference": "INLET__C_IN",
+      "source_assembly": "schematics/power/battery_inlet_candidate.json"
+    },
+    {
+      "reference": "INLET__C_OUT_0",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "CELL_B_MINUS"
+      },
+      "source_reference": "INLET__C_OUT_0",
+      "source_assembly": "schematics/power/battery_inlet_candidate.json"
+    },
+    {
+      "reference": "INLET__C_OUT_1",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "CELL_B_MINUS"
+      },
+      "source_reference": "INLET__C_OUT_1",
+      "source_assembly": "schematics/power/battery_inlet_candidate.json"
+    },
+    {
+      "reference": "INLET__C_VCAP_0",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "pins": {
+        "1": "INLET_VCAP",
+        "2": "CELL_POS_FUSED_RAW"
+      },
+      "source_reference": "INLET__C_VCAP_0",
+      "source_assembly": "schematics/power/battery_inlet_candidate.json"
+    },
+    {
+      "reference": "INLET__C_VCAP_1",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "pins": {
+        "1": "INLET_VCAP",
+        "2": "CELL_POS_FUSED_RAW"
+      },
+      "source_reference": "INLET__C_VCAP_1",
+      "source_assembly": "schematics/power/battery_inlet_candidate.json"
+    }
+  ],
+  "interconnects": [
+    {
+      "name": "SYS__LEFT_PG_TRACE",
+      "from": "SYS__LEFT_PG_SOURCE",
+      "to": "SYS__LEFT_EFUSE_PG",
+      "type": "PCB trace, not a resistor",
+      "placement": "Pullup R10 at eFuse source end; R11/R12 at receiver end"
+    },
+    {
+      "name": "SYS__RIGHT_PG_TRACE",
+      "from": "SYS__RIGHT_PG_SOURCE",
+      "to": "SYS__RIGHT_EFUSE_PG",
+      "type": "PCB trace, not a resistor",
+      "placement": "Pullup R10 at eFuse source end; R11/R12 at receiver end"
+    },
+    {
+      "name": "SYS__LEFT_EN_TRACE",
+      "from": "SYS__MAIN_EFUSE_EN",
+      "to": "SYS__LEFT_EN_LOCAL",
+      "type": "PCB trace, not a resistor",
+      "placement": "Local pulldown on eFuse side of trace break"
+    },
+    {
+      "name": "SYS__RIGHT_EN_TRACE",
+      "from": "SYS__MAIN_EFUSE_EN",
+      "to": "SYS__RIGHT_EN_LOCAL",
+      "type": "PCB trace, not a resistor",
+      "placement": "Local pulldown on eFuse side of trace break"
+    }
+  ],
+  "unimplemented_design": [
+    {
+      "issue": 21,
+      "gap": "Battery inlet/fuse/ideal-diode candidates added; transients, cell-tap bypass, load/fault coordination and full disconnect unresolved"
+    },
+    {
+      "issue": 21,
+      "gap": "Tab5 branch candidate connected; ILIM, ramp, harness, allow driver and restart inhibition remain unselected"
+    },
+    {
+      "issue": 21,
+      "gap": "Local host supervisor/watchdog/latch connected; AUX crossing connected; analog qualification and rearm firmware incomplete"
+    },
+    {
+      "issue": 24,
+      "gap": "External PDSG switch/resistor, independent abort and TS2 wake/PCHG disposition"
+    },
+    {
+      "issue": 22,
+      "gap": "Predischarge budget includes automatic-start logic/stop branches, both disabled regulators, capacitors and Tab5 leakage"
+    },
+    {
+      "issue": 23,
+      "gap": "Complete startup/reset/brownout sequence with raw comparator outputs qualified before motor enable"
+    },
+    {
+      "issue": 24,
+      "gap": "Regulator ALLOW drivers and full qualification of BQ watchdog/latch inhibit path"
+    },
+    {
+      "issue": 24,
+      "gap": "Main/eFuse thresholds, inrush, regeneration, short-circuit energy, thermal and recovery qualification"
+    }
+  ],
+  "electrically_operational": false,
+  "manufacturing_release": false
+}

@@ -1,0 +1,234 @@
+{
+  "decision": "Candidate topology for PTH comparison only; not integrated or released",
+  "user_requirements": [
+    "Supply and protection suitable for Tab5 and 12 axes, including applicable faults"
+  ],
+  "design_policy": [
+    "Controlled converter startup",
+    "No automatic servo rearm after a fault"
+  ],
+  "manufacturer_conditions": {
+    "inhibit_pin": 11,
+    "external_pullup_on_inhibit_permitted": false,
+    "inhibit_low_range_V": [
+      -0.2,
+      0.8
+    ],
+    "enable_condition": "open circuit",
+    "inhibit_sink_typ_A": 0.000235,
+    "inhibit_sink_max_A": null,
+    "recommended_off_leakage_less_than_A": 1e-07,
+    "onsemi_BSS138_IDSS_max_at30V_25C_A": 1e-07,
+    "onsemi_BSS138_IDSS_max_at50V_125C_A": 5e-06,
+    "BSS138P_substitution_accepted": false,
+    "BSS138P_IDSS_max_at60V_25C_A": 1e-06
+  },
+  "engineering_allocations": {
+    "vin_V": [
+      9,
+      12.6
+    ],
+    "resistor_total_variation": 0.01,
+    "gate_leakage_sensitivity_A": [
+      -5.1e-06,
+      5.1e-06
+    ],
+    "release_VCE_comparison_V": 0.2,
+    "release_VBE_comparison_V": 0.9,
+    "allow_high_comparison_V": 2.4,
+    "allow_poweroff_leakage_allocation_A": 1e-05
+  },
+  "dc_comparison": {
+    "gate_min_V": 7.69940513290559,
+    "gate_max_V": 11.935030658250676,
+    "inhibit_voltage_at_typ_sink_and_6ohm_V": 0.00141,
+    "release_collector_load_upper_comparison_A": 0.00012727272727272728,
+    "release_base_current_comparison_A": 0.00012256544803416512,
+    "base_voltage_at_allocated_10uA_Ioff_V": 0.047470000000000005,
+    "rejected_100k_base_pulldown_at_10uA_V": 1.0,
+    "gate_pullup_power_upper_comparison_W": 0.0016036363636363635,
+    "corners": [
+      {
+        "vin_V": 9.0,
+        "rup_ohm": 99000.0,
+        "rdown_ohm": 990000.0,
+        "allocated_gate_sink_A": -5.1e-06,
+        "gate_V": 8.640818181818181
+      },
+      {
+        "vin_V": 9.0,
+        "rup_ohm": 99000.0,
+        "rdown_ohm": 990000.0,
+        "allocated_gate_sink_A": 5.1e-06,
+        "gate_V": 7.722818181818181
+      },
+      {
+        "vin_V": 9.0,
+        "rup_ohm": 99000.0,
+        "rdown_ohm": 1010000.0,
+        "allocated_gate_sink_A": -5.1e-06,
+        "gate_V": 8.656401262398557
+      },
+      {
+        "vin_V": 9.0,
+        "rup_ohm": 99000.0,
+        "rdown_ohm": 1010000.0,
+        "allocated_gate_sink_A": 5.1e-06,
+        "gate_V": 7.736745716862037
+      },
+      {
+        "vin_V": 9.0,
+        "rup_ohm": 101000.0,
+        "rdown_ohm": 990000.0,
+        "allocated_gate_sink_A": -5.1e-06,
+        "gate_V": 8.634233730522457
+      },
+      {
+        "vin_V": 9.0,
+        "rup_ohm": 101000.0,
+        "rdown_ohm": 990000.0,
+        "allocated_gate_sink_A": 5.1e-06,
+        "gate_V": 7.69940513290559
+      },
+      {
+        "vin_V": 9.0,
+        "rup_ohm": 101000.0,
+        "rdown_ohm": 1010000.0,
+        "allocated_gate_sink_A": -5.1e-06,
+        "gate_V": 8.65009090909091
+      },
+      {
+        "vin_V": 9.0,
+        "rup_ohm": 101000.0,
+        "rdown_ohm": 1010000.0,
+        "allocated_gate_sink_A": 5.1e-06,
+        "gate_V": 7.713545454545454
+      },
+      {
+        "vin_V": 12.6,
+        "rup_ohm": 99000.0,
+        "rdown_ohm": 990000.0,
+        "allocated_gate_sink_A": -5.1e-06,
+        "gate_V": 11.913545454545453
+      },
+      {
+        "vin_V": 12.6,
+        "rup_ohm": 99000.0,
+        "rdown_ohm": 990000.0,
+        "allocated_gate_sink_A": 5.1e-06,
+        "gate_V": 10.995545454545455
+      },
+      {
+        "vin_V": 12.6,
+        "rup_ohm": 99000.0,
+        "rdown_ohm": 1010000.0,
+        "allocated_gate_sink_A": -5.1e-06,
+        "gate_V": 11.935030658250676
+      },
+      {
+        "vin_V": 12.6,
+        "rup_ohm": 99000.0,
+        "rdown_ohm": 1010000.0,
+        "allocated_gate_sink_A": 5.1e-06,
+        "gate_V": 11.015375112714159
+      },
+      {
+        "vin_V": 12.6,
+        "rup_ohm": 101000.0,
+        "rdown_ohm": 990000.0,
+        "allocated_gate_sink_A": -5.1e-06,
+        "gate_V": 11.900961503208062
+      },
+      {
+        "vin_V": 12.6,
+        "rup_ohm": 101000.0,
+        "rdown_ohm": 990000.0,
+        "allocated_gate_sink_A": 5.1e-06,
+        "gate_V": 10.966132905591198
+      },
+      {
+        "vin_V": 12.6,
+        "rup_ohm": 101000.0,
+        "rdown_ohm": 1010000.0,
+        "allocated_gate_sink_A": -5.1e-06,
+        "gate_V": 11.92281818181818
+      },
+      {
+        "vin_V": 12.6,
+        "rup_ohm": 101000.0,
+        "rdown_ohm": 1010000.0,
+        "allocated_gate_sink_A": 5.1e-06,
+        "gate_V": 10.986272727272725
+      }
+    ]
+  },
+  "truth_table_expected_after_settling": [
+    {
+      "allow": "low",
+      "Q_RELEASE": "off",
+      "Q_STOP": "on",
+      "module": "inhibited"
+    },
+    {
+      "allow": "high",
+      "Q_RELEASE": "on",
+      "Q_STOP": "off",
+      "module": "enabled"
+    },
+    {
+      "allow": "high_impedance",
+      "Q_RELEASE": "off via base pulldown",
+      "Q_STOP": "on from module input",
+      "module": "inhibited"
+    }
+  ],
+  "unproven": [
+    "Off-state drain leakage recommendation is not strictly met across temperature by the selected candidate data",
+    "Nonzero release VCE means STOP MOS VGS is not exactly zero; IDSS test alone is insufficient",
+    "BJT ICBO is not a bound for connected base-emitter resistor leakage",
+    "Low-current BJT saturation uses an engineering comparison, not the 10mA data-sheet test point",
+    "Inhibit internal voltage and maximum sink current, startup race and supply-collapse timing",
+    "PCB leakage, hot/cold resistor variation and exact resistor procurement parts",
+    "ALLOW at intermediate supply voltage is not covered by Ioff at VCC=0",
+    "Converter output discharge, regeneration and full-system fault behavior"
+  ],
+  "manufacturing_release": false,
+  "sources": [
+    {
+      "url": "https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf",
+      "section": "Ioff at VCC=0; existing regulator_request_connection_v1 source"
+    },
+    {
+      "url": "https://www.ti.com/lit/gpn/pth08t240w",
+      "revision": "SLTS264J",
+      "pages": [
+        4,
+        6,
+        24
+      ]
+    },
+    {
+      "url": "https://www.onsemi.com/download/data-sheet/pdf/bss138-d.pdf",
+      "revision": "7 April2024",
+      "pages": [
+        1,
+        2
+      ]
+    },
+    {
+      "url": "https://assets.nexperia.com/documents/data-sheet/BC847X_SER.pdf",
+      "revision": "13 July2022",
+      "pages": [
+        2,
+        4
+      ]
+    },
+    {
+      "url": "https://assets.nexperia.com/documents/data-sheet/BSS138P.pdf",
+      "revision": "1 November2010",
+      "pages": [
+        6
+      ]
+    }
+  ]
+}

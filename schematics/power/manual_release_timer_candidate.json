@@ -1,0 +1,38 @@
+{
+  "part_number": "TPS3808G33DBVR",
+  "quantity": 1,
+  "role": "qualified button release timer; not the sole stop or power-on inhibit",
+  "status": "pin_candidate_not_released",
+  "pins": {
+    "1_RESET": "RELEASE_QUALIFIED_NAMED_HIGH; open drain pullup 100k to LOGIC3V3; to SN74HCS74 pin3",
+    "2_GND": "GND",
+    "3_MR": "Nexperia 74LVC1G17GV pin4 buffered RELEASE_CONDITION; independent stop clear separate",
+    "4_CT": "100k resistor to LOGIC3V3; not direct wire",
+    "5_SENSE": "LOGIC3V3 at latch supply",
+    "6_VDD": "LOGIC3V3; 100nF local ceramic decoupling candidate"
+  },
+  "passive_candidates": {
+    "CT_resistor_ohm": 100000,
+    "RESET_pullup_ohm": 100000,
+    "decoupling_F": 1e-07,
+    "status": "values only; ordering codes and tolerances to integrate"
+  },
+  "timing_ms": {
+    "min": 180,
+    "typ": 300,
+    "max": 420,
+    "test_load": "RESET RL100k CL50pF; actual routed load to verify"
+  },
+  "sense_threshold_V": 3.07,
+  "threshold_error_max_fraction": 0.015,
+  "hysteresis_max_fraction": 0.025,
+  "requirements": [
+    "MR must return low on any interruption of release or health",
+    "FF clear must remain a separate immediate stop-priority path",
+    "No release pulse during invalid power may authorize output",
+    "RESET edge level and clock timing need actual load validation"
+  ],
+  "manufacturing_release": false,
+  "source": "https://www.ti.com/lit/ds/symlink/tps3808.pdf",
+  "revision": "SBVS050N August 2026"
+}

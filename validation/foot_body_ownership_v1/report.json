@@ -1,0 +1,51 @@
+{
+  "model_path": "outputs/rounded_sole_fine_v1/models/scene.xml",
+  "model_sha256": "c4ef84bdac3377ba7752dadbb26677916b7b79c99b4e3c032f1dfe32c3199dbe",
+  "rows": [
+    {
+      "side": "left",
+      "ankle_roll_inertial": {
+        "mass": "0.05600745682269507",
+        "pos": "0.00167706040133994 0.00955737057383767 -0.00732749715557691",
+        "fullinertia": "2.81359687402876e-05 6.01183293605752e-05 5.86406323251059e-05 -8.63911644026993e-07 2.99112334808749e-06 -3.92934945943022e-06"
+      },
+      "ankle_roll_motor_geometry_owner": "left_ankle_pitch",
+      "yoke_collision_XY_bounds_mm": [
+        [
+          -38.99999999999999,
+          47.0
+        ],
+        [
+          -18.000000000000004,
+          30.0
+        ]
+      ],
+      "sole_site_z_mm": -22.0,
+      "current_rigid_subassembly_mass_kg": 0.05039284313217964
+    },
+    {
+      "side": "right",
+      "ankle_roll_inertial": {
+        "mass": "0.056007456822694826",
+        "pos": "0.00167706040134004 -0.00955737057383763 -0.00732749715557704",
+        "fullinertia": "2.81359687402873e-05 6.01183293605749e-05 5.86406323251058e-05 8.63911644027056e-07 2.99112334808732e-06 3.92934945943014e-06"
+      },
+      "ankle_roll_motor_geometry_owner": "right_ankle_pitch",
+      "yoke_collision_XY_bounds_mm": [
+        [
+          -38.99999999999999,
+          47.0
+        ],
+        [
+          -30.0,
+          18.000000000000004
+        ]
+      ],
+      "sole_site_z_mm": -22.0,
+      "current_rigid_subassembly_mass_kg": 0.05039284313217976
+    }
+  ],
+  "scope": "Frozen model ownership and geometric landmarks, not full updated mass model",
+  "model_updated": false,
+  "decision": "Do not add ankle-roll motor again to ankle-roll foot body. Audit original mass allocations before replacing parent or child inertia."
+}

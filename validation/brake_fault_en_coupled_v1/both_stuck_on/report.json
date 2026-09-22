@@ -1,0 +1,75 @@
+{
+  "samples": [
+    {
+      "time_s": 0.079,
+      "bus_V": -7.502327e-09,
+      "rail_V": -7.474222e-09,
+      "aux_V": 3.206773,
+      "en_V": 0.0164211,
+      "Cout_energy_J": 2.681471736253631e-20
+    },
+    {
+      "time_s": 0.081,
+      "bus_V": -8.676965e-09,
+      "rail_V": -8.659061e-09,
+      "aux_V": 3.137467,
+      "en_V": 9.995419e-06,
+      "Cout_energy_J": 3.599008195282607e-20
+    },
+    {
+      "time_s": 0.1,
+      "bus_V": -1.060903e-08,
+      "rail_V": -1.06079e-08,
+      "aux_V": 0.8080191,
+      "en_V": 9.995377e-06,
+      "Cout_energy_J": 5.401322035679999e-20
+    },
+    {
+      "time_s": 0.2,
+      "bus_V": -1.060937e-08,
+      "rail_V": -1.060825e-08,
+      "aux_V": 0.000590098,
+      "en_V": 9.995376e-06,
+      "Cout_energy_J": 5.4016784669999997e-20
+    },
+    {
+      "time_s": 1.0,
+      "bus_V": -1.060937e-08,
+      "rail_V": -1.060825e-08,
+      "aux_V": 4.774682e-29,
+      "en_V": 9.994584e-06,
+      "Cout_energy_J": 5.4016784669999997e-20
+    }
+  ],
+  "numerical_checks_passed": true,
+  "fault_detector_measurements": {
+    "fault_latch_20ms": 0.9999866,
+    "fault_latch_max": 1.0,
+    "en_20ms": 0.0164211,
+    "drive_20ms": 0.0
+  },
+  "powered_measurements": {
+    "powered_bus_min": -7.502309e-09,
+    "powered_bus_max": 9.062432e-09,
+    "powered_brake0_peak_W": 1.698929e-17,
+    "powered_brake0_peak_A": 1.958962e-09,
+    "powered_brake1_peak_W": 1.698929e-17,
+    "powered_brake1_peak_A": 1.958962e-09
+  },
+  "post_disconnect_absorber_measurements": {
+    "shunt0_energy_J": 0.00083367,
+    "shunt0_peak_W": 0.1123071,
+    "brake0_energy_J": 0.0190402,
+    "brake0_peak_W": 1.069636,
+    "mos0_energy_J": 0.00043008,
+    "mos0_peak_W": 0.02416089,
+    "shunt1_energy_J": 0.00083367,
+    "shunt1_peak_W": 0.1123071,
+    "brake1_energy_J": 0.0190402,
+    "brake1_peak_W": 1.069636,
+    "mos1_energy_J": 0.00043008,
+    "mos1_peak_W": 0.02416089
+  },
+  "bus_after_disconnect_max_V": 2.27392,
+  "protection_design_verified": false
+}

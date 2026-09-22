@@ -1,0 +1,43 @@
+{
+  "fault": "both_open",
+  "normal_load": false,
+  "checks": {
+    "voltage": false,
+    "energy_accounting": true,
+    "branch0_resistor_peak_W": true,
+    "branch0_resistor_energy_J": true,
+    "branch0_zener_peak_W": true,
+    "branch0_pullup_peak_W": true,
+    "branch0_gate": true,
+    "branch1_resistor_peak_W": true,
+    "branch1_resistor_energy_J": true,
+    "branch1_zener_peak_W": true,
+    "branch1_pullup_peak_W": true,
+    "branch1_gate": true
+  },
+  "passed_screen": false,
+  "bus_min_V": 5.12721023,
+  "bus_max_V": 30.5261277,
+  "branches": [
+    {
+      "open": true,
+      "gate_max_V": 8.56163333,
+      "resistor_peak_W": 8.10536999693775e-15,
+      "resistor_energy_J": 2.0438760541440795e-16,
+      "zener_peak_W": 0.08552358191552352,
+      "pullup_peak_W": 0.21929046042261896,
+      "mosfet_peak_W": 1.2371277672434161e-06
+    },
+    {
+      "open": true,
+      "gate_max_V": 8.56161859,
+      "resistor_peak_W": 8.10536999693775e-15,
+      "resistor_energy_J": 2.0438760541440795e-16,
+      "zener_peak_W": 0.08552185719698235,
+      "pullup_peak_W": 0.2192907547469423,
+      "mosfet_peak_W": 1.2371277672434161e-06
+    }
+  ],
+  "energy_relative_error": 7.121396769227808e-06,
+  "protection_design_verified": false
+}

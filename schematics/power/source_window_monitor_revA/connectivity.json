@@ -1,0 +1,150 @@
+{
+  "parts": [
+    {
+      "reference": "LEFT_U_WINDOW",
+      "part": "TPS3700DDCR",
+      "pins": {
+        "1": "LEFT_SOURCE_WINDOW_OD",
+        "2": "GND",
+        "3": "LEFT_SOURCE_UV_SENSE",
+        "4": "LEFT_SOURCE_OV_SENSE",
+        "5": "STOP_AUX3V3",
+        "6": "LEFT_SOURCE_WINDOW_OD"
+      }
+    },
+    {
+      "reference": "LEFT_R_SOURCE_UV_TOP",
+      "part": null,
+      "value_ohm": 102000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "LEFT_REGULATOR_OUT",
+        "2": "LEFT_SOURCE_UV_SENSE"
+      }
+    },
+    {
+      "reference": "LEFT_R_SOURCE_UV_BOTTOM",
+      "part": null,
+      "value_ohm": 10000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "LEFT_SOURCE_UV_SENSE",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "LEFT_R_SOURCE_OV_TOP",
+      "part": null,
+      "value_ohm": 127000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "LEFT_REGULATOR_OUT",
+        "2": "LEFT_SOURCE_OV_SENSE"
+      }
+    },
+    {
+      "reference": "LEFT_R_SOURCE_OV_BOTTOM",
+      "part": null,
+      "value_ohm": 10000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "LEFT_SOURCE_OV_SENSE",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "LEFT_R_WINDOW_PULLUP",
+      "part": null,
+      "value_ohm": 10000,
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "LEFT_SOURCE_WINDOW_OD"
+      }
+    },
+    {
+      "reference": "LEFT_C_WINDOW",
+      "part": null,
+      "value_F": 1e-07,
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "RIGHT_U_WINDOW",
+      "part": "TPS3700DDCR",
+      "pins": {
+        "1": "RIGHT_SOURCE_WINDOW_OD",
+        "2": "GND",
+        "3": "RIGHT_SOURCE_UV_SENSE",
+        "4": "RIGHT_SOURCE_OV_SENSE",
+        "5": "STOP_AUX3V3",
+        "6": "RIGHT_SOURCE_WINDOW_OD"
+      }
+    },
+    {
+      "reference": "RIGHT_R_SOURCE_UV_TOP",
+      "part": null,
+      "value_ohm": 102000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "RIGHT_REGULATOR_OUT",
+        "2": "RIGHT_SOURCE_UV_SENSE"
+      }
+    },
+    {
+      "reference": "RIGHT_R_SOURCE_UV_BOTTOM",
+      "part": null,
+      "value_ohm": 10000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "RIGHT_SOURCE_UV_SENSE",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "RIGHT_R_SOURCE_OV_TOP",
+      "part": null,
+      "value_ohm": 127000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "RIGHT_REGULATOR_OUT",
+        "2": "RIGHT_SOURCE_OV_SENSE"
+      }
+    },
+    {
+      "reference": "RIGHT_R_SOURCE_OV_BOTTOM",
+      "part": null,
+      "value_ohm": 10000,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "RIGHT_SOURCE_OV_SENSE",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "RIGHT_R_WINDOW_PULLUP",
+      "part": null,
+      "value_ohm": 10000,
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "RIGHT_SOURCE_WINDOW_OD"
+      }
+    },
+    {
+      "reference": "RIGHT_C_WINDOW",
+      "part": null,
+      "value_F": 1e-07,
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "GND"
+      }
+    }
+  ],
+  "interfaces": {
+    "STOP_AUX3V3": "Dedicated monitor supply; startup inhibition required",
+    "LEFT_SOURCE_WINDOW_OD": "Raw OD voltage-window status, not sequencer-qualified",
+    "RIGHT_SOURCE_WINDOW_OD": "Raw OD voltage-window status, not sequencer-qualified"
+  },
+  "manufacturing_release": false
+}

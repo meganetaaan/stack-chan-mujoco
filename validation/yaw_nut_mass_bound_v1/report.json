@@ -1,0 +1,29 @@
+{
+  "source_sha256": {
+    "docs/prototype/mechanical/sole_spacer/nut_candidate.json": "edbe2a1f242eb42f9cc37925e2f499b0670a54710f25f7ebe6bcc91d2a2093d7",
+    "board/mechanical/prototype/yaw_support_candidate/revB/inventory.json": "8e7de9c8d22e27ccc8fb360052a987c28704c93557a447dc2421cf322c17e666",
+    "validation/base_mass_bounds_v1/report.json": "eb6f2c940bf2be35e99e6544ed0e12f89431f01c35a8351a3e7d8f4f04677707"
+  },
+  "part": "PTS A56202",
+  "quantity_yaw_assembly": 8,
+  "bounding_stock_volume_per_nut_mm3": 19.2,
+  "density_ceiling_assumption_kg_m3": 8000.0,
+  "density_ceiling_source": "Explicit engineering assumption, not an A2 supplier guarantee",
+  "mass_ceiling_per_nut_kg": 0.0001536,
+  "total_nut_mass_ceiling_kg": 0.0012288,
+  "partial_base_mass_plus_nuts_ceiling_kg": 0.674817640441328,
+  "nominal_nut_mass_kg": null,
+  "excluded": [
+    "Nut hole and chamfer removal are not credited to the ceiling.",
+    "Other unallocated base components remain excluded."
+  ],
+  "limitations": [
+    "Requires actual part inside the specified square stock and actual density below the assumed ceiling.",
+    "The inventory cylinders are collision envelopes, not physical material volumes.",
+    "This is a conditional mass ceiling only; no nut COM or inertia is assigned.",
+    "Underlying partial base mass is a comparison, so the sum is not a guaranteed manufactured base upper bound."
+  ],
+  "physical_mass_bound_qualified": false,
+  "whole_base_complete": false,
+  "model_updated": false
+}

@@ -1,0 +1,208 @@
+{
+  "status": "candidate_not_fault_or_load_qualified",
+  "parts": [
+    {
+      "reference": "INLET__J_PACK",
+      "part": "XT30U-M",
+      "pins": {
+        "+": "CELL_POS_UNFUSED",
+        "-": "CELL_B_MINUS"
+      },
+      "pin_labels": "polarity markings, not numbered CAD pad mapping",
+      "role": "robot-side removable main-current connector; pack mating type/polarity require verification"
+    },
+    {
+      "reference": "INLET__F_MAIN",
+      "part": "0297010.L",
+      "pins": {
+        "1": "CELL_POS_UNFUSED",
+        "2": "CELL_POS_FUSED_RAW"
+      },
+      "rating_A": 10,
+      "rating_VDC": 32,
+      "interrupt_rating_A_at_32VDC": 1000,
+      "role": "backup branch/harness fuse; coordination not established"
+    },
+    {
+      "reference": "INLET__FH_MAIN",
+      "part": "01530002H",
+      "pins": {},
+      "role": "physical holder for INLET__F_MAIN; cavities and wire ends electrically represented by fuse pins, not a parallel shunt",
+      "rating_A": 20,
+      "rating_VDC": 32,
+      "wire_range_AWG": [
+        16,
+        22
+      ]
+    },
+    {
+      "reference": "INLET__U_REVERSE",
+      "part": "LM74700QDBVRQ1",
+      "pins": {
+        "1": "INLET_VCAP",
+        "2": "CELL_B_MINUS",
+        "3": "CELL_POS_FUSED_RAW",
+        "4": "CELL_POS_FUSED",
+        "5": "INLET_GATE",
+        "6": "CELL_POS_FUSED_RAW"
+      },
+      "package": "DBV SOT23-6",
+      "role": "Ideal diode controller; EN tied ANODE, not system disconnect"
+    },
+    {
+      "reference": "INLET__Q_REVERSE",
+      "part": "CSD18540Q5BT",
+      "pins": {
+        "1": "CELL_POS_FUSED_RAW",
+        "2": "CELL_POS_FUSED_RAW",
+        "3": "CELL_POS_FUSED_RAW",
+        "4": "INLET_GATE",
+        "5": "CELL_POS_FUSED",
+        "6": "CELL_POS_FUSED",
+        "7": "CELL_POS_FUSED",
+        "8": "CELL_POS_FUSED",
+        "exposed_drain_pad": "CELL_POS_FUSED"
+      },
+      "body_diode": "anode source CELL_POS_FUSED_RAW to cathode drain CELL_POS_FUSED"
+    },
+    {
+      "reference": "INLET__C_IN",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "pins": {
+        "1": "CELL_POS_FUSED_RAW",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "INLET__C_OUT_0",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "INLET__C_OUT_1",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "pins": {
+        "1": "CELL_POS_FUSED",
+        "2": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "INLET__C_VCAP_0",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "pins": {
+        "1": "INLET_VCAP",
+        "2": "CELL_POS_FUSED_RAW"
+      }
+    },
+    {
+      "reference": "INLET__C_VCAP_1",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "initial_tolerance": 0.05,
+      "rated_V": 50,
+      "pins": {
+        "1": "INLET_VCAP",
+        "2": "CELL_POS_FUSED_RAW"
+      }
+    }
+  ],
+  "sources": {
+    "connector": "https://www.marutsu.co.jp/contents/shop/marutsu/datasheet/XT30U_SPEC.pdf",
+    "fuse": "https://www.littelfuse.com/assetdocs/littelfuse_datasheet_297_mini32v.pdf?assetguid=42c9dd21-a88e-4328-8e67-2f832444faf1",
+    "holder": "https://www.littelfuse.com/assetdocs/littelfuse-fuse-holder-mini-in-line-datasheet?assetguid=8e57c2a1-0f6e-4a5a-a557-fb7247faee5f",
+    "ideal_diode": "https://www.ti.com/lit/ds/symlink/lm74700-q1.pdf",
+    "MOSFET": "https://www.ti.com/lit/ds/symlink/csd18540q5b.pdf"
+  },
+  "connector_spec": {
+    "continuous_A": 15,
+    "momentary_A": 30,
+    "recommended_wire_AWG": 18,
+    "momentary_duration_s": null,
+    "hot_unplug_qualified": false
+  },
+  "wire_candidate": {
+    "AWG": 18,
+    "part": null,
+    "length_mm": null,
+    "insulation_and_temperature": null,
+    "ampacity_qualified": false
+  },
+  "fuse_spec": {
+    "revision": "2024-09-27",
+    "typical_cold_resistance_ohm": 0.00742,
+    "typical_melting_I2t_A2s": 122,
+    "typical_allowed_current_at40C_A": 8.6,
+    "opening_time_s": {
+      "13.5A": [
+        0.75,
+        600
+      ],
+      "20A": [
+        0.15,
+        5
+      ],
+      "35A": [
+        0.08,
+        0.5
+      ],
+      "60A": [
+        0.03,
+        0.1
+      ]
+    }
+  },
+  "required_disconnects": [
+    "main XT30",
+    "all cell-sense/balance wires",
+    "external USB/debug/charger sources as applicable"
+  ],
+  "assembly_constraints": [
+    "fuse as close as practical to inlet; upstream unfused segment must be mechanically protected",
+    "power-down before disconnect; connector is not qualified as a load-break switch",
+    "do not bypass shunt by returning robot loads to CELL_B_MINUS",
+    "do not treat polarized connector as electronic reverse-polarity protection"
+  ],
+  "unresolved": [
+    "total load versus temperature derating including Tab5 and converter efficiency",
+    "prospective short-circuit current and fuse clearing energy versus wires/PCB/FETs",
+    "cell-tap source protection and disconnect sequence",
+    "reverse-polarity protection before vulnerable battery controller",
+    "wire product, length, terminal assembly and strain relief",
+    "holder/CAD placement and extraction clearance",
+    "actual pack connector mating gender/polarity",
+    "Ideal diode thermal/startup/reversal transient with actual source and output capacitance",
+    "TVS selection for lead inductance and fault transients",
+    "Cell taps can bypass main input protection; full reverse wiring scenario not qualified",
+    "Reverse-current blocking prevents upstream energy return; downstream overvoltage clamp still required",
+    "Input-side controller remains battery load after downstream BQ cutoff"
+  ],
+  "manufacturing_release": false,
+  "rejected_alternative": {
+    "circuit": "single P-channel MOSFET, source downstream and gate pulled to ground",
+    "reason": "A precharged positive output can keep VGS negative during reverse input; not selected for this multi-rail architecture"
+  },
+  "ideal_diode_limits": {
+    "input_cap_initial_min_F": 9.5e-08,
+    "output_cap_initial_min_F": 1.9e-07,
+    "VCAP_initial_min_F": 1.9e-07,
+    "caps_effective_min_qualified": false,
+    "gate_drive_supply_difference_max_rating_V": 15,
+    "selected_MOSFET_VGS_abs_max_V": 20,
+    "full_system_reverse_protection_verified": false
+  }
+}

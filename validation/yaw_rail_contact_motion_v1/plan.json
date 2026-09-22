@@ -1,0 +1,16 @@
+{
+  "question": "Does the unbonded support move into or away from the retained body rail in the archived case?",
+  "source_field": "validation/yaw_rail_seat_deformation_location_v1/field.npz",
+  "body": "validation/yaw_tool_access_v1/body_shroud.step",
+  "contact_plane_z_mm": 52.2,
+  "body_probe_below_plane_mm": 0.005,
+  "signed_normal": "Positive Z opens the gap; negative Z penetrates a stationary rail",
+  "diagnostic_zero_mm": 1e-06,
+  "stop": "Postprocess existing displacement field only; no mesh refinement, contact reaction or capacity claim",
+  "limits": [
+    "Body treated as stationary only for free-motion diagnostic",
+    "Nodes are point samples, not area-integrated contact",
+    "One archived load; no full load envelope",
+    "Zero initial gap assumed from nominal CAD; print tolerance unknown"
+  ]
+}

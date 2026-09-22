@@ -1,0 +1,88 @@
+{
+  "status": "domain_crossing_candidate_not_integrated",
+  "parts": [
+    {
+      "reference": "IF_MAIN__U_BUFFER",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "MAIN_START_ALLOW",
+        "3": "PACK_RETURN",
+        "4": "SYS__SEQUENCE_ENABLE_REQUEST",
+        "5": "SYS__LOGIC3V3"
+      },
+      "role": "Receiver-powered tolerant-input buffer"
+    },
+    {
+      "reference": "IF_MAIN__R_INPUT_PD",
+      "part": "TNPW060310K0BEEA",
+      "value_ohm": 10000,
+      "pins": {
+        "1": "MAIN_START_ALLOW",
+        "2": "PACK_RETURN"
+      },
+      "placement": "At buffer input, receiver end of link",
+      "total_tolerance_assumption": 0.01
+    },
+    {
+      "reference": "IF_MAIN__C_HF",
+      "part": "GRM31C5C1H104JA01L",
+      "value_F": 1e-07,
+      "pins": {
+        "1": "SYS__LOGIC3V3",
+        "2": "PACK_RETURN"
+      },
+      "placement": "At buffer supply"
+    }
+  ],
+  "required_existing_parts": [
+    "CTRL__U_MAIN_GATE",
+    "SYS__U3",
+    "SYS__R_SEQUENCE_OFF"
+  ],
+  "connection_checks_pass": true,
+  "check_scope": "Source/sink pin names and preservation of independent permission/reset inputs; not electrical proof",
+  "rejected_direct_wire": {
+    "case": "CTRL3V3=3.3V, SYS__LOGIC3V3=0V, MAIN_START_ALLOW high",
+    "reason": "SN74HCS11 recommended input range0..VCC; input clamp exists aboveVCC+0.5V; no claim of damage current without impedance model"
+  },
+  "sources": [
+    {
+      "url": "https://www.ti.com/lit/ds/symlink/sn74hcs11.pdf",
+      "revision": "SCLS790B March2026",
+      "sections": [
+        "4",
+        "5.1",
+        "5.3"
+      ]
+    },
+    {
+      "url": "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf",
+      "revision": "16.1 September2024",
+      "sections": [
+        "6",
+        "9",
+        "10"
+      ]
+    }
+  ],
+  "engineering_choices": [
+    "10k input pulldown, total1% assumed",
+    "Reuse existing output-side10k pulldown; do not duplicate",
+    "MAIN_START_ALLOW occupies sequence request input only; keep manual permission and reset AND conditions"
+  ],
+  "remaining": [
+    "Receiver brownout0<VCC<1.65V behavior and reset hold timing",
+    "High/low margins across both rail tolerances and gate loads",
+    "Input driver unpowered leakage and pulldown timing",
+    "Add input pulldown load and buffer consumption to rail budgets",
+    "Physical manual request/Tab5 handshake/UV detector not connected",
+    "Whole-system power paths and LOGIC_START_ALLOW crossing remain separate work"
+  ],
+  "electrically_operational": false,
+  "manufacturing_release": false,
+  "source_sha256": {
+    "schematics/power/pack_control_ramp_candidate_v1/assembly.json": "cec05991e2d6c3c44309dbfe7b7c62a9bacc77a8c9b1c684d19df39fe351c301",
+    "schematics/power/system_power_integration_candidate_v1/assembly.json": "0e5da0bbf2b922e4f0d750a68fac137e5a0a7ec5d3edb1cd158240b346376d3b"
+  }
+}

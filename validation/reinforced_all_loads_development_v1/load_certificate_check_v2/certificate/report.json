@@ -1,0 +1,42 @@
+{
+  "scope": "Tighten linear FE all-load bounds using load-space subdivision.\n\nEach cluster is certified by the exact field at its center plus a rigorous\ntriangle-inequality bound on every recorded load's deviation from that center.\nNo interpolation between recorded times, contact or nonlinear behavior is proved.\n",
+  "rows": [
+    {
+      "source": "cancel/trace.npz",
+      "side": "left",
+      "samples": 3,
+      "cluster_count": 2,
+      "center_evaluations": 3,
+      "certified_samples": 3,
+      "response_upper": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "passed": true
+    },
+    {
+      "source": "fail/trace.npz",
+      "side": "left",
+      "samples": 1,
+      "cluster_count": 1,
+      "center_evaluations": 1,
+      "certified_samples": 0,
+      "response_upper": [
+        1.0,
+        1.0,
+        1.7320508075688772
+      ],
+      "passed": false
+    }
+  ],
+  "total_samples": 4,
+  "certified_samples": 3,
+  "response_upper": [
+    1.0,
+    1.0,
+    1.7320508075688772
+  ],
+  "passed": false,
+  "production_verified": false
+}

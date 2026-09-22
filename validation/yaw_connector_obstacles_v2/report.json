@@ -1,0 +1,389 @@
+{
+  "source_sha256": {
+    "validation/servo_reference_geometry_v1/report.json": "e5c02fa1ff00f3019ec78ce12d9ebc2fb5b28c22fdd68b67d08a9da0a39a2726",
+    "board/mechanical/prototype/yaw_support_candidate/current.json": "cd74289ce2c8d916a828b80e7a57790375709db853b7cb17e02cd4c329226b72",
+    "board/mechanical/prototype/yaw_support_candidate/revB/inventory.json": "8e7de9c8d22e27ccc8fb360052a987c28704c93557a447dc2421cf322c17e666",
+    "validation/yaw_tool_access_v1/body_shroud.step": "4e76955b352779a48d35f0cb0f95999132b8da97cb3a9d93243b34221fc68aae",
+    "validation/rear_joint_assembly_development_v1/rear_joint_inset2_v1/rear_structural_plate.step": "062ef8936bf307abcb88e74b873b49d570e0c6808539fb7d1027ab05ed9dbe28",
+    "validation/yaw_backing_keeper_v2/left_yaw_fixed_support.step": "5c045bed574086b4ab9d864a4eebea20826b68bb61b33b86e9e9942aaf5e0e5d",
+    "validation/yaw_backing_keeper_v2/left_threaded_backing_plate.step": "2cf8a3af738b0c5b42ba01c03689488c8369de71dd064d46a42a9f7b62426736",
+    "validation/yaw_metal_seat_v4/left_mount_plate.step": "9c6ff5af3490d4f9e4f5d61835667468322d4190fbda4878528507f9f4c21d52",
+    "validation/yaw_backing_keeper_v2/right_yaw_fixed_support.step": "f827128361d2db76a1307d2d2ec44b625b57944a57def7babd2d08ca54ce9e87",
+    "validation/yaw_backing_keeper_v2/right_threaded_backing_plate.step": "6d83a1d05fb490778ccff5c6432e53f75732f9d9fb36005925510bf4a6e9b39e",
+    "validation/yaw_metal_seat_v4/right_mount_plate.step": "7bd1788cfade1b1e10a7e5b6b4503428ffe2af61331464165626ac7b3ca40b82"
+  },
+  "rows": [
+    {
+      "side": "left",
+      "manufacturer_solid_index": 13,
+      "bounds_min_mm": [
+        -19.00000000000001,
+        32.1,
+        75.69999999999999
+      ],
+      "bounds_max_mm": [
+        -9.000000000000004,
+        35.90000000000001,
+        84.9
+      ],
+      "structural_neighbours": [
+        {
+          "part": "left_yaw_fixed_support",
+          "distance_mm": 3.0999999999999943
+        },
+        {
+          "part": "left_mount_plate",
+          "distance_mm": 3.0999999999999943
+        },
+        {
+          "part": "body_shroud",
+          "distance_mm": 26.299999999999997
+        },
+        {
+          "part": "left_threaded_backing_plate",
+          "distance_mm": 31.49999999999999
+        },
+        {
+          "part": "right_yaw_fixed_support",
+          "distance_mm": 40.1
+        },
+        {
+          "part": "right_mount_plate",
+          "distance_mm": 41.715344898490294
+        },
+        {
+          "part": "rear_plate",
+          "distance_mm": 43.19999999999999
+        },
+        {
+          "part": "right_threaded_backing_plate",
+          "distance_mm": 56.66268613470421
+        }
+      ],
+      "corridor_direction_y": 1,
+      "corridor_length_mm": 10,
+      "corridor_checks": [
+        {
+          "part": "body_shroud",
+          "overlap_mm3": 0.0,
+          "distance_mm": 16.29999999999999
+        },
+        {
+          "part": "rear_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 43.19999999999999
+        },
+        {
+          "part": "left_yaw_fixed_support",
+          "overlap_mm3": 438.997857143448,
+          "distance_mm": 0.0
+        },
+        {
+          "part": "left_threaded_backing_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 31.49999999999999
+        },
+        {
+          "part": "left_mount_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 3.0999999999999943
+        },
+        {
+          "part": "right_yaw_fixed_support",
+          "overlap_mm3": 0.0,
+          "distance_mm": 43.90000000000001
+        },
+        {
+          "part": "right_threaded_backing_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 59.85866687456379
+        },
+        {
+          "part": "right_mount_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 45.50571392693451
+        }
+      ]
+    },
+    {
+      "side": "left",
+      "manufacturer_solid_index": 14,
+      "bounds_min_mm": [
+        -19.000000000000004,
+        16.099999999999998,
+        75.69999999999999
+      ],
+      "bounds_max_mm": [
+        -9.0,
+        19.900000000000002,
+        84.9
+      ],
+      "structural_neighbours": [
+        {
+          "part": "left_mount_plate",
+          "distance_mm": 3.0999999999999943
+        },
+        {
+          "part": "left_yaw_fixed_support",
+          "distance_mm": 3.1000000000000014
+        },
+        {
+          "part": "right_yaw_fixed_support",
+          "distance_mm": 24.1
+        },
+        {
+          "part": "right_mount_plate",
+          "distance_mm": 25.91061558512264
+        },
+        {
+          "part": "left_threaded_backing_plate",
+          "distance_mm": 31.499999999999996
+        },
+        {
+          "part": "body_shroud",
+          "distance_mm": 31.770338367729106
+        },
+        {
+          "part": "rear_plate",
+          "distance_mm": 43.2
+        },
+        {
+          "part": "right_threaded_backing_plate",
+          "distance_mm": 44.26578814389279
+        }
+      ],
+      "corridor_direction_y": -1,
+      "corridor_length_mm": 10,
+      "corridor_checks": [
+        {
+          "part": "body_shroud",
+          "overlap_mm3": 0.0,
+          "distance_mm": 30.346169445252876
+        },
+        {
+          "part": "rear_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 43.2
+        },
+        {
+          "part": "left_yaw_fixed_support",
+          "overlap_mm3": 438.99785714344796,
+          "distance_mm": 0.0
+        },
+        {
+          "part": "left_threaded_backing_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 31.499999999999996
+        },
+        {
+          "part": "left_mount_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 3.0999999999999943
+        },
+        {
+          "part": "right_yaw_fixed_support",
+          "overlap_mm3": 0.0,
+          "distance_mm": 14.099999999999998
+        },
+        {
+          "part": "right_threaded_backing_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 37.913849712209384
+        },
+        {
+          "part": "right_mount_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 15.905030650709223
+        }
+      ]
+    },
+    {
+      "side": "right",
+      "manufacturer_solid_index": 13,
+      "bounds_min_mm": [
+        -19.00000000000001,
+        -19.900000000000002,
+        75.69999999999999
+      ],
+      "bounds_max_mm": [
+        -9.000000000000004,
+        -16.099999999999994,
+        84.9
+      ],
+      "structural_neighbours": [
+        {
+          "part": "right_yaw_fixed_support",
+          "distance_mm": 3.0999999999999943
+        },
+        {
+          "part": "right_mount_plate",
+          "distance_mm": 3.0999999999999943
+        },
+        {
+          "part": "left_yaw_fixed_support",
+          "distance_mm": 24.099999999999994
+        },
+        {
+          "part": "left_mount_plate",
+          "distance_mm": 25.910615585122628
+        },
+        {
+          "part": "right_threaded_backing_plate",
+          "distance_mm": 31.49999999999999
+        },
+        {
+          "part": "body_shroud",
+          "distance_mm": 31.770338367729103
+        },
+        {
+          "part": "rear_plate",
+          "distance_mm": 43.19999999999999
+        },
+        {
+          "part": "left_threaded_backing_plate",
+          "distance_mm": 44.265788143892784
+        }
+      ],
+      "corridor_direction_y": 1,
+      "corridor_length_mm": 10,
+      "corridor_checks": [
+        {
+          "part": "body_shroud",
+          "overlap_mm3": 0.0,
+          "distance_mm": 30.346169445252873
+        },
+        {
+          "part": "rear_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 43.19999999999999
+        },
+        {
+          "part": "left_yaw_fixed_support",
+          "overlap_mm3": 0.0,
+          "distance_mm": 14.099999999999994
+        },
+        {
+          "part": "left_threaded_backing_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 37.91384971220938
+        },
+        {
+          "part": "left_mount_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 15.90503065070922
+        },
+        {
+          "part": "right_yaw_fixed_support",
+          "overlap_mm3": 438.99785714344796,
+          "distance_mm": 0.0
+        },
+        {
+          "part": "right_threaded_backing_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 31.49999999999999
+        },
+        {
+          "part": "right_mount_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 3.0999999999999943
+        }
+      ]
+    },
+    {
+      "side": "right",
+      "manufacturer_solid_index": 14,
+      "bounds_min_mm": [
+        -19.000000000000004,
+        -35.900000000000006,
+        75.69999999999999
+      ],
+      "bounds_max_mm": [
+        -9.0,
+        -32.099999999999994,
+        84.9
+      ],
+      "structural_neighbours": [
+        {
+          "part": "right_mount_plate",
+          "distance_mm": 3.0999999999999943
+        },
+        {
+          "part": "right_yaw_fixed_support",
+          "distance_mm": 3.1000000000000014
+        },
+        {
+          "part": "body_shroud",
+          "distance_mm": 26.300000000000004
+        },
+        {
+          "part": "right_threaded_backing_plate",
+          "distance_mm": 31.499999999999996
+        },
+        {
+          "part": "left_yaw_fixed_support",
+          "distance_mm": 40.099999999999994
+        },
+        {
+          "part": "left_mount_plate",
+          "distance_mm": 41.71534489849029
+        },
+        {
+          "part": "rear_plate",
+          "distance_mm": 43.2
+        },
+        {
+          "part": "left_threaded_backing_plate",
+          "distance_mm": 56.662686134704195
+        }
+      ],
+      "corridor_direction_y": -1,
+      "corridor_length_mm": 10,
+      "corridor_checks": [
+        {
+          "part": "body_shroud",
+          "overlap_mm3": 0.0,
+          "distance_mm": 16.299999999999997
+        },
+        {
+          "part": "rear_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 43.2
+        },
+        {
+          "part": "left_yaw_fixed_support",
+          "overlap_mm3": 0.0,
+          "distance_mm": 43.900000000000006
+        },
+        {
+          "part": "left_threaded_backing_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 59.85866687456379
+        },
+        {
+          "part": "left_mount_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 45.5057139269345
+        },
+        {
+          "part": "right_yaw_fixed_support",
+          "overlap_mm3": 438.9978571434479,
+          "distance_mm": 0.0
+        },
+        {
+          "part": "right_threaded_backing_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 31.499999999999996
+        },
+        {
+          "part": "right_mount_plate",
+          "overlap_mm3": 0.0,
+          "distance_mm": 3.0999999999999943
+        }
+      ]
+    }
+  ],
+  "scope": "Nominal connector housing to eight structural parts only; fasteners and mating cable excluded.",
+  "corridor_status": "10 mm is a proposed service reservation, not a manufacturer insertion dimension; structural parts only",
+  "placement": "Same hypothesis as yaw_current_manufacturer_fit_v2",
+  "manufacturing_release": false
+}

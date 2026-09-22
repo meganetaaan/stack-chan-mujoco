@@ -1,0 +1,59 @@
+{
+  "scope": "Continuous axis-aligned sweep of a candidate spring-finger nut-loading jig.",
+  "stage": "bare body and rear plate, before Tab5, yaw supports, battery and power installation",
+  "source_sha256": {
+    "outputs/captive_rear_nuts_wide_v1/body_shroud.step": "f832dc5696edd32a2388bf11738237b8805b5a01519e02ded3283f2a5fbe4488",
+    "/home/sskw/.codex/worktrees/prototype-epics-5-6/stackchan_r5a_rl_v4/validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/rear_structural_plate.step": "604f5385918959d2066bd24234d591b3490692194ad2a4bea4ebbd1d5599f62d",
+    "outputs/captive_rear_nuts_wide_v1/plan.json": "2378a4c39197df356b378efa99422d9811061ba9eb9438e6d131993d7e16bb92",
+    "outputs/captive_rear_nuts_wide_v1/corner_0_nut.step": "c234663a559e6c980007dfee692441a562f6c5df93499633eb3d6b6b79274eb7",
+    "outputs/captive_rear_nuts_wide_v1/corner_0_bolt.step": "3520bef2a8164f81f0f7083fd05dc6db616f24c4bb6285a32be7117315feb032",
+    "outputs/captive_rear_nuts_wide_v1/corner_0_inner_washer.step": "323c7ddca7299709520dd2d2dd78a63b02ccfac8d6437b2fe4d8a9f11d09fb74",
+    "outputs/captive_rear_nuts_wide_v1/corner_1_nut.step": "5ab9fb8ecf8053d67d3a461b64690d49375713b0e7e1408a00d6de84c8a0302e",
+    "outputs/captive_rear_nuts_wide_v1/corner_1_bolt.step": "07266c7e2c41736002c5ab4423707aa1b9e0f442ee654de9a1c68d278f906626",
+    "outputs/captive_rear_nuts_wide_v1/corner_1_inner_washer.step": "a1853ce23b2fa51c6018aaab99b8aa3b7a53d97f04d18d4876cea16c2a2d5b01",
+    "outputs/captive_rear_nuts_wide_v1/corner_2_nut.step": "08443ffbf8a8994e81da104a8e29835024b0b8c7d60df45a70b3fc86a05d817c",
+    "outputs/captive_rear_nuts_wide_v1/corner_2_bolt.step": "5d21354502551114e3b48158a1caceb232931c5a982a18842ff1e9ddc92d8cea",
+    "outputs/captive_rear_nuts_wide_v1/corner_2_inner_washer.step": "01b4190cdcb50d475c89629f76691e05da60d9efbe18aee52f26ca0840b503f0",
+    "outputs/captive_rear_nuts_wide_v1/corner_3_nut.step": "a9f0ff4fee86e12fa61899c7a6014032a992547ad6c9fa3b794f7a96e97fe65d",
+    "outputs/captive_rear_nuts_wide_v1/corner_3_bolt.step": "fcc3443861df65d0ba8d39a4f89608546359eaee7017dac8c76db2d0850c703f",
+    "outputs/captive_rear_nuts_wide_v1/corner_3_inner_washer.step": "662e56b02c28ef1005e029b1e8711368d0c3be90a421045ab0f42c8cd483012d"
+  },
+  "pocket_width_mm": 6.4,
+  "jaw_thickness_mm": 0.1,
+  "jaw_thickness_upper_mm": 0.12,
+  "jaw_material": "spring sheet candidate; alloy, stress and grip force not verified",
+  "shaft_section_mm": [
+    2,
+    2
+  ],
+  "shaft_end_x_mm": 80,
+  "handle_end_x_mm": 125,
+  "path_mode": "lift14",
+  "fastener_check": "on",
+  "lateral_travel_mm": 14,
+  "lower_tool_offset_mm": 52,
+  "lower_approach_lift_mm": 52,
+  "stages": [
+    "axial approach at y=+/-43, lower nuts raised 52 mm",
+    "lower inside body",
+    "14 mm outward slide to y=+/-57",
+    "reverse slide after bolt engagement",
+    "raise lower jig",
+    "axial withdrawal"
+  ],
+  "criteria": {
+    "intersection_mm3": 0.01,
+    "functional_total_gap_mm": 0.1,
+    "free_tool_clearance_mm": 0.5
+  },
+  "body_surface_tolerance_mm": 0.2,
+  "rigid_tool_surface_tolerance_mm": 0.2,
+  "limitations": [
+    "kinematic geometry only",
+    "finger spring deflection, retention and release force not verified",
+    "no hand or cable geometry",
+    "fixed clamped-open finger shape during withdrawal",
+    "assembled fasteners require separate contact/strength checks"
+  ],
+  "fastener_staging": "Other corner nuts/bolts and all inner washers included; target nut and bolt included after engagement."
+}

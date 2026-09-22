@@ -1,0 +1,25 @@
+{
+  "question": "Post-print boot nut insertion without cutting the nut bearing floor.",
+  "slot_width_mm": 4.4,
+  "slot_z_mm": [
+    -14.6,
+    -12.8
+  ],
+  "nut_envelope_mm": [
+    4,
+    4,
+    1.2
+  ],
+  "criteria": {
+    "single_valid_solid": true,
+    "bearing_floor_removed_volume_max_mm3": 1e-08,
+    "continuous_swept_overlap_max_mm3": 0.01
+  },
+  "stop": "One slot geometry at eight positions; preserve failed results instead of iterative widening.",
+  "limits": [
+    "Nominal envelope; actual nut and print tolerances unqualified",
+    "Installed screw retains nut; loose nut may exit",
+    "Tool grip space not modeled",
+    "Removed side wall changes stiffness and needs structural evaluation"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "sources_sha256": {
+    "validation/series_sense_resistor_v1/report.json": "875f48d1b9a08a02a4bea567c583a822ca74f3623fd42303c3fc3935b2b51823",
+    "validation/series_sense_routing_v1/report.json": "a90c7729ac32d76345e58a428c05bda0c649a24d7ecfb147f44b14ef7409005b"
+  },
+  "source": "https://www.vishay.com/docs/30122/wslp.pdf",
+  "source_revision": "09-Sep-2024",
+  "published_test": "Resistance to solder heat: +260 C solder, 10 to 12 s dwell, 25 mm/s emergence; change limit +/-(0.5% + 0.0005 ohm).",
+  "scope": "Conditional transfer of this published test change to assembly comparison. Actual SMT reflow profile equivalence is not established.",
+  "solder_test_shift_used_ohm": 0.00054141,
+  "post_shift_temperature_range_ohm": [
+    0.007502718247500001,
+    0.0089094382475
+  ],
+  "current_limit_comparison_A": [
+    5.050823491888173,
+    7.330676454273981
+  ],
+  "remaining_positive_measurement_budget_V": 0.0011922921370425,
+  "equivalent_remaining_shared_resistance_ohm": 0.00024248365609975595,
+  "prior_budget_consumed_fraction": 0.6927367771684823,
+  "model_load_below_min_limit": true,
+  "manufacturing_release": false,
+  "decision": "Keep shunt as candidate only. Do not use the pre-assembly 3.88 mV budget as a routed-board guarantee.",
+  "remaining": [
+    "SMT process applicability",
+    "Kelvin extraction and other sense errors",
+    "Lifetime/environment change not allocated",
+    "IC threshold conditions",
+    "Updated negative-error FET stress"
+  ]
+}

@@ -48,6 +48,24 @@ class DriveTests(unittest.TestCase):
         for _ in range(1000):d.step(np.zeros(2),np.zeros(2),np.zeros(2))
         self.assertTrue(np.all(d.temperature<60.))
 
+    def test_unsupported_power_states_do_not_advance_state(self):
+        d=drive(delay_s=0)
+        q=np.zeros(2);target=np.ones(2)
+        d.step(q,q,target)
+        before_current=d.current.copy();before_temperature=d.temperature.copy()
+        before_reference=d.filtered.copy()
+        for state in ['torque_off','brownout','disconnected',None]:
+            with self.assertRaises(NotImplementedError):
+                d.step(q,q,target,power_state=state)
+            np.testing.assert_array_equal(d.current,before_current)
+            np.testing.assert_array_equal(d.temperature,before_temperature)
+            np.testing.assert_array_equal(d.filtered,before_reference)
+
+    def test_fixed_voltage_cannot_be_changed_after_parameter_fit(self):
+        d=drive()
+        with self.assertRaises(AttributeError):d.voltage=0.
+        self.assertEqual(d.voltage,5.)
+
     def test_rejects_out_of_range_voltage(self):
         with self.assertRaises(ValueError):drive(voltage=12.)
 

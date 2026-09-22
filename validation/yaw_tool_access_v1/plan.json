@@ -1,0 +1,16 @@
+{
+  "question": "Can local roof holes remove the eight known yaw driver collisions while preserving outer bounds?",
+  "stop": "One 6 mm opening candidate at the eight matched axes; no FE or size sweep.",
+  "design_basis": "4 mm provisional driver + 2*(0.4 mm existing tolerance budget + 0.5 mm residual) = 5.8 mm minimum nominal diameter; choose 6 mm nominal for 0.1 mm additional radial margin.",
+  "criteria": {
+    "tool_nominal_clearance_mm": 0.9,
+    "maximum_intersection_mm3": 0.01,
+    "unchanged_outer_bounds_mm": 1e-06
+  },
+  "limitations": [
+    "Driver size is still provisional",
+    "Roof strength and local stress redistribution unverified",
+    "Case screw engagement unresolved",
+    "No hand/handle sweep or purchased tool proof"
+  ]
+}

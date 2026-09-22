@@ -1,0 +1,16 @@
+{
+  "source_sha256": {
+    "validation/base_mass_provenance_development_v1/report.json": "32be352f46bad8acfb59ba6f8d3529f273c44c6149317d00a7433efedb34cf4c",
+    "board/mechanical/prototype/yaw_support_candidate/revA/inventory.json": "44b30143aae11b946018bde832e769e2d47d34d4a9d12c57619a2e240edcf609"
+  },
+  "upstream_provenance_hashes_current": true,
+  "frozen_base_mass_kg": 0.5229396482513734,
+  "four_replaced_allocations_kg": 0.20117269234109555,
+  "retained_before_reservation_reconciliation_kg": 0.3217669559102778,
+  "unitemized_cables_fasteners_reservation_kg": 0.025,
+  "retained_excluding_that_reservation_kg": 0.2967669559102778,
+  "mass_formula": "retained_excluding_reservation + four replacement masses + new structural/hardware masses + remaining itemized cables/fasteners; separately retain or replace other reservations exactly once",
+  "candidate_body_mass_kg": null,
+  "whole_robot_updated": false,
+  "inertia_update_required": "Subtract and add inertia expressed about common base origin, then recompute COM and inertia about new COM. Do not subtract tensors about different component COMs."
+}

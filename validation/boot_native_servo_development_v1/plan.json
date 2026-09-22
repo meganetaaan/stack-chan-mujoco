@@ -1,0 +1,38 @@
+{
+  "scope": "Sample revised boot against manufacturer X330 assembly with explicit motion groups.",
+  "angles_rad": [
+    -0.34,
+    -0.32,
+    -0.3,
+    -0.28,
+    -0.24,
+    0,
+    0.24,
+    0.28,
+    0.3,
+    0.32,
+    0.34
+  ],
+  "assumed_rotating_component_indices": [
+    3,
+    9,
+    10,
+    11,
+    12
+  ],
+  "nominal_clearance_min_mm": 1.1,
+  "overlap_max_mm3": 0.01,
+  "source_sha256": {
+    "validation/x330_manufacturer_cad_v1/XL_XC_330.stp": "e2f7b060801a1d6a21f23bca2554f29a402f7d73b8498cb201c9e6adf3139eb6",
+    "validation/x330_component_map_v1/report.json": "5ea25dc100d931d4007de017a4af67a6a8133347ac26cf4be6305b7311959989",
+    "software/sim/structural/check_boot_native_servo.py": "d4e2a6ccf15bf6213e637d1a6c27cea7ac33f4fffb644565fe2c11b711f1908d",
+    "validation/boot_rear_relief_development_v1/cad/left_boot_shell.step": "f14dfb0fbf63c3ab92a978749838eab6afe199b3575ef7952cdeb94269d26799",
+    "validation/boot_rear_relief_development_v1/cad/right_boot_shell.step": "c20b1f787b4460ba6d3d4931275bb5b65f83ef77b94f9ef5485149885c2c32af"
+  },
+  "limitations": [
+    "Discrete samples, not continuous clearance proof.",
+    "Horn, idler, cap and center screws co-rotate as an explicit hypothesis; cap/screw assembly motion needs qualification.",
+    "Manufacturer CAD has no dimensional tolerance guarantee.",
+    "No new mounting screws, harness or elastic deformation included."
+  ]
+}

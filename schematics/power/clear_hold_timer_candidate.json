@@ -1,0 +1,55 @@
+{
+  "part_number": "TPS3808G01DBVR",
+  "role": "candidate clear-hold qualification timer; separate from startup deadline",
+  "pins": {
+    "1": "CLEAR_HOLD_DONE",
+    "2": "GND",
+    "3": "RESET_LOW_VALID",
+    "4": null,
+    "5": "LOGIC3V3",
+    "6": "LOGIC3V3"
+  },
+  "passives": [
+    {
+      "role": "output pullup",
+      "value_ohm": 100000,
+      "from": "LOGIC3V3",
+      "to": "CLEAR_HOLD_DONE"
+    },
+    {
+      "role": "input default-low",
+      "value_ohm": 10000,
+      "from": "RESET_LOW_VALID",
+      "to": "GND"
+    },
+    {
+      "role": "local bypass",
+      "value_F": 1e-07,
+      "from": "LOGIC3V3",
+      "to": "GND"
+    }
+  ],
+  "datasheet_delay_s": [
+    0.012,
+    0.028
+  ],
+  "datasheet_delay_conditions": "CT open; RLRESET 100 kohm CLRESET 50pF; 1.7..6.5V, -40..125C",
+  "input_contract": [
+    "RESET_LOW_VALID High only after both physical U6 CLR pins satisfy their valid Low levels",
+    "RESET_LOW_VALID Low while observation invalid, reset deasserted, or request not armed",
+    "Before a new clear request is qualified, observe CLEAR_HOLD_DONE Low; prior High cannot satisfy a new request",
+    "Continue holding reset until fresh timer completion AND both latch outputs Low AND health valid",
+    "CLR-to-next-clock recovery is a separate required condition"
+  ],
+  "status": "candidate_not_integrated",
+  "manufacturing_release": false,
+  "source": "https://www.ti.com/lit/ds/symlink/tps3808.pdf",
+  "source_revision": "SBVS050N, August 2026, pp4-7",
+  "pending": [
+    "Actual reset-low observation and per-request arming circuit",
+    "Output loading and downstream thresholds",
+    "Exact passives and placement",
+    "Power transitions, observation dropouts and propagation maxima",
+    "Startup sequencer implementation"
+  ]
+}

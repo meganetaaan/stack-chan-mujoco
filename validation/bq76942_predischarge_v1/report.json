@@ -1,0 +1,46 @@
+{
+  "scope": "TRM exit semantics and ideal constant-load RC examples, not timing/ADC/FET validation",
+  "source": "TI SLUUBY1B 5.2.3.2.2 and13.3.6.5/6",
+  "assumptions": {
+    "pack_V": 12.6,
+    "R_ohm": 100.0,
+    "C_F": 0.001,
+    "stop_delta_V": 0.5,
+    "poll_s": 0.25,
+    "default_timeout_s": 0.05,
+    "origin": "engineering examples to test entry/exit semantics; R/C are not selected or measured robot values"
+  },
+  "cases": [
+    {
+      "case": "no_load",
+      "load_A": 0,
+      "voltage_at_default_timeout_V": 4.957713687620819,
+      "residual_delta_at_default_timeout_V": 7.642286312379181,
+      "default_timeout_can_enable_DSG_without_reaching_delta": true,
+      "voltage_exit_reachable": true,
+      "ideal_threshold_time_s": 0.3226843994517379,
+      "illustrative_exit_on_250ms_poll_grid_s": 0.5
+    },
+    {
+      "case": "load_10mA",
+      "load_A": 0.01,
+      "voltage_at_default_timeout_V": 4.564244347333452,
+      "residual_delta_at_default_timeout_V": 8.035755652666548,
+      "default_timeout_can_enable_DSG_without_reaching_delta": true,
+      "voltage_exit_reachable": false,
+      "ideal_threshold_time_s": null,
+      "illustrative_exit_on_250ms_poll_grid_s": null
+    },
+    {
+      "case": "output_short",
+      "voltage_V": 0,
+      "default_timeout_can_enable_DSG_without_reaching_delta": true,
+      "voltage_exit_reachable": false,
+      "zero_timeout_does_not_enable_DSG_from_elapsed_time": true
+    }
+  ],
+  "load_ceiling_for_voltage_exit_A": 0.005,
+  "ceiling_is_strict_inequality": true,
+  "conclusion": "Use zero hardware timeout plus voltage condition; implement independent abort and inhibit downstream loads",
+  "manufacturing_release": false
+}

@@ -1,0 +1,24 @@
+{
+  "part_number": "TPS3700DDCR",
+  "quantity_common_brake": 2,
+  "status": "evaluation_candidate_not_released",
+  "separate_from": "battery undervoltage TPS3700 in aux_sequence_candidate.json",
+  "pins": {
+    "1_OUTA": "UCC27517 pin3 IN+; 10k pullup to servo bus candidate",
+    "2_GND": "bus ground",
+    "3_INA+": "127k from bus and 10k to ground divider midpoint",
+    "4_INB-": "ground; unused channel",
+    "5_VDD": "load-side servo bus; local bypass required",
+    "6_OUTB": "no connection"
+  },
+  "divider_initial_tolerance": 0.001,
+  "divider_order_codes": {
+    "top": "TNPW0603127KBYEA",
+    "bottom": "TNPW060310K0BYEA",
+    "status": "derived from manufacturer coding table; supplier confirmation pending"
+  },
+  "source": "https://www.ti.com/lit/ds/symlink/tps3700.pdf",
+  "evidence": "validation/brake_detector_selection_v1/README.md",
+  "manufacturing_release": false,
+  "divider_temperature_evidence": "validation/brake_divider_parts_v1/README.md"
+}

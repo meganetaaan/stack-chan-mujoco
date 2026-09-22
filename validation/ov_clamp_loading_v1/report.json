@@ -1,0 +1,39 @@
+{
+  "clamp_divider_ohm": [
+    30100,
+    332000
+  ],
+  "clamp_voltage_comparison_V": [
+    1.334749363889123,
+    1.4004898841797215
+  ],
+  "rows": [
+    {
+      "OV_high_ohm": 35700.0,
+      "OV_low_ohm": 10000.0,
+      "trip_with_clamp_resistor_loading_only_V": [
+        5.478077324555304,
+        5.726919328152519
+      ],
+      "minimum_available_cathode_current_at_original_1_5V_crossing_A": 7.854124376465561e-06,
+      "exceeds_100uA_comparison": false
+    },
+    {
+      "OV_high_ohm": 3570.0,
+      "OV_low_ohm": 1000.0,
+      "trip_with_clamp_resistor_loading_only_V": [
+        5.377146305882103,
+        5.614877230112549
+      ],
+      "minimum_available_cathode_current_at_original_1_5V_crossing_A": 0.00012238528127805296,
+      "exceeds_100uA_comparison": true
+    }
+  ],
+  "qualified": false,
+  "limits": [
+    "Reference limits are at10mA, actual cathode current differs; dynamic impedance is not a complete DC correction guarantee",
+    "Pre-regulation cathode leakage at actual REF voltage not bounded",
+    "Capacitance, stability, startup and transient overshoot not modeled",
+    "Iref0..0.9uA is a sizing comparison using0.5uA plus0.4uA deviation, not whole-state guarantee"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "scope": "Test a hysteretic dissipative brake added to the archived supply probes.\n\nLM393B/TL431B-style behavior is approximated, with explicit offset, component\ncorners and response lag. The MOSFET is a switch model, not a vendor macro-model.\n",
+  "case": "brake_open",
+  "corner": "nominal",
+  "gates": {
+    "voltage": false,
+    "energy_accounting": true,
+    "resistor_energy": true,
+    "resistor_peak_power": true
+  },
+  "passed_screen": false,
+  "minimum_operating_bus_V": 4.97747584,
+  "maximum_operating_bus_V": 25.7161516,
+  "brake_energy_J": 2.705210745681981e-08,
+  "resistor_energy_J": 1.4120880184664385e-16,
+  "resistor_peak_power_W": 8.510638496784638e-15,
+  "mosfet_peak_power_W": 1.0943043064051678e-06,
+  "control_input_energy_J": 0.01423407296287062,
+  "energy_residual_J": -4.769834089202174e-06,
+  "energy_relative_error": 8.475746807221276e-06,
+  "protection_design_verified": false
+}

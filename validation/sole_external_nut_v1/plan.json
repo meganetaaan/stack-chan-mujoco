@@ -1,0 +1,16 @@
+{
+  "question": "Does placing the nut above the boss remove captive-cavity assembly dependence within the existing boot?",
+  "nut_bottom_z_mm": -11.6,
+  "screw_length_mm": 10,
+  "tool_envelope": "radius4 cylinder from z=-11.59 to +8.41; space reservation, not selected tool",
+  "criteria": {
+    "overlap_max_mm3": 0.01,
+    "single_valid_parts": true
+  },
+  "stop_condition": "One external-nut candidate, both sides; preserve failure",
+  "limitations": [
+    "Tool reservation only",
+    "Full robot and motion not included",
+    "Preload creep thread engagement and strength unverified"
+  ]
+}

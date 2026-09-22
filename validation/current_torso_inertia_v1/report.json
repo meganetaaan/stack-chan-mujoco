@@ -1,0 +1,2706 @@
+{
+  "plan": {
+    "frame": "Assembly CAD origin and axes; mm converted to m; not MuJoCo body frame",
+    "criteria": [
+      "One row per current CAD part",
+      "Reject missing masses in complete aggregate",
+      "Independent translated cuboid and two-body parallel-axis checks",
+      "Use pre-insertion carrier shape consistently for both mass and moments"
+    ],
+    "stop": "One CAD moment aggregation, no dynamics or strength acceptance",
+    "assumption": "Each allocated part has uniform mass distribution within its chosen CAD shape, including electronics/fasteners; comparison only"
+  },
+  "rows": [
+    {
+      "name": "yaw__left_yaw_fixed_support",
+      "mass_kg": 0.04490821751293022,
+      "basis": "uniform_print_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -0.0015563500129803173,
+        0.0011645254505261895,
+        0.003549008717894308
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.00032329113558600067,
+          4.0421865470148264e-05,
+          0.0001186365461571687
+        ],
+        [
+          4.0421865470148264e-05,
+          0.00036322753263178095,
+          -9.199320002754237e-05
+        ],
+        [
+          0.0001186365461571687,
+          -9.199320002754237e-05,
+          0.00011484960161406817
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_threaded_backing_plate",
+      "mass_kg": 0.005453798831682175,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -0.0002835975392474732,
+        0.00014179876962373657,
+        0.0003817659182177515
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          3.10899050163883e-05,
+          7.373536020434304e-06,
+          1.9851827747323084e-05
+        ],
+        [
+          7.373536020434304e-06,
+          4.193381108808449e-05,
+          -9.925913873661544e-06
+        ],
+        [
+          1.9851827747323084e-05,
+          -9.925913873661544e-06,
+          1.865841870828855e-05
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_mount_plate",
+      "mass_kg": 0.011982806179053777,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -0.0001546039201735733,
+        0.00030673219999727334,
+        0.00106047834684626
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.00010280680987589186,
+          3.952211275299154e-06,
+          1.3682446935361237e-05
+        ],
+        [
+          3.952211275299154e-06,
+          9.833346095456282e-05,
+          -2.7145799699758686e-05
+        ],
+        [
+          1.3682446935361237e-05,
+          -2.7145799699758686e-05,
+          1.3433606304303514e-05
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_64_keeper",
+      "mass_kg": 0.00023,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -1.3042065235146e-05,
+        5.98e-06,
+        1.4720000000000001e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.0977708690498875e-06,
+          3.3909369611379603e-07,
+          8.346921750493437e-07
+        ],
+        [
+          3.3909369611379603e-07,
+          1.6846418379982537e-06,
+          -3.8272000000000003e-07
+        ],
+        [
+          8.346921750493437e-07,
+          -3.8272000000000003e-07,
+          8.980418379982544e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_76_keeper",
+      "mass_kg": 0.00023,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -1.3042065235145993e-05,
+        5.979999999999999e-06,
+        1.7479999999999995e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.484170869049887e-06,
+          3.3909369611379587e-07,
+          9.911969578710955e-07
+        ],
+        [
+          3.3909369611379587e-07,
+          2.0710418379982535e-06,
+          -4.544799999999998e-07
+        ],
+        [
+          9.911969578710955e-07,
+          -4.544799999999998e-07,
+          8.980418379982542e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_rear_0_bolt",
+      "mass_kg": 0.0012,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.244702875399366e-05,
+        2.2800000000000002e-05,
+        6.96e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          4.472582228434504e-06,
+          1.3764935463258798e-06,
+          4.201927667731633e-06
+        ],
+        [
+          1.3764935463258798e-06,
+          8.453634385782755e-06,
+          -1.3224e-06
+        ],
+        [
+          4.201927667731633e-06,
+          -1.3224e-06,
+          4.850034385782753e-06
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_rear_0_rear_washer",
+      "mass_kg": 0.00010995900227802248,
+      "basis": "qualified_geometry_comparison_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.086857696818551e-06,
+        2.0892210432824275e-06,
+        6.377622132125312e-06
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          4.1045894971723567e-07,
+          1.346502962395525e-07,
+          4.110377464154764e-07
+        ],
+        [
+          1.346502962395525e-07,
+          8.270831861515721e-07,
+          -1.2117482051038093e-07
+        ],
+        [
+          4.110377464154764e-07,
+          -1.2117482051038093e-07,
+          4.968763023106698e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_rear_1_bolt",
+      "mass_kg": 0.0012,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.244702875399367e-05,
+        3.960000000000001e-05,
+        6.96e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          5.346182228434504e-06,
+          2.3907519488817907e-06,
+          4.201927667731633e-06
+        ],
+        [
+          2.3907519488817907e-06,
+          8.453634385782756e-06,
+          -2.2967999999999998e-06
+        ],
+        [
+          4.201927667731633e-06,
+          -2.2967999999999998e-06,
+          5.723634385782754e-06
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_rear_1_rear_washer",
+      "mass_kg": 0.00010995900227802248,
+      "basis": "qualified_geometry_comparison_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.0868576968185495e-06,
+        3.628647075174742e-06,
+        6.377622132125311e-06
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          4.90509103375636e-07,
+          2.3386630399501222e-07,
+          4.110377464154763e-07
+        ],
+        [
+          2.3386630399501222e-07,
+          8.270831861515721e-07,
+          -2.1046153036013529e-07
+        ],
+        [
+          4.110377464154763e-07,
+          -2.1046153036013529e-07,
+          5.769264559690699e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_rear_2_bolt",
+      "mass_kg": 0.0012,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.244702875399366e-05,
+        2.28e-05,
+        9.839999999999998e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          8.504582228434502e-06,
+          1.3764935463258794e-06,
+          5.94065635782748e-06
+        ],
+        [
+          1.3764935463258794e-06,
+          1.2485634385782753e-05,
+          -1.8695999999999994e-06
+        ],
+        [
+          5.94065635782748e-06,
+          -1.8695999999999994e-06,
+          4.850034385782754e-06
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_rear_2_rear_washer",
+      "mass_kg": 0.00010995900227802247,
+      "basis": "qualified_geometry_comparison_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.086857696818547e-06,
+        2.0892210432824262e-06,
+        9.01663818679785e-06
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          7.799211973713918e-07,
+          1.3465029623955237e-07,
+          5.811223311391215e-07
+        ],
+        [
+          1.3465029623955237e-07,
+          1.1965454338057279e-06,
+          -1.7131612554915912e-07
+        ],
+        [
+          5.811223311391215e-07,
+          -1.7131612554915912e-07,
+          4.968763023106696e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_rear_3_bolt",
+      "mass_kg": 0.0012,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.244702875399366e-05,
+        3.96e-05,
+        9.839999999999997e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          9.378182228434505e-06,
+          2.390751948881791e-06,
+          5.94065635782748e-06
+        ],
+        [
+          2.390751948881791e-06,
+          1.2485634385782753e-05,
+          -3.2471999999999996e-06
+        ],
+        [
+          5.94065635782748e-06,
+          -3.2471999999999996e-06,
+          5.7236343857827536e-06
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_rear_3_rear_washer",
+      "mass_kg": 0.00010995900227802247,
+      "basis": "qualified_geometry_comparison_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.086857696818549e-06,
+        3.6286470751747417e-06,
+        9.016638186797848e-06
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          8.599713510297919e-07,
+          2.3386630399501206e-07,
+          5.811223311391214e-07
+        ],
+        [
+          2.3386630399501206e-07,
+          1.1965454338057279e-06,
+          -2.97549060164329e-07
+        ],
+        [
+          5.811223311391214e-07,
+          -2.97549060164329e-07,
+          5.7692645596907e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_plate_0_screw",
+      "mass_kg": 0.00023,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.820000000000003e-06,
+        3.6800000000000003e-06,
+        2.097493476485401e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.974713241442069e-06,
+          1.2512000000000005e-07,
+          7.131477820050366e-07
+        ],
+        [
+          1.2512000000000005e-07,
+          2.18171324144207e-06,
+          -3.3559895623766425e-07
+        ],
+        [
+          7.131477820050366e-07,
+          -3.3559895623766425e-07,
+          3.249708690498877e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_plate_0_washer",
+      "mass_kg": 0.0001999441433096235,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -6.798100872527188e-06,
+        3.199106292953976e-06,
+        1.8284891905665073e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.7239305252292622e-06,
+          1.0876961396043499e-07,
+          6.216863247926117e-07
+        ],
+        [
+          1.0876961396043499e-07,
+          1.903880254207923e-06,
+          -2.9255827049064113e-07
+        ],
+        [
+          6.216863247926117e-07,
+          -2.9255827049064113e-07,
+          2.8347705743169644e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_plate_0_nut",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "yaw__left_plate_1_screw",
+      "mass_kg": 0.00023,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.820000000000005e-06,
+        8.280000000000002e-06,
+        2.097493476485401e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          2.2139132414420696e-06,
+          2.815200000000001e-07,
+          7.131477820050367e-07
+        ],
+        [
+          2.815200000000001e-07,
+          2.18171324144207e-06,
+          -7.550976515347444e-07
+        ],
+        [
+          7.131477820050367e-07,
+          -7.550976515347444e-07,
+          5.641708690498879e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_plate_1_washer",
+      "mass_kg": 0.00019994414330962358,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -6.798100872527191e-06,
+        7.197989159146447e-06,
+        1.8284891905665073e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.931872434271271e-06,
+          2.4473163141097873e-07,
+          6.216863247926116e-07
+        ],
+        [
+          2.4473163141097873e-07,
+          1.9038802542079236e-06,
+          -6.582561086039426e-07
+        ],
+        [
+          6.216863247926116e-07,
+          -6.582561086039426e-07,
+          4.91418966473705e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_plate_1_nut",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "yaw__left_plate_2_screw",
+      "mass_kg": 0.00023,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        1.8629999999999979e-06,
+        3.6800000000000003e-06,
+        2.097493476485401e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.97471324144207e-06,
+          -2.9807999999999965e-08,
+          -1.6989697159531728e-07
+        ],
+        [
+          -2.9807999999999965e-08,
+          1.9309235414420696e-06,
+          -3.355989562376642e-07
+        ],
+        [
+          -1.6989697159531728e-07,
+          -3.355989562376642e-07,
+          7.418116904988771e-08
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_plate_2_washer",
+      "mass_kg": 0.00019994414330962363,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        1.6195475608079623e-06,
+        3.199106292953978e-06,
+        1.8284891905665083e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.723930525229263e-06,
+          -2.59127609729274e-08,
+          -1.481076244358882e-07
+        ],
+        [
+          -2.59127609729274e-08,
+          1.6858631597845445e-06,
+          -2.925582704906413e-07
+        ],
+        [
+          -1.481076244358882e-07,
+          -2.925582704906413e-07,
+          6.545996300831718e-08
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_plate_2_nut",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "yaw__left_plate_3_screw",
+      "mass_kg": 0.00023,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        1.8629999999999979e-06,
+        8.280000000000002e-06,
+        2.097493476485401e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          2.213913241442069e-06,
+          -6.706799999999992e-08,
+          -1.698969715953173e-07
+        ],
+        [
+          -6.706799999999992e-08,
+          1.9309235414420688e-06,
+          -7.550976515347445e-07
+        ],
+        [
+          -1.698969715953173e-07,
+          -7.550976515347445e-07,
+          3.1338116904988746e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_plate_3_washer",
+      "mass_kg": 0.00019994414330962363,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        1.6195475608079623e-06,
+        7.1979891591464525e-06,
+        1.8284891905665083e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.931872434271272e-06,
+          -5.8303712189086663e-08,
+          -1.481076244358882e-07
+        ],
+        [
+          -5.8303712189086663e-08,
+          1.6858631597845443e-06,
+          -6.582561086039431e-07
+        ],
+        [
+          -1.481076244358882e-07,
+          -6.582561086039431e-07,
+          2.734018720503256e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__left_plate_3_nut",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "yaw__right_yaw_fixed_support",
+      "mass_kg": 0.04490821751292743,
+      "basis": "uniform_print_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -0.0015563500129802564,
+        -0.0011645254505261151,
+        0.003549008717894083
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.0003232911355859803,
+          -4.0421865470146855e-05,
+          0.00011863654615716402
+        ],
+        [
+          -4.0421865470146855e-05,
+          0.0003632275326317608,
+          9.199320002753643e-05
+        ],
+        [
+          0.00011863654615716402,
+          9.199320002753643e-05,
+          0.00011484960161406392
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_threaded_backing_plate",
+      "mass_kg": 0.005453798831682175,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -0.0002835975392474732,
+        -0.00014179876962373657,
+        0.0003817659182177515
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          3.10899050163883e-05,
+          -7.373536020434304e-06,
+          1.9851827747323084e-05
+        ],
+        [
+          -7.373536020434304e-06,
+          4.193381108808449e-05,
+          9.925913873661544e-06
+        ],
+        [
+          1.9851827747323084e-05,
+          9.925913873661544e-06,
+          1.8658418708288544e-05
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_mount_plate",
+      "mass_kg": 0.011982806179053779,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -0.00015460392017357317,
+        -0.00030673219999727334,
+        0.0010604783468462593
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.00010280680987589185,
+          -3.952211275299153e-06,
+          1.3682446935361225e-05
+        ],
+        [
+          -3.952211275299153e-06,
+          9.833346095456278e-05,
+          2.714579969975869e-05
+        ],
+        [
+          1.3682446935361225e-05,
+          2.714579969975869e-05,
+          1.3433606304303516e-05
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_64_keeper",
+      "mass_kg": 0.00023,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -1.3042065235146e-05,
+        -5.98e-06,
+        1.4720000000000001e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.0977708690498875e-06,
+          -3.3909369611379603e-07,
+          8.346921750493437e-07
+        ],
+        [
+          -3.3909369611379603e-07,
+          1.6846418379982537e-06,
+          3.8272000000000003e-07
+        ],
+        [
+          8.346921750493437e-07,
+          3.8272000000000003e-07,
+          8.980418379982544e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_76_keeper",
+      "mass_kg": 0.00023,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -1.3042065235145993e-05,
+        -5.979999999999999e-06,
+        1.7479999999999995e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.484170869049887e-06,
+          -3.3909369611379587e-07,
+          9.911969578710955e-07
+        ],
+        [
+          -3.3909369611379587e-07,
+          2.0710418379982535e-06,
+          4.544799999999998e-07
+        ],
+        [
+          9.911969578710955e-07,
+          4.544799999999998e-07,
+          8.980418379982542e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_rear_0_bolt",
+      "mass_kg": 0.0012,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.244702875399366e-05,
+        -3.96e-05,
+        6.959999999999998e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          5.346182228434504e-06,
+          -2.390751948881791e-06,
+          4.201927667731632e-06
+        ],
+        [
+          -2.390751948881791e-06,
+          8.453634385782755e-06,
+          2.2967999999999998e-06
+        ],
+        [
+          4.201927667731632e-06,
+          2.2967999999999998e-06,
+          5.723634385782754e-06
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_rear_0_rear_washer",
+      "mass_kg": 0.00010995900227802245,
+      "basis": "qualified_geometry_comparison_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.0868576968185495e-06,
+        -3.6286470751747413e-06,
+        6.37762213212531e-06
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          4.905091033756357e-07,
+          -2.3386630399501217e-07,
+          4.110377464154763e-07
+        ],
+        [
+          -2.3386630399501217e-07,
+          8.270831861515719e-07,
+          2.1046153036013526e-07
+        ],
+        [
+          4.110377464154763e-07,
+          2.1046153036013526e-07,
+          5.769264559690698e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_rear_1_bolt",
+      "mass_kg": 0.0012,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.244702875399366e-05,
+        -2.2800000000000002e-05,
+        6.96e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          4.472582228434504e-06,
+          -1.3764935463258798e-06,
+          4.201927667731633e-06
+        ],
+        [
+          -1.3764935463258798e-06,
+          8.453634385782755e-06,
+          1.3224e-06
+        ],
+        [
+          4.201927667731633e-06,
+          1.3224e-06,
+          4.850034385782753e-06
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_rear_1_rear_washer",
+      "mass_kg": 0.00010995900227802248,
+      "basis": "qualified_geometry_comparison_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.086857696818551e-06,
+        -2.0892210432824275e-06,
+        6.377622132125312e-06
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          4.1045894971723567e-07,
+          -1.346502962395525e-07,
+          4.110377464154764e-07
+        ],
+        [
+          -1.346502962395525e-07,
+          8.270831861515721e-07,
+          1.2117482051038093e-07
+        ],
+        [
+          4.110377464154764e-07,
+          1.2117482051038093e-07,
+          4.968763023106698e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_rear_2_bolt",
+      "mass_kg": 0.0012,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.244702875399366e-05,
+        -3.960000000000001e-05,
+        9.839999999999998e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          9.378182228434501e-06,
+          -2.390751948881791e-06,
+          5.940656357827481e-06
+        ],
+        [
+          -2.390751948881791e-06,
+          1.2485634385782754e-05,
+          3.247200000000001e-06
+        ],
+        [
+          5.940656357827481e-06,
+          3.247200000000001e-06,
+          5.7236343857827536e-06
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_rear_2_rear_washer",
+      "mass_kg": 0.00010995900227802247,
+      "basis": "qualified_geometry_comparison_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.086857696818547e-06,
+        -3.6286470751747417e-06,
+        9.01663818679785e-06
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          8.59971351029792e-07,
+          -2.3386630399501206e-07,
+          5.811223311391215e-07
+        ],
+        [
+          -2.3386630399501206e-07,
+          1.1965454338057279e-06,
+          2.97549060164329e-07
+        ],
+        [
+          5.811223311391215e-07,
+          2.97549060164329e-07,
+          5.769264559690701e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_rear_3_bolt",
+      "mass_kg": 0.0012,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.244702875399366e-05,
+        -2.28e-05,
+        9.839999999999998e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          8.504582228434502e-06,
+          -1.3764935463258794e-06,
+          5.94065635782748e-06
+        ],
+        [
+          -1.3764935463258794e-06,
+          1.2485634385782753e-05,
+          1.8695999999999994e-06
+        ],
+        [
+          5.94065635782748e-06,
+          1.8695999999999994e-06,
+          4.850034385782754e-06
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_rear_3_rear_washer",
+      "mass_kg": 0.00010995900227802247,
+      "basis": "qualified_geometry_comparison_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.086857696818549e-06,
+        -2.0892210432824262e-06,
+        9.016638186797848e-06
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          7.799211973713917e-07,
+          -1.3465029623955242e-07,
+          5.811223311391215e-07
+        ],
+        [
+          -1.3465029623955242e-07,
+          1.1965454338057279e-06,
+          1.7131612554915915e-07
+        ],
+        [
+          5.811223311391215e-07,
+          1.7131612554915915e-07,
+          4.968763023106697e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_plate_0_screw",
+      "mass_kg": 0.00023,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.820000000000005e-06,
+        -8.280000000000002e-06,
+        2.097493476485401e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          2.2139132414420696e-06,
+          -2.815200000000001e-07,
+          7.131477820050367e-07
+        ],
+        [
+          -2.815200000000001e-07,
+          2.18171324144207e-06,
+          7.550976515347444e-07
+        ],
+        [
+          7.131477820050367e-07,
+          7.550976515347444e-07,
+          5.641708690498879e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_plate_0_washer",
+      "mass_kg": 0.00019994414330962358,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -6.798100872527191e-06,
+        -7.197989159146447e-06,
+        1.8284891905665073e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.931872434271271e-06,
+          -2.4473163141097873e-07,
+          6.216863247926116e-07
+        ],
+        [
+          -2.4473163141097873e-07,
+          1.9038802542079236e-06,
+          6.582561086039426e-07
+        ],
+        [
+          6.216863247926116e-07,
+          6.582561086039426e-07,
+          4.91418966473705e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_plate_0_nut",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "yaw__right_plate_1_screw",
+      "mass_kg": 0.00023,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -7.820000000000003e-06,
+        -3.6800000000000003e-06,
+        2.097493476485401e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.9747132414420694e-06,
+          -1.2512000000000005e-07,
+          7.131477820050366e-07
+        ],
+        [
+          -1.2512000000000005e-07,
+          2.1817132414420697e-06,
+          3.355989562376642e-07
+        ],
+        [
+          7.131477820050366e-07,
+          3.355989562376642e-07,
+          3.249708690498877e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_plate_1_washer",
+      "mass_kg": 0.00019994414330962355,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -6.79810087252719e-06,
+        -3.1991062929539767e-06,
+        1.8284891905665073e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.7239305252292622e-06,
+          -1.0876961396043504e-07,
+          6.216863247926118e-07
+        ],
+        [
+          -1.0876961396043504e-07,
+          1.9038802542079231e-06,
+          2.925582704906412e-07
+        ],
+        [
+          6.216863247926118e-07,
+          2.925582704906412e-07,
+          2.8347705743169655e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_plate_1_nut",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "yaw__right_plate_2_screw",
+      "mass_kg": 0.00023,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        1.8629999999999979e-06,
+        -8.280000000000002e-06,
+        2.097493476485401e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          2.213913241442069e-06,
+          6.706799999999992e-08,
+          -1.698969715953173e-07
+        ],
+        [
+          6.706799999999992e-08,
+          1.9309235414420688e-06,
+          7.550976515347445e-07
+        ],
+        [
+          -1.698969715953173e-07,
+          7.550976515347445e-07,
+          3.1338116904988746e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_plate_2_washer",
+      "mass_kg": 0.00019994414330962363,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        1.6195475608079623e-06,
+        -7.1979891591464525e-06,
+        1.8284891905665083e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.931872434271272e-06,
+          5.8303712189086663e-08,
+          -1.481076244358882e-07
+        ],
+        [
+          5.8303712189086663e-08,
+          1.6858631597845443e-06,
+          6.582561086039431e-07
+        ],
+        [
+          -1.481076244358882e-07,
+          6.582561086039431e-07,
+          2.734018720503256e-07
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_plate_2_nut",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "yaw__right_plate_3_screw",
+      "mass_kg": 0.00023,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        1.8629999999999977e-06,
+        -3.6800000000000003e-06,
+        2.097493476485401e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.9747132414420694e-06,
+          2.9807999999999965e-08,
+          -1.6989697159531726e-07
+        ],
+        [
+          2.9807999999999965e-08,
+          1.930923541442069e-06,
+          3.355989562376642e-07
+        ],
+        [
+          -1.6989697159531726e-07,
+          3.355989562376642e-07,
+          7.418116904988771e-08
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_plate_3_washer",
+      "mass_kg": 0.00019994414330962366,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        1.619547560807963e-06,
+        -3.1991062929539784e-06,
+        1.828489190566508e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.7239305252292637e-06,
+          2.591276097292741e-08,
+          -1.4810762443588821e-07
+        ],
+        [
+          2.591276097292741e-08,
+          1.6858631597845453e-06,
+          2.925582704906413e-07
+        ],
+        [
+          -1.4810762443588821e-07,
+          2.925582704906413e-07,
+          6.545996300831719e-08
+        ]
+      ]
+    },
+    {
+      "name": "yaw__right_plate_3_nut",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__rear_plate",
+      "mass_kg": 0.08591943481139436,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -0.005430108280080125,
+        -1.977726370795975e-07,
+        0.005438156931960435
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.0005794425024011905,
+          -1.2499230663422504e-08,
+          0.0003436915180998993
+        ],
+        [
+          -1.2499230663422504e-08,
+          0.0008039564338485535,
+          2.1952762715868084e-08
+        ],
+        [
+          0.0003436915180998993,
+          2.1952762715868084e-08,
+          0.0004619090347779722
+        ]
+      ]
+    },
+    {
+      "name": "power__left_bracket",
+      "mass_kg": 0.008568492312186123,
+      "basis": "uniform_print_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -0.0003515262934132811,
+        0.00027560566075943187,
+        0.0008708532719768223
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          9.869570820086574e-05,
+          1.1297877380263984e-05,
+          3.6303272303947424e-05
+        ],
+        [
+          1.1297877380263984e-05,
+          0.00010707442413957926,
+          -2.8004450606734358e-05
+        ],
+        [
+          3.6303272303947424e-05,
+          -2.8004450606734358e-05,
+          2.8031077416777348e-05
+        ]
+      ]
+    },
+    {
+      "name": "power__right_bracket",
+      "mass_kg": 0.008480800948980958,
+      "basis": "uniform_print_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -0.0003485447870643098,
+        -0.0002566210432707831,
+        0.0008623910554275241
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          9.676593651831483e-05,
+          -1.0530078954298529e-05,
+          3.601555694127164e-05
+        ],
+        [
+          -1.0530078954298529e-05,
+          0.00010615575292707576,
+          2.6083039690934784e-05
+        ],
+        [
+          3.601555694127164e-05,
+          2.6083039690934784e-05,
+          2.6816207696417535e-05
+        ]
+      ]
+    },
+    {
+      "name": "power__left_rear_0_screw",
+      "mass_kg": 0.00078,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -4.7746415430267084e-05,
+        2.497247999999999e-05,
+        8.345999999999999e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          9.731360327320948e-06,
+          1.5286492364154309e-06,
+          5.108866451038577e-06
+        ],
+        [
+          1.5286492364154309e-06,
+          1.186863722429525e-05,
+          -2.6720553599999992e-06
+        ],
+        [
+          5.108866451038577e-06,
+          -2.6720553599999992e-06,
+          3.7379361439752536e-06
+        ]
+      ]
+    },
+    {
+      "name": "power__left_rear_0_outer_washer",
+      "mass_kg": null,
+      "basis": "unassigned_material_density",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__left_rear_0_inner_washer",
+      "mass_kg": null,
+      "basis": "unassigned_material_density",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__left_rear_0_nut",
+      "mass_kg": 0.00038,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -2.147e-05,
+        1.2166079999999994e-05,
+        4.0659999999999994e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          4.742157733478795e-06,
+          6.873835199999995e-07,
+          2.2972899999999997e-06
+        ],
+        [
+          6.873835199999995e-07,
+          5.564871658099398e-06,
+          -1.3017705599999988e-06
+        ],
+        [
+          2.2972899999999997e-06,
+          -1.3017705599999988e-06,
+          1.6037608753793976e-06
+        ]
+      ]
+    },
+    {
+      "name": "power__left_rear_1_screw",
+      "mass_kg": 0.00078,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -4.7746415430267084e-05,
+        2.497247999999999e-05,
+        8.969999999999998e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.111664032732095e-05,
+          1.5286492364154309e-06,
+          5.490837774480715e-06
+        ],
+        [
+          1.5286492364154309e-06,
+          1.3253917224295255e-05,
+          -2.871835199999999e-06
+        ],
+        [
+          5.490837774480715e-06,
+          -2.871835199999999e-06,
+          3.737936143975255e-06
+        ]
+      ]
+    },
+    {
+      "name": "power__left_rear_1_outer_washer",
+      "mass_kg": null,
+      "basis": "unassigned_material_density",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__left_rear_1_inner_washer",
+      "mass_kg": null,
+      "basis": "unassigned_material_density",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__left_rear_1_nut",
+      "mass_kg": 0.00038,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -2.147e-05,
+        1.2166079999999994e-05,
+        4.37e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          5.417037733478794e-06,
+          6.873835199999995e-07,
+          2.4690499999999997e-06
+        ],
+        [
+          6.873835199999995e-07,
+          6.239751658099396e-06,
+          -1.399099199999999e-06
+        ],
+        [
+          2.4690499999999997e-06,
+          -1.399099199999999e-06,
+          1.6037608753793976e-06
+        ]
+      ]
+    },
+    {
+      "name": "power__right_rear_0_screw",
+      "mass_kg": 0.00078,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -4.774641543026709e-05,
+        -2.3387520000000004e-05,
+        8.345999999999999e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          9.633092807320947e-06,
+          -1.4316285202611285e-06,
+          5.108866451038577e-06
+        ],
+        [
+          -1.4316285202611285e-06,
+          1.1868637224295249e-05,
+          2.5024646399999994e-06
+        ],
+        [
+          5.108866451038577e-06,
+          2.5024646399999994e-06,
+          3.639668623975254e-06
+        ]
+      ]
+    },
+    {
+      "name": "power__right_rear_0_outer_washer",
+      "mass_kg": null,
+      "basis": "unassigned_material_density",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__right_rear_0_inner_washer",
+      "mass_kg": null,
+      "basis": "unassigned_material_density",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__right_rear_0_nut",
+      "mass_kg": 0.00038,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -2.1470000000000006e-05,
+        -1.1393919999997468e-05,
+        4.0659999999999994e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          4.694283813478644e-06,
+          -6.437564799998569e-07,
+          2.2972899999999997e-06
+        ],
+        [
+          -6.437564799998569e-07,
+          5.564871658099397e-06,
+          1.2191494399997295e-06
+        ],
+        [
+          2.2972899999999997e-06,
+          1.2191494399997295e-06,
+          1.555886955379248e-06
+        ]
+      ]
+    },
+    {
+      "name": "power__right_rear_1_screw",
+      "mass_kg": 0.00078,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -4.774641543026709e-05,
+        -2.3387520000000004e-05,
+        8.97e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.1018372807320947e-05,
+          -1.4316285202611285e-06,
+          5.490837774480715e-06
+        ],
+        [
+          -1.4316285202611285e-06,
+          1.3253917224295256e-05,
+          2.6895648000000003e-06
+        ],
+        [
+          5.490837774480715e-06,
+          2.6895648000000003e-06,
+          3.639668623975256e-06
+        ]
+      ]
+    },
+    {
+      "name": "power__right_rear_1_outer_washer",
+      "mass_kg": null,
+      "basis": "unassigned_material_density",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__right_rear_1_inner_washer",
+      "mass_kg": null,
+      "basis": "unassigned_material_density",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__right_rear_1_nut",
+      "mass_kg": 0.00038,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -2.1470000000000006e-05,
+        -1.1393919999997468e-05,
+        4.37e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          5.369163813478646e-06,
+          -6.437564799998569e-07,
+          2.4690500000000005e-06
+        ],
+        [
+          -6.437564799998569e-07,
+          6.239751658099397e-06,
+          1.3103007999997094e-06
+        ],
+        [
+          2.4690500000000005e-06,
+          1.3103007999997094e-06,
+          1.5558869553792486e-06
+        ]
+      ]
+    },
+    {
+      "name": "power__left_module_0_nut",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__left_module_0_screw",
+      "mass_kg": 0.00029,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -1.6150100000000032e-06,
+        1.296764e-05,
+        2.9727712400766794e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          3.632460201949628e-06,
+          7.221678716000016e-08,
+          1.6555363035987059e-07
+        ],
+        [
+          7.221678716000016e-08,
+          3.0615932023996273e-06,
+          -1.3293043877126885e-06
+        ],
+        [
+          1.6555363035987059e-07,
+          -1.3293043877126885e-06,
+          5.891063767755636e-07
+        ]
+      ]
+    },
+    {
+      "name": "power__left_module_1_nut",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__left_module_1_screw",
+      "mass_kg": 0.00029,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -1.2884990000000002e-05,
+        1.296764e-05,
+        2.9727712400766794e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          3.6324602019496284e-06,
+          5.7616521284e-07,
+          1.32083198967847e-06
+        ],
+        [
+          5.7616521284e-07,
+          3.6250922023996286e-06,
+          -1.3293043877126885e-06
+        ],
+        [
+          1.32083198967847e-06,
+          -1.3293043877126885e-06,
+          1.1526053767755643e-06
+        ]
+      ]
+    },
+    {
+      "name": "power__left_module_2_nut",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__left_module_2_screw",
+      "mass_kg": 0.00029,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -1.6150100000000026e-06,
+        5.601639999999999e-06,
+        2.9727712400766794e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          3.1608004899496275e-06,
+          3.1195533160000054e-08,
+          1.655536303598706e-07
+        ],
+        [
+          3.1195533160000054e-08,
+          3.0615932023996278e-06,
+          -5.742204927332115e-07
+        ],
+        [
+          1.655536303598706e-07,
+          -5.742204927332115e-07,
+          1.1744666477556406e-07
+        ]
+      ]
+    },
+    {
+      "name": "power__left_module_3_nut",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__left_module_3_screw",
+      "mass_kg": 0.00029,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -1.2884989999999999e-05,
+        5.60164e-06,
+        2.9727712400766798e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          3.1608004899496284e-06,
+          2.4888646684e-07,
+          1.3208319896784702e-06
+        ],
+        [
+          2.4888646684e-07,
+          3.625092202399629e-06,
+          -5.742204927332116e-07
+        ],
+        [
+          1.3208319896784702e-06,
+          -5.742204927332116e-07,
+          6.809456647755641e-07
+        ]
+      ]
+    },
+    {
+      "name": "power__left_module_0_spacer",
+      "mass_kg": 4e-05,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -2.2275999999999867e-07,
+        1.7886400000000002e-06,
+        4.142600000000001e-06
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          5.0909022024e-07,
+          9.960936159999938e-09,
+          2.307013939999985e-08
+        ],
+        [
+          9.960936159999938e-09,
+          4.3034994444000005e-07,
+          -1.8524050160000002e-07
+        ],
+        [
+          2.307013939999985e-08,
+          -1.8524050160000002e-07,
+          8.132342668e-08
+        ]
+      ]
+    },
+    {
+      "name": "power__left_module_1_spacer",
+      "mass_kg": 4e-05,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -1.7772399999999987e-06,
+        1.7886400000000002e-06,
+        4.142600000000001e-06
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          5.0909022024e-07,
+          7.947106383999995e-08,
+          1.8405986059999996e-07
+        ],
+        [
+          7.947106383999995e-08,
+          5.080739444399999e-07,
+          -1.8524050160000008e-07
+        ],
+        [
+          1.8405986059999996e-07,
+          -1.8524050160000008e-07,
+          1.5904742667999995e-07
+        ]
+      ]
+    },
+    {
+      "name": "power__left_module_2_spacer",
+      "mass_kg": 4e-05,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -2.2275999999999861e-07,
+        7.726400000000001e-07,
+        4.142600000000001e-06
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          4.440337082400002e-07,
+          4.302832159999972e-09,
+          2.3070139399999857e-08
+        ],
+        [
+          4.302832159999972e-09,
+          4.3034994444000005e-07,
+          -8.001846160000002e-08
+        ],
+        [
+          2.3070139399999857e-08,
+          -8.001846160000002e-08,
+          1.6266914680000004e-08
+        ]
+      ]
+    },
+    {
+      "name": "power__left_module_3_spacer",
+      "mass_kg": 4e-05,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -1.7772399999999987e-06,
+        7.7264e-07,
+        4.142600000000001e-06
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          4.4403370824000005e-07,
+          3.432916783999998e-08,
+          1.8405986059999988e-07
+        ],
+        [
+          3.432916783999998e-08,
+          5.080739444399998e-07,
+          -8.001846159999998e-08
+        ],
+        [
+          1.8405986059999988e-07,
+          -8.001846159999998e-08,
+          9.399091467999987e-08
+        ]
+      ]
+    },
+    {
+      "name": "power__right_module_0_nut",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__right_module_0_screw",
+      "mass_kg": 0.00029,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -1.6150100000000026e-06,
+        -5.01236e-06,
+        2.9727712400766805e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          3.139232841949629e-06,
+          -2.7913832840000053e-08,
+          1.6555363035987056e-07
+        ],
+        [
+          -2.7913832840000053e-08,
+          3.0615932023996278e-06,
+          5.138137811348533e-07
+        ],
+        [
+          1.6555363035987056e-07,
+          5.138137811348533e-07,
+          9.58790167755642e-08
+        ]
+      ]
+    },
+    {
+      "name": "power__right_module_1_nut",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__right_module_1_screw",
+      "mass_kg": 0.00029,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -1.2884989999999999e-05,
+        -5.01236e-06,
+        2.9727712400766798e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          3.1392328419496285e-06,
+          -2.2270416716e-07,
+          1.32083198967847e-06
+        ],
+        [
+          -2.2270416716e-07,
+          3.625092202399629e-06,
+          5.138137811348532e-07
+        ],
+        [
+          1.32083198967847e-06,
+          5.138137811348532e-07,
+          6.593780167755643e-07
+        ]
+      ]
+    },
+    {
+      "name": "power__right_module_2_nut",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__right_module_2_screw",
+      "mass_kg": 0.00029,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -1.6150100000000032e-06,
+        -1.237836e-05,
+        2.9727712400766805e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          3.580957129949628e-06,
+          -6.893508684000013e-08,
+          1.6555363035987064e-07
+        ],
+        [
+          -6.893508684000013e-08,
+          3.0615932023996278e-06,
+          1.26889767611433e-06
+        ],
+        [
+          1.6555363035987064e-07,
+          1.26889767611433e-06,
+          5.376033047755641e-07
+        ]
+      ]
+    },
+    {
+      "name": "power__right_module_3_nut",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "power__right_module_3_screw",
+      "mass_kg": 0.00029,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -1.2884990000000002e-05,
+        -1.2378359999999997e-05,
+        2.9727712400766794e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          3.5809571299496276e-06,
+          -5.499829131600001e-07,
+          1.32083198967847e-06
+        ],
+        [
+          -5.499829131600001e-07,
+          3.6250922023996286e-06,
+          1.26889767611433e-06
+        ],
+        [
+          1.32083198967847e-06,
+          1.26889767611433e-06,
+          1.1011023047755641e-06
+        ]
+      ]
+    },
+    {
+      "name": "power__right_module_0_spacer",
+      "mass_kg": 4e-05,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -2.2275999999999864e-07,
+        -6.913600000000002e-07,
+        4.142600000000002e-06
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          4.4105886023999996e-07,
+          -3.850183839999977e-09,
+          2.307013939999986e-08
+        ],
+        [
+          -3.850183839999977e-09,
+          4.3034994444000005e-07,
+          7.160069840000002e-08
+        ],
+        [
+          2.307013939999986e-08,
+          7.160069840000002e-08,
+          1.3292066679999956e-08
+        ]
+      ]
+    },
+    {
+      "name": "power__right_module_1_spacer",
+      "mass_kg": 4e-05,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -1.7772399999999989e-06,
+        -6.913600000000002e-07,
+        4.142600000000001e-06
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          4.4105886024000006e-07,
+          -3.071781615999998e-08,
+          1.8405986059999993e-07
+        ],
+        [
+          -3.071781615999998e-08,
+          5.080739444399999e-07,
+          7.160069840000002e-08
+        ],
+        [
+          1.8405986059999993e-07,
+          7.160069840000002e-08,
+          9.101606667999985e-08
+        ]
+      ]
+    },
+    {
+      "name": "power__right_module_2_spacer",
+      "mass_kg": 4e-05,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -2.2275999999999867e-07,
+        -1.7073600000000003e-06,
+        4.142600000000001e-06
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          5.019863482400001e-07,
+          -9.508287839999942e-09,
+          2.307013939999985e-08
+        ],
+        [
+          -9.508287839999942e-09,
+          4.3034994444000015e-07,
+          1.768227384e-07
+        ],
+        [
+          2.307013939999985e-08,
+          1.768227384e-07,
+          7.421955468e-08
+        ]
+      ]
+    },
+    {
+      "name": "power__right_module_3_spacer",
+      "mass_kg": 4e-05,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -1.7772399999999989e-06,
+        -1.7073600000000001e-06,
+        4.142600000000001e-06
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          5.019863482400003e-07,
+          -7.585971215999995e-08,
+          1.840598605999999e-07
+        ],
+        [
+          -7.585971215999995e-08,
+          5.080739444399999e-07,
+          1.768227384e-07
+        ],
+        [
+          1.840598605999999e-07,
+          1.768227384e-07,
+          1.5194355467999993e-07
+        ]
+      ]
+    },
+    {
+      "name": "Tab5",
+      "mass_kg": 0.1184,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        0.006855610545642307,
+        5.455814236491703e-06,
+        0.010419200000000005
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.001141972700041603,
+          -3.483537390000479e-07,
+          -0.000603293728016523
+        ],
+        [
+          -3.483537390000479e-07,
+          0.0013785716471032077,
+          -4.801116528108658e-07
+        ],
+        [
+          -0.000603293728016523,
+          -4.801116528108658e-07,
+          0.000560056956230913
+        ]
+      ]
+    },
+    {
+      "name": "TTL",
+      "mass_kg": 0.012,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -0.000336,
+        1.2634728859894403e-21,
+        0.001272
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.00013580599329958513,
+          -1.783454262448756e-21,
+          3.5616e-05
+        ],
+        [
+          -1.783454262448756e-21,
+          0.0001446649219705092,
+          -2.254181328383387e-22
+        ],
+        [
+          3.5616e-05,
+          -2.254181328383387e-22,
+          1.000691527009443e-05
+        ]
+      ]
+    },
+    {
+      "name": "left_module_envelope",
+      "mass_kg": 0.015,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -0.000375,
+        0.00046499999999999997,
+        0.0016252859999999999
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.00019202849578019995,
+          1.1625000000000001e-05,
+          4.063215e-05
+        ],
+        [
+          1.1625000000000001e-05,
+          0.00018807434578019995,
+          -5.0383866000000004e-05
+        ],
+        [
+          4.063215e-05,
+          -5.0383866000000004e-05,
+          2.7500250000000015e-05
+        ]
+      ]
+    },
+    {
+      "name": "right_module_envelope",
+      "mass_kg": 0.015,
+      "basis": "inherited_numeric_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -0.000375,
+        -0.0004649999999999999,
+        0.0016252859999999999
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.00019202849578019997,
+          -1.1625000000000003e-05,
+          4.0632150000000004e-05
+        ],
+        [
+          -1.1625000000000003e-05,
+          0.00018807434578019998,
+          5.0383866e-05
+        ],
+        [
+          4.0632150000000004e-05,
+          5.0383866e-05,
+          2.750025000000001e-05
+        ]
+      ]
+    },
+    {
+      "name": "new_fixed_shell",
+      "mass_kg": 0.11714098950596846,
+      "basis": "uniform_print_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        -0.0012946545961060076,
+        -8.788106690813467e-07,
+        0.008234714545216331
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.0011874982630587518,
+          -3.531041334186514e-08,
+          8.200380687906471e-05
+        ],
+        [
+          -3.531041334186514e-08,
+          0.0010028348230946469,
+          7.909296247476303e-10
+        ],
+        [
+          8.200380687906471e-05,
+          7.909296247476303e-10,
+          0.0004726397875673413
+        ]
+      ]
+    },
+    {
+      "name": "new_carrier",
+      "mass_kg": 0.02902597143306541,
+      "basis": "uniform_print_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        0.0016448306942907923,
+        -3.239389798181945e-17,
+        0.0011373816501108942
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.00015044958515407917,
+          1.5933520626276727e-18,
+          -5.928215373776188e-05
+        ],
+        [
+          1.5933520626276727e-18,
+          0.00018438615762616156,
+          2.565116446930914e-18
+        ],
+        [
+          -5.928215373776188e-05,
+          2.565116446930914e-18,
+          0.00015566819781767866
+        ]
+      ]
+    },
+    {
+      "name": "new_tray",
+      "mass_kg": 0.008764263258276913,
+      "basis": "uniform_print_comparison",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        0.00025416363449003035,
+        -1.7831212062446866e-20,
+        0.0005509890727314454
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          4.2429435919457435e-05,
+          6.4683263190090655e-22,
+          -1.5978683109211915e-05
+        ],
+        [
+          6.4683263190090655e-22,
+          4.285065135412122e-05,
+          2.3332177079282703e-22
+        ],
+        [
+          -1.5978683109211915e-05,
+          2.3332177079282703e-22,
+          1.5858156073567274e-05
+        ]
+      ]
+    },
+    {
+      "name": "new_battery",
+      "mass_kg": 0.102,
+      "basis": "catalog_nominal",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        0.002958,
+        -7.717283602283309e-20,
+        0.008159999999999999
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          0.0007054660000000001,
+          2.21788020048229e-21,
+          -0.00023663999999999998
+        ],
+        [
+          2.21788020048229e-21,
+          0.000754494,
+          6.173826881826648e-21
+        ],
+        [
+          -0.00023663999999999998,
+          6.173826881826648e-21,
+          0.00013232799999999997
+        ]
+      ]
+    },
+    {
+      "name": "new_strap_0",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "new_strap_1",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "new_-1_88_screw",
+      "mass_kg": 0.0007,
+      "basis": "catalog_nominal",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        2.9400000000000003e-05,
+        -4.298837209302328e-05,
+        6.160000000000002e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          8.071207788275199e-06,
+          1.8055116279069782e-06,
+          -2.587200000000001e-06
+        ],
+        [
+          1.8055116279069782e-06,
+          6.65713495639535e-06,
+          3.78297674418605e-06
+        ],
+        [
+          -2.587200000000001e-06,
+          3.78297674418605e-06,
+          3.885207788275196e-06
+        ]
+      ]
+    },
+    {
+      "name": "new_-1_88_insert",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "new_-1_112_screw",
+      "mass_kg": 0.0007,
+      "basis": "catalog_nominal",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        2.9400000000000003e-05,
+        -4.298837209302328e-05,
+        7.840000000000002e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.1431207788275197e-05,
+          1.8055116279069782e-06,
+          -3.292800000000001e-06
+        ],
+        [
+          1.8055116279069782e-06,
+          1.0017134956395349e-05,
+          4.8146976744186076e-06
+        ],
+        [
+          -3.292800000000001e-06,
+          4.8146976744186076e-06,
+          3.885207788275196e-06
+        ]
+      ]
+    },
+    {
+      "name": "new_-1_112_insert",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "new_1_88_screw",
+      "mass_kg": 0.0007,
+      "basis": "catalog_nominal",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        2.9400000000000003e-05,
+        4.298837209302328e-05,
+        6.160000000000002e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          8.071207788275197e-06,
+          -1.8055116279069782e-06,
+          -2.5872000000000004e-06
+        ],
+        [
+          -1.8055116279069782e-06,
+          6.657134956395347e-06,
+          -3.782976744186049e-06
+        ],
+        [
+          -2.5872000000000004e-06,
+          -3.782976744186049e-06,
+          3.885207788275196e-06
+        ]
+      ]
+    },
+    {
+      "name": "new_1_88_insert",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "new_1_112_screw",
+      "mass_kg": 0.0007,
+      "basis": "catalog_nominal",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        2.9400000000000003e-05,
+        4.298837209302328e-05,
+        7.840000000000001e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.1431207788275194e-05,
+          -1.8055116279069782e-06,
+          -3.2927999999999996e-06
+        ],
+        [
+          -1.8055116279069782e-06,
+          1.0017134956395347e-05,
+          -4.814697674418607e-06
+        ],
+        [
+          -3.2927999999999996e-06,
+          -4.814697674418607e-06,
+          3.885207788275196e-06
+        ]
+      ]
+    },
+    {
+      "name": "new_1_112_insert",
+      "mass_kg": null,
+      "basis": "unassigned_component_mass",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": null,
+      "inertia_origin_kg_m2": null
+    },
+    {
+      "name": "new_frame_screw_-60_52",
+      "mass_kg": 0.00062,
+      "basis": "catalog_nominal",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        3.101052830188677e-05,
+        -3.720000000000001e-05,
+        3.2239999999999996e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          3.909929469339623e-06,
+          1.8606316981132064e-06,
+          -1.6125474716981118e-06
+        ],
+        [
+          1.8606316981132064e-06,
+          3.2339947485062884e-06,
+          1.9343999999999992e-06
+        ],
+        [
+          -1.6125474716981118e-06,
+          1.9343999999999992e-06,
+          3.789514748506288e-06
+        ]
+      ]
+    },
+    {
+      "name": "new_frame_screw_-60_124",
+      "mass_kg": 0.00062,
+      "basis": "catalog_nominal",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        3.101052830188677e-05,
+        -3.720000000000001e-05,
+        7.688e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.1766569469339623e-05,
+          1.8606316981132068e-06,
+          -3.845305509433961e-06
+        ],
+        [
+          1.8606316981132068e-06,
+          1.1090634748506286e-05,
+          4.612800000000001e-06
+        ],
+        [
+          -3.845305509433961e-06,
+          4.612800000000001e-06,
+          3.7895147485062886e-06
+        ]
+      ]
+    },
+    {
+      "name": "new_frame_screw_60_52",
+      "mass_kg": 0.00062,
+      "basis": "catalog_nominal",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        3.101052830188677e-05,
+        3.720000000000001e-05,
+        3.2239999999999996e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          3.909929469339623e-06,
+          -1.8606316981132064e-06,
+          -1.6125474716981118e-06
+        ],
+        [
+          -1.8606316981132064e-06,
+          3.2339947485062884e-06,
+          -1.9343999999999992e-06
+        ],
+        [
+          -1.6125474716981118e-06,
+          -1.9343999999999992e-06,
+          3.789514748506288e-06
+        ]
+      ]
+    },
+    {
+      "name": "new_frame_screw_60_124",
+      "mass_kg": 0.00062,
+      "basis": "catalog_nominal",
+      "distribution_assumption": "uniform CAD shape, not measured COM/inertia",
+      "first_moment_kg_m": [
+        3.101052830188677e-05,
+        3.720000000000001e-05,
+        7.688e-05
+      ],
+      "inertia_origin_kg_m2": [
+        [
+          1.1766569469339623e-05,
+          -1.8606316981132068e-06,
+          -3.845305509433961e-06
+        ],
+        [
+          -1.8606316981132068e-06,
+          1.1090634748506286e-05,
+          -4.612800000000001e-06
+        ],
+        [
+          -3.845305509433961e-06,
+          -4.612800000000001e-06,
+          3.7895147485062886e-06
+        ]
+      ]
+    }
+  ],
+  "assigned_count": 85,
+  "unknown_count": 30,
+  "partial_uniform_CAD_comparison": {
+    "mass_kg": 0.6723888224819029,
+    "first_moment_kg_m": [
+      -0.0016215371413507529,
+      3.0760328419027213e-05,
+      0.05257506264718587
+    ],
+    "com_CAD_m": [
+      -0.0024116063312376017,
+      4.574782832570825e-05,
+      0.07819145840813098
+    ],
+    "inertia_origin_kg_m2": [
+      [
+        0.005696884375382167,
+        7.199865552720186e-07,
+        7.113004873067681e-05
+      ],
+      [
+        7.199865552720186e-07,
+        0.006204652182202584,
+        -3.1773574154671294e-06
+      ],
+      [
+        7.113004873067681e-05,
+        -3.1773574154671294e-06,
+        0.0023245496254419677
+      ]
+    ],
+    "inertia_com_kg_m2": [
+      [
+        0.0015859621438816286,
+        6.458047525057446e-07,
+        -5.56603052144902e-05
+      ],
+      [
+        6.458047525057446e-07,
+        0.0020898208486838515,
+        -7.721624752703136e-07
+      ],
+      [
+        -5.56603052144902e-05,
+        -7.721624752703136e-07,
+        0.002320637708987326
+      ]
+    ]
+  },
+  "complete_torso_inertia": null,
+  "whole_robot_inertia": null,
+  "missing_mass_rejection_verified": true,
+  "analytic_errors": {
+    "translated_cuboid_kg_m2": 0.0,
+    "two_body_parallel_axis_kg_m2": 1.3552527156068805e-20
+  },
+  "model_updated": false,
+  "manufacturing_release": false,
+  "limits": [
+    "Unknown30CADparts and non-CAD motors/legs/electrical allocations remain",
+    "No internal component COM/inertia guarantee",
+    "Not an upper/lower load bound",
+    "Carrier insertion redistributes polymer; pre-insertion inertia is approximate",
+    "CAD-to-MuJoCo frame transform not applied"
+  ],
+  "source_sha256": {
+    "validation/current_torso_mass_v2/report.json": "bcc79f14082da117639cf041e000742cb9902a93e1046a1dd128d520d2470e7b",
+    "validation/torso_print_conditions_v1/report.json": "f1ac63916104047b4db5ef48e7cdeda415cc723c18931af0f7cacb79294ec7c0",
+    "validation/serviceable_torso_v3/assembly.step": "5a33d3599fbf503f788af67624c6f87bfe14c68da9f13d64cfed4a033a46a537",
+    "validation/tab5_frame_print_v1/carrier_print.step": "bd56910ad301dc6acf4e3d899c10389fdd5cc2940eb30ee098a60f3b4f8f86ee"
+  }
+}

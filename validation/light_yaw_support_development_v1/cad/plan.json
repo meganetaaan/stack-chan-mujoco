@@ -1,0 +1,29 @@
+{
+  "scope": "Remove rib-core material without changing nominal shelf or rear lands.",
+  "triangle_xz_mm": [
+    [
+      -48,
+      65
+    ],
+    [
+      -15,
+      82
+    ],
+    [
+      -48,
+      82
+    ]
+  ],
+  "corner_radius_mm": 2,
+  "criteria": {
+    "single_valid_solid": true,
+    "bounding_box_delta_max_mm": 1e-06,
+    "shelf_and_rear_land_volume_change_max_mm3": 1e-06,
+    "minimum_mass_saving_per_support_g": 2
+  },
+  "density_assumed_kg_m3": 1270,
+  "limitations": [
+    "Not strength or buckling approval",
+    "Only nominal geometry; no new physical load export"
+  ]
+}

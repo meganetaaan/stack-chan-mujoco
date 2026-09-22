@@ -1,0 +1,16 @@
+{
+  "question": "Is a straight 100 mm lower insertion corridor clear before adding couplers/legs?",
+  "method": "Axis-aligned bounding box of manufacturer assembly excluding pre-existing omitted rear idler indices 10/11/12, swept continuously in Z from -100 to 0 mm.",
+  "stop": "One direction, both sides; if bounding corridor intersects, record inconclusive path instead of more sampling.",
+  "criteria": {
+    "intersection_mm3": 0.01
+  },
+  "criteria_source": "Inherited nominal CAD screen; tolerance/contact not qualified.",
+  "limitations": [
+    "Bounding volume intersection does not prove actual servo collision",
+    "No grip/hand/cable envelope",
+    "Final shelf contact allowed by volume criterion",
+    "No case fastening proof",
+    "No installed legs/couplers"
+  ]
+}

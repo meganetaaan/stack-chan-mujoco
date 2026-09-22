@@ -1,0 +1,49 @@
+{
+  "classification": "connectivity_fault_correction_and_resistor_budget",
+  "failure_before": "U3 pin4 SEQUENCE_ENABLE_REQUEST has only one endpoint: floating CMOS input, no physical driver or bias",
+  "before": [
+    {
+      "reference": "U3",
+      "pin": "4",
+      "part": "SN74HCS11PWR"
+    }
+  ],
+  "after": [
+    {
+      "reference": "U3",
+      "pin": "4",
+      "part": "SN74HCS11PWR"
+    },
+    {
+      "reference": "R_SEQUENCE_OFF",
+      "pin": "1",
+      "part": null
+    }
+  ],
+  "source": "https://www.ti.com/lit/ds/symlink/sn74hcs11.pdf",
+  "revision": "SCLS790B March 2026 pp5,11",
+  "datasheet_input_leakage_max_A": 1e-06,
+  "assumptions": [
+    "10 kohm total +/-1 percent; exact resistor unselected",
+    "Datasheet leakage at VCC=6 V and VI=rail/ground applied as a comparison budget",
+    "No future driver leakage or board contamination included",
+    "3.6 V maximum used only for prospective driver load budget"
+  ],
+  "bounds": {
+    "leakage_only_input_V": 0.0101,
+    "prospective_high_driver_load_A": 0.0003646363636363637,
+    "resistor_power_at_3V6_W": 0.0013090909090909093
+  },
+  "bias_connection_verified": true,
+  "sequencer_implemented": false,
+  "power_on_inhibit_proven": false,
+  "pending": [
+    "Exact resistor and tolerance allocation",
+    "Driver High voltage and current under added load",
+    "Input-low threshold across actual rail and power transitions",
+    "Sequencer implementation and fault memory; resistor does not replace either"
+  ],
+  "part_count": 94,
+  "pin_count": 308,
+  "manufacturing_release": false
+}

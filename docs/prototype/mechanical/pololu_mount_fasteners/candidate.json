@@ -1,0 +1,10 @@
+{
+  "status": "design_comparison_not_manufacturing_release",
+  "screw": {"manufacturer": "NBK", "part": "SLH-M2-12", "quantity": 8, "thread": "M2x0.4", "length_mm": 12, "head_diameter_mm": 3.8, "head_height_mm": 1.3, "catalog_mass_g": 0.29, "catalog_max_torque_Nm": 0.3, "assembly_torque_Nm": null, "source": "https://static.nbk1560.com/en-US/products/specialscrew/nedzicom/miniaturescrew/SLH/SLH-M2/"},
+  "spacer": {"manufacturer": "MISUMI", "part": "SP-J2-3", "quantity": 8, "material": "POM", "length_mm": 3, "length_tolerance_mm": 0.1, "outer_diameter_mm": 4, "inner_diameter_mm": 2.1, "catalog_mass_g": 0.04, "source": "https://th.misumi-ec.com/th/pdf/el/1885.pdf", "part_listing": "https://jp.misumi-ec.com/vona2/detail/110500138040/", "note": "Actual ID2.1 differs from prior reservation2.2. No certified insulation/creep or preload claim."},
+  "nut": {"manufacturer": "Bossard", "article": "1088211", "quantity": 8, "reference": "docs/prototype/mechanical/yaw_hex_nut/candidate.json", "across_flats_mm": 4, "height_max_mm": 1.6, "thread": "M2x0.4"},
+  "assumptions": {"pocket_width_x_mm": 4.2, "pocket_bottom_z_mm": 95.1, "pocket_top_z_mm": 96.9, "nut_bottom_z_mm": 95.3, "pocket_open_along": "Y"},
+  "unresolved": ["PCB hole plating/copper and top head insulation", "POM/printed-seat creep and tightening torque", "Fastener and print tolerances", "Nut insertion and retention before tightening", "Effective full-thread engagement and loosening", "Rear-plate fastening hardware", "Temperature and stock availability"],
+  "purchase_authorized": false,
+  "manufacturing_release": false
+}

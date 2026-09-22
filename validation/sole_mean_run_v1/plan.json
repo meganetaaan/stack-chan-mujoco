@@ -1,0 +1,16 @@
+{
+  "scope": "Replace point anchors by volume-weighted mean rigid-motion equations.",
+  "source_sha256": "c1ce2b90741eb303c8bd3a272f87e641ab88918490e8f394a87b5fd5eda3ed1b",
+  "criteria": {
+    "rigid_mode_rank": {
+      "BOSS": 3,
+      "SPACER": 6
+    },
+    "equation_identity_error_max": 1e-10
+  },
+  "limitations": [
+    "Initial-coordinate linear constraints; finite-rotation objectivity not claimed.",
+    "Only constraint construction verified; no contact, strength or reaction qualification.",
+    "Weights are tetrahedral volume/4, normalized per part."
+  ]
+}

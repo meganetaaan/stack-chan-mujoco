@@ -1,0 +1,98 @@
+{
+  "transition_cases_checked": 160,
+  "trace": [
+    {
+      "event": "new_enable",
+      "mode": "START",
+      "permission": true,
+      "sequence_enable_request": true,
+      "sequence_clear_asserted": false,
+      "reset_n": true,
+      "physical_command_boolean": true
+    },
+    {
+      "event": "PG_established",
+      "mode": "RUN",
+      "permission": true,
+      "sequence_enable_request": true,
+      "sequence_clear_asserted": false,
+      "reset_n": true,
+      "physical_command_boolean": true
+    },
+    {
+      "event": "PG_lost",
+      "mode": "CLEAR",
+      "permission": false,
+      "sequence_enable_request": false,
+      "sequence_clear_asserted": true,
+      "reset_n": false,
+      "physical_command_boolean": false
+    },
+    {
+      "event": "permission_low_ack",
+      "mode": "WAIT_NEW_PRESS",
+      "permission": false,
+      "sequence_enable_request": false,
+      "sequence_clear_asserted": false,
+      "reset_n": true,
+      "physical_command_boolean": false
+    },
+    {
+      "event": "PG_recovers_without_press",
+      "mode": "WAIT_NEW_PRESS",
+      "permission": false,
+      "sequence_enable_request": false,
+      "sequence_clear_asserted": false,
+      "reset_n": true,
+      "physical_command_boolean": false
+    },
+    {
+      "event": "new_qualified_press",
+      "mode": "START",
+      "permission": true,
+      "sequence_enable_request": true,
+      "sequence_clear_asserted": false,
+      "reset_n": true,
+      "physical_command_boolean": true
+    },
+    {
+      "event": "startup_deadline",
+      "mode": "CLEAR",
+      "permission": false,
+      "sequence_enable_request": false,
+      "sequence_clear_asserted": true,
+      "reset_n": false,
+      "physical_command_boolean": false
+    },
+    {
+      "event": "permission_low_ack_2",
+      "mode": "WAIT_NEW_PRESS",
+      "permission": false,
+      "sequence_enable_request": false,
+      "sequence_clear_asserted": false,
+      "reset_n": true,
+      "physical_command_boolean": false
+    },
+    {
+      "event": "held_button_no_new_event",
+      "mode": "WAIT_NEW_PRESS",
+      "permission": false,
+      "sequence_enable_request": false,
+      "sequence_clear_asserted": false,
+      "reset_n": true,
+      "physical_command_boolean": false
+    }
+  ],
+  "held_fault_clear_candidate": "rejected_no_manual_recovery",
+  "held_fault_clear_permission_after_new_press": false,
+  "new_interface": "SEQUENCE_CLEAR_REQUEST sink to RESET_N, asserted until ENABLE_PERMISSION low is acknowledged; separate from fault-memory state",
+  "physical_implementation": false,
+  "electrical_qualification": false,
+  "remaining": [
+    "Actual PG input circuit",
+    "Startup time/energy bounds",
+    "State storage, clear sink and acknowledgement hardware",
+    "Minimum clear pulse and propagation/race analysis",
+    "Existing button/raw input and partial-power qualification"
+  ]
+}

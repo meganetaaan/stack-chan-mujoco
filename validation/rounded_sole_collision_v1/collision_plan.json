@@ -1,0 +1,56 @@
+{
+  "scope": "Separate frozen-r9 derivative using existing rounded sole mesh for contact.",
+  "changes": [
+    {
+      "side": "left",
+      "before": {
+        "name": "col_left_sole_TPU_0",
+        "type": "box",
+        "pos": "0.004 0.006 -0.0205",
+        "size": "0.043 0.024 0.0015",
+        "class": "collision"
+      },
+      "after": {
+        "name": "col_left_sole_TPU_0",
+        "type": "mesh",
+        "pos": "0 0 0",
+        "class": "collision",
+        "mesh": "left_sole_TPU_mesh"
+      }
+    },
+    {
+      "side": "right",
+      "before": {
+        "name": "col_right_sole_TPU_0",
+        "type": "box",
+        "pos": "0.004 -0.006 -0.0205",
+        "size": "0.043 0.024 0.0015",
+        "class": "collision"
+      },
+      "after": {
+        "name": "col_right_sole_TPU_0",
+        "type": "mesh",
+        "pos": "0 0 0",
+        "class": "collision",
+        "mesh": "right_sole_TPU_mesh"
+      }
+    }
+  ],
+  "unchanged": {
+    "body_mass": true,
+    "body_inertia": true,
+    "body_ipos": true,
+    "body_iquat": true,
+    "jnt_range": true
+  },
+  "source_sha256": {
+    "software/sim/mujoco/assets/r9_fast_turn_v1/models/scene.xml": "b79bc86618c58c44088fb9211c1807a09c27ea8f623152243a86b7959e74b434",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/models/meshes/left_sole_TPU.stl": "a06021fcc866af6cb3e1b8bf3faaa9c77dc8e3b96bdae7808196b5a674b66a6f",
+    "software/sim/mujoco/assets/r9_fast_turn_v1/models/meshes/right_sole_TPU.stl": "c67163918a8de473b9f1fbc024628633ce9b2874d75dee6e6df8850d431903a9"
+  },
+  "limitations": [
+    "Rigid convex hull of existing visual sole mesh; no TPU deformation or pocket compliance.",
+    "Only sole collision changed; revised mechanical mass and other geometry remain pending."
+  ],
+  "joint_verified": false
+}

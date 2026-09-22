@@ -1,0 +1,327 @@
+{
+  "reachable_states": [
+    {
+      "phase": "CLEAR",
+      "clear_phase": "QUALIFY",
+      "permission_low_seen": false
+    },
+    {
+      "phase": "CLEAR",
+      "clear_phase": "RESET_TIMER",
+      "permission_low_seen": false
+    },
+    {
+      "phase": "RUN",
+      "clear_phase": "RESET_TIMER",
+      "permission_low_seen": false
+    },
+    {
+      "phase": "START",
+      "clear_phase": "RESET_TIMER",
+      "permission_low_seen": false
+    },
+    {
+      "phase": "WAIT_NEW_PRESS",
+      "clear_phase": "RESET_TIMER",
+      "permission_low_seen": false
+    },
+    {
+      "phase": "WAIT_NEW_PRESS",
+      "clear_phase": "RESET_TIMER",
+      "permission_low_seen": true
+    }
+  ],
+  "transitions_checked": 6144,
+  "trace": [
+    {
+      "event": "observe_hold_low",
+      "state": {
+        "phase": "CLEAR",
+        "clear_phase": "RESET_TIMER",
+        "permission_low_seen": false
+      },
+      "inputs": {
+        "independent_health": true,
+        "left_source": true,
+        "right_source": true,
+        "left_pg": false,
+        "right_pg": false,
+        "armed": false,
+        "permission": false,
+        "clr_low": true,
+        "hold_done": false,
+        "startup_expired": false
+      },
+      "outputs": {
+        "enable_request": false,
+        "clear_request": true,
+        "reset_low_valid": false,
+        "startup_timer_run": false
+      },
+      "next": {
+        "phase": "CLEAR",
+        "clear_phase": "QUALIFY",
+        "permission_low_seen": false
+      }
+    },
+    {
+      "event": "stale_latch",
+      "state": {
+        "phase": "CLEAR",
+        "clear_phase": "QUALIFY",
+        "permission_low_seen": false
+      },
+      "inputs": {
+        "independent_health": true,
+        "left_source": true,
+        "right_source": true,
+        "left_pg": false,
+        "right_pg": false,
+        "armed": true,
+        "permission": false,
+        "clr_low": true,
+        "hold_done": true,
+        "startup_expired": false
+      },
+      "outputs": {
+        "enable_request": false,
+        "clear_request": true,
+        "reset_low_valid": true,
+        "startup_timer_run": false
+      },
+      "next": {
+        "phase": "CLEAR",
+        "clear_phase": "QUALIFY",
+        "permission_low_seen": false
+      }
+    },
+    {
+      "event": "clear_ack",
+      "state": {
+        "phase": "CLEAR",
+        "clear_phase": "QUALIFY",
+        "permission_low_seen": false
+      },
+      "inputs": {
+        "independent_health": true,
+        "left_source": true,
+        "right_source": true,
+        "left_pg": false,
+        "right_pg": false,
+        "armed": false,
+        "permission": false,
+        "clr_low": true,
+        "hold_done": true,
+        "startup_expired": false
+      },
+      "outputs": {
+        "enable_request": false,
+        "clear_request": true,
+        "reset_low_valid": true,
+        "startup_timer_run": false
+      },
+      "next": {
+        "phase": "WAIT_NEW_PRESS",
+        "clear_phase": "RESET_TIMER",
+        "permission_low_seen": false
+      }
+    },
+    {
+      "event": "permission_low_after_release",
+      "state": {
+        "phase": "WAIT_NEW_PRESS",
+        "clear_phase": "RESET_TIMER",
+        "permission_low_seen": false
+      },
+      "inputs": {
+        "independent_health": true,
+        "left_source": true,
+        "right_source": true,
+        "left_pg": false,
+        "right_pg": false,
+        "armed": false,
+        "permission": false,
+        "clr_low": false,
+        "hold_done": false,
+        "startup_expired": false
+      },
+      "outputs": {
+        "enable_request": false,
+        "clear_request": false,
+        "reset_low_valid": false,
+        "startup_timer_run": false
+      },
+      "next": {
+        "phase": "WAIT_NEW_PRESS",
+        "clear_phase": "RESET_TIMER",
+        "permission_low_seen": true
+      }
+    },
+    {
+      "event": "fresh_permission",
+      "state": {
+        "phase": "WAIT_NEW_PRESS",
+        "clear_phase": "RESET_TIMER",
+        "permission_low_seen": true
+      },
+      "inputs": {
+        "independent_health": true,
+        "left_source": true,
+        "right_source": true,
+        "left_pg": false,
+        "right_pg": false,
+        "armed": true,
+        "permission": true,
+        "clr_low": false,
+        "hold_done": false,
+        "startup_expired": false
+      },
+      "outputs": {
+        "enable_request": false,
+        "clear_request": false,
+        "reset_low_valid": false,
+        "startup_timer_run": false
+      },
+      "next": {
+        "phase": "START",
+        "clear_phase": "RESET_TIMER",
+        "permission_low_seen": false
+      }
+    },
+    {
+      "event": "left_ready_only",
+      "state": {
+        "phase": "START",
+        "clear_phase": "RESET_TIMER",
+        "permission_low_seen": false
+      },
+      "inputs": {
+        "independent_health": true,
+        "left_source": true,
+        "right_source": true,
+        "left_pg": true,
+        "right_pg": false,
+        "armed": true,
+        "permission": true,
+        "clr_low": false,
+        "hold_done": false,
+        "startup_expired": false
+      },
+      "outputs": {
+        "enable_request": true,
+        "clear_request": false,
+        "reset_low_valid": false,
+        "startup_timer_run": true
+      },
+      "next": {
+        "phase": "START",
+        "clear_phase": "RESET_TIMER",
+        "permission_low_seen": false
+      }
+    },
+    {
+      "event": "both_ready",
+      "state": {
+        "phase": "START",
+        "clear_phase": "RESET_TIMER",
+        "permission_low_seen": false
+      },
+      "inputs": {
+        "independent_health": true,
+        "left_source": true,
+        "right_source": true,
+        "left_pg": true,
+        "right_pg": true,
+        "armed": true,
+        "permission": true,
+        "clr_low": false,
+        "hold_done": false,
+        "startup_expired": false
+      },
+      "outputs": {
+        "enable_request": true,
+        "clear_request": false,
+        "reset_low_valid": false,
+        "startup_timer_run": true
+      },
+      "next": {
+        "phase": "RUN",
+        "clear_phase": "RESET_TIMER",
+        "permission_low_seen": false
+      }
+    },
+    {
+      "event": "right_failed",
+      "state": {
+        "phase": "RUN",
+        "clear_phase": "RESET_TIMER",
+        "permission_low_seen": false
+      },
+      "inputs": {
+        "independent_health": true,
+        "left_source": true,
+        "right_source": true,
+        "left_pg": true,
+        "right_pg": false,
+        "armed": true,
+        "permission": true,
+        "clr_low": false,
+        "hold_done": false,
+        "startup_expired": false
+      },
+      "outputs": {
+        "enable_request": false,
+        "clear_request": false,
+        "reset_low_valid": false,
+        "startup_timer_run": false
+      },
+      "next": {
+        "phase": "CLEAR",
+        "clear_phase": "RESET_TIMER",
+        "permission_low_seen": false
+      }
+    },
+    {
+      "event": "voltage_recovered_latch_still_high",
+      "state": {
+        "phase": "CLEAR",
+        "clear_phase": "RESET_TIMER",
+        "permission_low_seen": false
+      },
+      "inputs": {
+        "independent_health": true,
+        "left_source": true,
+        "right_source": true,
+        "left_pg": true,
+        "right_pg": true,
+        "armed": true,
+        "permission": true,
+        "clr_low": false,
+        "hold_done": false,
+        "startup_expired": false
+      },
+      "outputs": {
+        "enable_request": false,
+        "clear_request": true,
+        "reset_low_valid": false,
+        "startup_timer_run": false
+      },
+      "next": {
+        "phase": "CLEAR",
+        "clear_phase": "RESET_TIMER",
+        "permission_low_seen": false
+      }
+    }
+  ],
+  "sampled_contract_pass": true,
+  "hardware_implemented": false,
+  "physical_timing_proven": false,
+  "remaining": [
+    "Choose sequencer hardware and implement qualified inputs and timer interfaces",
+    "Ensure permission Low-to-High represents a fresh physical release/press with reset recovery timing",
+    "Implement asynchronous fault capture: sub-sample pulses are outside this model",
+    "Define startup deadline from converter/switch startup and safe fault energy; no arbitrary default deadline",
+    "Implement timer reset/freshness at actual pins and load budgets"
+  ],
+  "manufacturing_release": false
+}

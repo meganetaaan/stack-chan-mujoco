@@ -1,0 +1,107 @@
+{
+  "capacitor_inventory": [
+    {
+      "reference": "CTRL__C_HOST_HF",
+      "nominal_F": 1e-07,
+      "upper_comparison_F": 1.06e-07
+    },
+    {
+      "reference": "CTRL__C_HOST_BULK",
+      "nominal_F": 4.7e-06,
+      "upper_comparison_F": 5.945499999999999e-06
+    },
+    {
+      "reference": "CTRL__C_HOST_SUP",
+      "nominal_F": 1e-07,
+      "upper_comparison_F": 1.06e-07
+    },
+    {
+      "reference": "CTRL__C_WD",
+      "nominal_F": 1e-07,
+      "upper_comparison_F": 1.06e-07
+    },
+    {
+      "reference": "CTRL__C_RESET_BUFFER",
+      "nominal_F": 1e-07,
+      "upper_comparison_F": 1.06e-07
+    },
+    {
+      "reference": "CTRL__C_PERMIT_LATCH",
+      "nominal_F": 1e-07,
+      "upper_comparison_F": 1.06e-07
+    },
+    {
+      "reference": "CTRL__C_MAIN_GATE",
+      "nominal_F": 1e-07,
+      "upper_comparison_F": 1.06e-07
+    },
+    {
+      "reference": "CTRL__C_AUX_GATE",
+      "nominal_F": 1e-07,
+      "upper_comparison_F": 1.06e-07
+    },
+    {
+      "reference": "CTRL__C_LDO_IN",
+      "nominal_F": 2.2e-06,
+      "upper_comparison_F": 2.3320000000000003e-06
+    },
+    {
+      "reference": "CTRL__C_LDO_OUT",
+      "nominal_F": 4.7e-06,
+      "upper_comparison_F": 5.945499999999999e-06
+    },
+    {
+      "reference": "C_CTRL_INPUT_PROTECT_OUT_1",
+      "nominal_F": 1e-07,
+      "upper_comparison_F": 1.06e-07
+    },
+    {
+      "reference": "C_CTRL_INPUT_PROTECT_OUT_2",
+      "nominal_F": 1e-07,
+      "upper_comparison_F": 1.06e-07
+    }
+  ],
+  "upper_comparison_total_F": 1.5176999999999999e-05,
+  "rows": [
+    {
+      "case": "open_typical",
+      "slew_V_s": 14937.499999999998,
+      "capacitor_current_A": 0.22670643749999997,
+      "with_partial_load_A": 0.23774694201887292,
+      "ramp_0_to12_6_s": 0.0008435146443514645
+    },
+    {
+      "case": "100nF_nominal",
+      "slew_V_s": 1156.2,
+      "capacitor_current_A": 0.017547647399999998,
+      "with_partial_load_A": 0.02858815191887294,
+      "ramp_0_to12_6_s": 0.010897768552153606
+    },
+    {
+      "case": "100nF_slow_comparison",
+      "slew_V_s": 896.2264150943396,
+      "capacitor_current_A": 0.01360202830188679,
+      "with_partial_load_A": 0.024642532820759733,
+      "ramp_0_to12_6_s": 0.014058947368421053
+    },
+    {
+      "case": "100nF_fast_comparison",
+      "slew_V_s": 1492.0212765957447,
+      "capacitor_current_A": 0.022644406914893615,
+      "with_partial_load_A": 0.033684911433766555,
+      "ramp_0_to12_6_s": 0.008444919786096256
+    }
+  ],
+  "partial_load_A": 0.01104050451887294,
+  "nominal_ILIM_A": 0.1016949152542373,
+  "assumptions": [
+    "C0G and film +/-6% total allocation unqualified",
+    "X7R positive tolerance10% times temperature15%; combined actual capacitance unqualified",
+    "LDO output follows input ramp; delayed internal startup could violate this assumption",
+    "MCU/peripheral/logic/ground current budget incomplete",
+    "TI ramp electrical table test at24V, not full validation at3S"
+  ],
+  "decision": "Prefer100nF over open pin; open typical ramp exceeds nominal current limit under assumed concurrent charging",
+  "startup_pass": null,
+  "manufacturing_release": false
+}

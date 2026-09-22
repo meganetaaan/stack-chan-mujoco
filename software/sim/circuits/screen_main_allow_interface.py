@@ -1,0 +1,18 @@
+"""Conditional static leakage/load screen; never extrapolate power-off to brownout."""
+import hashlib,json
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[3];OUT=ROOT/'validation/main_allow_interface_screen_v1';OUT.mkdir(exist_ok=True)
+paths=[ROOT/'schematics/power/pack_main_allow_interface_candidate_v1/assembly.json',ROOT/'validation/pack_controller_budget_v1/report.json',ROOT/'schematics/power/system_power_integration_candidate_v1/assembly.json']
+interface,budget,system=[json.loads(p.read_text()) for p in paths]
+p={x['reference']:x for x in interface['parts']};s={x['reference']:x for x in system['parts']}
+r=p['IF_MAIN__R_INPUT_PD']['value_ohm'];tol=p['IF_MAIN__R_INPUT_PD']['total_tolerance_assumption']
+rout=s['SYS__R_SEQUENCE_OFF']['value_ohm'];tout=s['SYS__R_SEQUENCE_OFF']['total_tolerance_budget']
+plan={'scope':'Static input-low comparison and incremental current budget, not startup waveform','engineering_assumptions':{'resistor_total_tolerance':tol,'budget_voltage_V':3.6},'criteria':['Compare leakage-induced input against specified falling threshold only at tabulated supply points','Do not apply powered leakage to unpowered HCS receiver','Keep full interface acceptance null until both-rail and transition margins established'],'stop':'One arithmetic screen; no inferred intermediate-voltage guarantees'}
+(OUT/'plan.json').write_text(json.dumps(plan,indent=2)+'\n')
+# Positive leakage directions combined for maximum possible low-node voltage.
+vin=(10e-6+1e-6)*r*(1+tol)
+extra=3.6/(r*(1-tol))+1e-6
+result={'driver_off_buffer_input_V_conditional':vin,'leakage_basis':{'SN74LVC1G08_Ioff_A':10e-6,'74LVC1G17_input_leakage_A':1e-6,'limits':'Catalog test conditions; same ground, no additional external leakage or stored charge'},'tabulated_low_checks':[{'receiver_supply_V':v,'min_falling_threshold_V':t,'margin_V':t-vin,'static_comparison_pass':vin<t} for v,t in [(1.8,.46),(2.3,.65),(3.0,.88),(4.5,1.32),(5.5,1.58)]],'new_CTRL3V3_output_load_allocation_A':extra,'updated_partial_controller_budgets':[{'MCU_MHz':row['MCU_MHz'],'partial_screen_sum_A':row['partial_screen_sum_A']+extra} for row in budget['rows']],'SYS3V3_allocations':{'buffer_ICC_at_catalog_conditions_A':4e-6,'existing_output_pulldown_load_A':3.6/(rout*(1-tout)),'existing_output_pulldown_is_new_load':False,'new_decap_nominal_F':p['IF_MAIN__C_HF']['value_F'],'total_added_SYS_max_A':None,'missing':'Dynamic current and intermediate input-level additional ICC; regulator/startup budgets incomplete'},'buffer_off_only_contribution_at_output_V':2e-6*rout*(1+tout),'total_output_off_node_bound_V':None,'output_bound_missing':'SN74HCS11 unpowered input leakage not specified by its powered6V leakage row; do not invent bound','both_powered_margin_pass':None,'brownout_sequence_pass':None,'whole_interface_qualified':False,'manufacturing_release':False,'sources':[{'url':'https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf','revision':'AA August2026','section':'5.5 Ioff;7.3.2'}, {'url':'https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf','revision':'16.1 September2024','section':'10 leakage and10.1 transfer thresholds, -40..125C'}, {'url':'https://www.ti.com/lit/ds/symlink/sn74hcs11.pdf','revision':'B March2026','section':'5.5 leakage test condition'}],'source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}}
+assert abs(vin-.1111)<1e-12
+(OUT/'report.json').write_text(json.dumps(result,indent=2)+'\n')
+print(json.dumps({k:result[k] for k in ['driver_off_buffer_input_V_conditional','new_CTRL3V3_output_load_allocation_A','updated_partial_controller_budgets','whole_interface_qualified']},indent=2))

@@ -1,0 +1,125 @@
+{
+  "rows": [
+    {
+      "mesh_mm": 1,
+      "peak_pressure_MPa": 5.958389,
+      "slave_element": 168,
+      "face": 1,
+      "triangle_vertices_reference_mm": [
+        [
+          -33.22133525401136,
+          -16.5139462208851,
+          -16.0
+        ],
+        [
+          -32.93234188387134,
+          -16.25768587768462,
+          -16.0
+        ],
+        [
+          -33.23416689870431,
+          -16.18647962146703,
+          -16.0
+        ]
+      ],
+      "triangle_centroid_reference_mm": [
+        -33.129281345529,
+        -16.319370573345584,
+        -16.0
+      ],
+      "vertex_radius_about_hole_mm": [
+        2.1592355515929547,
+        2.0565392039898858,
+        1.8522186298230967
+      ],
+      "face_touches_outer_radius_3mm": false,
+      "face_touches_hole_radius_1_15mm": false,
+      "sample_coordinate_known": false
+    },
+    {
+      "mesh_mm": 0.7,
+      "peak_pressure_MPa": 6.356316,
+      "slave_element": 701,
+      "face": 1,
+      "triangle_vertices_reference_mm": [
+        [
+          -32.15827351187881,
+          -15.20820133007981,
+          -16.0
+        ],
+        [
+          -32.35007015101491,
+          -15.49731327852229,
+          -16.0
+        ],
+        [
+          -31.97744360332479,
+          -15.54634580013457,
+          -16.0
+        ]
+      ],
+      "triangle_centroid_reference_mm": [
+        -32.161929088739505,
+        -15.417286802912225,
+        -16.0
+      ],
+      "vertex_radius_about_hole_mm": [
+        1.973196792257179,
+        1.9279269389914224,
+        2.277185524104495
+      ],
+      "face_touches_outer_radius_3mm": false,
+      "face_touches_hole_radius_1_15mm": false,
+      "sample_coordinate_known": false
+    },
+    {
+      "mesh_mm": 0.5,
+      "peak_pressure_MPa": 5.524037,
+      "slave_element": 2281,
+      "face": 1,
+      "triangle_vertices_reference_mm": [
+        [
+          -32.72184671679084,
+          -13.12202829104434,
+          -16.0
+        ],
+        [
+          -32.36190690990338,
+          -13.08122829927857,
+          -16.0
+        ],
+        [
+          -32.54203441915097,
+          -12.78876393685665,
+          -16.0
+        ]
+      ],
+      "triangle_centroid_reference_mm": [
+        -32.54192934861507,
+        -12.99734017572652,
+        -16.0
+      ],
+      "vertex_radius_about_hole_mm": [
+        1.8794897834413804,
+        2.167086087489435,
+        2.2481086492300126
+      ],
+      "face_touches_outer_radius_3mm": false,
+      "face_touches_hole_radius_1_15mm": false,
+      "sample_coordinate_known": false
+    }
+  ],
+  "source_sha256": {
+    "validation/boot_yoke_mesh_sensitivity_v1/h1/contact.dat": "8622ead8f38a478e3d0fcc25ce56f6867ed42ee020f156b56cc4b4a7db184c66",
+    "validation/boot_nut_patch_development_v1/seat_1.msh": "fb9290b500f6abe6e346cfdcd1f3cce278b345836085220070d5539b12f177b7",
+    "validation/boot_yoke_deformable_contact_v1/contact.dat": "54f94142fb2cc7c2334eb8042793a4ec95b15f0b5f7c2c3406966cba0b5f8e6a",
+    "validation/boot_nut_patch_development_v1/seat_0.7.msh": "f01103744f978e5240d5aa435abee29561410f1bf7e4ba1694df3c50075f8326",
+    "validation/boot_yoke_mesh_sensitivity_v1/h0.5/contact.dat": "61ad30636c4907bb44fc2681d76f8282748370e6d7dcccd83e1ceebb105be580",
+    "validation/boot_nut_patch_development_v1/seat_0.5.msh": "b122691de68263788a19487d5d52f3f3acf13f481e0aeaecb7042384d965ae19"
+  },
+  "limitations": [
+    "Triangle location only, not actual contact integration-point location.",
+    "A peak on an edge face does not by itself prove a mathematical singularity.",
+    "No stress values excluded or acceptance criterion changed."
+  ]
+}

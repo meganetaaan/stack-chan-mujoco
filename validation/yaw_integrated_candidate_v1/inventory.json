@@ -1,0 +1,418 @@
+{
+  "scope": "Package the current yaw-support candidate without claiming assembly qualification.",
+  "parts": [
+    {
+      "name": "body_shroud",
+      "solids": 1,
+      "volume_mm3": 113097.45623530801,
+      "source": "validation/yaw_tool_access_v1/body_shroud.step",
+      "note": "nominal geometry",
+      "source_sha256": "4e76955b352779a48d35f0cb0f95999132b8da97cb3a9d93243b34221fc68aae"
+    },
+    {
+      "name": "rear_plate",
+      "solids": 1,
+      "volume_mm3": 32132.124223417635,
+      "source": "validation/rear_joint_assembly_development_v1/rear_joint_inset2_v1/rear_structural_plate.step",
+      "note": "nominal geometry",
+      "source_sha256": "062ef8936bf307abcb88e74b873b49d570e0c6808539fb7d1027ab05ed9dbe28"
+    },
+    {
+      "name": "left_yaw_fixed_support",
+      "solids": 1,
+      "volume_mm3": 30606.554623896074,
+      "source": "validation/yaw_deep_side_ribs_v1/left_yaw_fixed_support.step",
+      "note": "nominal geometry",
+      "source_sha256": "7f7af4fb7d9a1cde106862403bd470e203dfd3602da05b608914429fbb319acc"
+    },
+    {
+      "name": "left_threaded_backing_plate",
+      "solids": 1,
+      "volume_mm3": 2034.999564060513,
+      "source": "validation/yaw_backing_keeper_v2/left_threaded_backing_plate.step",
+      "note": "nominal geometry",
+      "source_sha256": "2cf8a3af738b0c5b42ba01c03689488c8369de71dd064d46a42a9f7b62426736"
+    },
+    {
+      "name": "left_mount_plate",
+      "solids": 1,
+      "volume_mm3": 1511.072658140451,
+      "source": "validation/yaw_connector_plate_relief_v2/left_mount_plate.step",
+      "note": "nominal geometry",
+      "source_sha256": "7d7fbffebc727f8b5c034522ec5b5b7d372bd258cbaad7e4b4e562b6348df437"
+    },
+    {
+      "name": "left_64_keeper",
+      "solids": 1,
+      "volume_mm3": 46.15942085919441,
+      "source": "validation/yaw_backing_keeper_v2/left_64_keeper_envelope.step",
+      "note": "NBK SLH-M2-10 nominal; thread overlap intentional",
+      "source_sha256": "4ed4d73eeff6b54ee9724bd023aa57e22c87f33f20e79da99fa3fc9c366a3c2c"
+    },
+    {
+      "name": "left_76_keeper",
+      "solids": 1,
+      "volume_mm3": 46.15942085919444,
+      "source": "validation/yaw_backing_keeper_v2/left_76_keeper_envelope.step",
+      "note": "NBK SLH-M2-10 nominal; thread overlap intentional",
+      "source_sha256": "6457e468b8499e84c8b23ecf8ea01c886cf9439bfb917064ee419be7d07de366"
+    },
+    {
+      "name": "left_rear_0_bolt",
+      "solids": 1,
+      "volume_mm3": 184.37221885754963,
+      "source": "validation/inset_yaw_assembly_development_v1/inset_fasteners_staged_v2/left_0_bolt.step",
+      "note": "M3 hardware envelope moved to 2 mm rear plate; inner nut/washer replaced by threaded plate",
+      "source_sha256": "64e3a4129234d030e1096316926d8cfde5e0e3456b7b4ef326d42a2d5d92ae9c"
+    },
+    {
+      "name": "left_rear_0_rear_washer",
+      "solids": 1,
+      "volume_mm3": 13.866204574782252,
+      "source": "validation/rear_washer_clearance_v1/left_rear_0_rear_washer.step",
+      "note": "SCW-YAW-REAR-WASHER-01 revA proposal; already in assembly coordinates",
+      "source_sha256": "edb81329e9845b89a1ede837ecf6dc9cac71c1c9282c0422ae9f43b9df0f87cc"
+    },
+    {
+      "name": "left_rear_1_bolt",
+      "solids": 1,
+      "volume_mm3": 184.37221885754957,
+      "source": "validation/inset_yaw_assembly_development_v1/inset_fasteners_staged_v2/left_1_bolt.step",
+      "note": "M3 hardware envelope moved to 2 mm rear plate; inner nut/washer replaced by threaded plate",
+      "source_sha256": "7895d98fb524eb4052bb23d863b65792f2df4e4853b08f0343ba1ac0ca1adbdb"
+    },
+    {
+      "name": "left_rear_1_rear_washer",
+      "solids": 1,
+      "volume_mm3": 13.866204574782252,
+      "source": "validation/rear_washer_clearance_v1/left_rear_1_rear_washer.step",
+      "note": "SCW-YAW-REAR-WASHER-01 revA proposal; already in assembly coordinates",
+      "source_sha256": "7dfa865032deb8f2aea94a59319989e49991d8df4ca2786cabf54fcfb1381870"
+    },
+    {
+      "name": "left_rear_2_bolt",
+      "solids": 1,
+      "volume_mm3": 184.37221885754963,
+      "source": "validation/inset_yaw_assembly_development_v1/inset_fasteners_staged_v2/left_2_bolt.step",
+      "note": "M3 hardware envelope moved to 2 mm rear plate; inner nut/washer replaced by threaded plate",
+      "source_sha256": "cb5f146c72e8dc78571b48bdd79f05f9af5b61d29029bf10614a7fbdfa9c35ac"
+    },
+    {
+      "name": "left_rear_2_rear_washer",
+      "solids": 1,
+      "volume_mm3": 13.866204574782266,
+      "source": "validation/rear_washer_clearance_v1/left_rear_2_rear_washer.step",
+      "note": "SCW-YAW-REAR-WASHER-01 revA proposal; already in assembly coordinates",
+      "source_sha256": "157607ea1841e66bb7c1f5dd5f6fdb45f55a09f0ea0c8eafe7786c8e1b2b437b"
+    },
+    {
+      "name": "left_rear_3_bolt",
+      "solids": 1,
+      "volume_mm3": 184.37221885754957,
+      "source": "validation/inset_yaw_assembly_development_v1/inset_fasteners_staged_v2/left_3_bolt.step",
+      "note": "M3 hardware envelope moved to 2 mm rear plate; inner nut/washer replaced by threaded plate",
+      "source_sha256": "4068695636490ed4dedbd9c53b42abe529a1c8908d72b1bfd614f1e6aba2e2d1"
+    },
+    {
+      "name": "left_rear_3_rear_washer",
+      "solids": 1,
+      "volume_mm3": 13.866204574782266,
+      "source": "validation/rear_washer_clearance_v1/left_rear_3_rear_washer.step",
+      "note": "SCW-YAW-REAR-WASHER-01 revA proposal; already in assembly coordinates",
+      "source_sha256": "2f987de81367f13c31ccfa4259bb324a288c457fc3a7d436d4863955d120ebdc"
+    },
+    {
+      "name": "left_plate_0_screw",
+      "solids": 1,
+      "volume_mm3": 46.15942085919482,
+      "source": null,
+      "note": "NBK SLH-M2-10 nominal envelope"
+    },
+    {
+      "name": "left_plate_0_washer",
+      "solids": 1,
+      "volume_mm3": 25.21363723954899,
+      "source": "validation/yaw_plate_washer_v1/left_-34_16_washer.step",
+      "note": "SCW-YAW-PLATE-WASHER-01 A-candidate; comparison only",
+      "source_sha256": "f9ba29a3d086db973abb262a102376ccab68299a95f9f0d6eb700873c7a86d74"
+    },
+    {
+      "name": "left_plate_0_nut",
+      "solids": 1,
+      "volume_mm3": 26.401596572302633,
+      "source": null,
+      "note": "PTS A56202 circumcircle envelope, not square CAD"
+    },
+    {
+      "name": "left_plate_1_screw",
+      "solids": 1,
+      "volume_mm3": 46.159420859194796,
+      "source": null,
+      "note": "NBK SLH-M2-10 nominal envelope"
+    },
+    {
+      "name": "left_plate_1_washer",
+      "solids": 1,
+      "volume_mm3": 25.213637239548998,
+      "source": "validation/yaw_plate_washer_v1/left_-34_36_washer.step",
+      "note": "SCW-YAW-PLATE-WASHER-01 A-candidate; comparison only",
+      "source_sha256": "09c64da22517d55f4dd853814b840deca61bf36a047743f5d6fa48ad23bf6087"
+    },
+    {
+      "name": "left_plate_1_nut",
+      "solids": 1,
+      "volume_mm3": 26.401596572302637,
+      "source": null,
+      "note": "PTS A56202 circumcircle envelope, not square CAD"
+    },
+    {
+      "name": "left_plate_2_screw",
+      "solids": 1,
+      "volume_mm3": 46.15942085919481,
+      "source": null,
+      "note": "NBK SLH-M2-10 nominal envelope"
+    },
+    {
+      "name": "left_plate_2_washer",
+      "solids": 1,
+      "volume_mm3": 25.213637239549005,
+      "source": "validation/yaw_plate_washer_v1/left_8.1_16_washer.step",
+      "note": "SCW-YAW-PLATE-WASHER-01 A-candidate; comparison only",
+      "source_sha256": "027e6647af9de182720be153848cb9c1b88c539234a744b272d5746df78f36e4"
+    },
+    {
+      "name": "left_plate_2_nut",
+      "solids": 1,
+      "volume_mm3": 26.40159657230263,
+      "source": null,
+      "note": "PTS A56202 circumcircle envelope, not square CAD"
+    },
+    {
+      "name": "left_plate_3_screw",
+      "solids": 1,
+      "volume_mm3": 46.159420859194796,
+      "source": null,
+      "note": "NBK SLH-M2-10 nominal envelope"
+    },
+    {
+      "name": "left_plate_3_washer",
+      "solids": 1,
+      "volume_mm3": 25.213637239549005,
+      "source": "validation/yaw_plate_washer_v1/left_8.1_36_washer.step",
+      "note": "SCW-YAW-PLATE-WASHER-01 A-candidate; comparison only",
+      "source_sha256": "8835e20a8abc066793c06b05ae15c89e439e946bdadf437654ef7ef9c5f0403f"
+    },
+    {
+      "name": "left_plate_3_nut",
+      "solids": 1,
+      "volume_mm3": 26.401596572302633,
+      "source": null,
+      "note": "PTS A56202 circumcircle envelope, not square CAD"
+    },
+    {
+      "name": "right_yaw_fixed_support",
+      "solids": 1,
+      "volume_mm3": 30606.55462389499,
+      "source": "validation/yaw_deep_side_ribs_v1/right_yaw_fixed_support.step",
+      "note": "nominal geometry",
+      "source_sha256": "87f8e003ad253fbe01547bd26b1b8ef3d9d4a42bf49fb57f6cd3e5cd0f1b51c8"
+    },
+    {
+      "name": "right_threaded_backing_plate",
+      "solids": 1,
+      "volume_mm3": 2034.999564060513,
+      "source": "validation/yaw_backing_keeper_v2/right_threaded_backing_plate.step",
+      "note": "nominal geometry",
+      "source_sha256": "6d83a1d05fb490778ccff5c6432e53f75732f9d9fb36005925510bf4a6e9b39e"
+    },
+    {
+      "name": "right_mount_plate",
+      "solids": 1,
+      "volume_mm3": 1511.0726581404513,
+      "source": "validation/yaw_connector_plate_relief_v2/right_mount_plate.step",
+      "note": "nominal geometry",
+      "source_sha256": "e21fc53180912185d6cd1d6f46a8490bedec2c0963aea74f4b874eda7ff29948"
+    },
+    {
+      "name": "right_64_keeper",
+      "solids": 1,
+      "volume_mm3": 46.15942085919441,
+      "source": "validation/yaw_backing_keeper_v2/right_64_keeper_envelope.step",
+      "note": "NBK SLH-M2-10 nominal; thread overlap intentional",
+      "source_sha256": "e81e6604afd2240813c685c306414057a62b26723c2e3a3249c2c038aeb76413"
+    },
+    {
+      "name": "right_76_keeper",
+      "solids": 1,
+      "volume_mm3": 46.15942085919444,
+      "source": "validation/yaw_backing_keeper_v2/right_76_keeper_envelope.step",
+      "note": "NBK SLH-M2-10 nominal; thread overlap intentional",
+      "source_sha256": "dc43fd68c8cd52f7054521b597edadecef3365ef99a4ca317f02e8e891bbf801"
+    },
+    {
+      "name": "right_rear_0_bolt",
+      "solids": 1,
+      "volume_mm3": 184.37221885754965,
+      "source": "validation/inset_yaw_assembly_development_v1/inset_fasteners_staged_v2/right_0_bolt.step",
+      "note": "M3 hardware envelope moved to 2 mm rear plate; inner nut/washer replaced by threaded plate",
+      "source_sha256": "5c5f2a019cad80a74f95956db41abbfdd1a2b36bf7cafa2b0584d339a007ebd6"
+    },
+    {
+      "name": "right_rear_0_rear_washer",
+      "solids": 1,
+      "volume_mm3": 13.866204574782252,
+      "source": "validation/rear_washer_clearance_v1/right_rear_0_rear_washer.step",
+      "note": "SCW-YAW-REAR-WASHER-01 revA proposal; already in assembly coordinates",
+      "source_sha256": "652a69015bcc168bdb7f5d3868948adeae5eb7ff23c9781c3fcc95dfdbfeb531"
+    },
+    {
+      "name": "right_rear_1_bolt",
+      "solids": 1,
+      "volume_mm3": 184.37221885754963,
+      "source": "validation/inset_yaw_assembly_development_v1/inset_fasteners_staged_v2/right_1_bolt.step",
+      "note": "M3 hardware envelope moved to 2 mm rear plate; inner nut/washer replaced by threaded plate",
+      "source_sha256": "ad4c0a5e284b37819c3e5c2bff7e365bb5cb255cc27d1073099e84d144cd2869"
+    },
+    {
+      "name": "right_rear_1_rear_washer",
+      "solids": 1,
+      "volume_mm3": 13.866204574782252,
+      "source": "validation/rear_washer_clearance_v1/right_rear_1_rear_washer.step",
+      "note": "SCW-YAW-REAR-WASHER-01 revA proposal; already in assembly coordinates",
+      "source_sha256": "a92e1f839dfbadfc35af0e11240e7fd84d05465e581968448dc1c3e9eac06545"
+    },
+    {
+      "name": "right_rear_2_bolt",
+      "solids": 1,
+      "volume_mm3": 184.37221885754963,
+      "source": "validation/inset_yaw_assembly_development_v1/inset_fasteners_staged_v2/right_2_bolt.step",
+      "note": "M3 hardware envelope moved to 2 mm rear plate; inner nut/washer replaced by threaded plate",
+      "source_sha256": "984455759c90d1ccb49ef339f6242879aa058c97a0b3ff83d585269cdd64a16d"
+    },
+    {
+      "name": "right_rear_2_rear_washer",
+      "solids": 1,
+      "volume_mm3": 13.866204574782268,
+      "source": "validation/rear_washer_clearance_v1/right_rear_2_rear_washer.step",
+      "note": "SCW-YAW-REAR-WASHER-01 revA proposal; already in assembly coordinates",
+      "source_sha256": "11ada339399c15c66b12f566d26fc27a328325c21aa0981016302ab6a635606d"
+    },
+    {
+      "name": "right_rear_3_bolt",
+      "solids": 1,
+      "volume_mm3": 184.37221885754963,
+      "source": "validation/inset_yaw_assembly_development_v1/inset_fasteners_staged_v2/right_3_bolt.step",
+      "note": "M3 hardware envelope moved to 2 mm rear plate; inner nut/washer replaced by threaded plate",
+      "source_sha256": "06134737bfa28a3c03165009b92d1c65a9e50a982861b9b62930cffca1032632"
+    },
+    {
+      "name": "right_rear_3_rear_washer",
+      "solids": 1,
+      "volume_mm3": 13.86620457478227,
+      "source": "validation/rear_washer_clearance_v1/right_rear_3_rear_washer.step",
+      "note": "SCW-YAW-REAR-WASHER-01 revA proposal; already in assembly coordinates",
+      "source_sha256": "75b5a169ed7424471aac1f7d0c388f3d6ca1e30ba62b7896d999d25e198606d2"
+    },
+    {
+      "name": "right_plate_0_screw",
+      "solids": 1,
+      "volume_mm3": 46.159420859194796,
+      "source": null,
+      "note": "NBK SLH-M2-10 nominal envelope"
+    },
+    {
+      "name": "right_plate_0_washer",
+      "solids": 1,
+      "volume_mm3": 25.213637239548998,
+      "source": "validation/yaw_plate_washer_v1/right_-34_-36_washer.step",
+      "note": "SCW-YAW-PLATE-WASHER-01 A-candidate; comparison only",
+      "source_sha256": "e0e476f33eccf33ed47b235c70dcffb88b6b7b84c468462fb670226ad023e0b7"
+    },
+    {
+      "name": "right_plate_0_nut",
+      "solids": 1,
+      "volume_mm3": 26.401596572302637,
+      "source": null,
+      "note": "PTS A56202 circumcircle envelope, not square CAD"
+    },
+    {
+      "name": "right_plate_1_screw",
+      "solids": 1,
+      "volume_mm3": 46.15942085919482,
+      "source": null,
+      "note": "NBK SLH-M2-10 nominal envelope"
+    },
+    {
+      "name": "right_plate_1_washer",
+      "solids": 1,
+      "volume_mm3": 25.213637239548994,
+      "source": "validation/yaw_plate_washer_v1/right_-34_-16_washer.step",
+      "note": "SCW-YAW-PLATE-WASHER-01 A-candidate; comparison only",
+      "source_sha256": "8ace9292c0ab02bd980f0859bb6c4e9154d207a98ef6511c258ecd0320c1059e"
+    },
+    {
+      "name": "right_plate_1_nut",
+      "solids": 1,
+      "volume_mm3": 26.401596572302633,
+      "source": null,
+      "note": "PTS A56202 circumcircle envelope, not square CAD"
+    },
+    {
+      "name": "right_plate_2_screw",
+      "solids": 1,
+      "volume_mm3": 46.159420859194796,
+      "source": null,
+      "note": "NBK SLH-M2-10 nominal envelope"
+    },
+    {
+      "name": "right_plate_2_washer",
+      "solids": 1,
+      "volume_mm3": 25.213637239549005,
+      "source": "validation/yaw_plate_washer_v1/right_8.1_-36_washer.step",
+      "note": "SCW-YAW-PLATE-WASHER-01 A-candidate; comparison only",
+      "source_sha256": "d541cc675d90abed0d99764678bb09e05d58e0881abaf4fa9f2eb6f665f66e20"
+    },
+    {
+      "name": "right_plate_2_nut",
+      "solids": 1,
+      "volume_mm3": 26.401596572302633,
+      "source": null,
+      "note": "PTS A56202 circumcircle envelope, not square CAD"
+    },
+    {
+      "name": "right_plate_3_screw",
+      "solids": 1,
+      "volume_mm3": 46.15942085919482,
+      "source": null,
+      "note": "NBK SLH-M2-10 nominal envelope"
+    },
+    {
+      "name": "right_plate_3_washer",
+      "solids": 1,
+      "volume_mm3": 25.21363723954901,
+      "source": "validation/yaw_plate_washer_v1/right_8.1_-16_washer.step",
+      "note": "SCW-YAW-PLATE-WASHER-01 A-candidate; comparison only",
+      "source_sha256": "24f164fa12dfa726a0e485225f50f0258dbf58fcb40ba70f97dbb05cdf514527"
+    },
+    {
+      "name": "right_plate_3_nut",
+      "solids": 1,
+      "volume_mm3": 26.401596572302633,
+      "source": null,
+      "note": "PTS A56202 circumcircle envelope, not square CAD"
+    }
+  ],
+  "part_count": 52,
+  "solid_count": 52,
+  "omitted": [
+    "servo and horn hardware",
+    "case PHS M2x8 TAP screws",
+    "rear-plate-to-body corner hardware",
+    "legs",
+    "battery/electronics/harness",
+    "tools"
+  ],
+  "manufacturing_release": false,
+  "full_interference_verified": false,
+  "strength_verified": false
+}

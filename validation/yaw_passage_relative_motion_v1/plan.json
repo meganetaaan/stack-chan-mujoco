@@ -1,0 +1,22 @@
+{
+  "question": "How different is support opening motion from a rigid seat-following diagnostic, and how sensitive is that result to the fit region?",
+  "source_sha256": {
+    "validation/yaw_current_archive_envelope_v1/plan.json": "adb7cde2d7bdcca730eb14a1b6bb477773f6a018f1fd256ccc99c2bd6d857eb1",
+    "validation/yaw_current_archive_envelope_v1/report.json": "8f9ea2f06db5fd560289b32898ac828da76f18f0caf1aa6c9435dde268b95041",
+    "validation/yaw_metal_seat_v4/report.json": "8056569d0d13c3303995657cefcdc4ec21507f9d36474d64e566017b27fb28c3",
+    "validation/yaw_connector_shelf_relief_v2/plan.json": "40c1efde834d181fe4b15d170cf2ff5166b0cedb599051778c4bdb4d1a323e06"
+  },
+  "fits": [
+    "all nodes on the loaded Z89 plane",
+    "Z89 nodes within 3.2 mm of the four support screw axes"
+  ],
+  "opening_neighbourhood": "Opening bounding rectangle expanded by 1 mm in X/Y, support nodes Z86..91. Nodal samples only.",
+  "stop": "Postprocess six existing response fields at 38 archived selected loads. No new FE solve, mesh refinement or threshold modification.",
+  "limits": [
+    "Equal-node-weight rigid fits are kinematic diagnostics, not solved plate/servo motion.",
+    "Two fits do not bracket the physical solution and their spread is not an error bound.",
+    "No bolt/contact/plate flexibility or connector compliance; no finite-deformed CAD gap.",
+    "Selected times are not the complete load envelope; nominal reserved corridor is not the real cable."
+  ],
+  "manufacturing_release": false
+}

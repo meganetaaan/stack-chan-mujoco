@@ -1,0 +1,187 @@
+{
+  "parts": [
+    {
+      "name": "rear_plate",
+      "material_candidate": "A5052P-H34",
+      "density_reference_kg_m3": 2680,
+      "mass_kg": 0.08611409291875927,
+      "com_assembly_m": [
+        -0.06319999999999999,
+        3.7263324595622005e-17,
+        0.06340151532489248
+      ],
+      "inertia_com_kg_m2": [
+        [
+          0.00023587423836356252,
+          -8.586634066887137e-21,
+          7.987022399902345e-20
+        ],
+        [
+          -8.586634066887137e-21,
+          0.00011701798337723828,
+          -7.295739633301117e-20
+        ],
+        [
+          7.987022399902345e-20,
+          -7.295739633301117e-20,
+          0.00011891366438160362
+        ]
+      ]
+    },
+    {
+      "name": "left_threaded_backing_plate",
+      "material_candidate": "A5052P-H34",
+      "density_reference_kg_m3": 2680,
+      "mass_kg": 0.005453798831682175,
+      "com_assembly_m": [
+        -0.05200000000000002,
+        0.026000000000000006,
+        0.06999999999999987
+      ],
+      "inertia_com_kg_m2": [
+        [
+          6.795227309285945e-07,
+          -1.2479722499847413e-21,
+          0.0
+        ],
+        [
+          -1.2479722499847413e-21,
+          4.631247719733337e-07,
+          -2.4959444999694827e-21
+        ],
+        [
+          0.0,
+          -2.4959444999694827e-21,
+          2.245786572027883e-07
+        ]
+      ]
+    },
+    {
+      "name": "left_mount_plate",
+      "material_candidate": "SUS304",
+      "density_reference_kg_m3": 7930,
+      "mass_kg": 0.012585401261319408,
+      "com_assembly_m": [
+        -0.012954712205036158,
+        0.025999999999999995,
+        0.0885
+      ],
+      "inertia_com_kg_m2": [
+        [
+          1.1453931077267995e-06,
+          9.231735020875931e-22,
+          0.0
+        ],
+        [
+          9.231735020875931e-22,
+          2.494256786849359e-06,
+          -7.385388016700745e-21
+        ],
+        [
+          0.0,
+          -7.385388016700745e-21,
+          3.637552327699243e-06
+        ]
+      ]
+    },
+    {
+      "name": "right_threaded_backing_plate",
+      "material_candidate": "A5052P-H34",
+      "density_reference_kg_m3": 2680,
+      "mass_kg": 0.005453798831682175,
+      "com_assembly_m": [
+        -0.05200000000000002,
+        -0.026000000000000006,
+        0.06999999999999987
+      ],
+      "inertia_com_kg_m2": [
+        [
+          6.795227309285945e-07,
+          1.2479722499847413e-21,
+          0.0
+        ],
+        [
+          1.2479722499847413e-21,
+          4.631247719733337e-07,
+          2.4959444999694827e-21
+        ],
+        [
+          0.0,
+          2.4959444999694827e-21,
+          2.2457865720278333e-07
+        ]
+      ]
+    },
+    {
+      "name": "right_mount_plate",
+      "material_candidate": "SUS304",
+      "density_reference_kg_m3": 7930,
+      "mass_kg": 0.012585401261319408,
+      "com_assembly_m": [
+        -0.012954712205036158,
+        -0.025999999999999995,
+        0.0885
+      ],
+      "inertia_com_kg_m2": [
+        [
+          1.1453931077267995e-06,
+          -9.231735020875931e-22,
+          0.0
+        ],
+        [
+          -9.231735020875931e-22,
+          2.494256786849359e-06,
+          3.6926940083503725e-21
+        ],
+        [
+          0.0,
+          3.6926940083503725e-21,
+          3.637552327699243e-06
+        ]
+      ]
+    }
+  ],
+  "aggregate_metal_only": {
+    "mass_kg": 0.12219249310476243,
+    "com_assembly_m": [
+      -0.051850044897432265,
+      2.661870983079028e-17,
+      0.06916064667181748
+    ],
+    "inertia_com_kg_m2": [
+      [
+        0.00027619109701307245,
+        2.879912020664621e-20,
+        -2.456129477558126e-05
+      ],
+      [
+        2.879912020664621e-20,
+        0.00018438393588463787,
+        -5.844527336054672e-20
+      ],
+      [
+        -2.456129477558126e-05,
+        -5.844527336054672e-20,
+        0.000200200085820439
+      ]
+    ]
+  },
+  "rear_plate_only_delta_from_frozen_cover_kg": 0.05008782597746615,
+  "reference_density_sources": {
+    "A5052": "https://www.izumi-metal.co.jp/cms/wp-content/uploads/2025/06/UACJ_UEX_type.pdf",
+    "SUS304": "https://www.nipponsteel.com/assets/pdf/product/grade/nssc_series/ferrite/S007_SPEC36.pdf"
+  },
+  "source_sha256": {
+    "validation/yaw_geometric_moments_v1/geometric_moments.json": "21e63f3a83831d8fbd72681fca117822190380a8696c64e8edef4a929b8149a6",
+    "validation/base_mass_provenance_development_v1/report.json": "32be352f46bad8acfb59ba6f8d3529f273c44c6149317d00a7433efedb34cf4c",
+    "board/mechanical/prototype/yaw_support_candidate/revA/inventory.json": "44b30143aae11b946018bde832e769e2d47d34d4a9d12c57619a2e240edcf609"
+  },
+  "limits": [
+    "reference density and nominal geometry, not guaranteed maximum mass",
+    "excludes printed parts, washers, screws, nuts, wires and electronics",
+    "thread pilot CAD omits removed tap material and final chamfers",
+    "metal-only COM is not body or robot COM"
+  ],
+  "robot_model_updated": false,
+  "manufacturing_release": false
+}

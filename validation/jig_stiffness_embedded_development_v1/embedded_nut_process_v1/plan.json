@@ -1,0 +1,35 @@
+{
+  "scope": "CAD insertion and height-stack screen for pause-and-insert rear hardware.",
+  "build_base_x_mm": -62.2,
+  "print_direction": "+X",
+  "layer_height_mm": 0.2,
+  "pause_after_height_mm": 8.8,
+  "pause_plane_x_mm": -53.4,
+  "sequence": [
+    "print cavity walls, pause before roof layers",
+    "drop four reduced-diameter washers axially",
+    "place four aligned square nuts",
+    "verify full seating and remove temporary tools",
+    "resume roof and remaining body"
+  ],
+  "criteria": {
+    "intersection_mm3": 0.01,
+    "hardware_below_pause_plane_mm": 0.2,
+    "minimum_total_fit_mm": 0.1
+  },
+  "body_surface_tolerance_mm": 0.2,
+  "seat_x_mm": -56.2,
+  "nut_thickness_max_mm": 1.8,
+  "washer_thickness_max_mm": 0.55,
+  "source_sha256": {
+    "body_shroud.step": "8de9bb8c59896372a4c07b6f108cd7490ea58219cfb9def69e2bc880cd36580d",
+    "plan.json": "893792ef8d65344dc717ed02d6a7a4ae79729d516e4bc23e9e6ca32f2da0e57f"
+  },
+  "limitations": [
+    "CAD stage clipping, not slicer G-code verification",
+    "uniform 0.2mm layers assumed",
+    "fully seated and aligned hardware assumed",
+    "nozzle-tip height only; printer head, thermal, bridge and adhesion behavior unverified",
+    "screw engagement and retention strength remain unverified"
+  ]
+}

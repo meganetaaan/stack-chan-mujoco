@@ -1,0 +1,184 @@
+{
+  "scope": "Back-cover screen with simultaneous left/right support loads and ideal corner mounts.",
+  "rows": [
+    {
+      "name": "left_only",
+      "dofs": 385320,
+      "elements": 61909,
+      "fixed_facets": 1008,
+      "loaded_facets": 2414,
+      "load_regions": [
+        {
+          "origin_mm": [
+            -62.2,
+            26.0,
+            70.0
+          ],
+          "facets": 1212,
+          "achieved_wrench_N_Nmm": [
+            -0.12721893406930784,
+            -1.8776622515986245,
+            7.459879287959131,
+            -334.10008744289837,
+            -509.15314433745107,
+            -187.22499921734524
+          ]
+        },
+        {
+          "origin_mm": [
+            -62.2,
+            -26.0,
+            70.0
+          ],
+          "facets": 1202,
+          "achieved_wrench_N_Nmm": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "max_displacement_mm": 0.024763924520435857,
+      "max_von_mises_MPa": 15.061819127601533,
+      "max_absolute_principal_MPa": 23.950832488540264,
+      "achieved_wrench_N_Nmm": [
+        -0.12721893406930784,
+        -1.8776622515986245,
+        7.459879287959131,
+        -334.10008744289837,
+        -509.15314433745107,
+        -187.22499921734524
+      ],
+      "free_residual_norm_N": 2.968619967667315e-10,
+      "strain_energy_Nmm": 0.2847741120513901,
+      "external_work_Nmm": 0.5695482241263343,
+      "stress_evaluation": "all integration points, no excluded corner or support singularities"
+    },
+    {
+      "name": "right_only",
+      "dofs": 385320,
+      "elements": 61909,
+      "fixed_facets": 1008,
+      "loaded_facets": 2414,
+      "load_regions": [
+        {
+          "origin_mm": [
+            -62.2,
+            26.0,
+            70.0
+          ],
+          "facets": 1212,
+          "achieved_wrench_N_Nmm": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "origin_mm": [
+            -62.2,
+            -26.0,
+            70.0
+          ],
+          "facets": 1202,
+          "achieved_wrench_N_Nmm": [
+            0.12994756567827148,
+            0.536930182620101,
+            -2.221940880610584,
+            83.67529661953326,
+            137.0027841165254,
+            45.47130201639792
+          ]
+        }
+      ],
+      "max_displacement_mm": 0.0059063783423033665,
+      "max_von_mises_MPa": 3.470452180288962,
+      "max_absolute_principal_MPa": 5.427133847082686,
+      "achieved_wrench_N_Nmm": [
+        0.12994756567827148,
+        0.536930182620101,
+        -2.221940880610584,
+        199.21622241128335,
+        137.0027841165254,
+        52.22857543166793
+      ],
+      "free_residual_norm_N": 8.10044094963519e-11,
+      "strain_energy_Nmm": 0.018340011000205395,
+      "external_work_Nmm": 0.03668002200233937,
+      "stress_evaluation": "all integration points, no excluded corner or support singularities"
+    },
+    {
+      "name": "simultaneous",
+      "dofs": 385320,
+      "elements": 61909,
+      "fixed_facets": 1008,
+      "loaded_facets": 2414,
+      "load_regions": [
+        {
+          "origin_mm": [
+            -62.2,
+            26.0,
+            70.0
+          ],
+          "facets": 1212,
+          "achieved_wrench_N_Nmm": [
+            -0.12721893406930784,
+            -1.8776622515986245,
+            7.459879287959131,
+            -334.10008744289837,
+            -509.15314433745107,
+            -187.22499921734524
+          ]
+        },
+        {
+          "origin_mm": [
+            -62.2,
+            -26.0,
+            70.0
+          ],
+          "facets": 1202,
+          "achieved_wrench_N_Nmm": [
+            0.12994756567827148,
+            0.536930182620101,
+            -2.221940880610584,
+            83.67529661953326,
+            137.0027841165254,
+            45.47130201639792
+          ]
+        }
+      ],
+      "max_displacement_mm": 0.023212698047617907,
+      "max_von_mises_MPa": 14.509160029415975,
+      "max_absolute_principal_MPa": 21.188917425831484,
+      "achieved_wrench_N_Nmm": [
+        0.002728631608962251,
+        -1.3407320689785263,
+        5.237938407348546,
+        -134.88386503161524,
+        -372.1503602209258,
+        -134.99642378567765
+      ],
+      "free_residual_norm_N": 2.7517269513998786e-10,
+      "strain_energy_Nmm": 0.2708092958332866,
+      "external_work_Nmm": 0.5416185916865288,
+      "stress_evaluation": "all integration points, no excluded corner or support singularities"
+    }
+  ],
+  "gates": {
+    "displacement": true,
+    "stress": true,
+    "superposition": true
+  },
+  "relative_superposition_errors": {
+    "displacement_mm": 6.252672484466774e-15,
+    "stress_MPa": 2.071446830659373e-12
+  },
+  "passed_screen": true,
+  "load_path_verified": false
+}

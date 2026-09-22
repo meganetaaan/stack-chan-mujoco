@@ -1,0 +1,50 @@
+{
+  "case": {
+    "source": "validation/prototype_epic4_v1/actuator_fullbody_load_right_v1/trace.npz",
+    "side": "left",
+    "samples": 7000,
+    "displacement_upper_mm": 0.5028143654414373,
+    "principal_upper_MPa": 16.44996071817459,
+    "von_mises_upper_MPa": 12.91460835367678,
+    "selected_time_s": 2.660999999999818,
+    "selected_wrench_N_Nmm": [
+      -0.1272189340693049,
+      -1.8776622515986345,
+      7.459879287959114,
+      -319.0787894301102,
+      -83.46580053874436,
+      -79.82271842590434
+    ],
+    "selected_actual_displacement_mm": 0.3921356408118649,
+    "bounded_within_criteria": false
+  },
+  "direct": {
+    "dofs": 42075,
+    "elements": 6970,
+    "fixed_facets": 104,
+    "loaded_facets": 179,
+    "max_displacement_mm": 0.39213564081186514,
+    "max_von_mises_MPa": 10.196943933799279,
+    "max_absolute_principal_MPa": 12.50246069670779,
+    "achieved_wrench_N_Nmm": [
+      -0.12721893406942672,
+      -1.8776622515977084,
+      7.45987928795912,
+      -319.07878943009536,
+      -83.46580053874197,
+      -79.82271842590399
+    ],
+    "free_residual_norm_N": 3.71583582014805e-11,
+    "strain_energy_Nmm": 2.9017775910946964,
+    "external_work_Nmm": 5.803555182196553,
+    "stress_evaluation": "all integration points, no excluded corner or support singularities"
+  },
+  "relative_superposition_errors": {
+    "displacement_mm": 3.7168536047067676e-15,
+    "stress_MPa": 1.479219721465835e-13
+  },
+  "superposition_verified": true,
+  "displacement_pass": false,
+  "stress_pass": false,
+  "production_design_verified": false
+}

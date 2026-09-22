@@ -1,0 +1,32 @@
+{
+  "moving_part": "boot_shell",
+  "range_rad": [
+    -0.34,
+    0.34
+  ],
+  "required_nominal_clearance_mm": 1.1,
+  "allocation_mm": {
+    "residual": 0.5,
+    "surface_tolerances_total": 0.4,
+    "relative_deflection_reservation": 0.2
+  },
+  "numerical_allowance_mm": 1e-05,
+  "minimum_interval_rad": 0.0001,
+  "bound": "distance(midpoint) - radius_bound * half_interval - numerical_allowance",
+  "gimbal_pitch_to_roll_translation_mm": [
+    26,
+    0,
+    10
+  ],
+  "source_sha256": {
+    "validation/native_yoke_gimbal_wider_relief_v1/cad/left_ankle_gimbal.step": "978187160897b7f389d689b810e35e5dfe6c5370a4e68564e60066db65bdf2d1",
+    "validation/boot_seats_development_v1/left_boot_shell.step": "3adc773b06063117120199696b07e319a0c7d2444d2b0a9613526ef3197a6838",
+    "validation/native_yoke_gimbal_wider_relief_v1/cad/right_ankle_gimbal.step": "727339330f547d7ead6fc0a1b8372669a5ee08812e0f2fd206f352b791a03d27",
+    "validation/boot_seats_development_v1/right_boot_shell.step": "ca4cf0617e43c2698705db99b35d4bafec17db8672c50e7434b4595709816766"
+  },
+  "limitations": [
+    "Selected rigid CAD pair only; other parts, hardware, other leg, floor and harness excluded.",
+    "Deflection and manufacturing tolerance are reserved, not verified.",
+    "Numerical allowance is assumed; CAD kernel is not interval arithmetic."
+  ]
+}

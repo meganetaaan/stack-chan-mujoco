@@ -1,0 +1,10 @@
+{
+  "question": "What voltage/current budget remains on the shared reset after known fanout?",
+  "stop": "One DC budget and POR necessary-condition calculation; no assumed transient simulation.",
+  "assumptions": [
+    "3.207..3.393V rail",
+    "100k pullup with provisional +/-1% tolerance",
+    "1uA per HCS input used as powered endpoint comparison from 6V specification, not unpowered guarantee"
+  ],
+  "acceptance": "Do not approve RESET_N without receiver thresholds, external sink leakage, POR load and discharge timing evidence."
+}

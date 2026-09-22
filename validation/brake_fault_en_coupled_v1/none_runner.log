@@ -1,0 +1,75 @@
+{
+  "samples": [
+    {
+      "time_s": 0.079,
+      "bus_V": 5.142401,
+      "rail_V": 5.142584,
+      "aux_V": 3.206899,
+      "en_V": 1.601021,
+      "Cout_energy_J": 0.01269416169458688
+    },
+    {
+      "time_s": 0.081,
+      "bus_V": 5.11706,
+      "rail_V": 5.117242,
+      "aux_V": 3.132729,
+      "en_V": 0.02173092,
+      "Cout_energy_J": 0.012569359529550718
+    },
+    {
+      "time_s": 0.1,
+      "bus_V": 4.45006,
+      "rail_V": 4.450216,
+      "aux_V": 0.8066433,
+      "en_V": 0.02161952,
+      "Cout_energy_J": 0.00950612277439488
+    },
+    {
+      "time_s": 0.2,
+      "bus_V": 2.11153,
+      "rail_V": 2.111622,
+      "aux_V": 0.0005890932,
+      "en_V": 0.01988995,
+      "Cout_energy_J": 0.00214029478602432
+    },
+    {
+      "time_s": 1.0,
+      "bus_V": 0.0120373,
+      "rail_V": 0.01203832,
+      "aux_V": 4.766552e-29,
+      "en_V": 0.01988996,
+      "Cout_energy_J": 6.9562151242752e-08
+    }
+  ],
+  "numerical_checks_passed": true,
+  "fault_detector_measurements": {
+    "fault_latch_20ms": 0.0,
+    "fault_latch_max": 0.0,
+    "en_20ms": 1.601021,
+    "drive_20ms": 5.15
+  },
+  "powered_measurements": {
+    "powered_bus_min": 5.142401,
+    "powered_bus_max": 5.142401,
+    "powered_brake0_peak_W": 1.170726e-16,
+    "powered_brake0_peak_A": 5.142401e-09,
+    "powered_brake1_peak_W": 1.170726e-16,
+    "powered_brake1_peak_A": 5.142401e-09
+  },
+  "post_disconnect_absorber_measurements": {
+    "shunt0_energy_J": 0.00177331,
+    "shunt0_peak_W": 0.1432285,
+    "brake0_energy_J": 0.0792999,
+    "brake0_peak_W": 6.404976,
+    "mos0_energy_J": 0.00179123,
+    "mos0_peak_W": 0.1446753,
+    "shunt1_energy_J": 6.22725e-19,
+    "shunt1_peak_W": 3.091758e-18,
+    "brake1_energy_J": 1.89634e-17,
+    "brake1_peak_W": 1.382591e-16,
+    "mos1_energy_J": 4.28345e-09,
+    "mos1_peak_W": 3.122988e-08
+  },
+  "bus_after_disconnect_max_V": 5.58837,
+  "protection_design_verified": false
+}

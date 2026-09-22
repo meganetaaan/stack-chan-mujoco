@@ -1,0 +1,27 @@
+{
+  "controller_source": "https://www.analog.com/media/en/technical-documentation/data-sheets/4363fb.pdf",
+  "controller_revision": "Rev.C",
+  "decisions": {
+    "5V_controller_supply": "Requires4.5V logic-level pass FET; PSMN2R4-30YLD remains comparison candidate.",
+    "battery_controller_supply": "Not adopted as a shortcut: VCC-OUT drives fault timer and ENOUT comparison; separate-supply behavior, battery cutoff and rail sequencing require redesign."
+  },
+  "logic_FET_comparison": {
+    "part": "PSMN2R4-30YLD",
+    "normal_voltage_drop_at_25C_V": 0.0152427,
+    "normal_loss_at_25C_W": 0.0749483559,
+    "fixed_125C_base_continuous_junction_comparison_C": 195.37510588961334,
+    "max_fixed_base_for_175C_junction_at_comparison_power_C": 104.62489411038665,
+    "continuous_at_125C_screen_pass": false,
+    "pulse_SOA_pass": null
+  },
+  "timer_capacitance_minimum_F": 1e-08,
+  "timer_selected": false,
+  "qualification": false,
+  "limits": [
+    "Normal loss extends the25A RDSon test value to lower current; temperature rise changes resistance.",
+    "Fixed mounting base125C is a comparison, not measured board temperature.",
+    "Continuous thermal failure does not reject short pulse use; pulse SOA must be evaluated separately.",
+    "10nF minimum is not a selected fault time; timer current depends on state and inferred VDS.",
+    "Do not raise battery cutoff solely to obtain gate drive without checking usable energy and battery specifications."
+  ]
+}

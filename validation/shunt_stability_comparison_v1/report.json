@@ -1,0 +1,58 @@
+{
+  "sources": {
+    "WSLP": "https://www.vishay.com/docs/30122/wslp.pdf",
+    "WSLF": "https://www.vishay.com/docs/30193/wslf.pdf"
+  },
+  "WSLF_revision": "10-Jun-2026",
+  "common_comparison_temperature_C": [
+    -55,
+    150
+  ],
+  "temperature_scope": "Intersection of documented TCR ranges; excludes 150..155C, not a relaxed robot temperature requirement.",
+  "assumptions": [
+    "Initial 1% and independent same-sign extremes for both series parts; no statistical cancellation.",
+    "Solder test changes transferred conditionally; actual assembly process applicability still unverified.",
+    "Shared interconnect resistance is excluded from resistor-only bounds and consumes remaining error budget."
+  ],
+  "rows": [
+    {
+      "part": "WSLP25128L200FEA",
+      "quantity_per_leg": 1,
+      "nominal_total_ohm": 0.0082,
+      "range_after_solder_and_TCR_ohm": [
+        0.00750555946875,
+        0.00890612946875
+      ],
+      "current_limit_A": [
+        5.052699958820145,
+        7.327901434796023
+      ],
+      "remaining_positive_error_V": 0.0012085614021562566,
+      "shunt_total_max_limit_loss_W": 0.40303457891378125
+    },
+    {
+      "part": "WSLF25124L000FEA",
+      "quantity_per_leg": 2,
+      "nominal_total_ohm": 0.008,
+      "range_after_solder_and_TCR_ohm": [
+        0.0078106535000000005,
+        0.0081914535
+      ],
+      "current_limit_A": [
+        5.493530543755147,
+        7.041664311443338
+      ],
+      "remaining_positive_error_V": 0.004722623140500003,
+      "shunt_total_max_limit_loss_W": 0.3872915371293836
+    }
+  ],
+  "decision": "Prefer evaluating two series WSLF 4mOhm parts for the LT4363 alternative; lower solder-shift sensitivity at cost of another footprint and shared interconnect.",
+  "selection_complete": false,
+  "manufacturing_release": false,
+  "remaining": [
+    "Layout and Kelvin pickup for two series resistors",
+    "Full temperature and process scope",
+    "Supply/IC/FET compatibility and SOA",
+    "Part availability"
+  ]
+}

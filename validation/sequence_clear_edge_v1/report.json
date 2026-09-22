@@ -1,0 +1,33 @@
+{
+  "rows": [
+    {
+      "R_ohm": 10000,
+      "final_lower_V": 3.069842,
+      "logic_window_max_ns_per_V": 472.0323187909991,
+      "excursion_10_90_max_ns_per_V": 1891.4976991147792,
+      "diagnostic_capacitance_limit_pF": 5.286815841584159,
+      "sink_A_upper": 0.0003432272727272727,
+      "resistor_power_W_upper": 0.0011628736363636363,
+      "conditional_budget_pass": false
+    },
+    {
+      "R_ohm": 1000,
+      "final_lower_V": 3.1932842,
+      "logic_window_max_ns_per_V": 42.32017821068946,
+      "excursion_10_90_max_ns_per_V": 180.79076951783136,
+      "diagnostic_capacitance_limit_pF": 55.312558415841586,
+      "sink_A_upper": 0.0034277727272727272,
+      "resistor_power_W_upper": 0.011628736363636361,
+      "conditional_budget_pass": true
+    }
+  ],
+  "baseline_plan_sha256": "d421d06ee7e2c10b60dc8f746ab96933575cde03d4d591e314c3ec74d39406b9",
+  "status": "1k conditional candidate, not integrated or manufacturer edge qualification",
+  "remaining": [
+    "Actual total pin plus trace capacitance maximum",
+    "Board leakage and rail current budget",
+    "Manufacturer transition interval interpretation",
+    "Driven GPIO edges, reset, brownout and power sequencing"
+  ],
+  "manufacturing_release": false
+}

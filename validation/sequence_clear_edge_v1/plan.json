@@ -1,0 +1,22 @@
+{
+  "scope": "Valid common 3.207..3.393 V rail; GPIO releases from <=0.4 V to high impedance.",
+  "manufacturer_limits": {
+    "input_rate_ns_per_V": 200,
+    "VIH_V": 2.0,
+    "VIL_V": 0.9,
+    "GPIO_sink_A": 0.006
+  },
+  "engineering_assumptions": {
+    "capacitance_budget_F": 5e-11,
+    "resistor_total_tolerance": 0.01,
+    "leakage_sink_A": 1.358e-05,
+    "initial_voltage_V": 0.4,
+    "board_leakage": "Excluded; must be budgeted before integration",
+    "edge_interval": "Check local slope throughout logic window and additionally 10..90% of final excursion. The latter is an engineering diagnostic, not a claimed manufacturer definition."
+  },
+  "sources": {
+    "receiver": "https://assets.nexperia.com/documents/data-sheet/74AUP1G06.pdf Table 6,7 Rev12",
+    "driver": "https://www.st.com/resource/en/datasheet/stm32g030f6.pdf Table50 DS12991 Rev6"
+  },
+  "stop": "Compare previous 10k proposal with one 1k candidate. No capacitance sweep; actual capacitance qualification remains open."
+}

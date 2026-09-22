@@ -1,0 +1,6 @@
+{
+ "question":"What mass changes follow from the selected Pololu modules and current43-part mounting assembly without inventing missing material properties?",
+ "criteria":["Remove both legacy UBEC allocations exactly once", "Replace rear plate rather than add another", "Account for all43 mounting components by selected nominal mass, density coefficient, or explicit unknown", "Reconcile itemized subtotal with independent delta calculation"],
+ "stop":"One ledger update. Do not assign density to nut collision envelopes or infer component centers of mass from mixed-material CAD.",
+ "limits":["Inherited numerical subtotal includes engineering assumptions and is not measured total robot mass", "ABS/PETG grade, print fill and density not selected", "Catalog mass is nominal, not certified tolerance", "Do not update MuJoCo inertia or load qualification from this mass-only ledger"]
+}

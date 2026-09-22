@@ -1,0 +1,171 @@
+{
+  "status": "packaging_and_protection_candidate_not_released",
+  "battery": {
+    "part": "TA-45C-850-3S1P-XT30",
+    "nominal_voltage_V": 11.1,
+    "capacity_Ah": 0.85,
+    "catalog_dimensions_mm": [
+      60,
+      30,
+      22
+    ],
+    "catalog_mass_g": 76,
+    "source": "https://www.genstattu.com/content/instock/rc_product_brochure.pdf",
+    "selection_reason": "Concrete compact 3S alternative to unspecified NP-F550; buck input headroom",
+    "integrated_BMS_assumed": false
+  },
+  "regulator": {
+    "family": "HOBBYWING UBEC 10A 2-6S, four-voltage 5V-capable version",
+    "exact_current_order_code": null,
+    "manual": "HW-SM817DUL_10A-UBEC_140905",
+    "source": "https://hobbywing.oss-cn-shenzhen.aliyuncs.com/pdf/pdfen/UBEC10A2-6S.pdf",
+    "input_range_V": [
+      6,
+      25.2
+    ],
+    "selected_setting_V": 5,
+    "continuous_current_A": 10,
+    "peak_current_A": 20,
+    "dimensions_mm": [
+      43.1,
+      32.3,
+      12.5
+    ],
+    "mass_g": 36,
+    "quantity_to_compare": [
+      1,
+      2
+    ],
+    "reverse_polarity_protected": false,
+    "documented_protections": [
+      "shoot-through",
+      "output overcurrent",
+      "output short-circuit",
+      "thermal"
+    ],
+    "unqualified": [
+      "output tolerance and load steps",
+      "regeneration and reverse current",
+      "fault recovery",
+      "switch isolation"
+    ],
+    "manufacturer_part_number": "30603000",
+    "part_number_source": "https://www.hobbywing.com/en/products/ubec-10a-2-6s152",
+    "part_number_verified_date": "2026-09-21",
+    "procurement_status": "30603000 is discontinued; current stock/revision unconfirmed. Retain as historical 5V comparison; select supported replacement for new build.",
+    "setting_control": {
+      "required_DIP_state": [
+        0,
+        0,
+        0
+      ],
+      "orientation": "Front panel, left to right DIP1 DIP2 DIP3 per manufacturer manual",
+      "other_outputs_V": [
+        6.0,
+        7.4,
+        8.4
+      ],
+      "mechanical_guard": "Required design work; do not modify internal electronics",
+      "servo_connection_gate": "Verify 5V output with servos disconnected before initial connection",
+      "independent_OVP": "Required; candidate TPS259823ONRGE internal 7.6V OVLO is insufficient",
+      "qualified": false
+    },
+    "output_envelope_review": {
+      "reviewed_date": "2026-09-21",
+      "current_product_manual": "https://oss.hobbywing.com/pdf/pdfen/UBEC10A2-6S.pdf",
+      "manual_identifier": "HW-SM817DUL_10A-UBEC_140905",
+      "normal_output_max_V": null,
+      "ripple_max_V": null,
+      "startup_overshoot_max_V": null,
+      "load_release_overshoot_max_V": null,
+      "shoot_through_threshold_V": null,
+      "shoot_through_delay_s": null,
+      "finding": "Not specified in reviewed official product page and its linked manual; not evidence of absent protection",
+      "comparison_95k3_divider_required_normal_max_V_exclusive": 5.175695280672328,
+      "comparison_only": true,
+      "decision": "UBEC remains unqualified for this OVP window; do not choose divider values assuming ideal 5V output",
+      "next_selection_gate": "Prefer a candidate with documented output accuracy and transient/OV protection conditions; retain UBEC as physical evaluation alternative"
+    },
+    "lifecycle_status": "discontinued_manufacturer_listing",
+    "lifecycle_source": "https://www.hobbywing.com/en/discontinued-products?sys=46",
+    "lifecycle_verified_on": "2026-09-22",
+    "regional_listing_resolution": {
+      "page_title": "UBEC10A(2-6S)",
+      "displayed_part_number": "30603003",
+      "model": "UBEC10A-Car",
+      "catalog_output_settings_V": [
+        6,
+        7.4,
+        8.4
+      ],
+      "catalog_continuous_A": 10,
+      "catalog_peak_A": 15,
+      "catalog_mass_g_including_wires": 34,
+      "source": "https://www.hobbywingdirect.com/products/ubec-10a",
+      "drop_in_5V_replacement": false
+    }
+  },
+  "integration_rules": [
+    "3S is a design alternative, not a user requirement",
+    "Never connect 3S directly to 3.7-6V servos or Tab5 battery input",
+    "Review all previous 2S monitor and auxiliary input ratings before reuse",
+    "Charger, per-cell low-voltage monitoring, fuse and reverse-input protection remain required design work",
+    "External UBEC switch is not proven physical or bidirectional isolation",
+    "Do not parallel two separate UBEC outputs"
+  ],
+  "manufacturing_release": false,
+  "tab5_supply": {
+    "status": "HV input candidate; connector and circuit qualification pending",
+    "source": "https://docs.m5stack.com/en/core/Tab5",
+    "manufacturer_external_input_range_V": [
+      6,
+      24
+    ],
+    "candidate_path": "Protected 3S branch to HV input; separate from servo UBEC output",
+    "M5Bus_HVIN_pins": [
+      25,
+      27,
+      29
+    ],
+    "M5Bus_GND_pins": [
+      1,
+      3,
+      5
+    ],
+    "pins_status": "Manufacturer logical pinmap only; not a released harness drawing",
+    "battery_contacts_used": false,
+    "servo_power_from_Tab5": false,
+    "pending": [
+      "Actual board revision matches verified schematic; component reverse-path qualification",
+      "Mating connector orientation, current rating, retention and CAD access",
+      "Input branch fuse reverse protection and transient voltage",
+      "Startup and maximum input current",
+      "USB simultaneous connection and backfeed",
+      "Shutdown and restart sequencing"
+    ],
+    "release": false,
+    "schematic_pin_mapping": {
+      "source_sha256": "13cf3fd9954d39aa198e57b1bb94ec56af7d49107c80a245acc5bd90ac8ea329",
+      "page_1based": 4,
+      "BUS1": {
+        "25": "SYS_VIN",
+        "27": "SYS_VIN",
+        "29": "SYS_VIN",
+        "1": "GND",
+        "3": "GND",
+        "5": "GND",
+        "30": "VBAT_OUT, not SYS_BAT_2S"
+      },
+      "J9": {
+        "1": "GND",
+        "2": "SYS_VIN",
+        "4": "GND"
+      },
+      "J7": {
+        "1": "GND",
+        "2": "SYS_VIN"
+      }
+    },
+    "preferred_connector_candidate": "J9 GPIO_EXT pins 1 GND / 2 SYS_VIN, pending mating orientation and mechanical access"
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "assembly": "schematics/power/servo_power_rearm_integration_revK/assembly.json",
+  "sha256": "62fb282d4ac7d994ba689859e1f12f4b4503c7325db2056e696c0a995510cbe3",
+  "rail_endpoints_accounted": [
+    "C10",
+    "C11",
+    "C9",
+    "C_MONITOR_START",
+    "C_STOP_OUT",
+    "LEFT_C_WINDOW",
+    "LEFT_R_WINDOW_PULLUP",
+    "LEFT_U_WINDOW",
+    "R8",
+    "RIGHT_C_WINDOW",
+    "RIGHT_R_WINDOW_PULLUP",
+    "RIGHT_U_WINDOW",
+    "R_MONITOR_START",
+    "R_STOP_MIN_LOAD",
+    "U10",
+    "U11",
+    "U9",
+    "U_MONITOR_START",
+    "U_STOP_LDO"
+  ],
+  "capacitors_excluded_from_DC_sum": [
+    "C10",
+    "C11",
+    "C9",
+    "C_MONITOR_START",
+    "C_STOP_OUT",
+    "LEFT_C_WINDOW",
+    "RIGHT_C_WINDOW"
+  ],
+  "load_rows": [
+    {
+      "reference": "R8",
+      "comparison_A": 3.427272727272727e-05,
+      "basis": "Full rail across resistor, total tolerance assumed +/-1%; R8 exact selection pending"
+    },
+    {
+      "reference": "R_STOP_MIN_LOAD",
+      "comparison_A": 0.00011386288130474176,
+      "basis": "Full rail across resistor, total tolerance assumed +/-1%; R8 exact selection pending"
+    },
+    {
+      "reference": "LEFT_R_WINDOW_PULLUP",
+      "comparison_A": 0.0003427272727272727,
+      "basis": "Full rail across resistor, total tolerance assumed +/-1%; R8 exact selection pending"
+    },
+    {
+      "reference": "RIGHT_R_WINDOW_PULLUP",
+      "comparison_A": 0.0003427272727272727,
+      "basis": "Full rail across resistor, total tolerance assumed +/-1%; R8 exact selection pending"
+    },
+    {
+      "reference": "R_MONITOR_START",
+      "comparison_A": 3.427272727272727e-05,
+      "basis": "Full rail across resistor, total tolerance assumed +/-1%; R8 exact selection pending"
+    },
+    {
+      "reference": "U9",
+      "comparison_A": 6e-06,
+      "basis": "Published supply-current test point extended to rail range; see limitations"
+    },
+    {
+      "reference": "U10",
+      "comparison_A": 6e-06,
+      "basis": "Published supply-current test point extended to rail range; see limitations"
+    },
+    {
+      "reference": "U_MONITOR_START",
+      "comparison_A": 6e-06,
+      "basis": "Published supply-current test point extended to rail range; see limitations"
+    },
+    {
+      "reference": "U11",
+      "comparison_A": 4e-06,
+      "basis": "Published supply-current test point extended to rail range; see limitations"
+    },
+    {
+      "reference": "LEFT_U_WINDOW",
+      "comparison_A": 1.3e-05,
+      "basis": "Published supply-current test point extended to rail range; see limitations"
+    },
+    {
+      "reference": "RIGHT_U_WINDOW",
+      "comparison_A": 1.3e-05,
+      "basis": "Published supply-current test point extended to rail range; see limitations"
+    },
+    {
+      "reference": "U10 MR internal pullup",
+      "comparison_A": 4.847142857142857e-05,
+      "basis": "MR at 0V, 70kohm minimum; current sourced by U10 rail, not a second independent U11 output load"
+    },
+    {
+      "reference": "U_MONITOR_START SENSE",
+      "comparison_A": 1.7e-06,
+      "basis": "Fixed SENSE current limit measured at 6.5V, comparison at 3.393V"
+    },
+    {
+      "reference": "U10 SENSE",
+      "comparison_A": 2.5e-08,
+      "basis": "G01 limit measured near VIT, not validated at rail"
+    },
+    {
+      "reference": "U11 additional input supply current",
+      "comparison_A": 0.0005,
+      "basis": "VI=VCC-0.6V test point; not a bound for arbitrary slow ramps"
+    }
+  ],
+  "conditional_DC_sum_A": 0.0014660593098761703,
+  "minimum_load_resistor_only_A": 0.00010548995098845432,
+  "pass_element_only_power_W": 0.013770695097666869,
+  "JEDEC_theta_JA_K_W": 212.1,
+  "pass_element_only_temperature_rise_K": 2.9207644302151428,
+  "qualified_total_current": false,
+  "qualified_thermal_result": false,
+  "limits": [
+    "Regulator ground-pin dissipation not included in pass-element result",
+    "Actual PCB thermal resistance and ambient not established",
+    "TPS3808 supply limits tested with reset unasserted; reset-state/internal-current coverage unresolved",
+    "TPS3700 limits at listed supply points; continuous rail and loaded-output coverage unresolved",
+    "U11 extra current at one input voltage does not bound an arbitrary input ramp",
+    "Capacitor leakage, capacitor charge/discharge, dynamic switching and board leakage excluded",
+    "LOGIC3V3-powered R9 and source divider currents are deliberately not charged to STOP_AUX3V3",
+    "Not all summed load maxima must occur together; this is a conservative component-budget comparison only"
+  ],
+  "decision": "Retain TPS70933 candidate for now; no known DC-load sizing reason to increase rating, but qualification remains incomplete"
+}

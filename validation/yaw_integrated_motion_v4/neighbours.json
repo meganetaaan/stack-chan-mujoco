@@ -1,0 +1,76 @@
+{
+  "source_sha256": {
+    "validation/yaw_integrated_candidate_v4/inventory.json": "1192810d881e8db576fc9e8f808c01c4f0ff344339966e5e821f22d64fa63dc9",
+    "validation/yaw_integrated_candidate_v4/yaw_support_candidate.step": "621d0b9132992c530bc35ca0f7612f845ff4875d8c5765f1e7138945ed6fbd00",
+    "validation/yaw_integrated_motion_v4/plan.json": "af197e447781f41c3d3f696e60b5375bcad785723573b00c9b6097c3a9f4cec6",
+    "validation/yaw_integrated_motion_v4/report.json": "ea499d7f5ee4ff577b1b29e9cd697fedd4af0d2f00bd11315667417bc5ebb6f7"
+  },
+  "rows": [
+    {
+      "side": "left",
+      "sample_angle_rad": 0.261799387799149,
+      "nearest_five": [
+        {
+          "part": "body_shroud",
+          "distance_mm": 2.082322496386766
+        },
+        {
+          "part": "left_yaw_fixed_support",
+          "distance_mm": 9.433981132056603
+        },
+        {
+          "part": "left_rear_1_bolt",
+          "distance_mm": 13.38969330377306
+        },
+        {
+          "part": "left_threaded_backing_plate",
+          "distance_mm": 14.494523117028471
+        },
+        {
+          "part": "left_rear_0_bolt",
+          "distance_mm": 14.957675203467119
+        }
+      ],
+      "total_deformation_budget_at_required_clearance_mm": 0.9084392372735497,
+      "currently_allocated_total_deformation_mm": 0.4,
+      "additional_budget_over_existing_allocation_mm": 0.5084392372735497
+    },
+    {
+      "side": "right",
+      "sample_angle_rad": -0.261799387799149,
+      "nearest_five": [
+        {
+          "part": "body_shroud",
+          "distance_mm": 2.082322496386766
+        },
+        {
+          "part": "right_yaw_fixed_support",
+          "distance_mm": 9.433981132056603
+        },
+        {
+          "part": "right_rear_0_bolt",
+          "distance_mm": 13.38969330377306
+        },
+        {
+          "part": "right_threaded_backing_plate",
+          "distance_mm": 14.494523117028471
+        },
+        {
+          "part": "right_rear_1_bolt",
+          "distance_mm": 14.957675203467119
+        }
+      ],
+      "total_deformation_budget_at_required_clearance_mm": 0.9084392372735497,
+      "currently_allocated_total_deformation_mm": 0.4,
+      "additional_budget_over_existing_allocation_mm": 0.5084392372735497
+    }
+  ],
+  "limits": [
+    "Nearest part identified at sampled worst pose only; other parts may be nearest at other angles.",
+    "Budget is available combined relative motion, not proven actual deformation.",
+    "Support FE absolute displacement does not give moving assembly or shroud relative displacement.",
+    "Yaw coupler plus roll cradle only; no complete articulated legs, cables, servos or tool access."
+  ],
+  "criteria_changed": false,
+  "manufacturing_release": false
+}

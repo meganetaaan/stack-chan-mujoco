@@ -1,0 +1,110 @@
+{
+  "source_sha256": {
+    "schematics/power/protected_pack_system_candidate_v6/assembly.json": "26731a902f2924b14dc58e5fdf042fb6c18bbd25f404708793f5980aa9261e11",
+    "validation/aux_start_connection_v1/report.json": "278f4da7fe2b52c646aa7c7643b080f4cae2e507e451e39d08d29b0338f4badf",
+    "schematics/power/tab5_startup_parameter_candidate_v1/selection.json": "d5f4a3595c1408cb0a903efae95d006fcfa3660ee7c0b6aa7884cfab906ce886",
+    "software/sim/circuits/tab5_restart_model.py": "1422bb8401c9d6e77c6a961d15001102532488d35333775bad780eb1b686e373"
+  },
+  "MCU_assignment": {
+    "package": "TSSOP20",
+    "pin": 14,
+    "port": "PA7",
+    "net": "CTRL_TAB5_REQUEST_RAW"
+  },
+  "normal_supply_truth_table": [
+    {
+      "request": false,
+      "CTRL_latch_permit": false,
+      "tab5_allow": false
+    },
+    {
+      "request": false,
+      "CTRL_latch_permit": true,
+      "tab5_allow": false
+    },
+    {
+      "request": true,
+      "CTRL_latch_permit": false,
+      "tab5_allow": false
+    },
+    {
+      "request": true,
+      "CTRL_latch_permit": true,
+      "tab5_allow": true
+    }
+  ],
+  "contract_combination_count": 640,
+  "static_receiver_comparison": {
+    "high_SHDN_V_at_driver3V_table_bound": 2.1686535288725937,
+    "low_SHDN_V_at_driver3V_table_bound": 0.3733083859332732,
+    "pulldown_sink_A_at0_4V": 3.9603960396039605e-05,
+    "allocated_source_A_eFuse_plus_off_driver": 1.9999999999999998e-05,
+    "CTRL_high_extra_branch_current_A_at3_6V": 0.00034057851239669427
+  },
+  "comparison_scope": "Same TPS26601 and 1k series/10k pulldown; inherits aux assumptions, no new analog qualification",
+  "added_CTRL_resistive_allocation_A": 0.0007042148760330579,
+  "added_CTRL_capacitance_F": 2e-07,
+  "ground_offset_comparison": {
+    "placement": "SHDN pulldown return at receiver GND pin17, separate from RTN pin15",
+    "low_node_margin_V": 0.02669161406672682,
+    "driver_ground_positive_limit_V": 0.029307920792079254,
+    "scope": "DC point comparison with transferred10uA leakage allocation; no production routing allowance or transient bound"
+  },
+  "extra_current_not_included": [
+    "Two new IC supply currents",
+    "Input leakage and switching current",
+    "GPIO and permit-output dynamic load"
+  ],
+  "old_parts_changed": [
+    "TAB5__C_DVDT",
+    "CTRL__U_HOST"
+  ],
+  "old_protection_part_values_changed": [
+    "TAB5__C_DVDT"
+  ],
+  "Tab5_ramp_selection": {
+    "reference": "TAB5__C_DVDT",
+    "part": "GRM31C5C1H104JA01L",
+    "value_F": 1e-07,
+    "basis": "Reuse existing selected nominal100nF part; limits inherited from existing capacitor selection"
+  },
+  "implementation_contract": [
+    "PA7 low by default; configure output data low before enabling output mode",
+    "Drive PA7 from Tab5 restart contract tab5_allow, not from raw user start button",
+    "Normal stop first removes drive permission, keeps Tab5 on until fresh shutdown acknowledgement",
+    "CTRL watchdog/supervisor clears hardware permit even during graceful shutdown",
+    "Fresh verified off interval and new start request required after restart; do not restore old request",
+    "SYS_RESET_N is not a Tab5 startup prerequisite; keep independent servo protection and manual rearm"
+  ],
+  "remaining": [
+    "off_verified, power_valid, ready and shutdown_ack detection/communication not wired or implemented",
+    "Tab5 current limit selection; selected100nF DVDT startup/thermal qualification, input capacitance/inrush and connector wiring",
+    "GPIO reset/leakage, Schmitt-to-AND edge timing and permit fanout",
+    "Full CTRL budget, intermediate-supply behavior and actual shutdown timing",
+    "SHDN leakage allocation at other voltages/3S input range, eFuse recovery/backfeed",
+    "All-rail startup, faults, load/temperature and PCB/harness verification"
+  ],
+  "firmware_implemented": false,
+  "electrically_operational": false,
+  "manufacturing_release": false,
+  "sources": [
+    {
+      "url": "https://www.st.com/resource/en/datasheet/stm32g030f6.pdf",
+      "revision": "DS12991 Rev6",
+      "section": "Table12 PA7 TSSOP20 pin14"
+    },
+    {
+      "url": "https://www.ti.com/lit/ds/symlink/tps2660.pdf",
+      "basis": "Existing aux_start_connection_v1 reviewed RevG static comparison"
+    },
+    {
+      "url": "https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf",
+      "revision": "AA",
+      "section": "Pinout, VOH/VOL and Ioff"
+    },
+    {
+      "url": "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf",
+      "basis": "Existing selected GV Schmitt input buffer"
+    }
+  ]
+}

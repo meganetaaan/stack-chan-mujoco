@@ -1,0 +1,69 @@
+{
+  "cases": {
+    "none": {
+      "bus_max_V": 5.624887,
+      "voltage_screen_pass": true,
+      "absorber_measurements": {
+        "brake0_energy_J": 0.0825794,
+        "brake0_peak_W": 5.319072,
+        "mos0_energy_J": 0.00143703,
+        "mos0_peak_W": 0.09256123,
+        "brake1_energy_J": 2.47084e-17,
+        "brake1_peak_W": 1.818169e-16,
+        "mos1_energy_J": 4.2997e-09,
+        "mos1_peak_W": 3.163935e-08
+      }
+    },
+    "primary_open": {
+      "bus_max_V": 5.666588,
+      "voltage_screen_pass": true,
+      "absorber_measurements": {
+        "brake0_energy_J": 2.50829e-23,
+        "brake0_peak_W": 1.845327e-22,
+        "mos0_energy_J": 4.3648e-12,
+        "mos0_peak_W": 3.211108e-11,
+        "brake1_energy_J": 0.0829036,
+        "brake1_peak_W": 5.361639,
+        "mos1_energy_J": 0.00144267,
+        "mos1_peak_W": 0.09330198
+      }
+    },
+    "secondary_open": {
+      "bus_max_V": 5.624887,
+      "voltage_screen_pass": true,
+      "absorber_measurements": {
+        "brake0_energy_J": 0.0825794,
+        "brake0_peak_W": 5.319072,
+        "mos0_energy_J": 0.00143703,
+        "mos0_peak_W": 0.09256123,
+        "brake1_energy_J": 2.47091e-23,
+        "brake1_peak_W": 1.818249e-22,
+        "mos1_energy_J": 4.29976e-12,
+        "mos1_peak_W": 3.164004e-11
+      }
+    },
+    "both_open": {
+      "bus_max_V": 20.3247,
+      "voltage_screen_pass": false,
+      "absorber_measurements": {
+        "brake0_energy_J": 1.98128e-22,
+        "brake0_peak_W": 2.37395e-21,
+        "mos0_energy_J": 3.44772e-11,
+        "mos0_peak_W": 4.131014e-10,
+        "brake1_energy_J": 1.98128e-22,
+        "brake1_peak_W": 2.37395e-21,
+        "mos1_energy_J": 3.44772e-11,
+        "mos1_peak_W": 4.131014e-10
+      }
+    }
+  },
+  "six_V_Rmin_power_bound_W": 8.131660620626407,
+  "conditional_rating_screen_pass": true,
+  "design_verified": false,
+  "source_sha256": {
+    "validation/brake_51ohm_envelope_faults_v1/none/report.json": "337bd061d957b33c87d7114293be704f75b8f1db8b1f3fe18100efbd42dc06dd",
+    "validation/brake_51ohm_envelope_faults_v1/primary_open/report.json": "89c0d0d3b965a058b00e9276858aebb550b4ac56462bba6b813c70d65b606e07",
+    "validation/brake_51ohm_envelope_faults_v1/secondary_open/report.json": "991506cfcdcd5d4e1b28bc5e381daf0de9a66a84ed5914cc726e0b8941dc841f",
+    "validation/brake_51ohm_envelope_faults_v1/both_open/report.json": "4c2019e02f30e4c87d9c8b080abcb78fa24ec13b016d66123a1cdf0d330d3b41"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "qualified": false,
+  "scope": "stationary-wire comparison applied to star-distribution feasibility only",
+  "source_hashes": {
+    "validation/servo_wire_selection_v1/report.json": "aa522f50d8bcb7a8acab71cd6e6ec13a93bc8d214af443f3241b0297bd5c7dd8",
+    "schematics/power/main_efuse_candidate.json": "460996faa6771e49ab041061b73ef487deebc57e8c633a676735e36c5bdebd86"
+  },
+  "rows": [
+    {
+      "shared_current_comparison_A": 1.0,
+      "branch_current_comparison_A": 1.0,
+      "branch_drop_V": 0.0665748031496063,
+      "efuse_drop_comparison_V": 0.0045,
+      "remaining_for_feeder_other_protection_and_dynamics_V": 0.028925196850393704,
+      "feeder_resistance_ceiling_if_no_other_losses_ohm": 0.028925196850393704,
+      "efuse_current_matches_2A_spec_point": false
+    },
+    {
+      "shared_current_comparison_A": 2.0,
+      "branch_current_comparison_A": 1.0,
+      "branch_drop_V": 0.0665748031496063,
+      "efuse_drop_comparison_V": 0.009,
+      "remaining_for_feeder_other_protection_and_dynamics_V": 0.024425196850393703,
+      "feeder_resistance_ceiling_if_no_other_losses_ohm": 0.012212598425196852,
+      "efuse_current_matches_2A_spec_point": true
+    },
+    {
+      "shared_current_comparison_A": 4.815,
+      "branch_current_comparison_A": 1.0,
+      "branch_drop_V": 0.0665748031496063,
+      "efuse_drop_comparison_V": 0.0216675,
+      "remaining_for_feeder_other_protection_and_dynamics_V": 0.011757696850393705,
+      "feeder_resistance_ceiling_if_no_other_losses_ohm": 0.0024418892731866465,
+      "efuse_current_matches_2A_spec_point": false
+    },
+    {
+      "shared_current_comparison_A": 6.0,
+      "branch_current_comparison_A": 1.0,
+      "branch_drop_V": 0.0665748031496063,
+      "efuse_drop_comparison_V": 0.026999999999999996,
+      "remaining_for_feeder_other_protection_and_dynamics_V": 0.006425196850393708,
+      "feeder_resistance_ceiling_if_no_other_losses_ohm": 0.0010708661417322847,
+      "efuse_current_matches_2A_spec_point": false
+    }
+  ],
+  "limitations": [
+    "Wire DCR is nominal at 20C, not a worst-case bound",
+    "4.815A is motor-current sum comparison, not DC guarantee",
+    "eFuse resistance outside its 2A test point is a comparison assumption",
+    "Voltage ripple, reverse isolation, fuse, common connectors and hot-wire resistance remain unallocated"
+  ],
+  "decision": "Do not release full-robot distribution using this 0.10V budget; select exact common path and dynamic-load bound before further sequencer integration"
+}

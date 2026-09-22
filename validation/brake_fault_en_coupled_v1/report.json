@@ -1,0 +1,42 @@
+{
+  "none": {
+    "measurements": {
+      "fault_latch_20ms": 0.0,
+      "fault_latch_max": 0.0,
+      "en_20ms": 1.601021,
+      "drive_20ms": 5.15
+    },
+    "checks": {
+      "no_false_latch": true
+    },
+    "hardware_protection_verified": false
+  },
+  "primary_stuck_on": {
+    "measurements": {
+      "fault_latch_20ms": 0.9999865,
+      "fault_latch_max": 1.0,
+      "en_20ms": 0.0164211,
+      "drive_20ms": 0.0
+    },
+    "checks": {
+      "detected": true,
+      "en_stopped": true,
+      "converter_stopped": true
+    },
+    "hardware_protection_verified": false
+  },
+  "both_stuck_on": {
+    "measurements": {
+      "fault_latch_20ms": 0.9999866,
+      "fault_latch_max": 1.0,
+      "en_20ms": 0.0164211,
+      "drive_20ms": 0.0
+    },
+    "checks": {
+      "detected": true,
+      "en_stopped": true,
+      "converter_stopped": true
+    },
+    "hardware_protection_verified": false
+  }
+}

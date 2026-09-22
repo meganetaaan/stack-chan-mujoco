@@ -1,0 +1,19 @@
+{
+  "supply_interval_V": [
+    3.207,
+    3.393
+  ],
+  "supply_interval_status": "Existing conservative design interval; LDO load/transient qualification pending",
+  "TPS3808_MR_pullup_min_ohm": 70000,
+  "MR_VIH_fraction": 0.7,
+  "MR_VIL_fraction": 0.3,
+  "buffer_VOH_drop_max_V": 0.1,
+  "buffer_VOL_max_V": 0.1,
+  "buffer_test_current_A": 0.0001,
+  "scope": "U11 output stage and U10 MR only; assumes U11 input already valid",
+  "sources": [
+    "https://www.ti.com/lit/ds/symlink/tps3808.pdf",
+    "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf"
+  ],
+  "criteria": "Both same-supply logic margins positive and worst MR pullup load below the 100uA output specification"
+}

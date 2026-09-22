@@ -1,0 +1,20 @@
+{
+  "question": "Can a maximum-envelope nut be inserted from positive X without opening the bearing floor?",
+  "opening_mm": {
+    "width_y": 4.4,
+    "height_z": 1.8,
+    "bottom_z": -14.2,
+    "from_x": 35,
+    "to_x": 44
+  },
+  "criteria": {
+    "valid_single_solid": true,
+    "sampled_overlap_max_mm3": 0.01
+  },
+  "stop_condition": "One geometry, two sides, nine insertion poses; retain failure rather than sweeping dimensions",
+  "limitations": [
+    "Nominal geometry only; print tolerance and tool grip not verified",
+    "Nut retained by installed screw only; loose nut can exit opening",
+    "Side wall removal changes strength; old FE results do not qualify this candidate"
+  ]
+}

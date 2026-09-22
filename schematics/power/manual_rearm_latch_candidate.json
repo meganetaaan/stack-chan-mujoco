@@ -1,0 +1,25 @@
+{
+  "part_number": "SN74HCS74PW",
+  "status": "two_ff_pin_candidate_not_released",
+  "quantity": 1,
+  "pins": {
+    "1_1CLR": "RESET_N; supervisor/fault/stop logic TBD",
+    "2_1D": "LOGIC3V3",
+    "3_1CLK": "TPS3808G33DBVR RESET rising edge; see manual_release_timer_candidate.json",
+    "4_1PRE": "LOGIC3V3",
+    "5_1Q": "ARMED -> pin12_2D",
+    "6_1Qn": "NC",
+    "7_GND": "GND",
+    "8_2Qn": "NC",
+    "9_2Q": "ENABLE_PERMISSION; default-off output stage TBD",
+    "10_2PRE": "LOGIC3V3",
+    "11_2CLK": "debounced inverted PRESS; interface TBD",
+    "12_2D": "ARMED from pin5_1Q",
+    "13_2CLR": "RESET_N; same stop-priority clear as pin1",
+    "14_VCC": "upstream monitored LOGIC3V3"
+  },
+  "evidence": "validation/manual_rearm_two_ff_v1/README.md",
+  "manufacturing_release": false,
+  "historical_failure": "validation/manual_rearm_delayed_press_v1/README.md",
+  "remaining": "MR physical gate, independent clear, rail dip margin, signal levels, POR, simultaneous edge timing, physical EN stage"
+}

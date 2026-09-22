@@ -1,0 +1,36 @@
+{
+  "U7_falling_V": 3.0239499999999997,
+  "U9_falling_V": 3.1160499999999995,
+  "trace": [
+    {
+      "event": "enabled",
+      "logic_supply_V": 3.3,
+      "U7_clear": false,
+      "U9_clamp": false,
+      "retained_permission": true,
+      "EN_high_boolean_after_settling": true,
+      "new_press": false
+    },
+    {
+      "event": "settled_dip",
+      "logic_supply_V": 3.07,
+      "U7_clear": false,
+      "U9_clamp": true,
+      "retained_permission": true,
+      "EN_high_boolean_after_settling": false,
+      "new_press": false
+    },
+    {
+      "event": "settled_recovery_no_press",
+      "logic_supply_V": 3.3,
+      "U7_clear": false,
+      "U9_clamp": false,
+      "retained_permission": true,
+      "EN_high_boolean_after_settling": true,
+      "new_press": false
+    }
+  ],
+  "revD_alone_no_auto_restart": "FAIL",
+  "complete_future_sequencer": "not_evaluated_or_implemented",
+  "required_resolution": "A clamp/power-loss event must latch a stop and clear permission; PG sequencing can provide coverage only with verified timing and pulse capture; no direct EN-to-RESET_N tie."
+}

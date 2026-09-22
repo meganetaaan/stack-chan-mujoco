@@ -1,0 +1,25 @@
+{
+  "question": "Would a 3.7..4.2V direct-cell architecture preserve the archived torque/speed pairs within the existing endpoint model?",
+  "voltages_V": [
+    5.0,
+    4.2,
+    3.7
+  ],
+  "stop": "Two archived full-body turn traces at three fixed voltage points, no waveform tuning, no battery adoption or acceptance change.",
+  "formula": "Use the same endpoint interpolation as drive.py: R=V/Istall, K=V/w0, eta=Tstall/(K Istall). Required current=tau/(eta K) for motoring, tau/(K/eta) for regeneration; bridge voltage=R I+K w.",
+  "requirements_classification": "5V +/-5% remains the existing design target, not a user-required battery topology. Lower-voltage results are architecture diagnostics only.",
+  "numeric_tolerance": 1e-08,
+  "source_sha256": {
+    "software/sim/actuator/catalog.json": "1ceb656e7f2530a2862b8c18544eddc2e89df1ebd0754a68dcad0a8ca9019ae6",
+    "board/mechanical/prototype/joints.json": "157f531e2821249cbab85b17b0ed5674b27239a4708c1f27c49aa937d1b1c392",
+    "validation/prototype_epic4_v1/actuator_fullbody_load_left_v1/trace.npz": "9c4907b6a9b2439f5ca86cce73f32895f634534c34fb6e3dc7f0edecd2efdc19",
+    "validation/prototype_epic4_v1/actuator_fullbody_load_right_v1/trace.npz": "476c5748e833fbee6226b92f3498da8581ebec770425ba713b8512912be28ec9"
+  },
+  "limits": [
+    "Same achieved archived torque/speed, not the requested or recomputed closed-loop trajectory",
+    "No battery cell, sag, loss, usable capacity, protection or Tab5 supply selected",
+    "Endpoint-fitted model, not guaranteed torque-speed curve or continuous rating",
+    "Latest mass, 10m walking and new closed-loop turning performance not evaluated",
+    "No brownout, switching or disconnected regeneration model"
+  ]
+}

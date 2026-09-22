@@ -1,0 +1,10 @@
+{
+ "scope": "Measure existing behavioral brake resistor and switch burden during delayed regeneration",
+ "injection_A": 1,
+ "injection_start_s": 0.3,
+ "injection_duration_s": 0.02,
+ "measurement_window_s": [0.08,1.0],
+ "method": "ngspice internal-step INTEG and MAX of element terminal powers",
+ "criteria": {"finite_and_nonnegative_burdens": true, "bus_max_V": 6.0},
+ "limitations": ["No component rating pass asserted", "Ideal resistive MOS switch excludes switching loss and SOA", "No full energy balance", "Single waveform and assumed capacitance", "Does not establish actual thermal performance"]
+}

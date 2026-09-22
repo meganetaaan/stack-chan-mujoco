@@ -1,0 +1,44 @@
+{
+  "scope": "Conditional screening bound, not qualified load",
+  "inertia_spectral_upper_kg_m2": 9.469599999999999e-05,
+  "assumptions": [
+    "COM at geometric center",
+    "All 76g lies within 22x60x30mm box",
+    "Differentiated sampled rotations represent actual angular motion"
+  ],
+  "formula": "norm(I alpha + omega cross I omega) <= m radius_max^2 (norm(alpha) + norm(omega)^2)",
+  "cases": [
+    {
+      "source": "validation/prototype_epic4_v1/actuator_fullbody_load_left_v1/trace.npz",
+      "sha256": "9c4907b6a9b2439f5ca86cce73f32895f634534c34fb6e3dc7f0edecd2efdc19",
+      "peak_bound_Nm": 0.004575139353717467,
+      "midpoint_time_s": 4.098499999999703,
+      "omega_world_rad_s": [
+        -0.1865073514027094,
+        0.5603163839169972,
+        -0.08955957881441057
+      ],
+      "alpha_world_rad_s2": [
+        -13.235971939971662,
+        -41.79528369232389,
+        -19.438541879566657
+      ]
+    },
+    {
+      "source": "validation/prototype_epic4_v1/actuator_fullbody_load_right_v1/trace.npz",
+      "sha256": "476c5748e833fbee6226b92f3498da8581ebec770425ba713b8512912be28ec9",
+      "peak_bound_Nm": 0.004699935455997584,
+      "midpoint_time_s": 4.099499999999704,
+      "omega_world_rad_s": [
+        0.20300987357218597,
+        0.5203785264030109,
+        0.11160920155292726
+      ],
+      "alpha_world_rad_s2": [
+        11.619699900306031,
+        -44.245133501069915,
+        18.400184852481914
+      ]
+    }
+  ]
+}

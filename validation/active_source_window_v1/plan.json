@@ -1,0 +1,10 @@
+{
+  "question": "Which normal-source targets and static trip comparisons actually apply to the current pointer?",
+  "stop": "Read current part values, validate referenced divider calculations, then compute necessary setpoint ranges. No part selection or threshold changes.",
+  "limits": [
+    "Static thresholds are comparison results with recorded tolerance assumptions, not full fault-response qualification",
+    "Normal target is Codex engineering assumption, not converter guarantee or user requirement",
+    "Typical transient is a comparison case, not a worst-case guarantee",
+    "Monitor recovery alone does not prove whole-sequence restart"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "source_sha256": "cec05991e2d6c3c44309dbfe7b7c62a9bacc77a8c9b1c684d19df39fe351c301",
+  "models": [
+    {
+      "url": "https://www.ti.com/lit/zip/slvmbr3b",
+      "member": "TPS26600_TRANS.LIB",
+      "archive_sha256": "3147c7f989bcf1d5c443809f98e638223cb489a3512125b90a678c8baa2a474e",
+      "model_sha256": "9d946b04184534da75a44e2dcfefa42402e36145798d9bb85956c099dd470a59",
+      "pins": [
+        "FLT_N",
+        "RTN",
+        "SHDN_N",
+        "MODE",
+        "ILIM",
+        "NC_0",
+        "NC_1",
+        "dVdT",
+        "IMON",
+        "UVLO",
+        "OVP",
+        "PAD",
+        "OUT_0",
+        "OUT_1",
+        "IN_0",
+        "IN_1",
+        "GND"
+      ],
+      "encrypted": true
+    },
+    {
+      "url": "https://www.ti.com/lit/zip/sbvm571",
+      "member": "TPS70933_TRANS.LIB",
+      "archive_sha256": "728ed7b2649a1fbafde389e4e8ef6386beedd6199f12faa0c0c20062bbafd7a3",
+      "model_sha256": "5cc2e24e655297011c7dd3964b0f68522342012f631c89e8388c1174ba607d3e",
+      "pins": [
+        "IN",
+        "GND",
+        "EN",
+        "OUT",
+        "NC"
+      ],
+      "encrypted": false
+    }
+  ],
+  "executed": false,
+  "qualification": false,
+  "probe_load_ohm": 298.89938402351896,
+  "load_scope": "Partial budget at3.3V represented by resistor, not full MCU current model",
+  "budget_sha256": "e2804aac68a6df5bb85ad13745a1c75385573aaeea9b71fb61a0866baeb13fd8",
+  "source_ramp_s": 0.0001,
+  "target_time_s": 0.05,
+  "max_step_s": 1e-06,
+  "limits": [
+    "Nominal model only; no temperature or tolerance qualification",
+    "LDO model omits input-dependent quiescent/ground current",
+    "eFuse thermal timing is simplified, not actual temperature integration",
+    "No MCU state/reset/enable sequencing",
+    "No upstream PCM, fuse, reverse protection or contact model"
+  ],
+  "model_files_redistributed": false
+}

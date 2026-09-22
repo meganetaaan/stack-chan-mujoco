@@ -1,0 +1,14 @@
+{
+  "criterion": "Flag overlap volume > 0.01 mm3; zero overlap is not full fit qualification.",
+  "placement": "Proper rotation (x,y,z)->(y,x,-z), translation (-5,+/-26,68.5) mm. Chosen to match model case box and horn outer face at yaw pivot z=62.",
+  "assumptions": [
+    "Native horn outer face z=6.5 is taken as joint plane; shaft axial datum needs confirmation.",
+    "Same front/back orientation for both yaw motors."
+  ],
+  "limitations": [
+    "Reference STEP has no manufacturing tolerances.",
+    "Rear idler group is screened separately; inclusion in build not established.",
+    "No mating cable housing or servo fasteners added.",
+    "This tests fixed parts only, not moving coupler."
+  ]
+}

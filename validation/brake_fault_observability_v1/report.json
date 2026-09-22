@@ -1,0 +1,64 @@
+{
+  "scope": "Does the old low-gate plus high-current predicate detect faults of the selected detector-driver-MOS chain?",
+  "rows": [
+    {
+      "state": "normal_idle",
+      "command_high": false,
+      "gate_high": false,
+      "measured_current_high": false,
+      "old_low_gate_high_current": false,
+      "proposed_off_command_high_current": false
+    },
+    {
+      "state": "normal_absorption",
+      "command_high": true,
+      "gate_high": true,
+      "measured_current_high": true,
+      "old_low_gate_high_current": false,
+      "proposed_off_command_high_current": false
+    },
+    {
+      "state": "mos_short_after_command_off",
+      "command_high": false,
+      "gate_high": false,
+      "measured_current_high": true,
+      "old_low_gate_high_current": true,
+      "proposed_off_command_high_current": true
+    },
+    {
+      "state": "driver_stuck_high",
+      "command_high": false,
+      "gate_high": true,
+      "measured_current_high": true,
+      "old_low_gate_high_current": false,
+      "proposed_off_command_high_current": true
+    },
+    {
+      "state": "detector_output_open_with_pullup",
+      "command_high": true,
+      "gate_high": true,
+      "measured_current_high": true,
+      "old_low_gate_high_current": false,
+      "proposed_off_command_high_current": false
+    },
+    {
+      "state": "gate_path_open_during_regeneration",
+      "command_high": true,
+      "gate_high": false,
+      "measured_current_high": false,
+      "old_low_gate_high_current": false,
+      "proposed_off_command_high_current": false
+    },
+    {
+      "state": "current_sensor_stuck_low_during_mos_short",
+      "command_high": false,
+      "gate_high": false,
+      "measured_current_high": false,
+      "old_low_gate_high_current": false,
+      "proposed_off_command_high_current": false
+    }
+  ],
+  "all_faults_detected": false,
+  "physical_timing_verified": false,
+  "decision": "Use command mismatch for stuck-on path; independent voltage/sensor diagnostics still required"
+}

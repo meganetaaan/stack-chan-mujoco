@@ -1,0 +1,38 @@
+{
+  "question": "Can local underside relief clear existing plate screws while preserving connected upper rails and unchanged module mounts?",
+  "design": "Two rails below PCB mounting rows, tied at both ends; rear flange with two M3 clearance holes. Preserve module positions and exterior.",
+  "assumptions": {
+    "material_candidates": [
+      "ABS",
+      "PETG"
+    ],
+    "rail_width_mm": 4,
+    "rail_bottom_z_mm": 94,
+    "rail_top_z_mm": 102.065,
+    "rear_flange_thickness_mm": 4,
+    "rear_flange_top_z_mm": 119,
+    "module_screw_hole_diameter_mm": 2.2,
+    "rear_screw_hole_diameter_mm": 3.4
+  },
+  "criteria": {
+    "maximum_unintended_overlap_mm3": 0.01,
+    "minimum_unintended_clearance_mm": 0.5,
+    "rear_plate_contact_required": true
+  },
+  "stop": "One relief geometry against unchanged 0.5mm clearance and 3mm engineering minimum roof. If either fails retain failure; no FE.",
+  "limits": [
+    "No material strength inferred from ABS/PETG names",
+    "No electrical insulation or temperature certification",
+    "No fastener geometry, preload, assembly sweep or updated mass/load qualification",
+    "Rear plate drilling is proposed and not applied to released CAD",
+    "3mm roof is an engineering geometry screen, not proven stiffness or strength; notch stress and print orientation remain unqualified"
+  ],
+  "relief": {
+    "radius_mm": 4.0,
+    "top_z_mm": 99.0,
+    "minimum_roof_mm": 3.0,
+    "target_name_pattern": "{side}_plate_{i}_screw",
+    "count_per_side": 4,
+    "origin": "Radius provides local assembly space; top plane lies 1mm above existing screw tips. Not a tool access qualification."
+  }
+}

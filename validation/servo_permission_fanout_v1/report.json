@@ -1,0 +1,53 @@
+{
+  "node": "POWER_ENABLE_COMMAND",
+  "connections": [
+    {
+      "file": "schematics/power/manual_rearm_revI/assembly.json",
+      "ref": "U3",
+      "pin": "6",
+      "part": "SN74HCS11PWR"
+    },
+    {
+      "file": "schematics/power/manual_rearm_revI/assembly.json",
+      "ref": "U8",
+      "pin": "2",
+      "part": "74LVC1G17GV"
+    },
+    {
+      "file": "schematics/power/manual_rearm_revI/assembly.json",
+      "ref": "R6",
+      "pin": "1",
+      "part": "220k pulldown; total +/-1% budget, part pending"
+    },
+    {
+      "file": "schematics/power/servo_ovp_revA/connectivity.json",
+      "ref": "U_PERMIT_L",
+      "pin": "2",
+      "part": "74LVC1G17GV"
+    },
+    {
+      "file": "schematics/power/servo_ovp_revA/connectivity.json",
+      "ref": "U_PERMIT_R",
+      "pin": "2",
+      "part": "74LVC1G17GV"
+    }
+  ],
+  "receiver_count": 3,
+  "receiver_input_leakage_comparison_each_A": 1e-06,
+  "pull_down_R_min_comparison_ohm": 217800.0,
+  "driver_light_load_spec_A": 2e-05,
+  "at_nominal_3_3V_load_upper_comparison_A": 1.815151515151515e-05,
+  "rail_voltage_ceiling_for_20uA_load_comparison_V": 3.7026,
+  "qualification": false,
+  "conditions": [
+    "Valid fully powered logic only",
+    "Receiver leakage specification at VI5.5V or0V; not transition behavior",
+    "Total resistor1percent comparison, not new manufacturing tolerance",
+    "Complete rail voltage range and receiver thresholds still need qualification"
+  ],
+  "sources_sha256": {
+    "schematics/power/manual_rearm_revI/assembly.json": "21b8febbb24b2ada320acc8c1a07a306dde948ad486910cfc3e489ea7f0e300a",
+    "schematics/power/servo_ovp_revA/connectivity.json": "d54d182a38f5758054696dd761daaf3390bdbfbc40f75f2d18e12d162592d2db",
+    "schematics/power/manual_rearm_resistors_revI.json": "c21365918edd673ee4b393f595735a9b650afbfe38e49dba2693d72ea6b4f969"
+  }
+}

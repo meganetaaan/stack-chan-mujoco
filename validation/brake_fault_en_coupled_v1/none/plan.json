@@ -1,0 +1,38 @@
+{
+  "scope": "Characterize stored output energy after ideal battery disconnection, with optional prescribed regeneration.",
+  "source_sha256": "58c2b0ebc9850b6135908c62756fef6b3d4572f321c4e380d339379d80c8bfc3",
+  "behavioral_fault_detector": true,
+  "low_side_shunt_ohm": 0.099,
+  "active_brake_each_ohm": 4.42714,
+  "brake_fault": "none",
+  "bleed_each_ohm": 378.0,
+  "open_bleeds": 0,
+  "Cout_uF": 960.0,
+  "regeneration_A": 1.0,
+  "regeneration_window_s": [
+    0.3,
+    0.32
+  ],
+  "battery_V": 7.4,
+  "disconnect_s": 0.08,
+  "stop_s": 1.0,
+  "motor_current_A": 0.0,
+  "measurements_s": [
+    0.079,
+    0.081,
+    0.1,
+    0.2,
+    1.0
+  ],
+  "criteria": {
+    "finite_measurements": true,
+    "simulation_reaches_s": 1.0
+  },
+  "limitations": [
+    "Characterization only; no discharge time or safe-voltage acceptance established",
+    "Ideal disconnect switch is a test fixture, not a selected protection component",
+    "Only Cout energy is reported, not total system or mechanical energy",
+    "Existing behavioral LDO, converter and brake assumptions retained",
+    "Prescribed current injection is not a coupled shutdown motor model; no external backfeed, component tolerances or thermal qualification"
+  ]
+}

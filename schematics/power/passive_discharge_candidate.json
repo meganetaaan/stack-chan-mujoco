@@ -1,0 +1,28 @@
+{
+  "status": "candidate_not_released",
+  "topology": "Two independent permanent resistors from servo output rail to ground",
+  "quantity": 2,
+  "resistance_each_ohm": 360,
+  "simulation_total_resistance_envelope_fraction": 0.05,
+  "candidate_family": "Vishay D/CRCW1206 e3",
+  "proposed_order_code": "CRCW1206360RFKEA",
+  "order_code_status": "Derived from manufacturer coding table; procurement availability not verified",
+  "manufacturer_source": "https://www.vishay.com/docs/20035/dcrcwe3.pdf",
+  "source_revision": "14-Apr-2026, document 20035",
+  "source_pages": [1,2,3],
+  "nominal_tolerance_fraction": 0.01,
+  "TCR_ppm_per_K": 100,
+  "rated_P70_W": 0.25,
+  "maximum_film_temperature_C": 155,
+  "qualification_remaining": [
+    "Full resistance envelope including temperature and lifetime drift",
+    "Board thermal model and permissible film temperature under enclosure conditions",
+    "Actual total output capacitance including twelve servos and cabling",
+    "Regeneration and external backfeed during shutdown",
+    "Resistor short-circuit fault and upstream protection",
+    "Stop/re-enable specification and motor torque behavior",
+    "Supplier availability and final footprint/BOM release"
+  ],
+  "evidence": "validation/passive_discharge_candidate_v2",
+  "protection_design_verified": false
+}

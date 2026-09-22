@@ -1,0 +1,22 @@
+{
+  "question": "Does enlarging only printed bracket bores to2.4mm permit more screw adjustment without widening the nut slot?",
+  "change": {
+    "bore_diameter_old_mm": 2.2,
+    "bore_diameter_new_mm": 2.4,
+    "nut_slot_width_unchanged_mm": 4.2
+  },
+  "criteria": {
+    "maximum_overlap_mm3": 0.01,
+    "remaining_connected_solids": 1,
+    "PCB_radial_margin_min_mm": 0
+  },
+  "comparison_error_per_axis_mm": 0.15,
+  "hardware_shift_per_axis_mm": 0.09,
+  "error_origin": "PCB +/-0.1 plus hypothetical print position +/-0.05; sensitivity case, not certified print capability",
+  "stop": "One bore revision, eight holes and32 offset poses; do not widen nut slots or run strength FE here.",
+  "limits": [
+    "Bore and nut sizes nominal",
+    "Seat geometry not strength or preload qualification",
+    "Own-bracket contact only; no assembly path or full tolerance proof"
+  ]
+}

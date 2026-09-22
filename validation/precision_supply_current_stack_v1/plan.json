@@ -1,0 +1,17 @@
+{
+  "question": "Does TPSM63610 at unchanged nominal5V offer useful static margin with the current dual-rail protection/discharge candidate?",
+  "candidate": "TPSM63610RDFR x2; comparison only",
+  "source": "https://www.ti.com/lit/ds/symlink/tpsm63610.pdf",
+  "reference_range_V": [0.985,1.015],
+  "reference_basis": "RevA electrical table FPWM, not prose plusminus1percent",
+  "divider_top_ohm": 100000,
+  "divider_bottom_ohm": 25000,
+  "resistor_initial_comparison_tolerance": 0.001,
+  "bias_comparison_A": 5e-8,
+  "bias_not_confirmed_as_temperature_worst_case": true,
+  "terminal_range_V": [4.75,5.25],
+  "wire_case_mm_one_way": 50,
+  "stop_condition": "Compare static output and lower/upper residual against current Pololu case; retain all unqualified factors, no load-step simulation or automatic module replacement",
+  "not_changed": ["terminal criteria", "protection topology", "model motor currents", "battery cutoff"],
+  "pending": ["qualified resistor full tolerance/drift", "actual3S pin voltage and usable energy", "FPWM reverse energy and selected mode", "effective output capacitance and loop stability", "thermal PCB", "startup/transient bounds", "OEM branch resistance", "gate drive and protection qualification"]
+}

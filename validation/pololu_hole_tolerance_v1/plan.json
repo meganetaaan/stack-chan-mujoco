@@ -1,0 +1,11 @@
+{
+  "question": "Can fixed nominal screw axes accommodate a permitted diagonal hole-spacing error even after rigid translation/rotation?",
+  "necessary_condition": "spacing change <= hole diameter minus screw envelope diameter for equal circular holes",
+  "stop": "One analytic counterexample using published position allowance; no tolerance relaxation or FE.",
+  "assumptions": [
+    "independent Cartesian +/-0.1mm hole-position intervals; drawing interpretation needs confirmation",
+    "2.18mm nominal bore, no bore diameter tolerance supplied",
+    "2.0mm screw envelope, not a measured thread diameter",
+    "rigid board and fixed axes, no tilt/elastic fitting/independent screw float"
+  ]
+}

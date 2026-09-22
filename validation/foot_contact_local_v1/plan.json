@@ -1,0 +1,25 @@
+{
+  "source_sha256": "f4e0fc2bbfcdc9a7c49b19bd88e14b38156883c2b73ab0c10bc42069509e093a",
+  "criteria": {
+    "force_residual_N": 1e-08,
+    "moment_residual_Nmm": 1e-05
+  },
+  "hierarchy": [
+    {
+      "side": "left",
+      "body_id": 7,
+      "children": []
+    },
+    {
+      "side": "right",
+      "body_id": 13,
+      "children": []
+    }
+  ],
+  "axes": "ankle_roll body local axes; positions mm, forces N, moments N mm",
+  "limitations": [
+    "Rigid frozen foot; finite contact areas and TPU deformation are not inferred.",
+    "Wrench at yoke plane preserves resultant only, not traction distribution.",
+    "Entire foot inertia cannot be applied solely to yoke material."
+  ]
+}

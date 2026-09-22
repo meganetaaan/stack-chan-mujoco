@@ -1,0 +1,27 @@
+{
+  "controller_candidate": "LT4363IMS-1#PBF",
+  "source": "https://www.analog.com/media/en/technical-documentation/data-sheets/4363fb.pdf",
+  "revision": "Rev. C (document content; URL retains fb)",
+  "normal_source_max_V": 5.25,
+  "servo_max_V": 6.0,
+  "battery_feedthrough_comparison_V": 12.6,
+  "feedback_top_ohm": 33200,
+  "feedback_bottom_ohm": 10000,
+  "feedback_total_tolerance_allocation": 0.01,
+  "sense_resistor_ohm": 0.0082,
+  "sense_total_tolerance_allocation": 0.01,
+  "VFB_test_range_V": [
+    1.25,
+    1.3
+  ],
+  "IFB_test_abs_A": 1e-06,
+  "sense_test_range_V": [
+    0.045,
+    0.055
+  ],
+  "test_point_limits": [
+    "FB range at VCC12V GATE12V OUT8V; actual 5V rail coverage must be established.",
+    "Sense range at VCC12V OUT3..12V; do not assume it covers all normal/fault supply states.",
+    "1us maximum OV delay is specified for FB step0..1.5V with OUT0V, not a complete clamping transient guarantee."
+  ]
+}

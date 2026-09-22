@@ -1,0 +1,192 @@
+{
+  "status": "watchdog_and_fault_memory_connection_candidate_not_qualified",
+  "parts": [
+    {
+      "reference": "U_BQ_WD",
+      "part": "TPS3431SDRBR",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_WD_CWD",
+        "3": "BQ_CTRL3V3",
+        "4": "CELL_B_MINUS",
+        "5": "BQ_CTRL3V3",
+        "6": "BQ_HOST_HEARTBEAT",
+        "7": "BQ_HOST_NRST",
+        "8": null,
+        "EP": "CELL_B_MINUS"
+      }
+    },
+    {
+      "reference": "C_BQ_WD",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07
+    },
+    {
+      "reference": "R_BQ_WD_CWD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "BQ_WD_CWD"
+      },
+      "value_ohm": 10000
+    },
+    {
+      "reference": "U_BQ_RESET_BUFFER",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "BQ_HOST_NRST",
+        "3": "CELL_B_MINUS",
+        "4": "BQ_RESET_VALID_N",
+        "5": "BQ_CTRL3V3"
+      }
+    },
+    {
+      "reference": "C_BQ_RESET_BUFFER",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07
+    },
+    {
+      "reference": "U_BQ_PERMIT_LATCH",
+      "part": "SN74LVC1G74DCTR",
+      "pins": {
+        "1": "BQ_ARM_EDGE",
+        "2": "BQ_CTRL3V3",
+        "3": null,
+        "4": "CELL_B_MINUS",
+        "5": "BQ_LATCH_PERMIT",
+        "6": "BQ_RESET_VALID_N",
+        "7": "BQ_CTRL3V3",
+        "8": "BQ_CTRL3V3"
+      }
+    },
+    {
+      "reference": "C_BQ_PERMIT_LATCH",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07
+    },
+    {
+      "reference": "U_BQ_MAIN_GATE",
+      "part": "SN74LVC1G08DBVR",
+      "pins": {
+        "1": "BQ_MAIN_REQUEST_RAW",
+        "2": "BQ_LATCH_PERMIT",
+        "3": "CELL_B_MINUS",
+        "4": "BQ_ALLOW_BMINUS",
+        "5": "BQ_CTRL3V3"
+      }
+    },
+    {
+      "reference": "C_BQ_MAIN_GATE",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07
+    },
+    {
+      "reference": "U_BQ_AUX_GATE",
+      "part": "SN74LVC1G08DBVR",
+      "pins": {
+        "1": "BQ_AUX_REQUEST_RAW",
+        "2": "BQ_LATCH_PERMIT",
+        "3": "CELL_B_MINUS",
+        "4": "BQ_AUX_START_REQUEST",
+        "5": "BQ_CTRL3V3"
+      }
+    },
+    {
+      "reference": "C_BQ_AUX_GATE",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "BQ_CTRL3V3",
+        "2": "CELL_B_MINUS"
+      },
+      "value_F": 1e-07
+    },
+    {
+      "reference": "R_MAIN_REQUEST_RAW_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_MAIN_REQUEST_RAW",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000
+    },
+    {
+      "reference": "R_AUX_REQUEST_RAW_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_AUX_REQUEST_RAW",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000
+    },
+    {
+      "reference": "R_ARM_EDGE_PD",
+      "part": "TNPW060310K0BEEA",
+      "pins": {
+        "1": "BQ_ARM_EDGE",
+        "2": "CELL_B_MINUS"
+      },
+      "value_ohm": 10000
+    }
+  ],
+  "sources": [
+    "https://www.ti.com/lit/ds/symlink/tps3431.pdf",
+    "https://www.ti.com/lit/ds/symlink/sn74lvc1g74.pdf",
+    "https://www.ti.com/lit/ds/symlink/sn74lvc1g08.pdf",
+    "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf"
+  ],
+  "watchdog": {
+    "timeout_s": [
+      0.17,
+      0.2,
+      0.23
+    ],
+    "reset_pulse_s": [
+      0.17,
+      0.2,
+      0.23
+    ],
+    "selection_reason": "shorter factory preset for initial candidate, not a derived robot safety deadline",
+    "deadline_qualified": false,
+    "heartbeat": "falling edges from application progress; no free-running timer/DMA",
+    "EN_and_SET1": "hardwired high; MCU cannot disable watchdog",
+    "WDO": "wired open-drain with voltage supervisor onto host NRST",
+    "ENOUT": "unused open",
+    "NRST_100nF_timing_qualified": false,
+    "WDO_VOL_at3_3V_qualified": false
+  },
+  "latch": {
+    "D": "high",
+    "PRE_N": "high",
+    "CLR_N": "Schmitt-buffered host NRST",
+    "CLK": "PA3 BQ_ARM_EDGE",
+    "Q_pin": "5",
+    "function": "reset clears permission; watchdog pulse ending does not set permission",
+    "rearm_policy": "No automatic ARM after watchdog/brownout. Fresh explicit user authorization and valid settings required; firmware and user-input path not implemented."
+  },
+  "limitations": [
+    "BQ BOTHOFF function is inactive until configured; this cannot certify initial battery connection",
+    "GPIO or output short after gate and internal gate/latch faults not covered",
+    "CPU failure that still emits heartbeat or a new ARM edge is not excluded by this circuit",
+    "Watchdog timeout is not a total predischarge timeout; healthy CPU can continue heartbeat while precharge stalls",
+    "Low-supply and NRST100nF timing, input/output levels, reset recovery and power budget unqualified",
+    "AUX boundary driver remains absent; no physical servo/Tab5 stop time has been proven"
+  ],
+  "manufacturing_release": false
+}

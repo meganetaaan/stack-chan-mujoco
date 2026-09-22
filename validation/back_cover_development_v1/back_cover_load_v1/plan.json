@@ -1,0 +1,44 @@
+{
+  "scope": "Back-cover screen with simultaneous left/right support loads and ideal corner mounts.",
+  "selected_time_s": 2.660999999999818,
+  "wrenches_N_Nmm": [
+    [
+      -0.1272189340693049,
+      -1.8776622515986345,
+      7.459879287959114,
+      -334.1000874428993,
+      -509.1531443374513,
+      -187.22499921734624
+    ],
+    [
+      0.12994756567826846,
+      0.5369301826201002,
+      -2.221940880610575,
+      83.67529661953301,
+      137.0027841165249,
+      45.4713020163978
+    ]
+  ],
+  "source_sha256": {
+    "validation/inset_yaw_assembly_development_v1/inset_bolt_group_v1/actuator_fullbody_load_right_v1_left.npz": "e14132b04fbdc5ef061d9b68a63ca4272ab59b906cf1cb72512416f31bfdb3d1",
+    "validation/inset_yaw_assembly_development_v1/inset_bolt_group_v1/actuator_fullbody_load_right_v1_right.npz": "a49c26ef8639cbbb9904745d06fe3205cfd6e4315b485916c2a51c6406626cc1"
+  },
+  "geometry_sha256": "aeb56fce696c9d0bdd6755f1eea477d40154244202bdb4fbaf24b002c2fc2962",
+  "young_MPa": 1120.0,
+  "poisson": 0.35,
+  "mesh_mm": 3.0,
+  "criteria": {
+    "displacement_mm": 0.2,
+    "stress_MPa": 5.6,
+    "relative_superposition_error": 1e-08
+  },
+  "fixed": "inner-face disks radius 4.6 mm at (y,z)=(+/-59,8 or 120); ideal corner support",
+  "load": "inner-face disks radius 6 mm at y=+/-19,+/-33; z=58,82, separated by side",
+  "limitations": [
+    "one simultaneous recorded time only",
+    "facet-centroid approximation of load patches",
+    "ideal corner clamp; no shell boss compliance, screw contact or preload",
+    "linear isotropic PETG screening parameters, not calibrated orthotropy",
+    "single mesh; no convergence demonstrated"
+  ]
+}

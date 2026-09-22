@@ -1,0 +1,152 @@
+{
+  "invalid_timer_runtime_cases": [
+    {
+      "phase": 0,
+      "limit": null,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 0,
+      "limit": 0,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 0,
+      "limit": 2147483648,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 0,
+      "limit": 4294967295,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 1,
+      "limit": null,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 1,
+      "limit": 0,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 1,
+      "limit": 2147483648,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 1,
+      "limit": 4294967295,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 2,
+      "limit": null,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 2,
+      "limit": 0,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 2,
+      "limit": 2147483648,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 2,
+      "limit": 4294967295,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 3,
+      "limit": null,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 3,
+      "limit": 0,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 3,
+      "limit": 2147483648,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 3,
+      "limit": 4294967295,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 4,
+      "limit": null,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 4,
+      "limit": 0,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 4,
+      "limit": 2147483648,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 4,
+      "limit": 4294967295,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 5,
+      "limit": null,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 5,
+      "limit": 0,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 5,
+      "limit": 2147483648,
+      "clear_and_sticky": true
+    },
+    {
+      "phase": 5,
+      "limit": 4294967295,
+      "clear_and_sticky": true
+    }
+  ],
+  "invalid_limits_rejected": true,
+  "wraparound_and_backward_tick_checked": true,
+  "expiry_sticky_until_run_reset": true,
+  "timeout_wins_pg_trace": [
+    {
+      "tick": 100,
+      "output": 9,
+      "state": 4
+    },
+    {
+      "tick": 109,
+      "output": 9,
+      "state": 4
+    },
+    {
+      "tick": 110,
+      "output": 8,
+      "state": 0
+    }
+  ],
+  "host_arm_compile_pass": true,
+  "real_limit_selected": false,
+  "hardware_timebase_verified": false,
+  "limits": [
+    "Less than 2^31 ticks between updates",
+    "Clock stall not detectable from this clock alone",
+    "Real clock frequency/tolerance and safe startup deadline unselected"
+  ]
+}

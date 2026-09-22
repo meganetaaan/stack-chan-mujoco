@@ -1,0 +1,25 @@
+{
+  "question": "Does moving plate attachment axes inside the rib corridor clear heads without rib removal?",
+  "pattern": {
+    "x_mm": [
+      -34,
+      7.5
+    ],
+    "relative_y_mm": [
+      -10,
+      10
+    ]
+  },
+  "reason": "5 mm ribs occupy lateral edges; move heads inward, then move X beyond case end faces for 0.9 mm clearance.",
+  "stop": "One new pattern, 8 heads; identify required plate/shelf extension without modifying ribs.",
+  "criteria": {
+    "nonmating_clearance_mm": 0.9,
+    "overlap_mm3": 0.01
+  },
+  "limits": [
+    "No shaft holes at new axes yet",
+    "No tools or complete assembly",
+    "Only nominal head clearance",
+    "Washer support checked separately by footprint deficit"
+  ]
+}

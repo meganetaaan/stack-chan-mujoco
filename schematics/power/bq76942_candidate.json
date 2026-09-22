@@ -1,0 +1,265 @@
+{
+  "status": "preferred_next_cell_protection_design_candidate_not_qualified",
+  "part": "BQ7694202PFBR",
+  "quantity": 1,
+  "sources": {
+    "datasheet": "https://www.ti.com/lit/ds/symlink/bq76942.pdf",
+    "trm": "https://www.ti.com/lit/ug/sluuby1b/sluuby1b.pdf"
+  },
+  "series_cells": 3,
+  "topology": "high_side_external_CHG_DSG_NMOS; low_side_current_shunt; not pin-compatible with BQ77915",
+  "configuration_strategy": "Prototype register configuration with drive inhibited until readback; qualified production image may use OTP. No OTP programming authorized by this artifact.",
+  "cuv_comparison": {
+    "origin": "engineering_initial_candidate_not_user_requirement",
+    "threshold_code": 66,
+    "step_V": 0.0506,
+    "nominal_V": 3.3396,
+    "negative_accuracy_bound_V": 0.025,
+    "accuracy_scope": "Datasheet 7.26, -40 to 85C, nominal 1.518 to 3.542V; typical accuracy not used; footnote (1): measured with fault triggered using 100ms detection delay; applicability at other delays not established",
+    "static_min_V": 3.3146,
+    "general_battery_floor_V": 3.0,
+    "remaining_dynamic_budget_V": 0.3146,
+    "delay_code": null,
+    "qualified": false
+  },
+  "configuration_requirements": [
+    "Explicit 3-cell input wiring and Vcell Mode mask",
+    "Enable CUV and autonomous DSG reaction",
+    "Select detection delay and recovery policy",
+    "Verify configuration readback before drive permission",
+    "No default or erased configuration may authorize drive",
+    "Protect against reset and loss of configuration",
+    "Qualify overcurrent short-circuit temperature and open-wire settings independently"
+  ],
+  "remaining_hardware": [
+    "3S cell input pin mapping and RC filters",
+    "external CHG/DSG FETs and gate networks",
+    "shunt and Kelvin routing",
+    "fuse coordination",
+    "reverse polarity and USB backfeed",
+    "pack-local supply and programming connector",
+    "shutdown and long-term leakage"
+  ],
+  "manufacturing_release": false,
+  "cell_input_map": {
+    "scope": "IC-side sense nets only; cell tap connector order unverified; RC values and parts pending",
+    "source": "BQ76942 datasheet Rev.B Table 16-3 and Table 6-1; TRM Rev.B 13.3.2.19",
+    "pins": [
+      {
+        "signal": "VC0",
+        "pin": 16,
+        "sense_net": "CELL0_FILTERED",
+        "physical_stack_tap": 0
+      },
+      {
+        "signal": "VC1",
+        "pin": 15,
+        "sense_net": "CELL1_FILTERED",
+        "physical_stack_tap": 1
+      },
+      {
+        "signal": "VC2",
+        "pin": 14,
+        "sense_net": "CELL2_FILTERED",
+        "physical_stack_tap": 2
+      },
+      {
+        "signal": "VC3",
+        "pin": 13,
+        "sense_net": "CELL2_FILTERED",
+        "physical_stack_tap": 2
+      },
+      {
+        "signal": "VC4",
+        "pin": 12,
+        "sense_net": "CELL2_FILTERED",
+        "physical_stack_tap": 2
+      },
+      {
+        "signal": "VC5",
+        "pin": 10,
+        "sense_net": "CELL2_FILTERED",
+        "physical_stack_tap": 2
+      },
+      {
+        "signal": "VC6",
+        "pin": 8,
+        "sense_net": "CELL2_FILTERED",
+        "physical_stack_tap": 2
+      },
+      {
+        "signal": "VC7",
+        "pin": 6,
+        "sense_net": "CELL2_FILTERED",
+        "physical_stack_tap": 2
+      },
+      {
+        "signal": "VC8",
+        "pin": 4,
+        "sense_net": "CELL2_FILTERED",
+        "physical_stack_tap": 2
+      },
+      {
+        "signal": "VC9",
+        "pin": 2,
+        "sense_net": "CELL2_FILTERED",
+        "physical_stack_tap": 2
+      },
+      {
+        "signal": "VC10",
+        "pin": 48,
+        "sense_net": "CELL3_FILTERED",
+        "physical_stack_tap": 3
+      }
+    ],
+    "direct_short_group": [
+      "VC2",
+      "VC3",
+      "VC4",
+      "VC5",
+      "VC6",
+      "VC7",
+      "VC8",
+      "VC9"
+    ],
+    "filtered_inputs": [
+      "VC0",
+      "VC1",
+      "VC2",
+      "VC10"
+    ],
+    "VC0_rule": "Local RC connection to VSS pin17 on PCB before cell attachment; do not leave floating",
+    "active_IC_cell_channels": [
+      1,
+      2,
+      10
+    ],
+    "physical_to_IC_cell_channels": {
+      "1": 1,
+      "2": 2,
+      "3": 10
+    },
+    "vcell_mode": {
+      "address": "0x9304",
+      "width_bytes": 2,
+      "value_hex": "0x0203",
+      "default_0x0000_means": "all cell inputs; not none",
+      "status": "candidate setting only; no hardware writes"
+    },
+    "NC_pins_left_open": [
+      1,
+      3,
+      5,
+      7,
+      9,
+      11,
+      19,
+      44
+    ],
+    "balancing": "disabled initial candidate; external balance charging retained; explicit config bits pending"
+  },
+  "cell_input_filter_candidate": {
+    "status": "hold_single_capacitor_short_leaves_unisolated_cell_discharge",
+    "resistor": {
+      "part": "TNPW060322R1BEEA",
+      "resistance_ohm": 22.1,
+      "initial_tolerance_fraction": 0.001,
+      "tcr_ppm_K": 25,
+      "quantity": 4,
+      "source": "https://www.vishay.com/docs/28758/tnpw_e3.pdf",
+      "order_code_status": "derived_from_manufacturer_ordering_table; stock_not_checked"
+    },
+    "capacitor": {
+      "part": "C1206C104J3GACAUTO",
+      "capacitance_F": 1e-07,
+      "initial_tolerance_fraction": 0.05,
+      "voltage_rating_V": 25,
+      "dielectric": "C0G",
+      "quantity": 8,
+      "parallel_per_filter": 2,
+      "source": "https://search.kemet.com/component-documentation/download/specsheet/C1206C104J3GACAUTO"
+    },
+    "branches": [
+      {
+        "resistor": [
+          "CELL_B_MINUS",
+          "CELL0_FILTERED"
+        ],
+        "capacitor_pair": [
+          "CELL0_FILTERED",
+          "CELL_B_MINUS"
+        ]
+      },
+      {
+        "resistor": [
+          "CELL1_TAP",
+          "CELL1_FILTERED"
+        ],
+        "capacitor_pair": [
+          "CELL1_FILTERED",
+          "CELL0_FILTERED"
+        ]
+      },
+      {
+        "resistor": [
+          "CELL2_TAP",
+          "CELL2_FILTERED"
+        ],
+        "capacitor_pair": [
+          "CELL2_FILTERED",
+          "CELL1_FILTERED"
+        ]
+      },
+      {
+        "resistor": [
+          "CELL3_TAP",
+          "CELL3_FILTERED"
+        ],
+        "capacitor_pair": [
+          "CELL3_FILTERED",
+          "CELL2_FILTERED"
+        ]
+      }
+    ],
+    "nominal_capacitance_per_branch_F": 2e-07,
+    "initial_tolerance_capacitance_range_F": [
+      1.9e-07,
+      2.1e-07
+    ],
+    "filter_delay_qualified": false,
+    "limitations": [
+      "Coupled differential RC network, not four independent R*C delays",
+      "IC input leakage and open-wire stimulus not yet bounded",
+      "Resistor fault pulse and shorted capacitor power not qualified",
+      "Board area for eight 1206 capacitors not allocated",
+      "DC bias and complete operating envelope not qualified from typical graphs",
+      "Harness connector pin order unverified"
+    ],
+    "fault_review": "validation/bq76942_filter_short_v1/report.json"
+  },
+  "cuv_timing_review": {
+    "status": "timing_and_external_FET_design_required",
+    "source": "https://www.ti.com/lit/ug/sluuby1b/sluuby1b.pdf",
+    "CUV_enable_required": "Settings:Protection:Enabled Protections A[CUV]",
+    "DSG_action_required": "autonomous FET control and Settings:Protection:DSG FET Protections A[CUV]",
+    "nominal_delay_formula_ms": "3.3 * (2 + code), nonzero code only; manual rounds code1 to10ms",
+    "delay_code_zero": "disables protection; never use as shortest delay",
+    "delay_code_selected": null,
+    "guaranteed_total_isolation_time_s": null,
+    "CUV_action": "DSG off; CHG remains enabled if already enabled; not bidirectional isolation",
+    "cell_balancing": "must remain disabled for present timing assumptions",
+    "FET_turnoff_table_condition": "20nF gate load, 100ohm gate resistor; not a bound for unselected FETs",
+    "restart_rule": "battery recovery does not grant servo permission",
+    "next_hardware_step": "Select CHG/DSG FETs, gate networks and pack-local supply; evaluate reverse-current and partial power paths",
+    "physical_handoff": "Validate IC timing at final config; do not replace undefined external hardware with physical-test-only status"
+  },
+  "startup_supply_selection": {
+    "previous_part": "BQ76942PFBR",
+    "reason": "Factory-enabled REG0 and 3.3V REG1 permit battery-side configuration without a separate bootstrap supply",
+    "factory_REG0_Config": "0x01",
+    "factory_REG12_Config": "0x0D",
+    "communications": "I2C with CRC enabled",
+    "source": "TI SLUUBY1B section 3.3 table 3-2",
+    "qualified": false
+  }
+}

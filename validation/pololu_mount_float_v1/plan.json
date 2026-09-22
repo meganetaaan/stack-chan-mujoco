@@ -1,0 +1,19 @@
+{
+  "question": "Does existing nominal bracket permit individual screw/nut/spacer shift without cutting new slots?",
+  "PCB_error_per_coordinate_mm": 0.1,
+  "hardware_shift_per_coordinate_mm": 0.05,
+  "PCB_hole_diameter_mm": 2.18,
+  "screw_envelope_diameter_mm": 2.0,
+  "criteria": {
+    "maximum_overlap_mm3": 0.01,
+    "minimum_nominal_radial_margin_mm": 0
+  },
+  "stop": "32 specified corner poses; check own bracket and projected spacer seat only.",
+  "limits": [
+    "Nominal CAD, print errors excluded",
+    "Assumed independent Cartesian PCB hole location errors",
+    "Translation only; no fastener tilt or nut rotation",
+    "Corner samples do not prove arbitrary assembly paths or all configurations",
+    "Bearing area is geometric, not a strength criterion"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+ "question":"Must rear M3 fastening occur before module installation?",
+ "stages":["rear_plate_brackets_M3_only","same_with_modules"],
+ "motion":{"tip_x_mm":-57.7,"withdrawal_x_mm":70},
+ "criteria":{"maximum_overlap_mm3":0.01,"minimum_unintended_clearance_mm":0.5},
+ "target_interfaces":"Target screw and nut excluded because socket cavity is unspecified. Target inner washer may touch tool end plane, but overlap is forbidden. Engagement is separately unresolved.",
+ "stop":"Four nut axes and two assembly stages; one tool and axial route. Do not change criteria or move modules.",
+ "limits":["No body, battery, M2 hardware or spacers in either stage; detached rear-plate subassembly evaluation", "Common module STEP variant is not certified5V model", "Catalog external tool envelopes; hand, opposite driver, socket depth and torque not qualified"]
+}

@@ -1,0 +1,35 @@
+{
+  "scope": "Export independent tetrahedra and verified contact faces; not a runnable solve.",
+  "criteria": {
+    "all_contact_triangles_are_unique_exterior_tet_faces": true,
+    "positive_tetrahedron_volume": true,
+    "each_contact_has_two_sides": true,
+    "opposite_mean_normal_dot_max": -0.999999
+  },
+  "face_number_source": "CalculiX 2.21 manual section 7.43, tetrahedral faces",
+  "input_sha256": {
+    "body.msh": "15833e793f160049b901393555347ce010bc6db5387231dd6c8f44b1593a51c7",
+    "bolt_0.msh": "4e1d3ffa5a7e6936148c5b584600bb563de3389d591523b39d9f78dba1b5e701",
+    "bolt_1.msh": "6c5c76ad09f04de99a0315aac421cd395d1f2d1f466320270f5cee3078532551",
+    "bolt_2.msh": "5ce791bdc60c23828f7415d098217ae0b96ee8147e5c7bafe341198aabbcd941",
+    "bolt_3.msh": "451d9eba399e8cbd16e5a910b6a267e0d003ac3a07beb850abf734dd01c2219e",
+    "inner_washer_0.msh": "7794d68cccb096d409a55fb7d7d4b3db2e2c5899f867d4c57af3657be808df3a",
+    "inner_washer_1.msh": "47227d7f4dfe51ccb651b6a22370927aad4d35ee067a6a3b408ee595323fb3d9",
+    "inner_washer_2.msh": "a1a7c08de7526bf7ae3cc59f5d0824bbc18aa64c5e9b9290ecf7f975f81e447d",
+    "inner_washer_3.msh": "a3bd5f04eb7a5b0be3a6350b33127544430a328a23ba29f3e4c9595b89535270",
+    "nut_0.msh": "05dc23cd63a8c879681b20228566dceb0a431e40bffa2266813a8148ae4bc911",
+    "nut_1.msh": "f179f4d724fc62ed6da1a3b9f3e354a59a17262d70944e55d3dc84365b17c23d",
+    "nut_2.msh": "34b491bfe4c321970723536f5abcaabc804e76ec9ad0077553fab3ddde4bbb77",
+    "nut_3.msh": "bd5b68b515fc7d6058f11b02679d9741103091ee1cbbc15cddd0959aa6b108f3",
+    "rear_plate.msh": "e7d9b24308c0f560ff8cd944c31b20f6c6675a49e0739b65691aa5658f1a94cc",
+    "rear_washer_0.msh": "c9a16e4dd49a40a60d163e64681c9db8932a7c52976a55bacc0b5d70d427c20b",
+    "rear_washer_1.msh": "d54e9d9dbe54bbc828293d7556d20000fb3044c37db454771b18426fb3a5f3d4",
+    "rear_washer_2.msh": "219e8e27a8116fb8118a7c42b1e2095bec7328a8d2cf7f13f2144942fbf20743",
+    "rear_washer_3.msh": "f6c88da1eeef0776b764aeabb811a31ff602b201c322db9eabb6179954cb4308"
+  },
+  "limitations": [
+    "no material, boundary, connector, preload or load specification",
+    "linear tetrahedral stiffness requires convergence assessment",
+    "thread envelope overlap remains unresolved"
+  ]
+}

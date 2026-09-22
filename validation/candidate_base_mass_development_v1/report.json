@@ -1,0 +1,743 @@
+{
+  "scope": "Four CAD replacements only; retained reservations; not complete production mass or updated MuJoCo plant",
+  "baseline": {
+    "mass_kg": 0.5229396482513734,
+    "com_m": [
+      0.009651023551207992,
+      8.79214817505844e-06,
+      0.07489860907364822
+    ],
+    "inertia_kg_m2": [
+      [
+        0.0012237684372995283,
+        -3.38456930323294e-07,
+        -7.740834707417776e-05
+      ],
+      [
+        -3.38456930323294e-07,
+        0.0014700692025772552,
+        -1.3497336243544504e-07
+      ],
+      [
+        -7.740834707417776e-05,
+        -1.3497336243544504e-07,
+        0.0016053073734357327
+      ]
+    ]
+  },
+  "candidate_base": {
+    "mass_kg": 0.6285892634156902,
+    "com_m": [
+      -0.0006372431463007098,
+      7.281389985201424e-06,
+      0.07376093335435435
+    ],
+    "inertia_kg_m2": [
+      [
+        0.0014444631756240344,
+        -3.8658081648828327e-07,
+        -0.00012096833223942712
+      ],
+      [
+        -3.8658081648828327e-07,
+        0.0019328010719575203,
+        -1.417166680818373e-07
+      ],
+      [
+        -0.00012096833223942712,
+        -1.417166680818373e-07,
+        0.002101388118426431
+      ]
+    ]
+  },
+  "delta_base_mass_kg": 0.10564961516431681,
+  "replacements": {
+    "body_shroud": {
+      "old": {
+        "mass_kg": 0.14032658539980244,
+        "com_base_m": [
+          0.001800888401999437,
+          -6.1146742793908435e-06,
+          0.06361212440210355
+        ],
+        "inertia_com_kg_m2": [
+          [
+            0.000707684708556633,
+            -3.602156385010286e-08,
+            4.8899556934514396e-05
+          ],
+          [
+            -3.602156385010286e-08,
+            0.0005635386508274845,
+            -5.381022375174112e-08
+          ],
+          [
+            4.8899556934514396e-05,
+            -5.381022375174112e-08,
+            0.000597511992725415
+          ]
+        ],
+        "volume_mm3": 113166.60112887295,
+        "mass_valid_for_dynamics": true,
+        "mass_basis": "packaging report allocation"
+      },
+      "new": {
+        "mass_kg": 0.1451452598501837,
+        "com_base_m": [
+          0.0012381421287310898,
+          -6.0546976857005104e-06,
+          0.06361592893104699
+        ],
+        "inertia_com_kg_m2": [
+          [
+            0.0007337893514926348,
+            -3.639850584670464e-08,
+            5.011398163860798e-05
+          ],
+          [
+            -3.639850584670464e-08,
+            0.0005863017525169304,
+            -5.511542743841027e-08
+          ],
+          [
+            5.011398163860798e-05,
+            -5.511542743841027e-08,
+            0.0006211240198194262
+          ]
+        ],
+        "volume_mm3": 114287.60618124701,
+        "density_kg_m3": 1270,
+        "source": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/body_shroud.step"
+      },
+      "delta_mass_kg": 0.004818674450381255,
+      "geometry_delta_at_old_density_kg": 0.0013900462649438403,
+      "density_delta_at_new_volume_kg": 0.0034286281854374106
+    },
+    "rear_cover": {
+      "old": {
+        "mass_kg": 0.036026266941293114,
+        "com_base_m": [
+          -0.06309999999999996,
+          -6.251861577203433e-19,
+          0.06343128656023783
+        ],
+        "inertia_com_kg_m2": [
+          [
+            9.838269541591484e-05,
+            -7.603772703244225e-23,
+            1.1086463928222657e-19
+          ],
+          [
+            -7.603772703244225e-23,
+            4.877138832092883e-05,
+            -2.4945784239117547e-21
+          ],
+          [
+            1.1086463928222657e-19,
+            -2.4945784239117547e-21,
+            4.9630761279134516e-05
+          ]
+        ],
+        "volume_mm3": 29053.441081687994,
+        "mass_valid_for_dynamics": true,
+        "mass_basis": "packaging report allocation"
+      },
+      "new": {
+        "mass_kg": 0.08675673540322762,
+        "com_base_m": [
+          -0.06319999999999999,
+          3.7263324595622005e-17,
+          0.06340151532489248
+        ],
+        "inertia_com_kg_m2": [
+          [
+            0.0002376344938737383,
+            -8.650713425595248e-21,
+            8.046627044677734e-20
+          ],
+          [
+            -8.650713425595248e-21,
+            0.00011789125190990422,
+            -7.35018545146008e-20
+          ],
+          [
+            8.046627044677734e-20,
+            -7.35018545146008e-20,
+            0.00011980107978743649
+          ]
+        ],
+        "volume_mm3": 32132.124223417635,
+        "density_kg_m3": 2700,
+        "source": "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/rear_structural_plate.step"
+      },
+      "delta_mass_kg": 0.050730468461934505,
+      "geometry_delta_at_old_density_kg": 0.003817567095744756,
+      "density_delta_at_new_volume_kg": 0.046912901366189745
+    },
+    "left_yaw_fixed_support": {
+      "old": {
+        "mass_kg": 0.012409920000000003,
+        "com_base_m": [
+          -0.03357329136690647,
+          0.025999999999999995,
+          0.08480602517985614
+        ],
+        "inertia_com_kg_m2": [
+          [
+            2.4023418462852136e-06,
+            4.619359970092773e-21,
+            -1.5394047201420993e-06
+          ],
+          [
+            4.619359970092773e-21,
+            7.920792884855366e-06,
+            4.619359970092773e-21
+          ],
+          [
+            -1.5394047201420993e-06,
+            4.619359970092773e-21,
+            7.77568751857015e-06
+          ]
+        ],
+        "volume_mm3": 10008.000000000002,
+        "mass_valid_for_dynamics": true,
+        "mass_basis": "packaging report allocation"
+      },
+      "new": {
+        "mass_kg": 0.03746015612599751,
+        "com_base_m": [
+          -0.04001558987607555,
+          0.026,
+          0.07715339044562985
+        ],
+        "inertia_com_kg_m2": [
+          [
+            1.0906137380199238e-05,
+            4.731118679046631e-21,
+            -4.508864587355124e-06
+          ],
+          [
+            4.731118679046631e-21,
+            1.9466615066566766e-05,
+            0.0
+          ],
+          [
+            -4.508864587355124e-06,
+            0.0,
+            2.0343683861132332e-05
+          ]
+        ],
+        "volume_mm3": 29496.185925982292,
+        "density_kg_m3": 1270,
+        "source": "validation/inset_yaw_assembly_development_v1/yaw_inset_mount_v1/left_yaw_fixed_support.step"
+      },
+      "delta_mass_kg": 0.025050236125997508,
+      "geometry_delta_at_old_density_kg": 0.02416535054821804,
+      "density_delta_at_new_volume_kg": 0.0008848855777794688
+    },
+    "right_yaw_fixed_support": {
+      "old": {
+        "mass_kg": 0.012409920000000003,
+        "com_base_m": [
+          -0.03357329136690647,
+          -0.025999999999999995,
+          0.08480602517985614
+        ],
+        "inertia_com_kg_m2": [
+          [
+            2.4023418462852136e-06,
+            -2.3096799850463867e-21,
+            -1.5394047201420993e-06
+          ],
+          [
+            -2.3096799850463867e-21,
+            7.920792884855366e-06,
+            -9.238719940185547e-21
+          ],
+          [
+            -1.5394047201420993e-06,
+            -9.238719940185547e-21,
+            7.77568751857015e-06
+          ]
+        ],
+        "volume_mm3": 10008.000000000002,
+        "mass_valid_for_dynamics": true,
+        "mass_basis": "packaging report allocation"
+      },
+      "new": {
+        "mass_kg": 0.03746015612600351,
+        "com_base_m": [
+          -0.040015589876068944,
+          -0.026,
+          0.07715339044562897
+        ],
+        "inertia_com_kg_m2": [
+          [
+            1.0906137380200374e-05,
+            -4.731118679046631e-21,
+            -4.508864587353688e-06
+          ],
+          [
+            -4.731118679046631e-21,
+            1.9466615066576687e-05,
+            -9.462237358093262e-21
+          ],
+          [
+            -4.508864587353688e-06,
+            -9.462237358093262e-21,
+            2.0343683861142287e-05
+          ]
+        ],
+        "volume_mm3": 29496.18592598701,
+        "density_kg_m3": 1270,
+        "source": "validation/inset_yaw_assembly_development_v1/yaw_inset_mount_v1/right_yaw_fixed_support.step"
+      },
+      "delta_mass_kg": 0.025050236126003503,
+      "geometry_delta_at_old_density_kg": 0.024165350548223895,
+      "density_delta_at_new_volume_kg": 0.0008848855777796104
+    }
+  },
+  "components": {
+    "body_shroud": {
+      "mass_kg": 0.1451452598501837,
+      "com_base_m": [
+        0.0012381421287310898,
+        -6.0546976857005104e-06,
+        0.06361592893104699
+      ],
+      "inertia_com_kg_m2": [
+        [
+          0.0007337893514926348,
+          -3.639850584670464e-08,
+          5.011398163860798e-05
+        ],
+        [
+          -3.639850584670464e-08,
+          0.0005863017525169304,
+          -5.511542743841027e-08
+        ],
+        [
+          5.011398163860798e-05,
+          -5.511542743841027e-08,
+          0.0006211240198194262
+        ]
+      ],
+      "volume_mm3": 114287.60618124701,
+      "density_kg_m3": 1270,
+      "source": "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/body_shroud.step"
+    },
+    "rear_cover": {
+      "mass_kg": 0.08675673540322762,
+      "com_base_m": [
+        -0.06319999999999999,
+        3.7263324595622005e-17,
+        0.06340151532489248
+      ],
+      "inertia_com_kg_m2": [
+        [
+          0.0002376344938737383,
+          -8.650713425595248e-21,
+          8.046627044677734e-20
+        ],
+        [
+          -8.650713425595248e-21,
+          0.00011789125190990422,
+          -7.35018545146008e-20
+        ],
+        [
+          8.046627044677734e-20,
+          -7.35018545146008e-20,
+          0.00011980107978743649
+        ]
+      ],
+      "volume_mm3": 32132.124223417635,
+      "density_kg_m3": 2700,
+      "source": "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/rear_structural_plate.step"
+    },
+    "Tab5": {
+      "mass_kg": 0.1184,
+      "com_base_m": [
+        0.05790211609495188,
+        4.607951213258372e-05,
+        0.08799999999999997
+      ],
+      "inertia_com_kg_m2": [
+        [
+          0.00022508284864034426,
+          -3.245054968618804e-08,
+          0.0
+        ],
+        [
+          -3.245054968618804e-08,
+          6.472768938764923e-05,
+          7.831722682120598e-21
+        ],
+        [
+          0.0,
+          7.831722682120598e-21,
+          0.00016310234711409738
+        ]
+      ],
+      "volume_mm3": 120557.74501575145,
+      "mass_valid_for_dynamics": true,
+      "mass_basis": "packaging report allocation"
+    },
+    "battery_2S_reservation": {
+      "mass_kg": 0.103,
+      "com_base_m": [
+        0.029000000000000005,
+        1.393317587445318e-18,
+        0.08
+      ],
+      "inertia_com_kg_m2": [
+        [
+          5.5197013333333475e-05,
+          1.4218662637614425e-21,
+          5.538977341174373e-20
+        ],
+        [
+          1.4218662637614425e-21,
+          1.6263785833333325e-05,
+          1.8201815188527136e-21
+        ],
+        [
+          5.538977341174373e-20,
+          1.8201815188527136e-21,
+          4.614751916666664e-05
+        ]
+      ],
+      "volume_mm3": 55418.88000000001,
+      "mass_valid_for_dynamics": true,
+      "mass_basis": "packaging report allocation"
+    },
+    "dedicated_5V_converter": {
+      "mass_kg": 0.02,
+      "com_base_m": [
+        -0.04,
+        1.4398932813258608e-20,
+        0.073
+      ],
+      "inertia_com_kg_m2": [
+        [
+          2.824559336177269e-06,
+          -2.6270235820669764e-22,
+          0.0
+        ],
+        [
+          -2.6270235820669764e-22,
+          9.064412122555757e-07,
+          8.549366357872298e-25
+        ],
+        [
+          0.0,
+          8.549366357872298e-25,
+          2.3976672150995223e-06
+        ]
+      ],
+      "volume_mm3": 8635.707963267949,
+      "mass_valid_for_dynamics": true,
+      "mass_basis": "packaging report allocation"
+    },
+    "TTL_interface": {
+      "mass_kg": 0.012,
+      "com_base_m": [
+        -0.028,
+        3.4107836124127947e-20,
+        0.10599999999999998
+      ],
+      "inertia_com_kg_m2": [
+        [
+          9.739932995852282e-07,
+          0.0,
+          4.664955439786119e-21
+        ],
+        [
+          0.0,
+          4.2492197050927445e-07,
+          1.9185657819821966e-25
+        ],
+        [
+          4.664955439786119e-21,
+          1.9185657819821966e-25,
+          5.989152700944284e-07
+        ]
+      ],
+      "volume_mm3": 2395.707963267949,
+      "mass_valid_for_dynamics": true,
+      "mass_basis": "packaging report allocation"
+    },
+    "cables_and_fasteners": {
+      "mass_kg": 0.025,
+      "com_base_m": [
+        -0.024999999999999998,
+        -6.2618019409787004e-21,
+        0.05000000000000001
+      ],
+      "inertia_com_kg_m2": [
+        [
+          7.40619612763963e-07,
+          9.39270291146805e-25,
+          4.559705022266446e-21
+        ],
+        [
+          9.39270291146805e-25,
+          6.660080534680944e-07,
+          7.827252426223275e-26
+        ],
+        [
+          4.559705022266446e-21,
+          7.827252426223275e-26,
+          3.3996099956543664e-07
+        ]
+      ],
+      "volume_mm3": 1276.566370614359,
+      "mass_valid_for_dynamics": true,
+      "mass_basis": "packaging report allocation"
+    },
+    "battery_tray": {
+      "mass_kg": 0.006903805017530213,
+      "com_base_m": [
+        0.02899999999999999,
+        -5.717436972324276e-18,
+        0.06165030692547953
+      ],
+      "inertia_com_kg_m2": [
+        [
+          6.028500731278454e-06,
+          -2.5487679522484504e-22,
+          -6.92903995513916e-21
+        ],
+        [
+          -2.5487679522484504e-22,
+          5.096972130287106e-07,
+          -4.282840751018843e-22
+        ],
+        [
+          -6.92903995513916e-21,
+          -4.282840751018843e-22,
+          6.442702459881353e-06
+        ]
+      ],
+      "volume_mm3": 5567.5846915566235,
+      "mass_valid_for_dynamics": true,
+      "mass_basis": "packaging report allocation"
+    },
+    "battery_strap_envelope": {
+      "mass_kg": 0.0012,
+      "com_base_m": [
+        0.029000000000000133,
+        -1.3742509975245596e-19,
+        0.0788024137397494
+      ],
+      "inertia_com_kg_m2": [
+        [
+          2.8478613845189977e-07,
+          3.937744452031701e-25,
+          5.403774802426171e-22
+        ],
+        [
+          3.937744452031701e-25,
+          4.0321943305195593e-07,
+          1.0903459064647869e-23
+        ],
+        [
+          5.403774802426171e-22,
+          1.0903459064647869e-23,
+          1.3123329460003227e-07
+        ]
+      ],
+      "volume_mm3": 517.0400000000014,
+      "mass_valid_for_dynamics": true,
+      "mass_basis": "packaging report allocation"
+    },
+    "left_yaw_motor_case": {
+      "mass_kg": 0.017331575446373825,
+      "com_base_m": [
+        -0.012499999999999999,
+        0.026,
+        0.0765
+      ],
+      "inertia_com_kg_m2": [
+        [
+          1.341752799140079e-06,
+          1.0320516283158105e-21,
+          0.0
+        ],
+        [
+          1.0320516283158105e-21,
+          2.4336420522616463e-06,
+          4.128206513263242e-21
+        ],
+        [
+          0.0,
+          4.128206513263242e-21,
+          2.247327616213136e-06
+        ]
+      ],
+      "volume_mm3": 15640.000000000004,
+      "mass_valid_for_dynamics": true,
+      "mass_basis": "packaging report allocation"
+    },
+    "left_yaw_fixed_support": {
+      "mass_kg": 0.03746015612599751,
+      "com_base_m": [
+        -0.04001558987607555,
+        0.026,
+        0.07715339044562985
+      ],
+      "inertia_com_kg_m2": [
+        [
+          1.0906137380199238e-05,
+          4.731118679046631e-21,
+          -4.508864587355124e-06
+        ],
+        [
+          4.731118679046631e-21,
+          1.9466615066566766e-05,
+          0.0
+        ],
+        [
+          -4.508864587355124e-06,
+          0.0,
+          2.0343683861132332e-05
+        ]
+      ],
+      "volume_mm3": 29496.185925982292,
+      "density_kg_m3": 1270,
+      "source": "validation/inset_yaw_assembly_development_v1/yaw_inset_mount_v1/left_yaw_fixed_support.step"
+    },
+    "right_yaw_motor_case": {
+      "mass_kg": 0.017331575446373825,
+      "com_base_m": [
+        -0.012499999999999999,
+        -0.026,
+        0.0765
+      ],
+      "inertia_com_kg_m2": [
+        [
+          1.341752799140079e-06,
+          -1.0320516283158105e-21,
+          0.0
+        ],
+        [
+          -1.0320516283158105e-21,
+          2.4336420522616463e-06,
+          -4.128206513263242e-21
+        ],
+        [
+          0.0,
+          -4.128206513263242e-21,
+          2.247327616213134e-06
+        ]
+      ],
+      "volume_mm3": 15640.000000000004,
+      "mass_valid_for_dynamics": true,
+      "mass_basis": "packaging report allocation"
+    },
+    "right_yaw_fixed_support": {
+      "mass_kg": 0.03746015612600351,
+      "com_base_m": [
+        -0.040015589876068944,
+        -0.026,
+        0.07715339044562897
+      ],
+      "inertia_com_kg_m2": [
+        [
+          1.0906137380200374e-05,
+          -4.731118679046631e-21,
+          -4.508864587353688e-06
+        ],
+        [
+          -4.731118679046631e-21,
+          1.9466615066576687e-05,
+          -9.462237358093262e-21
+        ],
+        [
+          -4.508864587353688e-06,
+          -9.462237358093262e-21,
+          2.0343683861142287e-05
+        ]
+      ],
+      "volume_mm3": 29496.18592598701,
+      "density_kg_m3": 1270,
+      "source": "validation/inset_yaw_assembly_development_v1/yaw_inset_mount_v1/right_yaw_fixed_support.step"
+    },
+    "left_battery_screw_envelope": {
+      "mass_kg": 0.0003,
+      "com_base_m": [
+        0.029,
+        0.061,
+        0.063
+      ],
+      "inertia_com_kg_m2": [
+        [
+          1.3e-09,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          7.999999999998182e-10,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.3e-09
+        ]
+      ],
+      "volume_mm3": 95.99999999999999,
+      "mass_valid_for_dynamics": false,
+      "mass_basis": "r9 generator explicit 0.30 g screw override"
+    },
+    "right_battery_screw_envelope": {
+      "mass_kg": 0.0003,
+      "com_base_m": [
+        0.029,
+        -0.061,
+        0.063
+      ],
+      "inertia_com_kg_m2": [
+        [
+          1.3e-09,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          7.999999999998182e-10,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.3e-09
+        ]
+      ],
+      "volume_mm3": 95.99999999999999,
+      "mass_valid_for_dynamics": false,
+      "mass_basis": "r9 generator explicit 0.30 g screw override"
+    }
+  },
+  "source_sha256": {
+    "board/mechanical/engineering/rear_connection_candidate.json": "104bf8e7fa26fe1de300412c7943d8021dbf728aed4fff8f096985255d9208a4",
+    "validation/jig_stiffness_embedded_development_v1/embedded_rear_nuts_v3/body_shroud.step": "8de9bb8c59896372a4c07b6f108cd7490ea58219cfb9def69e2bc880cd36580d",
+    "validation/rear_joint_assembly_development_v1/rear_joint_socket_double_v1/rear_structural_plate.step": "604f5385918959d2066bd24234d591b3490692194ad2a4bea4ebbd1d5599f62d",
+    "validation/inset_yaw_assembly_development_v1/yaw_inset_mount_v1/left_yaw_fixed_support.step": "c16866ad21f8ba665eaefda959d646effac536a9718165946d861d5a936ee0c6",
+    "validation/inset_yaw_assembly_development_v1/yaw_inset_mount_v1/right_yaw_fixed_support.step": "6a54794d22334043920a9d3d0955e1c1144cc5f72b02bee606920a1202986308"
+  },
+  "unresolved": [
+    "25 g cables_and_fasteners reservation does not itemize hardware; new screws must not silently be added or subtracted from it.",
+    "Battery, converter and interface remain mass reservations, not selected production components.",
+    "Candidate PETG density 1270 differs from baseline 1240; geometry and material effects must be separated.",
+    "Candidate CAD, collision geometry and load exports are not updated by this audit.",
+    "Rear M3 hardware and yaw mounting hardware are not separately added; 25 g reservation retained without claiming coverage.",
+    "Unchanged printed parts retain frozen density; this is not a global material conversion.",
+    "Density assumes solid CAD volumes; slicer infill and print process are not calibrated."
+  ],
+  "inertia_eigenvalues_kg_m2": [
+    0.0014228954222988536,
+    0.0019328013673482955,
+    0.0021229555763608377
+  ]
+}

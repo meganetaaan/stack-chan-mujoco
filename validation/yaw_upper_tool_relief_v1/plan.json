@@ -1,0 +1,25 @@
+{
+  "question": "Can a thicker front shelf reduce local bending without enlarging the envelope or blocking fixed hardware?",
+  "candidate": "Translate existing shelf slice Z89..91 upward 2 mm, preserving its openings; retain metal servo seat.",
+  "relief": "Remove radius 4.0 mm vertical columns around all four plate screws from added material only; retain original support",
+  "assumptions": {
+    "shelf_extra_thickness_mm": 2,
+    "tool_relief_radius_mm": 4.0,
+    "tool_candidate": "Wera 05118120001, catalog blade diameter5.7 mm",
+    "nominal_radial_tool_gap_mm": 1.15,
+    "material": "printed ABS/PETG, grade and printing not qualified"
+  },
+  "criteria": [
+    "valid single solid",
+    "unchanged whole assembly bounding box",
+    "added-material overlap with fixed assembly and manufacturer case/connectors <=0.01 mm3",
+    "reserved outer-port corridor distance >=1.3 mm"
+  ],
+  "stop": "One geometry, both sides; no parameter sweep or release.",
+  "limits": [
+    "No stiffness/strength evaluation yet",
+    "No full moving-assembly clearance",
+    "No physical tool or printing qualification",
+    "Rear idler is not in current build and is not introduced here"
+  ]
+}

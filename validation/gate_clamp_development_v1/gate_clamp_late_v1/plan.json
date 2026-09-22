@@ -1,0 +1,47 @@
+{
+  "gate_clamp": true,
+  "scope": "Test a hysteretic dissipative brake added to the archived supply probes.\n\nLM393B/TL431B-style behavior is approximated, with explicit offset, component\ncorners and response lag. The MOSFET is a switch model, not a vendor macro-model.\n",
+  "case": "regeneration",
+  "corner": "late",
+  "parameters": {
+    "reference_V": 2.507475,
+    "rtop_ohm": 11918.0,
+    "rbottom_ohm": 9900.0,
+    "rfeedback_ohm": 990000.0,
+    "rbrake_ohm": 4.9350000000000005,
+    "rmos_ohm": 0.1,
+    "gate_capacity_F": 2e-09,
+    "response_tau_s": 2e-05,
+    "offset_V": 0.004,
+    "bus_capacity_F": 0.0008,
+    "regulator_V": 5.15,
+    "zener_knee_V": 7.7625,
+    "zener_slope_ohm": 80.0,
+    "zener_capacity_F": 2e-10
+  },
+  "criteria": {
+    "operating_min_V": 4.75,
+    "operating_max_V": 5.8,
+    "energy_relative_error_max": 0.01,
+    "brake_resistor_energy_max_J": 0.15,
+    "brake_resistor_peak_power_max_W": 10.0,
+    "normal_brake_energy_max_J": 0.001,
+    "gate_abs_max_V": 10.0,
+    "zener_peak_power_max_W": 0.1,
+    "pullup_peak_power_max_W": 0.25
+  },
+  "source_path": "validation/supply_development_v1/supply_regeneration_v2/probe.cir",
+  "source_sha256": "70baf9e750ac338e925a21623c65a622c9625c75bfa114f02d4256d6f29dc187",
+  "sources": {
+    "comparator": "https://www.ti.com/lit/ds/symlink/lm393.pdf",
+    "reference": "https://www.ti.com/lit/ds/symlink/tl431.pdf"
+  },
+  "limitations": [
+    "gate RC and comparator lag are engineering scenarios, not guaranteed delays",
+    "MOSFET and resistor part selection/thermal mounting still pending",
+    "5.8 V fault ceiling leaves 0.2 V below the 6 V actuator operating maximum",
+    "normal supply gate remains 4.75-5.25 V",
+    "1 A regeneration injection is a fault source, not a coupled motor prediction",
+    "brake_open is expected to fail; independent overvoltage cutoff is still required"
+  ]
+}

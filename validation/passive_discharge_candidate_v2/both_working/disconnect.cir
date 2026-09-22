@@ -1,0 +1,143 @@
+Recorded-load averaged supply probe
+Vbattery battery 0 PWL(0 0 .0002 7.4)
+Vdisconnect disconnect 0 PWL(0 1 .08 1 .080001 0)
+Sdisconnect battery switched disconnect 0 DISCONNECT
+.model DISCONNECT SW(RON=1u ROFF=1e12 VT=.5 VH=0)
+Rb switched vin .1
+Cin vin 0 100u
+Bcommand command 0 V=(V(en)>1) ? 5.15 : 0
+Rsoft command reference 1000
+Csoft reference 0 1u
+Bconverter drive 0 V=(V(en)>1) ? max(0,min(V(reference),V(vin)-.6)) : 0
+Drect drive rect DAVG
+.model DAVG D(IS=1e-12 N=.01 RS=.001)
+Lout rect internal 1u
+Rout internal rail .03
+Cout rail 0 960u
+Rwire rail bus .02
+Vwave wave 0 0
+Bload bus 0 I=(V(wave)>0) ? V(wave)*min(max(V(bus)/.5,0),1) : V(wave)
+Binput vin 0 I=max(V(drive)*I(Lout),0)/(.85*max(V(vin),.5))
+Bcontroller vin 0 I=3*max(V(vin),0)/(max(V(vin),.5)^2)
+Rtop0 bus sense0 11918.0
+Rbottom0 sense0 0 9900.0
+Rfeedback0 gate0 sense0 990000.0
+Rpull0 bus gate0 2200
+Cgate0 gate0 0 2.2000000000000003e-09
+Rbias0 bus refbrake0 2200
+Bref0 refbrake0 0 V=min(2.507475,max(V(bus)-1,0))
+Berror0 cmp0 0 V=V(refbrake0)-V(sense0)+0.004
+Rlag0 cmp0 filt0 10000
+Clag0 filt0 0 2e-09
+Ssink0 gate0 0 filt0 0 SCOMP0
+.model SCOMP0 SW(RON=50 ROFF=1e9 VT=0 VH=.001)
+Rbrake0 bus drain0 4.9350000000000005
+Sbrake0 drain0 0 gate0 0 SMOS0
+.model SMOS0 SW(RON=0.1 ROFF=1e9 VT=2.5 VH=.05)
+Bzener0 gate0 0 I=max(0,(V(gate0)-7.7625)/80.0)
+Bquiescent0 bus 0 I=.0008*min(max(V(bus)/.5,0),1)
+Rtop1 bus sense1 12221.0
+Rbottom1 sense1 0 9900.0
+Rfeedback1 gate1 sense1 990000.0
+Rpull1 bus gate1 2200
+Cgate1 gate1 0 2.2000000000000003e-09
+Rbias1 bus refbrake1 2200
+Bref1 refbrake1 0 V=min(2.507475,max(V(bus)-1,0))
+Berror1 cmp1 0 V=V(refbrake1)-V(sense1)+0.004
+Rlag1 cmp1 filt1 10000
+Clag1 filt1 0 2e-09
+Ssink1 gate1 0 filt1 0 SCOMP1
+.model SCOMP1 SW(RON=50 ROFF=1e9 VT=0 VH=.001)
+Rbrake1 bus drain1 4.9350000000000005
+Sbrake1 drain1 0 gate1 0 SMOS1
+.model SMOS1 SW(RON=0.1 ROFF=1e9 VT=2.5 VH=.05)
+Bzener1 gate1 0 I=max(0,(V(gate1)-7.7625)/80.0)
+Bquiescent1 bus 0 I=.0008*min(max(V(bus)/.5,0),1)
+Ruvtop0 bus uvsense0 96253.0
+Ruvbottom0 uvsense0 0 9900.0
+Iuvbias0 uvsense0 0 2.5e-08
+Buvlogic0 uvlogic0 0 V=(V(uvready) < .64) ? -1 : (0.404-V(uvsense0))
+Vuvcurrent0 gate0 uvout0 0
+Suvsink0 uvout0 0 uvlogic0 0 UVHOLD
+Buvq0 aux 0 I=13u*min(max(V(aux)/1.8,0),1)
+Cuvdec0 aux 0 100n
+Ruvtop1 bus uvsense1 96253.0
+Ruvbottom1 uvsense1 0 9900.0
+Iuvbias1 uvsense1 0 2.5e-08
+Buvlogic1 uvlogic1 0 V=(V(uvready) < .64) ? -1 : (0.404-V(uvsense1))
+Vuvcurrent1 gate1 uvout1 0
+Suvsink1 uvout1 0 uvlogic1 0 UVHOLD
+Buvq1 aux 0 I=13u*min(max(V(aux)/1.8,0),1)
+Cuvdec1 aux 0 100n
+.model UVHOLD SW(RON=83.3333333333 ROFF=1e9 VT=0.002 VH=0.002)
+Bldotarget ldotarget 0 V=min(3.207,max(V(vin)-.65,0))*min(max((V(vin)-2.7)/0.1,0),1)
+Rldolag ldotarget ldofilter 1000
+Cldolag ldofilter 0 200n
+Bldo vin aux I=min(.32,max(0,(V(ldofilter)-V(aux))/.1))
+Caux aux 0 4.7u
+Rauxload aux 0 10k
+Buv uv 0 V=3.1075-V(aux)
+Sreset timer 0 uv 0 RESET
+.model RESET SW(RON=10 ROFF=1e12 VT=0 VH=.0625)
+Vnormalized normalized 0 1
+Rtimer normalized timer 350k
+Ctimer timer 0 4.465n
+Bdriver driver 0 V=(V(timer)>.64) ? .8*V(aux) : min(.2,V(aux))
+Bdriverload aux 0 I=max(0,-I(Bdriver)*V(driver))/max(V(aux),.1)
+Rdrive driver diode_anode 1000
+Bdiode diode_anode en I=max((V(diode_anode)-V(en)-.9)/10,0)-80n*max(0,min((V(en)-V(diode_anode))*100,1))
+Cdiode diode_anode en 2p
+Rinternal vin en 800k
+Roff en 0 22220
+Cen en 0 1n
+Iinput 0 en 1u
+Rbatmon_top vin batmon 140k
+Rbatmon_bottom batmon 0 10k
+Bbaterror baterror 0 V=.4-V(batmon)
+Rbatlag baterror batfilter 10k
+Cbatlag batfilter 0 5n
+Rmr aux mr 100k
+Smrsink mr 0 batfilter 0 BATMON
+.model BATMON SW(RON=83.333333 ROFF=1e9 VT=.00275 VH=.00275)
+Bmrerror mrerror 0 V=.6-V(mr)
+Sctmanual timer 0 mrerror 0 MANUAL
+.model MANUAL SW(RON=10 ROFF=1e12 VT=0 VH=.001)
+Bbatq aux 0 I=13u*min(max(V(aux)/1.8,0),1)
+Vuvunit uvunit 0 1
+Ruvready uvunit uvready 100k
+Cuvready uvready 0 4.4052675n
+Buvreset uvreset 0 V=1.8-V(aux)
+Suvreset uvready 0 uvreset 0 UVREADY
+.model UVREADY SW(RON=10 ROFF=1e12 VT=0 VH=.005)
+Rbleed0 rail 0 378
+Rbleed1 rail 0 378
+.save v(vin) v(rail) v(bus) v(aux) v(en) i(Lout) i(Vbattery)
+.control
+set wr_singlescale
+set wr_vecnames
+tran 100u 1 0 1u uic
+meas tran bus_0 FIND v(bus) AT=0.079
+meas tran rail_0 FIND v(rail) AT=0.079
+meas tran en_0 FIND v(en) AT=0.079
+meas tran aux_0 FIND v(aux) AT=0.079
+meas tran bus_1 FIND v(bus) AT=0.081
+meas tran rail_1 FIND v(rail) AT=0.081
+meas tran en_1 FIND v(en) AT=0.081
+meas tran aux_1 FIND v(aux) AT=0.081
+meas tran bus_2 FIND v(bus) AT=0.1
+meas tran rail_2 FIND v(rail) AT=0.1
+meas tran en_2 FIND v(en) AT=0.1
+meas tran aux_2 FIND v(aux) AT=0.1
+meas tran bus_3 FIND v(bus) AT=0.2
+meas tran rail_3 FIND v(rail) AT=0.2
+meas tran en_3 FIND v(en) AT=0.2
+meas tran aux_3 FIND v(aux) AT=0.2
+meas tran bus_4 FIND v(bus) AT=1.0
+meas tran rail_4 FIND v(rail) AT=1.0
+meas tran en_4 FIND v(en) AT=1.0
+meas tran aux_4 FIND v(aux) AT=1.0
+linearize v(vin) v(rail) v(bus) v(aux) v(en) i(Lout) i(Vbattery)
+wrdata display_trace.dat v(vin) v(rail) v(bus) v(aux) v(en) i(Lout) i(Vbattery)
+quit
+.endc
+.end

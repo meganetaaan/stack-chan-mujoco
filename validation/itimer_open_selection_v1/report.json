@@ -1,0 +1,31 @@
+{
+  "assembly": "schematics/power/servo_power_rearm_integration_revM/assembly.json",
+  "sha256": "345add726fd60b9dbf7351ced3864b2f8eebcbd65653f029af9b759e4c27b5a5",
+  "checks": [
+    {
+      "reference": "LEFT_U_POWER",
+      "net": "LEFT_ITIMER",
+      "endpoints": [
+        [
+          "LEFT_U_POWER",
+          "10"
+        ]
+      ],
+      "no_external_component": true
+    },
+    {
+      "reference": "RIGHT_U_POWER",
+      "net": "RIGHT_ITIMER",
+      "endpoints": [
+        [
+          "RIGHT_U_POWER",
+          "10"
+        ]
+      ],
+      "no_external_component": true
+    }
+  ],
+  "open_topology_verified": true,
+  "nuisance_trip_qualified": false,
+  "fault_energy_qualified": false
+}

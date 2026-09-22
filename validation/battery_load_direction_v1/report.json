@@ -1,0 +1,232 @@
+{
+  "scope": "Force transfer to floor center only; excludes rotational inertial couple and preload",
+  "reference_base_m": [
+    0.029,
+    0,
+    0.065
+  ],
+  "center_offset_m": [
+    0,
+    0,
+    0.015
+  ],
+  "acceptance": false,
+  "cases": [
+    {
+      "source": "validation/battery_translation_load_v1/actuator_fullbody_load_left_v1.npz",
+      "sha256": "518aa12d66526b54223e45be73c83309bd1da11eeac10f7a1a53ede37af82017",
+      "selected": [
+        {
+          "criterion": "X_min",
+          "index": 2990,
+          "time_s": 2.9909999999997816,
+          "force_base_N": [
+            -0.08798126644421095,
+            -0.08982482856471286,
+            -0.6224347160485908
+          ],
+          "force_transfer_moment_about_floor_center_Nm": [
+            0.0013473724284706928,
+            -0.0013197189966631642,
+            0.0
+          ]
+        },
+        {
+          "criterion": "X_max",
+          "index": 13,
+          "time_s": 0.014000000000000005,
+          "force_base_N": [
+            0.1709865982613253,
+            9.573550989342257e-06,
+            -1.5222643933681943
+          ],
+          "force_transfer_moment_about_floor_center_Nm": [
+            -1.4360326484013386e-07,
+            0.0025647989739198797,
+            0.0
+          ]
+        },
+        {
+          "criterion": "Y_min",
+          "index": 2706,
+          "time_s": 2.706999999999813,
+          "force_base_N": [
+            -0.0028115592204303944,
+            -0.25185606105267755,
+            -0.7191980245640383
+          ],
+          "force_transfer_moment_about_floor_center_Nm": [
+            0.003777840915790163,
+            -4.2173388306455916e-05,
+            0.0
+          ]
+        },
+        {
+          "criterion": "Y_max",
+          "index": 2558,
+          "time_s": 2.558999999999829,
+          "force_base_N": [
+            0.11200236179357961,
+            0.2809031598628302,
+            -0.75042851683139
+          ],
+          "force_transfer_moment_about_floor_center_Nm": [
+            -0.004213547397942453,
+            0.0016800354269036941,
+            0.0
+          ]
+        },
+        {
+          "criterion": "Z_min",
+          "index": 15,
+          "time_s": 0.016000000000000007,
+          "force_base_N": [
+            0.16063963739762488,
+            -0.0006634993470899257,
+            -1.6537050212103552
+          ],
+          "force_transfer_moment_about_floor_center_Nm": [
+            9.952490206348886e-06,
+            0.002409594560964373,
+            -0.0
+          ]
+        },
+        {
+          "criterion": "Z_max",
+          "index": 4,
+          "time_s": 0.005,
+          "force_base_N": [
+            0.0,
+            1.2018750501945457e-31,
+            6.654303774666914e-13
+          ],
+          "force_transfer_moment_about_floor_center_Nm": [
+            -1.8028125752918185e-33,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "peak_force_transfer_moment_Nm": 0.004536132792407988,
+      "peak_moment_time_s": 2.558999999999829,
+      "peak_moment_vector_Nm": [
+        -0.004213547397942453,
+        0.0016800354269036941,
+        0.0
+      ],
+      "simultaneous_force_N": [
+        0.11200236179357961,
+        0.2809031598628302,
+        -0.75042851683139
+      ]
+    },
+    {
+      "source": "validation/battery_translation_load_v1/actuator_fullbody_load_right_v1.npz",
+      "sha256": "12ffa8b4263b4f8777afd8074e5075d6d0889146ce0d1cf50781f2dc5e5bf166",
+      "selected": [
+        {
+          "criterion": "X_min",
+          "index": 2948,
+          "time_s": 2.9489999999997862,
+          "force_base_N": [
+            -0.08971102286210586,
+            0.17105803502793945,
+            -0.7170094832922724
+          ],
+          "force_transfer_moment_about_floor_center_Nm": [
+            -0.0025658705254190915,
+            -0.0013456653429315879,
+            0.0
+          ]
+        },
+        {
+          "criterion": "X_max",
+          "index": 13,
+          "time_s": 0.014000000000000005,
+          "force_base_N": [
+            0.1709865982613253,
+            9.573550989342257e-06,
+            -1.5222643933681943
+          ],
+          "force_transfer_moment_about_floor_center_Nm": [
+            -1.4360326484013386e-07,
+            0.0025647989739198797,
+            0.0
+          ]
+        },
+        {
+          "criterion": "Y_min",
+          "index": 2560,
+          "time_s": 2.560999999999829,
+          "force_base_N": [
+            0.10824028301098533,
+            -0.28039675840442396,
+            -0.7394780054078671
+          ],
+          "force_transfer_moment_about_floor_center_Nm": [
+            0.004205951376066359,
+            0.0016236042451647798,
+            -0.0
+          ]
+        },
+        {
+          "criterion": "Y_max",
+          "index": 2705,
+          "time_s": 2.705999999999813,
+          "force_base_N": [
+            -0.003483276705915507,
+            0.2539021092816465,
+            -0.7269560191826169
+          ],
+          "force_transfer_moment_about_floor_center_Nm": [
+            -0.003808531639224698,
+            -5.2249150588732606e-05,
+            0.0
+          ]
+        },
+        {
+          "criterion": "Z_min",
+          "index": 15,
+          "time_s": 0.016000000000000007,
+          "force_base_N": [
+            0.16063963739762488,
+            -0.0006634993470899257,
+            -1.6537050212103552
+          ],
+          "force_transfer_moment_about_floor_center_Nm": [
+            9.952490206348886e-06,
+            0.002409594560964373,
+            -0.0
+          ]
+        },
+        {
+          "criterion": "Z_max",
+          "index": 4,
+          "time_s": 0.005,
+          "force_base_N": [
+            0.0,
+            1.2018750501945457e-31,
+            6.654303774666914e-13
+          ],
+          "force_transfer_moment_about_floor_center_Nm": [
+            -1.8028125752918185e-33,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "peak_force_transfer_moment_Nm": 0.004508449591905358,
+      "peak_moment_time_s": 2.560999999999829,
+      "peak_moment_vector_Nm": [
+        0.004205951376066359,
+        0.0016236042451647798,
+        -0.0
+      ],
+      "simultaneous_force_N": [
+        0.10824028301098533,
+        -0.28039675840442396,
+        -0.7394780054078671
+      ]
+    }
+  ]
+}

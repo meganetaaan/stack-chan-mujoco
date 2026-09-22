@@ -1,0 +1,85 @@
+{
+  "source_sha256": {
+    "schematics/power/protected_pack_system_candidate_v4/assembly.json": "8c16bc35ececcdad159164caf7a0c7624e1235fa417d7fe9ff4969025e1a16b8",
+    "validation/main_allow_interface_screen_v1/report.json": "46c3223fb9dacaa890c9c47fb9bb5fd8348805c71c88376195be6e2a44c4e1e0",
+    "validation/aux_start_connection_v1/report.json": "278f4da7fe2b52c646aa7c7643b080f4cae2e507e451e39d08d29b0338f4badf",
+    "schematics/power/pack_control_ramp_candidate_v1/assembly.json": "cec05991e2d6c3c44309dbfe7b7c62a9bacc77a8c9b1c684d19df39fe351c301"
+  },
+  "rows": [
+    {
+      "MCU_MHz": 16,
+      "partial_screen_sum_A": 0.006729355758542362
+    },
+    {
+      "MCU_MHz": 32,
+      "partial_screen_sum_A": 0.008729355758542362
+    },
+    {
+      "MCU_MHz": 64,
+      "partial_screen_sum_A": 0.012129355758542362
+    }
+  ],
+  "added_to_main_interface_partial_budget": [
+    {
+      "name": "aux_permission_branch",
+      "A": 0.00034057851239669427,
+      "basis": "Inherited conditional10uA SHDN leakage allocation, not a full range guarantee"
+    },
+    {
+      "name": "clear_input_pullup",
+      "A": 0.00036363636363636367,
+      "basis": "Engineering3.6V,1% total resistance envelope, node low"
+    },
+    {
+      "name": "clear_OD_static_ICC",
+      "A": 1e-05,
+      "basis": "TI SN74LVC1G07 RevAG5.5 catalog rail-input static condition"
+    },
+    {
+      "name": "clear_Schmitt_static_ICC",
+      "A": 4e-06,
+      "basis": "Nexperia74LVC1G17 Rev16.1 table7 catalog input condition"
+    },
+    {
+      "name": "clear_OD_input_leakage",
+      "A": 5e-06,
+      "basis": "TI input leakage magnitude allocation charged to driving CTRL rail"
+    },
+    {
+      "name": "clear_Schmitt_input_leakage",
+      "A": 1e-06,
+      "basis": "Nexperia input leakage allocation; may overlap pullup budget, retained conservatively"
+    }
+  ],
+  "CTRL3V3_nominal_capacitors_F": {
+    "CTRL__C_HOST_HF": 1e-07,
+    "CTRL__C_HOST_BULK": 4.7e-06,
+    "CTRL__C_HOST_SUP": 1e-07,
+    "CTRL__C_WD": 1e-07,
+    "CTRL__C_RESET_BUFFER": 1e-07,
+    "CTRL__C_PERMIT_LATCH": 1e-07,
+    "CTRL__C_MAIN_GATE": 1e-07,
+    "CTRL__C_AUX_GATE": 1e-07,
+    "CTRL__C_LDO_OUT": 4.7e-06,
+    "IF_CLEAR__C_HF": 1e-07,
+    "IF_CLEAR__C_SCHMITT": 1e-07
+  },
+  "CTRL3V3_nominal_capacitance_F": 1.03e-05,
+  "added_nominal_capacitance_F": 2e-07,
+  "SYS_clear_output_pullup_current_charged_to_CTRL": false,
+  "SYS_clear_output_pullup_note": "SYS__R14 is supplied by SYS__LOGIC3V3. OD sinks this current but it is not CTRL LDO output current.",
+  "sources": [
+    "https://www.ti.com/lit/ds/symlink/sn74lvc1g07.pdf",
+    "https://assets.nexperia.com/documents/data-sheet/74LVC1G17.pdf"
+  ],
+  "limits": [
+    "Inherited MCU characterized peripheral-disabled current and resistor envelopes retained; not simultaneous actual state",
+    "Static IC catalog conditions do not bound intermediate inputs or switching;500uA deltaICC at one test point is not an all-input maximum",
+    "Existing logic/supervisor missing consumption, IO/debug loads, MCU enabled peripherals, capacitor tolerance/leakage and LDO ground current remain",
+    "Nominal capacitors only; no voltage bias/temperature/tolerance qualification",
+    "Full rail maximum remains unknown; equivalent resistor is only a reproducible probe"
+  ],
+  "total_controller_max_current_A": null,
+  "qualified": false,
+  "manufacturing_release": false
+}

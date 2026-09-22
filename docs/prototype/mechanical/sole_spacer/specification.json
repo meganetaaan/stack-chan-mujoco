@@ -1,0 +1,60 @@
+{
+  "part_number": "SCW-SOLE-SPACER-01",
+  "revision": "A-candidate",
+  "status": "Design requirement proposal, not released for manufacturing",
+  "quantity_per_robot": 10,
+  "units": "mm",
+  "material_requirement": "SUS304 stainless steel; material certificate required before release",
+  "process_candidate": "Turn and face from round stock; drill/ream bore; deburr without exceeding edge break",
+  "outer_diameter": {
+    "nominal": 6.0,
+    "min": 5.95,
+    "max": 6.0
+  },
+  "inner_diameter": {
+    "nominal": 2.3,
+    "min": 2.3,
+    "max": 2.35
+  },
+  "thickness": {
+    "nominal": 0.9,
+    "min": 0.85,
+    "max": 0.95
+  },
+  "face_flatness_max": 0.02,
+  "face_parallelism_max": 0.02,
+  "edge_break_radial_max": 0.05,
+  "notes": [
+    "Thickness limits apply across the bearing faces, including form variation; do not add flatness again to the axial stack.",
+    "No burrs or protrusions outside the dimensional envelope.",
+    "Nominal CAD is validation/sole_wide_seat_v1/cad/left_spacer.step; right part has identical shape.",
+    "Existing nominal CAD has sharp edges; edge break envelope must be included in bearing contact analysis."
+  ],
+  "mating_requirements_proposed": {
+    "sole_hole_diameter": {
+      "min": 6.3,
+      "max": 6.5
+    },
+    "sole_local_thickness": {
+      "min": 2.9,
+      "max": 3.1
+    },
+    "screw_head_height_max": 1.4,
+    "screw_shank_diameter_max": 2.0,
+    "required_floor_recess": 0.2,
+    "required_radial_assembly_clearance": 0.1
+  },
+  "unverified": [
+    "Supplier capability and cost for proposed machining tolerances",
+    "Assembled TPU hole size and local thickness, including print distortion",
+    "Selected M2x8 low-head screw dimensional limits",
+    "Loaded sole compression, wear, tilt and spacer embedding",
+    "Spacer elastic bending, unilateral contact and PETG creep",
+    "Walking shear transfer and overall joint strength"
+  ],
+  "quantity_breakdown": {
+    "feet": 2,
+    "yaw_mount_plates": 8
+  },
+  "quantity_scope": "Current foot and yaw-support prototype candidates; excludes spares and test coupons"
+}

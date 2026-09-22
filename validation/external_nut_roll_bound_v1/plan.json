@@ -1,0 +1,26 @@
+{
+  "scope": "Conservative continuous roll clearance bound for newly placed nut and screw.",
+  "roll_range_rad": [
+    -0.34,
+    0.34
+  ],
+  "criteria": {
+    "minimum_nominal_clearance_mm": 1.1
+  },
+  "co_rotating_targets": [
+    "10",
+    "11",
+    "12",
+    "3",
+    "9"
+  ],
+  "bound": "d(theta)>=d(0)-2*rmax*sin(abs(theta)/2); co-rotating pairs retain d(0)",
+  "rmax": "Maximum distance to roll X axis bounded by source CAD AABB corners",
+  "stop_condition": "Evaluate bound once for two parts on each foot against all recorded neutral targets",
+  "limitations": [
+    "Existing servo motion-group assignment is an unqualified assembly hypothesis",
+    "Only nut and screw, not entire foot or harness",
+    "Tool removed during operation",
+    "No deformation, geometry tolerance or joint backlash included beyond inherited nominal margin"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "question": "Does forwarding U9 fault cause to U7 MR remove the settled threshold-mismatch restart counterexample?",
+  "acceptance": [
+    "Either supervisor trip clears permission",
+    "Recovery alone leaves permission cleared",
+    "Qualified new request can rearm",
+    "Normal EN low does not pull fault cause low"
+  ],
+  "scope": "Settled logic only, independent source5V valid; actual pulse/propagation and sequencer not qualified",
+  "assembly_sha256": "ac058468eb13f181ceedf5e656a51f29cc833f10ab43c6872e376359681b6836",
+  "static_assumptions": [
+    "LOGIC3V3 3.207..3.393V, upstream5V 4.75..5.25V",
+    "10k pullup total +/-1%",
+    "Leakage comparison at published test conditions; not all supply states"
+  ]
+}

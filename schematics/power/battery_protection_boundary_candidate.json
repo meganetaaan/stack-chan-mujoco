@@ -1,0 +1,56 @@
+{
+  "status": "connection_architecture_candidate_not_a_released_circuit",
+  "source_assembly": "servo_power_pololu_discharge_candidate_v1/assembly.json",
+  "cell_protector_candidate": "BQ7791500 rejected as sole cell undervoltage protection; replacement required",
+  "domains": {
+    "CELL_B_MINUS": "Battery cell stack negative; only pack-local protection, sense and cell-tap circuitry",
+    "PACK_RETURN": "Load-side return after current sense and CHG/DSG protection MOSFET network; must not be shorted to CELL_B_MINUS",
+    "PACK_POS_FUSED": "Battery positive after battery-adjacent fuse; fuse part and coordination unresolved",
+    "SYSTEM_BATTERY": "PACK_POS_FUSED after input reverse-polarity protection; referenced to PACK_RETURN; all robot branches originate here",
+    "DRIVE_BATTERY_PROTECTED": "SYSTEM_BATTERY after drive-only disconnect; switching and reverse-energy behavior unresolved"
+  },
+  "assembly_port_bindings": {
+    "BATTERY_RAW": "SYSTEM_BATTERY",
+    "GND": "PACK_RETURN",
+    "DRIVE_BATTERY_PROTECTED": "DRIVE_BATTERY_PROTECTED"
+  },
+  "other_branch_bindings": {
+    "Tab5_HV_positive": "SYSTEM_BATTERY through separately qualified branch protection",
+    "Tab5_GND": "PACK_RETURN",
+    "USB_GND_and_servo_DATA_reference": "PACK_RETURN; external connections must not bridge to CELL_B_MINUS"
+  },
+  "integration_action": "Bindings are a proposed wrapper, not changes to or qualification of the source assembly. Preserve internal TPS26601 RTN/GND distinction.",
+  "prohibited_connections": [
+    [
+      "CELL_B_MINUS",
+      "PACK_RETURN"
+    ],
+    [
+      "cell_tap",
+      "nonisolated_robot_ADC_or_debug_ground"
+    ]
+  ],
+  "charging": "Remove pack from robot, including cell-tap harness, before connecting external balance charger. Charger selection and connector pinout unresolved.",
+  "restart": "Neither cell protector recovery nor USB/logic power recovery authorizes servo enable; manual permission and qualified source sequence required.",
+  "unselected_required_parts": [
+    "battery fuse",
+    "reverse-polarity protection",
+    "cell protector supporting network",
+    "CHG/DSG MOSFETs",
+    "current shunt",
+    "drive disconnect",
+    "Tab5 branch protection",
+    "cell-tap mating connector"
+  ],
+  "manufacturing_release": false,
+  "cell_undervoltage_selection": {
+    "manufacturer_general_loaded_cell_minimum_V": 3.0,
+    "battery_source": "https://www.genstattu.com/content/instock/Lipo-Manual.pdf",
+    "scope": "General manufacturer floor; exact pack may impose stricter conditions",
+    "BQ7791500_nominal_trip_V": 2.9,
+    "BQ7791500_trip_min_at_25C_V": 2.882,
+    "BQ7791508_trip_min_at_25C_V": 2.982,
+    "decision": "Reject as sole UV protection even before allowing for detection and disconnect delay",
+    "required_next_design": "Cell-wise trip above 3.0V with verified error and dynamic margin; reconsider low-side topology if replacement uses high-side switching"
+  }
+}

@@ -1,0 +1,889 @@
+{
+  "scope": "Put one pull-down at each eFuse EN pin, retaining near-original normal load.",
+  "parts": [
+    {
+      "reference": "U1",
+      "part": "MAX6816EUS+T",
+      "pins": {
+        "1": "GND",
+        "2": "BUTTON_RAW",
+        "3": "BUTTON_RELEASED",
+        "4": "LOGIC3V3"
+      },
+      "source": "manual_button_candidate.json"
+    },
+    {
+      "reference": "U2",
+      "part": "SN74LVC1G04DBVR",
+      "pins": {
+        "1": null,
+        "2": "BUTTON_RELEASED",
+        "3": "GND",
+        "4": "PRESS",
+        "5": "LOGIC3V3"
+      },
+      "source": "manual_button_candidate.json"
+    },
+    {
+      "reference": "U3",
+      "part": "SN74HCS11PWR",
+      "pins": {
+        "1": "RESET_N",
+        "2": "RAW_RELEASED_CONDITIONED",
+        "3": "ENABLE_PERMISSION",
+        "4": "SEQUENCE_ENABLE_REQUEST",
+        "5": "RESET_N",
+        "6": "POWER_ENABLE_COMMAND",
+        "7": "GND",
+        "8": null,
+        "9": "GND",
+        "10": "GND",
+        "11": "GND",
+        "12": "RELEASE_CONDITION",
+        "13": "BUTTON_RELEASED",
+        "14": "LOGIC3V3"
+      },
+      "source": "manual_release_gate_candidate.json"
+    },
+    {
+      "reference": "U4",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "RELEASE_CONDITION",
+        "3": "GND",
+        "4": "RELEASE_MR",
+        "5": "LOGIC3V3"
+      },
+      "source": "manual_release_mr_buffer_candidate.json"
+    },
+    {
+      "reference": "U5",
+      "part": "TPS3808G33DBVR",
+      "pins": {
+        "1": "RELEASE_QUALIFIED",
+        "2": "GND",
+        "3": "RELEASE_MR",
+        "4": "TIMER_CT",
+        "5": "LOGIC3V3",
+        "6": "LOGIC3V3"
+      },
+      "source": "manual_release_timer_candidate.json"
+    },
+    {
+      "reference": "U6",
+      "part": "SN74HCS74PW",
+      "pins": {
+        "1": "RESET_N",
+        "2": "LOGIC3V3",
+        "3": "RELEASE_QUALIFIED",
+        "4": "LOGIC3V3",
+        "5": "ARMED",
+        "6": null,
+        "7": "GND",
+        "8": null,
+        "9": "ENABLE_PERMISSION",
+        "10": "LOGIC3V3",
+        "11": "PRESS",
+        "12": "ARMED",
+        "13": "RESET_N",
+        "14": "LOGIC3V3"
+      },
+      "source": "manual_rearm_latch_candidate.json"
+    },
+    {
+      "reference": "R1",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "TIMER_CT"
+      },
+      "source": null
+    },
+    {
+      "reference": "R2",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "RELEASE_QUALIFIED"
+      },
+      "source": null
+    },
+    {
+      "reference": "C1",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "C2",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "C3",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "C4",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "C5",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "C6",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "SW1",
+      "part": "B3U-1000P",
+      "pins": {
+        "1": "BUTTON_RAW",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "U7",
+      "part": "TPS3808G33DBVR",
+      "pins": {
+        "1": "RESET_N",
+        "2": "GND",
+        "3": "RAIL_HEALTH_N",
+        "4": "SUPERVISOR_CT",
+        "5": "LOGIC3V3",
+        "6": "LOGIC3V3"
+      },
+      "source": "manual_rearm_supervisor_candidate.json"
+    },
+    {
+      "reference": "R3",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "SUPERVISOR_CT"
+      },
+      "source": null
+    },
+    {
+      "reference": "R4",
+      "part": "100k value candidate; exact part/tolerance pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "RESET_N"
+      },
+      "source": null
+    },
+    {
+      "reference": "C7",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "U8",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "POWER_ENABLE_COMMAND",
+        "3": "GND",
+        "4": "ENABLE_BUFFER_OUT",
+        "5": "LOGIC3V3"
+      },
+      "source": "main_enable_driver_candidate.json"
+    },
+    {
+      "reference": "R6",
+      "part": "220k pulldown; total +/-1% budget, part pending",
+      "pins": {
+        "1": "POWER_ENABLE_COMMAND",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "C8",
+      "part": "100nF local ceramic candidate; part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "R7",
+      "part": "4.7k series; total +/-1% budget, part pending",
+      "pins": {
+        "1": "ENABLE_BUFFER_OUT",
+        "2": "MAIN_EFUSE_EN"
+      },
+      "source": null
+    },
+    {
+      "reference": "U9",
+      "part": "TPS3808G33DBVR",
+      "pins": {
+        "1": "RAIL_HEALTH_N",
+        "2": "GND",
+        "3": "STOP_AUX3V3",
+        "4": "CLAMP_CT",
+        "5": "LOGIC3V3",
+        "6": "STOP_AUX3V3"
+      },
+      "source": "main_enable_clamp_candidate.json"
+    },
+    {
+      "reference": "R8",
+      "part": "100k CT candidate; part pending",
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "CLAMP_CT"
+      },
+      "source": null
+    },
+    {
+      "reference": "C9",
+      "part": "100nF local ceramic candidate; part pending",
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "U10",
+      "part": "TPS3808G01DBVR",
+      "pins": {
+        "1": "MAIN_EFUSE_EN",
+        "2": "GND",
+        "3": "CLAMP_MR_STOP_AUX",
+        "4": null,
+        "5": "STOP_AUX3V3",
+        "6": "STOP_AUX3V3"
+      },
+      "source": "main_clamp_cause_candidate.json"
+    },
+    {
+      "reference": "U11",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "RAIL_HEALTH_N",
+        "3": "GND",
+        "4": "CLAMP_MR_STOP_AUX",
+        "5": "STOP_AUX3V3"
+      },
+      "source": "main_clamp_cause_candidate.json"
+    },
+    {
+      "reference": "R9",
+      "part": "10k cause pullup; total +/-1% budget, part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "RAIL_HEALTH_N"
+      },
+      "source": null
+    },
+    {
+      "reference": "C10",
+      "part": "100nF local ceramic candidate; part pending",
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "C11",
+      "part": "100nF local ceramic candidate; part pending",
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "U14",
+      "part": "74AUP1G06GW",
+      "pins": {
+        "1": null,
+        "2": "SEQUENCE_CLEAR_REQUEST",
+        "3": "GND",
+        "4": "RESET_N",
+        "5": "LOGIC3V3"
+      },
+      "source": "sequence_clear_sink_candidate.json"
+    },
+    {
+      "reference": "R14",
+      "part": "100k input pullup; total +/-1% comparison, exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "SEQUENCE_CLEAR_REQUEST"
+      },
+      "source": null
+    },
+    {
+      "reference": "C14",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "U15",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "BUTTON_RAW",
+        "3": "GND",
+        "4": "RAW_RELEASED_CONDITIONED",
+        "5": "LOGIC3V3"
+      },
+      "source": "local_enable_button_candidate.json"
+    },
+    {
+      "reference": "R15",
+      "part": "3k local button pullup; total +/-1% budget; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "BUTTON_RAW"
+      },
+      "source": null
+    },
+    {
+      "reference": "C15",
+      "part": "100nF local ceramic candidate; exact part pending",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null
+    },
+    {
+      "reference": "LEFT_U12",
+      "part": "TPS3700DDCR",
+      "pins": {
+        "1": "LEFT_PG_CONDITIONED_OD",
+        "2": "GND",
+        "3": "LEFT_PG_DIVIDED",
+        "4": "GND",
+        "5": "LOGIC3V3",
+        "6": null
+      },
+      "source": "pg_receiver_candidate.json",
+      "origin_reference": "U12"
+    },
+    {
+      "reference": "LEFT_U13",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "LEFT_PG_CONDITIONED_OD",
+        "3": "GND",
+        "4": "LEFT_PG_CONDITIONED",
+        "5": "LOGIC3V3"
+      },
+      "source": "pg_receiver_candidate.json",
+      "origin_reference": "U13"
+    },
+    {
+      "reference": "LEFT_R10",
+      "part": "TNPW0603150KBYEA",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "LEFT_PG_SOURCE"
+      },
+      "source": null,
+      "placement": "At eFuse PG pin, before monitored trace",
+      "origin_reference": "R10"
+    },
+    {
+      "reference": "LEFT_R11",
+      "part": "TNPW08051M00BYEA",
+      "pins": {
+        "1": "LEFT_EFUSE_PG",
+        "2": "LEFT_PG_DIVIDED"
+      },
+      "source": null,
+      "origin_reference": "R11"
+    },
+    {
+      "reference": "LEFT_R12",
+      "part": "TNPW0603330KBYEA",
+      "pins": {
+        "1": "LEFT_PG_DIVIDED",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "R12"
+    },
+    {
+      "reference": "LEFT_R13",
+      "part": "TNPW060310K0BYEA",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "LEFT_PG_CONDITIONED_OD"
+      },
+      "source": null,
+      "origin_reference": "R13"
+    },
+    {
+      "reference": "LEFT_C12",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "C12"
+    },
+    {
+      "reference": "LEFT_C13",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "C13"
+    },
+    {
+      "reference": "RIGHT_U12",
+      "part": "TPS3700DDCR",
+      "pins": {
+        "1": "RIGHT_PG_CONDITIONED_OD",
+        "2": "GND",
+        "3": "RIGHT_PG_DIVIDED",
+        "4": "GND",
+        "5": "LOGIC3V3",
+        "6": null
+      },
+      "source": "pg_receiver_candidate.json",
+      "origin_reference": "U12"
+    },
+    {
+      "reference": "RIGHT_U13",
+      "part": "74LVC1G17GV",
+      "pins": {
+        "1": null,
+        "2": "RIGHT_PG_CONDITIONED_OD",
+        "3": "GND",
+        "4": "RIGHT_PG_CONDITIONED",
+        "5": "LOGIC3V3"
+      },
+      "source": "pg_receiver_candidate.json",
+      "origin_reference": "U13"
+    },
+    {
+      "reference": "RIGHT_R10",
+      "part": "TNPW0603150KBYEA",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "RIGHT_PG_SOURCE"
+      },
+      "source": null,
+      "placement": "At eFuse PG pin, before monitored trace",
+      "origin_reference": "R10"
+    },
+    {
+      "reference": "RIGHT_R11",
+      "part": "TNPW08051M00BYEA",
+      "pins": {
+        "1": "RIGHT_EFUSE_PG",
+        "2": "RIGHT_PG_DIVIDED"
+      },
+      "source": null,
+      "origin_reference": "R11"
+    },
+    {
+      "reference": "RIGHT_R12",
+      "part": "TNPW0603330KBYEA",
+      "pins": {
+        "1": "RIGHT_PG_DIVIDED",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "R12"
+    },
+    {
+      "reference": "RIGHT_R13",
+      "part": "TNPW060310K0BYEA",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "RIGHT_PG_CONDITIONED_OD"
+      },
+      "source": null,
+      "origin_reference": "R13"
+    },
+    {
+      "reference": "RIGHT_C12",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "C12"
+    },
+    {
+      "reference": "RIGHT_C13",
+      "part": "GRM31C5C1H104JA01L",
+      "pins": {
+        "1": "LOGIC3V3",
+        "2": "GND"
+      },
+      "source": null,
+      "origin_reference": "C13"
+    },
+    {
+      "reference": "LEFT_U_POWER",
+      "part": "TPS259813LRPW",
+      "pins": {
+        "1": "LEFT_EN_LOCAL",
+        "2": "LEFT_OVLO_SENSE",
+        "3": "LEFT_PG_SOURCE",
+        "4": "LEFT_FLT_N",
+        "5": "LEFT_REGULATOR_OUT",
+        "6": "LEFT_INTERNAL_OUT",
+        "7": "LEFT_DVDT",
+        "8": "GND",
+        "9": "LEFT_ILM",
+        "10": "LEFT_ITIMER"
+      }
+    },
+    {
+      "reference": "LEFT_Q_REVERSE",
+      "part": "SiSS80DN-T1-GE3 comparison only",
+      "pins": {
+        "1": "LEFT_INTERNAL_OUT",
+        "2": "LEFT_INTERNAL_OUT",
+        "3": "LEFT_INTERNAL_OUT",
+        "4": "LEFT_REVERSE_GATE",
+        "5": "LEFT_SERVO_BUS",
+        "6": "LEFT_SERVO_BUS",
+        "7": "LEFT_SERVO_BUS",
+        "8": "LEFT_SERVO_BUS"
+      }
+    },
+    {
+      "reference": "LEFT_R_GATE",
+      "part": null,
+      "value_ohm": null,
+      "pins": {
+        "1": "LEFT_DVDT",
+        "2": "LEFT_REVERSE_GATE"
+      }
+    },
+    {
+      "reference": "LEFT_C_GATE",
+      "part": null,
+      "value_F": null,
+      "pins": {
+        "1": "LEFT_REVERSE_GATE",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "RIGHT_U_POWER",
+      "part": "TPS259813LRPW",
+      "pins": {
+        "1": "RIGHT_EN_LOCAL",
+        "2": "RIGHT_OVLO_SENSE",
+        "3": "RIGHT_PG_SOURCE",
+        "4": "RIGHT_FLT_N",
+        "5": "RIGHT_REGULATOR_OUT",
+        "6": "RIGHT_INTERNAL_OUT",
+        "7": "RIGHT_DVDT",
+        "8": "GND",
+        "9": "RIGHT_ILM",
+        "10": "RIGHT_ITIMER"
+      }
+    },
+    {
+      "reference": "RIGHT_Q_REVERSE",
+      "part": "SiSS80DN-T1-GE3 comparison only",
+      "pins": {
+        "1": "RIGHT_INTERNAL_OUT",
+        "2": "RIGHT_INTERNAL_OUT",
+        "3": "RIGHT_INTERNAL_OUT",
+        "4": "RIGHT_REVERSE_GATE",
+        "5": "RIGHT_SERVO_BUS",
+        "6": "RIGHT_SERVO_BUS",
+        "7": "RIGHT_SERVO_BUS",
+        "8": "RIGHT_SERVO_BUS"
+      }
+    },
+    {
+      "reference": "RIGHT_R_GATE",
+      "part": null,
+      "value_ohm": null,
+      "pins": {
+        "1": "RIGHT_DVDT",
+        "2": "RIGHT_REVERSE_GATE"
+      }
+    },
+    {
+      "reference": "RIGHT_C_GATE",
+      "part": null,
+      "value_F": null,
+      "pins": {
+        "1": "RIGHT_REVERSE_GATE",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "LEFT_R_ILM",
+      "part": null,
+      "value_ohm": 1100,
+      "initial_tolerance_comparison": 0.001,
+      "status": "sizing_candidate_not_selected_part",
+      "pins": {
+        "1": "LEFT_ILM",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "RIGHT_R_ILM",
+      "part": null,
+      "value_ohm": 1100,
+      "initial_tolerance_comparison": 0.001,
+      "status": "sizing_candidate_not_selected_part",
+      "pins": {
+        "1": "RIGHT_ILM",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "LEFT_R_OV_TOP",
+      "part": null,
+      "value_ohm": 35700,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "LEFT_REGULATOR_OUT",
+        "2": "LEFT_OVLO_SENSE"
+      }
+    },
+    {
+      "reference": "LEFT_R_OV_BOTTOM",
+      "part": null,
+      "value_ohm": 10000,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "LEFT_OVLO_SENSE",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "RIGHT_R_OV_TOP",
+      "part": null,
+      "value_ohm": 35700,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "RIGHT_REGULATOR_OUT",
+        "2": "RIGHT_OVLO_SENSE"
+      }
+    },
+    {
+      "reference": "RIGHT_R_OV_BOTTOM",
+      "part": null,
+      "value_ohm": 10000,
+      "initial_tolerance_comparison": 0.001,
+      "status": "comparison_only_fault_pin_range_unqualified",
+      "pins": {
+        "1": "RIGHT_OVLO_SENSE",
+        "2": "GND"
+      }
+    },
+    {
+      "reference": "U_STOP_LDO",
+      "part": "TPS70933DBVR",
+      "pins": {
+        "1": "BATTERY_REVERSE_PROTECTED",
+        "2": "GND",
+        "3": null,
+        "4": null,
+        "5": "STOP_AUX3V3"
+      },
+      "note": "TPS709 pinout, not TPS709A/B; EN intentionally floating per TI table 5-1"
+    },
+    {
+      "reference": "C_STOP_IN",
+      "part": null,
+      "value_F": 2.2e-06,
+      "pins": {
+        "1": "BATTERY_REVERSE_PROTECTED",
+        "2": "GND"
+      },
+      "requirement": "Select voltage rating, effective capacitance and transient suitability"
+    },
+    {
+      "reference": "C_STOP_OUT",
+      "part": null,
+      "value_F": 4.7e-06,
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "GND"
+      },
+      "requirement": "At least 2.2uF effective per TI; exact part and bias/temperature/ESR qualification pending"
+    },
+    {
+      "reference": "R_STOP_MIN_LOAD",
+      "part": "TNPW060330K1BYEA",
+      "value_ohm": 30100.0,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "STOP_AUX3V3",
+        "2": "GND"
+      },
+      "note": "Minimum loading; exact resistor and temperature budget pending",
+      "selection_source": "schematics/power/stop_enable_resistors.json"
+    },
+    {
+      "reference": "LEFT_R_EN_PULLDOWN",
+      "part": "TNPW060378K7BYEA",
+      "value_ohm": 78700,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "LEFT_EN_LOCAL",
+        "2": "GND"
+      },
+      "placement": "At eFuse EN pin and local ground, after monitored trace; no shared remote pulldown",
+      "selection_source": "schematics/power/stop_enable_resistors.json"
+    },
+    {
+      "reference": "RIGHT_R_EN_PULLDOWN",
+      "part": "TNPW060378K7BYEA",
+      "value_ohm": 78700,
+      "total_tolerance_budget": 0.01,
+      "pins": {
+        "1": "RIGHT_EN_LOCAL",
+        "2": "GND"
+      },
+      "placement": "At eFuse EN pin and local ground, after monitored trace; no shared remote pulldown",
+      "selection_source": "schematics/power/stop_enable_resistors.json"
+    }
+  ],
+  "interfaces": {
+    "LOGIC3V3": "upstream logic rail; power budget and independent supervision unfinished",
+    "GND": "common reference; physical return routing unfinished",
+    "RESET_N": "U7 and U14 open-drain outputs; independent external stop/fault sinks and physical clear acknowledgement unfinished",
+    "ENABLE_PERMISSION": "logic output only; physical default-off power stage unfinished",
+    "MAIN_EFUSE_EN": "Common logic enable to both TPS259813L pin1; source UV/OV monitoring remains external and unimplemented",
+    "SEQUENCE_ENABLE_REQUEST": "unfinished startup/PG sequencer output; hardware gate also requires retained permission and RESET_N",
+    "SEQUENCE_CLEAR_REQUEST": "active high U14 input; weak default asserted; actual sequencer driver and clear width unfinished",
+    "BUTTON_RAW": "local PCB-only switch node; do not expose as external cable input; protection/layout unfinished",
+    "LEFT_PG_CONDITIONED": "Output to unimplemented startup sequencer; not valid during unqualified power transitions",
+    "RIGHT_PG_CONDITIONED": "Output to unimplemented startup sequencer; not valid during unqualified power transitions",
+    "LEFT_REGULATOR_OUT": "External selected converter output, not included",
+    "LEFT_SERVO_BUS": "Servo branch, regeneration absorber and discharge not included",
+    "LEFT_FLT_N": "Fault output, capture network UNIMPLEMENTED",
+    "LEFT_ITIMER": "Timer passive not selected",
+    "RIGHT_REGULATOR_OUT": "External selected converter output, not included",
+    "RIGHT_SERVO_BUS": "Servo branch, regeneration absorber and discharge not included",
+    "RIGHT_FLT_N": "Fault output, capture network UNIMPLEMENTED",
+    "RIGHT_ITIMER": "Timer passive not selected",
+    "BATTERY_REVERSE_PROTECTED": "Battery after unimplemented reverse/branch protection; independent of servo converter output",
+    "STOP_AUX3V3": "Dedicated stop-monitor supply, separate from LOGIC3V3; load and power sequence unqualified"
+  },
+  "source_sha256": {
+    "schematics/power/servo_power_rearm_integration_revD/assembly.json": "d7e5b5ed2e1b6be17940731f3dcb3c98fdecef28402763ecf2706e3d3c19d028",
+    "schematics/power/stop_enable_resistors.json": "a90d96166b1b9673b4aeadf3605a91a2494b7dbf864a28519846bd21b8c4f3c7"
+  },
+  "part_count": 73,
+  "pin_count": 251,
+  "logical_composition_only": true,
+  "electrical_qualification": false,
+  "manufacturing_release": false,
+  "assembly_overrides": [
+    "U8 pin4 routed through R7 to MAIN_EFUSE_EN; overrides direct output in individual driver candidate",
+    "U9 RESET goes to RAIL_HEALTH_N instead of EN; U7 MR receives RAIL_HEALTH_N instead of LOGIC3V3; U11 level buffer and U10 reset follower drive EN",
+    "U3 unused second AND gate: pins3,4,5 accept ENABLE_PERMISSION, SEQUENCE_ENABLE_REQUEST, RESET_N; pin6 drives U8 input POWER_ENABLE_COMMAND"
+  ],
+  "interconnects": [
+    {
+      "name": "LEFT_PG_TRACE",
+      "from": "LEFT_PG_SOURCE",
+      "to": "LEFT_EFUSE_PG",
+      "type": "PCB trace, not a resistor",
+      "placement": "Pullup R10 at eFuse source end; R11/R12 at receiver end"
+    },
+    {
+      "name": "RIGHT_PG_TRACE",
+      "from": "RIGHT_PG_SOURCE",
+      "to": "RIGHT_EFUSE_PG",
+      "type": "PCB trace, not a resistor",
+      "placement": "Pullup R10 at eFuse source end; R11/R12 at receiver end"
+    },
+    {
+      "name": "LEFT_EN_TRACE",
+      "from": "MAIN_EFUSE_EN",
+      "to": "LEFT_EN_LOCAL",
+      "type": "PCB trace, not a resistor",
+      "placement": "Local pulldown on eFuse side of trace break"
+    },
+    {
+      "name": "RIGHT_EN_TRACE",
+      "from": "MAIN_EFUSE_EN",
+      "to": "RIGHT_EN_LOCAL",
+      "type": "PCB trace, not a resistor",
+      "placement": "Local pulldown on eFuse side of trace break"
+    }
+  ],
+  "integration_limitations": [
+    "Startup sequencer and source-voltage monitors absent",
+    "Converter, battery protection, input/output capacitors, regeneration and discharge omitted",
+    "Power-stage part values and OVLO fault pin range remain unqualified",
+    "Connectivity only: no integrated transient or fault proof",
+    "Stop supply moved from legacy 5V to dedicated 3.3V; previous 5V clamp timing/level calculations cannot be reused",
+    "Stop LDO load, thermal, capacitor effective value and startup/brownout order unresolved",
+    "Stop LDO own failure and shared battery loss not covered",
+    "Minimum load resistor added; rated part and temperature tolerance not selected. No guarantee of total load or transient output.",
+    "Common EN drive is connected and statically screened; startup/brownout behavior and source UV monitoring unqualified",
+    "One common EN trace is not independent fault-tolerant shutdown; output and wiring faults require analysis",
+    "Local EN pull-downs replace R5; earlier 39k calculations are historical",
+    "Open trace analysis is settled leakage only; discharge timing and pin/pulldown ground faults unqualified"
+  ],
+  "power_stage_warnings": [
+    "Internal QOD is on INTERNAL_OUT; reverse FET OFF isolates it from SERVO_BUS",
+    "Existing FET choice is not qualified for DVDT minimum drive, gate charge, or negative VGS during cutoff",
+    "Gate resistor and capacitor in Figure 7-8 have no selected values here"
+  ]
+}

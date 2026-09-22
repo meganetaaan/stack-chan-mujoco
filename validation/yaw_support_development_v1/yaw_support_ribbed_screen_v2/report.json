@@ -1,0 +1,84 @@
+{
+  "scope": "Diagnostic r9 yaw-support screen under one recorded simultaneous wrench.\n\nAn ideal bonded back face is deliberately used as an optimistic support. A\nfailure warrants redesign; a pass would not certify fasteners or contact.\n",
+  "rows": [
+    {
+      "dofs": 20727,
+      "elements": 3423,
+      "fixed_facets": 244,
+      "loaded_facets": 110,
+      "max_displacement_mm": 0.15381309239347465,
+      "max_von_mises_MPa": 1.6269347406071806,
+      "max_absolute_principal_MPa": 1.835702709740354,
+      "achieved_wrench_N_Nmm": [
+        -0.11585923351947917,
+        -1.8455661844489049,
+        7.547747523040975,
+        -320.5874430620535,
+        -86.37829458985011,
+        -71.17598649662119
+      ],
+      "free_residual_norm_N": 1.3042064531926986e-11,
+      "strain_energy_Nmm": 1.2570488652810055,
+      "external_work_Nmm": 2.514097730562752,
+      "stress_evaluation": "all integration points, no excluded corner or support singularities",
+      "mesh_mm": 4.0
+    },
+    {
+      "dofs": 34407,
+      "elements": 5667,
+      "fixed_facets": 404,
+      "loaded_facets": 179,
+      "max_displacement_mm": 0.14994228347018254,
+      "max_von_mises_MPa": 1.7080901876585084,
+      "max_absolute_principal_MPa": 1.9865951944255946,
+      "achieved_wrench_N_Nmm": [
+        -0.11585923351965692,
+        -1.8455661844474573,
+        7.5477475230409175,
+        -320.5874430620381,
+        -86.3782945898467,
+        -71.17598649661772
+      ],
+      "free_residual_norm_N": 1.592905052308624e-11,
+      "strain_energy_Nmm": 1.2833025907489704,
+      "external_work_Nmm": 2.5666051815003246,
+      "stress_evaluation": "all integration points, no excluded corner or support singularities",
+      "mesh_mm": 3.0
+    },
+    {
+      "dofs": 74748,
+      "elements": 12384,
+      "fixed_facets": 894,
+      "loaded_facets": 405,
+      "max_displacement_mm": 0.15041159967938814,
+      "max_von_mises_MPa": 1.6981779659436491,
+      "max_absolute_principal_MPa": 1.9563570830745407,
+      "achieved_wrench_N_Nmm": [
+        -0.11585923351955511,
+        -1.8455661844481694,
+        7.547747523040921,
+        -320.58744306205443,
+        -86.37829458984908,
+        -71.17598649661775
+      ],
+      "free_residual_norm_N": 1.8699897934701393e-11,
+      "strain_energy_Nmm": 1.2817895149251644,
+      "external_work_Nmm": 2.5635790298527024,
+      "stress_evaluation": "all integration points, no excluded corner or support singularities",
+      "mesh_mm": 2.0
+    }
+  ],
+  "gates": {
+    "displacement": true,
+    "stress": true,
+    "displacement_convergence": true,
+    "stress_convergence": true
+  },
+  "passed_screen": true,
+  "production_design_verified": false,
+  "limitations": [
+    "one load sample only",
+    "ideal back-face bond",
+    "no fastener/contact/buckling validation"
+  ]
+}

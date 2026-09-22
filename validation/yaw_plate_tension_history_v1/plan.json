@@ -1,0 +1,15 @@
+{
+  "question": "Does one selected case cover tensile transfer required by archived normal force and bending histories?",
+  "sources": "All 38 cases listed in bolt_group_v1/report.json, including development variants; fullbody subset identified separately.",
+  "index_sha256": "ccc5f7d85ca35dcf971ae6dae514c6494f6a1beca7132ee62f1e3267f343157b",
+  "geometry": "Contact rectangle X[-37.5,11.6], Y=cy+/-16.5 at Z89. Bolt axes X[-34,8.1], Y=cy+/-10.",
+  "method": "Rigid normal force/moment balance. Total T>=0, C=Fz+T>=0. Contact and bolt point sets span independent XY rectangles. Bound each first moment by their Minkowski rectangle; maximum of the five inequalities and zero is exact for this relaxed model.",
+  "stop": "One vectorized pass over indexed traces; LP equilibrium check at maximum bound, minimum Fz and maximum Fz per case. No FE or unknown-parameter sweep.",
+  "limits": [
+    "Lower bound, not required preload or maximum individual bolt load",
+    "Contact rectangle fills holes and cutout, so is optimistic",
+    "Ignores shear, torsion, friction, flexibility, preload and dynamics internal to joint",
+    "Archived development loads are not the latest complete operating envelope",
+    "No strength or manufacturing release"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "status": "passive_default_low_candidate_host_and_threshold_not_qualified",
+  "source": "https://www.pololu.com/product/5671",
+  "internal_network": {
+    "ENA_to_VIN_ohm": 1000000.0,
+    "ENB_to_VIN_ohm": 1000000.0,
+    "ENA_to_ENB_ohm": 10000.0,
+    "tolerance_known": false
+  },
+  "external_pulldown": {
+    "part": "TNPW06032K21BEEA",
+    "ohm": 2210,
+    "placement": "at each module ENA_1 to local GND"
+  },
+  "external_series": {
+    "part": "TNPW0603100RBEEA",
+    "ohm": 100,
+    "placement": "control allow signal to each ENA"
+  },
+  "ground_reference": "servo assembly GND, ultimately PACK_RETURN; not CELL_B_MINUS",
+  "control_ports": [
+    "LEFT_REGULATOR_ALLOW",
+    "RIGHT_REGULATOR_ALLOW"
+  ],
+  "host_requirements": [
+    "high or low push-pull referenced to module GND",
+    "power-loss state low or high impedance",
+    "initialization low until battery settings and predischarge complete",
+    "no drive from powered host into unpowered module without injection qualification"
+  ],
+  "PFM": "floating default PFM",
+  "ENB": "floating; do not ground in PFM mode",
+  "physical_ENA_pad": "dual_pololu_pad_map.json ENA_1 at (26.67,2.54)mm",
+  "manufacturing_release": false
+}

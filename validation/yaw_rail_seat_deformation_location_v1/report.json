@@ -1,0 +1,91 @@
+{
+  "mesh_sha256": "efb15fdd5df1e9d587f29619eaaf58152c8e1fdee8b0cccaad0b43f040715f45",
+  "solver_report": {
+    "support_mode": "clamped",
+    "dofs": 75072,
+    "elements": 13275,
+    "fixed_facets": 274,
+    "loaded_facets": 866,
+    "load_regions": [
+      {
+        "origin_mm": [
+          -5.0,
+          26.0,
+          62.0
+        ],
+        "facets": 866,
+        "achieved_wrench_N_Nmm": [
+          -0.1272189340694734,
+          -1.8776622515976067,
+          7.459879287959047,
+          -319.0787894301035,
+          -83.46580053874429,
+          -79.82271842590826
+        ]
+      }
+    ],
+    "max_displacement_mm": 0.23807706833245768,
+    "max_von_mises_MPa": 3.751905285038247,
+    "max_absolute_principal_MPa": 5.496306601129517,
+    "achieved_wrench_N_Nmm": [
+      -0.1272189340694734,
+      -1.8776622515976067,
+      7.459879287959047,
+      -319.0787894301035,
+      -83.46580053874429,
+      -79.82271842590826
+    ],
+    "free_residual_norm_N": 2.9190371461960396e-11,
+    "strain_energy_Nmm": 1.3507195631486073,
+    "external_work_Nmm": 2.7014391262975685,
+    "stress_evaluation": "all integration points, no excluded corner or support singularities"
+  },
+  "regions": [
+    {
+      "region": "rear",
+      "energy_Nmm": 0.3474762045139835,
+      "fraction": 0.2572526629464639
+    },
+    {
+      "region": "middle",
+      "energy_Nmm": 0.3496483143623699,
+      "fraction": 0.2588607760645728
+    },
+    {
+      "region": "front",
+      "energy_Nmm": 0.6535950442727199,
+      "fraction": 0.4838865609889632
+    }
+  ],
+  "maximum_displacement_location_mm": [
+    11.6,
+    18.5,
+    91.0
+  ],
+  "maximum_displacement_vector_mm": [
+    -0.02538066215649157,
+    -0.09472713829046125,
+    0.21694073320973079
+  ],
+  "seat_rigid_fit": {
+    "nodes": 1765,
+    "origin_mm": [
+      -13.129933946281337,
+      26.765635264382805,
+      89.0
+    ],
+    "translation_mm": [
+      -0.002016696597325137,
+      -0.05563613019380199,
+      0.05134744509969102
+    ],
+    "rotation_rad": [
+      -0.005167712242652186,
+      -0.002494078601164534,
+      -0.0016170355263569053
+    ],
+    "max_nonrigid_residual_mm": 0.08173505574747333,
+    "rms_nonrigid_residual_mm": 0.02900451537279527
+  },
+  "manufacturing_release": false
+}

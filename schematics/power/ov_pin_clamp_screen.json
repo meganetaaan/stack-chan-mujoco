@@ -1,0 +1,30 @@
+{
+  "part_family": "TLV431B industrial grade",
+  "source": "https://www.ti.com/lit/ds/symlink/tlv431.pdf",
+  "revision": "SLVS139Z June 2024",
+  "direct_reference_clamp_rejected": true,
+  "reason": "Industrial full-range reference minimum 1.224V equals eFuse OVLO maximum 1.224V; strict assertion margin absent before cathode-current effects",
+  "reference_range_V_at_10mA": [
+    1.224,
+    1.259
+  ],
+  "minimum_regulation_current_max_A": 0.0001,
+  "next_candidate": "Adjustable clamp around 1.35V; resistor network and leakage must be included in original OV divider",
+  "part_selected": false,
+  "manufacturing_release": false,
+  "remaining": [
+    "Clamp minimum strictly above OVLO maximum and maximum below1.5V",
+    "Cathode current across fault input range, not only12.6V",
+    "Pre-regulation loading on OV divider",
+    "Dynamic response and capacitive stability",
+    "Actual resistor values and full-temperature/current correction"
+  ],
+  "adjusted_comparison": {
+    "REF_upper_ohm": 30100,
+    "REF_lower_ohm": 332000,
+    "OV_upper_ohm": 3570,
+    "OV_lower_ohm": 1000,
+    "evidence": "validation/ov_clamp_loading_v1/report.json",
+    "status": "conditional_sizing_only_not_integrated"
+  }
+}

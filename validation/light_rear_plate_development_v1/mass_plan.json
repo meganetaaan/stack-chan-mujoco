@@ -1,0 +1,73 @@
+{
+  "scope": "Build separate mass-only sensitivity plant; original collision geometry retained.",
+  "case": "full",
+  "full_candidate_base": {
+    "mass_kg": 0.6360895275646452,
+    "com_m": [
+      -0.0011818633463327077,
+      7.195533598807523e-06,
+      0.07410220342413178
+    ],
+    "inertia_kg_m2": [
+      [
+        0.0014714858536182067,
+        -3.8907354508668935e-07,
+        -0.00010685957310459952
+      ],
+      [
+        -3.8907354508668935e-07,
+        0.0019484559436220982,
+        -1.4015467375500817e-07
+      ],
+      [
+        -0.00010685957310459952,
+        -1.4015467375500817e-07,
+        0.002143418013078739
+      ]
+    ]
+  },
+  "residual_mass_grams": 25.0,
+  "base": {
+    "mass_kg": 0.6360895275646452,
+    "com_m": [
+      -0.0011818633463327077,
+      7.195533598807523e-06,
+      0.07410220342413178
+    ],
+    "inertia_kg_m2": [
+      [
+        0.0014714858536182067,
+        -3.8907354508668935e-07,
+        -0.00010685957310459952
+      ],
+      [
+        -3.8907354508668935e-07,
+        0.0019484559436220982,
+        -1.4015467375500817e-07
+      ],
+      [
+        -0.00010685957310459952,
+        -1.4015467375500817e-07,
+        0.002143418013078739
+      ]
+    ]
+  },
+  "source_sha256": {
+    "validation/candidate_base_mass_development_v1/report.json": "3c16c904fdee458eb88c926f8f7de12f2d583ec9ed0962a2d849d522b58dc07d",
+    "validation/fastener_allowance_development_v1/report.json": "982707cdc24f18049a14fba77c7bda15afcfcbb8ee719b17f166a8781368844b",
+    "outputs/light_rear_plate_v1/rear_structural_plate.step": "bf9b5e0d1e8a356cebf2395aa45856fbaf620310a005e11f70027aa889436e8d"
+  },
+  "criteria": {
+    "finite_simulation_required": true,
+    "duration_s": 7,
+    "turn_error_limit_deg": 1,
+    "turn_target_abs_deg": 90
+  },
+  "limitations": [
+    "Original visual and collision geometry retained: not candidate interference acceptance.",
+    "Residual mass and its location are sensitivity assumptions, not a released harness design.",
+    "Hardware envelopes use assumed density and nominal geometry.",
+    "Only base inertia changed; original turn controller and motor parameters retained."
+  ],
+  "alternative_rear_plate": "outputs/light_rear_plate_v1/rear_structural_plate.step"
+}

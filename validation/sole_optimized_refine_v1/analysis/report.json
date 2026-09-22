@@ -1,0 +1,41 @@
+{
+  "converged_active_set": true,
+  "iterations": [
+    {
+      "iteration": 0,
+      "active_nodes": 354,
+      "changed_nodes": 0
+    }
+  ],
+  "elapsed_seconds": 16.89282038600004,
+  "matrix_dofs": 39285,
+  "matrix_nonzeros": 1630696,
+  "equilibrium_residual_N": 5.912078104320907e-13,
+  "mean_constraint_residual": 1.506728014611061e-17,
+  "gauge_force_sum_relative": 6.450642771613563e-14,
+  "contact_total_N": 19.999999999999726,
+  "maximum_penetration_mm": 3.4302819036544855e-06,
+  "maximum_pressure_MPa": 3.4302819036544854,
+  "parts": {
+    "boss": {
+      "max_displacement_mm": 0.0043599975378323915,
+      "max_absolute_principal_MPa": 2.2919625335291327
+    },
+    "spacer": {
+      "max_displacement_mm": 0.0002200023063640092,
+      "max_absolute_principal_MPa": 16.39705077480227
+    }
+  },
+  "gates": {
+    "active_set": true,
+    "equilibrium": true,
+    "mean_constraints": true,
+    "penetration": true,
+    "gauge_force": true
+  },
+  "joint_verified": false,
+  "source_sha256": {
+    "boss": "68fdada3aa72fe89faad1c3323b4e0f6806039ef502cf2e2769c4beec3a94ed9",
+    "spacer": "9746d7db58773425ce889a78c2ee7985b0692acc22cd7c7f94403c20e0c8c644"
+  }
+}

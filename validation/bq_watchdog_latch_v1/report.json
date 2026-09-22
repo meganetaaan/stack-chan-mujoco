@@ -1,0 +1,480 @@
+{
+  "source_sha256": {
+    "schematics/power/bq_host_watchdog_candidate.json": "5b9524c2aed7d7d7a507771a55d258ab40c8b5153cb5dd6288298d6b1f56a56c",
+    "schematics/power/system_power_integration_candidate_v1/assembly.json": "0e5da0bbf2b922e4f0d750a68fac137e5a0a7ec5d3edb1cd158240b346376d3b"
+  },
+  "system_part_count": 250,
+  "scenarios": {
+    "frozen_high_requests_and_arm": [
+      {
+        "event": "startup_reset",
+        "supply_supervisor_released": 0,
+        "watchdog_released": 1,
+        "arm": 0,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          0,
+          0
+        ]
+      },
+      {
+        "event": "supply_valid",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 1,
+        "arm": 0,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          1,
+          1
+        ]
+      },
+      {
+        "event": "explicit_arm",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 1,
+        "arm": 1,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 1,
+        "outputs": [
+          1,
+          1
+        ],
+        "direct_WDO_gate_counterfactual": [
+          1,
+          1
+        ]
+      },
+      {
+        "event": "watchdog_fault",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 0,
+        "arm": 1,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          0,
+          0
+        ]
+      },
+      {
+        "event": "watchdog_pulse_ends",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 1,
+        "arm": 1,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          1,
+          1
+        ]
+      },
+      {
+        "event": "still_frozen",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 1,
+        "arm": 1,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          1,
+          1
+        ]
+      }
+    ],
+    "new_edge_required": [
+      {
+        "event": "reset",
+        "supply_supervisor_released": 0,
+        "watchdog_released": 1,
+        "arm": 0,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          0,
+          0
+        ]
+      },
+      {
+        "event": "valid",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 1,
+        "arm": 0,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          1,
+          1
+        ]
+      },
+      {
+        "event": "arm",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 1,
+        "arm": 1,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 1,
+        "outputs": [
+          1,
+          1
+        ],
+        "direct_WDO_gate_counterfactual": [
+          1,
+          1
+        ]
+      },
+      {
+        "event": "fault",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 0,
+        "arm": 1,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          0,
+          0
+        ]
+      },
+      {
+        "event": "pulse_ends",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 1,
+        "arm": 1,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          1,
+          1
+        ]
+      },
+      {
+        "event": "arm_low",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 1,
+        "arm": 0,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          1,
+          1
+        ]
+      },
+      {
+        "event": "new_arm_edge",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 1,
+        "arm": 1,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 1,
+        "outputs": [
+          1,
+          1
+        ],
+        "direct_WDO_gate_counterfactual": [
+          1,
+          1
+        ]
+      }
+    ],
+    "arm_during_reset_is_not_deferred": [
+      {
+        "event": "reset",
+        "supply_supervisor_released": 0,
+        "watchdog_released": 1,
+        "arm": 0,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          0,
+          0
+        ]
+      },
+      {
+        "event": "arm_while_reset",
+        "supply_supervisor_released": 0,
+        "watchdog_released": 1,
+        "arm": 1,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          0,
+          0
+        ]
+      },
+      {
+        "event": "reset_released_arm_held",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 1,
+        "arm": 1,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          1,
+          1
+        ]
+      }
+    ],
+    "independent_requests": [
+      {
+        "event": "reset",
+        "supply_supervisor_released": 0,
+        "watchdog_released": 1,
+        "arm": 0,
+        "raw_requests": [
+          0,
+          0
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          0,
+          0
+        ]
+      },
+      {
+        "event": "valid",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 1,
+        "arm": 0,
+        "raw_requests": [
+          0,
+          0
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          0,
+          0
+        ]
+      },
+      {
+        "event": "arm",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 1,
+        "arm": 1,
+        "raw_requests": [
+          0,
+          0
+        ],
+        "latch_Q": 1,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          0,
+          0
+        ]
+      },
+      {
+        "event": "main_only",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 1,
+        "arm": 0,
+        "raw_requests": [
+          1,
+          0
+        ],
+        "latch_Q": 1,
+        "outputs": [
+          1,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          1,
+          0
+        ]
+      },
+      {
+        "event": "aux_only",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 1,
+        "arm": 0,
+        "raw_requests": [
+          0,
+          1
+        ],
+        "latch_Q": 1,
+        "outputs": [
+          0,
+          1
+        ],
+        "direct_WDO_gate_counterfactual": [
+          0,
+          1
+        ]
+      },
+      {
+        "event": "both",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 1,
+        "arm": 0,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 1,
+        "outputs": [
+          1,
+          1
+        ],
+        "direct_WDO_gate_counterfactual": [
+          1,
+          1
+        ]
+      },
+      {
+        "event": "brownout",
+        "supply_supervisor_released": 0,
+        "watchdog_released": 1,
+        "arm": 0,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          0,
+          0
+        ]
+      },
+      {
+        "event": "recovery",
+        "supply_supervisor_released": 1,
+        "watchdog_released": 1,
+        "arm": 0,
+        "raw_requests": [
+          1,
+          1
+        ],
+        "latch_Q": 0,
+        "outputs": [
+          0,
+          0
+        ],
+        "direct_WDO_gate_counterfactual": [
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "model_scope": "Ideal logic at valid supply. No propagation delays, metastability, ramp, leakage, reset loading, heartbeat waveform or physical fault injection.",
+  "automatic_pulse_release_does_not_rearm": true,
+  "new_ARM_edge_can_rearm": true,
+  "fresh_user_authorization_path_implemented": false,
+  "watchdog_timeout_is_safe_deadline_proven": false,
+  "analog_electrical_qualification": false,
+  "manufacturing_release": false
+}

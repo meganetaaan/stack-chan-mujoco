@@ -1,0 +1,32 @@
+{
+  "assumed_rail_V": [
+    3.207,
+    3.393
+  ],
+  "HCS_to_buffer": {
+    "buffer_leakage_max_A": 2e-06,
+    "HCS_test_current_A": 2e-05,
+    "high_margin_V": 1.1069999999999998,
+    "low_margin_V": 0.7000000000000001
+  },
+  "buffer_to_MR": {
+    "sink_current_upper_A": 4.847142857142857e-05,
+    "buffer_test_current_A": 0.0001,
+    "high_margin_V": 0.8621,
+    "low_margin_V": 0.8621
+  },
+  "assumptions": [
+    "Common valid rail at all three parts",
+    "HCS input logic conditions already met",
+    "No extra output load",
+    "Datasheet DC output limits used for lower load current"
+  ],
+  "unverified": [
+    "HCS input thresholds and raw interface",
+    "LVC input transition maximum 10 ns/V",
+    "power sequencing and brownout",
+    "independent stop and default-off output"
+  ],
+  "DC_interface_pass": true,
+  "circuit_release": false
+}
