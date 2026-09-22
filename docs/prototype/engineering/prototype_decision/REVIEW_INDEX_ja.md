@@ -31,13 +31,13 @@
 
 ## 電源
 
-優先比較候補は保護内蔵ROBOTIS LB-020とPololu D42V110F5×2。
+統合回路候補は保護内蔵ROBOTIS LB-020とPololu D42V110F5×2。PTH240/241への置換は後述の詳細比較段階で、未統合。
 [電池比較](PROTECTED_PACK_COMPARISON_ja.md)の通り、容量×C値はPCMの遮断条件ではない。
 指定充電器を含む仕様適合、PCMの遮断・復帰・逆流条件、配線損失、全負荷予算は未確定。
 
 | 対象 | 現在の参照先 | 適用限界 |
 |---|---|---|
-| 新電池の統合入口 | [204部品接続候補](../../../../schematics/power/protected_pack_system_candidate_v6/README_ja.md) | 制御枝/主許可/補助許可/クリア駆動を接続。明示2信号境界と全過渡・保護協調は未完。未動作 |
+| 新電池の統合入口 | [209部品接続候補](../../../../schematics/power/protected_pack_system_candidate_v7/README_ja.md) | Tab5許可も接続。明示未接続は電池低電圧警告。検出/通信・全予算・過渡・保護協調は未完。未動作 |
 | 旧全系統 | [250部品接続候補](../../../../schematics/power/system_power_integration_candidate_v1/README_ja.md) | 生セル側BQ保護を含む旧構成。未選定部品あり。LB-020採用済み完成回路ではない |
 | 保護内蔵電池への移行 | [移行監査](../../../../validation/protected_pack_transition_v1/README_ja.md) | 旧電池回路の削除だけでは給電・起動許可・監視が成立しない |
 | 新しい制御電源枝 | [41部品候補](../../../../schematics/power/pack_control_ramp_candidate_v1/README_ja.md) | 191部品案へ接続候補として統合。既知部分負荷と仮定による充電比較で、突入電流上限や起動合格ではない |
@@ -79,3 +79,5 @@
 [最新胴体の工具と組立順](../../../../validation/current_face_tool_access_v1/README_ja.md)：Wera 05118068001の公称包絡で1,404組を検査。装着中のTab5固定ねじ操作は殻・後部プレートに干渉するため不採用。単体顔ユニットでは最小隙間1.011 mm、側面ねじの工具・抜取りも交差フラグなし。単体でTab5を締結する順序を採用。ねじ深さ・締付・配線・支持・公差は未完。
 
 [現枠の座面積・強度評価入力](../../../../validation/current_carrier_bearing_v1/README_ja.md)：接触面12か所をCADから抽出。側面ねじ頭の殻側座面14.679 mm²、枠パッド25.918 mm²で、同じ合力なら殻側平均面圧は約1.77倍。予圧・材料許容は未設定。殻座面の圧縮/曲げ/クリープ、保持・離間・相対変位を解析量に明記し、旧1.256 Nや7 MPaを現構成の合格基準に転用しない。
+
+[Tab5起動要求の接続](../../../../validation/tab5_request_connection_v1/README_ja.md)：PA7→シュミット→CTRL許可とのAND→既存SHDNを接続。状態契約640組と既存8イベントを照合。追加抵抗負荷比較0.704 mA・容量200 nF。停止入力のGND電位差、検出器・通信・全電源動作は未確認。
